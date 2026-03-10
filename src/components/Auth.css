@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: var(--bg-primary);
+    background: var(--color-bg);
     background-image: var(--gradient-mesh);
     background-size: 200% 200%;
     animation: meshShift 30s ease-in-out infinite;
@@ -46,7 +46,7 @@
 .auth-card {
     width: 100%;
     max-width: 420px;
-    background: var(--bg-card);
+    background: var(--color-bg-3);
     background-image: var(--gradient-glass);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-2xl);
@@ -83,13 +83,13 @@
     font-family: var(--font-display);
     font-size: var(--text-xl);
     font-weight: 800;
-    color: var(--text-primary);
+    color: var(--color-text);
     letter-spacing: var(--tracking-tighter);
 }
 
 .auth-logo-version {
     font-size: var(--text-2xs);
-    color: var(--accent-primary);
+    color: var(--color-primary);
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
@@ -131,7 +131,7 @@
     background: var(--bg-inset);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
-    color: var(--text-primary);
+    color: var(--color-text);
     font-size: var(--text-base);
     font-family: var(--font-sans);
     transition: all var(--transition-base);
@@ -180,7 +180,7 @@
 .auth-toggle button {
     background: none;
     border: none;
-    color: var(--accent-primary);
+    color: var(--color-primary);
     cursor: pointer;
     font-weight: 700;
     font-family: var(--font-sans);
@@ -198,7 +198,7 @@
     border: 1px solid rgba(255, 69, 58, 0.15);
     border-radius: var(--radius-lg);
     padding: var(--space-3) var(--space-4);
-    color: var(--danger);
+    color: var(--color-danger);
     font-size: var(--text-sm);
     text-align: center;
 }
@@ -208,7 +208,7 @@
     border: 1px solid rgba(52, 199, 89, 0.15);
     border-radius: var(--radius-lg);
     padding: var(--space-3) var(--space-4);
-    color: var(--success);
+    color: var(--color-success);
     font-size: var(--text-sm);
     text-align: center;
 }
@@ -235,9 +235,9 @@
 .auth-magic-link {
     padding: 11px var(--space-4);
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-default);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    color: var(--text-primary);
+    color: var(--color-text);
     font-size: var(--text-sm);
     font-weight: 600;
     font-family: var(--font-sans);

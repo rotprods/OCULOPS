@@ -11,7 +11,42 @@ if (!supabaseUrl || !supabaseAnonKey) {
     console.warn('⚠️ Supabase credentials not configured. Running in offline mode.');
 }
 
-export const supabase = supabaseUrl && supabaseAnonKey
+// Ensure URL is at least syntactically valid to prevent `@supabase/supabase-js`'s internal "Invalid supabaseUrl" throw.
+const isValidUrl = (url) => {
+    try { new URL(url); return true; } catch { return false; }
+};
+
+const hasCredentials = supabaseUrl && supabaseAnonKey && isValidUrl(supabaseUrl);
+
+// A safe stub that prevents the entire React tree from crashing if Supabase is offline/misconfigured.
+// The ErrorBoundary or individual components will just see failed requests or null users.
+const DummyClient = {
+    from: () => ({
+        select: () => ({
+            eq: () => ({
+                single: async () => ({ data: null, error: { message: 'ENV_MISSING' } }),
+                order: async () => ({ data: [], error: { message: 'ENV_MISSING' } })
+            })
+        }),
+        insert: () => ({ select: () => ({ single: async () => ({ data: null, error: { message: 'ENV_MISSING' } }) }) }),
+        update: () => ({ eq: () => ({ select: () => ({ single: async () => ({ data: null, error: { message: 'ENV_MISSING' } }) }) }) }),
+        delete: () => ({ eq: async () => ({ error: { message: 'ENV_MISSING' } }) })
+    }),
+    auth: {
+        getUser: async () => ({ data: { user: null }, error: null }),
+        getSession: async () => ({ data: { session: null }, error: null }),
+        onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => { } } } }),
+        signInWithPassword: async () => ({ error: { message: 'Supabase credentials missing in Edge/Vercel' } }),
+        signUp: async () => ({ error: { message: 'Supabase credentials missing in Edge/Vercel' } }),
+        signInWithOtp: async () => ({ error: { message: 'Supabase credentials missing in Edge/Vercel' } }),
+        signOut: async () => ({ error: null })
+    },
+    channel: () => ({
+        on: () => ({ subscribe: () => ({ unsubscribe: () => { } }) })
+    })
+};
+
+export const supabase = hasCredentials
     ? createClient(supabaseUrl, supabaseAnonKey, {
         realtime: {
             params: { eventsPerSecond: 10 },
@@ -21,7 +56,7 @@ export const supabase = supabaseUrl && supabaseAnonKey
             autoRefreshToken: true,
         },
     })
-    : null;
+    : DummyClient;
 
 const USER_SCOPED_TABLES = new Set([
     'alerts',

@@ -16,8 +16,8 @@ All workflows are pre-configured with your Supabase endpoints and OpenAI API key
 
 | File | Schedule | Agents | Description |
 | ---- | ---- | ---- | ---- |
-| `cortex-orchestration.json` | Every 1h | CORTEX → SENTINEL + SCRIBE | Hourly orchestration cycle |
-| `atlas-hunter-pipeline.json` | Every 6h | ATLAS → HUNTER | Market scan + lead qualification |
+| `cortex-orchestration.json` | Daily 8AM | CORTEX → SENTINEL + SCRIBE | Hourly orchestration cycle |
+| `atlas-hunter-pipeline.json` | Daily 8AM | ATLAS → HUNTER | Market scan + lead qualification |
 | `oracle-scribe-daily.json` | Daily 8AM | ORACLE → SCRIBE | Deep analytics + daily report |
 | `forge-content-webhook.json` | Webhook | FORGE | On-demand content generation |
 | `strategist-webhook.json` | Webhook | STRATEGIST | On-demand decision evaluation |
@@ -26,38 +26,38 @@ All workflows are pre-configured with your Supabase endpoints and OpenAI API key
 
 | File | Schedule | Agents | Description |
 | ---- | ---- | ---- | ---- |
-| `master-full-cycle.json` | Daily 7AM | ALL 7 agents | ATLAS→HUNTER→ORACLE→SENTINEL+FORGE→SCRIBE→CORTEX |
+| `master-full-cycle.json` | Daily 8AM | ALL 7 agents | ATLAS→HUNTER→ORACLE→SENTINEL+FORGE→SCRIBE→CORTEX |
 
 ## 🎯 Lead Generation & CRM (4)
 
 | File | Schedule | Description |
 | ---- | ---- | ---- |
 | `speed-to-lead.json` | Webhook | Instant lead capture → CRM → HUNTER qualify → alert |
-| `maps-lead-prospector.json` | Every 8h | GPT generates B2B prospect lists for Murcia |
+| `maps-lead-prospector.json` | Daily 8AM | GPT generates B2B prospect lists for Murcia |
 | `chatbot-lead-qualifier.json` | Webhook | AI chatbot that qualifies visitors and logs conversations |
-| `crm-deal-nurture.json` | Every 2h | Finds stale deals → GPT suggests nurture actions |
+| `crm-deal-nurture.json` | Daily 8AM | Finds stale deals → GPT suggests nurture actions |
 
 ## 📱 Marketing & Content (3)
 
 | File | Schedule | Description |
 | ---- | ---- | ---- |
-| `social-content-factory.json` | Mon/Wed/Fri 9AM | Generates LinkedIn, Instagram, Twitter, TikTok content |
-| `email-outreach-weekly.json` | Monday 10AM | Generates personalized cold outreach emails via FORGE |
-| `ad-campaign-optimizer.json` | Every 3h | Analyzes campaigns, suggests budget optimizations |
+| `social-content-factory.json` | Daily 8AM | Generates LinkedIn, Instagram, Twitter, TikTok content |
+| `email-outreach-weekly.json` | Daily 8AM | Generates personalized cold outreach emails via FORGE |
+| `ad-campaign-optimizer.json` | Daily 8AM | Analyzes campaigns, suggests budget optimizations |
 
 ## 📊 Intelligence & Reporting (3)
 
 | File | Schedule | Description |
 | ---- | ---- | ---- |
-| `competitor-monitor.json` | Every 12h | GPT competitive analysis → signals + knowledge base |
-| `weekly-business-report.json` | Sunday 8PM | Executive weekly report with KPIs and forecasts |
-| `niche-discovery.json` | Tuesday 11AM | Discovers and scores new market niches |
+| `competitor-monitor.json` | Daily 8AM | GPT competitive analysis → signals + knowledge base |
+| `weekly-business-report.json` | Daily 8AM | Executive weekly report with KPIs and forecasts |
+| `niche-discovery.json` | Daily 8AM | Discovers and scores new market niches |
 
 ## 💰 Pipeline & Monitoring (1)
 
 | File | Schedule | Description |
 | ---- | ---- | ---- |
-| `pipeline-health-alerts.json` | Every 4h | Pipeline health check via SENTINEL |
+| `pipeline-health-alerts.json` | Daily 8AM | Pipeline health check via SENTINEL |
 
 ---
 

@@ -41,7 +41,7 @@ function Knowledge() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>KNOWLEDGE VAULT</h1>
                     <span className="mono text-xs text-tertiary">ENCRYPTED CORPORATE MEMORY & OPERATIONAL PLAYBOOKS</span>
@@ -51,7 +51,7 @@ function Knowledge() {
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
                 {/* ── KPI STRIP ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
                     {TYPES.map(t => {
                         const count = (byType[t.value] || []).length
                         const isSelected = filter === t.value
@@ -70,8 +70,8 @@ function Knowledge() {
                 <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
 
                     {/* ── MAIN VAULT CONTENT ── */}
-                    <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+                    <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
                             <span>/// SECURE ENTRIES [{filtered.length}]</span>
                             <div className="input-group" style={{ margin: 0 }}>
                                 <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', background: '#000', borderRadius: 0, padding: '4px 8px', color: 'var(--color-primary)', width: '200px' }} placeholder="SEARCH ARCHIVE..." value={search} onChange={e => setSearch(e.target.value)} />
@@ -98,7 +98,7 @@ function Knowledge() {
                                             </div>
 
                                             {entry.content && (
-                                                <div className="mono text-xs" style={{ color: 'var(--text-secondary)', lineHeight: '1.5', whiteSpace: 'pre-wrap', marginBottom: '12px' }}>
+                                                <div className="mono text-xs" style={{ color: 'var(--color-text-2)', lineHeight: '1.5', whiteSpace: 'pre-wrap', marginBottom: '12px' }}>
                                                     {entry.content.toUpperCase()}
                                                 </div>
                                             )}

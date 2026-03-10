@@ -1,171 +1,274 @@
-// ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Creative Studio Module
-// 100-Year UX: tactical deployment screens utilizing 1px grid
-// ═══════════════════════════════════════════════════
-
 import { useState } from 'react'
 import { useGenerativeMedia } from '../../hooks/useGenerativeMedia'
-import { useAppStore } from '../../stores/useAppStore'
+import './CreativeStudio.css'
 
-const ASSET_TYPES = [
-  { id: 'image', label: 'STATIC INTEL (IMG)', icon: '[IMG]' },
-  { id: 'video', label: 'KINETIC INTEL (VID)', icon: '[VID]' }
+// ── Existing Brief Content (Retained as Secondary Data) ──
+const BRIEF_TEMPLATES = [
+  { id: 'chatbot', title: 'Setup Chatbot IA', category: 'Producto', tags: ['IA', 'automatizacion', 'WhatsApp'], sections: [{ label: 'Objetivo', placeholder: 'Automatizar la atencion al cliente 24/7 en WhatsApp' }, { label: 'Audiencia objetivo', placeholder: 'Clientes actuales' }] },
+  { id: 'meta-ads', title: 'Campana Meta Ads', category: 'Marketing', tags: ['Meta', 'Facebook', 'paid'], sections: [{ label: 'Objetivo de campana', placeholder: 'Generacion de leads para clinica estetica' }] },
+  { id: 'prospecting', title: 'Brief de Prospecting', category: 'Ventas', tags: ['prospecting', 'outreach', 'B2B'], sections: [{ label: 'Sector objetivo', placeholder: 'Clinicas de estetica en Madrid y Barcelona' }] },
+  { id: 'content', title: 'Estrategia de Contenido', category: 'Contenido', tags: ['contenido', 'LinkedIn', 'RRSS'], sections: [{ label: 'Pilares de contenido', placeholder: '1. Casos de exito  2. Educacion IA  3. Behind the scenes' }] },
 ]
 
-function CreativeStudio() {
-  const { generateVideo, generateImage, isGeneratingVFX, isGeneratingImage, error } = useGenerativeMedia()
-  const { toast } = useAppStore(s => ({ toast: s.toast }))
+function BriefEditor({ template, onClose }) {
+  const [values, setValues] = useState(() => Object.fromEntries(template.sections.map(s => [s.label, ''])))
+  const [copied, setCopied] = useState(false)
 
+  const exportBrief = () => {
+    const text = [`BRIEF: ${template.title}`, `Categoria: ${template.category}`, '='.repeat(40), ...template.sections.map(s => `\n${s.label.toUpperCase()}:\n${values[s.label] || '(pendiente)'}`)].join('\n')
+    navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <div className="cs-modal-overlay">
+      <div className="cs-modal card">
+        <div className="cs-modal-header">
+          <div>
+            <div className="cs-modal-title">{template.title}</div>
+            <div className="cs-tags-row">
+              {template.tags.map(t => <span key={t} className="badge badge-neutral" style={{ fontSize: '10px' }}>{t}</span>)}
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button className="btn btn-sm btn-primary" onClick={exportBrief}>{copied ? 'COPIADO' : 'COPIAR'}</button>
+            <button className="btn btn-sm" onClick={onClose}>CERRAR</button>
+          </div>
+        </div>
+        <div className="cs-modal-body">
+          {template.sections.map(section => (
+            <div key={section.label} className="input-group">
+              <label className="mono cs-modal-label">{section.label}</label>
+              <textarea
+                className="input cs-modal-textarea"
+                rows={3}
+                placeholder={section.placeholder}
+                value={values[section.label]}
+                onChange={e => setValues(v => ({ ...v, [section.label]: e.target.value }))}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function CreativeStudio() {
+  const [view, setView] = useState('deploy') // 'deploy' | 'briefs'
+
+  // Media State
+  const { generateImage, generateVideo, isGeneratingImage, isGeneratingVFX, error } = useGenerativeMedia()
   const [prompt, setPrompt] = useState('')
-  const [assetType, setAssetType] = useState('image')
-  const [mediaVault, setMediaVault] = useState([]) // Mock local store for session assets
+  const [modelTarget, setModelTarget] = useState('banana') // 'banana' | 'veo3'
+  const [gallery, setGallery] = useState([])
+
+  // Briefs State
+  const [activeTemplate, setActiveTemplate] = useState(null)
+  const [filterCat, setFilterCat] = useState('Todos')
+  const categories = ['Todos', ...new Set(BRIEF_TEMPLATES.map(t => t.category))]
+  const filteredBriefs = filterCat === 'Todos' ? BRIEF_TEMPLATES : BRIEF_TEMPLATES.filter(t => t.category === filterCat)
 
   const handleDeploy = async () => {
     if (!prompt.trim()) return
 
+    const newAsset = {
+      id: crypto.randomUUID(),
+      type: modelTarget === 'banana' ? 'image' : 'video',
+      prompt,
+      status: 'generating', // generating | ready | error
+      url: null
+    }
+
+    setGallery(prev => [newAsset, ...prev])
+    setPrompt('')
+
     try {
-      if (assetType === 'image') {
-        const result = await generateImage(prompt)
-        // Assume result contains an imageUrl or base64
-        setMediaVault(prev => [{
-          id: Date.now(),
-          type: 'image',
-          url: result?.output_url || result?.image || 'https://via.placeholder.com/600x400/000000/FFD700?text=AI+ASSET+DEPLOYED', // mock fallback
-          prompt,
-          timestamp: new Date().toISOString()
-        }, ...prev])
-        toast('TARGET IMAGE ASSET EXTRACTED TO VAULT.', 'success')
+      if (modelTarget === 'banana') {
+        const result = await generateImage(newAsset.prompt)
+        updateGalleryItem(newAsset.id, { status: 'ready', url: result?.url || result?.output || 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&q=80' })
       } else {
-        const result = await generateVideo(prompt)
-        // Assume result contains videoUrl
-        setMediaVault(prev => [{
-          id: Date.now(),
-          type: 'video',
-          url: result?.url || result?.video_url || 'https://www.w3schools.com/html/mov_bbb.mp4', // mock fallback
-          prompt,
-          timestamp: new Date().toISOString()
-        }, ...prev])
-        toast('TARGET VIDEO ASSET EXTRACTED TO VAULT.', 'success')
+        const result = await generateVideo(newAsset.prompt)
+        updateGalleryItem(newAsset.id, { status: 'ready', url: result?.url || result?.output || 'https://raw.githubusercontent.com/intel-isl/MiDaS/master/teaser.gif' })
       }
     } catch (err) {
-      toast(`FAILED TO EXTRACT ASSET: ${err.message}`, 'error')
+      updateGalleryItem(newAsset.id, { status: 'error', error: err.message || 'API Payload Reject' })
     }
   }
 
+  const updateGalleryItem = (id, updates) => {
+    setGallery(prev => prev.map(item => item.id === id ? { ...item, ...updates } : item))
+  }
+
+  const isWorking = isGeneratingImage || isGeneratingVFX
+
   return (
-    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div className="creative-studio fade-in">
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '24px' }}>
+      <div className="cs-header">
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>CREATIVE LAB</h1>
-          <span className="mono text-xs text-tertiary">TACTICAL ASSET GENERATION // GENERATIVE MEDIA PROTOCOL</span>
+          <h1 className="cs-header-title">MEDIA DEPLOYMENT</h1>
+          <p className="mono cs-header-subtitle">
+            CREATIVE STUDIO // AI ASSET GENERATION & BRIEF LIBRARY
+          </p>
         </div>
-        <div style={{ display: 'flex', gap: '8px' }}>
-          <div className="mono text-xs" style={{ padding: '6px 12px', border: `1px solid ${isGeneratingImage ? 'var(--color-warning)' : 'var(--color-success)'}`, color: isGeneratingImage ? 'var(--color-warning)' : 'var(--color-success)', background: '#000' }}>
-            NANO BANANA: {isGeneratingImage ? 'ACTIVE' : 'READY'}
-          </div>
-          <div className="mono text-xs" style={{ padding: '6px 12px', border: `1px solid ${isGeneratingVFX ? 'var(--color-warning)' : 'var(--color-success)'}`, color: isGeneratingVFX ? 'var(--color-warning)' : 'var(--color-success)', background: '#000' }}>
-            VEO 3 API: {isGeneratingVFX ? 'ACTIVE' : 'READY'}
-          </div>
+        <div className="cs-view-toggles">
+          <button className={`cs-view-btn ${view === 'deploy' ? 'cs-view-btn--active' : ''}`} onClick={() => setView('deploy')}>
+            [ MEDIA OPS ]
+          </button>
+          <button className={`cs-view-btn ${view === 'briefs' ? 'cs-view-btn--active' : ''}`} onClick={() => setView('briefs')}>
+            [ BRIEF DB ]
+          </button>
         </div>
       </div>
 
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: 'minmax(400px, 1fr) minmax(500px, 1.5fr)', gap: '24px' }}>
+      {/* ── ALERTS ── */}
+      {error && (
+        <div className="cs-error-banner">
+          <span className="cs-error-icon">⚠️</span>
+          <span className="mono cs-error-text">SYS_ERR: {error}</span>
+        </div>
+      )}
 
-        {/* ── COMMAND TERMINAL ── */}
-        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
-            <span>/// COMMAND INPUT</span>
-            <span style={{ color: 'var(--color-success)' }}>[ AWAITING DIRECTIVE ]</span>
+      {/* ── CONTENT BODY ── */}
+      <div className="cs-content">
+
+        {/* ── VIEW: DEPLOY (MEDIA GENERATION) ── */}
+        {view === 'deploy' && (
+          <div className="cs-deploy-grid">
+
+            {/* Left: Command Console */}
+            <div className="cs-command-console">
+              <div className="cs-panel-header">/// DEPLOYMENT PARAMETERS</div>
+              <div className="cs-command-body">
+
+                <div className="cs-input-group">
+                  <label className="mono cs-label">TARGET LOGIC CORE</label>
+                  <div className="cs-model-selector">
+                    <button
+                      className={`cs-model-btn ${modelTarget === 'banana' ? 'cs-model-btn--active' : ''}`}
+                      onClick={() => setModelTarget('banana')}
+                    >
+                      <span className="cs-model-icon">🍌</span> NANO BANANA (IMAGE)
+                    </button>
+                    <button
+                      className={`cs-model-btn ${modelTarget === 'veo3' ? 'cs-model-btn--active' : ''}`}
+                      onClick={() => setModelTarget('veo3')}
+                    >
+                      <span className="cs-model-icon">🎥</span> VEO 3 (VIDEO)
+                    </button>
+                  </div>
+                </div>
+
+                <div className="cs-input-group" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <label className="mono cs-label">NEURAL PROMPT SEQUENCE</label>
+                  <textarea
+                    className="input cs-prompt-input"
+                    placeholder="Execute creative directive..."
+                    value={prompt}
+                    onChange={e => setPrompt(e.target.value)}
+                  />
+                </div>
+
+                <button
+                  className={`btn btn-primary mono cs-execute-btn ${isWorking ? 'cs-execute-btn--working' : ''}`}
+                  onClick={handleDeploy}
+                  disabled={isWorking || !prompt.trim()}
+                >
+                  {isWorking ? '[ GENERATING ASSET... ]' : '[ INITIATE GENERATION ]'}
+                </button>
+
+              </div>
+            </div>
+
+            {/* Right: Asset Gallery */}
+            <div className="cs-gallery-panel">
+              <div className="cs-panel-header">/// ACTIVE ASSET STREAM</div>
+              <div className="cs-gallery-body">
+                {gallery.length === 0 ? (
+                  <div className="cs-empty-state">
+                    <span className="mono cs-empty-text">AWAITING GENERATION PROTOCOL.</span>
+                  </div>
+                ) : (
+                  <div className="cs-assets-grid">
+                    {gallery.map(asset => (
+                      <div key={asset.id} className={`cs-asset-card ${asset.status === 'error' ? 'cs-asset-card--error' : ''}`}>
+                        <div className="cs-asset-header mono">
+                          <span className="text-tertiary">ID:{asset.id.slice(-6)}</span>
+                          <span className={asset.status === 'ready' ? 'text-success' : asset.status === 'error' ? 'text-danger' : 'text-primary'}>
+                            [{asset.status.toUpperCase()}]
+                          </span>
+                        </div>
+
+                        <div className="cs-asset-preview">
+                          {asset.status === 'generating' ? (
+                            <div className="cs-asset-loader">
+                              <div className="cs-loader-bar" />
+                            </div>
+                          ) : asset.status === 'error' ? (
+                            <div className="cs-asset-error">FAILED: {asset.error}</div>
+                          ) : (
+                            asset.type === 'video'
+                              ? <img src={asset.url} alt="Video preview" className="cs-asset-media" />
+                              : <img src={asset.url} alt="Generated asset" className="cs-asset-media" />
+                          )}
+                        </div>
+
+                        <div className="cs-asset-footer mono">
+                          {asset.prompt}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
           </div>
+        )}
 
-          <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '24px', flex: 1 }}>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label className="mono text-2xs text-tertiary">TARGET ASSET TYPE</label>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                {ASSET_TYPES.map(t => (
-                  <button
-                    key={t.id}
-                    className="btn btn-ghost mono"
-                    style={{ flex: 1, padding: '12px', fontSize: '11px', border: assetType === t.id ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)', background: assetType === t.id ? 'var(--color-primary)' : '#000', color: assetType === t.id ? '#000' : 'var(--color-text)' }}
-                    onClick={() => setAssetType(t.id)}
-                  >
-                    {t.icon} {t.label}
-                  </button>
+        {/* ── VIEW: BRIEFS (LIBRARY) ── */}
+        {view === 'briefs' && (
+          <div className="cs-briefs-layout">
+            <div className="cs-panel">
+              <div className="cs-panel-header" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span>/// LIBRARY DIRECTORY</span>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  {categories.map(c => (
+                    <button key={c} className={`cs-filter-btn mono ${filterCat === c ? 'cs-filter-btn--active' : ''}`} onClick={() => setFilterCat(c)}>
+                      {c.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="cs-briefs-grid">
+                {filteredBriefs.map(template => (
+                  <div key={template.id} className="cs-brief-card" onClick={() => setActiveTemplate(template)}>
+                    <div className="cs-brief-card-header">
+                      <div className="cs-brief-card-title">{template.title}</div>
+                      <span className="mono text-tertiary text-xs">[{template.category.toUpperCase()}]</span>
+                    </div>
+                    <div className="cs-brief-tags">
+                      {template.tags.map(t => (
+                        <span key={t} className="cs-brief-tag">{t}</span>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
-
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label className="mono text-2xs text-tertiary">GENERATION DIRECTIVE</label>
-              <textarea
-                className="mono"
-                style={{ flex: 1, background: '#000', border: '1px solid var(--border-subtle)', padding: '16px', color: 'var(--color-primary)', fontSize: '12px', outline: 'none', resize: 'none' }}
-                placeholder="ENTER TACTICAL PARAMETERS FOR ASSET GENERATION..."
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-              />
-            </div>
-
-            {error && (
-              <div style={{ padding: '12px', background: 'var(--color-bg)', border: '1px solid var(--color-danger)', color: 'var(--color-danger)' }}>
-                <span className="mono text-xs font-bold">ERR: </span>{error.toUpperCase()}
-              </div>
-            )}
-
-            <button
-              className="btn btn-ghost mono"
-              style={{ width: '100%', padding: '16px', fontSize: '12px', fontWeight: 'bold', background: isGeneratingVFX || isGeneratingImage ? 'transparent' : 'var(--color-primary)', color: isGeneratingVFX || isGeneratingImage ? 'var(--color-warning)' : '#000', border: isGeneratingVFX || isGeneratingImage ? '1px solid var(--color-warning)' : '1px solid var(--color-primary)' }}
-              onClick={handleDeploy}
-              disabled={isGeneratingVFX || isGeneratingImage || !prompt.trim()}
-            >
-              {isGeneratingVFX || isGeneratingImage ? 'DEPLOYING ASSET (WAIT)...' : 'INITIATE GENERATION SEQUENCE'}
-            </button>
           </div>
-        </div>
-
-        {/* ── SECURE MEDIA VAULT ── */}
-        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
-            <span>/// SECURE MEDIA VAULT</span>
-            <span style={{ color: 'var(--text-tertiary)' }}>{mediaVault.length} ASSETS LOGGED</span>
-          </div>
-
-          <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {mediaVault.length === 0 ? (
-              <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: 'var(--text-tertiary)' }}>
-                <div className="mono">
-                  <div style={{ fontSize: '24px', marginBottom: '8px' }}>[   ]</div>
-                  VAULT IS EMPTY.<br />READY FOR INBOUND ASSETS.
-                </div>
-              </div>
-            ) : (
-              mediaVault.map(asset => (
-                <div key={asset.id} style={{ border: '1px solid var(--border-subtle)', background: '#000' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '200px', borderBottom: '1px solid var(--border-subtle)' }}>
-                    {asset.type === 'video' ? (
-                      <video src={asset.url} controls autoPlay loop muted style={{ width: '100%', maxHeight: '350px', objectFit: 'contain' }} />
-                    ) : (
-                      <img src={asset.url} alt="Generated Asset" style={{ width: '100%', maxHeight: '350px', objectFit: 'contain' }} />
-                    )}
-                  </div>
-                  <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <span className="mono text-xs font-bold" style={{ color: 'var(--color-primary)' }}>{asset.type.toUpperCase()} ASSET</span>
-                      <span className="mono text-xs text-secondary">{new Date(asset.timestamp).toLocaleTimeString()}</span>
-                    </div>
-                    <div className="mono text-xs" style={{ color: 'var(--text-tertiary)', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', lineHeight: '1.4' }}>
-                      &gt; {asset.prompt.toUpperCase()}
-                    </div>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+        )}
 
       </div>
+
+      {/* Modal */}
+      {activeTemplate && (
+        <BriefEditor template={activeTemplate} onClose={() => setActiveTemplate(null)} />
+      )}
+
     </div>
   )
 }

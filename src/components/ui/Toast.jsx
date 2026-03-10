@@ -14,12 +14,12 @@ function Toast() {
         <div key={t.id} style={{
           display: 'flex', alignItems: 'center', gap: '10px',
           padding: '12px 16px',
-          background: 'var(--bg-card)',
-          border: `1px solid ${t.type === 'success' ? 'var(--success)' : t.type === 'danger' ? 'var(--danger)' : t.type === 'warning' ? 'var(--warning)' : 'var(--border-subtle)'}`,
+          background: 'var(--color-bg-3)',
+          border: `1px solid ${t.type === 'success' ? 'var(--color-success)' : t.type === 'danger' ? 'var(--color-danger)' : t.type === 'warning' ? 'var(--warning)' : 'var(--border-subtle)'}`,
           borderRadius: '8px',
           boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
           fontSize: '13px',
-          color: 'var(--text-primary)',
+          color: 'var(--color-text)',
           animation: 'fadeIn 0.2s ease',
           minWidth: '260px',
         }}>

@@ -26,7 +26,7 @@ function Decisions() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>DECISION LEDGER</h1>
                     <span className="mono text-xs text-tertiary">STRATEGIC ARCHIVES & RATIONALE TRACKING</span>
@@ -36,7 +36,7 @@ function Decisions() {
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
                 {/* ── KPI STRIP ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
                     <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                             <span className="mono text-xs text-tertiary">TOTAL DECISIONS</span>
@@ -60,7 +60,7 @@ function Decisions() {
                     </div>
                 </div>
 
-                <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
                     <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--color-primary)', color: '#000' }}>
                         /// INITIALIZE NEW DECISION RECORD
                     </div>
@@ -124,8 +124,8 @@ function Decisions() {
                     </div>
                 )}
 
-                <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
                         /// HISTORICAL LEDGER [{decisions.length}]
                     </div>
                     {decisions.length === 0 ? (
@@ -144,7 +144,7 @@ function Decisions() {
 
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                                         {d.context && (
-                                            <div className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                                            <div className="mono text-xs" style={{ color: 'var(--color-text-2)' }}>
                                                 <span style={{ color: 'var(--text-tertiary)' }}>CTX:</span> {d.context.toUpperCase()}
                                             </div>
                                         )}

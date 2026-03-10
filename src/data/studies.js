@@ -4,12 +4,12 @@
 // ═══════════════════════════════════════════════════
 
 export const STUDY_CATEGORIES = {
-    STRATEGY: { label: 'STRATEGY', color: 'var(--accent-primary)' },
-    DATA: { label: 'DATA', color: 'var(--info)' },
-    FINANCE: { label: 'FINANCE', color: 'var(--success)' },
+    STRATEGY: { label: 'STRATEGY', color: 'var(--color-primary)' },
+    DATA: { label: 'DATA', color: 'var(--color-info)' },
+    FINANCE: { label: 'FINANCE', color: 'var(--color-success)' },
     OPS: { label: 'OPS', color: 'var(--warning)' },
-    TECH: { label: 'TECH', color: 'var(--accent-secondary)' },
-    GROWTH: { label: 'GROWTH', color: 'var(--danger)' },
+    TECH: { label: 'TECH', color: 'var(--color-info)' },
+    GROWTH: { label: 'GROWTH', color: 'var(--color-danger)' },
 }
 
 export const studies = [

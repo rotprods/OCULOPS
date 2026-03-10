@@ -111,9 +111,9 @@ function Agents() {
   return (
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ width: '48px', height: '48px', background: '#000', border: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
+          <div style={{ width: '48px', height: '48px', background: '#000', border: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
             <span style={{ fontSize: '24px' }}>🧠</span>
           </div>
           <div>
@@ -130,7 +130,7 @@ function Agents() {
       </div>
 
       {/* ── NETWORK STATUS STRIP ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)', marginBottom: '16px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)', marginBottom: '16px' }}>
         <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">ASSETS</span>
           <span className="mono text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{stats.total}</span>
@@ -145,7 +145,7 @@ function Agents() {
         </div>
         <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">SYSTEM CYCLES</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>{stats.totalRuns}</span>
+          <span className="mono text-lg font-bold" style={{ color: 'var(--color-text-2)' }}>{stats.totalRuns}</span>
         </div>
         <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">DELIVERED INTEL</span>
@@ -183,7 +183,7 @@ function Agents() {
             {/* SUB-AGENTS GRID */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px', marginBottom: '32px' }}>
               {subAgents.map(ag => (
-                <div key={ag.id} style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                <div key={ag.id} style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: 8, height: 8, background: ag.status === 'online' ? 'var(--color-success)' : ag.status === 'running' ? 'var(--color-warning)' : 'var(--color-danger)' }} />
@@ -199,7 +199,7 @@ function Agents() {
 
                     <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: 'auto' }}>
                       {(ag.capabilities || []).slice(0, 3).map(cap => (
-                        <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--text-secondary)', padding: '2px 6px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
+                        <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--color-text-2)', padding: '2px 6px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
                           {cap.replace(/_/g, ' ').toUpperCase()}
                         </span>
                       ))}
@@ -217,8 +217,8 @@ function Agents() {
         )}
 
         {activeTab === 'queue' && (
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// TASK QUEUE</div>
+          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// TASK QUEUE</div>
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {tasks.slice(0, 50).map(t => (
                 <div key={t.id} className="mono text-xs" style={{ display: 'flex', gap: '16px', padding: '8px', borderBottom: '1px solid var(--border-subtle)' }}>
@@ -233,8 +233,8 @@ function Agents() {
         )}
 
         {activeTab === 'logs' && (
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// NETWORK LOGS</div>
+          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// NETWORK LOGS</div>
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {logs.slice(0, 50).map(log => (
                 <div key={log.id} className="mono text-xs" style={{ display: 'flex', gap: '16px', padding: '8px', borderBottom: '1px solid var(--border-subtle)' }}>
@@ -252,8 +252,8 @@ function Agents() {
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 1fr) 2fr', gap: '16px', paddingBottom: '32px' }}>
             {/* LEFT COLUMN: COMPILE STUDY & SETTINGS */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// COMPILE STUDY BRIEF</div>
+              <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// COMPILE STUDY BRIEF</div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div className="input-group">
                     <label className="mono text-xs">EXECUTING AGENT</label>
@@ -285,8 +285,8 @@ function Agents() {
                 </div>
               </div>
 
-              <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// OUTBOUND RELAY (TELEGRAM)</div>
+              <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// OUTBOUND RELAY (TELEGRAM)</div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div className="input-group">
                     <label className="mono text-xs">LINK REFERENCE</label>
@@ -320,8 +320,8 @@ function Agents() {
             </div>
 
             {/* RIGHT COLUMN: RECENT STUDIES */}
-            <div style={{ border: '1px solid var(--border-default)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// INTERCEPT LOG ({recentStudies.length} ARCHIVED)</div>
+            <div style={{ border: '1px solid var(--color-border)', background: '#000', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// INTERCEPT LOG ({recentStudies.length} ARCHIVED)</div>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', gap: '16px', overflowY: 'auto' }}>
                 {studiesLoading ? <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '16px' }}>ACCESSING ARCHIVE...</div> :
                   recentStudies.length === 0 ? <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '16px' }}>NO RECORDS ON FILE.</div> :
@@ -346,7 +346,7 @@ function Agents() {
                             )}
                           </div>
                         </div>
-                        <div className="mono text-xs" style={{ color: 'var(--text-secondary)', lineHeight: '1.4' }}>{study.summary.toUpperCase()}</div>
+                        <div className="mono text-xs" style={{ color: 'var(--color-text-2)', lineHeight: '1.4' }}>{study.summary.toUpperCase()}</div>
                         {Array.isArray(study.highlights) && study.highlights.length > 0 && (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', borderTop: '1px solid var(--border-subtle)', paddingTop: '8px' }}>
                             {study.highlights.slice(0, 3).map(h => (
@@ -366,7 +366,7 @@ function Agents() {
         {activeTab === 'automation' && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px', paddingBottom: '32px' }}>
             {AGENT_AUTOMATION_PACKS.map(pack => (
-              <div key={pack.agentCodeName} style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+              <div key={pack.agentCodeName} style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="mono text-xs font-bold" style={{ color: AGENT_COLORS[pack.agentCodeName] || 'var(--color-primary)' }}>{pack.label.toUpperCase()} PROTOCOLS</span>
                   <span className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>[{pack.templates.length} TEMPLATES]</span>

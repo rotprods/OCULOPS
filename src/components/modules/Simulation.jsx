@@ -34,7 +34,7 @@ function SliderRow({ label, min, max, step = 1, value, suffix = '', onChange }) 
 
   return (
     <div style={{ marginBottom: '16px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '10px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '10px', fontFamily: 'var(--font-mono)', color: 'var(--color-text-2)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         <span>{label}</span>
         <span style={{ color: 'var(--color-primary)' }}>
           {value.toLocaleString()}{suffix}
@@ -117,7 +117,7 @@ function Simulation() {
   return (
     <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px', height: '100%' }}>
       {/* ── HEADER ── */}
-      <div style={{ paddingBottom: '16px', borderBottom: '1px solid var(--border-default)' }}>
+      <div style={{ paddingBottom: '16px', borderBottom: '1px solid var(--color-border)' }}>
         <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0, textTransform: 'uppercase' }}>Simulation Engine</h1>
         <p className="mono text-xs text-tertiary" style={{ marginTop: '8px', letterSpacing: '0.05em' }}>/// MONTE CARLO PROJECTIONS // 30-60-90 DAY TRAJECTORY</p>
       </div>
@@ -125,8 +125,8 @@ function Simulation() {
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) minmax(400px, 2fr)', gap: '16px' }}>
 
         {/* Controls */}
-        <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+        <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
               /// MODEL VARIABLES OVERRIDE
           </div>
           <div style={{ padding: '24px' }}>
@@ -141,19 +141,19 @@ function Simulation() {
         </div>
 
         {/* Results */}
-        <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+        <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
               /// MRR PROJECTION
           </div>
           <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
             <div dangerouslySetInnerHTML={{ __html: chartHtml }} style={{ width: '100%', flex: 1 }} />
-            <div style={{ height: '1px', background: 'var(--border-default)', margin: '24px 0' }} />
+            <div style={{ height: '1px', background: 'var(--color-border)', margin: '24px 0' }} />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
               {base.map(r => (
                 <div key={r.month} style={{ background: 'var(--color-bg-2)', padding: '16px', textAlign: 'center' }}>
                   <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginBottom: '8px' }}>MONTH {r.month}</div>
                   <div className="mono" style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--color-primary)' }}>{r.mrr.toLocaleString()}€</div>
-                  <div className="mono text-2xs" style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>{r.totalClients} ACT / +{r.newClients} NEW</div>
+                  <div className="mono text-2xs" style={{ color: 'var(--color-text-2)', marginTop: '8px' }}>{r.totalClients} ACT / +{r.newClients} NEW</div>
                 </div>
               ))}
             </div>
@@ -162,8 +162,8 @@ function Simulation() {
       </div>
 
       {/* Scenario comparison */}
-      <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)' }}>
-        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+      <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--color-border)' }}>
+        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
             /// FORECAST SCENARIOS
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)' }}>
@@ -176,7 +176,7 @@ function Simulation() {
                 <div className="mono" style={{ fontSize: '24px', fontWeight: 'bold', color: sc.color }}>{m3.mrr.toLocaleString()}€</div>
                 <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginTop: '8px' }}>M3 OUTLOOK</div>
                 <div style={{ height: '1px', background: 'var(--border-subtle)', margin: '16px 0' }} />
-                <div className="mono text-2xs" style={{ color: 'var(--text-secondary)' }}>ACT: {m3.totalClients} / TGT: {m3.contacts}</div>
+                <div className="mono text-2xs" style={{ color: 'var(--color-text-2)' }}>ACT: {m3.totalClients} / TGT: {m3.contacts}</div>
               </div>
             )
           })}
@@ -184,8 +184,8 @@ function Simulation() {
       </div>
 
       {/* Cash Runway */}
-      <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)' }}>
-        <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-default)', background: 'var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--color-border)' }}>
+        <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--color-border)', background: 'var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div className="mono text-xs font-bold" style={{ color: 'var(--color-primary)' }}>/// RUNWAY & BURN ANALYSIS</div>
           <div className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>BURN: {monthlyExpenses}€/MO</div>
         </div>
@@ -194,11 +194,11 @@ function Simulation() {
             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
               <tr>
                 <th style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>T-MINUS</th>
-                <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>CAPITAL</th>
-                <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>MRR</th>
-                <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>BURN</th>
-                <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>NET DIFF</th>
-                <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SYSTEM STATUS</th>
+                <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>CAPITAL</th>
+                <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>MRR</th>
+                <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>BURN</th>
+                <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>NET DIFF</th>
+                <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>SYSTEM STATUS</th>
               </tr>
             </thead>
             <tbody>

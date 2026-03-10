@@ -26,7 +26,7 @@ export class ErrorBoundary extends Component {
                     flexDirection: 'column',
                     alignItems: 'center',
                     gap: 'var(--space-4)',
-                    color: 'var(--text-secondary)',
+                    color: 'var(--color-text-2)',
                 }}>
                     <span style={{ fontSize: '2rem' }}>⚠️</span>
                     <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-tertiary)' }}>

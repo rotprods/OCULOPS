@@ -245,7 +245,7 @@ function Markets() {
         <article style={{ padding: '16px', background: '#000' }}>
           <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>24H EXCHANGE VOL</span>
           <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{formatVolume(summary.totalVolume)}</strong>
-          <span className="mono text-2xs" style={{ color: 'var(--text-secondary)', marginTop: '8px', display: 'block' }}>SYNC: {formatTimestamp(lastUpdated)}</span>
+          <span className="mono text-2xs" style={{ color: 'var(--color-text-2)', marginTop: '8px', display: 'block' }}>SYNC: {formatTimestamp(lastUpdated)}</span>
         </article>
       </section>
 

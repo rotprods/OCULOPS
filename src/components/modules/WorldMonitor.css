@@ -48,7 +48,7 @@
     justify-content: space-between;
     padding: 12px 16px;
     background: #000;
-    border: 1px solid var(--border-default);
+    border: 1px solid var(--color-border);
 }
 
 .wm-topbar-left {
@@ -129,7 +129,7 @@
     font-family: var(--font-mono);
     font-size: 16px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--color-text);
 }
 
 .wm-stat-label {
@@ -149,7 +149,7 @@
     z-index: 1000;
     width: 300px;
     background: #000;
-    border: 1px solid var(--border-default);
+    border: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     transition: width 0.3s;
@@ -203,7 +203,7 @@
     text-align: left;
     background: #000;
     border: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
+    color: var(--color-text-2);
     font-family: var(--font-mono);
     font-size: 11px;
     cursor: pointer;
@@ -289,7 +289,7 @@
     z-index: 1000;
     width: 340px;
     background: #000;
-    border: 1px solid var(--border-default);
+    border: 1px solid var(--color-border);
     padding: 16px;
 }
 
@@ -329,7 +329,7 @@
 .wm-detail-body {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--text-secondary);
+    color: var(--color-text-2);
     line-height: 1.5;
     margin-bottom: 16px;
     text-transform: uppercase;
@@ -371,7 +371,7 @@
     gap: 16px;
     padding: 8px 16px;
     background: #000;
-    border: 1px solid var(--border-default);
+    border: 1px solid var(--color-border);
 }
 
 .wm-legend-item {
@@ -394,7 +394,7 @@
     background: #000;
     border: 1px solid var(--color-primary);
     border-radius: 0;
-    color: var(--text-primary);
+    color: var(--color-text);
     box-shadow: none;
     padding: 8px;
 }

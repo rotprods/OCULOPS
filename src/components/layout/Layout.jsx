@@ -226,7 +226,7 @@ function Layout({ children, modules, sidebarCollapsed, onToggleSidebar, user }) 
                         <div className="connection-status">
                             <div
                                 className="live-dot"
-                                style={{ background: isOnline ? undefined : status === 'connecting' ? 'var(--warning)' : 'var(--danger)' }}
+                                style={{ background: isOnline ? undefined : status === 'connecting' ? 'var(--warning)' : 'var(--color-danger)' }}
                             />
                             <span>{isOnline ? 'LIVE' : status === 'connecting' ? 'SYNC' : 'OFFLINE'}</span>
                         </div>

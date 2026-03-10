@@ -1,6 +1,5 @@
+-- Update autonomous schedules to run daily at 8:00 AM
 
--- CORTEX autonomously orchestrates every 15 minutes
--- Uses pg_net to call the Edge Function via HTTP
 SELECT cron.schedule(
   'cortex-orchestration-cycle',
   '0 8 * * *',
@@ -16,7 +15,6 @@ SELECT cron.schedule(
   $$
 );
 
--- SENTINEL health check every hour
 SELECT cron.schedule(
   'sentinel-health-check',
   '0 8 * * *',
@@ -32,23 +30,6 @@ SELECT cron.schedule(
   $$
 );
 
--- ORACLE daily market analysis at 8:00 AM
-SELECT cron.schedule(
-  'oracle-daily-scan',
-  '0 8 * * *',
-  $$
-  SELECT net.http_post(
-    url := 'https://yxzdafptqtcvpsbqkmkm.supabase.co/functions/v1/agent-oracle',
-    headers := jsonb_build_object(
-      'Content-Type', 'application/json',
-      'Authorization', 'Bearer {{SUPABASE_ANON_KEY}}'
-    ),
-    body := '{"action": "daily_scan"}'::jsonb
-  );
-  $$
-);
-
--- SCRIBE daily report at 9:00 PM
 SELECT cron.schedule(
   'scribe-daily-report',
   '0 8 * * *',
@@ -63,4 +44,3 @@ SELECT cron.schedule(
   );
   $$
 );
-;

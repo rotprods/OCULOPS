@@ -30,30 +30,13 @@
     /* ── Primary RGB ── */
     --color-primary-rgb: 255, 212, 0;
 
-    /* ── Semantic aliases & Glassmorphism ── */
-    --accent-primary: var(--color-primary);
-    --accent-secondary: var(--color-info);
-    --bg-primary: var(--color-bg);
-    --bg-secondary: var(--color-bg-2);
-    --bg-elevated: var(--color-bg-2);
-    --bg-card: var(--color-bg-3);
-
-    /* ── Short-form color aliases (legacy module compat) ── */
-    --success: var(--color-success);
-    --danger: var(--color-danger);
-    --warning: var(--color-warning);
-    --info: var(--color-info);
-
+    /* ── Glass effects ── */
     --glass-bg: rgba(0, 0, 0, 0.65);
     --glass-bg-light: rgba(255, 255, 255, 0.03);
     --glass-blur: blur(24px);
 
-    --border-default: var(--color-border);
+    /* ── Semantic border/text aliases (still in use) ── */
     --border-subtle: rgba(255, 255, 255, 0.05);
-    --border-active: var(--color-primary);
-
-    --text-primary: var(--color-text);
-    --text-secondary: var(--color-text-2);
     --text-tertiary: var(--color-text-3);
 
     /* ── Typography - OCULOPS ── */

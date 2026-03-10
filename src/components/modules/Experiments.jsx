@@ -30,7 +30,7 @@ function Experiments() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>R&D OUTPOST</h1>
                     <span className="mono text-xs text-tertiary">GROWTH EXPERIMENTS & HYPOTHESIS TESTING</span>
@@ -40,7 +40,7 @@ function Experiments() {
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
                 {/* ── KPI STRIP ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
                     <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                             <span className="mono text-xs text-tertiary">ACTIVE EXPERIMENTS</span>
@@ -67,8 +67,8 @@ function Experiments() {
                 <div style={{ display: 'grid', gridTemplateColumns: '2.5fr 1fr', gap: '16px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         {/* ACTIVE EXPERIMENTS */}
-                        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// LIVE DATA STREAMS [{active.length}]</div>
+                        <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// LIVE DATA STREAMS [{active.length}]</div>
                             {active.length === 0 ? (
                                 <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO EXPERIMENTS IN PROGRESS.</div>
                             ) : (
@@ -99,8 +99,8 @@ function Experiments() {
 
                         {/* CONCLUDED EXPERIMENTS */}
                         {concluded.length > 0 && (
-                            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// ARCHIVED RESULTS [{concluded.length}]</div>
+                            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// ARCHIVED RESULTS [{concluded.length}]</div>
                                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                                     <thead>
                                         <tr style={{ borderBottom: '1px solid var(--border-subtle)', background: '#000', color: 'var(--text-tertiary)' }}>

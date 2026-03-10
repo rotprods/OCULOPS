@@ -45,7 +45,7 @@ function Opportunities() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>OPPORTUNITY MATRIX</h1>
                     <span className="mono text-xs text-tertiary">SIGNAL EVALUATION & PURSUIT LOG</span>
@@ -55,7 +55,7 @@ function Opportunities() {
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
                 {/* ── KPI STRIP ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-default)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--color-border)' }}>
                     {STATUSES.map(s => (
                         <div key={s.value} style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                             <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>{s.symbol} {s.label}</div>
@@ -67,8 +67,8 @@ function Opportunities() {
                 </div>
 
                 {/* ── SIGNAL LIST ── */}
-                <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
                         /// DETECTED OPPORTUNITIES [{opportunities.length}]
                     </div>
                     {opportunities.length === 0 ? (
@@ -79,11 +79,11 @@ function Opportunities() {
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)', textAlign: 'left' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>DESIGNATION / DETAILS</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SOURCE</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>PROJECTED VAL</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>STATUS</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>ID</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>DESIGNATION / DETAILS</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>SOURCE</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>PROJECTED VAL</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>STATUS</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -117,8 +117,8 @@ function Opportunities() {
                 </div>
 
                 {/* ── INPUT MATRIX ── */}
-                <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
                         /// COMPILE NEW OPPORTUNITY DOSSIER
                     </div>
                     <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>

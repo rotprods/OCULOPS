@@ -41,7 +41,7 @@ function CRM() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>CORTEX CRM VAULT</h1>
                     <span className="mono text-xs text-tertiary">SECURE ENTITY DATABASE</span>
@@ -56,7 +56,7 @@ function CRM() {
             </div>
 
             {/* ── ATLAS SYNC BAR ── */}
-            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 <div className="mono text-xs font-bold" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <span style={{ color: systemHealthy ? 'var(--color-success)' : 'var(--color-danger)' }}>SYSTEM LINK: {systemHealthy ? 'SECURE' : 'COMPROMISED'}</span>
@@ -73,16 +73,16 @@ function CRM() {
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', paddingBottom: '32px' }}>
 
                 {activeTab === 'contacts' && (
-                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// IDENTIFIED PERSONNEL [{contacts.length}]</div>
+                    <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// IDENTIFIED PERSONNEL [{contacts.length}]</div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
                                     <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>NAME</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>EMAIL</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>PHONE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>LINK</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>NAME</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>EMAIL</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>PHONE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>LINK</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -92,7 +92,7 @@ function CRM() {
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{c.id.slice(0, 8).toUpperCase()}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-text)', fontWeight: 'bold' }}>{((c.first_name || '') + ' ' + (c.last_name || '')).toUpperCase()}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>{c.email ? c.email.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>{c.phone || '—'}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>{c.phone || '—'}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{COMPANY_LINK_MOCK(c.company_id)}</td>
                                         <td style={{ padding: '12px 16px', textAlign: 'right' }}>
                                             <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => deleteContact(c.id)}>DEL</button>
@@ -106,15 +106,15 @@ function CRM() {
                 )}
 
                 {activeTab === 'companies' && (
-                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// CORPORATE ENTITIES [{companies.length}]</div>
+                    <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// CORPORATE ENTITIES [{companies.length}]</div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
                                     <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>NAME</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>DOMAIN</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>INDUSTRY</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>NAME</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>DOMAIN</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>INDUSTRY</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -137,16 +137,16 @@ function CRM() {
                 )}
 
                 {activeTab === 'deals' && (
-                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// ONGOING OPERATIONS [{deals.length}]</div>
+                    <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// ONGOING OPERATIONS [{deals.length}]</div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
                                     <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>DESIGNATION</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>VALUE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STAGE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>CLOSE T-MINUS</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>DESIGNATION</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>VALUE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>STAGE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>CLOSE T-MINUS</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -170,15 +170,15 @@ function CRM() {
                 )}
 
                 {activeTab === 'activities' && (
-                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// ACTIVITY LOG ENTRY [{activities.length}]</div>
+                    <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// ACTIVITY LOG ENTRY [{activities.length}]</div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
                                     <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>CLASS</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>SUBJECT / SUMMARY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>T-MINUS (SYS)</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>CLASS</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>SUBJECT / SUMMARY</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>T-MINUS (SYS)</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>

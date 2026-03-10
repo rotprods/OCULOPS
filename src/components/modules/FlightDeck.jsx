@@ -69,7 +69,7 @@ function formatArea(area, fallback = 'Unresolved airspace') {
 }
 
 function getLeadColor(lead) {
-    if (!lead.website) return '#FFD60A'
+    if (!lead.website) return '#FFD700'
     if ((lead.rating || 0) >= 4.5) return '#34C759'
     if ((lead.rating || 0) >= 4) return '#35B0FF'
     return '#FF9F0A'
@@ -580,7 +580,7 @@ export default function FlightDeck({
                     }}
                 >
                     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M58 10L68 10L74 48L96 59L96 69L74 66L70 110L56 110L51 66L28 69L28 59L51 48L58 10Z" fill="#FFD60A" fillOpacity="0.92" />
+                        <path d="M58 10L68 10L74 48L96 59L96 69L74 66L70 110L56 110L51 66L28 69L28 59L51 48L58 10Z" fill="#FFD700" fillOpacity="0.92" />
                         <path d="M59 17L67 17L71 49L88 57L88 61L70 60L68 101L58 101L55 60L37 61L37 57L54 49L59 17Z" fill="#FFF3B0" fillOpacity="0.55" />
                         <path d="M60 0L60 22" stroke="#FFF3B0" strokeWidth="2" strokeLinecap="round" />
                         <path d="M16 60L104 60" stroke="#35B0FF" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round" />

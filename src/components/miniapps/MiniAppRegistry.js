@@ -153,7 +153,7 @@ export const CORE_MINI_APPS = [
     id: 'ai_advisor',
     name: 'AI Strategy Advisor',
     icon: '🎯',
-    color: '#FFD60A',
+    color: '#FFD700',
     mode: 'analyze',
     type: 'AI Engine',
     endpoint: 'ai-advisor',

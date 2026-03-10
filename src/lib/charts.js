@@ -137,7 +137,7 @@ export const Charts = {
       return `<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;font-size:12px">
         <span style="min-width:90px;color:#94a3b8">${s.label}</span>
         <div style="flex:1;background:#1a2035;border-radius:4px;height:8px">
-          <div style="width:${pct}%;background:var(--accent-primary);height:100%;border-radius:4px;transition:width 0.4s"></div>
+          <div style="width:${pct}%;background:var(--color-primary);height:100%;border-radius:4px;transition:width 0.4s"></div>
         </div>
         <span style="min-width:28px;text-align:right;font-family:monospace;color:#e2e8f0">${s.value}</span>
         <span style="min-width:40px;text-align:right;font-family:monospace;color:#64748b">${rate}%</span>

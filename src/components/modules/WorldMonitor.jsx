@@ -17,10 +17,10 @@ import { useConnectionStatus } from '../../hooks/useConnectionStatus'
 import './WorldMonitor.css'
 
 const LAYERS = [
-    { id: 'markets', label: 'TARGET MARKETS', icon: '[O]', color: '#FFD60A', active: true },
+    { id: 'markets', label: 'TARGET MARKETS', icon: '[O]', color: '#FFD700', active: true },
     { id: 'prospects', label: 'PROSPECTS', icon: '[+]', color: '#34A853', active: true },
     { id: 'clients', label: 'ACTIVE CLIENTS', icon: '[*]', color: '#4285F4', active: false },
-    { id: 'competitors', label: 'COMPETITOR IO', icon: '[X]', color: '#FF453A', active: false },
+    { id: 'competitors', label: 'COMPETITOR IO', icon: '[X]', color: '#FF3B30', active: false },
     { id: 'signals', label: 'SIGNALS', icon: '[!]', color: '#FF9F0A', active: true },
     { id: 'opportunities', label: 'PIPELINE', icon: '[$]', color: '#30D158', active: true },
 ]
@@ -72,7 +72,7 @@ function formatCompactCurrency(value) {
 }
 
 function getMarkerColor(item) {
-    return LAYER_COLORS[item.type] || '#FFD60A'
+    return LAYER_COLORS[item.type] || '#FFD700'
 }
 
 function getIntensityRadius(item) {
@@ -448,7 +448,7 @@ export default function WorldMonitor() {
                         <span className="wm-stat-label">NODES</span>
                     </div>
                     <div className="wm-stat">
-                        <span className="wm-stat-value" style={{ color: computedStats.alerts > 0 ? 'var(--color-danger)' : 'var(--text-primary)' }}>
+                        <span className="wm-stat-value" style={{ color: computedStats.alerts > 0 ? 'var(--color-danger)' : 'var(--color-text)' }}>
                             {computedStats.alerts}
                         </span>
                         <span className="wm-stat-label">ALERTS</span>
@@ -541,7 +541,7 @@ export default function WorldMonitor() {
                                             padding: '12px',
                                             background: 'var(--border-subtle)',
                                             fontSize: '9px',
-                                            color: connectorFeedError ? 'var(--color-danger)' : 'var(--text-secondary)',
+                                            color: connectorFeedError ? 'var(--color-danger)' : 'var(--color-text-2)',
                                             whiteSpace: 'pre-wrap',
                                             fontFamily: 'var(--font-mono)',
                                             maxHeight: '120px',

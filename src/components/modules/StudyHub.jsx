@@ -207,7 +207,7 @@ function StudyHub() {
 
                 <div className="study-nav-buttons">
                     {study.id > 0 ? (
-                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }} onClick={() => setActiveStudy(study.id - 1)}>
+                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)' }} onClick={() => setActiveStudy(study.id - 1)}>
                             &lt; PREV: {studies[study.id - 1]?.title.substring(0, 20).toUpperCase()}...
                         </button>
                     ) : <div></div>}

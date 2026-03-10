@@ -78,9 +78,9 @@ function ControlTower() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── COMMAND HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <div style={{ width: '48px', height: '48px', background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', borderRadius: '0' }}>
+                    <div style={{ width: '48px', height: '48px', background: 'var(--color-bg-2)', border: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', borderRadius: '0' }}>
                         <span style={{ fontSize: '24px' }}>⚡</span>
                     </div>
                     <div>
@@ -88,7 +88,7 @@ function ControlTower() {
                         <span className="mono text-xs text-tertiary">ANTIGRAVITY OS CORE TERMINAL // ENCRYPTED CONNECTION</span>
                     </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '8px 16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', background: 'var(--color-bg-2)', border: '1px solid var(--color-border)', padding: '8px 16px' }}>
                     <div className="mono text-xs">
                         <span style={{ color: 'var(--text-tertiary)' }}>SYSTEM STATUS:</span> <span style={{ color: loading ? 'var(--color-warning)' : 'var(--color-success)', fontWeight: 'bold', marginLeft: '8px' }}>{loading ? 'SYNCING DATA' : 'OPERATIONAL'}</span>
                     </div>
@@ -100,7 +100,7 @@ function ControlTower() {
             </div>
 
             {/* ── CORTEX NETWORK STATUS ── */}
-            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '12px 16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px', overflowX: 'auto' }}>
+            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--color-border)', padding: '12px 16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px', overflowX: 'auto' }}>
                 <span className="mono text-xs font-bold" style={{ color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>CORTEX NETWORK:</span>
                 <div style={{ display: 'flex', gap: '12px', flex: 1 }}>
                     {(agents || []).slice(0, 10).map(agent => (
@@ -117,8 +117,8 @@ function ControlTower() {
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2.5fr', gap: '16px', flex: 1, minHeight: 0, paddingBottom: '32px' }}>
                 {/* LEFT COLUMN: VITAL STATS */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto' }}>
-                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// HEALTH TELEMETRY</div>
+                    <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// HEALTH TELEMETRY</div>
                         <div style={{ padding: '48px 16px', textAlign: 'center' }}>
                             <div style={{ fontSize: '84px', fontFamily: 'var(--font-mono)', fontWeight: '800', lineHeight: '1', color: healthScore >= 70 ? 'var(--color-success)' : healthScore >= 40 ? 'var(--color-primary)' : 'var(--color-danger)', textShadow: '0 0 20px rgba(255,255,255,0.1)' }}>
                                 {healthScore}
@@ -127,8 +127,8 @@ function ControlTower() {
                         </div>
                     </div>
 
-                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// CRITICAL SIGNALS</div>
+                    <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// CRITICAL SIGNALS</div>
                         <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto', flex: 1 }}>
                             {recentSignals.map(s => (
                                 <div key={s.id} style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderLeft: '2px solid var(--color-primary)', paddingLeft: '12px' }}>
@@ -145,7 +145,7 @@ function ControlTower() {
 
                 {/* RIGHT COLUMN: BIG METRICS & AI ADVISOR */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
                         {kpis.map((kpi, i) => (
                             <div key={i} style={{ background: 'var(--color-bg-2)', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -167,8 +167,8 @@ function ControlTower() {
                         ))}
                     </div>
 
-                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span>/// CORTEX ADVISOR PROTOCOL</span>
                             <button className="btn btn-ghost mono" style={{ padding: '4px 12px', fontSize: '9px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }} onClick={fetchInsights} disabled={aiLoading}>
                                 {aiLoading ? 'ANALYZING...' : 'RERUN ANALYSIS'}

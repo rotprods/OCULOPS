@@ -43,7 +43,7 @@ function Execution() {
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
 
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '24px' }}>
         <div>
           <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0, fontSize: '28px' }}>EXECUTION OS</h1>
           <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>30-DAY ESCALATION PROTOCOL: 0 TO $20K/MO. SELECT DIRECTIVE TO UPDATE STATUS.</p>
@@ -67,10 +67,10 @@ function Execution() {
       </div>
 
       {/* ── MAIN POOL ── */}
-      <div style={{ flex: 1, border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      <div style={{ flex: 1, border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 
         {/* Toolbar */}
-        <div style={{ padding: '16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ padding: '16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="mono text-xs font-bold" style={{ color: 'var(--color-primary)' }}>/// DIRECTIVE MATRIX ({filtered.length} LOGGED)</div>
           <div style={{ display: 'flex', gap: '8px' }}>
             {['all', 'pending', 'in_progress', 'done'].map(f => (
@@ -80,7 +80,7 @@ function Execution() {
                 style={{
                   padding: '6px 12px',
                   background: filterStatus === f ? 'var(--color-primary)' : 'transparent',
-                  color: filterStatus === f ? '#000' : 'var(--text-secondary)',
+                  color: filterStatus === f ? '#000' : 'var(--color-text-2)',
                   border: filterStatus === f ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)'
                 }}
                 onClick={() => setFilterStatus(f)}
@@ -92,7 +92,7 @@ function Execution() {
         </div>
 
         {/* Progress bar */}
-        <div style={{ background: '#000', height: '2px', borderBottom: '1px solid var(--border-default)' }}>
+        <div style={{ background: '#000', height: '2px', borderBottom: '1px solid var(--color-border)' }}>
           <div style={{ width: `${completionRate}%`, height: '100%', background: 'var(--color-primary)', transition: 'width 0.5s ease' }} />
         </div>
 
@@ -124,7 +124,7 @@ function Execution() {
                     style={{
                       display: 'flex', alignItems: 'center', gap: '16px', padding: '14px 16px',
                       background: isDone ? 'rgba(0,0,0,0.5)' : '#000',
-                      border: `1px solid ${isDone ? 'var(--border-subtle)' : 'var(--border-default)'}`,
+                      border: `1px solid ${isDone ? 'var(--border-subtle)' : 'var(--color-border)'}`,
                       borderLeft: `3px solid ${sm.color}`,
                       cursor: 'pointer', transition: 'all 0.2s',
                     }}

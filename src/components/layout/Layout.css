@@ -25,7 +25,7 @@
    ══════════════════════════════════════════ */
 .sidebar {
     width: var(--sidebar-width);
-    background: var(--bg-secondary);
+    background: var(--color-bg-2);
     border-right: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
@@ -257,7 +257,7 @@
     height: var(--header-height);
     border-bottom: 1px solid var(--border-subtle);
     flex-shrink: 0;
-    background: var(--bg-primary);
+    background: var(--color-bg);
 }
 
 .header-left {

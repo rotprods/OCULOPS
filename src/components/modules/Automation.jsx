@@ -166,7 +166,7 @@ function Automation() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>AUTOMATION MATRICES</h1>
                     <span className="mono text-xs text-tertiary">EVENT-DRIVEN DIRECTIVES & N8N ORCHESTRATION</span>
@@ -179,7 +179,7 @@ function Automation() {
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
                 {/* ── KPI STRIP ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
                     <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                         <span className="mono text-xs text-tertiary">ACTIVE MATRICES</span>
                         <span className="mono text-lg font-bold text-success">{activeCount}</span>
@@ -273,7 +273,7 @@ function Automation() {
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                                     <span className="mono text-xs" style={{ border: '1px solid var(--color-primary)', color: 'var(--color-primary)', padding: '2px 8px' }}>{getTriggerMeta(form.trigger).label}</span>
                                     {form.actions.map(action => (
-                                        <span key={action} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span className="text-tertiary mono">→</span><span className="mono text-xs" style={{ border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)', padding: '2px 8px' }}>{getActionMeta(action).label}</span></span>
+                                        <span key={action} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span className="text-tertiary mono">→</span><span className="mono text-xs" style={{ border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)', padding: '2px 8px' }}>{getActionMeta(action).label}</span></span>
                                     ))}
                                 </div>
                             </div>
@@ -285,8 +285,8 @@ function Automation() {
                 {/* ── AGENT AUTOMATION PACKAGES & TEMPLATES ── */}
                 {!showForm && (
                     <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2fr', gap: '16px' }}>
-                        <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// RAPID DEPLOYMENT PROTOCOLS</div>
+                        <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// RAPID DEPLOYMENT PROTOCOLS</div>
                             <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', gap: '8px', background: 'var(--color-bg-2)', flex: 1 }}>
                                 {TEMPLATES.map(t => (
                                     <div key={t.name} style={{ border: '1px solid var(--border-subtle)', background: '#000', padding: '12px', cursor: 'pointer' }} onClick={() => { setForm({ name: t.name, description: t.desc, trigger: t.trigger, actions: t.actions, connectorId: '', apiId: '', agentCodeName: '', workflowTemplate: '' }); setShowForm(true) }}>
@@ -301,8 +301,8 @@ function Automation() {
                             </div>
                         </div>
 
-                        <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// AGENTIC OPERATIONAL MATRICES</div>
+                        <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// AGENTIC OPERATIONAL MATRICES</div>
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '12px', padding: '16px', background: 'var(--color-bg-2)', flex: 1, alignContent: 'start' }}>
                                 {AGENT_AUTOMATION_PACKS.map(pack => (
                                     <div key={pack.agentCodeName} style={{ border: '1px solid var(--border-subtle)', background: '#000', padding: '12px', display: 'flex', flexDirection: 'column' }}>
@@ -311,7 +311,7 @@ function Automation() {
 
                                         <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginBottom: '12px' }}>
                                             <span style={{ fontSize: '9px', padding: '2px 4px', border: '1px solid var(--border-subtle)', color: 'var(--color-primary)' }} className="mono">TRG: {pack.defaultTrigger.toUpperCase()}</span>
-                                            {pack.defaultActions.map(a => <span key={a} style={{ fontSize: '9px', padding: '2px 4px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }} className="mono">ACT: {a.toUpperCase()}</span>)}
+                                            {pack.defaultActions.map(a => <span key={a} style={{ fontSize: '9px', padding: '2px 4px', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)' }} className="mono">ACT: {a.toUpperCase()}</span>)}
                                         </div>
 
                                         <button className="btn mono btn-sm" style={{ border: '1px solid var(--color-primary)', background: 'transparent', color: 'var(--color-primary)' }} onClick={() => seedAgentPack(pack)}>DEPLOY MATRIC</button>
@@ -324,8 +324,8 @@ function Automation() {
 
                 {/* ── WORKFLOWS & EXECUTION ── */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 400px', gap: '16px' }}>
-                    <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// STORED DIRECTIVES</div>
+                    <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// STORED DIRECTIVES</div>
                         <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--color-bg-2)', flex: 1 }}>
                             {loading ? <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>ACCESSING STORAGE...</div> :
                                 workflows.length === 0 ? <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO DIRECTIVES STORED.</div> :
@@ -343,7 +343,7 @@ function Automation() {
                                                     {wf.description && <div className="mono text-xs text-tertiary" style={{ marginTop: '2px' }}>{wf.description.toUpperCase()}</div>}
                                                     <div style={{ display: 'flex', gap: '4px', marginTop: '6px', flexWrap: 'wrap' }}>
                                                         <span className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }}>{trigger.label}</span>
-                                                        {steps.map(s => <span key={s.id || s.type} className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>{getActionMeta(s.type).label}</span>)}
+                                                        {steps.map(s => <span key={s.id || s.type} className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)' }}>{getActionMeta(s.type).label}</span>)}
                                                         {hasLaunch && <span className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--color-info)', color: 'var(--color-info)' }}>LINKED CHANNEL</span>}
                                                     </div>
                                                 </div>
@@ -414,7 +414,7 @@ function Automation() {
                                                         {Array.isArray(run.result?.steps) && run.result.steps.length > 0 && (
                                                             <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '4px' }}>
                                                                 {run.result.steps.map(step => (
-                                                                    <span key={step.id || step.type} className="mono" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>
+                                                                    <span key={step.id || step.type} className="mono" style={{ fontSize: '9px', color: 'var(--color-text-2)' }}>
                                                                         [{step.type.toUpperCase()}: {step.status ? step.status.toUpperCase() : 'OK'}]
                                                                     </span>
                                                                 ))}

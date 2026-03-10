@@ -14,7 +14,7 @@ function Placeholder({ name, icon }) {
             textAlign: 'center',
             gap: '24px',
             background: '#000',
-            border: '1px solid var(--border-default)',
+            border: '1px solid var(--color-border)',
             padding: '48px',
         }}>
             <div style={{
@@ -49,7 +49,7 @@ function Placeholder({ name, icon }) {
                 marginTop: '16px',
                 padding: '16px 24px',
                 background: 'var(--color-bg-2)',
-                border: '1px solid var(--border-default)',
+                border: '1px solid var(--color-border)',
                 color: 'var(--color-primary)',
                 fontSize: '11px',
                 letterSpacing: '0.05em'

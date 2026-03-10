@@ -1,0 +1,563 @@
+/* ═══════════════════════════════════════════════════
+   ANTIGRAVITY OS — CreativeStudio v5
+   AI Media Deployment Console · War Room Level
+   100-Year UX: strictly OLED Black, Gold, 1px Primitives
+   ═══════════════════════════════════════════════════ */
+
+.creative-studio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    position: relative;
+    background: #000000;
+}
+
+/* ── Header ── */
+.cs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.cs-header-title {
+    font-family: var(--font-editorial);
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+    margin: 0;
+    font-size: 28px;
+}
+
+.cs-header-subtitle {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-top: var(--space-2);
+    letter-spacing: 0.1em;
+}
+
+/* ── Toggles ── */
+.cs-view-toggles {
+    display: flex;
+    gap: 3px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 3px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px var(--shadow-glow);
+}
+
+.cs-view-btn {
+    padding: 9px var(--space-4);
+    border: none;
+    background: transparent;
+    color: var(--text-tertiary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    letter-spacing: -0.01em;
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-view-btn:hover {
+    color: var(--color-text-2);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cs-view-btn--active {
+    color: var(--text-inverse);
+    background: var(--gradient-accent);
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(255, 214, 10, 0.15);
+}
+
+/* ── Alerts ── */
+.cs-error-banner {
+    background: rgba(255, 59, 48, 0.1);
+    border: 1px solid var(--color-danger);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cs-error-icon {
+    font-size: 16px;
+}
+
+.cs-error-text {
+    font-size: 11px;
+    color: var(--color-danger);
+    font-weight: 700;
+}
+
+/* ── Content Body ── */
+.cs-content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Deploy Grid (Media Gen) ── */
+.cs-deploy-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: var(--space-4);
+    overflow: hidden;
+}
+
+/* ── General Component Containers ── */
+.cs-command-console,
+.cs-gallery-panel,
+.cs-panel {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-md), var(--glass-inner-glow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.cs-panel-header {
+    padding: 14px var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+    background: transparent;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ── Command Console ── */
+.cs-command-body {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    flex: 1;
+    overflow-y: auto;
+}
+
+.cs-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.cs-label {
+    font-size: 9px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    font-weight: 700;
+}
+
+.cs-model-selector {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.cs-model-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.cs-model-btn:hover {
+    border-color: var(--color-text-2);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.cs-model-btn--active {
+    border-color: var(--color-primary);
+    color: var(--color-text);
+    background: rgba(255, 215, 0, 0.08);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+.cs-model-icon {
+    font-size: var(--text-lg);
+}
+
+.cs-prompt-input {
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-primary);
+    padding: var(--space-4);
+    resize: none;
+    flex: 1;
+    min-height: 120px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: border-color var(--transition-fast);
+}
+
+.cs-prompt-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1), inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.cs-execute-btn {
+    border-radius: 0;
+    padding: var(--space-4);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    font-size: var(--text-xs);
+    margin-top: auto;
+    border: 1px solid var(--color-primary);
+    transition: all var(--transition-base);
+}
+
+.cs-execute-btn--working {
+    animation: flash 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes flash {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ── Gallery Panel ── */
+.cs-gallery-body {
+    flex: 1;
+    padding: var(--space-5);
+    overflow-y: auto;
+    background: #000000;
+}
+
+.cs-empty-state {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cs-empty-text {
+    font-size: var(--text-xs);
+    letter-spacing: 0.2em;
+    color: var(--text-tertiary);
+}
+
+.cs-assets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.cs-asset-card {
+    border: 1px solid var(--border-subtle);
+    background: var(--color-bg-2);
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-3d);
+    position: relative;
+}
+
+.cs-asset-card:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.cs-asset-card--error {
+    border-color: var(--color-danger);
+}
+
+.cs-asset-header {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 10px;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.cs-asset-preview {
+    aspect-ratio: 16 / 9;
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cs-asset-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+    transition: filter var(--transition-fast);
+}
+
+.cs-asset-card:hover .cs-asset-media {
+    filter: brightness(1);
+}
+
+.cs-asset-error {
+    color: var(--color-danger);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 16px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.cs-asset-loader {
+    width: 60%;
+    height: 1px;
+    background: var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-loader-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background: var(--color-primary);
+    animation: loadingBar 1.5s infinite linear;
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+@keyframes loadingBar {
+    0% {
+        left: -30%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.cs-asset-footer {
+    padding: var(--space-3);
+    font-size: 10px;
+    color: var(--color-text-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* ── Briefs Layout ── */
+.cs-briefs-layout {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-tertiary);
+    font-size: 9px;
+    padding: 4px 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-micro);
+}
+
+.cs-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cs-filter-btn--active {
+    background: var(--color-primary);
+    color: #000000;
+    border-color: var(--color-primary);
+}
+
+.cs-briefs-grid {
+    padding: var(--space-5);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-4);
+    overflow-y: auto;
+}
+
+.cs-brief-card {
+    border: 1px solid var(--border-subtle);
+    background: var(--color-bg-2);
+    padding: var(--space-4);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.cs-brief-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: transparent;
+    transition: background var(--transition-fast);
+}
+
+.cs-brief-card:hover {
+    border-color: var(--glass-border-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.cs-brief-card:hover::before {
+    background: var(--color-primary);
+}
+
+.cs-brief-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-3);
+}
+
+.cs-brief-card-title {
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+}
+
+.cs-brief-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.cs-brief-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-tertiary);
+}
+
+/* ── Modal (Brief Editor override) ── */
+.cs-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.cs-modal {
+    width: 600px;
+    max-height: 80vh;
+    overflow: auto;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--color-primary);
+    border-radius: 0;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.cs-modal-header {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg-2);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+.cs-modal-title {
+    font-family: var(--font-editorial);
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+}
+
+.cs-modal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-modal-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+}
+
+.cs-modal-textarea {
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text);
+    padding: var(--space-3);
+    transition: border-color var(--transition-micro);
+}
+
+.cs-modal-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}

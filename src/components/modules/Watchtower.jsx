@@ -58,9 +58,9 @@ function Watchtower() {
 
     return (
         <div className="fade-in" style={{ padding: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border-default)', paddingBottom: '24px', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--color-border)', paddingBottom: '24px', marginBottom: '24px' }}>
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--text-primary)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>WATCHTOWER RADAR</h1>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-text)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>WATCHTOWER RADAR</h1>
                     <p className="mono font-bold" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '8px', letterSpacing: '0.1em' }}>
                         /// GLOBAL THREAT AND OPPORTUNITY MONITORING
                     </p>
@@ -68,27 +68,27 @@ function Watchtower() {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '32px' }}>
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
                     <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ ACTIVE ALERTS ]</div>
                     <div className="mono font-bold" style={{ fontSize: '24px', color: activeCount > 0 ? 'var(--color-danger)' : 'var(--color-success)' }}>{activeCount}</div>
                 </div>
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
                     <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ CRITICAL SEVERITY ]</div>
                     <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-danger)' }}>{criticalCount}</div>
                 </div>
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
                     <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ RESOLVED MATTERS ]</div>
                     <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-success)' }}>{alerts.filter(a => a.status === 'resolved').length}</div>
                 </div>
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
                     <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ TOTAL PROCESSED ]</div>
-                    <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--text-secondary)' }}>{alerts.length}</div>
+                    <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-text-2)' }}>{alerts.length}</div>
                 </div>
             </div>
 
             {liveFeeds.length > 0 && (
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', marginBottom: '32px' }}>
-                    <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: '#000', marginBottom: '32px' }}>
+                    <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
                         /// LIVE SURVEILLANCE FEEDS
                     </div>
                     <div style={{ padding: '24px' }}>
@@ -97,7 +97,7 @@ function Watchtower() {
                                 <button
                                     key={app.connectorId}
                                     className="mono font-bold"
-                                    style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+                                    style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
                                     onClick={() => runFeed(app)}
                                     disabled={feedLoading}
                                 >
@@ -111,7 +111,7 @@ function Watchtower() {
                                 background: 'rgba(0,0,0,0.5)',
                                 border: '1px solid var(--border-subtle)',
                                 fontSize: '10px',
-                                color: feedError ? 'var(--color-danger)' : 'var(--text-secondary)',
+                                color: feedError ? 'var(--color-danger)' : 'var(--color-text-2)',
                                 whiteSpace: 'pre-wrap',
                                 fontFamily: 'var(--font-mono)',
                                 margin: 0
@@ -123,15 +123,15 @@ function Watchtower() {
                 </div>
             )}
 
-            <div style={{ border: '1px solid var(--border-default)', background: '#000', marginBottom: '32px' }}>
-                <div className="mono font-bold text-tertiary" style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
+            <div style={{ border: '1px solid var(--color-border)', background: '#000', marginBottom: '32px' }}>
+                <div className="mono font-bold text-tertiary" style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
                     <span>/// ACTIVE RADAR BLIPS ({filtered.length})</span>
                     <div style={{ display: 'flex', gap: '8px' }}>
                         {['active', 'resolved', 'all'].map(f => (
                             <button
                                 key={f}
                                 className="mono"
-                                style={{ background: filter === f ? 'var(--text-primary)' : 'transparent', color: filter === f ? '#000' : 'var(--text-tertiary)', border: 'none', fontSize: '9px', padding: '4px 8px', letterSpacing: '0.1em', cursor: 'pointer', fontWeight: 'bold' }}
+                                style={{ background: filter === f ? 'var(--color-text)' : 'transparent', color: filter === f ? '#000' : 'var(--text-tertiary)', border: 'none', fontSize: '9px', padding: '4px 8px', letterSpacing: '0.1em', cursor: 'pointer', fontWeight: 'bold' }}
                                 onClick={() => setFilter(f)}
                             >
                                 {f === 'active' ? '[ ACTIVE ]' : f === 'resolved' ? '[ SECURED ]' : '[ ARCHIVE ]'}
@@ -152,7 +152,7 @@ function Watchtower() {
                                 return (
                                     <div key={alert.id} className="mono" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', borderLeft: `3px solid ${sev.color}`, opacity: alert.status === 'resolved' ? 0.4 : 1 }}>
                                         <div>
-                                            <div style={{ fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '12px', letterSpacing: '0.05em', marginBottom: '6px' }}>
+                                            <div style={{ fontWeight: 'bold', color: 'var(--color-text)', fontSize: '12px', letterSpacing: '0.05em', marginBottom: '6px' }}>
                                                 <span style={{ color: sev.color, marginRight: '8px' }}>{sev.marker}</span>
                                                 {alert.description.toUpperCase()}
                                             </div>
@@ -178,15 +178,15 @@ function Watchtower() {
                 </div>
             </div>
 
-            <div style={{ border: '1px solid var(--border-default)', background: '#000' }}>
-                <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
+            <div style={{ border: '1px solid var(--color-border)', background: '#000' }}>
+                <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
                     /// MANUAL OVERRIDE INJECTION
                 </div>
                 <div style={{ padding: '24px' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                             <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Signal Type</label>
-                            <select style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', appearance: 'none', borderRadius: 0 }} value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
+                            <select style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', appearance: 'none', borderRadius: 0 }} value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
                                 <option value="risk">RISK VECTOR</option>
                                 <option value="opportunity">STRATEGIC OPPORTUNITY</option>
                                 <option value="metric">ANOMALOUS METRIC</option>
@@ -195,7 +195,7 @@ function Watchtower() {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                             <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Threat Level</label>
-                            <select style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', appearance: 'none', borderRadius: 0 }} value={form.severity} onChange={e => setForm(f => ({ ...f, severity: parseInt(e.target.value) }))}>
+                            <select style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', appearance: 'none', borderRadius: 0 }} value={form.severity} onChange={e => setForm(f => ({ ...f, severity: parseInt(e.target.value) }))}>
                                 <option value={1}>CRITICAL</option>
                                 <option value={2}>HIGH</option>
                                 <option value={3}>MEDIUM</option>
@@ -204,11 +204,11 @@ function Watchtower() {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', gridColumn: 'span 2' }}>
                             <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Designation</label>
-                            <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. COMPROMISED NODE" />
+                            <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. COMPROMISED NODE" />
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', gridColumn: 'span 2' }}>
                             <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Intel Brief</label>
-                            <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Provide tactical details..." />
+                            <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Provide tactical details..." />
                         </div>
                     </div>
                     <button

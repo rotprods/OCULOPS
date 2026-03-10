@@ -58,11 +58,11 @@ function DealCard({ deal, stage, onRemove, isDragging }) {
       {...attributes}
       className="mono"
     >
-      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--color-text)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         {deal.title || deal.name || '[ UNNAMED ]'}
       </div>
       {deal.company && (
-        <div style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '4px', textTransform: 'uppercase' }}>
+        <div style={{ fontSize: '10px', color: 'var(--color-text-2)', marginTop: '4px', textTransform: 'uppercase' }}>
           {deal.company?.name || deal.company}
         </div>
       )}
@@ -108,7 +108,7 @@ function DragOverlayCard({ deal }) {
       className="mono"
       style={{
         padding: '12px',
-        border: '1px solid var(--border-default)',
+        border: '1px solid var(--color-border)',
         borderLeft: `3px solid ${stage?.color || 'var(--color-primary)'}`,
         width: '200px',
         cursor: 'grabbing',
@@ -117,7 +117,7 @@ function DragOverlayCard({ deal }) {
         transform: 'rotate(2deg)',
       }}
     >
-      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase' }}>{deal.title || '[ DEAL ]'}</div>
+      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--color-text)', textTransform: 'uppercase' }}>{deal.title || '[ DEAL ]'}</div>
       <div style={{ fontSize: '11px', color: 'var(--color-success)', marginTop: '6px' }}>
         EUR {(parseFloat(deal.value) || 0).toLocaleString()}
       </div>
@@ -251,9 +251,9 @@ function Pipeline() {
 
   return (
     <div className="fade-in" style={{ padding: '24px' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border-default)', paddingBottom: '24px', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--color-border)', paddingBottom: '24px', marginBottom: '24px' }}>
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--text-primary)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>PIPELINE ORCHESTRATION</h1>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-text)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>PIPELINE ORCHESTRATION</h1>
           <p className="mono font-bold" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '8px', letterSpacing: '0.1em' }}>
              /// ACTIVE NODES: {deals.length} | YIELD: {closedWon} | VOLUME: EUR {(totalValue || 0).toLocaleString()}
           </p>
@@ -261,7 +261,7 @@ function Pipeline() {
         <div style={{ display: 'flex', gap: '8px' }}>
           <button
             className="mono font-bold"
-            style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+            style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
             onClick={toggleClosedLost}
           >
             {showClosedLost ? '[ HIDE LOST ]' : '[ SHOW LOST ]'}
@@ -277,28 +277,28 @@ function Pipeline() {
       </div>
 
       {showForm && (
-        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '24px', marginBottom: '24px' }}>
+        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '24px', marginBottom: '24px' }}>
           <div className="mono font-bold text-primary mb-6" style={{ fontSize: '12px', letterSpacing: '0.1em' }}>/// NEW DEAL DIRECTIVE</div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Target Designation *</label>
-              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. ALPHA PROJECT" />
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. ALPHA PROJECT" />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Entity Affiliation</label>
-              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="e.g. UNIFIED CORP" />
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="e.g. UNIFIED CORP" />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Asset Value (EUR)</label>
-              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} placeholder="0.00" />
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} placeholder="0.00" />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Success Vector (%)</label>
-              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} />
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', gridColumn: 'span 2' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Liaison Operative</label>
-              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.contact_person} onChange={e => setForm(f => ({ ...f, contact_person: e.target.value }))} placeholder="e.g. AGENT SMITH" />
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.contact_person} onChange={e => setForm(f => ({ ...f, contact_person: e.target.value }))} placeholder="e.g. AGENT SMITH" />
             </div>
           </div>
           <button
@@ -314,23 +314,23 @@ function Pipeline() {
 
       {/* KPI bar */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '32px' }}>
-        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
           <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ GLOBAL ENTITIES ]</div>
           <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-primary)' }}>{deals.length}</div>
         </div>
-        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
           <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ PIPELINE VOLUME ]</div>
-          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--text-primary)' }}>EUR {(totalValue || 0).toLocaleString()}</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-text)' }}>EUR {(totalValue || 0).toLocaleString()}</div>
         </div>
-        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
           <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ WEIGHTED INDEX ]</div>
-          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--text-secondary)' }}>EUR {Math.round(weightedValue || 0).toLocaleString()}</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-text-2)' }}>EUR {Math.round(weightedValue || 0).toLocaleString()}</div>
         </div>
       </div>
 
       {/* Kanban board */}
-      <div style={{ border: '1px solid var(--border-default)', background: '#000', marginBottom: '32px' }}>
-        <div className="mono font-bold text-tertiary" style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
+      <div style={{ border: '1px solid var(--color-border)', background: '#000', marginBottom: '32px' }}>
+        <div className="mono font-bold text-tertiary" style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
           <span>/// KANBAN MATRIX</span>
           <span>[ DRAG TO REASSIGN ]</span>
         </div>
@@ -359,8 +359,8 @@ function Pipeline() {
       </div>
 
       {/* Funnel chart */}
-      <div style={{ border: '1px solid var(--border-default)', background: '#000' }}>
-        <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
+      <div style={{ border: '1px solid var(--color-border)', background: '#000' }}>
+        <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
             /// CONVERSION FLOW
         </div>
         <div style={{ padding: '24px' }}>

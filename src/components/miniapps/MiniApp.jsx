@@ -10,7 +10,7 @@ import { updateRow } from '../../lib/supabase'
 import { getTemplateByKey, validateConnectorCredentials } from '../../lib/publicApiConnectorTemplates'
 
 const STATUS_STYLES = {
-  active: { bg: 'var(--success-bg)', color: 'var(--success)', label: 'LIVE' },
+  active: { bg: 'var(--success-bg)', color: 'var(--color-success)', label: 'LIVE' },
   degraded: { bg: 'var(--warning-bg)', color: 'var(--warning)', label: 'LIMITED' },
   pending: { bg: 'var(--warning-bg)', color: 'var(--warning)', label: 'PENDING' },
   planned: { bg: 'rgba(255,255,255,0.04)', color: 'var(--text-tertiary)', label: 'CATALOG' },
@@ -252,7 +252,7 @@ export default function MiniApp({
 
   return (
     <div className="fade-in" style={{
-      background: 'var(--bg-card)',
+      background: 'var(--color-bg-3)',
       border: '1px solid var(--border-subtle)',
       borderRadius: 'var(--radius-2xl)',
       overflow: 'hidden',
@@ -323,7 +323,7 @@ export default function MiniApp({
       <div style={{
         padding: '12px 20px',
         fontSize: '12px',
-        color: 'var(--text-secondary)',
+        color: 'var(--color-text-2)',
         lineHeight: 1.5,
         borderBottom: '1px solid var(--border-subtle)',
       }}>
@@ -368,7 +368,7 @@ export default function MiniApp({
           gap: '10px',
           padding: '14px 20px',
           borderBottom: '1px solid var(--border-subtle)',
-          background: 'var(--bg-secondary)',
+          background: 'var(--color-bg-2)',
         }}>
           {app.agentTargets?.length > 0 && (
             <div>
@@ -432,7 +432,7 @@ export default function MiniApp({
             <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--text-tertiary)', marginBottom: '6px', letterSpacing: '0.05em' }}>
               CONNECTOR CREDENTIALS
             </div>
-            <div style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+            <div style={{ fontSize: '12px', color: 'var(--color-text-2)', lineHeight: 1.5 }}>
               Stored secrets are masked in the UI. Enter a new value to replace the existing credential.
             </div>
             <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '6px' }}>
@@ -464,7 +464,7 @@ export default function MiniApp({
               padding: '10px 12px',
               borderRadius: 'var(--radius-md)',
               background: credentialError ? 'var(--danger-bg)' : 'var(--success-bg)',
-              color: credentialError ? 'var(--danger)' : 'var(--success)',
+              color: credentialError ? 'var(--color-danger)' : 'var(--color-success)',
               fontSize: '12px',
             }}>
               {credentialError || credentialMessage}
@@ -583,7 +583,7 @@ export default function MiniApp({
                 color: 'var(--text-tertiary)',
                 padding: '2px 6px',
                 borderRadius: 'var(--radius-xs)',
-                background: showHistory ? 'var(--bg-elevated)' : 'transparent',
+                background: showHistory ? 'var(--color-bg-2)' : 'transparent',
               }}
             >
               History ({history.length})
@@ -596,15 +596,15 @@ export default function MiniApp({
               background: 'var(--danger-bg)',
               borderRadius: 'var(--radius-md)',
               fontSize: '12px',
-              color: 'var(--danger)',
+              color: 'var(--color-danger)',
             }}>{error}</div>
           ) : (
             <pre style={{
               padding: '10px',
-              background: 'var(--bg-secondary)',
+              background: 'var(--color-bg-2)',
               borderRadius: 'var(--radius-md)',
               fontSize: '11px',
-              color: 'var(--text-secondary)',
+              color: 'var(--color-text-2)',
               fontFamily: 'var(--font-mono)',
               overflow: 'auto',
               maxHeight: '240px',
@@ -630,7 +630,7 @@ export default function MiniApp({
                     {new Date(item.timestamp).toLocaleTimeString()}
                   </span>
                   <span style={{
-                    color: item.result.success ? 'var(--success)' : 'var(--danger)',
+                    color: item.result.success ? 'var(--color-success)' : 'var(--color-danger)',
                     fontWeight: 600,
                   }}>
                     {item.result.success ? `✅ ${item.result.recordCount || 1} records` : `❌ ${item.result.error}`}

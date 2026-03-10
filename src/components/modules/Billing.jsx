@@ -62,7 +62,7 @@ function Billing() {
   return (
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
         <div>
           <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>FINANCE LEDGER</h1>
           <span className="mono text-xs text-tertiary">RECURRING REVENUE, INWARD FLOW & ACTIVE ACCOUNTS</span>
@@ -75,7 +75,7 @@ function Billing() {
       <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
         {/* ── KPI STRIP ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
           <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <span className="mono text-xs text-tertiary">MRR (RECURRING)</span>
@@ -146,8 +146,8 @@ function Billing() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 400px', gap: '16px' }}>
           {/* ── INVOICE LEDGER ── */}
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// TRANSACTIONS LOG [{invoices.length}]</div>
+          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// TRANSACTIONS LOG [{invoices.length}]</div>
             {invoices.length === 0 ? (
               <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO INVOICES ON RECORD.</div>
             ) : (
@@ -170,7 +170,7 @@ function Billing() {
                         {inv.is_recurring ? (
                           <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--color-success)', color: 'var(--color-success)' }}>RECURRING</span>
                         ) : (
-                          <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>ONE-OFF</span>
+                          <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)' }}>ONE-OFF</span>
                         )}
                       </td>
                     </tr>
@@ -181,8 +181,8 @@ function Billing() {
           </div>
 
           {/* ── CLIENT MRR PORTFOLIO ── */}
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', height: 'fit-content' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// ACTIVE PORTFOLIO MRR</div>
+          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', height: 'fit-content' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// ACTIVE PORTFOLIO MRR</div>
             {clientsMRR.length === 0 ? (
               <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO RECURRING CLIENTS SECURED.</div>
             ) : (
@@ -206,7 +206,7 @@ function Billing() {
                         <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '6px', position: 'relative' }}>
                           <div style={{ width: `${barPct}%`, height: '100%', background: 'var(--color-primary)' }} />
                         </div>
-                        <span className="mono text-xs" style={{ color: 'var(--text-secondary)', width: '30px', textAlign: 'right' }}>{mrrPct}%</span>
+                        <span className="mono text-xs" style={{ color: 'var(--color-text-2)', width: '30px', textAlign: 'right' }}>{mrrPct}%</span>
                       </div>
                     </div>
                   )

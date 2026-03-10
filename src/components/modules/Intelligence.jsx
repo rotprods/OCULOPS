@@ -28,7 +28,7 @@ function SignalRadar({ signals = [], agents = [] }) {
   const categoryColors = { macro: '#5ac8fa', mercado: '#34c759', competencia: '#ff3b30', tecnologia: 'var(--color-primary)', social: '#af52de', economic: '#ff9f0a' }
 
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ background: '#000', border: '1px solid var(--border-default)' }}>
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ background: '#000', border: '1px solid var(--color-border)' }}>
       <rect x="0" y="0" width="100%" height="100%" fill="none" opacity="0.1" stroke="var(--color-primary)" strokeWidth="0.5" />
       <path d={`M0,0 L${size},${size} M${size},0 L0,${size}`} stroke="rgba(255,215,0,0.05)" strokeWidth="0.5" />
       {rings.map(r => (
@@ -213,7 +213,7 @@ function Intelligence() {
   return (
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
         <div>
           <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>INTELLIGENCE RADAR</h1>
           <p className="mono text-xs text-tertiary">SIGNAL OVERWATCH & SECURE API ATLAS // {signals.length} ACTIVE SIGNALS</p>
@@ -229,11 +229,11 @@ function Intelligence() {
           <div style={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
             {/* TOP GRID */}
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2fr', gap: '16px' }}>
-              <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+              <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
                 <SignalRadar signals={signals} agents={agents} />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
                 {CATEGORIES.slice(0, 6).map((cat, i) => (
                   <div key={i} style={{ background: 'var(--color-bg-2)', padding: '20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -248,8 +248,8 @@ function Intelligence() {
 
             {/* TWO COLUMNS: SYSTEM SOCIAL + REGISTER */}
             <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
-              <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
                   <span>/// SOCIAL OMNINT INTERCEPTS</span>
                   <button className="btn btn-sm btn-ghost mono" style={{ padding: '2px 8px', fontSize: '9px' }} onClick={refreshSocialSignals} disabled={socialRefreshing}>{socialRefreshing ? 'SYNCING...' : 'FORCE SYNC'}</button>
                 </div>
@@ -274,8 +274,8 @@ function Intelligence() {
                 </div>
               </div>
 
-              <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column', background: 'var(--color-bg-2)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// LOG TARGET INTEL</div>
+              <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', background: 'var(--color-bg-2)' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// LOG TARGET INTEL</div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div className="input-group"><label className="mono text-xs">SIGNAL REF</label><input className="input mono text-xs" style={{ padding: '8px', border: '1px solid var(--border-subtle)', borderRadius: 0 }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} /></div>
                   <div className="input-group"><label className="mono text-xs">CLASS</label>
@@ -295,8 +295,8 @@ function Intelligence() {
             </div>
 
             {/* RAW LEADS DATA TABLE */}
-            <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column', marginBottom: '32px' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', marginBottom: '32px' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
                 <span>/// SECURE SIGNALS DB</span>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {['all', 'leading', 'lagging'].map(value => (
@@ -339,7 +339,7 @@ function Intelligence() {
 
         {activeView === 'apis' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
               <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                 <span className="mono text-xs text-tertiary">CATALOG APIS</span>
                 <span className="mono text-lg font-bold text-info">{apiStatsSummary.total}</span>
@@ -392,16 +392,16 @@ function Intelligence() {
             {apiLoading ? (
               <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '64px', border: '1px solid var(--border-subtle)' }}>ACQUIRING API DIRECTORY...</div>
             ) : (
-              <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// API CATALOG DIRECTORY</div>
+              <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// API CATALOG DIRECTORY</div>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                   <thead style={{ background: 'var(--color-bg-2)', borderBottom: '1px solid var(--border-subtle)' }}>
                     <tr>
                       <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>AUTHORITY</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>MODULE</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STATUS</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>SCORE</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-primary)' }}>ACTION</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>MODULE</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>STATUS</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>SCORE</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-text)' }}>ACTION</th>
                     </tr>
                   </thead>
                   <tbody>

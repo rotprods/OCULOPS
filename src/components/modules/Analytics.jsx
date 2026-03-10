@@ -18,7 +18,7 @@ function FunnelBar({ label, count, max, color }) {
   const pct = max > 0 ? Math.round((count / max) * 100) : 0
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '8px' }}>
-      <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0 }}>{label}</div>
+      <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--color-text-2)', textAlign: 'right', flexShrink: 0 }}>{label}</div>
       <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '16px', position: 'relative' }}>
         <div style={{ width: `${pct}%`, height: '100%', background: color, transition: 'width 0.4s ease' }} />
       </div>
@@ -77,7 +77,7 @@ function Analytics() {
   return (
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
         <div>
           <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>ORBITAL ANALYTICS</h1>
           <span className="mono text-xs text-tertiary">CONVERSION FUNNEL, TRAFFIC SOURCES & PIPELINE METRICS</span>
@@ -87,7 +87,7 @@ function Analytics() {
       <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
         {/* ── KPI STRIP ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
           <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <span className="mono text-xs text-tertiary">TOTAL LEADS</span>
@@ -119,8 +119,8 @@ function Analytics() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px' }}>
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// FUNNEL TELEMETRY</div>
+          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// FUNNEL TELEMETRY</div>
             <div style={{ padding: '24px' }}>
               {convRates.map((stage) => (
                 <FunnelBar
@@ -134,12 +134,12 @@ function Analytics() {
             </div>
           </div>
 
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// CONVERSION COEFFICIENTS</div>
+          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// CONVERSION COEFFICIENTS</div>
             <div style={{ display: 'flex', flexDirection: 'column', padding: '16px' }}>
               {convRates.slice(1).map((stage) => (
                 <div key={stage.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--border-subtle)' }}>
-                  <span className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                  <span className="mono text-xs" style={{ color: 'var(--color-text-2)' }}>
                     {STAGES[convRates.indexOf(stage) - 1]?.label ?? ''}
                     <span style={{ color: 'var(--text-tertiary)', margin: '0 8px' }}>→</span>
                     {stage.label}
@@ -153,8 +153,8 @@ function Analytics() {
           </div>
         </div>
 
-        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// LEAD TRAFFIC ORIGIN</div>
+        <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// LEAD TRAFFIC ORIGIN</div>
           {sourceEntries.length === 0 ? (
             <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO ORIGIN DATA AVAILABLE</div>
           ) : (
@@ -163,7 +163,7 @@ function Analytics() {
                 const pct = Math.round((count / totalLeads) * 100)
                 return (
                   <div key={source} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0 }}>{source.toUpperCase()}</div>
+                    <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--color-text-2)', textAlign: 'right', flexShrink: 0 }}>{source.toUpperCase()}</div>
                     <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '12px', position: 'relative' }}>
                       <div style={{ width: `${pct}%`, height: '100%', background: 'var(--color-primary)' }} />
                     </div>

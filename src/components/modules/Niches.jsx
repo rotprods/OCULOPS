@@ -36,7 +36,7 @@ function Niches() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>NICHE ANALYSIS MODULE</h1>
                     <span className="mono text-xs text-tertiary">CEO SCORE ALGORITHM V2.0 ACTIVE</span>
@@ -46,8 +46,8 @@ function Niches() {
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
                 {/* ── RANKING MATRIX ── */}
-                <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
                         /// CEO SCORE RANKING [{scored.length} ENTITIES]
                     </div>
                     {scored.length === 0 ? (
@@ -59,14 +59,14 @@ function Niches() {
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
                                     <th style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>#</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>NICHE IDENTIFIER</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SCORE</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>IMP</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>VEL</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SCL</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>CNF</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>RSK</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>CST</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>NICHE IDENTIFIER</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>SCORE</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>IMP</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>VEL</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>SCL</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>CNF</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>RSK</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>CST</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -101,8 +101,8 @@ function Niches() {
                 </div>
 
                 {/* ── INPUT MATRIX ── */}
-                <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+                <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
                         /// LOG NEW NICHE PARAMETERS
                     </div>
                     <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
