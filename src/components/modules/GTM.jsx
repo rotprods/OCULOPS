@@ -4,7 +4,8 @@
 // ===================================================
 
 import { useState } from 'react'
-import { useAppStore, uid } from '../../stores/useAppStore'
+import { useAppStore } from '../../stores/useAppStore'
+import { useLeads } from '../../hooks/useLeads'
 
 const SCRIPTS = {
     dm: `Hola [Nombre],
@@ -76,7 +77,7 @@ const SOURCES = ['LINKEDIN', 'REFERRAL', 'WEB', 'EVENT', 'COLD OP', 'MAPS', 'MET
 function GTM() {
     const { data, updateData, toast } = useAppStore()
     const icp = data.icp || {}
-    const leads = data.leads || []
+    const { leads, addLead: addDbLead, removeLead: removeDbLead, updateLead: updateDbLead } = useLeads()
     const [activeScript, setActiveScript] = useState('dm')
     const [showAddLead, setShowAddLead] = useState(false)
     const [isProspecting, setIsProspecting] = useState(false)
@@ -86,19 +87,22 @@ function GTM() {
         updateData(d => ({ ...d, icp: { ...d.icp, [field]: value } }))
     }
 
-    const addLead = () => {
+    const addLead = async () => {
         if (!form.name.trim()) return toast('ERR_NO_NAME', 'warning')
-        updateData(d => ({
-            ...d,
-            leads: [...d.leads, { ...form, id: uid(), status: 'raw', timestamp: new Date().toISOString() }]
-        }))
+        const created = await addDbLead({
+            ...form,
+            status: 'raw',
+            timestamp: new Date().toISOString(),
+        })
+        if (!created) return toast('DB_WRITE_FAIL', 'error')
         setForm({ name: '', company: '', role: '', email: '', linkedin: '', buySignal: '', source: 'LINKEDIN', confidence: 60 })
         setShowAddLead(false)
         toast('TARGET COMMITTED', 'success')
     }
 
-    const removeLead = (id) => {
-        updateData(d => ({ ...d, leads: d.leads.filter(l => l.id !== id) }))
+    const removeLead = async (id) => {
+        const success = await removeDbLead(id)
+        if (!success) return toast('DELETE_FAIL', 'error')
     }
 
     const autoProspect = async () => {
@@ -142,12 +146,12 @@ function GTM() {
         }
     }
 
-    const moveToPipeline = (id) => {
+    const moveToPipeline = async (id) => {
         const lead = leads.find(l => l.id === id)
         if (!lead) return
+        await updateDbLead(id, { status: 'contacted' })
         updateData(d => ({
             ...d,
-            leads: d.leads.map(l => l.id === id ? { ...l, status: 'contacted' } : l),
             pipeline: { ...d.pipeline, lead: [...(d.pipeline?.lead || []), { ...lead, pipelineDate: new Date().toISOString() }] }
         }))
         toast(`[${lead.name.toUpperCase()}] > PIPELINE`, 'success')

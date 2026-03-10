@@ -4,23 +4,24 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
+import { isSupabaseConfigured, supabase } from '../lib/supabase'
 
 /**
  * Returns the current Supabase realtime connection status.
  * @returns {{ status: 'connected'|'connecting'|'disconnected', isOnline: boolean }}
  */
 export function useConnectionStatus() {
-    const [status, setStatus] = useState(supabase ? 'connecting' : 'disconnected')
+    const [status, setStatus] = useState(isSupabaseConfigured ? 'connecting' : 'disconnected')
 
     useEffect(() => {
-        if (!supabase) {
+        if (!isSupabaseConfigured || !supabase || typeof supabase.channel !== 'function') {
             setStatus('disconnected')
             return
         }
 
         // Check initial connection
         const checkConnection = () => {
+            if (typeof supabase.getChannels !== 'function') return
             const channels = supabase.getChannels()
             if (channels.length > 0) {
                 setStatus('connected')
@@ -45,7 +46,12 @@ export function useConnectionStatus() {
 
         return () => {
             clearInterval(interval)
-            if (heartbeat) supabase.removeChannel(heartbeat)
+            if (!heartbeat) return
+            if (typeof supabase.removeChannel === 'function') {
+                supabase.removeChannel(heartbeat)
+                return
+            }
+            heartbeat.unsubscribe?.()
         }
     }, [])
 

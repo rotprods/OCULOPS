@@ -3,7 +3,7 @@
 // 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 
-import { useState, useMemo, useEffect, useDeferredValue, startTransition } from 'react'
+import { useState, useMemo, useEffect, useCallback, useDeferredValue, startTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSignals } from '../../hooks/useSignals'
 import { useSignalStore } from '../../stores/useSignalStore'
@@ -17,6 +17,7 @@ import {
 import { getTemplateByCatalogSlug } from '../../lib/publicApiConnectorTemplates.js'
 import { Charts } from '../../lib/charts'
 import useAgents from '../../hooks/useAgents'
+import { useAppStore } from '../../stores/useAppStore'
 
 // ── Strict Signal Radar SVG ──
 function SignalRadar({ signals = [], agents = [] }) {
@@ -116,9 +117,97 @@ function sortApiEntries(entries, sortMode) {
   })
 }
 
+const SIGNAL_CATEGORIES = ['macro', 'mercado', 'competencia', 'tecnologia', 'social', 'economic']
+
+function metricColor(v) {
+  if (v >= 70) return 'var(--color-success)'
+  if (v >= 40) return 'var(--color-warning)'
+  return 'var(--color-danger)'
+}
+
+function SignalEditModal({ signal, onSave, onDelete, onClose }) {
+  const [form, setForm] = useState({
+    title: signal.title || '',
+    category: signal.category || 'macro',
+    source: signal.source || '',
+    impact: signal.impact || 50,
+    confidence: signal.confidence || 50,
+    notes: signal.notes || signal.implication || '',
+  })
+  const [saving, setSaving] = useState(false)
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+
+  const handleSave = async () => {
+    setSaving(true)
+    await onSave(signal.id, { title: form.title, category: form.category, source: form.source, impact: parseInt(form.impact), confidence: parseInt(form.confidence), notes: form.notes })
+    setSaving(false)
+  }
+
+  const inputStyle = { background: 'var(--color-bg-3)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', width: '100%', boxSizing: 'border-box' }
+  const labelStyle = { fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-tertiary)', marginBottom: '4px' }
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={onClose}>
+      <div style={{ width: '500px', maxHeight: '85vh', overflowY: 'auto', background: 'var(--color-bg-2)', border: '1px solid var(--color-border)' }} onClick={e => e.stopPropagation()}>
+        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+          <span>/// SIGNAL DOSSIER</span>
+          <span style={{ cursor: 'pointer', color: 'var(--color-text-2)' }} onClick={onClose}>[ ESC ]</span>
+        </div>
+        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <label style={labelStyle}>SIGNAL DESIGNATION</label>
+            <input style={inputStyle} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={labelStyle}>CLASSIFICATION</label>
+              <select style={{ ...inputStyle, appearance: 'auto' }} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))}>
+                {SIGNAL_CATEGORIES.map(c => <option key={c} value={c}>{c.toUpperCase()}</option>)}
+              </select>
+            </div>
+            <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={labelStyle}>SOURCE</label>
+              <input style={inputStyle} value={form.source} onChange={e => setForm(f => ({ ...f, source: e.target.value }))} />
+            </div>
+            <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={labelStyle}>IMPACT <span style={{ color: metricColor(form.impact), fontWeight: 'bold' }}>[{form.impact}]</span></label>
+              <input type="range" min="0" max="100" value={form.impact} onChange={e => setForm(f => ({ ...f, impact: e.target.value }))} style={{ accentColor: metricColor(form.impact) }} />
+            </div>
+            <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={labelStyle}>CONFIDENCE <span style={{ color: metricColor(form.confidence), fontWeight: 'bold' }}>[{form.confidence}]</span></label>
+              <input type="range" min="0" max="100" value={form.confidence} onChange={e => setForm(f => ({ ...f, confidence: e.target.value }))} style={{ accentColor: metricColor(form.confidence) }} />
+            </div>
+          </div>
+          <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <label style={labelStyle}>INTELLIGENCE NOTES</label>
+            <textarea style={{ ...inputStyle, minHeight: '80px', resize: 'vertical' }} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
+          </div>
+          <div className="mono text-xs" style={{ color: 'var(--text-tertiary)', borderTop: '1px solid var(--border-subtle)', paddingTop: '10px' }}>
+            REGISTERED: {new Date(signal.created_at).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}
+          </div>
+        </div>
+        <div style={{ padding: '16px 20px', borderTop: '1px solid var(--color-border)', display: 'flex', justifyContent: 'space-between' }}>
+          <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--color-danger)', color: 'var(--color-danger)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={() => onDelete(signal.id)}>[ PURGE ]</button>
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={onClose}>ABORT</button>
+            <button className="mono font-bold" style={{ background: 'var(--color-primary)', border: '1px solid var(--color-primary)', color: '#000', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={handleSave} disabled={saving}>{saving ? 'TRANSMITTING...' : '[ COMMIT ]'}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Intelligence() {
   const navigate = useNavigate()
-  const { signals, addSignal, removeSignal } = useSignals()
+  const { signals, addSignal, updateSignal, removeSignal } = useSignals()
+  const toast = useAppStore(s => s.toast)
+  const [selectedSignal, setSelectedSignal] = useState(null)
   const { items: socialSignals, refresh: refreshSocialSignals, refreshing: socialRefreshing } = useSocialSignals()
   const { entries: catalogEntries, loading: apiLoading, installConnector, reload: reloadCatalog } = useApiCatalog({ isListed: true })
   const { agents } = useAgents()
@@ -149,6 +238,18 @@ function Intelligence() {
   }
 
   const handleRemove = async (id) => await removeSignal(id)
+
+  const handleSignalSave = useCallback(async (id, changes) => {
+    await updateSignal(id, changes)
+    setSelectedSignal(null)
+    toast('SIGNAL UPDATED', 'success')
+  }, [updateSignal, toast])
+
+  const handleSignalDelete = useCallback(async (id) => {
+    await removeSignal(id)
+    setSelectedSignal(null)
+    toast('SIGNAL PURGED', 'success')
+  }, [removeSignal, toast])
 
   const handlePromoteSocialSignal = async (signal) => {
     setPromotingId(signal.id)
@@ -319,14 +420,14 @@ function Intelligence() {
                 </thead>
                 <tbody>
                   {filteredSignals.map(signal => (
-                    <tr key={signal.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <tr key={signal.id} style={{ borderBottom: '1px solid var(--border-subtle)', cursor: 'pointer', transition: 'background 0.15s' }} onClick={() => setSelectedSignal(signal)} onMouseEnter={e => e.currentTarget.style.background = 'var(--color-bg-3)'} onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
                       <td style={{ padding: '8px', color: 'var(--color-text)', fontWeight: 'bold' }}>{signal.title.toUpperCase()}</td>
                       <td style={{ padding: '8px' }}><span style={{ border: '1px solid var(--border-subtle)', padding: '2px 6px', color: 'var(--color-info)' }}>{signal.category.toUpperCase()}</span></td>
                       <td style={{ padding: '8px', color: signal.impact >= 70 ? 'var(--color-danger)' : 'var(--color-warning)' }}>{signal.impact}</td>
                       <td style={{ padding: '8px', color: signal.confidence >= 70 ? 'var(--color-success)' : 'var(--color-warning)' }}>{signal.confidence}</td>
                       <td style={{ padding: '8px', color: 'var(--text-tertiary)' }}>{signal.created_at?.split('T')[0]}</td>
                       <td style={{ padding: '8px', textAlign: 'right' }}>
-                        <button className="btn btn-ghost" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => handleRemove(signal.id)}>DEL</button>
+                        <button className="btn btn-ghost" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={e => { e.stopPropagation(); handleRemove(signal.id) }}>DEL</button>
                       </td>
                     </tr>
                   ))}
@@ -444,6 +545,16 @@ function Intelligence() {
           </div>
         )}
       </div>
+
+      {/* Signal Edit Modal */}
+      {selectedSignal && (
+        <SignalEditModal
+          signal={selectedSignal}
+          onSave={handleSignalSave}
+          onDelete={handleSignalDelete}
+          onClose={() => setSelectedSignal(null)}
+        />
+      )}
     </div>
   )
 }

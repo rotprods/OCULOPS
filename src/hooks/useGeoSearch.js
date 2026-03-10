@@ -55,6 +55,7 @@ export function useGeoSearch() {
         try {
             if (!BASE) throw new Error('Supabase URL not configured')
             const token = await getToken()
+            const resolveOnly = Boolean(params.resolve_only || params.resolveOnly)
 
             const headers = { 'Content-Type': 'application/json' }
             if (token) headers.Authorization = `Bearer ${token}`
@@ -73,7 +74,7 @@ export function useGeoSearch() {
                     if (!acc.some(item => item.id === normalizedPlace.id)) acc.push(normalizedPlace)
                     return acc
                 }, [])
-            setResults(normalized)
+            if (!resolveOnly) setResults(normalized)
             return { ...data, places: normalized }
         } catch (err) {
             setError(err.message)

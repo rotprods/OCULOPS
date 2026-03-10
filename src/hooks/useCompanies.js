@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { supabase, insertRow, updateRow, deleteRow, subscribeToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
 
 export function useCompanies(filters = {}) {
     const [companies, setCompanies] = useState([])
@@ -21,7 +21,9 @@ export function useCompanies(filters = {}) {
                 return
             }
 
+            const userId = await getCurrentUserId()
             let query = supabase.from('companies').select('*').order('created_at', { ascending: false })
+            query = scopeUserQuery(query, userId)
             Object.entries(JSON.parse(filtersKey)).forEach(([key, value]) => {
                 query = query.eq(key, value)
             })

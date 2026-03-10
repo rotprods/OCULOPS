@@ -35,6 +35,11 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 const CRON_SECRET = Deno.env.get("CRON_SECRET");
+const REDDIT_CLIENT_ID = Deno.env.get("REDDIT_CLIENT_ID");
+const REDDIT_CLIENT_SECRET = Deno.env.get("REDDIT_CLIENT_SECRET");
+const REDDIT_USER_AGENT = Deno.env.get("REDDIT_USER_AGENT") || "ANTIGRAVITY-OS/1.0 social-signals";
+const APIFY_TOKEN = Deno.env.get("APIFY_TOKEN");
+const APIFY_REDDIT_ACTOR_ID = Deno.env.get("APIFY_REDDIT_ACTOR_ID") || "trudax/reddit-scraper";
 
 const admin = SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY
     ? createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
@@ -175,16 +180,126 @@ async function fetchJson<T>(url: string, headers: HeadersInit = {}): Promise<T> 
     return await response.json() as T;
 }
 
+async function getRedditAccessToken() {
+    if (!REDDIT_CLIENT_ID || !REDDIT_CLIENT_SECRET) {
+        return null;
+    }
+
+    const response = await fetch("https://www.reddit.com/api/v1/access_token", {
+        method: "POST",
+        headers: {
+            Authorization: `Basic ${btoa(`${REDDIT_CLIENT_ID}:${REDDIT_CLIENT_SECRET}`)}`,
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": REDDIT_USER_AGENT,
+        },
+        body: new URLSearchParams({ grant_type: "client_credentials" }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status} from https://www.reddit.com/api/v1/access_token`);
+    }
+
+    const payload = await response.json() as { access_token?: string };
+    if (!payload.access_token) {
+        throw new Error("Reddit access token missing in OAuth response");
+    }
+
+    return payload.access_token;
+}
+
+async function fetchApifyRedditSignals(topic: typeof TOPICS[number], collectedAt: string): Promise<SocialSignal[]> {
+    if (!APIFY_TOKEN) return [];
+
+    const url = new URL(`https://api.apify.com/v2/acts/${APIFY_REDDIT_ACTOR_ID.replace("/", "~")}/run-sync-get-dataset-items`);
+    const response = await fetch(url.toString(), {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${APIFY_TOKEN}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            maxItems: 4,
+            maxPostCount: 4,
+            maxComments: 0,
+            searches: [topic.query],
+            searchCommunityName: topic.subreddit,
+            searchPosts: true,
+            searchComments: false,
+            searchCommunities: false,
+            searchUsers: false,
+            sort: "new",
+            time: "week",
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status} from Apify Reddit actor`);
+    }
+
+    const items = await response.json() as Array<Record<string, unknown>>;
+    return items
+        .filter((item) => item.dataType === "post" && typeof item.title === "string")
+        .slice(0, 4)
+        .map((item) => {
+            const title = String(item.title ?? "");
+            const body = String(item.body ?? "").slice(0, 280) || null;
+            const publishedAt = typeof item.createdAt === "string" ? item.createdAt : collectedAt;
+            const score = Number(item.upVotes) || 0;
+            const comments = Number(item.numberOfComments) || 0;
+            const text = [title, body ?? ""].join(" ");
+
+            return {
+                platform: "reddit" as const,
+                external_id: String(item.parsedId ?? item.id ?? crypto.randomUUID()),
+                topic: topic.label,
+                title,
+                body_excerpt: body,
+                author: typeof item.username === "string" ? item.username : null,
+                permalink: typeof item.url === "string" ? item.url : null,
+                published_at: publishedAt,
+                engagement: score + comments,
+                comment_count: comments,
+                sentiment_score: scoreSentiment(text),
+                velocity_score: scoreVelocity(score + comments, publishedAt),
+                opportunity_score: scoreOpportunity(text, score + comments, comments, publishedAt),
+                metadata: {
+                    subreddit: topic.subreddit,
+                    score,
+                    source: "apify",
+                    collected_at: collectedAt,
+                },
+                updated_at: collectedAt,
+            };
+        });
+}
+
 async function fetchRedditSignals(collectedAt: string): Promise<SocialSignal[]> {
+    let redditBaseUrl = "https://old.reddit.com";
+    let redditHeaders: HeadersInit = { "User-Agent": REDDIT_USER_AGENT };
+
+    try {
+        const accessToken = await getRedditAccessToken();
+        if (accessToken) {
+            redditBaseUrl = "https://oauth.reddit.com";
+            redditHeaders = {
+                Authorization: `Bearer ${accessToken}`,
+                "User-Agent": REDDIT_USER_AGENT,
+            };
+        }
+    } catch {
+        // Fall back to old.reddit.com JSON when the configured OAuth app is invalid or blocked.
+    }
+
     const signals: SocialSignal[] = [];
 
     for (const topic of TOPICS) {
-        const url = new URL(`https://www.reddit.com/r/${topic.subreddit}/search.json`);
+        const url = new URL(`${redditBaseUrl}/r/${topic.subreddit}/search.json`);
         url.searchParams.set("q", topic.query);
         url.searchParams.set("restrict_sr", "1");
         url.searchParams.set("sort", "new");
         url.searchParams.set("t", "week");
         url.searchParams.set("limit", "4");
+        url.searchParams.set("raw_json", "1");
 
         const payload = await fetchJson<{
             data?: {
@@ -194,7 +309,7 @@ async function fetchRedditSignals(collectedAt: string): Promise<SocialSignal[]> 
             };
         }>(
             url.toString(),
-            { "User-Agent": "ANTIGRAVITY-OS/1.0 social-signals" },
+            redditHeaders,
         );
 
         for (const child of payload.data?.children ?? []) {
@@ -230,6 +345,12 @@ async function fetchRedditSignals(collectedAt: string): Promise<SocialSignal[]> 
                 },
                 updated_at: collectedAt,
             });
+        }
+    }
+
+    if (signals.length === 0 && APIFY_TOKEN) {
+        for (const topic of TOPICS) {
+            signals.push(...await fetchApifyRedditSignals(topic, collectedAt));
         }
     }
 

@@ -1,5 +1,5 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
-import { corsHeaders } from '../_shared/cors.ts'
+import { corsHeaders } from '../_shared/http.ts'
 
 const VEO_API_URL = Deno.env.get('VEO_API_URL') || 'https://api.veo.co/v3/generate'
 const VEO_API_KEY = Deno.env.get('VEO_API_KEY')

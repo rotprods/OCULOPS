@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, insertRow, subscribeToTable } from '../lib/supabase'
+import { supabase, insertRow, deleteRow, subscribeToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
 
 export function useActivities(filters = {}) {
     const [activities, setActivities] = useState([])
@@ -21,6 +21,7 @@ export function useActivities(filters = {}) {
                 return
             }
 
+            const userId = await getCurrentUserId()
             let query = supabase
                 .from('crm_activities')
                 .select(`
@@ -30,6 +31,8 @@ export function useActivities(filters = {}) {
                     deal:deals(id, title, stage)
                 `)
                 .order('created_at', { ascending: false })
+
+            query = scopeUserQuery(query, userId)
 
             Object.entries(JSON.parse(filtersKey)).forEach(([key, value]) => {
                 query = query.eq(key, value)
@@ -64,5 +67,11 @@ export function useActivities(filters = {}) {
         return result
     }
 
-    return { activities, loading, error, addActivity, reload: load }
+    const removeActivity = async (id) => {
+        const success = await deleteRow('crm_activities', id)
+        if (success) await load()
+        return success
+    }
+
+    return { activities, loading, error, addActivity, removeActivity, reload: load }
 }

@@ -3,14 +3,12 @@
 // 100-Year UX: Military-grade, Bloomberg-style, OLED Black, Gold accents
 // ═══════════════════════════════════════════════════
 
-import { useMemo, useEffect } from 'react'
-import { computeHealthScore } from '../../lib/ceoScore'
+import { useMemo } from 'react'
+import { useContacts } from '../../hooks/useContacts'
+import { useCompanies } from '../../hooks/useCompanies'
 import { useDeals } from '../../hooks/useDeals'
-import { useAlerts } from '../../hooks/useAlerts'
-import { useTasks } from '../../hooks/useTasks'
+import { useActivities } from '../../hooks/useActivities'
 import { useSignals } from '../../hooks/useSignals'
-import { useSnapshots } from '../../hooks/useSnapshots'
-import { useAIAdvisor } from '../../hooks/useAIAdvisor'
 import useAgents from '../../hooks/useAgents'
 
 // ── Ultra-Sharp Sparkline ──
@@ -29,48 +27,42 @@ function Sparkline({ data = [], color = 'var(--color-primary)', width = 80, heig
 }
 
 function ControlTower() {
-    const { deals, loading: dealsLoading } = useDeals()
-    const { alerts, loading: alertsLoading } = useAlerts()
-    const { completionRate, currentDay, loading: tasksLoading } = useTasks()
-    const { signals, loading: signalsLoading } = useSignals()
-    const { mrrHistory, clientHistory, pipelineHistory } = useSnapshots(30)
-    const { insights, loading: aiLoading, fetchInsights } = useAIAdvisor()
+    const { contacts, loading: contactsLoading } = useContacts()
+    const { companies, loading: companiesLoading } = useCompanies()
+    const { deals, loading: dealsLoading, totalValue, weightedValue } = useDeals()
+    const { activities, loading: activitiesLoading } = useActivities()
+    const { signals, activeSignals, loading: signalsLoading } = useSignals()
     const { agents, stats: agentStats } = useAgents()
 
-    const loading = dealsLoading || alertsLoading || tasksLoading || signalsLoading
+    const loading = contactsLoading || companiesLoading || dealsLoading || activitiesLoading || signalsLoading
 
-    useEffect(() => { fetchInsights() }, [fetchInsights])
+    const recentActivitiesCount = useMemo(() => {
+        const sevenDaysAgo = new Date()
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
+        return (activities || []).filter(a => new Date(a.created_at) >= sevenDaysAgo).length
+    }, [activities])
 
-    const mrr = useMemo(() => {
-        return (deals || [])
-            .filter(d => ['closed_won', 'onboarding'].includes(d.stage))
-            .reduce((sum, d) => sum + (parseFloat(d.monthly_value) || 0), 0)
-    }, [deals])
+    const avgSignalImpact = useMemo(() => {
+        const active = activeSignals || []
+        if (active.length === 0) return 0
+        return Math.round(active.reduce((sum, s) => sum + (s.impact || 0), 0) / active.length)
+    }, [activeSignals])
 
-    const clients = useMemo(() => {
-        return (deals || []).filter(d => ['closed_won', 'onboarding'].includes(d.stage)).length
-    }, [deals])
-
-    const pipelineTotal = useMemo(() => {
-        return (deals || [])
-            .filter(d => !['closed_won', 'closed_lost'].includes(d.stage))
-            .reduce((sum, d) => sum + (parseFloat(d.value) || 0), 0)
-    }, [deals])
-
-    const activeAlerts = (alerts || []).filter(a => a.status === 'active').length
-
-    const healthScore = useMemo(
-        () => computeHealthScore({ mrr, pipelineTotal, completionRate, activeAlerts }),
-        [mrr, pipelineTotal, completionRate, activeAlerts]
-    )
+    const healthScore = useMemo(() => {
+        // Composite score: pipeline health + agent uptime + signal coverage
+        const pipelineScore = Math.min(totalValue / 500, 100) // 0-100 scaled to €50K target
+        const agentUptime = agentStats?.total > 0 ? (agentStats.online / agentStats.total) * 100 : 0
+        const signalScore = Math.min((activeSignals || []).length * 10, 100)
+        return Math.round((pipelineScore * 0.5) + (agentUptime * 0.3) + (signalScore * 0.2))
+    }, [totalValue, agentStats, activeSignals])
 
     const kpis = [
-        { label: 'GROSS MRR', value: `€${mrr.toLocaleString()}`, icon: '⚡', trend: mrrHistory, target: '€20K' },
-        { label: 'ACTIVE DEPLOYMENTS', value: clients, icon: '🛡️', trend: clientHistory, target: '5.0' },
-        { label: 'PIPELINE VALUATION', value: `€${Math.round(pipelineTotal).toLocaleString()}`, icon: '💎', trend: pipelineHistory, target: '€50K' },
-        { label: 'CRITICAL ALERTS', value: activeAlerts, icon: '⚠️', trendColor: activeAlerts > 0 ? 'var(--color-danger)' : 'var(--color-success)', target: '0' },
-        { label: 'COMPLETION RATIO', value: `${completionRate}%`, icon: '🎯', trendColor: 'var(--color-success)', target: '100%' },
-        { label: 'SIGNAL INTERCEPTS', value: (signals || []).length, icon: '📡', trendColor: 'var(--color-primary)', target: '10+' },
+        { label: 'CONTACTS', value: (contacts || []).length, icon: '⚡', target: '100+' },
+        { label: 'COMPANIES', value: (companies || []).length, icon: '🛡️', target: '50+' },
+        { label: 'PIPELINE VALUATION', value: `€${Math.round(totalValue).toLocaleString()}`, icon: '💎', target: '€50K' },
+        { label: 'WEIGHTED PIPELINE', value: `€${Math.round(weightedValue).toLocaleString()}`, icon: '🎯', trendColor: 'var(--color-success)', target: '€25K' },
+        { label: 'ACTIVITIES (7D)', value: recentActivitiesCount, icon: '📊', trendColor: recentActivitiesCount > 0 ? 'var(--color-success)' : 'var(--color-warning)', target: '20+' },
+        { label: 'SIGNAL INTERCEPTS', value: (activeSignals || []).length, icon: '📡', trendColor: 'var(--color-primary)', target: '10+', subtitle: `AVG IMP: ${avgSignalImpact}` },
     ]
 
     const recentSignals = (signals || []).slice(-4).reverse()
@@ -93,7 +85,7 @@ function ControlTower() {
                         <span style={{ color: 'var(--text-tertiary)' }}>SYSTEM STATUS:</span> <span style={{ color: loading ? 'var(--color-warning)' : 'var(--color-success)', fontWeight: 'bold', marginLeft: '8px' }}>{loading ? 'SYNCING DATA' : 'OPERATIONAL'}</span>
                     </div>
                     <div className="mono text-xs" style={{ borderLeft: '1px solid var(--border-subtle)', paddingLeft: '16px' }}>
-                        <span style={{ color: 'var(--text-tertiary)' }}>DAY SEQUENCE:</span> <span style={{ color: 'var(--color-primary)', fontWeight: 'bold', marginLeft: '8px' }}>T+{currentDay}</span>
+                        <span style={{ color: 'var(--text-tertiary)' }}>DEALS:</span> <span style={{ color: 'var(--color-primary)', fontWeight: 'bold', marginLeft: '8px' }}>{(deals || []).length}</span>
                     </div>
                     <div className="status-dot active"></div>
                 </div>
@@ -169,29 +161,31 @@ function ControlTower() {
 
                     <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', flex: 1, display: 'flex', flexDirection: 'column' }}>
                         <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span>/// CORTEX ADVISOR PROTOCOL</span>
-                            <button className="btn btn-ghost mono" style={{ padding: '4px 12px', fontSize: '9px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }} onClick={fetchInsights} disabled={aiLoading}>
-                                {aiLoading ? 'ANALYZING...' : 'RERUN ANALYSIS'}
-                            </button>
+                            <span>/// AGENT HEALTH MATRIX</span>
+                            <div className="mono text-xs" style={{ display: 'flex', gap: '16px' }}>
+                                <span style={{ color: 'var(--color-success)' }}>{agentStats?.online || 0} ONLINE</span>
+                                <span style={{ color: 'var(--color-warning)' }}>{agentStats?.running || 0} RUNNING</span>
+                                <span style={{ color: 'var(--color-danger)' }}>{agentStats?.error || 0} ERROR</span>
+                            </div>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflowY: 'auto' }}>
-                            {(insights || []).length === 0 ? (
+                            {(agents || []).length === 0 ? (
                                 <div className="mono text-xs text-tertiary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, minHeight: '100px' }}>
-                                    AWAITING STRATEGIC DIRECTIVES...
+                                    NO AGENTS REGISTERED
                                 </div>
                             ) : (
-                                insights.map((insight, i) => (
-                                    <div key={i} style={{ padding: '24px', borderBottom: i < insights.length - 1 ? '1px solid var(--border-subtle)' : 'none', display: 'flex', gap: '20px', background: i % 2 === 0 ? 'transparent' : '#000' }}>
-                                        <div style={{ color: insight.type === 'risk' ? 'var(--color-danger)' : insight.type === 'opportunity' ? 'var(--color-success)' : 'var(--color-primary)', fontSize: '24px', marginTop: '4px' }}>
-                                            {insight.type === 'risk' ? '⚠️' : insight.type === 'opportunity' ? '🎯' : '⚡'}
+                                agents.map((agent, i) => (
+                                    <div key={agent.id} style={{ padding: '24px', borderBottom: i < agents.length - 1 ? '1px solid var(--border-subtle)' : 'none', display: 'flex', gap: '20px', background: i % 2 === 0 ? 'transparent' : '#000' }}>
+                                        <div style={{ color: agent.status === 'error' ? 'var(--color-danger)' : agent.status === 'online' ? 'var(--color-success)' : 'var(--color-primary)', fontSize: '24px', marginTop: '4px' }}>
+                                            {agent.status === 'error' ? '⚠️' : agent.status === 'online' ? '🎯' : '⚡'}
                                         </div>
                                         <div style={{ flex: 1 }}>
-                                            <div className="mono text-md font-bold" style={{ marginBottom: '8px', color: 'var(--color-text)' }}>{insight.title.toUpperCase()}</div>
-                                            <div className="mono text-xs text-secondary" style={{ lineHeight: '1.6', opacity: 0.9 }}>{insight.description.toUpperCase()}</div>
+                                            <div className="mono text-md font-bold" style={{ marginBottom: '8px', color: 'var(--color-text)' }}>{(agent.code_name || agent.name || 'UNKNOWN').toUpperCase()}</div>
+                                            <div className="mono text-xs text-secondary" style={{ lineHeight: '1.6', opacity: 0.9 }}>{(agent.description || agent.role || 'NO DESCRIPTION').toUpperCase()}</div>
                                             <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
-                                                <span className="mono text-xs" style={{ border: '1px solid var(--border-subtle)', padding: '2px 8px', color: 'var(--text-tertiary)' }}>{insight.type.toUpperCase()}</span>
-                                                <span className="mono text-xs" style={{ border: `1px solid ${insight.priority === 'high' ? 'var(--color-danger)' : 'var(--color-warning)'}`, color: insight.priority === 'high' ? 'var(--color-danger)' : 'var(--color-warning)', padding: '2px 8px' }}>
-                                                    PRIORITY: {insight.priority.toUpperCase()}
+                                                <span className="mono text-xs" style={{ border: '1px solid var(--border-subtle)', padding: '2px 8px', color: 'var(--text-tertiary)' }}>RUNS: {agent.total_runs || 0}</span>
+                                                <span className="mono text-xs" style={{ border: `1px solid ${agent.status === 'error' ? 'var(--color-danger)' : 'var(--color-success)'}`, color: agent.status === 'error' ? 'var(--color-danger)' : 'var(--color-success)', padding: '2px 8px' }}>
+                                                    {(agent.status || 'UNKNOWN').toUpperCase()}
                                                 </span>
                                             </div>
                                         </div>

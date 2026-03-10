@@ -43,7 +43,7 @@ const API_CONFIGS: Record<string, ApiConfig> = {
 
     // ── Search & Maps ──
     "brave-search": { base: "https://api.search.brave.com/res/v1", authType: "custom-header", envKey: "BRAVE_API_KEY", headerName: "X-Subscription-Token" },
-    "google-maps": { base: "https://maps.googleapis.com/maps/api", authType: "query-param", envKey: "GOOGLE_MAPS_KEY", paramName: "key" },
+    "google-maps": { base: "https://maps.googleapis.com/maps/api", authType: "query-param", envKey: "GOOGLE_MAPS_API_KEY", envFallbackKeys: ["GOOGLE_MAPS_KEY"], paramName: "key" },
 
     // ── Cloud & DevOps ──
     "cloudflare": { base: "https://api.cloudflare.com/client/v4", authType: "bearer", envKey: "CLOUDFLARE_API_TOKEN" },
@@ -64,7 +64,7 @@ const API_CONFIGS: Record<string, ApiConfig> = {
 
     // ── Social & Advertising ──
     "meta": { base: "https://graph.facebook.com/v22.0", authType: "bearer", envKey: "META_ACCESS_TOKEN" },
-    "tiktok": { base: "https://business-api.tiktok.com/open_api/v1.3", authType: "custom-header", envKey: "TIKTOK_ACCESS_TOKEN", headerName: "Access-Token" },
+    "tiktok": { base: "https://business-api.tiktok.com/open_api/v1.3", authType: "custom-header", envKey: "TIKTOK_API_KEY", envFallbackKeys: ["TIKTOK_ACCESS_TOKEN"], headerName: "Access-Token" },
 
     // ── Messaging & Chatbots ──
     "whatsapp": { base: "https://graph.facebook.com/v22.0", authType: "bearer", envKey: "WHATSAPP_TOKEN" },

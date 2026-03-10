@@ -1,5 +1,5 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
-import { corsHeaders } from '../_shared/cors.ts'
+import { corsHeaders } from '../_shared/http.ts'
 
 const BANANA_API_URL = Deno.env.get('BANANA_API_URL') || 'https://api.banana.dev/start/v4/'
 const BANANA_API_KEY = Deno.env.get('BANANA_API_KEY')

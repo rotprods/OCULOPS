@@ -16,22 +16,68 @@ const isValidUrl = (url) => {
     try { new URL(url); return true; } catch { return false; }
 };
 
-const hasCredentials = supabaseUrl && supabaseAnonKey && isValidUrl(supabaseUrl);
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey && isValidUrl(supabaseUrl));
+const ENV_MISSING_ERROR = { message: 'ENV_MISSING' };
+
+function createOfflineQuery() {
+    let mode = 'select';
+    let expectSingle = false;
+
+    const builder = {
+        select: () => builder,
+        insert: () => { mode = 'write'; return builder; },
+        update: () => { mode = 'write'; return builder; },
+        upsert: () => { mode = 'write'; return builder; },
+        delete: () => { mode = 'write'; return builder; },
+        eq: () => builder,
+        is: () => builder,
+        or: () => builder,
+        in: () => builder,
+        not: () => builder,
+        gte: () => builder,
+        lte: () => builder,
+        ilike: () => builder,
+        limit: () => builder,
+        order: () => builder,
+        single: () => { expectSingle = true; return builder; },
+        maybeSingle: () => { expectSingle = true; return builder; },
+        then: (resolve, reject) => {
+            const result = mode === 'write'
+                ? { data: null, error: ENV_MISSING_ERROR }
+                : { data: expectSingle ? null : [], error: null, count: 0 };
+            return Promise.resolve(result).then(resolve, reject);
+        },
+        catch: (reject) => builder.then(undefined, reject),
+        finally: (callback) => builder.then(
+            (value) => Promise.resolve(callback?.()).then(() => value),
+            (error) => Promise.resolve(callback?.()).then(() => { throw error; })
+        ),
+    };
+
+    return builder;
+}
+
+function createOfflineChannel() {
+    const channel = {
+        on: () => channel,
+        subscribe: (callback) => {
+            if (typeof callback === 'function') callback('CHANNEL_ERROR');
+            return channel;
+        },
+        unsubscribe: () => { },
+    };
+
+    return channel;
+}
 
 // A safe stub that prevents the entire React tree from crashing if Supabase is offline/misconfigured.
 // The ErrorBoundary or individual components will just see failed requests or null users.
 const DummyClient = {
-    from: () => ({
-        select: () => ({
-            eq: () => ({
-                single: async () => ({ data: null, error: { message: 'ENV_MISSING' } }),
-                order: async () => ({ data: [], error: { message: 'ENV_MISSING' } })
-            })
-        }),
-        insert: () => ({ select: () => ({ single: async () => ({ data: null, error: { message: 'ENV_MISSING' } }) }) }),
-        update: () => ({ eq: () => ({ select: () => ({ single: async () => ({ data: null, error: { message: 'ENV_MISSING' } }) }) }) }),
-        delete: () => ({ eq: async () => ({ error: { message: 'ENV_MISSING' } }) })
-    }),
+    from: () => createOfflineQuery(),
+    rpc: async () => ({ data: null, error: ENV_MISSING_ERROR }),
+    functions: {
+        invoke: async () => ({ data: null, error: ENV_MISSING_ERROR }),
+    },
     auth: {
         getUser: async () => ({ data: { user: null }, error: null }),
         getSession: async () => ({ data: { session: null }, error: null }),
@@ -41,12 +87,15 @@ const DummyClient = {
         signInWithOtp: async () => ({ error: { message: 'Supabase credentials missing in Edge/Vercel' } }),
         signOut: async () => ({ error: null })
     },
-    channel: () => ({
-        on: () => ({ subscribe: () => ({ unsubscribe: () => { } }) })
-    })
+    channel: () => createOfflineChannel(),
+    getChannels: () => [],
+    removeChannel: (channel) => {
+        channel?.unsubscribe?.();
+        return Promise.resolve('ok');
+    },
 };
 
-export const supabase = hasCredentials
+export const supabase = isSupabaseConfigured
     ? createClient(supabaseUrl, supabaseAnonKey, {
         realtime: {
             params: { eventsPerSecond: 10 },
@@ -184,6 +233,25 @@ export async function getCurrentUser() {
     if (!supabase) return null;
     const { data: { user } } = await supabase.auth.getUser();
     return user;
+}
+
+export async function getCurrentUserId() {
+    const user = await getCurrentUser();
+    return user?.id || null;
+}
+
+export function scopeUserQuery(query, userId, { includeGlobal = true } = {}) {
+    if (!query) return query;
+    if (userId && includeGlobal && typeof query.or === 'function') {
+        return query.or(`user_id.eq.${userId},user_id.is.null`);
+    }
+    if (userId && typeof query.eq === 'function') {
+        return query.eq('user_id', userId);
+    }
+    if (typeof query.is === 'function') {
+        return query.is('user_id', null);
+    }
+    return query;
 }
 
 export async function getCurrentSession() {

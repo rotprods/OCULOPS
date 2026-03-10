@@ -7,6 +7,7 @@
 import { useState, useMemo } from 'react'
 import { useProspector } from '../../hooks/useProspector'
 import { useGeoSearch } from '../../hooks/useGeoSearch'
+import { useAtlasCRM } from '../../hooks/useAtlasCRM'
 
 import FlightDeck from './FlightDeck'
 import './ProspectorHub.css'
@@ -84,23 +85,135 @@ const TABS = [
 ]
 
 function ProspectorHub() {
-    const { leads, scans, loading, byStatus, avgScore, recordScan } = useProspector()
+    const { leads, scans, loading, byStatus, avgScore, recordScan, promoteLead } = useProspector()
     const { results, scanning, searchPlaces, qualifyLead: aiQualify, qualifying } = useGeoSearch()
+    const {
+        importLead: syncLeadToCRM,
+        importLeads: syncLeadsToCRM,
+        stageOutreach,
+        importingLeadId,
+        bulkImporting,
+        stagingKey,
+        error: crmError,
+    } = useAtlasCRM()
 
     const [tab, setTab] = useState('flight')
     const [form, setForm] = useState({ query: '', location: 'Madrid, España', radius: 5000 })
     const [selectedLead, setSelectedLead] = useState(null)
-    const [flightIntel] = useState(null)
+    const [flightIntel, setFlightIntel] = useState(null)
 
     const activeLeads = byStatus.active || []
     const selected = leads.find(l => l.id === selectedLead)
 
-    const handleScan = async () => {
-        if (!form.query.trim()) return
-        const data = await searchPlaces(form)
+    const resolvePersistedLeadId = (lead) => leads.find(item =>
+        (lead?.place_id && item.place_id === lead.place_id) ||
+        (lead?.google_maps_id && item.google_maps_id === lead.google_maps_id) ||
+        (lead?.name && item.name === lead.name && item.address === lead.address)
+    )?.id
+
+    const buildAtlasContext = (overrides = {}, intel = flightIntel) => ({
+        source: overrides.source || 'flight_deck',
+        query: overrides.query || form.query.trim() || 'business',
+        location: overrides.location || intel?.area?.formatted_address || intel?.area?.label || form.location,
+        areaLabel: overrides.areaLabel || intel?.area?.label || intel?.search_center?.label || form.location,
+    })
+
+    const persistScan = async (params, data) => {
+        if (data?.error) return data
+
+        setFlightIntel(data)
+        await recordScan({
+            query: params.query,
+            location: params.location || data?.area?.formatted_address || data?.area?.label || form.location,
+            radius: params.radius,
+            source: params.source || 'flight_deck',
+            area: data?.area || null,
+            searchCenter: data?.search_center || null,
+            rawPayload: data,
+            results: data?.places || [],
+        })
+
+        return data
+    }
+
+    const handleScanAirspace = async (params = {}) => {
+        const query = (params.query || form.query).trim()
+        if (!query) return { places: [], error: 'Missing query' }
+
+        const radius = Number(params.radius || form.radius) || 5000
+        const payload = typeof params.lat === 'number' && typeof params.lng === 'number'
+            ? { query, lat: params.lat, lng: params.lng, radius, source: params.source || 'flight_deck' }
+            : { query, location: params.location || form.location, radius, source: params.source || 'flight_deck' }
+
+        const data = await searchPlaces(payload)
+        return persistScan(payload, data)
+    }
+
+    const handleResolveLocation = async (locationValue = form.location) => {
+        const data = await searchPlaces({
+            query: form.query.trim() || 'business',
+            location: locationValue,
+            radius: Number(form.radius) || 5000,
+            resolve_only: true,
+        })
+
         if (!data?.error) {
-            await recordScan({ ...form, source: 'scanner', rawPayload: data, results: data.places || [] })
+            setFlightIntel(data)
+            setForm(prev => ({ ...prev, location: data?.area?.label || locationValue }))
         }
+
+        return data
+    }
+
+    const linkImportedLead = async (lead, result) => {
+        const persistedLeadId = resolvePersistedLeadId(lead)
+        if (!persistedLeadId || result?.error) return
+        await promoteLead(persistedLeadId, {
+            company_id: result.company?.id || null,
+            contact_id: result.contact?.id || null,
+            deal_id: result.deal?.id || null,
+        })
+    }
+
+    const handleImportLead = async (lead) => {
+        const result = await syncLeadToCRM(lead, buildAtlasContext({
+            source: 'flight_deck',
+            location: lead?.address || form.location,
+        }))
+        await linkImportedLead(lead, result)
+        return result
+    }
+
+    const handleImportAll = async (leadsToImport) => {
+        const result = await syncLeadsToCRM(leadsToImport, buildAtlasContext())
+        if (result?.imported?.length) {
+            await Promise.all(result.imported.map(item => linkImportedLead(item.lead, item)))
+        }
+        return result
+    }
+
+    const handleStageLeadOutreach = async (lead, channel) => {
+        const result = await stageOutreach({
+            channel,
+            lead,
+            context: buildAtlasContext({
+                source: 'flight_deck',
+                location: lead?.address || form.location,
+            }),
+        })
+        await linkImportedLead(lead, result)
+        return result
+    }
+
+    const handleScan = async () => {
+        await handleScanAirspace({ query: form.query, location: form.location, radius: form.radius, source: 'scanner' })
+    }
+
+    const crmSyncState = {
+        importingLeadId,
+        bulkImporting,
+        stagingKey,
+        error: crmError,
     }
 
     return (
@@ -140,7 +253,19 @@ function ProspectorHub() {
 
                 {tab === 'flight' && (
                     <div className="ph-view-container">
-                        <FlightDeck form={form} setForm={setForm} scanResults={results} scanning={scanning} lastScan={flightIntel} />
+                        <FlightDeck
+                            form={form}
+                            setForm={setForm}
+                            scanResults={results}
+                            scanning={scanning}
+                            lastScan={flightIntel}
+                            onScanAirspace={handleScanAirspace}
+                            onResolveLocation={handleResolveLocation}
+                            onImportLead={handleImportLead}
+                            onImportAll={handleImportAll}
+                            onStageLeadOutreach={handleStageLeadOutreach}
+                            crmSyncState={crmSyncState}
+                        />
                     </div>
                 )}
 

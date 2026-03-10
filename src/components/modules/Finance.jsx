@@ -47,29 +47,29 @@ function Finance() {
       <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
         {/* ── KPI STRIP ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
-          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <span className="mono text-xs text-tertiary">GROSS REVENUE</span>
               <span style={{ fontSize: '14px', color: 'var(--color-success)' }}>💰</span>
             </div>
             <span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>€{revenue.toLocaleString()}</span>
           </div>
-          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <span className="mono text-xs text-tertiary">CASH BURN</span>
               <span style={{ fontSize: '14px', color: 'var(--color-danger)' }}>💸</span>
             </div>
             <span className="mono text-lg font-bold" style={{ color: 'var(--color-danger)' }}>€{expenses.toLocaleString()}</span>
           </div>
-          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <span className="mono text-xs text-tertiary">NET PROFIT</span>
               <span style={{ fontSize: '14px', color: profit >= 0 ? 'var(--color-success)' : 'var(--color-danger)' }}>📊</span>
             </div>
             <span className="mono text-lg font-bold" style={{ color: profit >= 0 ? 'var(--color-success)' : 'var(--color-danger)' }}>€{profit.toLocaleString()}</span>
           </div>
-          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <span className="mono text-xs text-tertiary">PROFIT MARGIN</span>
               <span style={{ fontSize: '14px', color: 'var(--color-primary)' }}>📈</span>
@@ -79,8 +79,8 @@ function Finance() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
-          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>/// FISCAL LOG [{filtered.length}]</span>
               <div style={{ display: 'flex', gap: '8px' }}>
                 {['all', 'revenue', 'expense'].map(f => (
@@ -137,14 +137,14 @@ function Finance() {
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div className="input-group">
                 <label className="mono text-xs">DIRECTIONAL VECTOR</label>
-                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
+                <select className="input mono text-xs" style={{ background: '#000', border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', color: 'var(--color-text)', outline: 'none' }} value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
                   <option value="revenue">INFLOW (REVENUE)</option>
                   <option value="expense">BURN (EXPENSE)</option>
                 </select>
               </div>
               <div className="input-group">
                 <label className="mono text-xs">INTERNAL CLASSIFICATION</label>
-                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))}>
+                <select className="input mono text-xs" style={{ background: '#000', border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', color: 'var(--color-text)', outline: 'none' }} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))}>
                   <option value="servicio">SERVICE RETAINER</option>
                   <option value="producto">PRODUCT SALES</option>
                   <option value="herramienta">SaaS INFRASTRUCTURE</option>
@@ -156,19 +156,19 @@ function Finance() {
               </div>
               <div className="input-group">
                 <label className="mono text-xs">DESCRIPTOR</label>
-                <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="EX: V0 SERVER COSTS" />
+                <input className="input mono text-xs" style={{ background: '#000', border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', color: 'var(--color-text)', outline: 'none' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="EX: V0 SERVER COSTS" />
               </div>
               <div className="input-group">
                 <label className="mono text-xs">CAPITAL COMMITTED (€)</label>
-                <input className="input mono text-xs" type="number" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} placeholder="500" />
+                <input className="input mono text-xs" type="number" style={{ background: '#000', border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', color: 'var(--color-text)', outline: 'none' }} value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} placeholder="500" />
               </div>
               <div className="input-group">
                 <label className="mono text-xs">EXECUTION DATE</label>
-                <input className="input mono text-xs" type="date" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
+                <input className="input mono text-xs" type="date" style={{ background: '#000', border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', color: 'var(--color-text)', outline: 'none' }} value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
               </div>
               <div className="input-group">
                 <label className="mono text-xs">AUTO-RENEWAL</label>
-                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.recurrence} onChange={e => setForm(f => ({ ...f, recurrence: e.target.value }))}>
+                <select className="input mono text-xs" style={{ background: '#000', border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', color: 'var(--color-text)', outline: 'none' }} value={form.recurrence} onChange={e => setForm(f => ({ ...f, recurrence: e.target.value }))}>
                   <option value="one_time">STATIC (ONE-OFF)</option>
                   <option value="monthly">MONTHLY CYCLE</option>
                   <option value="weekly">WEEKLY CYCLE</option>
