@@ -1,0 +1,865 @@
+{
+  "category": "Machine Learning",
+  "slug": "machine-learning",
+  "count": 22,
+  "entries": [
+    {
+      "slug": "machine-learning-exude-api-uttesh-com",
+      "name": "EXUDE-API",
+      "category": "Machine Learning",
+      "docs_url": "http://uttesh.com/exude-api/",
+      "description": "Used for the primary ways for filtering the stopping, stemming words from the text data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "none",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "uttesh.com"
+      ],
+      "raw_source": {
+        "api": "[EXUDE-API](http://uttesh.com/exude-api/)",
+        "description": "Used for the primary ways for filtering the stopping, stemming words from the text data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [EXUDE-API](http://uttesh.com/exude-api/) | Used for the primary ways for filtering the stopping, stemming words from the text data | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-dialogflow-cloud-google-com",
+      "name": "Dialogflow",
+      "category": "Machine Learning",
+      "docs_url": "https://cloud.google.com/dialogflow/docs/",
+      "description": "Natural Language Processing",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "cloud.google.com"
+      ],
+      "raw_source": {
+        "api": "[Dialogflow](https://cloud.google.com/dialogflow/docs/)",
+        "description": "Natural Language Processing",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dialogflow](https://cloud.google.com/dialogflow/docs/) | Natural Language Processing | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-imagga-imagga-com",
+      "name": "Imagga",
+      "category": "Machine Learning",
+      "docs_url": "https://imagga.com/",
+      "description": "Image Recognition Solutions like Tagging, Visual Search, NSFW moderation",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "imagga.com"
+      ],
+      "raw_source": {
+        "api": "[Imagga](https://imagga.com/)",
+        "description": "Image Recognition Solutions like Tagging, Visual Search, NSFW moderation",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Imagga](https://imagga.com/) | Image Recognition Solutions like Tagging, Visual Search, NSFW moderation | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-irisnet-irisnet-de",
+      "name": "Irisnet",
+      "category": "Machine Learning",
+      "docs_url": "https://irisnet.de/api/",
+      "description": "Realtime content moderation API that blocks or blurs unwanted images in real-time",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "irisnet.de"
+      ],
+      "raw_source": {
+        "api": "[Irisnet](https://irisnet.de/api/)",
+        "description": "Realtime content moderation API that blocks or blurs unwanted images in real-time",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Irisnet](https://irisnet.de/api/) | Realtime content moderation API that blocks or blurs unwanted images in real-time | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-keen-io-keen-io",
+      "name": "Keen IO",
+      "category": "Machine Learning",
+      "docs_url": "https://keen.io/",
+      "description": "Data Analytics",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "keen.io"
+      ],
+      "raw_source": {
+        "api": "[Keen IO](https://keen.io/)",
+        "description": "Data Analytics",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Keen IO](https://keen.io/) | Data Analytics | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-machinetutors-machinetutors-com",
+      "name": "Machinetutors",
+      "category": "Machine Learning",
+      "docs_url": "https://www.machinetutors.com/portfolio/MT_api.html",
+      "description": "AI Solutions: Video/Image Classification & Tagging, NSFW, Icon/Image/Audio Search, NLP",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "machinetutors.com"
+      ],
+      "raw_source": {
+        "api": "[Machinetutors](https://www.machinetutors.com/portfolio/MT_api.html)",
+        "description": "AI Solutions: Video/Image Classification & Tagging, NSFW, Icon/Image/Audio Search, NLP",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Machinetutors](https://www.machinetutors.com/portfolio/MT_api.html) | AI Solutions: Video/Image Classification & Tagging, NSFW, Icon/Image/Audio Search, NLP | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-perspective-perspectiveapi-com",
+      "name": "Perspective",
+      "category": "Machine Learning",
+      "docs_url": "https://perspectiveapi.com",
+      "description": "NLP API to return probability that if text is toxic, obscene, insulting or threatening",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "perspectiveapi.com"
+      ],
+      "raw_source": {
+        "api": "[Perspective](https://perspectiveapi.com)",
+        "description": "NLP API to return probability that if text is toxic, obscene, insulting or threatening",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Perspective](https://perspectiveapi.com) | NLP API to return probability that if text is toxic, obscene, insulting or threatening | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-time-door-timedoor-io",
+      "name": "Time Door",
+      "category": "Machine Learning",
+      "docs_url": "https://timedoor.io",
+      "description": "A time series analysis API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "timedoor.io"
+      ],
+      "raw_source": {
+        "api": "[Time Door](https://timedoor.io)",
+        "description": "A time series analysis API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Time Door](https://timedoor.io) | A time series analysis API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-unplugg-unplu-gg",
+      "name": "Unplugg",
+      "category": "Machine Learning",
+      "docs_url": "https://unplu.gg/test_api.html",
+      "description": "Forecasting API for timeseries data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "unplu.gg"
+      ],
+      "raw_source": {
+        "api": "[Unplugg](https://unplu.gg/test_api.html)",
+        "description": "Forecasting API for timeseries data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Unplugg](https://unplu.gg/test_api.html) | Forecasting API for timeseries data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-wolframalpha-products-wolframalpha-com",
+      "name": "WolframAlpha",
+      "category": "Machine Learning",
+      "docs_url": "https://products.wolframalpha.com/api/",
+      "description": "Provides specific answers to questions using data and algorithms",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "products.wolframalpha.com"
+      ],
+      "raw_source": {
+        "api": "[WolframAlpha](https://products.wolframalpha.com/api/)",
+        "description": "Provides specific answers to questions using data and algorithms",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [WolframAlpha](https://products.wolframalpha.com/api/) | Provides specific answers to questions using data and algorithms | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-deepcode-deepcode-ai",
+      "name": "Deepcode",
+      "category": "Machine Learning",
+      "docs_url": "https://www.deepcode.ai",
+      "description": "AI for code review",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "none",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "deepcode.ai"
+      ],
+      "raw_source": {
+        "api": "[Deepcode](https://www.deepcode.ai)",
+        "description": "AI for code review",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Deepcode](https://www.deepcode.ai) | AI for code review | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-openvisionapi-openvisionapi-com",
+      "name": "OpenVisionAPI",
+      "category": "Machine Learning",
+      "docs_url": "https://openvisionapi.com",
+      "description": "Open source computer vision API based on open source models",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "none",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "openvisionapi.com"
+      ],
+      "raw_source": {
+        "api": "[OpenVisionAPI](https://openvisionapi.com)",
+        "description": "Open source computer vision API based on open source models",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [OpenVisionAPI](https://openvisionapi.com) | Open source computer vision API based on open source models | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-ai-for-thai-aiforthai-in-th",
+      "name": "AI For Thai",
+      "category": "Machine Learning",
+      "docs_url": "https://aiforthai.in.th/index.php",
+      "description": "Free Various Thai AI API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "aiforthai.in.th"
+      ],
+      "raw_source": {
+        "api": "[AI For Thai](https://aiforthai.in.th/index.php)",
+        "description": "Free Various Thai AI API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [AI For Thai](https://aiforthai.in.th/index.php) | Free Various Thai AI API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-cloudmersive-cloudmersive-com",
+      "name": "Cloudmersive",
+      "category": "Machine Learning",
+      "docs_url": "https://www.cloudmersive.com/image-recognition-and-processing-api",
+      "description": "Image captioning, face recognition, NSFW classification",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "cloudmersive.com"
+      ],
+      "raw_source": {
+        "api": "[Cloudmersive](https://www.cloudmersive.com/image-recognition-and-processing-api)",
+        "description": "Image captioning, face recognition, NSFW classification",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Cloudmersive](https://www.cloudmersive.com/image-recognition-and-processing-api) | Image captioning, face recognition, NSFW classification | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-hirak-faceapi-faceapi-hirak-site",
+      "name": "Hirak FaceAPI",
+      "category": "Machine Learning",
+      "docs_url": "https://faceapi.hirak.site/",
+      "description": "Face detection, face recognition with age estimation/gender estimation, accurate, no quota limits",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "faceapi.hirak.site"
+      ],
+      "raw_source": {
+        "api": "[Hirak FaceAPI](https://faceapi.hirak.site/)",
+        "description": "Face detection, face recognition with age estimation/gender estimation, accurate, no quota limits",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hirak FaceAPI](https://faceapi.hirak.site/) | Face detection, face recognition with age estimation/gender estimation, accurate, no quota limits | `apiKey` | Yes | Unknown |    "
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-inferdo-rapidapi-com",
+      "name": "Inferdo",
+      "category": "Machine Learning",
+      "docs_url": "https://rapidapi.com/user/inferdo",
+      "description": "Computer Vision services like Facial detection, Image labeling, NSFW classification",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Inferdo](https://rapidapi.com/user/inferdo)",
+        "description": "Computer Vision services like Facial detection, Image labeling, NSFW classification",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Inferdo](https://rapidapi.com/user/inferdo) | Computer Vision services like Facial detection, Image labeling, NSFW classification | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-ips-online-docs-identity-ps",
+      "name": "IPS Online",
+      "category": "Machine Learning",
+      "docs_url": "https://docs.identity.ps/docs",
+      "description": "Face and License Plate Anonymization",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "docs.identity.ps"
+      ],
+      "raw_source": {
+        "api": "[IPS Online](https://docs.identity.ps/docs)",
+        "description": "Face and License Plate Anonymization",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IPS Online](https://docs.identity.ps/docs) | Face and License Plate Anonymization | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-messengerx-io-messengerx-rtfd-io",
+      "name": "MessengerX.io",
+      "category": "Machine Learning",
+      "docs_url": "https://messengerx.rtfd.io",
+      "description": "A FREE API for developers to build and monetize personalized ML based chat apps",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "messengerx.rtfd.io"
+      ],
+      "raw_source": {
+        "api": "[MessengerX.io](https://messengerx.rtfd.io)",
+        "description": "A FREE API for developers to build and monetize personalized ML based chat apps",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [MessengerX.io](https://messengerx.rtfd.io) | A FREE API for developers to build and monetize personalized ML based chat apps | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-nlp-cloud-nlpcloud-io",
+      "name": "NLP Cloud",
+      "category": "Machine Learning",
+      "docs_url": "https://nlpcloud.io",
+      "description": "NLP API using spaCy and transformers for NER, sentiments, classification, summarization, and more",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "nlpcloud.io"
+      ],
+      "raw_source": {
+        "api": "[NLP Cloud](https://nlpcloud.io)",
+        "description": "NLP API using spaCy and transformers for NER, sentiments, classification, summarization, and more",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NLP Cloud](https://nlpcloud.io) | NLP API using spaCy and transformers for NER, sentiments, classification, summarization, and more | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-roboflow-universe-universe-roboflow-com",
+      "name": "Roboflow Universe",
+      "category": "Machine Learning",
+      "docs_url": "https://universe.roboflow.com",
+      "description": "Pre-trained computer vision models",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "yes",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "universe.roboflow.com"
+      ],
+      "raw_source": {
+        "api": "[Roboflow Universe](https://universe.roboflow.com)",
+        "description": "Pre-trained computer vision models",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Roboflow Universe](https://universe.roboflow.com) | Pre-trained computer vision models | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-skybiometry-skybiometry-com",
+      "name": "SkyBiometry",
+      "category": "Machine Learning",
+      "docs_url": "https://skybiometry.com/documentation/",
+      "description": "Face Detection, Face Recognition and Face Grouping",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "api_key",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "skybiometry.com"
+      ],
+      "raw_source": {
+        "api": "[SkyBiometry](https://skybiometry.com/documentation/)",
+        "description": "Face Detection, Face Recognition and Face Grouping",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SkyBiometry](https://skybiometry.com/documentation/) | Face Detection, Face Recognition and Face Grouping | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "machine-learning-clarifai-docs-clarifai-com",
+      "name": "Clarifai",
+      "category": "Machine Learning",
+      "docs_url": "https://docs.clarifai.com/api-guide/api-overview",
+      "description": "Computer Vision",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "knowledge"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "machine-learning",
+        "oauth2",
+        "unknown",
+        "knowledge",
+        "strategist",
+        "cortex",
+        "docs.clarifai.com"
+      ],
+      "raw_source": {
+        "api": "[Clarifai](https://docs.clarifai.com/api-guide/api-overview)",
+        "description": "Computer Vision",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Clarifai](https://docs.clarifai.com/api-guide/api-overview) | Computer Vision | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

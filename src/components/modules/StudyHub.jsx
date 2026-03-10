@@ -1,0 +1,262 @@
+// ═══════════════════════════════════════════════════
+// ANTIGRAVITY OS — Study Hub
+// 14 Business Intelligence Studies
+// ═══════════════════════════════════════════════════
+
+import { useState, useEffect } from 'react'
+import { studies, STUDY_CATEGORIES } from '../../data/studies'
+import './StudyHub.css'
+
+function StudyHub() {
+    const [activeStudy, setActiveStudy] = useState(null)
+    const [completed, setCompleted] = useState(() => {
+        try {
+            return JSON.parse(localStorage.getItem('antigravity_studies_completed') || '[]')
+        } catch { return [] }
+    })
+
+    useEffect(() => {
+        localStorage.setItem('antigravity_studies_completed', JSON.stringify(completed))
+    }, [completed])
+
+    const toggleCompleted = (id) => {
+        setCompleted(prev =>
+            prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+        )
+    }
+
+    // ── INDEX VIEW ──
+    if (activeStudy === null) {
+        return (
+            <div className="study-hub fade-in">
+                <div className="study-hero">
+                    <div className="study-hero-badge">ANTIGRAVITY</div>
+                    <h1 className="study-hero-title">ESTUDIO COMPLETO</h1>
+                    <p className="study-hero-subtitle">Plan de Negocio 2026</p>
+                    <p className="study-hero-meta">
+                        {studies.length} documentos · Estrategia de negocio · Pricing · GTM · KPIs
+                    </p>
+                    <div className="study-hero-kpis">
+                        <div className="study-hero-kpi">
+                            <div className="study-hero-kpi-value">€20K</div>
+                            <div className="study-hero-kpi-label">MRR TARGET Q4</div>
+                        </div>
+                        <div className="study-hero-kpi">
+                            <div className="study-hero-kpi-value">92.458</div>
+                            <div className="study-hero-kpi-label">EMPRESAS MURCIA</div>
+                        </div>
+                        <div className="study-hero-kpi">
+                            <div className="study-hero-kpi-value">25</div>
+                            <div className="study-hero-kpi-label">CLIENTES TARGET</div>
+                        </div>
+                        <div className="study-hero-kpi">
+                            <div className="study-hero-kpi-value">€500</div>
+                            <div className="study-hero-kpi-label">PACK STARTER</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="study-index-header">
+                    <h2>Módulos de Estudio</h2>
+                    <div className="study-progress-badge">
+                        📖 {completed.length} / {studies.length} completados
+                    </div>
+                </div>
+
+                <div className="study-progress-bar">
+                    <div
+                        className="study-progress-fill"
+                        style={{ width: `${(completed.length / studies.length) * 100}%` }}
+                    />
+                </div>
+
+                <div className="study-grid">
+                    {studies.map(study => (
+                        <button
+                            key={study.id}
+                            className={`study-card ${completed.includes(study.id) ? 'study-card-completed' : ''}`}
+                            onClick={() => setActiveStudy(study.id)}
+                        >
+                            <div className="study-card-header">
+                                <span className="study-card-number">{String(study.id).padStart(2, '0')}</span>
+                                <div className={`study-card-check ${completed.includes(study.id) ? 'checked' : ''}`}>
+                                    {completed.includes(study.id) ? '✓' : ''}
+                                </div>
+                            </div>
+                            <div className="study-card-icon">{study.icon}</div>
+                            <h3 className="study-card-title">{study.title}</h3>
+                            <p className="study-card-desc">{study.subtitle}</p>
+                            <div className="study-card-footer">
+                                <div className="study-card-tags">
+                                    {study.categories.map(cat => (
+                                        <span
+                                            key={cat}
+                                            className="study-card-tag"
+                                            style={{ color: STUDY_CATEGORIES[cat]?.color }}
+                                        >
+                                            {STUDY_CATEGORIES[cat]?.label}
+                                        </span>
+                                    ))}
+                                </div>
+                                <span className="study-card-time">⏱ {study.readTime} min</span>
+                            </div>
+                        </button>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+
+    // ── READER VIEW ──
+    const study = studies.find(s => s.id === activeStudy)
+    if (!study) return null
+
+    return (
+        <div className="study-reader fade-in">
+            {/* Sidebar nav */}
+            <nav className="study-sidebar">
+                <button className="study-sidebar-back" onClick={() => setActiveStudy(null)}>
+                    ← Volver
+                </button>
+                <div className="study-sidebar-list">
+                    {studies.map(s => (
+                        <button
+                            key={s.id}
+                            className={`study-sidebar-item ${s.id === activeStudy ? 'active' : ''} ${completed.includes(s.id) ? 'completed' : ''}`}
+                            onClick={() => setActiveStudy(s.id)}
+                        >
+                            <span className="study-sidebar-num">{String(s.id).padStart(2, '0')}</span>
+                            <span className="study-sidebar-icon">{s.icon}</span>
+                            <span className="study-sidebar-label">{s.title}</span>
+                        </button>
+                    ))}
+                </div>
+            </nav>
+
+            {/* Main content */}
+            <main className="study-main">
+                <div className="study-breadcrumb">
+                    <button onClick={() => setActiveStudy(null)}>Study Hub</button>
+                    <span>›</span>
+                    <span>{String(study.id).padStart(2, '0')} — {study.title}</span>
+                </div>
+
+                <div className="study-main-header">
+                    <div className="study-main-tags">
+                        {study.categories.map(cat => (
+                            <span key={cat} className="study-tag" style={{ color: STUDY_CATEGORIES[cat]?.color, borderColor: STUDY_CATEGORIES[cat]?.color }}>
+                                {STUDY_CATEGORIES[cat]?.label}
+                            </span>
+                        ))}
+                        <span className="study-read-time">⏱ {study.readTime} min</span>
+                    </div>
+                    <button
+                        className={`study-mark-btn ${completed.includes(study.id) ? 'marked' : ''}`}
+                        onClick={() => toggleCompleted(study.id)}
+                    >
+                        {completed.includes(study.id) ? '✅ Completado' : 'Marcar como leído'}
+                    </button>
+                </div>
+
+                <h1 className="study-title">{study.icon} {study.title}</h1>
+                <div className="study-title-bar" />
+
+                {study.subtitle && (
+                    <div className="study-meta-box">
+                        <div><strong>Alcance:</strong> Región de Murcia · Agencia AI · 2026</div>
+                        <div><strong>Metodología:</strong> Fuentes públicas, datos de plataformas, benchmarks</div>
+                        <div><strong>Fecha:</strong> Marzo 2026</div>
+                    </div>
+                )}
+
+                {study.sections.map((section, i) => (
+                    <div key={i} className="study-section">
+                        <h2 className="study-section-title">{section.title}</h2>
+                        {section.content && (
+                            <div
+                                className="study-section-content"
+                                dangerouslySetInnerHTML={{
+                                    __html: renderMarkdown(section.content)
+                                }}
+                            />
+                        )}
+                        {section.table && (
+                            <div className="study-table-wrap">
+                                <table className="study-table">
+                                    <thead>
+                                        <tr>
+                                            {section.table.headers.map((h, j) => (
+                                                <th key={j}>{h}</th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {section.table.rows.map((row, j) => (
+                                            <tr key={j}>
+                                                {row.map((cell, k) => (
+                                                    <td key={k} dangerouslySetInnerHTML={{ __html: renderMarkdown(cell) }} />
+                                                ))}
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                    </div>
+                ))}
+
+                <div className="study-nav-buttons">
+                    {study.id > 0 && (
+                        <button className="btn" onClick={() => setActiveStudy(study.id - 1)}>
+                            ← {studies[study.id - 1]?.title}
+                        </button>
+                    )}
+                    <div style={{ flex: 1 }} />
+                    {study.id < studies.length - 1 && (
+                        <button className="btn btn-primary" onClick={() => setActiveStudy(study.id + 1)}>
+                            {studies[study.id + 1]?.title} →
+                        </button>
+                    )}
+                </div>
+            </main>
+        </div>
+    )
+}
+
+// ── Simple markdown renderer ──
+function renderMarkdown(text) {
+    if (!text) return ''
+    return text
+        // Bold
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        // Italic
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        // Inline code
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        // Headers within content
+        .replace(/^### (.*$)/gm, '<h4>$1</h4>')
+        .replace(/^## (.*$)/gm, '<h3>$1</h3>')
+        // Tables (simple markdown tables)
+        .replace(/^\|(.+)\|$/gm, (match) => {
+            const cells = match.split('|').filter(c => c.trim())
+            if (cells.every(c => /^[\s-:]+$/.test(c))) return '' // separator row
+            const isHeader = false
+            const tag = isHeader ? 'th' : 'td'
+            return `<tr>${cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('')}</tr>`
+        })
+        // Wrap consecutive table rows
+        .replace(/((<tr>.*<\/tr>\n?)+)/g, '<table class="study-inline-table">$1</table>')
+        // Lists
+        .replace(/^- (.*$)/gm, '<li>$1</li>')
+        .replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`)
+        // Numbered lists
+        .replace(/^\d+\. (.*$)/gm, '<li>$1</li>')
+        // Paragraphs (double newline)
+        .replace(/\n\n/g, '</p><p>')
+        // Single newlines
+        .replace(/\n/g, '<br>')
+        // Wrap in paragraph
+        .replace(/^(.+)/, '<p>$1</p>')
+}
+
+export default StudyHub

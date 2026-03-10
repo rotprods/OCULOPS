@@ -1,0 +1,1033 @@
+{
+  "category": "Science & Math",
+  "slug": "science-math",
+  "count": 33,
+  "entries": [
+    {
+      "slug": "science-math-arcsecond-io-api-arcsecond-io",
+      "name": "arcsecond.io",
+      "category": "Science & Math",
+      "docs_url": "https://api.arcsecond.io/",
+      "description": "Multiple astronomy data sources",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "api.arcsecond.io"
+      ],
+      "raw_source": {
+        "api": "[arcsecond.io](https://api.arcsecond.io/)",
+        "description": "Multiple astronomy data sources",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [arcsecond.io](https://api.arcsecond.io/) | Multiple astronomy data sources | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-arxiv-arxiv-org",
+      "name": "arXiv",
+      "category": "Science & Math",
+      "docs_url": "https://arxiv.org/help/api/user-manual",
+      "description": "Curated research-sharing platform: physics, mathematics, quantitative finance, and economics",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "arxiv.org"
+      ],
+      "raw_source": {
+        "api": "[arXiv](https://arxiv.org/help/api/user-manual)",
+        "description": "Curated research-sharing platform: physics, mathematics, quantitative finance, and economics",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [arXiv](https://arxiv.org/help/api/user-manual) | Curated research-sharing platform: physics, mathematics, quantitative finance, and economics | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-launch-library-2-thespacedevs-com",
+      "name": "Launch Library 2",
+      "category": "Science & Math",
+      "docs_url": "https://thespacedevs.com/llapi",
+      "description": "Spaceflight launches and events database",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "yes",
+        "thespacedevs.com"
+      ],
+      "raw_source": {
+        "api": "[Launch Library 2](https://thespacedevs.com/llapi)",
+        "description": "Spaceflight launches and events database",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Launch Library 2](https://thespacedevs.com/llapi) | Spaceflight launches and events database | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-nasa-api-nasa-gov",
+      "name": "NASA",
+      "category": "Science & Math",
+      "docs_url": "https://api.nasa.gov",
+      "description": "NASA data, including imagery",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "api.nasa.gov"
+      ],
+      "raw_source": {
+        "api": "[NASA](https://api.nasa.gov)",
+        "description": "NASA data, including imagery",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [NASA](https://api.nasa.gov) | NASA data, including imagery | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-open-science-framework-developer-osf-io",
+      "name": "Open Science Framework",
+      "category": "Science & Math",
+      "docs_url": "https://developer.osf.io",
+      "description": "Repository and archive for study designs, research materials, data, manuscripts, etc",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "developer.osf.io"
+      ],
+      "raw_source": {
+        "api": "[Open Science Framework](https://developer.osf.io)",
+        "description": "Repository and archive for study designs, research materials, data, manuscripts, etc",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Science Framework](https://developer.osf.io) | Repository and archive for study designs, research materials, data, manuscripts, etc | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-purple-air-www2-purpleair-com",
+      "name": "Purple Air",
+      "category": "Science & Math",
+      "docs_url": "https://www2.purpleair.com/",
+      "description": "Real Time Air Quality Monitoring",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "atlas"
+      ],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "atlas",
+        "www2.purpleair.com"
+      ],
+      "raw_source": {
+        "api": "[Purple Air](https://www2.purpleair.com/)",
+        "description": "Real Time Air Quality Monitoring",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Purple Air](https://www2.purpleair.com/) | Real Time Air Quality Monitoring | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-share-share-osf-io",
+      "name": "SHARE",
+      "category": "Science & Math",
+      "docs_url": "https://share.osf.io/api/v2/",
+      "description": "A free, open, dataset about research and scholarly activities",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "share.osf.io"
+      ],
+      "raw_source": {
+        "api": "[SHARE](https://share.osf.io/api/v2/)",
+        "description": "A free, open, dataset about research and scholarly activities",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [SHARE](https://share.osf.io/api/v2/) | A free, open, dataset about research and scholarly activities | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-spacex-github-com",
+      "name": "SpaceX",
+      "category": "Science & Math",
+      "docs_url": "https://github.com/r-spacex/SpaceX-API",
+      "description": "Company, vehicle, launchpad and launch data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[SpaceX](https://github.com/r-spacex/SpaceX-API)",
+        "description": "Company, vehicle, launchpad and launch data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [SpaceX](https://github.com/r-spacex/SpaceX-API) | Company, vehicle, launchpad and launch data | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-spacex-api-spacex-land",
+      "name": "SpaceX",
+      "category": "Science & Math",
+      "docs_url": "https://api.spacex.land/graphql/",
+      "description": "GraphQL, Company, Ships, launchpad and launch data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "api.spacex.land"
+      ],
+      "raw_source": {
+        "api": "[SpaceX](https://api.spacex.land/graphql/)",
+        "description": "GraphQL, Company, Ships, launchpad and launch data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SpaceX](https://api.spacex.land/graphql/) | GraphQL, Company, Ships, launchpad and launch data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-usgs-earthquake-hazards-program-earthquake-usgs-gov",
+      "name": "USGS Earthquake Hazards Program",
+      "category": "Science & Math",
+      "docs_url": "https://earthquake.usgs.gov/fdsnws/event/1/",
+      "description": "Earthquakes data real-time",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "earthquake.usgs.gov"
+      ],
+      "raw_source": {
+        "api": "[USGS Earthquake Hazards Program](https://earthquake.usgs.gov/fdsnws/event/1/)",
+        "description": "Earthquakes data real-time",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/fdsnws/event/1/) | Earthquakes data real-time | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-world-bank-datahelpdesk-worldbank-org",
+      "name": "World Bank",
+      "category": "Science & Math",
+      "docs_url": "https://datahelpdesk.worldbank.org/knowledgebase/topics/125589",
+      "description": "World Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "datahelpdesk.worldbank.org"
+      ],
+      "raw_source": {
+        "api": "[World Bank](https://datahelpdesk.worldbank.org/knowledgebase/topics/125589)",
+        "description": "World Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [World Bank](https://datahelpdesk.worldbank.org/knowledgebase/topics/125589) | World Data | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-core-core-ac-uk",
+      "name": "CORE",
+      "category": "Science & Math",
+      "docs_url": "https://core.ac.uk/services#api",
+      "description": "Access the world's Open Access research papers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "api_key",
+        "unknown",
+        "core.ac.uk"
+      ],
+      "raw_source": {
+        "api": "[CORE](https://core.ac.uk/services#api)",
+        "description": "Access the world's Open Access research papers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CORE](https://core.ac.uk/services#api) | Access the world's Open Access research papers | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-materials-platform-for-data-science-mpds-io",
+      "name": "Materials Platform for Data Science",
+      "category": "Science & Math",
+      "docs_url": "https://mpds.io",
+      "description": "Curated experimental data for materials science",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "api_key",
+        "no",
+        "mpds.io"
+      ],
+      "raw_source": {
+        "api": "[Materials Platform for Data Science](https://mpds.io)",
+        "description": "Curated experimental data for materials science",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Materials Platform for Data Science](https://mpds.io) | Curated experimental data for materials science | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-nasa-ads-ui-adsabs-harvard-edu",
+      "name": "NASA ADS",
+      "category": "Science & Math",
+      "docs_url": "https://ui.adsabs.harvard.edu/help/api/api-docs.html",
+      "description": "NASA Astrophysics Data System",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "oauth2",
+        "yes",
+        "ui.adsabs.harvard.edu"
+      ],
+      "raw_source": {
+        "api": "[NASA ADS](https://ui.adsabs.harvard.edu/help/api/api-docs.html)",
+        "description": "NASA Astrophysics Data System",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [NASA ADS](https://ui.adsabs.harvard.edu/help/api/api-docs.html) | NASA Astrophysics Data System | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-gbif-gbif-org",
+      "name": "GBIF",
+      "category": "Science & Math",
+      "docs_url": "https://www.gbif.org/developer/summary",
+      "description": "Global Biodiversity Information Facility",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "yes",
+        "gbif.org"
+      ],
+      "raw_source": {
+        "api": "[GBIF](https://www.gbif.org/developer/summary)",
+        "description": "Global Biodiversity Information Facility",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [GBIF](https://www.gbif.org/developer/summary) | Global Biodiversity Information Facility | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-idigbio-github-com",
+      "name": "iDigBio",
+      "category": "Science & Math",
+      "docs_url": "https://github.com/idigbio/idigbio-search-api/wiki",
+      "description": "Access millions of museum specimens from organizations around the world",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[iDigBio](https://github.com/idigbio/idigbio-search-api/wiki)",
+        "description": "Access millions of museum specimens from organizations around the world",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [iDigBio](https://github.com/idigbio/idigbio-search-api/wiki) | Access millions of museum specimens from organizations around the world | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-inspirehep-net-github-com",
+      "name": "inspirehep.net",
+      "category": "Science & Math",
+      "docs_url": "https://github.com/inspirehep/rest-api-doc",
+      "description": "High Energy Physics info. system",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[inspirehep.net](https://github.com/inspirehep/rest-api-doc)",
+        "description": "High Energy Physics info. system",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [inspirehep.net](https://github.com/inspirehep/rest-api-doc) | High Energy Physics info. system | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-iseven-humor-isevenapi-xyz",
+      "name": "isEven (humor)",
+      "category": "Science & Math",
+      "docs_url": "https://isevenapi.xyz/",
+      "description": "Check if a number is even",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "isevenapi.xyz"
+      ],
+      "raw_source": {
+        "api": "[isEven (humor)](https://isevenapi.xyz/)",
+        "description": "Check if a number is even",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [isEven (humor)](https://isevenapi.xyz/) | Check if a number is even | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-isro-isro-vercel-app",
+      "name": "ISRO",
+      "category": "Science & Math",
+      "docs_url": "https://isro.vercel.app",
+      "description": "ISRO Space Crafts Information",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "isro.vercel.app"
+      ],
+      "raw_source": {
+        "api": "[ISRO](https://isro.vercel.app)",
+        "description": "ISRO Space Crafts Information",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [ISRO](https://isro.vercel.app) | ISRO Space Crafts Information | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-itis-itis-gov",
+      "name": "ITIS",
+      "category": "Science & Math",
+      "docs_url": "https://www.itis.gov/ws_description.html",
+      "description": "Integrated Taxonomic Information System",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "itis.gov"
+      ],
+      "raw_source": {
+        "api": "[ITIS](https://www.itis.gov/ws_description.html)",
+        "description": "Integrated Taxonomic Information System",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ITIS](https://www.itis.gov/ws_description.html) | Integrated Taxonomic Information System | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-newton-newton-vercel-app",
+      "name": "Newton",
+      "category": "Science & Math",
+      "docs_url": "https://newton.vercel.app",
+      "description": "Symbolic and Arithmetic Math Calculator",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "newton.vercel.app"
+      ],
+      "raw_source": {
+        "api": "[Newton](https://newton.vercel.app)",
+        "description": "Symbolic and Arithmetic Math Calculator",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Newton](https://newton.vercel.app) | Symbolic and Arithmetic Math Calculator | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-noctua-api-noctuasky-com",
+      "name": "Noctua",
+      "category": "Science & Math",
+      "docs_url": "https://api.noctuasky.com/api/v1/swaggerdoc/",
+      "description": "REST API used to access NoctuaSky features",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "api.noctuasky.com"
+      ],
+      "raw_source": {
+        "api": "[Noctua](https://api.noctuasky.com/api/v1/swaggerdoc/)",
+        "description": "REST API used to access NoctuaSky features",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Noctua](https://api.noctuasky.com/api/v1/swaggerdoc/) | REST API used to access NoctuaSky features | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-ocean-facts-oceanfacts-herokuapp-com",
+      "name": "Ocean Facts",
+      "category": "Science & Math",
+      "docs_url": "https://oceanfacts.herokuapp.com/",
+      "description": "Facts pertaining to the physical science of Oceanography",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "oceanfacts.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Ocean Facts](https://oceanfacts.herokuapp.com/)",
+        "description": "Facts pertaining to the physical science of Oceanography",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Ocean Facts](https://oceanfacts.herokuapp.com/) | Facts pertaining to the physical science of Oceanography | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-remote-calc-github-com",
+      "name": "Remote Calc",
+      "category": "Science & Math",
+      "docs_url": "https://github.com/elizabethadegbaju/remotecalc",
+      "description": "Decodes base64 encoding and parses it to return a solution to the calculation in JSON",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Remote Calc](https://github.com/elizabethadegbaju/remotecalc)",
+        "description": "Decodes base64 encoding and parses it to return a solution to the calculation in JSON",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Remote Calc](https://github.com/elizabethadegbaju/remotecalc) | Decodes base64 encoding and parses it to return a solution to the calculation in JSON | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-sunrise-and-sunset-sunrise-sunset-org",
+      "name": "Sunrise and Sunset",
+      "category": "Science & Math",
+      "docs_url": "https://sunrise-sunset.org/api",
+      "description": "Sunset and sunrise times for a given latitude and longitude",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "sunrise-sunset.org"
+      ],
+      "raw_source": {
+        "api": "[Sunrise and Sunset](https://sunrise-sunset.org/api)",
+        "description": "Sunset and sunrise times for a given latitude and longitude",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Sunrise and Sunset](https://sunrise-sunset.org/api) | Sunset and sunrise times for a given latitude and longitude | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-times-adder-github-com",
+      "name": "Times Adder",
+      "category": "Science & Math",
+      "docs_url": "https://github.com/FranP-code/API-Times-Adder",
+      "description": "With this API you can add each of the times introduced in the array sended",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Times Adder](https://github.com/FranP-code/API-Times-Adder)",
+        "description": "With this API you can add each of the times introduced in the array sended",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Times Adder](https://github.com/FranP-code/API-Times-Adder) | With this API you can add each of the times introduced in the array sended | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-tle-tle-ivanstanojevic-me",
+      "name": "TLE",
+      "category": "Science & Math",
+      "docs_url": "https://tle.ivanstanojevic.me/#/docs",
+      "description": "Satellite information",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "tle.ivanstanojevic.me"
+      ],
+      "raw_source": {
+        "api": "[TLE](https://tle.ivanstanojevic.me/#/docs)",
+        "description": "Satellite information",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [TLE](https://tle.ivanstanojevic.me/#/docs) | Satellite information | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-usgs-water-services-waterservices-usgs-gov",
+      "name": "USGS Water Services",
+      "category": "Science & Math",
+      "docs_url": "https://waterservices.usgs.gov/",
+      "description": "Water quality and level info for rivers and lakes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "waterservices.usgs.gov"
+      ],
+      "raw_source": {
+        "api": "[USGS Water Services](https://waterservices.usgs.gov/)",
+        "description": "Water quality and level info for rivers and lakes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [USGS Water Services](https://waterservices.usgs.gov/) | Water quality and level info for rivers and lakes | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-xmath-x-math-herokuapp-com",
+      "name": "xMath",
+      "category": "Science & Math",
+      "docs_url": "https://x-math.herokuapp.com/",
+      "description": "Random mathematical expressions",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "yes",
+        "x-math.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[xMath](https://x-math.herokuapp.com/)",
+        "description": "Random mathematical expressions",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [xMath](https://x-math.herokuapp.com/) | Random mathematical expressions | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-numbers-math-tools",
+      "name": "Numbers",
+      "category": "Science & Math",
+      "docs_url": "https://math.tools/api/numbers/",
+      "description": "Number of the day, random number, number facts and anything else you want to do with numbers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "api_key",
+        "no",
+        "math.tools"
+      ],
+      "raw_source": {
+        "api": "[Numbers](https://math.tools/api/numbers/)",
+        "description": "Number of the day, random number, number facts and anything else you want to do with numbers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Numbers](https://math.tools/api/numbers/) | Number of the day, random number, number facts and anything else you want to do with numbers | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-minor-planet-center-asterank-com",
+      "name": "Minor Planet Center",
+      "category": "Science & Math",
+      "docs_url": "http://www.asterank.com/mpc",
+      "description": "Asterank.com Information",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "unknown",
+        "asterank.com"
+      ],
+      "raw_source": {
+        "api": "[Minor Planet Center](http://www.asterank.com/mpc)",
+        "description": "Asterank.com Information",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Minor Planet Center](http://www.asterank.com/mpc) | Asterank.com Information | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-numbers-numbersapi-com",
+      "name": "Numbers",
+      "category": "Science & Math",
+      "docs_url": "http://numbersapi.com",
+      "description": "Facts about numbers",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "numbersapi.com"
+      ],
+      "raw_source": {
+        "api": "[Numbers](http://numbersapi.com)",
+        "description": "Facts about numbers",
+        "auth": "No",
+        "https": "No",
+        "cors": "No",
+        "markdown": "| [Numbers](http://numbersapi.com) | Facts about numbers | No | No | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "science-math-open-notify-open-notify-org",
+      "name": "Open Notify",
+      "category": "Science & Math",
+      "docs_url": "http://open-notify.org/Open-Notify-API/",
+      "description": "ISS astronauts, current location, etc",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "science-math",
+        "none",
+        "no",
+        "open-notify.org"
+      ],
+      "raw_source": {
+        "api": "[Open Notify](http://open-notify.org/Open-Notify-API/)",
+        "description": "ISS astronauts, current location, etc",
+        "auth": "No",
+        "https": "No",
+        "cors": "No",
+        "markdown": "| [Open Notify](http://open-notify.org/Open-Notify-API/) | ISS astronauts, current location, etc | No | No | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

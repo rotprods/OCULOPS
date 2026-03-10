@@ -1,0 +1,785 @@
+{
+  "category": "Test Data",
+  "slug": "test-data",
+  "count": 25,
+  "entries": [
+    {
+      "slug": "test-data-bacon-ipsum-baconipsum-com",
+      "name": "Bacon Ipsum",
+      "category": "Test Data",
+      "docs_url": "https://baconipsum.com/json-api/",
+      "description": "A Meatier Lorem Ipsum Generator",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "baconipsum.com"
+      ],
+      "raw_source": {
+        "api": "[Bacon Ipsum](https://baconipsum.com/json-api/)",
+        "description": "A Meatier Lorem Ipsum Generator",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bacon Ipsum](https://baconipsum.com/json-api/) | A Meatier Lorem Ipsum Generator | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-dicebear-avatars-avatars-dicebear-com",
+      "name": "Dicebear Avatars",
+      "category": "Test Data",
+      "docs_url": "https://avatars.dicebear.com/",
+      "description": "Generate random pixel-art avatars",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "no",
+        "avatars.dicebear.com"
+      ],
+      "raw_source": {
+        "api": "[Dicebear Avatars](https://avatars.dicebear.com/)",
+        "description": "Generate random pixel-art avatars",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Dicebear Avatars](https://avatars.dicebear.com/) | Generate random pixel-art avatars | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-english-random-words-random-words-api-vercel-app",
+      "name": "English Random Words",
+      "category": "Test Data",
+      "docs_url": "https://random-words-api.vercel.app/word",
+      "description": "Generate English Random Words with Pronunciation",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "no",
+        "random-words-api.vercel.app"
+      ],
+      "raw_source": {
+        "api": "[English Random Words](https://random-words-api.vercel.app/word)",
+        "description": "Generate English Random Words with Pronunciation",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [English Random Words](https://random-words-api.vercel.app/word) | Generate English Random Words with Pronunciation | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-fakerapi-fakerapi-it",
+      "name": "FakerAPI",
+      "category": "Test Data",
+      "docs_url": "https://fakerapi.it/en",
+      "description": "APIs collection to get fake data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "yes",
+        "fakerapi.it"
+      ],
+      "raw_source": {
+        "api": "[FakerAPI](https://fakerapi.it/en)",
+        "description": "APIs collection to get fake data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [FakerAPI](https://fakerapi.it/en) | APIs collection to get fake data | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-fakestoreapi-fakestoreapi-com",
+      "name": "FakeStoreAPI",
+      "category": "Test Data",
+      "docs_url": "https://fakestoreapi.com/",
+      "description": "Fake store rest API for your e-commerce or shopping website prototype",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "fakestoreapi.com"
+      ],
+      "raw_source": {
+        "api": "[FakeStoreAPI](https://fakestoreapi.com/)",
+        "description": "Fake store rest API for your e-commerce or shopping website prototype",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FakeStoreAPI](https://fakestoreapi.com/) | Fake store rest API for your e-commerce or shopping website prototype | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-itsthisforthat-itsthisforthat-com",
+      "name": "ItsThisForThat",
+      "category": "Test Data",
+      "docs_url": "https://itsthisforthat.com/api.php",
+      "description": "Generate Random startup ideas",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "no",
+        "itsthisforthat.com"
+      ],
+      "raw_source": {
+        "api": "[ItsThisForThat](https://itsthisforthat.com/api.php)",
+        "description": "Generate Random startup ideas",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [ItsThisForThat](https://itsthisforthat.com/api.php) | Generate Random startup ideas | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-quickmocker-quickmocker-com",
+      "name": "QuickMocker",
+      "category": "Test Data",
+      "docs_url": "https://quickmocker.com",
+      "description": "API mocking tool to generate contextual, fake or random data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "yes",
+        "quickmocker.com"
+      ],
+      "raw_source": {
+        "api": "[QuickMocker](https://quickmocker.com)",
+        "description": "API mocking tool to generate contextual, fake or random data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [QuickMocker](https://quickmocker.com) | API mocking tool to generate contextual, fake or random data | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-random-data-random-data-api-com",
+      "name": "Random Data",
+      "category": "Test Data",
+      "docs_url": "https://random-data-api.com",
+      "description": "Random data generator",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "random-data-api.com"
+      ],
+      "raw_source": {
+        "api": "[Random Data](https://random-data-api.com)",
+        "description": "Random data generator",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Random Data](https://random-data-api.com) | Random data generator | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-randomuser-randomuser-me",
+      "name": "RandomUser",
+      "category": "Test Data",
+      "docs_url": "https://randomuser.me",
+      "description": "Generates and list user data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "randomuser.me"
+      ],
+      "raw_source": {
+        "api": "[RandomUser](https://randomuser.me)",
+        "description": "Generates and list user data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [RandomUser](https://randomuser.me) | Generates and list user data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-robohash-robohash-org",
+      "name": "RoboHash",
+      "category": "Test Data",
+      "docs_url": "https://robohash.org/",
+      "description": "Generate random robot/alien avatars",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "robohash.org"
+      ],
+      "raw_source": {
+        "api": "[RoboHash](https://robohash.org/)",
+        "description": "Generate random robot/alien avatars",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [RoboHash](https://robohash.org/) | Generate random robot/alien avatars | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-spanish-random-names-random-names-api-herokuapp-com",
+      "name": "Spanish random names",
+      "category": "Test Data",
+      "docs_url": "https://random-names-api.herokuapp.com/public",
+      "description": "Generate spanish names (with gender) randomly",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "random-names-api.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Spanish random names](https://random-names-api.herokuapp.com/public)",
+        "description": "Generate spanish names (with gender) randomly",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Spanish random names](https://random-names-api.herokuapp.com/public) | Generate spanish names (with gender) randomly | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-spanish-random-words-palabras-aleatorias-public-api-herokuapp-com",
+      "name": "Spanish random words",
+      "category": "Test Data",
+      "docs_url": "https://palabras-aleatorias-public-api.herokuapp.com",
+      "description": "Generate spanish words randomly",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "palabras-aleatorias-public-api.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Spanish random words](https://palabras-aleatorias-public-api.herokuapp.com)",
+        "description": "Generate spanish words randomly",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Spanish random words](https://palabras-aleatorias-public-api.herokuapp.com) | Generate spanish words randomly | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-this-person-does-not-exist-thispersondoesnotexist-com",
+      "name": "This Person Does not Exist",
+      "category": "Test Data",
+      "docs_url": "https://thispersondoesnotexist.com",
+      "description": "Generates real-life faces of people who do not exist",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "thispersondoesnotexist.com"
+      ],
+      "raw_source": {
+        "api": "[This Person Does not Exist](https://thispersondoesnotexist.com)",
+        "description": "Generates real-life faces of people who do not exist",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [This Person Does not Exist](https://thispersondoesnotexist.com) | Generates real-life faces of people who do not exist | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-toolcarton-testimonialapi-toolcarton-com",
+      "name": "Toolcarton",
+      "category": "Test Data",
+      "docs_url": "https://testimonialapi.toolcarton.com/",
+      "description": "Generate random testimonial data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "testimonialapi.toolcarton.com"
+      ],
+      "raw_source": {
+        "api": "[Toolcarton](https://testimonialapi.toolcarton.com/)",
+        "description": "Generate random testimonial data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Toolcarton](https://testimonialapi.toolcarton.com/) | Generate random testimonial data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-uuid-generator-uuidtools-com",
+      "name": "UUID Generator",
+      "category": "Test Data",
+      "docs_url": "https://www.uuidtools.com/docs",
+      "description": "Generate UUIDs",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "no",
+        "uuidtools.com"
+      ],
+      "raw_source": {
+        "api": "[UUID Generator](https://www.uuidtools.com/docs)",
+        "description": "Generate UUIDs",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [UUID Generator](https://www.uuidtools.com/docs) | Generate UUIDs | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-yes-no-yesno-wtf",
+      "name": "Yes No",
+      "category": "Test Data",
+      "docs_url": "https://yesno.wtf/api",
+      "description": "Generate yes or no randomly",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "yesno.wtf"
+      ],
+      "raw_source": {
+        "api": "[Yes No](https://yesno.wtf/api)",
+        "description": "Generate yes or no randomly",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Yes No](https://yesno.wtf/api) | Generate yes or no randomly | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-fakejson-fakejson-com",
+      "name": "FakeJSON",
+      "category": "Test Data",
+      "docs_url": "https://fakejson.com",
+      "description": "Service to generate test and fake data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "api_key",
+        "yes",
+        "fakejson.com"
+      ],
+      "raw_source": {
+        "api": "[FakeJSON](https://fakejson.com)",
+        "description": "Service to generate test and fake data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [FakeJSON](https://fakejson.com) | Service to generate test and fake data | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-generadordni-api-generadordni-es",
+      "name": "GeneradorDNI",
+      "category": "Test Data",
+      "docs_url": "https://api.generadordni.es",
+      "description": "Data generator API. Profiles, vehicles, banks and cards, etc",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "api_key",
+        "unknown",
+        "api.generadordni.es"
+      ],
+      "raw_source": {
+        "api": "[GeneradorDNI](https://api.generadordni.es)",
+        "description": "Data generator API. Profiles, vehicles, banks and cards, etc",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GeneradorDNI](https://api.generadordni.es) | Data generator API. Profiles, vehicles, banks and cards, etc | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-mailsac-mailsac-com",
+      "name": "Mailsac",
+      "category": "Test Data",
+      "docs_url": "https://mailsac.com/docs/api",
+      "description": "Disposable Email",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "test-data",
+        "api_key",
+        "unknown",
+        "hunter",
+        "mailsac.com"
+      ],
+      "raw_source": {
+        "api": "[Mailsac](https://mailsac.com/docs/api)",
+        "description": "Disposable Email",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mailsac](https://mailsac.com/docs/api) | Disposable Email | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-mockaroo-mockaroo-com",
+      "name": "Mockaroo",
+      "category": "Test Data",
+      "docs_url": "https://www.mockaroo.com/docs",
+      "description": "Generate fake data to JSON, CSV, TXT, SQL and XML",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "api_key",
+        "unknown",
+        "mockaroo.com"
+      ],
+      "raw_source": {
+        "api": "[Mockaroo](https://www.mockaroo.com/docs)",
+        "description": "Generate fake data to JSON, CSV, TXT, SQL and XML",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mockaroo](https://www.mockaroo.com/docs) | Generate fake data to JSON, CSV, TXT, SQL and XML | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-randommer-randommer-io",
+      "name": "Randommer",
+      "category": "Test Data",
+      "docs_url": "https://randommer.io/randommer-api",
+      "description": "Random data generator",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "api_key",
+        "yes",
+        "randommer.io"
+      ],
+      "raw_source": {
+        "api": "[Randommer](https://randommer.io/randommer-api)",
+        "description": "Random data generator",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Randommer](https://randommer.io/randommer-api) | Random data generator | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-jsonplaceholder-jsonplaceholder-typicode-com",
+      "name": "JSONPlaceholder",
+      "category": "Test Data",
+      "docs_url": "http://jsonplaceholder.typicode.com/",
+      "description": "Fake data for testing and prototyping",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "jsonplaceholder.typicode.com"
+      ],
+      "raw_source": {
+        "api": "[JSONPlaceholder](http://jsonplaceholder.typicode.com/)",
+        "description": "Fake data for testing and prototyping",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [JSONPlaceholder](http://jsonplaceholder.typicode.com/) | Fake data for testing and prototyping | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-loripsum-loripsum-net",
+      "name": "Loripsum",
+      "category": "Test Data",
+      "docs_url": "http://loripsum.net/",
+      "description": "The \"lorem ipsum\" generator that doesn't suck",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "loripsum.net"
+      ],
+      "raw_source": {
+        "api": "[Loripsum](http://loripsum.net/)",
+        "description": "The \"lorem ipsum\" generator that doesn't suck",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Loripsum](http://loripsum.net/) | The \"lorem ipsum\" generator that doesn't suck | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-metaphorsum-metaphorpsum-com",
+      "name": "Metaphorsum",
+      "category": "Test Data",
+      "docs_url": "http://metaphorpsum.com/",
+      "description": "Generate demo paragraphs giving number of words and sentences",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "unknown",
+        "metaphorpsum.com"
+      ],
+      "raw_source": {
+        "api": "[Metaphorsum](http://metaphorpsum.com/)",
+        "description": "Generate demo paragraphs giving number of words and sentences",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Metaphorsum](http://metaphorpsum.com/) | Generate demo paragraphs giving number of words and sentences | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "test-data-what-the-commit-whatthecommit-com",
+      "name": "What The Commit",
+      "category": "Test Data",
+      "docs_url": "http://whatthecommit.com/index.txt",
+      "description": "Random commit message generator",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "test-data",
+        "none",
+        "yes",
+        "whatthecommit.com"
+      ],
+      "raw_source": {
+        "api": "[What The Commit](http://whatthecommit.com/index.txt)",
+        "description": "Random commit message generator",
+        "auth": "No",
+        "https": "No",
+        "cors": "Yes",
+        "markdown": "| [What The Commit](http://whatthecommit.com/index.txt) | Random commit message generator | No | No | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

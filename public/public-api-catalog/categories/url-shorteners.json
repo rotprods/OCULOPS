@@ -1,0 +1,599 @@
+{
+  "category": "URL Shorteners",
+  "slug": "url-shorteners",
+  "count": 19,
+  "entries": [
+    {
+      "slug": "url-shorteners-clickmeter-support-clickmeter-com",
+      "name": "ClickMeter",
+      "category": "URL Shorteners",
+      "docs_url": "https://support.clickmeter.com/hc/en-us/categories/201474986",
+      "description": "Monitor, compare and optimize your marketing links",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "atlas"
+      ],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "unknown",
+        "atlas",
+        "support.clickmeter.com"
+      ],
+      "raw_source": {
+        "api": "[ClickMeter](https://support.clickmeter.com/hc/en-us/categories/201474986)",
+        "description": "Monitor, compare and optimize your marketing links",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ClickMeter](https://support.clickmeter.com/hc/en-us/categories/201474986) | Monitor, compare and optimize your marketing links | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-1pt-github-com",
+      "name": "1pt",
+      "category": "URL Shorteners",
+      "docs_url": "https://github.com/1pt-co/api/blob/main/README.md",
+      "description": "A simple URL shortener",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[1pt](https://github.com/1pt-co/api/blob/main/README.md)",
+        "description": "A simple URL shortener",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [1pt](https://github.com/1pt-co/api/blob/main/README.md) | A simple URL shortener | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-cleanuri-cleanuri-com",
+      "name": "CleanURI",
+      "category": "URL Shorteners",
+      "docs_url": "https://cleanuri.com/docs",
+      "description": "URL shortener service",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "yes",
+        "cleanuri.com"
+      ],
+      "raw_source": {
+        "api": "[CleanURI](https://cleanuri.com/docs)",
+        "description": "URL shortener service",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [CleanURI](https://cleanuri.com/docs) | URL shortener service | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-drivet-url-shortener-wiki-drivet-xyz",
+      "name": "Drivet URL Shortener",
+      "category": "URL Shorteners",
+      "docs_url": "https://wiki.drivet.xyz/en/url-shortener/add-links",
+      "description": "Shorten a long URL easily and fast",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "unknown",
+        "wiki.drivet.xyz"
+      ],
+      "raw_source": {
+        "api": "[Drivet URL Shortener](https://wiki.drivet.xyz/en/url-shortener/add-links)",
+        "description": "Shorten a long URL easily and fast",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Drivet URL Shortener](https://wiki.drivet.xyz/en/url-shortener/add-links) | Shorten a long URL easily and fast | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-free-url-shortener-ulvis-net",
+      "name": "Free Url Shortener",
+      "category": "URL Shorteners",
+      "docs_url": "https://ulvis.net/developer.html",
+      "description": "Free URL Shortener offers a powerful API to interact with other sites",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "unknown",
+        "ulvis.net"
+      ],
+      "raw_source": {
+        "api": "[Free Url Shortener](https://ulvis.net/developer.html)",
+        "description": "Free URL Shortener offers a powerful API to interact with other sites",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Free Url Shortener](https://ulvis.net/developer.html) | Free URL Shortener offers a powerful API to interact with other sites | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-git-io-github-blog",
+      "name": "Git.io",
+      "category": "URL Shorteners",
+      "docs_url": "https://github.blog/2011-11-10-git-io-github-url-shortener/",
+      "description": "Git.io URL shortener",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "unknown",
+        "github.blog"
+      ],
+      "raw_source": {
+        "api": "[Git.io](https://github.blog/2011-11-10-git-io-github-url-shortener/)",
+        "description": "Git.io URL shortener",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Git.io](https://github.blog/2011-11-10-git-io-github-url-shortener/) | Git.io URL shortener | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-gotiny-github-com",
+      "name": "GoTiny",
+      "category": "URL Shorteners",
+      "docs_url": "https://github.com/robvanbakel/gotiny-api",
+      "description": "A lightweight URL shortener, focused on ease-of-use for the developer and end-user",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[GoTiny](https://github.com/robvanbakel/gotiny-api)",
+        "description": "A lightweight URL shortener, focused on ease-of-use for the developer and end-user",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [GoTiny](https://github.com/robvanbakel/gotiny-api) | A lightweight URL shortener, focused on ease-of-use for the developer and end-user | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-mgnet-me-mgnet-me",
+      "name": "Mgnet.me",
+      "category": "URL Shorteners",
+      "docs_url": "http://mgnet.me/api.html",
+      "description": "Torrent URL shorten API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "no",
+        "mgnet.me"
+      ],
+      "raw_source": {
+        "api": "[Mgnet.me](http://mgnet.me/api.html)",
+        "description": "Torrent URL shorten API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Mgnet.me](http://mgnet.me/api.html) | Torrent URL shorten API | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-owo-owo-vc",
+      "name": "owo",
+      "category": "URL Shorteners",
+      "docs_url": "https://owo.vc/api",
+      "description": "A simple link obfuscator/shortener",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "unknown",
+        "owo.vc"
+      ],
+      "raw_source": {
+        "api": "[owo](https://owo.vc/api)",
+        "description": "A simple link obfuscator/shortener",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [owo](https://owo.vc/api) | A simple link obfuscator/shortener | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-short-link-github-com",
+      "name": "Short Link",
+      "category": "URL Shorteners",
+      "docs_url": "https://github.com/FayasNoushad/Short-Link-API",
+      "description": "Short URLs support so many domains",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Short Link](https://github.com/FayasNoushad/Short-Link-API)",
+        "description": "Short URLs support so many domains",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Short Link](https://github.com/FayasNoushad/Short-Link-API) | Short URLs support so many domains | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-shrtcode-shrtco-de",
+      "name": "Shrtcode",
+      "category": "URL Shorteners",
+      "docs_url": "https://shrtco.de/docs",
+      "description": "URl Shortener with multiple Domains",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "none",
+        "yes",
+        "shrtco.de"
+      ],
+      "raw_source": {
+        "api": "[Shrtcode](https://shrtco.de/docs)",
+        "description": "URl Shortener with multiple Domains",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Shrtcode](https://shrtco.de/docs) | URl Shortener with multiple Domains | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-clico-cli-com",
+      "name": "Clico",
+      "category": "URL Shorteners",
+      "docs_url": "https://cli.com/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config",
+      "description": "URL shortener service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "unknown",
+        "cli.com"
+      ],
+      "raw_source": {
+        "api": "[Clico](https://cli.com/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config)",
+        "description": "URL shortener service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Clico](https://cli.com/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config) | URL shortener service | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-cutt-ly-cutt-ly",
+      "name": "Cutt.ly",
+      "category": "URL Shorteners",
+      "docs_url": "https://cutt.ly/api-documentation/cuttly-links-api",
+      "description": "URL shortener service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "unknown",
+        "cutt.ly"
+      ],
+      "raw_source": {
+        "api": "[Cutt.ly](https://cutt.ly/api-documentation/cuttly-links-api)",
+        "description": "URL shortener service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Cutt.ly](https://cutt.ly/api-documentation/cuttly-links-api) | URL shortener service | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-kutt-docs-kutt-it",
+      "name": "Kutt",
+      "category": "URL Shorteners",
+      "docs_url": "https://docs.kutt.it/",
+      "description": "Free Modern URL Shortener",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "yes",
+        "docs.kutt.it"
+      ],
+      "raw_source": {
+        "api": "[Kutt](https://docs.kutt.it/)",
+        "description": "Free Modern URL Shortener",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Kutt](https://docs.kutt.it/) | Free Modern URL Shortener | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-rebrandly-developers-rebrandly-com",
+      "name": "Rebrandly",
+      "category": "URL Shorteners",
+      "docs_url": "https://developers.rebrandly.com/v1/docs",
+      "description": "Custom URL shortener for sharing branded links",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "unknown",
+        "developers.rebrandly.com"
+      ],
+      "raw_source": {
+        "api": "[Rebrandly](https://developers.rebrandly.com/v1/docs)",
+        "description": "Custom URL shortener for sharing branded links",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Rebrandly](https://developers.rebrandly.com/v1/docs) | Custom URL shortener for sharing branded links | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-shrtlnk-shrtlnk-dev",
+      "name": "Shrtlnk",
+      "category": "URL Shorteners",
+      "docs_url": "https://shrtlnk.dev/developer",
+      "description": "Simple and efficient short link creation",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "yes",
+        "shrtlnk.dev"
+      ],
+      "raw_source": {
+        "api": "[Shrtlnk](https://shrtlnk.dev/developer)",
+        "description": "Simple and efficient short link creation",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Shrtlnk](https://shrtlnk.dev/developer) | Simple and efficient short link creation | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-tinyurl-tinyurl-com",
+      "name": "TinyURL",
+      "category": "URL Shorteners",
+      "docs_url": "https://tinyurl.com/app/dev",
+      "description": "Shorten long URLs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "no",
+        "tinyurl.com"
+      ],
+      "raw_source": {
+        "api": "[TinyURL](https://tinyurl.com/app/dev)",
+        "description": "Shorten long URLs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [TinyURL](https://tinyurl.com/app/dev) | Shorten long URLs | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-urlbae-urlbae-com",
+      "name": "UrlBae",
+      "category": "URL Shorteners",
+      "docs_url": "https://urlbae.com/developers",
+      "description": "Simple and efficient short link creation",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "api_key",
+        "yes",
+        "urlbae.com"
+      ],
+      "raw_source": {
+        "api": "[UrlBae](https://urlbae.com/developers)",
+        "description": "Simple and efficient short link creation",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [UrlBae](https://urlbae.com/developers) | Simple and efficient short link creation | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "url-shorteners-bitly-dev-bitly-com",
+      "name": "Bitly",
+      "category": "URL Shorteners",
+      "docs_url": "http://dev.bitly.com/get_started.html",
+      "description": "URL shortener and link management",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "url-shorteners",
+        "oauth2",
+        "unknown",
+        "dev.bitly.com"
+      ],
+      "raw_source": {
+        "api": "[Bitly](http://dev.bitly.com/get_started.html)",
+        "description": "URL shortener and link management",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bitly](http://dev.bitly.com/get_started.html) | URL shortener and link management | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

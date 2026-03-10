@@ -1,0 +1,193 @@
+{
+  "category": "Vehicle",
+  "slug": "vehicle",
+  "count": 6,
+  "entries": [
+    {
+      "slug": "vehicle-brazilian-vehicles-and-prices-deividfortuna-github-io",
+      "name": "Brazilian Vehicles and Prices",
+      "category": "Vehicle",
+      "docs_url": "https://deividfortuna.github.io/fipe/",
+      "description": "Vehicles information from Fundação Instituto de Pesquisas Econômicas - Fipe",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "vehicle",
+        "none",
+        "no",
+        "deividfortuna.github.io"
+      ],
+      "raw_source": {
+        "api": "[Brazilian Vehicles and Prices](https://deividfortuna.github.io/fipe/)",
+        "description": "Vehicles information from Fundação Instituto de Pesquisas Econômicas - Fipe",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Brazilian Vehicles and Prices](https://deividfortuna.github.io/fipe/) | Vehicles information from Fundação Instituto de Pesquisas Econômicas - Fipe | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "vehicle-helipaddy-sites-helipaddy-com",
+      "name": "Helipaddy sites",
+      "category": "Vehicle",
+      "docs_url": "https://helipaddy.com/api/",
+      "description": "Helicopter and passenger drone landing site directory, Helipaddy data and much more",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "vehicle",
+        "api_key",
+        "unknown",
+        "helipaddy.com"
+      ],
+      "raw_source": {
+        "api": "[Helipaddy sites](https://helipaddy.com/api/)",
+        "description": "Helicopter and passenger drone landing site directory, Helipaddy data and much more",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Helipaddy sites](https://helipaddy.com/api/) | Helicopter and passenger drone landing site directory, Helipaddy data and much more | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "vehicle-mercedes-benz-developer-mercedes-benz-com",
+      "name": "Mercedes-Benz",
+      "category": "Vehicle",
+      "docs_url": "https://developer.mercedes-benz.com/apis",
+      "description": "Telematics data, remotely access vehicle functions, car configurator, locate service dealers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "vehicle",
+        "api_key",
+        "no",
+        "developer.mercedes-benz.com"
+      ],
+      "raw_source": {
+        "api": "[Mercedes-Benz](https://developer.mercedes-benz.com/apis)",
+        "description": "Telematics data, remotely access vehicle functions, car configurator, locate service dealers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Mercedes-Benz](https://developer.mercedes-benz.com/apis) | Telematics data, remotely access vehicle functions, car configurator, locate service dealers | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "vehicle-smartcar-smartcar-com",
+      "name": "Smartcar",
+      "category": "Vehicle",
+      "docs_url": "https://smartcar.com/docs/",
+      "description": "Lock and unlock vehicles and get data like odometer reading and location. Works on most new cars",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "vehicle",
+        "oauth2",
+        "yes",
+        "smartcar.com"
+      ],
+      "raw_source": {
+        "api": "[Smartcar](https://smartcar.com/docs/)",
+        "description": "Lock and unlock vehicles and get data like odometer reading and location. Works on most new cars",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Smartcar](https://smartcar.com/docs/) | Lock and unlock vehicles and get data like odometer reading and location. Works on most new cars | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "vehicle-nhtsa-vpic-nhtsa-dot-gov",
+      "name": "NHTSA",
+      "category": "Vehicle",
+      "docs_url": "https://vpic.nhtsa.dot.gov/api/",
+      "description": "NHTSA Product Information Catalog and Vehicle Listing",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "vehicle",
+        "none",
+        "unknown",
+        "vpic.nhtsa.dot.gov"
+      ],
+      "raw_source": {
+        "api": "[NHTSA](https://vpic.nhtsa.dot.gov/api/)",
+        "description": "NHTSA Product Information Catalog and Vehicle Listing",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NHTSA](https://vpic.nhtsa.dot.gov/api/) | NHTSA Product Information Catalog and Vehicle Listing | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "vehicle-kelley-blue-book-developer-kbb-com",
+      "name": "Kelley Blue Book",
+      "category": "Vehicle",
+      "docs_url": "http://developer.kbb.com/#!/data/1-Default",
+      "description": "Vehicle info, pricing, configuration, plus much more",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "vehicle",
+        "api_key",
+        "no",
+        "developer.kbb.com"
+      ],
+      "raw_source": {
+        "api": "[Kelley Blue Book](http://developer.kbb.com/#!/data/1-Default)",
+        "description": "Vehicle info, pricing, configuration, plus much more",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Kelley Blue Book](http://developer.kbb.com/#!/data/1-Default) | Vehicle info, pricing, configuration, plus much more | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

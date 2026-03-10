@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANTIGRAVITY OS v10 — Strategic Intelligence</title>
+  <meta name="description" content="Sistema Operativo de Inteligencia Estratégica para agencia de IA autónoma">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+
+<body>
+  <div class="app" id="app">
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">AG</div>
+        <div>
+          <div class="logo-text">Antigravity</div>
+          <div class="logo-version">OS v10</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <!-- Layer 0: Control -->
+        <div class="nav-section">
+          <div class="nav-section-title">
+            <span class="layer-dot" style="background:#e74c3c"></span>
+            Central
+          </div>
+          <div class="nav-item active" data-module="control-tower" onclick="App.navigate('control-tower')">
+            <span class="nav-icon">📡</span>Control Tower
+          </div>
+          <div class="nav-item" data-module="execution" onclick="App.navigate('execution')">
+            <span class="nav-icon">🚀</span>Execution OS
+          </div>
+        </div>
+        <!-- Layer 1: Intelligence -->
+        <div class="nav-section">
+          <div class="nav-section-title">
+            <span class="layer-dot" style="background:#4ecdc4"></span>
+            Inteligencia
+          </div>
+          <div class="nav-item" data-module="intelligence" onclick="App.navigate('intelligence')">
+            <span class="nav-icon">🌍</span>Market Intel
+          </div>
+          <div class="nav-item" data-module="data-brain" onclick="App.navigate('data-brain')">
+            <span class="nav-icon">🧠</span>Data Brain
+          </div>
+        </div>
+        <!-- Layer 2: Decision -->
+        <div class="nav-section">
+          <div class="nav-section-title">
+            <span class="layer-dot" style="background:#45b7d1"></span>
+            Decisión
+          </div>
+          <div class="nav-item" data-module="decision" onclick="App.navigate('decision')">
+            <span class="nav-icon">⚖️</span>Decision Ops
+          </div>
+          <div class="nav-item" data-module="simulation" onclick="App.navigate('simulation')">
+            <span class="nav-icon">📊</span>Simulación
+          </div>
+        </div>
+        <!-- Layer 3: Action -->
+        <div class="nav-section">
+          <div class="nav-section-title">
+            <span class="layer-dot" style="background:#f7dc6f"></span>
+            Acción
+          </div>
+          <div class="nav-item" data-module="gtm" onclick="App.navigate('gtm')">
+            <span class="nav-icon">🎯</span>GTM Machine
+          </div>
+          <div class="nav-item" data-module="pipeline" onclick="App.navigate('pipeline')">
+            <span class="nav-icon">🔄</span>Sales Pipeline
+          </div>
+        </div>
+        <!-- Layer 4: Control -->
+        <div class="nav-section">
+          <div class="nav-section-title">
+            <span class="layer-dot" style="background:#e74c3c"></span>
+            Control
+          </div>
+          <div class="nav-item" data-module="watchtower" onclick="App.navigate('watchtower')">
+            <span class="nav-icon">🗼</span>Watchtower
+          </div>
+          <div class="nav-item" data-module="finance" onclick="App.navigate('finance')">
+            <span class="nav-icon">💰</span>Finance
+          </div>
+        </div>
+        <!-- Layer 5: Learn -->
+        <div class="nav-section">
+          <div class="nav-section-title">
+            <span class="layer-dot" style="background:#9b59b6"></span>
+            Aprendizaje
+          </div>
+          <div class="nav-item" data-module="opportunities" onclick="App.navigate('opportunities')">
+            <span class="nav-icon">💎</span>Opportunities
+          </div>
+          <div class="nav-item" data-module="knowledge" onclick="App.navigate('knowledge')">
+            <span class="nav-icon">📚</span>Knowledge Vault
+          </div>
+        </div>
+        <!-- Layer 6: Agents -->
+        <div class="nav-section">
+          <div class="nav-section-title">
+            <span class="layer-dot" style="background:#5ac8fa"></span>
+            AI Agents
+          </div>
+          <div class="nav-item" data-module="agents" onclick="App.navigate('agents')">
+            <span class="nav-icon">🤖</span>AI Agents
+          </div>
+        </div>
+      </nav>
+      <!-- Sidebar Footer -->
+      <div style="padding: var(--space-4) var(--space-5); border-top: 1px solid var(--border-subtle);">
+        <div style="font-size: var(--text-xs); color: var(--text-tertiary); font-family: var(--font-mono);">
+          META: 0 → 100k€/mes
+        </div>
+        <div class="progress-bar mt-2">
+          <div class="progress-fill" id="global-progress" style="width: 0%"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="header">
+      <button class="btn-icon btn-ghost" onclick="App.toggleSidebar()" style="display:none" id="mobile-menu">☰</button>
+      <h2 class="header-title" id="header-title">Control Tower</h2>
+      <div style="flex:1;max-width:320px;position:relative" id="search-wrapper">
+        <input class="input" id="global-search" placeholder="🔍 Buscar entidades... (leads, signals, etc.)"
+          style="font-size:var(--text-xs);padding:var(--space-2) var(--space-3);background:var(--bg-card)"
+          oninput="App.globalSearch(this.value)" onfocus="App.globalSearch(this.value)"
+          onblur="setTimeout(()=>document.getElementById('search-results').style.display='none', 200)">
+        <div id="search-results"
+          style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg-card);border:1px solid var(--border-default);border-radius:var(--radius-md);max-height:300px;overflow-y:auto;z-index:500;box-shadow:var(--shadow-lg);margin-top:4px">
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="header-status">
+          <div class="system-pulse"></div>
+          <span id="header-date"></span>
+        </div>
+        <button class="btn btn-sm" onclick="CmdPalette.open()" title="⌘K">⌘K</button>
+        <button class="btn btn-sm" onclick="App.exportData()" title="Exportar datos">📥 Export</button>
+        <button class="btn btn-sm" onclick="document.getElementById('import-file').click()" title="Importar datos">📤
+          Import</button>
+        <input type="file" id="import-file" accept=".json" style="display:none" onchange="App.importData(event)">
+      </div>
+    </header>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <main class="main-content" id="main-content">
+
+      <!-- ── CONTROL TOWER ── -->
+      <div class="module active" id="mod-control-tower"></div>
+
+      <!-- ── EXECUTION OS ── -->
+      <div class="module" id="mod-execution"></div>
+
+      <!-- ── MARKET INTELLIGENCE ── -->
+      <div class="module" id="mod-intelligence"></div>
+
+      <!-- ── DATA BRAIN ── -->
+      <div class="module" id="mod-data-brain"></div>
+
+      <!-- ── DECISION OPS ── -->
+      <div class="module" id="mod-decision"></div>
+
+      <!-- ── SIMULATION ENGINE ── -->
+      <div class="module" id="mod-simulation"></div>
+
+      <!-- ── GTM MACHINE ── -->
+      <div class="module" id="mod-gtm"></div>
+
+      <!-- ── SALES PIPELINE ── -->
+      <div class="module" id="mod-pipeline"></div>
+
+      <!-- ── WATCHTOWER ── -->
+      <div class="module" id="mod-watchtower"></div>
+
+      <!-- ── FINANCE ── -->
+      <div class="module" id="mod-finance"></div>
+
+      <!-- ── OPPORTUNITIES ── -->
+      <div class="module" id="mod-opportunities"></div>
+
+      <!-- ── KNOWLEDGE VAULT ── -->
+      <div class="module" id="mod-knowledge"></div>
+
+      <!-- ── AI AGENTS ── -->
+      <div class="module" id="mod-agents"></div>
+    </main>
+  </div>
+
+  <!-- Modal System -->
+  <div class="modal-backdrop" id="modal-backdrop" onclick="App.closeModal()">
+    <div class="modal" id="modal-content" onclick="event.stopPropagation()"></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Command Palette -->
+  <div class="cmd-palette-backdrop" id="cmd-backdrop" onclick="CmdPalette.close()">
+    <div class="cmd-palette" onclick="event.stopPropagation()">
+      <input class="cmd-palette-input" id="cmd-input" placeholder="Buscar módulos, acciones, entidades..."
+        oninput="CmdPalette.filter(this.value)" onkeydown="CmdPalette.handleKey(event)">
+      <div class="cmd-results" id="cmd-results"></div>
+      <div class="cmd-palette-footer">
+        <span>↑↓ Navegar</span>
+        <span>↵ Abrir</span>
+        <span>Esc Cerrar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/control-tower.js"></script>
+  <script src="js/execution.js"></script>
+  <script src="js/intelligence.js"></script>
+  <script src="js/data-brain.js"></script>
+  <script src="js/decision-ops.js"></script>
+  <script src="js/simulation.js"></script>
+  <script src="js/gtm.js"></script>
+  <script src="js/pipeline.js"></script>
+  <script src="js/watchtower.js"></script>
+  <script src="js/finance.js"></script>
+  <script src="js/opportunities.js"></script>
+  <script src="js/knowledge.js"></script>
+  <script src="js/insights.js"></script>
+  <script src="js/agents.js"></script>
+</body>
+
+</html>

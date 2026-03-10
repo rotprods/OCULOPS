@@ -1,0 +1,227 @@
+{
+  "category": "Data Validation",
+  "slug": "data-validation",
+  "count": 7,
+  "entries": [
+    {
+      "slug": "data-validation-postman-echo-postman-echo-com",
+      "name": "Postman Echo",
+      "category": "Data Validation",
+      "docs_url": "https://www.postman-echo.com",
+      "description": "Test api server to receive and return value from HTTP method",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "data-validation",
+        "none",
+        "unknown",
+        "postman-echo.com"
+      ],
+      "raw_source": {
+        "api": "[Postman Echo](https://www.postman-echo.com)",
+        "description": "Test api server to receive and return value from HTTP method",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Postman Echo](https://www.postman-echo.com) | Test api server to receive and return value from HTTP method | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "data-validation-lob-com-lob-com",
+      "name": "Lob.com",
+      "category": "Data Validation",
+      "docs_url": "https://lob.com/",
+      "description": "US Address Verification",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "data-validation",
+        "api_key",
+        "unknown",
+        "lob.com"
+      ],
+      "raw_source": {
+        "api": "[Lob.com](https://lob.com/)",
+        "description": "US Address Verification",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Lob.com](https://lob.com/) | US Address Verification | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "data-validation-us-autocomplete-smarty-com",
+      "name": "US Autocomplete",
+      "category": "Data Validation",
+      "docs_url": "https://www.smarty.com/docs/cloud/us-autocomplete-pro-api",
+      "description": "Enter address data quickly with real-time address suggestions",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "data-validation",
+        "api_key",
+        "yes",
+        "smarty.com"
+      ],
+      "raw_source": {
+        "api": "[US Autocomplete](https://www.smarty.com/docs/cloud/us-autocomplete-pro-api)",
+        "description": "Enter address data quickly with real-time address suggestions",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [US Autocomplete](https://www.smarty.com/docs/cloud/us-autocomplete-pro-api) | Enter address data quickly with real-time address suggestions | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "data-validation-us-extract-smarty-com",
+      "name": "US Extract",
+      "category": "Data Validation",
+      "docs_url": "https://www.smarty.com/products/apis/us-extract-api",
+      "description": "Extract postal addresses from any text including emails",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "data-validation",
+        "api_key",
+        "yes",
+        "hunter",
+        "smarty.com"
+      ],
+      "raw_source": {
+        "api": "[US Extract](https://www.smarty.com/products/apis/us-extract-api)",
+        "description": "Extract postal addresses from any text including emails",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [US Extract](https://www.smarty.com/products/apis/us-extract-api) | Extract postal addresses from any text including emails | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "data-validation-us-street-address-smarty-com",
+      "name": "US Street Address",
+      "category": "Data Validation",
+      "docs_url": "https://www.smarty.com/docs/cloud/us-street-api",
+      "description": "Validate and append data for any US postal address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "data-validation",
+        "api_key",
+        "yes",
+        "smarty.com"
+      ],
+      "raw_source": {
+        "api": "[US Street Address](https://www.smarty.com/docs/cloud/us-street-api)",
+        "description": "Validate and append data for any US postal address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [US Street Address](https://www.smarty.com/docs/cloud/us-street-api) | Validate and append data for any US postal address | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "data-validation-vatlayer-vatlayer-com",
+      "name": "vatlayer",
+      "category": "Data Validation",
+      "docs_url": "https://vatlayer.com/documentation",
+      "description": "VAT number validation",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "data-validation",
+        "api_key",
+        "unknown",
+        "vatlayer.com"
+      ],
+      "raw_source": {
+        "api": "[vatlayer](https://vatlayer.com/documentation)",
+        "description": "VAT number validation",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [vatlayer](https://vatlayer.com/documentation) | VAT number validation | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "data-validation-purgomalum-purgomalum-com",
+      "name": "PurgoMalum",
+      "category": "Data Validation",
+      "docs_url": "http://www.purgomalum.com",
+      "description": "Content validator against profanity & obscenity",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "data-validation",
+        "none",
+        "unknown",
+        "purgomalum.com"
+      ],
+      "raw_source": {
+        "api": "[PurgoMalum](http://www.purgomalum.com)",
+        "description": "Content validator against profanity & obscenity",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [PurgoMalum](http://www.purgomalum.com) | Content validator against profanity & obscenity | No | No | Unknown | |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════════════
+   ANTIGRAVITY OS v10 — Design Tokens
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  /* ── Color Palette ── */
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: #1a2332;
+  --bg-card-hover: #1f2b3d;
+  --bg-elevated: #243147;
+  --bg-glass: rgba(26, 35, 50, 0.85);
+  --bg-glass-hover: rgba(31, 43, 61, 0.9);
+  
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(0, 210, 211, 0.4);
+  
+  /* ── Accent Colors ── */
+  --accent-primary: #00d2d3;
+  --accent-primary-rgb: 0, 210, 211;
+  --accent-secondary: #5f27cd;
+  --accent-secondary-rgb: 95, 39, 205;
+  --accent-tertiary: #f368e0;
+  
+  --success: #00d26a;
+  --success-bg: rgba(0, 210, 106, 0.1);
+  --warning: #feca57;
+  --warning-bg: rgba(254, 202, 87, 0.1);
+  --danger: #ff6b6b;
+  --danger-bg: rgba(255, 107, 107, 0.1);
+  --info: #54a0ff;
+  --info-bg: rgba(84, 160, 255, 0.1);
+  
+  /* ── Text ── */
+  --text-primary: #f0f4f8;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --text-inverse: #0a0e17;
+  
+  /* ── Typography ── */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  
+  /* ── Spacing ── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  
+  /* ── Borders & Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 20px rgba(var(--accent-primary-rgb), 0.15);
+  --shadow-glow-lg: 0 0 40px rgba(var(--accent-primary-rgb), 0.2);
+  
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ── Layout ── */
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 64px;
+  --header-height: 60px;
+  --content-max-width: 1400px;
+  
+  /* ── Z-Index ── */
+  --z-sidebar: 100;
+  --z-header: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}

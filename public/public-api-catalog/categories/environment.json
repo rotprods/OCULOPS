@@ -1,0 +1,540 @@
+{
+  "category": "Environment",
+  "slug": "environment",
+  "count": 17,
+  "entries": [
+    {
+      "slug": "environment-danish-data-service-energi-energidataservice-dk",
+      "name": "Danish data service Energi",
+      "category": "Environment",
+      "docs_url": "https://www.energidataservice.dk/",
+      "description": "Open energy data from Energinet to society",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "unknown",
+        "energidataservice.dk"
+      ],
+      "raw_source": {
+        "api": "[Danish data service Energi](https://www.energidataservice.dk/)",
+        "description": "Open energy data from Energinet to society",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Danish data service Energi](https://www.energidataservice.dk/) | Open energy data from Energinet to society | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-national-grid-eso-data-nationalgrideso-com",
+      "name": "National Grid ESO",
+      "category": "Environment",
+      "docs_url": "https://data.nationalgrideso.com/",
+      "description": "Open data from Great Britain’s Electricity System Operator",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "unknown",
+        "data.nationalgrideso.com"
+      ],
+      "raw_source": {
+        "api": "[National Grid ESO](https://data.nationalgrideso.com/)",
+        "description": "Open data from Great Britain’s Electricity System Operator",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [National Grid ESO](https://data.nationalgrideso.com/) | Open data from Great Britain’s Electricity System Operator | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-pm2-5-open-data-portal-pm25-lass-net-org",
+      "name": "PM2.5 Open Data Portal",
+      "category": "Environment",
+      "docs_url": "https://pm25.lass-net.org/#apis",
+      "description": "Open low-cost PM2.5 sensor data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "unknown",
+        "pm25.lass-net.org"
+      ],
+      "raw_source": {
+        "api": "[PM2.5 Open Data Portal](https://pm25.lass-net.org/#apis)",
+        "description": "Open low-cost PM2.5 sensor data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PM2.5 Open Data Portal](https://pm25.lass-net.org/#apis) | Open low-cost PM2.5 sensor data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-website-carbon-api-websitecarbon-com",
+      "name": "Website Carbon",
+      "category": "Environment",
+      "docs_url": "https://api.websitecarbon.com/",
+      "description": "API to estimate the carbon footprint of loading web pages",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "unknown",
+        "api.websitecarbon.com"
+      ],
+      "raw_source": {
+        "api": "[Website Carbon](https://api.websitecarbon.com/)",
+        "description": "API to estimate the carbon footprint of loading web pages",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Website Carbon](https://api.websitecarbon.com/) | API to estimate the carbon footprint of loading web pages | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-breezometer-pollen-docs-breezometer-com",
+      "name": "BreezoMeter Pollen",
+      "category": "Environment",
+      "docs_url": "https://docs.breezometer.com/api-documentation/pollen-api/v2/",
+      "description": "Daily Forecast pollen conditions data for a specific location",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "api_key",
+        "unknown",
+        "docs.breezometer.com"
+      ],
+      "raw_source": {
+        "api": "[BreezoMeter Pollen](https://docs.breezometer.com/api-documentation/pollen-api/v2/)",
+        "description": "Daily Forecast pollen conditions data for a specific location",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [BreezoMeter Pollen](https://docs.breezometer.com/api-documentation/pollen-api/v2/) | Daily Forecast pollen conditions data for a specific location | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-iqair-iqair-com",
+      "name": "IQAir",
+      "category": "Environment",
+      "docs_url": "https://www.iqair.com/air-pollution-data-api",
+      "description": "Air quality and weather data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "atlas"
+      ],
+      "tags": [
+        "environment",
+        "api_key",
+        "unknown",
+        "atlas",
+        "iqair.com"
+      ],
+      "raw_source": {
+        "api": "[IQAir](https://www.iqair.com/air-pollution-data-api)",
+        "description": "Air quality and weather data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IQAir](https://www.iqair.com/air-pollution-data-api) | Air quality and weather data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-openaq-docs-openaq-org",
+      "name": "OpenAQ",
+      "category": "Environment",
+      "docs_url": "https://docs.openaq.org/",
+      "description": "Open air quality data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "api_key",
+        "unknown",
+        "docs.openaq.org"
+      ],
+      "raw_source": {
+        "api": "[OpenAQ](https://docs.openaq.org/)",
+        "description": "Open air quality data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OpenAQ](https://docs.openaq.org/) | Open air quality data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-co2-offset-co2offset-io",
+      "name": "CO2 Offset",
+      "category": "Environment",
+      "docs_url": "https://co2offset.io/api.html",
+      "description": "API calculates and validates the carbon footprint",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "unknown",
+        "co2offset.io"
+      ],
+      "raw_source": {
+        "api": "[CO2 Offset](https://co2offset.io/api.html)",
+        "description": "API calculates and validates the carbon footprint",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CO2 Offset](https://co2offset.io/api.html) | API calculates and validates the carbon footprint | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-luchtmeetnet-api-docs-luchtmeetnet-nl",
+      "name": "Luchtmeetnet",
+      "category": "Environment",
+      "docs_url": "https://api-docs.luchtmeetnet.nl/",
+      "description": "Predicted and actual air quality components for The Netherlands (RIVM)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "unknown",
+        "api-docs.luchtmeetnet.nl"
+      ],
+      "raw_source": {
+        "api": "[Luchtmeetnet](https://api-docs.luchtmeetnet.nl/)",
+        "description": "Predicted and actual air quality components for The Netherlands (RIVM)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Luchtmeetnet](https://api-docs.luchtmeetnet.nl/) | Predicted and actual air quality components for The Netherlands (RIVM) | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-uk-carbon-intensity-carbon-intensity-github-io",
+      "name": "UK Carbon Intensity",
+      "category": "Environment",
+      "docs_url": "https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v1-0-0",
+      "description": "The Official Carbon Intensity API for Great Britain developed by National Grid",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "unknown",
+        "carbon-intensity.github.io"
+      ],
+      "raw_source": {
+        "api": "[UK Carbon Intensity](https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v1-0-0)",
+        "description": "The Official Carbon Intensity API for Great Britain developed by National Grid",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [UK Carbon Intensity](https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v1-0-0) | The Official Carbon Intensity API for Great Britain developed by National Grid | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-carbon-interface-docs-carboninterface-com",
+      "name": "Carbon Interface",
+      "category": "Environment",
+      "docs_url": "https://docs.carboninterface.com/",
+      "description": "API to calculate carbon (C02) emissions estimates for common C02 emitting activities",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "api_key",
+        "yes",
+        "docs.carboninterface.com"
+      ],
+      "raw_source": {
+        "api": "[Carbon Interface](https://docs.carboninterface.com/)",
+        "description": "API to calculate carbon (C02) emissions estimates for common C02 emitting activities",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Carbon Interface](https://docs.carboninterface.com/) | API to calculate carbon (C02) emissions estimates for common C02 emitting activities | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-climatiq-docs-climatiq-io",
+      "name": "Climatiq",
+      "category": "Environment",
+      "docs_url": "https://docs.climatiq.io",
+      "description": "Calculate the environmental footprint created by a broad range of emission-generating activities",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "api_key",
+        "yes",
+        "docs.climatiq.io"
+      ],
+      "raw_source": {
+        "api": "[Climatiq](https://docs.climatiq.io)",
+        "description": "Calculate the environmental footprint created by a broad range of emission-generating activities",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Climatiq](https://docs.climatiq.io) | Calculate the environmental footprint created by a broad range of emission-generating activities | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-cloverly-cloverly-com",
+      "name": "Cloverly",
+      "category": "Environment",
+      "docs_url": "https://www.cloverly.com/carbon-offset-documentation",
+      "description": "API calculates the impact of common carbon-intensive activities in real time",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "api_key",
+        "unknown",
+        "cloverly.com"
+      ],
+      "raw_source": {
+        "api": "[Cloverly](https://www.cloverly.com/carbon-offset-documentation)",
+        "description": "API calculates the impact of common carbon-intensive activities in real time",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Cloverly](https://www.cloverly.com/carbon-offset-documentation) | API calculates the impact of common carbon-intensive activities in real time | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-pvwatts-developer-nrel-gov",
+      "name": "PVWatts",
+      "category": "Environment",
+      "docs_url": "https://developer.nrel.gov/docs/solar/pvwatts/v6/",
+      "description": "Energy production photovoltaic (PV) energy systems",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "api_key",
+        "unknown",
+        "developer.nrel.gov"
+      ],
+      "raw_source": {
+        "api": "[PVWatts](https://developer.nrel.gov/docs/solar/pvwatts/v6/)",
+        "description": "Energy production photovoltaic (PV) energy systems",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PVWatts](https://developer.nrel.gov/docs/solar/pvwatts/v6/) | Energy production photovoltaic (PV) energy systems | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-srp-energy-srpenergy-api-client-python-readthedocs-io",
+      "name": "Srp Energy",
+      "category": "Environment",
+      "docs_url": "https://srpenergy-api-client-python.readthedocs.io/en/latest/api.html",
+      "description": "Hourly usage energy report for Srp customers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [
+        "strategist"
+      ],
+      "tags": [
+        "environment",
+        "api_key",
+        "no",
+        "strategist",
+        "srpenergy-api-client-python.readthedocs.io"
+      ],
+      "raw_source": {
+        "api": "[Srp Energy](https://srpenergy-api-client-python.readthedocs.io/en/latest/api.html)",
+        "description": "Hourly usage energy report for Srp customers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Srp Energy](https://srpenergy-api-client-python.readthedocs.io/en/latest/api.html) | Hourly usage energy report for Srp customers | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-grunstromindex-gruenstromindex-de",
+      "name": "GrünstromIndex",
+      "category": "Environment",
+      "docs_url": "https://gruenstromindex.de/",
+      "description": "Green Power Index for Germany (Grünstromindex/GSI)",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "none",
+        "yes",
+        "gruenstromindex.de"
+      ],
+      "raw_source": {
+        "api": "[GrünstromIndex](https://gruenstromindex.de/)",
+        "description": "Green Power Index for Germany (Grünstromindex/GSI)",
+        "auth": "No",
+        "https": "No",
+        "cors": "Yes",
+        "markdown": "| [GrünstromIndex](https://gruenstromindex.de/) | Green Power Index for Germany (Grünstromindex/GSI) | No | No | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "environment-pm25-in-pm25-in",
+      "name": "PM25.in",
+      "category": "Environment",
+      "docs_url": "http://www.pm25.in/api_doc",
+      "description": "Air quality of China",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "environment",
+        "api_key",
+        "unknown",
+        "pm25.in"
+      ],
+      "raw_source": {
+        "api": "[PM25.in](http://www.pm25.in/api_doc)",
+        "description": "Air quality of China",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [PM25.in](http://www.pm25.in/api_doc) | Air quality of China | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

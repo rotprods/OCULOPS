@@ -1,0 +1,506 @@
+{
+  "category": "Calendar",
+  "slug": "calendar",
+  "count": 16,
+  "entries": [
+    {
+      "slug": "calendar-non-working-days-github-com",
+      "name": "Non-Working Days",
+      "category": "Calendar",
+      "docs_url": "https://github.com/gadael/icsdb",
+      "description": "Database of ICS files for non working days",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Non-Working Days](https://github.com/gadael/icsdb)",
+        "description": "Database of ICS files for non working days",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Non-Working Days](https://github.com/gadael/icsdb) | Database of ICS files for non working days | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-checkiday-national-holiday-api-apilayer-com",
+      "name": "Checkiday - National Holiday API",
+      "category": "Calendar",
+      "docs_url": "https://apilayer.com/marketplace/checkiday-api",
+      "description": "Industry-leading Holiday API. Over 5,000 holidays and thousands of descriptions. Trusted by the World’s leading companies",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "calendar",
+        "api_key",
+        "unknown",
+        "hunter",
+        "apilayer.com"
+      ],
+      "raw_source": {
+        "api": "[Checkiday - National Holiday API](https://apilayer.com/marketplace/checkiday-api)",
+        "description": "Industry-leading Holiday API. Over 5,000 holidays and thousands of descriptions. Trusted by the World’s leading companies",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Checkiday - National Holiday API](https://apilayer.com/marketplace/checkiday-api) | Industry-leading Holiday API. Over 5,000 holidays and thousands of descriptions. Trusted by the World’s leading companies | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-festivo-public-holidays-docs-getfestivo-com",
+      "name": "Festivo Public Holidays",
+      "category": "Calendar",
+      "docs_url": "https://docs.getfestivo.com/docs/products/public-holidays-api/intro",
+      "description": "Fastest and most advanced public holiday and observance service on the market",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "api_key",
+        "yes",
+        "docs.getfestivo.com"
+      ],
+      "raw_source": {
+        "api": "[Festivo Public Holidays](https://docs.getfestivo.com/docs/products/public-holidays-api/intro)",
+        "description": "Fastest and most advanced public holiday and observance service on the market",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Festivo Public Holidays](https://docs.getfestivo.com/docs/products/public-holidays-api/intro) | Fastest and most advanced public holiday and observance service on the market | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-holidays-holidayapi-com",
+      "name": "Holidays",
+      "category": "Calendar",
+      "docs_url": "https://holidayapi.com/",
+      "description": "Historical data regarding holidays",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "api_key",
+        "unknown",
+        "holidayapi.com"
+      ],
+      "raw_source": {
+        "api": "[Holidays](https://holidayapi.com/)",
+        "description": "Historical data regarding holidays",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Holidays](https://holidayapi.com/) | Historical data regarding holidays | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-public-holidays-abstractapi-com",
+      "name": "Public Holidays",
+      "category": "Calendar",
+      "docs_url": "https://www.abstractapi.com/holidays-api",
+      "description": "Data on national, regional, and religious holidays via API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "api_key",
+        "yes",
+        "abstractapi.com"
+      ],
+      "raw_source": {
+        "api": "[Public Holidays](https://www.abstractapi.com/holidays-api)",
+        "description": "Data on national, regional, and religious holidays via API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Public Holidays](https://www.abstractapi.com/holidays-api) | Data on national, regional, and religious holidays via API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-nager-date-date-nager-at",
+      "name": "Nager.Date",
+      "category": "Calendar",
+      "docs_url": "https://date.nager.at",
+      "description": "Public holidays for more than 90 countries",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "no",
+        "date.nager.at"
+      ],
+      "raw_source": {
+        "api": "[Nager.Date](https://date.nager.at)",
+        "description": "Public holidays for more than 90 countries",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Nager.Date](https://date.nager.at) | Public holidays for more than 90 countries | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-namedays-calendar-nameday-abalin-net",
+      "name": "Namedays Calendar",
+      "category": "Calendar",
+      "docs_url": "https://nameday.abalin.net",
+      "description": "Provides namedays for multiple countries",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "yes",
+        "nameday.abalin.net"
+      ],
+      "raw_source": {
+        "api": "[Namedays Calendar](https://nameday.abalin.net)",
+        "description": "Provides namedays for multiple countries",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Namedays Calendar](https://nameday.abalin.net) | Provides namedays for multiple countries | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-non-working-days-isdayoff-ru",
+      "name": "Non-Working Days",
+      "category": "Calendar",
+      "docs_url": "https://isdayoff.ru",
+      "description": "Simple REST API for checking working, non-working or short days for Russia, CIS, USA and other",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "yes",
+        "isdayoff.ru"
+      ],
+      "raw_source": {
+        "api": "[Non-Working Days](https://isdayoff.ru)",
+        "description": "Simple REST API for checking working, non-working or short days for Russia, CIS, USA and other",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Non-Working Days](https://isdayoff.ru) | Simple REST API for checking working, non-working or short days for Russia, CIS, USA and other | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-russian-calendar-github-com",
+      "name": "Russian Calendar",
+      "category": "Calendar",
+      "docs_url": "https://github.com/egno/work-calendar",
+      "description": "Check if a date is a Russian holiday or not",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "no",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Russian Calendar](https://github.com/egno/work-calendar)",
+        "description": "Check if a date is a Russian holiday or not",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Russian Calendar](https://github.com/egno/work-calendar) | Check if a date is a Russian holiday or not | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-uk-bank-holidays-gov-uk",
+      "name": "UK Bank Holidays",
+      "category": "Calendar",
+      "docs_url": "https://www.gov.uk/bank-holidays.json",
+      "description": "Bank holidays in England and Wales, Scotland and Northern Ireland",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "unknown",
+        "gov.uk"
+      ],
+      "raw_source": {
+        "api": "[UK Bank Holidays](https://www.gov.uk/bank-holidays.json)",
+        "description": "Bank holidays in England and Wales, Scotland and Northern Ireland",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [UK Bank Holidays](https://www.gov.uk/bank-holidays.json) | Bank holidays in England and Wales, Scotland and Northern Ireland | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-calendarific-calendarific-com",
+      "name": "Calendarific",
+      "category": "Calendar",
+      "docs_url": "https://calendarific.com/",
+      "description": "Worldwide Holidays",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "api_key",
+        "unknown",
+        "calendarific.com"
+      ],
+      "raw_source": {
+        "api": "[Calendarific](https://calendarific.com/)",
+        "description": "Worldwide Holidays",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Calendarific](https://calendarific.com/) | Worldwide Holidays | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-google-calendar-developers-google-com",
+      "name": "Google Calendar",
+      "category": "Calendar",
+      "docs_url": "https://developers.google.com/google-apps/calendar/",
+      "description": "Display, create and modify Google calendar events",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "oauth2",
+        "unknown",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Calendar](https://developers.google.com/google-apps/calendar/)",
+        "description": "Display, create and modify Google calendar events",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Calendar](https://developers.google.com/google-apps/calendar/) | Display, create and modify Google calendar events | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-church-calendar-calapi-inadiutorium-cz",
+      "name": "Church Calendar",
+      "category": "Calendar",
+      "docs_url": "http://calapi.inadiutorium.cz/",
+      "description": "Catholic liturgical calendar",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "unknown",
+        "calapi.inadiutorium.cz"
+      ],
+      "raw_source": {
+        "api": "[Church Calendar](http://calapi.inadiutorium.cz/)",
+        "description": "Catholic liturgical calendar",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Church Calendar](http://calapi.inadiutorium.cz/) | Catholic liturgical calendar | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-czech-namedays-calendar-svatky-adresa-info",
+      "name": "Czech Namedays Calendar",
+      "category": "Calendar",
+      "docs_url": "https://svatky.adresa.info",
+      "description": "Lookup for a name and returns nameday date",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "unknown",
+        "svatky.adresa.info"
+      ],
+      "raw_source": {
+        "api": "[Czech Namedays Calendar](https://svatky.adresa.info)",
+        "description": "Lookup for a name and returns nameday date",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Czech Namedays Calendar](https://svatky.adresa.info) | Lookup for a name and returns nameday date | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-hebrew-calendar-hebcal-com",
+      "name": "Hebrew Calendar",
+      "category": "Calendar",
+      "docs_url": "https://www.hebcal.com/home/developer-apis",
+      "description": "Convert between Gregorian and Hebrew, fetch Shabbat and Holiday times, etc",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "unknown",
+        "hebcal.com"
+      ],
+      "raw_source": {
+        "api": "[Hebrew Calendar](https://www.hebcal.com/home/developer-apis)",
+        "description": "Convert between Gregorian and Hebrew, fetch Shabbat and Holiday times, etc",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Hebrew Calendar](https://www.hebcal.com/home/developer-apis) | Convert between Gregorian and Hebrew, fetch Shabbat and Holiday times, etc | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "calendar-lectserve-lectserve-com",
+      "name": "LectServe",
+      "category": "Calendar",
+      "docs_url": "http://www.lectserve.com",
+      "description": "Protestant liturgical calendar",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "calendar",
+        "none",
+        "unknown",
+        "lectserve.com"
+      ],
+      "raw_source": {
+        "api": "[LectServe](http://www.lectserve.com)",
+        "description": "Protestant liturgical calendar",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [LectServe](http://www.lectserve.com) | Protestant liturgical calendar | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

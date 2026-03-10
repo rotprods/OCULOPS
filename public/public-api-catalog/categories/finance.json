@@ -1,0 +1,1942 @@
+{
+  "category": "Finance",
+  "slug": "finance",
+  "count": 45,
+  "entries": [
+    {
+      "slug": "finance-binlist-binlist-net",
+      "name": "Binlist",
+      "category": "Finance",
+      "docs_url": "https://binlist.net/",
+      "description": "Public access to a database of IIN/BIN information",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "binlist.net"
+      ],
+      "raw_source": {
+        "api": "[Binlist](https://binlist.net/)",
+        "description": "Public access to a database of IIN/BIN information",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Binlist](https://binlist.net/) | Public access to a database of IIN/BIN information | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-econdb-econdb-com",
+      "name": "Econdb",
+      "category": "Finance",
+      "docs_url": "https://www.econdb.com/api/",
+      "description": "Global macroeconomic data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "econdb.com"
+      ],
+      "raw_source": {
+        "api": "[Econdb](https://www.econdb.com/api/)",
+        "description": "Global macroeconomic data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Econdb](https://www.econdb.com/api/) | Global macroeconomic data | No | Yes | Yes | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-fed-treasury-fiscaldata-treasury-gov",
+      "name": "Fed Treasury",
+      "category": "Finance",
+      "docs_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "description": "U.S. Department of the Treasury Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "fiscaldata.treasury.gov"
+      ],
+      "raw_source": {
+        "api": "[Fed Treasury](https://fiscaldata.treasury.gov/api-documentation/)",
+        "description": "U.S. Department of the Treasury Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Fed Treasury](https://fiscaldata.treasury.gov/api-documentation/) | U.S. Department of the Treasury Data | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-indian-mutual-fund-mfapi-in",
+      "name": "Indian Mutual Fund",
+      "category": "Finance",
+      "docs_url": "https://www.mfapi.in/",
+      "description": "Get complete history of India Mutual Funds Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "mfapi.in"
+      ],
+      "raw_source": {
+        "api": "[Indian Mutual Fund](https://www.mfapi.in/)",
+        "description": "Get complete history of India Mutual Funds Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Indian Mutual Fund](https://www.mfapi.in/) | Get complete history of India Mutual Funds Data | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-portfolio-optimizer-portfoliooptimizer-io",
+      "name": "Portfolio Optimizer",
+      "category": "Finance",
+      "docs_url": "https://portfoliooptimizer.io/",
+      "description": "Portfolio analysis and optimization",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "portfoliooptimizer.io"
+      ],
+      "raw_source": {
+        "api": "[Portfolio Optimizer](https://portfoliooptimizer.io/)",
+        "description": "Portfolio analysis and optimization",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Portfolio Optimizer](https://portfoliooptimizer.io/) | Portfolio analysis and optimization | No | Yes | Yes | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-razorpay-ifsc-razorpay-com",
+      "name": "Razorpay IFSC",
+      "category": "Finance",
+      "docs_url": "https://razorpay.com/docs/",
+      "description": "Indian Financial Systems Code (Bank Branch Codes)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "razorpay.com"
+      ],
+      "raw_source": {
+        "api": "[Razorpay IFSC](https://razorpay.com/docs/)",
+        "description": "Indian Financial Systems Code (Bank Branch Codes)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Razorpay IFSC](https://razorpay.com/docs/) | Indian Financial Systems Code (Bank Branch Codes) | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-sec-edgar-data-sec-gov",
+      "name": "SEC EDGAR Data",
+      "category": "Finance",
+      "docs_url": "https://www.sec.gov/edgar/sec-api-documentation",
+      "description": "API to access annual reports of public US companies",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "sec.gov"
+      ],
+      "raw_source": {
+        "api": "[SEC EDGAR Data](https://www.sec.gov/edgar/sec-api-documentation)",
+        "description": "API to access annual reports of public US companies",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [SEC EDGAR Data](https://www.sec.gov/edgar/sec-api-documentation) | API to access annual reports of public US companies | No | Yes | Yes | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-wallstreetbets-dashboard-nbshare-io",
+      "name": "WallstreetBets",
+      "category": "Finance",
+      "docs_url": "https://dashboard.nbshare.io/apps/reddit/api/",
+      "description": "WallstreetBets Stock Comments Sentiment Analysis",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "none",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "dashboard.nbshare.io"
+      ],
+      "raw_source": {
+        "api": "[WallstreetBets](https://dashboard.nbshare.io/apps/reddit/api/)",
+        "description": "WallstreetBets Stock Comments Sentiment Analysis",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [WallstreetBets](https://dashboard.nbshare.io/apps/reddit/api/) | WallstreetBets Stock Comments Sentiment Analysis | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-aletheia-aletheiaapi-com",
+      "name": "Aletheia",
+      "category": "Finance",
+      "docs_url": "https://aletheiaapi.com/",
+      "description": "Insider trading data, earnings call analysis, financial statements, and more",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "aletheiaapi.com"
+      ],
+      "raw_source": {
+        "api": "[Aletheia](https://aletheiaapi.com/)",
+        "description": "Insider trading data, earnings call analysis, financial statements, and more",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Aletheia](https://aletheiaapi.com/) | Insider trading data, earnings call analysis, financial statements, and more | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-alpaca-alpaca-markets",
+      "name": "Alpaca",
+      "category": "Finance",
+      "docs_url": "https://alpaca.markets/docs/api-documentation/api-v2/market-data/alpaca-data-api-v2/",
+      "description": "Realtime and historical market data on all US equities and ETFs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "alpaca.markets"
+      ],
+      "raw_source": {
+        "api": "[Alpaca](https://alpaca.markets/docs/api-documentation/api-v2/market-data/alpaca-data-api-v2/)",
+        "description": "Realtime and historical market data on all US equities and ETFs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Alpaca](https://alpaca.markets/docs/api-documentation/api-v2/market-data/alpaca-data-api-v2/) | Realtime and historical market data on all US equities and ETFs | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-alpha-vantage-alphavantage-co",
+      "name": "Alpha Vantage",
+      "category": "Finance",
+      "docs_url": "https://www.alphavantage.co/",
+      "description": "Realtime and historical stock data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "alphavantage.co"
+      ],
+      "raw_source": {
+        "api": "[Alpha Vantage](https://www.alphavantage.co/)",
+        "description": "Realtime and historical stock data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Alpha Vantage](https://www.alphavantage.co/) | Realtime and historical stock data | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-apilayer-marketstack-marketstack-com",
+      "name": "apilayer marketstack",
+      "category": "Finance",
+      "docs_url": "https://marketstack.com/",
+      "description": "Real-Time, Intraday & Historical Market Data API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "marketstack.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer marketstack](https://marketstack.com/)",
+        "description": "Real-Time, Intraday & Historical Market Data API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer marketstack](https://marketstack.com/) | Real-Time, Intraday & Historical Market Data API | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-bank-data-api-apilayer-com",
+      "name": "Bank Data API",
+      "category": "Finance",
+      "docs_url": "https://apilayer.com/marketplace/bank_data-api",
+      "description": "Instant IBAN and SWIFT number validation across the globe",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "apilayer.com"
+      ],
+      "raw_source": {
+        "api": "[Bank Data API](https://apilayer.com/marketplace/bank_data-api)",
+        "description": "Instant IBAN and SWIFT number validation across the globe",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bank Data API](https://apilayer.com/marketplace/bank_data-api) | Instant IBAN and SWIFT number validation across the globe | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-billplz-billplz-com",
+      "name": "Billplz",
+      "category": "Finance",
+      "docs_url": "https://www.billplz.com/api",
+      "description": "Payment platform",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "billplz.com"
+      ],
+      "raw_source": {
+        "api": "[Billplz](https://www.billplz.com/api)",
+        "description": "Payment platform",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Billplz](https://www.billplz.com/api) | Payment platform | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-boleto-cloud-boleto-cloud",
+      "name": "Boleto.Cloud",
+      "category": "Finance",
+      "docs_url": "https://boleto.cloud/",
+      "description": "A api to generate boletos in Brazil",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "boleto.cloud"
+      ],
+      "raw_source": {
+        "api": "[Boleto.Cloud](https://boleto.cloud/)",
+        "description": "A api to generate boletos in Brazil",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Boleto.Cloud](https://boleto.cloud/) | A api to generate boletos in Brazil | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-citi-sandbox-developerhub-citi-com",
+      "name": "Citi",
+      "category": "Finance",
+      "docs_url": "https://sandbox.developerhub.citi.com/api-catalog-list",
+      "description": "All Citigroup account and statement data APIs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "sandbox.developerhub.citi.com"
+      ],
+      "raw_source": {
+        "api": "[Citi](https://sandbox.developerhub.citi.com/api-catalog-list)",
+        "description": "All Citigroup account and statement data APIs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Citi](https://sandbox.developerhub.citi.com/api-catalog-list) | All Citigroup account and statement data APIs | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-finage-finage-co-uk",
+      "name": "Finage",
+      "category": "Finance",
+      "docs_url": "https://finage.co.uk",
+      "description": "Finage is a stock, currency, cryptocurrency, indices, and ETFs real-time & historical data provider",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "finage.co.uk"
+      ],
+      "raw_source": {
+        "api": "[Finage](https://finage.co.uk)",
+        "description": "Finage is a stock, currency, cryptocurrency, indices, and ETFs real-time & historical data provider",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Finage](https://finage.co.uk) | Finage is a stock, currency, cryptocurrency, indices, and ETFs real-time & historical data provider | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-financial-modeling-prep-site-financialmodelingprep-com",
+      "name": "Financial Modeling Prep",
+      "category": "Finance",
+      "docs_url": "https://site.financialmodelingprep.com/developer/docs",
+      "description": "Realtime and historical stock data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "site.financialmodelingprep.com"
+      ],
+      "raw_source": {
+        "api": "[Financial Modeling Prep](https://site.financialmodelingprep.com/developer/docs)",
+        "description": "Realtime and historical stock data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Financial Modeling Prep](https://site.financialmodelingprep.com/developer/docs) | Realtime and historical stock data | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-finnhub-finnhub-io",
+      "name": "Finnhub",
+      "category": "Finance",
+      "docs_url": "https://finnhub.io/docs/api",
+      "description": "Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "finnhub.io"
+      ],
+      "raw_source": {
+        "api": "[Finnhub](https://finnhub.io/docs/api)",
+        "description": "Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Finnhub](https://finnhub.io/docs/api) | Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-fred-fred-stlouisfed-org",
+      "name": "FRED",
+      "category": "Finance",
+      "docs_url": "https://fred.stlouisfed.org/docs/api/fred/",
+      "description": "Economic data from the Federal Reserve Bank of St. Louis",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "fred.stlouisfed.org"
+      ],
+      "raw_source": {
+        "api": "[FRED](https://fred.stlouisfed.org/docs/api/fred/)",
+        "description": "Economic data from the Federal Reserve Bank of St. Louis",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [FRED](https://fred.stlouisfed.org/docs/api/fred/) | Economic data from the Federal Reserve Bank of St. Louis | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-hotstoks-hotstoks-com",
+      "name": "Hotstoks",
+      "category": "Finance",
+      "docs_url": "https://hotstoks.com?utm_source=public-apis",
+      "description": "Stock market data powered by SQL",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "hotstoks.com"
+      ],
+      "raw_source": {
+        "api": "[Hotstoks](https://hotstoks.com?utm_source=public-apis)",
+        "description": "Stock market data powered by SQL",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Hotstoks](https://hotstoks.com?utm_source=public-apis) | Stock market data powered by SQL | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-iex-cloud-iexcloud-io",
+      "name": "IEX Cloud",
+      "category": "Finance",
+      "docs_url": "https://iexcloud.io/docs/api/",
+      "description": "Realtime & Historical Stock and Market Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "iexcloud.io"
+      ],
+      "raw_source": {
+        "api": "[IEX Cloud](https://iexcloud.io/docs/api/)",
+        "description": "Realtime & Historical Stock and Market Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [IEX Cloud](https://iexcloud.io/docs/api/) | Realtime & Historical Stock and Market Data | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-ig-labs-ig-com",
+      "name": "IG",
+      "category": "Finance",
+      "docs_url": "https://labs.ig.com/gettingstarted",
+      "description": "Spreadbetting and CFD Market Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "labs.ig.com"
+      ],
+      "raw_source": {
+        "api": "[IG](https://labs.ig.com/gettingstarted)",
+        "description": "Spreadbetting and CFD Market Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IG](https://labs.ig.com/gettingstarted) | Spreadbetting and CFD Market Data | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-intrinio-intrinio-com",
+      "name": "Intrinio",
+      "category": "Finance",
+      "docs_url": "https://intrinio.com/",
+      "description": "A wide selection of financial data feeds",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "intrinio.com"
+      ],
+      "raw_source": {
+        "api": "[Intrinio](https://intrinio.com/)",
+        "description": "A wide selection of financial data feeds",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Intrinio](https://intrinio.com/) | A wide selection of financial data feeds | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-klarna-docs-klarna-com",
+      "name": "Klarna",
+      "category": "Finance",
+      "docs_url": "https://docs.klarna.com/klarna-payments/api/payments-api/",
+      "description": "Klarna payment and shopping service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "docs.klarna.com"
+      ],
+      "raw_source": {
+        "api": "[Klarna](https://docs.klarna.com/klarna-payments/api/payments-api/)",
+        "description": "Klarna payment and shopping service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Klarna](https://docs.klarna.com/klarna-payments/api/payments-api/) | Klarna payment and shopping service | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-mercadopago-mercadopago-com-br",
+      "name": "MercadoPago",
+      "category": "Finance",
+      "docs_url": "https://www.mercadopago.com.br/developers/es/reference",
+      "description": "Mercado Pago API reference - all the information you need to develop your integrations",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "mercadopago.com.br"
+      ],
+      "raw_source": {
+        "api": "[MercadoPago](https://www.mercadopago.com.br/developers/es/reference)",
+        "description": "Mercado Pago API reference - all the information you need to develop your integrations",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MercadoPago](https://www.mercadopago.com.br/developers/es/reference) | Mercado Pago API reference - all the information you need to develop your integrations | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-mono-mono-co",
+      "name": "Mono",
+      "category": "Finance",
+      "docs_url": "https://mono.co/",
+      "description": "Connect with users’ bank accounts and access transaction data in Africa",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "mono.co"
+      ],
+      "raw_source": {
+        "api": "[Mono](https://mono.co/)",
+        "description": "Connect with users’ bank accounts and access transaction data in Africa",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mono](https://mono.co/) | Connect with users’ bank accounts and access transaction data in Africa | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-moov-docs-moov-io",
+      "name": "Moov",
+      "category": "Finance",
+      "docs_url": "https://docs.moov.io/api/",
+      "description": "The Moov API makes it simple for platforms to send, receive, and store money",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "docs.moov.io"
+      ],
+      "raw_source": {
+        "api": "[Moov](https://docs.moov.io/api/)",
+        "description": "The Moov API makes it simple for platforms to send, receive, and store money",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Moov](https://docs.moov.io/api/) | The Moov API makes it simple for platforms to send, receive, and store money | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-nordigen-nordigen-com",
+      "name": "Nordigen",
+      "category": "Finance",
+      "docs_url": "https://nordigen.com/en/account_information_documenation/integration/quickstart_guide/",
+      "description": "Connect to bank accounts using official bank APIs and get raw transaction data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "nordigen.com"
+      ],
+      "raw_source": {
+        "api": "[Nordigen](https://nordigen.com/en/account_information_documenation/integration/quickstart_guide/)",
+        "description": "Connect to bank accounts using official bank APIs and get raw transaction data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Nordigen](https://nordigen.com/en/account_information_documenation/integration/quickstart_guide/) | Connect to bank accounts using official bank APIs and get raw transaction data | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-openfigi-openfigi-com",
+      "name": "OpenFIGI",
+      "category": "Finance",
+      "docs_url": "https://www.openfigi.com/api",
+      "description": "Equity, index, futures, options symbology from Bloomberg LP",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "openfigi.com"
+      ],
+      "raw_source": {
+        "api": "[OpenFIGI](https://www.openfigi.com/api)",
+        "description": "Equity, index, futures, options symbology from Bloomberg LP",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [OpenFIGI](https://www.openfigi.com/api) | Equity, index, futures, options symbology from Bloomberg LP | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-plaid-plaid-com",
+      "name": "Plaid",
+      "category": "Finance",
+      "docs_url": "https://www.plaid.com/docs",
+      "description": "Connect with user's bank accounts and access transaction data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "plaid.com"
+      ],
+      "raw_source": {
+        "api": "[Plaid](https://www.plaid.com/docs)",
+        "description": "Connect with user's bank accounts and access transaction data",
+        "auth": "`apiKey`",
+        "https": "YES",
+        "cors": "",
+        "markdown": "| [Plaid](https://www.plaid.com/docs) | Connect with user's bank accounts and access transaction data\t | `apiKey` | YES | |  |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-polygon-polygon-io",
+      "name": "Polygon",
+      "category": "Finance",
+      "docs_url": "https://polygon.io/",
+      "description": "Historical stock market data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "polygon.io"
+      ],
+      "raw_source": {
+        "api": "[Polygon](https://polygon.io/)",
+        "description": "Historical stock market data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Polygon](https://polygon.io/) | Historical stock market data | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-smartapi-smartapi-angelbroking-com",
+      "name": "SmartAPI",
+      "category": "Finance",
+      "docs_url": "https://smartapi.angelbroking.com/",
+      "description": "Gain access to set of <SmartAPI> and create end-to-end broking services",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "smartapi.angelbroking.com"
+      ],
+      "raw_source": {
+        "api": "[SmartAPI](https://smartapi.angelbroking.com/)",
+        "description": "Gain access to set of <SmartAPI> and create end-to-end broking services",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SmartAPI](https://smartapi.angelbroking.com/) | Gain access to set of <SmartAPI> and create end-to-end broking services | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-stockdata-stockdata-org",
+      "name": "StockData",
+      "category": "Finance",
+      "docs_url": "https://www.StockData.org",
+      "description": "Real-Time, Intraday & Historical Market Data, News and Sentiment API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "stockdata.org"
+      ],
+      "raw_source": {
+        "api": "[StockData](https://www.StockData.org)",
+        "description": "Real-Time, Intraday & Historical Market Data, News and Sentiment API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [StockData](https://www.StockData.org) | Real-Time, Intraday & Historical Market Data, News and Sentiment API | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-styvio-styvio-com",
+      "name": "Styvio",
+      "category": "Finance",
+      "docs_url": "https://www.Styvio.com",
+      "description": "Realtime and historical stock data and current stock sentiment",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "styvio.com"
+      ],
+      "raw_source": {
+        "api": "[Styvio](https://www.Styvio.com)",
+        "description": "Realtime and historical stock data and current stock sentiment",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Styvio](https://www.Styvio.com) | Realtime and historical stock data and current stock sentiment | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-tax-data-api-apilayer-com",
+      "name": "Tax Data API",
+      "category": "Finance",
+      "docs_url": "https://apilayer.com/marketplace/tax_data-api",
+      "description": "Instant VAT number and tax validation across the globe",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "apilayer.com"
+      ],
+      "raw_source": {
+        "api": "[Tax Data API](https://apilayer.com/marketplace/tax_data-api)",
+        "description": "Instant VAT number and tax validation across the globe",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unkown",
+        "markdown": "| [Tax Data API](https://apilayer.com/marketplace/tax_data-api) | Instant VAT number and tax validation across the globe | `apiKey` | Yes | Unkown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-twelve-data-twelvedata-com",
+      "name": "Twelve Data",
+      "category": "Finance",
+      "docs_url": "https://twelvedata.com/",
+      "description": "Stock market data (real-time & historical)",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "twelvedata.com"
+      ],
+      "raw_source": {
+        "api": "[Twelve Data](https://twelvedata.com/)",
+        "description": "Stock market data (real-time & historical)",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Twelve Data](https://twelvedata.com/) | Stock market data (real-time & historical) | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-vat-validation-abstractapi-com",
+      "name": "VAT Validation",
+      "category": "Finance",
+      "docs_url": "https://www.abstractapi.com/vat-validation-rates-api",
+      "description": "Validate VAT numbers and calculate VAT rates",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "abstractapi.com"
+      ],
+      "raw_source": {
+        "api": "[VAT Validation](https://www.abstractapi.com/vat-validation-rates-api)",
+        "description": "Validate VAT numbers and calculate VAT rates",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [VAT Validation](https://www.abstractapi.com/vat-validation-rates-api) | Validate VAT numbers and calculate VAT rates | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-yahoo-finance-yahoofinanceapi-com",
+      "name": "Yahoo Finance",
+      "category": "Finance",
+      "docs_url": "https://www.yahoofinanceapi.com/",
+      "description": "Real time low latency Yahoo Finance API for stock market, crypto currencies, and currency exchange",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "yahoofinanceapi.com"
+      ],
+      "raw_source": {
+        "api": "[Yahoo Finance](https://www.yahoofinanceapi.com/)",
+        "description": "Real time low latency Yahoo Finance API for stock market, crypto currencies, and currency exchange",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Yahoo Finance](https://www.yahoofinanceapi.com/) | Real time low latency Yahoo Finance API for stock market, crypto currencies, and currency exchange | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-banco-do-brasil-developers-bb-com-br",
+      "name": "Banco do Brasil",
+      "category": "Finance",
+      "docs_url": "https://developers.bb.com.br/home",
+      "description": "All Banco do Brasil financial transaction APIs",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "oauth2",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "developers.bb.com.br"
+      ],
+      "raw_source": {
+        "api": "[Banco do Brasil](https://developers.bb.com.br/home)",
+        "description": "All Banco do Brasil financial transaction APIs",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Banco do Brasil](https://developers.bb.com.br/home) | All Banco do Brasil financial transaction APIs | `OAuth` | Yes | Yes | |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-front-accounting-apis-frontaccounting-com",
+      "name": "Front Accounting APIs",
+      "category": "Finance",
+      "docs_url": "https://frontaccounting.com/fawiki/index.php?n=Devel.SimpleAPIModule",
+      "description": "Front accounting is multilingual and multicurrency software for small businesses",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "oauth2",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "frontaccounting.com"
+      ],
+      "raw_source": {
+        "api": "[Front Accounting APIs](https://frontaccounting.com/fawiki/index.php?n=Devel.SimpleAPIModule)",
+        "description": "Front accounting is multilingual and multicurrency software for small businesses",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Front Accounting APIs](https://frontaccounting.com/fawiki/index.php?n=Devel.SimpleAPIModule) | Front accounting is multilingual and multicurrency software for small businesses | `OAuth` | Yes | Yes | |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-tradier-developer-tradier-com",
+      "name": "Tradier",
+      "category": "Finance",
+      "docs_url": "https://developer.tradier.com",
+      "description": "US equity/option market data (delayed, intraday, historical)",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "oauth2",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "developer.tradier.com"
+      ],
+      "raw_source": {
+        "api": "[Tradier](https://developer.tradier.com)",
+        "description": "US equity/option market data (delayed, intraday, historical)",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Tradier](https://developer.tradier.com) | US equity/option market data (delayed, intraday, historical) | `OAuth` | Yes | Yes | |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-ynab-api-youneedabudget-com",
+      "name": "YNAB",
+      "category": "Finance",
+      "docs_url": "https://api.youneedabudget.com/",
+      "description": "Budgeting & Planning",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "oauth2",
+        "yes",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "api.youneedabudget.com"
+      ],
+      "raw_source": {
+        "api": "[YNAB](https://api.youneedabudget.com/)",
+        "description": "Budgeting & Planning",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [YNAB](https://api.youneedabudget.com/) | Budgeting & Planning | `OAuth` | Yes | Yes | |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-zoho-books-zoho-com",
+      "name": "Zoho Books",
+      "category": "Finance",
+      "docs_url": "https://www.zoho.com/books/api/v3/",
+      "description": "Online accounting software, built for your business",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "oauth2",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "zoho.com"
+      ],
+      "raw_source": {
+        "api": "[Zoho Books](https://www.zoho.com/books/api/v3/)",
+        "description": "Online accounting software, built for your business",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Zoho Books](https://www.zoho.com/books/api/v3/) | Online accounting software, built for your business | `OAuth` | Yes | Unknown | |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "finance-real-time-finance-github-com",
+      "name": "Real Time Finance",
+      "category": "Finance",
+      "docs_url": "https://github.com/Real-time-finance/finance-websocket-API/",
+      "description": "Websocket API to access realtime stock data",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "strategist",
+        "cortex",
+        "atlas"
+      ],
+      "tags": [
+        "finance",
+        "api_key",
+        "unknown",
+        "finance",
+        "world_monitor",
+        "strategist",
+        "cortex",
+        "atlas",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Real Time Finance](https://github.com/Real-time-finance/finance-websocket-API/)",
+        "description": "Websocket API to access realtime stock data",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Real Time Finance](https://github.com/Real-time-finance/finance-websocket-API/) | Websocket API to access realtime stock data | `apiKey` | No | Unknown | |"
+      },
+      "business_fit_score": 20,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

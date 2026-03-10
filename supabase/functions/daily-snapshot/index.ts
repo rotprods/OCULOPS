@@ -1,0 +1,163 @@
+// ═══════════════════════════════════════════════════
+// Edge Function: Daily Snapshot
+// Captures daily metrics for sparkline history
+// Schedule: Trigger via pg_cron with CRON_SECRET header
+// ═══════════════════════════════════════════════════
+
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "jsr:@supabase/supabase-js@2";
+
+const CRON_SECRET = Deno.env.get("CRON_SECRET");
+
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
+
+const supabase = createClient(
+    Deno.env.get("SUPABASE_URL")!,
+    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+);
+
+Deno.serve(async (req: Request) => {
+    if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+
+    // Only callable by trusted cron scheduler (Bearer CRON_SECRET)
+    const authHeader = req.headers.get("Authorization");
+    if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
+        return new Response(
+            JSON.stringify({ error: "Unauthorized" }),
+            { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+    }
+
+    try {
+        const { data: profiles } = await supabase
+            .from("profiles")
+            .select("id");
+
+        if (!profiles || profiles.length === 0) {
+            return new Response(
+                JSON.stringify({ message: "No profiles found" }),
+                { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+            );
+        }
+
+        const results = [];
+
+        for (const profile of profiles) {
+            const userId = profile.id;
+
+            const { data: deals } = await supabase
+                .from("deals")
+                .select("monthly_value, stage")
+                .eq("user_id", userId)
+                .in("stage", ["closed_won", "onboarding"]);
+
+            const mrr = (deals || []).reduce(
+                (sum: number, d: any) => sum + (parseFloat(d.monthly_value) || 0),
+                0
+            );
+
+            const { count: clients } = await supabase
+                .from("deals")
+                .select("*", { count: "exact", head: true })
+                .eq("user_id", userId)
+                .in("stage", ["closed_won", "onboarding"]);
+
+            const { data: pipelineDeals } = await supabase
+                .from("deals")
+                .select("value")
+                .eq("user_id", userId)
+                .not("stage", "in", '("closed_won","closed_lost")');
+
+            const pipelineTotal = (pipelineDeals || []).reduce(
+                (sum: number, d: any) => sum + (parseFloat(d.value) || 0),
+                0
+            );
+
+            const { count: activeAlerts } = await supabase
+                .from("alerts")
+                .select("*", { count: "exact", head: true })
+                .eq("user_id", userId)
+                .eq("status", "active");
+
+            const { data: tasks } = await supabase
+                .from("tasks")
+                .select("status")
+                .eq("user_id", userId);
+
+            const totalTasks = (tasks || []).length;
+            const doneTasks = (tasks || []).filter((t: any) => t.status === "done").length;
+            const taskCompletionPct = totalTasks > 0 ? Math.round((doneTasks / totalTasks) * 100) : 0;
+
+            const mrrScore = Math.min(mrr / 200, 100);
+            const pipelineScore = Math.min(pipelineTotal / 500, 100);
+            const executionScore = taskCompletionPct;
+            const alertPenalty = Math.max(0, 100 - (activeAlerts || 0) * 10);
+            const healthScore = Math.round(
+                mrrScore * 0.35 + executionScore * 0.25 + pipelineScore * 0.25 + alertPenalty * 0.15
+            );
+
+            const { data: connectors } = await supabase
+                .from("api_connectors")
+                .select("name, catalog_slug, template_key, capabilities, health_status, last_healthcheck_at")
+                .eq("is_active", true)
+                .eq("health_status", "live");
+
+            const today = new Date().toISOString().split("T")[0];
+            const { data: existing } = await supabase
+                .from("daily_snapshots")
+                .select("id")
+                .eq("user_id", userId)
+                .eq("snapshot_date", today)
+                .maybeSingle();
+
+            const snapshot = {
+                user_id: userId,
+                snapshot_date: today,
+                mrr,
+                clients: clients || 0,
+                pipeline_total: Math.round(pipelineTotal),
+                active_alerts: activeAlerts || 0,
+                task_completion_pct: taskCompletionPct,
+                health_score: healthScore,
+                metadata: {
+                    mrr_score: mrrScore,
+                    pipeline_score: pipelineScore,
+                    execution_score: executionScore,
+                    alert_penalty: alertPenalty,
+                    connector_feeds: {
+                        live_count: connectors?.length || 0,
+                        items: (connectors || []).map((connector: any) => ({
+                            name: connector.name,
+                            catalog_slug: connector.catalog_slug,
+                            template_key: connector.template_key,
+                            capabilities: connector.capabilities || [],
+                            last_healthcheck_at: connector.last_healthcheck_at,
+                        })),
+                    },
+                },
+            };
+
+            if (existing) {
+                await supabase.from("daily_snapshots").update(snapshot).eq("id", existing.id);
+            } else {
+                await supabase.from("daily_snapshots").insert(snapshot);
+            }
+
+            results.push({ userId, healthScore, mrr, clients: clients || 0 });
+        }
+
+        return new Response(
+            JSON.stringify({ message: `Snapshots created for ${results.length} user(s)`, results }),
+            { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+    } catch (err) {
+        console.error("[daily-snapshot] error:", err);
+        return new Response(
+            JSON.stringify({ error: "Internal server error" }),
+            { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+    }
+});

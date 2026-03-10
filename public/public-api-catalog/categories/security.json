@@ -1,0 +1,1191 @@
+{
+  "category": "Security",
+  "slug": "security",
+  "count": 38,
+  "entries": [
+    {
+      "slug": "security-classify-classify-web-herokuapp-com",
+      "name": "Classify",
+      "category": "Security",
+      "docs_url": "https://classify-web.herokuapp.com/#/api",
+      "description": "Encrypting & decrypting text messages",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "yes",
+        "classify-web.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Classify](https://classify-web.herokuapp.com/#/api)",
+        "description": "Encrypting & decrypting text messages",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Classify](https://classify-web.herokuapp.com/#/api) | Encrypting & decrypting text messages | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-emailrep-docs-emailrep-io",
+      "name": "EmailRep",
+      "category": "Security",
+      "docs_url": "https://docs.emailrep.io/",
+      "description": "Email address threat and risk prediction",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "hunter",
+        "docs.emailrep.io"
+      ],
+      "raw_source": {
+        "api": "[EmailRep](https://docs.emailrep.io/)",
+        "description": "Email address threat and risk prediction",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [EmailRep](https://docs.emailrep.io/) | Email address threat and risk prediction | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-mozilla-http-scanner-github-com",
+      "name": "Mozilla http scanner",
+      "category": "Security",
+      "docs_url": "https://github.com/mozilla/http-observatory/blob/master/httpobs/docs/api.md",
+      "description": "Mozilla observatory http scanner",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Mozilla http scanner](https://github.com/mozilla/http-observatory/blob/master/httpobs/docs/api.md)",
+        "description": "Mozilla observatory http scanner",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mozilla http scanner](https://github.com/mozilla/http-observatory/blob/master/httpobs/docs/api.md) | Mozilla observatory http scanner | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-mozilla-tls-scanner-github-com",
+      "name": "Mozilla tls scanner",
+      "category": "Security",
+      "docs_url": "https://github.com/mozilla/tls-observatory#api-endpoints",
+      "description": "Mozilla observatory tls scanner",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Mozilla tls scanner](https://github.com/mozilla/tls-observatory#api-endpoints)",
+        "description": "Mozilla observatory tls scanner",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mozilla tls scanner](https://github.com/mozilla/tls-observatory#api-endpoints) | Mozilla observatory tls scanner | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-national-vulnerability-database-nvd-nist-gov",
+      "name": "National Vulnerability Database",
+      "category": "Security",
+      "docs_url": "https://nvd.nist.gov/vuln/Data-Feeds/JSON-feed-changelog",
+      "description": "U.S. National Vulnerability Database",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "nvd.nist.gov"
+      ],
+      "raw_source": {
+        "api": "[National Vulnerability Database](https://nvd.nist.gov/vuln/Data-Feeds/JSON-feed-changelog)",
+        "description": "U.S. National Vulnerability Database",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [National Vulnerability Database](https://nvd.nist.gov/vuln/Data-Feeds/JSON-feed-changelog) | U.S. National Vulnerability Database | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-phishstats-phishstats-info",
+      "name": "PhishStats",
+      "category": "Security",
+      "docs_url": "https://phishstats.info/",
+      "description": "Phishing database",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "phishstats.info"
+      ],
+      "raw_source": {
+        "api": "[PhishStats](https://phishstats.info/)",
+        "description": "Phishing database",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PhishStats](https://phishstats.info/) | Phishing database | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-uk-police-data-police-uk",
+      "name": "UK Police",
+      "category": "Security",
+      "docs_url": "https://data.police.uk/docs/",
+      "description": "UK Police data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "data.police.uk"
+      ],
+      "raw_source": {
+        "api": "[UK Police](https://data.police.uk/docs/)",
+        "description": "UK Police data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [UK Police](https://data.police.uk/docs/) | UK Police data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-virushee-api-virushee-com",
+      "name": "Virushee",
+      "category": "Security",
+      "docs_url": "https://api.virushee.com/",
+      "description": "Virushee file/data scanning",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "yes",
+        "api.virushee.com"
+      ],
+      "raw_source": {
+        "api": "[Virushee](https://api.virushee.com/)",
+        "description": "Virushee file/data scanning",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Virushee](https://api.virushee.com/) | Virushee file/data scanning | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-censys-search-censys-io",
+      "name": "Censys",
+      "category": "Security",
+      "docs_url": "https://search.censys.io/api",
+      "description": "Search engine for Internet connected host and devices",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "no",
+        "search.censys.io"
+      ],
+      "raw_source": {
+        "api": "[Censys](https://search.censys.io/api)",
+        "description": "Search engine for Internet connected host and devices",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Censys](https://search.censys.io/api) | Search engine for Internet connected host and devices | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-complete-criminal-checks-completecriminalchecks-com",
+      "name": "Complete Criminal Checks",
+      "category": "Security",
+      "docs_url": "https://completecriminalchecks.com/Developers",
+      "description": "Provides data of offenders from all U.S. States and Pureto Rico",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "yes",
+        "completecriminalchecks.com"
+      ],
+      "raw_source": {
+        "api": "[Complete Criminal Checks](https://completecriminalchecks.com/Developers)",
+        "description": "Provides data of offenders from all U.S. States and Pureto Rico",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Complete Criminal Checks](https://completecriminalchecks.com/Developers) | Provides data of offenders from all U.S. States and Pureto Rico | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-crxcavator-crxcavator-io",
+      "name": "CRXcavator",
+      "category": "Security",
+      "docs_url": "https://crxcavator.io/apidocs",
+      "description": "Chrome extension risk scoring",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "crxcavator.io"
+      ],
+      "raw_source": {
+        "api": "[CRXcavator](https://crxcavator.io/apidocs)",
+        "description": "Chrome extension risk scoring",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CRXcavator](https://crxcavator.io/apidocs) | Chrome extension risk scoring | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-fullhunt-api-docs-fullhunt-io",
+      "name": "FullHunt",
+      "category": "Security",
+      "docs_url": "https://api-docs.fullhunt.io/#introduction",
+      "description": "Searchable attack surface database of the entire internet",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "api-docs.fullhunt.io"
+      ],
+      "raw_source": {
+        "api": "[FullHunt](https://api-docs.fullhunt.io/#introduction)",
+        "description": "Searchable attack surface database of the entire internet",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FullHunt](https://api-docs.fullhunt.io/#introduction) | Searchable attack surface database of the entire internet | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-gitguardian-api-gitguardian-com",
+      "name": "GitGuardian",
+      "category": "Security",
+      "docs_url": "https://api.gitguardian.com/doc",
+      "description": "Scan files for secrets (API Keys, database credentials)",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "no",
+        "api.gitguardian.com"
+      ],
+      "raw_source": {
+        "api": "[GitGuardian](https://api.gitguardian.com/doc)",
+        "description": "Scan files for secrets (API Keys, database credentials)",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [GitGuardian](https://api.gitguardian.com/doc) | Scan files for secrets (API Keys, database credentials) | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-greynoise-docs-greynoise-io",
+      "name": "GreyNoise",
+      "category": "Security",
+      "docs_url": "https://docs.greynoise.io/reference/get_v3-community-ip",
+      "description": "Query IPs in the GreyNoise dataset and retrieve a subset of the full IP context data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "docs.greynoise.io"
+      ],
+      "raw_source": {
+        "api": "[GreyNoise](https://docs.greynoise.io/reference/get_v3-community-ip)",
+        "description": "Query IPs in the GreyNoise dataset and retrieve a subset of the full IP context data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GreyNoise](https://docs.greynoise.io/reference/get_v3-community-ip) | Query IPs in the GreyNoise dataset and retrieve a subset of the full IP context data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-hackerone-api-hackerone-com",
+      "name": "HackerOne",
+      "category": "Security",
+      "docs_url": "https://api.hackerone.com/",
+      "description": "The industry’s first hacker API that helps increase productivity towards creative bug bounty hunting",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "api.hackerone.com"
+      ],
+      "raw_source": {
+        "api": "[HackerOne](https://api.hackerone.com/)",
+        "description": "The industry’s first hacker API that helps increase productivity towards creative bug bounty hunting",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [HackerOne](https://api.hackerone.com/) | The industry’s first hacker API that helps increase productivity towards creative bug bounty hunting | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-haveibeenpwned-haveibeenpwned-com",
+      "name": "HaveIBeenPwned",
+      "category": "Security",
+      "docs_url": "https://haveibeenpwned.com/API/v3",
+      "description": "Passwords which have previously been exposed in data breaches",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "haveibeenpwned.com"
+      ],
+      "raw_source": {
+        "api": "[HaveIBeenPwned](https://haveibeenpwned.com/API/v3)",
+        "description": "Passwords which have previously been exposed in data breaches",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [HaveIBeenPwned](https://haveibeenpwned.com/API/v3) | Passwords which have previously been exposed in data breaches | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-pulsedive-pulsedive-com",
+      "name": "Pulsedive",
+      "category": "Security",
+      "docs_url": "https://pulsedive.com/api/",
+      "description": "Scan, search and collect threat intelligence data in real-time",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "pulsedive.com"
+      ],
+      "raw_source": {
+        "api": "[Pulsedive](https://pulsedive.com/api/)",
+        "description": "Scan, search and collect threat intelligence data in real-time",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Pulsedive](https://pulsedive.com/api/) | Scan, search and collect threat intelligence data in real-time | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-shodan-developer-shodan-io",
+      "name": "Shodan",
+      "category": "Security",
+      "docs_url": "https://developer.shodan.io/",
+      "description": "Search engine for Internet connected devices",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "developer.shodan.io"
+      ],
+      "raw_source": {
+        "api": "[Shodan](https://developer.shodan.io/)",
+        "description": "Search engine for Internet connected devices",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Shodan](https://developer.shodan.io/) | Search engine for Internet connected devices | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-spyse-spyse-dev-readme-io",
+      "name": "Spyse",
+      "category": "Security",
+      "docs_url": "https://spyse-dev.readme.io/reference/quick-start",
+      "description": "Access data on all Internet assets and build powerful attack surface management applications",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "spyse-dev.readme.io"
+      ],
+      "raw_source": {
+        "api": "[Spyse](https://spyse-dev.readme.io/reference/quick-start)",
+        "description": "Access data on all Internet assets and build powerful attack surface management applications",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Spyse](https://spyse-dev.readme.io/reference/quick-start) | Access data on all Internet assets and build powerful attack surface management applications | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-threat-jammer-threatjammer-com",
+      "name": "Threat Jammer",
+      "category": "Security",
+      "docs_url": "https://threatjammer.com/docs/index",
+      "description": "Risk scoring service from curated threat intelligence data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "threatjammer.com"
+      ],
+      "raw_source": {
+        "api": "[Threat Jammer](https://threatjammer.com/docs/index)",
+        "description": "Risk scoring service from curated threat intelligence data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Threat Jammer](https://threatjammer.com/docs/index) | Risk scoring service from curated threat intelligence data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-dehash-lt-github-com",
+      "name": "Dehash.lt",
+      "category": "Security",
+      "docs_url": "https://github.com/Dehash-lt/api",
+      "description": "Hash decryption MD5, SHA1, SHA3, SHA256, SHA384, SHA512",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Dehash.lt](https://github.com/Dehash-lt/api)",
+        "description": "Hash decryption MD5, SHA1, SHA3, SHA256, SHA384, SHA512",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dehash.lt](https://github.com/Dehash-lt/api) | Hash decryption MD5, SHA1, SHA3, SHA256, SHA384, SHA512 | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-escape-github-com",
+      "name": "Escape",
+      "category": "Security",
+      "docs_url": "https://github.com/polarspetroll/EscapeAPI",
+      "description": "An API for escaping different kind of queries",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "no",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Escape](https://github.com/polarspetroll/EscapeAPI)",
+        "description": "An API for escaping different kind of queries",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Escape](https://github.com/polarspetroll/EscapeAPI) | An API for escaping different kind of queries | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-filterlists-filterlists-com",
+      "name": "FilterLists",
+      "category": "Security",
+      "docs_url": "https://filterlists.com",
+      "description": "Lists of filters for adblockers and firewalls",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "filterlists.com"
+      ],
+      "raw_source": {
+        "api": "[FilterLists](https://filterlists.com)",
+        "description": "Lists of filters for adblockers and firewalls",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FilterLists](https://filterlists.com) | Lists of filters for adblockers and firewalls | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-hashable-hashable-space",
+      "name": "Hashable",
+      "category": "Security",
+      "docs_url": "https://hashable.space/pages/api/",
+      "description": "A REST API to access high level cryptographic functions and methods",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "yes",
+        "hashable.space"
+      ],
+      "raw_source": {
+        "api": "[Hashable](https://hashable.space/pages/api/)",
+        "description": "A REST API to access high level cryptographic functions and methods",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Hashable](https://hashable.space/pages/api/) | A REST API to access high level cryptographic functions and methods | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-microsoft-security-response-center-msrc-msrc-microsoft-com",
+      "name": "Microsoft Security Response Center (MSRC)",
+      "category": "Security",
+      "docs_url": "https://msrc.microsoft.com/report/developer",
+      "description": "Programmatic interfaces to engage with the Microsoft Security Response Center (MSRC)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "unknown",
+        "msrc.microsoft.com"
+      ],
+      "raw_source": {
+        "api": "[Microsoft Security Response Center (MSRC)](https://msrc.microsoft.com/report/developer)",
+        "description": "Programmatic interfaces to engage with the Microsoft Security Response Center (MSRC)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Microsoft Security Response Center (MSRC)](https://msrc.microsoft.com/report/developer) | Programmatic interfaces to engage with the Microsoft Security Response Center (MSRC) | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-passwordinator-github-com",
+      "name": "Passwordinator",
+      "category": "Security",
+      "docs_url": "https://github.com/fawazsullia/password-generator/",
+      "description": "Generate random passwords of varying complexities",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Passwordinator](https://github.com/fawazsullia/password-generator/)",
+        "description": "Generate random passwords of varying complexities",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Passwordinator](https://github.com/fawazsullia/password-generator/) | Generate random passwords of varying complexities | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-application-environment-verification-github-com",
+      "name": "Application Environment Verification",
+      "category": "Security",
+      "docs_url": "https://github.com/fingerprintjs/aev",
+      "description": "Android library and API to verify the safety of user devices, detect rooted devices and other risks",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Application Environment Verification](https://github.com/fingerprintjs/aev)",
+        "description": "Android library and API to verify the safety of user devices, detect rooted devices and other risks",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Application Environment Verification](https://github.com/fingerprintjs/aev) | Android library and API to verify the safety of user devices, detect rooted devices and other risks | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-binaryedge-docs-binaryedge-io",
+      "name": "BinaryEdge",
+      "category": "Security",
+      "docs_url": "https://docs.binaryedge.io/api-v2.html",
+      "description": "Provide access to BinaryEdge 40fy scanning platform",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "yes",
+        "docs.binaryedge.io"
+      ],
+      "raw_source": {
+        "api": "[BinaryEdge](https://docs.binaryedge.io/api-v2.html)",
+        "description": "Provide access to BinaryEdge 40fy scanning platform",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [BinaryEdge](https://docs.binaryedge.io/api-v2.html) | Provide access to BinaryEdge 40fy scanning platform | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-botd-github-com",
+      "name": "Botd",
+      "category": "Security",
+      "docs_url": "https://github.com/fingerprintjs/botd",
+      "description": "Botd is a browser library for JavaScript bot detection",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Botd](https://github.com/fingerprintjs/botd)",
+        "description": "Botd is a browser library for JavaScript bot detection",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Botd](https://github.com/fingerprintjs/botd) | Botd is a browser library for JavaScript bot detection | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-bugcrowd-docs-bugcrowd-com",
+      "name": "Bugcrowd",
+      "category": "Security",
+      "docs_url": "https://docs.bugcrowd.com/api/getting-started/",
+      "description": "Bugcrowd API for interacting and tracking the reported issues programmatically",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "strategist"
+      ],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "strategist",
+        "docs.bugcrowd.com"
+      ],
+      "raw_source": {
+        "api": "[Bugcrowd](https://docs.bugcrowd.com/api/getting-started/)",
+        "description": "Bugcrowd API for interacting and tracking the reported issues programmatically",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bugcrowd](https://docs.bugcrowd.com/api/getting-started/) | Bugcrowd API for interacting and tracking the reported issues programmatically | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-fingerprintjs-pro-dev-fingerprintjs-com",
+      "name": "FingerprintJS Pro",
+      "category": "Security",
+      "docs_url": "https://dev.fingerprintjs.com/docs",
+      "description": "Fraud detection API offering highly accurate browser fingerprinting",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "yes",
+        "dev.fingerprintjs.com"
+      ],
+      "raw_source": {
+        "api": "[FingerprintJS Pro](https://dev.fingerprintjs.com/docs)",
+        "description": "Fraud detection API offering highly accurate browser fingerprinting",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [FingerprintJS Pro](https://dev.fingerprintjs.com/docs) | Fraud detection API offering highly accurate browser fingerprinting | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-fraudlabs-pro-fraudlabspro-com",
+      "name": "FraudLabs Pro",
+      "category": "Security",
+      "docs_url": "https://www.fraudlabspro.com/developer/api/screen-order",
+      "description": "Screen order information using AI to detect frauds",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "fraudlabspro.com"
+      ],
+      "raw_source": {
+        "api": "[FraudLabs Pro](https://www.fraudlabspro.com/developer/api/screen-order)",
+        "description": "Screen order information using AI to detect frauds",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FraudLabs Pro](https://www.fraudlabspro.com/developer/api/screen-order) | Screen order information using AI to detect frauds | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-intelligence-x-github-com",
+      "name": "Intelligence X",
+      "category": "Security",
+      "docs_url": "https://github.com/IntelligenceX/SDK/blob/master/Intelligence%20X%20API.pdf",
+      "description": "Perform OSINT via Intelligence X",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Intelligence X](https://github.com/IntelligenceX/SDK/blob/master/Intelligence%20X%20API.pdf)",
+        "description": "Perform OSINT via Intelligence X",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Intelligence X](https://github.com/IntelligenceX/SDK/blob/master/Intelligence%20X%20API.pdf) | Perform OSINT via Intelligence X | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-loginradius-loginradius-com",
+      "name": "LoginRadius",
+      "category": "Security",
+      "docs_url": "https://www.loginradius.com/docs/",
+      "description": "Managed User Authentication Service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "yes",
+        "loginradius.com"
+      ],
+      "raw_source": {
+        "api": "[LoginRadius](https://www.loginradius.com/docs/)",
+        "description": "Managed User Authentication Service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [LoginRadius](https://www.loginradius.com/docs/) | Managed User Authentication Service | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-privacy-com-privacy-com",
+      "name": "Privacy.com",
+      "category": "Security",
+      "docs_url": "https://privacy.com/developer/docs",
+      "description": "Generate merchant-specific and one-time use credit card numbers that link back to your bank",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "privacy.com"
+      ],
+      "raw_source": {
+        "api": "[Privacy.com](https://privacy.com/developer/docs)",
+        "description": "Generate merchant-specific and one-time use credit card numbers that link back to your bank",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Privacy.com](https://privacy.com/developer/docs) | Generate merchant-specific and one-time use credit card numbers that link back to your bank | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-securitytrails-securitytrails-com",
+      "name": "SecurityTrails",
+      "category": "Security",
+      "docs_url": "https://securitytrails.com/corp/apidocs",
+      "description": "Domain and IP related information such as current and historical WHOIS and DNS records",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "securitytrails.com"
+      ],
+      "raw_source": {
+        "api": "[SecurityTrails](https://securitytrails.com/corp/apidocs)",
+        "description": "Domain and IP related information such as current and historical WHOIS and DNS records",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SecurityTrails](https://securitytrails.com/corp/apidocs) | Domain and IP related information such as current and historical WHOIS and DNS records | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-vuldb-vuldb-com",
+      "name": "VulDB",
+      "category": "Security",
+      "docs_url": "https://vuldb.com/?doc.api",
+      "description": "VulDB API allows to initiate queries for one or more items along with transactional bots",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "api_key",
+        "unknown",
+        "vuldb.com"
+      ],
+      "raw_source": {
+        "api": "[VulDB](https://vuldb.com/?doc.api)",
+        "description": "VulDB API allows to initiate queries for one or more items along with transactional bots",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [VulDB](https://vuldb.com/?doc.api) | VulDB API allows to initiate queries for one or more items along with transactional bots | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "security-bitwarden-bitwarden-com",
+      "name": "BitWarden",
+      "category": "Security",
+      "docs_url": "https://bitwarden.com/help/api/",
+      "description": "Best open-source password manager",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "security",
+        "oauth2",
+        "unknown",
+        "bitwarden.com"
+      ],
+      "raw_source": {
+        "api": "[BitWarden](https://bitwarden.com/help/api/)",
+        "description": "Best open-source password manager",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [BitWarden](https://bitwarden.com/help/api/) | Best open-source password manager | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

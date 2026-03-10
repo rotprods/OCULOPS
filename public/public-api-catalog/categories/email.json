@@ -1,0 +1,772 @@
+{
+  "category": "Email",
+  "slug": "email",
+  "count": 17,
+  "entries": [
+    {
+      "slug": "email-disify-disify-com",
+      "name": "Disify",
+      "category": "Email",
+      "docs_url": "https://www.disify.com/",
+      "description": "Validate and detect disposable and temporary email addresses",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "disify.com"
+      ],
+      "raw_source": {
+        "api": "[Disify](https://www.disify.com/)",
+        "description": "Validate and detect disposable and temporary email addresses",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Disify](https://www.disify.com/) | Validate and detect disposable and temporary email addresses | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-dropmail-dropmail-me",
+      "name": "DropMail",
+      "category": "Email",
+      "docs_url": "https://dropmail.me/api/#live-demo",
+      "description": "GraphQL API for creating and managing ephemeral e-mail inboxes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "dropmail.me"
+      ],
+      "raw_source": {
+        "api": "[DropMail](https://dropmail.me/api/#live-demo)",
+        "description": "GraphQL API for creating and managing ephemeral e-mail inboxes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [DropMail](https://dropmail.me/api/#live-demo) | GraphQL API for creating and managing ephemeral e-mail inboxes | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-eva-eva-pingutil-com",
+      "name": "EVA",
+      "category": "Email",
+      "docs_url": "https://eva.pingutil.com/",
+      "description": "Validate email addresses",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "eva.pingutil.com"
+      ],
+      "raw_source": {
+        "api": "[EVA](https://eva.pingutil.com/)",
+        "description": "Validate email addresses",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [EVA](https://eva.pingutil.com/) | Validate email addresses | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-guerrilla-mail-guerrillamail-com",
+      "name": "Guerrilla Mail",
+      "category": "Email",
+      "docs_url": "https://www.guerrillamail.com/GuerrillaMailAPI.html",
+      "description": "Disposable temporary Email addresses",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "guerrillamail.com"
+      ],
+      "raw_source": {
+        "api": "[Guerrilla Mail](https://www.guerrillamail.com/GuerrillaMailAPI.html)",
+        "description": "Disposable temporary Email addresses",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Guerrilla Mail](https://www.guerrillamail.com/GuerrillaMailAPI.html) | Disposable temporary Email addresses | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-kickbox-open-kickbox-com",
+      "name": "Kickbox",
+      "category": "Email",
+      "docs_url": "https://open.kickbox.com/",
+      "description": "Email verification API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "open.kickbox.com"
+      ],
+      "raw_source": {
+        "api": "[Kickbox](https://open.kickbox.com/)",
+        "description": "Email verification API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Kickbox](https://open.kickbox.com/) | Email verification API | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-mail-gw-docs-mail-gw",
+      "name": "mail.gw",
+      "category": "Email",
+      "docs_url": "https://docs.mail.gw",
+      "description": "10 Minute Mail",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "docs.mail.gw"
+      ],
+      "raw_source": {
+        "api": "[mail.gw](https://docs.mail.gw)",
+        "description": "10 Minute Mail",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [mail.gw](https://docs.mail.gw) | 10 Minute Mail | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-mail-tm-docs-mail-tm",
+      "name": "mail.tm",
+      "category": "Email",
+      "docs_url": "https://docs.mail.tm",
+      "description": "Temporary Email Service",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "docs.mail.tm"
+      ],
+      "raw_source": {
+        "api": "[mail.tm](https://docs.mail.tm)",
+        "description": "Temporary Email Service",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [mail.tm](https://docs.mail.tm) | Temporary Email Service | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-mailcheck-ai-mailcheck-ai",
+      "name": "MailCheck.ai",
+      "category": "Email",
+      "docs_url": "https://www.mailcheck.ai/#documentation",
+      "description": "Prevent users to sign up with temporary email addresses",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "mailcheck.ai"
+      ],
+      "raw_source": {
+        "api": "[MailCheck.ai](https://www.mailcheck.ai/#documentation)",
+        "description": "Prevent users to sign up with temporary email addresses",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MailCheck.ai](https://www.mailcheck.ai/#documentation) | Prevent users to sign up with temporary email addresses | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-apilayer-mailboxlayer-mailboxlayer-com",
+      "name": "apilayer mailboxlayer",
+      "category": "Email",
+      "docs_url": "https://mailboxlayer.com",
+      "description": "Email address validation",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "mailboxlayer.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer mailboxlayer](https://mailboxlayer.com)",
+        "description": "Email address validation",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer mailboxlayer](https://mailboxlayer.com) | Email address validation | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-cloudmersive-validate-cloudmersive-com",
+      "name": "Cloudmersive Validate",
+      "category": "Email",
+      "docs_url": "https://cloudmersive.com/validate-api",
+      "description": "Validate email addresses, phone numbers, VAT numbers and domain names",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "cloudmersive.com"
+      ],
+      "raw_source": {
+        "api": "[Cloudmersive Validate](https://cloudmersive.com/validate-api)",
+        "description": "Validate email addresses, phone numbers, VAT numbers and domain names",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Cloudmersive Validate](https://cloudmersive.com/validate-api) | Validate email addresses, phone numbers, VAT numbers and domain names | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-email-validation-abstractapi-com",
+      "name": "Email Validation",
+      "category": "Email",
+      "docs_url": "https://www.abstractapi.com/email-verification-validation-api",
+      "description": "Validate email addresses for deliverability and spam",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "abstractapi.com"
+      ],
+      "raw_source": {
+        "api": "[Email Validation](https://www.abstractapi.com/email-verification-validation-api)",
+        "description": "Validate email addresses for deliverability and spam",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Email Validation](https://www.abstractapi.com/email-verification-validation-api) | Validate email addresses for deliverability and spam | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-improvmx-improvmx-com",
+      "name": "ImprovMX",
+      "category": "Email",
+      "docs_url": "https://improvmx.com/api",
+      "description": "API for free email forwarding service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "improvmx.com"
+      ],
+      "raw_source": {
+        "api": "[ImprovMX](https://improvmx.com/api)",
+        "description": "API for free email forwarding service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ImprovMX](https://improvmx.com/api) | API for free email forwarding service | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-mailboxvalidator-mailboxvalidator-com",
+      "name": "MailboxValidator",
+      "category": "Email",
+      "docs_url": "https://www.mailboxvalidator.com/api-email-free",
+      "description": "Validate email address to improve deliverability",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "mailboxvalidator.com"
+      ],
+      "raw_source": {
+        "api": "[MailboxValidator](https://www.mailboxvalidator.com/api-email-free)",
+        "description": "Validate email address to improve deliverability",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MailboxValidator](https://www.mailboxvalidator.com/api-email-free) | Validate email address to improve deliverability | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-mailtrap-mailtrap-docs-apiary-io",
+      "name": "Mailtrap",
+      "category": "Email",
+      "docs_url": "https://mailtrap.docs.apiary.io/#",
+      "description": "A service for the safe testing of emails sent from the development and staging environments",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "mailtrap.docs.apiary.io"
+      ],
+      "raw_source": {
+        "api": "[Mailtrap](https://mailtrap.docs.apiary.io/#)",
+        "description": "A service for the safe testing of emails sent from the development and staging environments",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mailtrap](https://mailtrap.docs.apiary.io/#) | A service for the safe testing of emails sent from the development and staging environments | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-sendgrid-docs-sendgrid-com",
+      "name": "Sendgrid",
+      "category": "Email",
+      "docs_url": "https://docs.sendgrid.com/api-reference/",
+      "description": "A cloud-based SMTP provider that allows you to send emails without having to maintain email servers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "docs.sendgrid.com"
+      ],
+      "raw_source": {
+        "api": "[Sendgrid](https://docs.sendgrid.com/api-reference/)",
+        "description": "A cloud-based SMTP provider that allows you to send emails without having to maintain email servers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Sendgrid](https://docs.sendgrid.com/api-reference/) | A cloud-based SMTP provider that allows you to send emails without having to maintain email servers | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-sendinblue-developers-sendinblue-com",
+      "name": "Sendinblue",
+      "category": "Email",
+      "docs_url": "https://developers.sendinblue.com/docs",
+      "description": "A service that provides solutions relating to marketing and/or transactional email and/or SMS",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.sendinblue.com"
+      ],
+      "raw_source": {
+        "api": "[Sendinblue](https://developers.sendinblue.com/docs)",
+        "description": "A service that provides solutions relating to marketing and/or transactional email and/or SMS",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Sendinblue](https://developers.sendinblue.com/docs) | A service that provides solutions relating to marketing and/or transactional email and/or SMS | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "email-verifier-verifier-meetchopra-com",
+      "name": "Verifier",
+      "category": "Email",
+      "docs_url": "https://verifier.meetchopra.com/docs#/",
+      "description": "Verifies that a given email is real",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "email",
+        "api_key",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "verifier.meetchopra.com"
+      ],
+      "raw_source": {
+        "api": "[Verifier](https://verifier.meetchopra.com/docs#/)",
+        "description": "Verifies that a given email is real",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Verifier](https://verifier.meetchopra.com/docs#/) | Verifies that a given email is real | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

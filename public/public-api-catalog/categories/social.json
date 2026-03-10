@@ -1,0 +1,1807 @@
+{
+  "category": "Social",
+  "slug": "social",
+  "count": 40,
+  "entries": [
+    {
+      "slug": "social-4chan-github-com",
+      "name": "4chan",
+      "category": "Social",
+      "docs_url": "https://github.com/4chan/4chan-API",
+      "description": "Simple image-based bulletin board dedicated to a variety of topics",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[4chan](https://github.com/4chan/4chan-API)",
+        "description": "Simple image-based bulletin board dedicated to a variety of topics",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [4chan](https://github.com/4chan/4chan-API) | Simple image-based bulletin board dedicated to a variety of topics | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-aztro-aztro-sameerkumar-website",
+      "name": "aztro",
+      "category": "Social",
+      "docs_url": "https://aztro.sameerkumar.website/",
+      "description": "Daily horoscope info for yesterday, today, and tomorrow",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "aztro.sameerkumar.website"
+      ],
+      "raw_source": {
+        "api": "[aztro](https://aztro.sameerkumar.website/)",
+        "description": "Daily horoscope info for yesterday, today, and tomorrow",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [aztro](https://aztro.sameerkumar.website/) | Daily horoscope info for yesterday, today, and tomorrow | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-doge-meme-api-doge-meme-lol",
+      "name": "Doge-Meme",
+      "category": "Social",
+      "docs_url": "https://api.doge-meme.lol/docs",
+      "description": "Top meme posts from r/dogecoin which include 'Meme' flair",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "api.doge-meme.lol"
+      ],
+      "raw_source": {
+        "api": "[Doge-Meme](https://api.doge-meme.lol/docs)",
+        "description": "Top meme posts from r/dogecoin which include 'Meme' flair",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Doge-Meme](https://api.doge-meme.lol/docs) | Top meme posts from r/dogecoin which include 'Meme' flair | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-fuck-off-as-a-service-foaas-com",
+      "name": "Fuck Off as a Service",
+      "category": "Social",
+      "docs_url": "https://www.foaas.com",
+      "description": "Asks someone to fuck off",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "foaas.com"
+      ],
+      "raw_source": {
+        "api": "[Fuck Off as a Service](https://www.foaas.com)",
+        "description": "Asks someone to fuck off",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Fuck Off as a Service](https://www.foaas.com) | Asks someone to fuck off | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-hackernews-github-com",
+      "name": "HackerNews",
+      "category": "Social",
+      "docs_url": "https://github.com/HackerNews/API",
+      "description": "Social news for CS and entrepreneurship",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[HackerNews](https://github.com/HackerNews/API)",
+        "description": "Social news for CS and entrepreneurship",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [HackerNews](https://github.com/HackerNews/API) | Social news for CS and entrepreneurship | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-hashnode-hashnode-com",
+      "name": "Hashnode",
+      "category": "Social",
+      "docs_url": "https://hashnode.com",
+      "description": "A blogging platform built for developers",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "hashnode.com"
+      ],
+      "raw_source": {
+        "api": "[Hashnode](https://hashnode.com)",
+        "description": "A blogging platform built for developers",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hashnode](https://hashnode.com) | A blogging platform built for developers | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-lanyard-github-com",
+      "name": "Lanyard",
+      "category": "Social",
+      "docs_url": "https://github.com/Phineas/lanyard",
+      "description": "Retrieve your presence on Discord through an HTTP REST API or WebSocket",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Lanyard](https://github.com/Phineas/lanyard)",
+        "description": "Retrieve your presence on Discord through an HTTP REST API or WebSocket",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Lanyard](https://github.com/Phineas/lanyard) | Retrieve your presence on Discord through an HTTP REST API or WebSocket | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-open-collective-docs-opencollective-com",
+      "name": "Open Collective",
+      "category": "Social",
+      "docs_url": "https://docs.opencollective.com/help/developers/api",
+      "description": "Get Open Collective data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "none",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "docs.opencollective.com"
+      ],
+      "raw_source": {
+        "api": "[Open Collective](https://docs.opencollective.com/help/developers/api)",
+        "description": "Get Open Collective data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Collective](https://docs.opencollective.com/help/developers/api) | Get Open Collective data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-ayrshare-ayrshare-com",
+      "name": "Ayrshare",
+      "category": "Social",
+      "docs_url": "https://www.ayrshare.com",
+      "description": "Social media APIs to post, get analytics, and manage multiple users social media accounts",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "api_key",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "ayrshare.com"
+      ],
+      "raw_source": {
+        "api": "[Ayrshare](https://www.ayrshare.com)",
+        "description": "Social media APIs to post, get analytics, and manage multiple users social media accounts",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Ayrshare](https://www.ayrshare.com) | Social media APIs to post, get analytics, and manage multiple users social media accounts | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-dangerous-discord-database-discord-riverside-rocks",
+      "name": "Dangerous Discord Database",
+      "category": "Social",
+      "docs_url": "https://discord.riverside.rocks/docs/index.php",
+      "description": "Database of malicious Discord accounts",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "discord.riverside.rocks"
+      ],
+      "raw_source": {
+        "api": "[Dangerous Discord Database](https://discord.riverside.rocks/docs/index.php)",
+        "description": "Database of malicious Discord accounts",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dangerous Discord Database](https://discord.riverside.rocks/docs/index.php) | Database of malicious Discord accounts | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-meetup-com-meetup-com",
+      "name": "Meetup.com",
+      "category": "Social",
+      "docs_url": "https://www.meetup.com/api/guide",
+      "description": "Data about Meetups from Meetup.com",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "meetup.com"
+      ],
+      "raw_source": {
+        "api": "[Meetup.com](https://www.meetup.com/api/guide)",
+        "description": "Data about Meetups from Meetup.com",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Meetup.com](https://www.meetup.com/api/guide) | Data about Meetups from Meetup.com | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-revolt-developers-revolt-chat",
+      "name": "Revolt",
+      "category": "Social",
+      "docs_url": "https://developers.revolt.chat/api/",
+      "description": "Revolt open source Discord alternative",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.revolt.chat"
+      ],
+      "raw_source": {
+        "api": "[Revolt](https://developers.revolt.chat/api/)",
+        "description": "Revolt open source Discord alternative",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Revolt](https://developers.revolt.chat/api/) | Revolt open source Discord alternative | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-tamtam-dev-tamtam-chat",
+      "name": "TamTam",
+      "category": "Social",
+      "docs_url": "https://dev.tamtam.chat/",
+      "description": "Bot API to interact with TamTam",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "dev.tamtam.chat"
+      ],
+      "raw_source": {
+        "api": "[TamTam](https://dev.tamtam.chat/)",
+        "description": "Bot API to interact with TamTam",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [TamTam](https://dev.tamtam.chat/) | Bot API to interact with TamTam | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-telegram-bot-core-telegram-org",
+      "name": "Telegram Bot",
+      "category": "Social",
+      "docs_url": "https://core.telegram.org/bots/api",
+      "description": "Simplified HTTP version of the MTProto API for bots",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "core.telegram.org"
+      ],
+      "raw_source": {
+        "api": "[Telegram Bot](https://core.telegram.org/bots/api)",
+        "description": "Simplified HTTP version of the MTProto API for bots",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Telegram Bot](https://core.telegram.org/bots/api) | Simplified HTTP version of the MTProto API for bots | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-telegraph-telegra-ph",
+      "name": "Telegraph",
+      "category": "Social",
+      "docs_url": "https://telegra.ph/api",
+      "description": "Create attractive blogs easily, to share",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "api_key",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "telegra.ph"
+      ],
+      "raw_source": {
+        "api": "[Telegraph](https://telegra.ph/api)",
+        "description": "Create attractive blogs easily, to share",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Telegraph](https://telegra.ph/api) | Create attractive blogs easily, to share | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-blogger-developers-google-com",
+      "name": "Blogger",
+      "category": "Social",
+      "docs_url": "https://developers.google.com/blogger/",
+      "description": "The Blogger APIs allows client applications to view and update Blogger content",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Blogger](https://developers.google.com/blogger/)",
+        "description": "The Blogger APIs allows client applications to view and update Blogger content",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Blogger](https://developers.google.com/blogger/) | The Blogger APIs allows client applications to view and update Blogger content | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-cisco-spark-developer-ciscospark-com",
+      "name": "Cisco Spark",
+      "category": "Social",
+      "docs_url": "https://developer.ciscospark.com",
+      "description": "Team Collaboration Software",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developer.ciscospark.com"
+      ],
+      "raw_source": {
+        "api": "[Cisco Spark](https://developer.ciscospark.com)",
+        "description": "Team Collaboration Software",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Cisco Spark](https://developer.ciscospark.com) | Team Collaboration Software | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-discord-discord-com",
+      "name": "Discord",
+      "category": "Social",
+      "docs_url": "https://discord.com/developers/docs/intro",
+      "description": "Make bots for Discord, integrate Discord onto an external platform",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "discord.com"
+      ],
+      "raw_source": {
+        "api": "[Discord](https://discord.com/developers/docs/intro)",
+        "description": "Make bots for Discord, integrate Discord onto an external platform",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Discord](https://discord.com/developers/docs/intro) | Make bots for Discord, integrate Discord onto an external platform | `OAuth` | Yes | Unknown | | |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-disqus-disqus-com",
+      "name": "Disqus",
+      "category": "Social",
+      "docs_url": "https://disqus.com/api/docs/auth/",
+      "description": "Communicate with Disqus data",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "disqus.com"
+      ],
+      "raw_source": {
+        "api": "[Disqus](https://disqus.com/api/docs/auth/)",
+        "description": "Communicate with Disqus data",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Disqus](https://disqus.com/api/docs/auth/) | Communicate with Disqus data | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-facebook-developers-facebook-com",
+      "name": "Facebook",
+      "category": "Social",
+      "docs_url": "https://developers.facebook.com/",
+      "description": "Facebook Login, Share on FB, Social Plugins, Analytics and more",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.facebook.com"
+      ],
+      "raw_source": {
+        "api": "[Facebook](https://developers.facebook.com/)",
+        "description": "Facebook Login, Share on FB, Social Plugins, Analytics and more",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Facebook](https://developers.facebook.com/) | Facebook Login, Share on FB, Social Plugins, Analytics and more | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-foursquare-developer-foursquare-com",
+      "name": "Foursquare",
+      "category": "Social",
+      "docs_url": "https://developer.foursquare.com/",
+      "description": "Interact with Foursquare users and places (geolocation-based checkins, photos, tips, events, etc)",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developer.foursquare.com"
+      ],
+      "raw_source": {
+        "api": "[Foursquare](https://developer.foursquare.com/)",
+        "description": "Interact with Foursquare users and places (geolocation-based checkins, photos, tips, events, etc)",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Foursquare](https://developer.foursquare.com/) | Interact with Foursquare users and places (geolocation-based checkins, photos, tips, events, etc) | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-full-contact-docs-fullcontact-com",
+      "name": "Full Contact",
+      "category": "Social",
+      "docs_url": "https://docs.fullcontact.com/",
+      "description": "Get Social Media profiles and contact Information",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "docs.fullcontact.com"
+      ],
+      "raw_source": {
+        "api": "[Full Contact](https://docs.fullcontact.com/)",
+        "description": "Get Social Media profiles and contact Information",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Full Contact](https://docs.fullcontact.com/) | Get Social Media profiles and contact Information | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-instagram-instagram-com",
+      "name": "Instagram",
+      "category": "Social",
+      "docs_url": "https://www.instagram.com/developer/",
+      "description": "Instagram Login, Share on Instagram, Social Plugins and more",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "instagram.com"
+      ],
+      "raw_source": {
+        "api": "[Instagram](https://www.instagram.com/developer/)",
+        "description": "Instagram Login, Share on Instagram, Social Plugins and more",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Instagram](https://www.instagram.com/developer/) | Instagram Login, Share on Instagram, Social Plugins and more | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-kakao-developers-kakao-com",
+      "name": "Kakao",
+      "category": "Social",
+      "docs_url": "https://developers.kakao.com/",
+      "description": "Kakao Login, Share on KakaoTalk, Social Plugins and more",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.kakao.com"
+      ],
+      "raw_source": {
+        "api": "[Kakao](https://developers.kakao.com/)",
+        "description": "Kakao Login, Share on KakaoTalk, Social Plugins and more",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Kakao](https://developers.kakao.com/) | Kakao Login, Share on KakaoTalk, Social Plugins and more | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-line-developers-line-biz",
+      "name": "Line",
+      "category": "Social",
+      "docs_url": "https://developers.line.biz/",
+      "description": "Line Login, Share on Line, Social Plugins and more",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.line.biz"
+      ],
+      "raw_source": {
+        "api": "[Line](https://developers.line.biz/)",
+        "description": "Line Login, Share on Line, Social Plugins and more",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Line](https://developers.line.biz/) | Line Login, Share on Line, Social Plugins and more | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-linkedin-docs-microsoft-com",
+      "name": "LinkedIn",
+      "category": "Social",
+      "docs_url": "https://docs.microsoft.com/en-us/linkedin/?context=linkedin/context",
+      "description": "The foundation of all digital integrations with LinkedIn",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "docs.microsoft.com"
+      ],
+      "raw_source": {
+        "api": "[LinkedIn](https://docs.microsoft.com/en-us/linkedin/?context=linkedin/context)",
+        "description": "The foundation of all digital integrations with LinkedIn",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [LinkedIn](https://docs.microsoft.com/en-us/linkedin/?context=linkedin/context) | The foundation of all digital integrations with LinkedIn | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-microsoft-graph-docs-microsoft-com",
+      "name": "Microsoft Graph",
+      "category": "Social",
+      "docs_url": "https://docs.microsoft.com/en-us/graph/api/overview",
+      "description": "Access the data and intelligence in Microsoft 365, Windows 10, and Enterprise Mobility",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "docs.microsoft.com"
+      ],
+      "raw_source": {
+        "api": "[Microsoft Graph](https://docs.microsoft.com/en-us/graph/api/overview)",
+        "description": "Access the data and intelligence in Microsoft 365, Windows 10, and Enterprise Mobility",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Microsoft Graph](https://docs.microsoft.com/en-us/graph/api/overview) | Access the data and intelligence in Microsoft 365, Windows 10, and Enterprise Mobility | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-naver-developers-naver-com",
+      "name": "NAVER",
+      "category": "Social",
+      "docs_url": "https://developers.naver.com/main/",
+      "description": "NAVER Login, Share on NAVER, Social Plugins and more",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.naver.com"
+      ],
+      "raw_source": {
+        "api": "[NAVER](https://developers.naver.com/main/)",
+        "description": "NAVER Login, Share on NAVER, Social Plugins and more",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NAVER](https://developers.naver.com/main/) | NAVER Login, Share on NAVER, Social Plugins and more | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-pinterest-developers-pinterest-com",
+      "name": "Pinterest",
+      "category": "Social",
+      "docs_url": "https://developers.pinterest.com/",
+      "description": "The world's catalog of ideas",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.pinterest.com"
+      ],
+      "raw_source": {
+        "api": "[Pinterest](https://developers.pinterest.com/)",
+        "description": "The world's catalog of ideas",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Pinterest](https://developers.pinterest.com/) | The world's catalog of ideas | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-product-hunt-api-producthunt-com",
+      "name": "Product Hunt",
+      "category": "Social",
+      "docs_url": "https://api.producthunt.com/v2/docs",
+      "description": "The best new products in tech",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "api.producthunt.com"
+      ],
+      "raw_source": {
+        "api": "[Product Hunt](https://api.producthunt.com/v2/docs)",
+        "description": "The best new products in tech",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Product Hunt](https://api.producthunt.com/v2/docs) | The best new products in tech | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-reddit-reddit-com",
+      "name": "Reddit",
+      "category": "Social",
+      "docs_url": "https://www.reddit.com/dev/api",
+      "description": "Homepage of the internet",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "reddit.com"
+      ],
+      "raw_source": {
+        "api": "[Reddit](https://www.reddit.com/dev/api)",
+        "description": "Homepage of the internet",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Reddit](https://www.reddit.com/dev/api) | Homepage of the internet | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-saidit-saidit-net",
+      "name": "Saidit",
+      "category": "Social",
+      "docs_url": "https://www.saidit.net/dev/api",
+      "description": "Open Source Reddit Clone",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "saidit.net"
+      ],
+      "raw_source": {
+        "api": "[Saidit](https://www.saidit.net/dev/api)",
+        "description": "Open Source Reddit Clone",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Saidit](https://www.saidit.net/dev/api) | Open Source Reddit Clone | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-slack-api-slack-com",
+      "name": "Slack",
+      "category": "Social",
+      "docs_url": "https://api.slack.com/",
+      "description": "Team Instant Messaging",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "api.slack.com"
+      ],
+      "raw_source": {
+        "api": "[Slack](https://api.slack.com/)",
+        "description": "Team Instant Messaging",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Slack](https://api.slack.com/) | Team Instant Messaging | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-telegram-mtproto-core-telegram-org",
+      "name": "Telegram MTProto",
+      "category": "Social",
+      "docs_url": "https://core.telegram.org/api#getting-started",
+      "description": "Read and write Telegram data",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "core.telegram.org"
+      ],
+      "raw_source": {
+        "api": "[Telegram MTProto](https://core.telegram.org/api#getting-started)",
+        "description": "Read and write Telegram data",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Telegram MTProto](https://core.telegram.org/api#getting-started) | Read and write Telegram data | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-tiktok-developers-tiktok-com",
+      "name": "TikTok",
+      "category": "Social",
+      "docs_url": "https://developers.tiktok.com/doc/login-kit-web",
+      "description": "Fetches user info and user's video posts on TikTok platform",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developers.tiktok.com"
+      ],
+      "raw_source": {
+        "api": "[TikTok](https://developers.tiktok.com/doc/login-kit-web)",
+        "description": "Fetches user info and user's video posts on TikTok platform",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [TikTok](https://developers.tiktok.com/doc/login-kit-web) | Fetches user info and user's video posts on TikTok platform | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-trash-nothing-trashnothing-com",
+      "name": "Trash Nothing",
+      "category": "Social",
+      "docs_url": "https://trashnothing.com/developer",
+      "description": "A freecycling community with thousands of free items posted every day",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "yes",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "trashnothing.com"
+      ],
+      "raw_source": {
+        "api": "[Trash Nothing](https://trashnothing.com/developer)",
+        "description": "A freecycling community with thousands of free items posted every day",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Trash Nothing](https://trashnothing.com/developer) | A freecycling community with thousands of free items posted every day | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-tumblr-tumblr-com",
+      "name": "Tumblr",
+      "category": "Social",
+      "docs_url": "https://www.tumblr.com/docs/en/api/v2",
+      "description": "Read and write Tumblr Data",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "tumblr.com"
+      ],
+      "raw_source": {
+        "api": "[Tumblr](https://www.tumblr.com/docs/en/api/v2)",
+        "description": "Read and write Tumblr Data",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tumblr](https://www.tumblr.com/docs/en/api/v2) | Read and write Tumblr Data | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-twitch-dev-twitch-tv",
+      "name": "Twitch",
+      "category": "Social",
+      "docs_url": "https://dev.twitch.tv/docs",
+      "description": "Game Streaming API",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "dev.twitch.tv"
+      ],
+      "raw_source": {
+        "api": "[Twitch](https://dev.twitch.tv/docs)",
+        "description": "Game Streaming API",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Twitch](https://dev.twitch.tv/docs) | Game Streaming API | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-twitter-developer-twitter-com",
+      "name": "Twitter",
+      "category": "Social",
+      "docs_url": "https://developer.twitter.com/en/docs",
+      "description": "Read and write Twitter data",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "no",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "developer.twitter.com"
+      ],
+      "raw_source": {
+        "api": "[Twitter](https://developer.twitter.com/en/docs)",
+        "description": "Read and write Twitter data",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Twitter](https://developer.twitter.com/en/docs) | Read and write Twitter data | `OAuth` | Yes | No |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "social-vk-vk-com",
+      "name": "vk",
+      "category": "Social",
+      "docs_url": "https://vk.com/dev/sites",
+      "description": "Read and write vk data",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "automation"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "social",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "automation",
+        "atlas",
+        "hunter",
+        "cortex",
+        "outreach",
+        "vk.com"
+      ],
+      "raw_source": {
+        "api": "[vk](https://vk.com/dev/sites)",
+        "description": "Read and write vk data",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [vk](https://vk.com/dev/sites) | Read and write vk data | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

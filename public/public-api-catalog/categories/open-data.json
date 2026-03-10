@@ -1,0 +1,1722 @@
+{
+  "category": "Open Data",
+  "slug": "open-data",
+  "count": 35,
+  "entries": [
+    {
+      "slug": "open-data-api-setu-apisetu-gov-in",
+      "name": "API Setu",
+      "category": "Open Data",
+      "docs_url": "https://www.apisetu.gov.in/",
+      "description": "An Indian Government platform that provides a lot of APIS for KYC, business, education & employment",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "apisetu.gov.in"
+      ],
+      "raw_source": {
+        "api": "[API Setu](https://www.apisetu.gov.in/)",
+        "description": "An Indian Government platform that provides a lot of APIS for KYC, business, education & employment",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [API Setu](https://www.apisetu.gov.in/) | An Indian Government platform that provides a lot of APIS for KYC, business, education & employment | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-archive-org-archive-readme-io",
+      "name": "Archive.org",
+      "category": "Open Data",
+      "docs_url": "https://archive.readme.io/docs",
+      "description": "The Internet Archive",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "no",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "archive.readme.io"
+      ],
+      "raw_source": {
+        "api": "[Archive.org](https://archive.readme.io/docs)",
+        "description": "The Internet Archive",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Archive.org](https://archive.readme.io/docs) | The Internet Archive | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-botsarchive-botsarchive-com",
+      "name": "BotsArchive",
+      "category": "Open Data",
+      "docs_url": "https://botsarchive.com/docs.html",
+      "description": "JSON formatted details about Telegram Bots available in database",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "botsarchive.com"
+      ],
+      "raw_source": {
+        "api": "[BotsArchive](https://botsarchive.com/docs.html)",
+        "description": "JSON formatted details about Telegram Bots available in database",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [BotsArchive](https://botsarchive.com/docs.html) | JSON formatted details about Telegram Bots available in database | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-callook-info-callook-info",
+      "name": "Callook.info",
+      "category": "Open Data",
+      "docs_url": "https://callook.info",
+      "description": "United States ham radio callsigns",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "callook.info"
+      ],
+      "raw_source": {
+        "api": "[Callook.info](https://callook.info)",
+        "description": "United States ham radio callsigns",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Callook.info](https://callook.info) | United States ham radio callsigns | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-collegescorecard-ed-gov-collegescorecard-ed-gov",
+      "name": "CollegeScoreCard.ed.gov",
+      "category": "Open Data",
+      "docs_url": "https://collegescorecard.ed.gov/data/",
+      "description": "Data on higher education institutions in the United States",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "collegescorecard.ed.gov"
+      ],
+      "raw_source": {
+        "api": "[CollegeScoreCard.ed.gov](https://collegescorecard.ed.gov/data/)",
+        "description": "Data on higher education institutions in the United States",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CollegeScoreCard.ed.gov](https://collegescorecard.ed.gov/data/) | Data on higher education institutions in the United States | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-french-address-search-geo-api-gouv-fr",
+      "name": "French Address Search",
+      "category": "Open Data",
+      "docs_url": "https://geo.api.gouv.fr/adresse",
+      "description": "Address search via the French Government",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "geo.api.gouv.fr"
+      ],
+      "raw_source": {
+        "api": "[French Address Search](https://geo.api.gouv.fr/adresse)",
+        "description": "Address search via the French Government",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [French Address Search](https://geo.api.gouv.fr/adresse) | Address search via the French Government | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-lowy-asia-power-index-github-com",
+      "name": "Lowy Asia Power Index",
+      "category": "Open Data",
+      "docs_url": "https://github.com/0x0is1/lowy-index-api-docs",
+      "description": "Get measure resources and influence to rank the relative power of states in Asia",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Lowy Asia Power Index](https://github.com/0x0is1/lowy-index-api-docs)",
+        "description": "Get measure resources and influence to rank the relative power of states in Asia",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Lowy Asia Power Index](https://github.com/0x0is1/lowy-index-api-docs) | Get measure resources and influence to rank the relative power of states in Asia | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-microlink-io-microlink-io",
+      "name": "Microlink.io",
+      "category": "Open Data",
+      "docs_url": "https://microlink.io",
+      "description": "Extract structured data from any website",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "microlink.io"
+      ],
+      "raw_source": {
+        "api": "[Microlink.io](https://microlink.io)",
+        "description": "Extract structured data from any website",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Microlink.io](https://microlink.io) | Extract structured data from any website | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-nobel-prize-nobelprize-org",
+      "name": "Nobel Prize",
+      "category": "Open Data",
+      "docs_url": "https://www.nobelprize.org/about/developer-zone-2/",
+      "description": "Open data about nobel prizes and events",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "nobelprize.org"
+      ],
+      "raw_source": {
+        "api": "[Nobel Prize](https://www.nobelprize.org/about/developer-zone-2/)",
+        "description": "Open data about nobel prizes and events",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Nobel Prize](https://www.nobelprize.org/about/developer-zone-2/) | Open data about nobel prizes and events | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-open-data-minneapolis-opendata-minneapolismn-gov",
+      "name": "Open Data Minneapolis",
+      "category": "Open Data",
+      "docs_url": "https://opendata.minneapolismn.gov/",
+      "description": "Spatial (GIS) and non-spatial city data for Minneapolis",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "no",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "opendata.minneapolismn.gov"
+      ],
+      "raw_source": {
+        "api": "[Open Data Minneapolis](https://opendata.minneapolismn.gov/)",
+        "description": "Spatial (GIS) and non-spatial city data for Minneapolis",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Open Data Minneapolis](https://opendata.minneapolismn.gov/) | Spatial (GIS) and non-spatial city data for Minneapolis | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-openafrica-africaopendata-org",
+      "name": "openAFRICA",
+      "category": "Open Data",
+      "docs_url": "https://africaopendata.org/",
+      "description": "Large datasets repository of African open data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "africaopendata.org"
+      ],
+      "raw_source": {
+        "api": "[openAFRICA](https://africaopendata.org/)",
+        "description": "Large datasets repository of African open data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [openAFRICA](https://africaopendata.org/) | Large datasets repository of African open data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-opensanctions-opensanctions-org",
+      "name": "OpenSanctions",
+      "category": "Open Data",
+      "docs_url": "https://www.opensanctions.org/docs/api/",
+      "description": "Data on international sanctions, crime and politically exposed persons",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "opensanctions.org"
+      ],
+      "raw_source": {
+        "api": "[OpenSanctions](https://www.opensanctions.org/docs/api/)",
+        "description": "Data on international sanctions, crime and politically exposed persons",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [OpenSanctions](https://www.opensanctions.org/docs/api/) | Data on international sanctions, crime and politically exposed persons | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-teleport-developers-teleport-org",
+      "name": "Teleport",
+      "category": "Open Data",
+      "docs_url": "https://developers.teleport.org/",
+      "description": "Quality of Life Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "developers.teleport.org"
+      ],
+      "raw_source": {
+        "api": "[Teleport](https://developers.teleport.org/)",
+        "description": "Quality of Life Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Teleport](https://developers.teleport.org/) | Quality of Life Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-umea-open-data-opendata-umea-se",
+      "name": "Umeå Open Data",
+      "category": "Open Data",
+      "docs_url": "https://opendata.umea.se/api/",
+      "description": "Open data of the city Umeå in northen Sweden",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "opendata.umea.se"
+      ],
+      "raw_source": {
+        "api": "[Umeå Open Data](https://opendata.umea.se/api/)",
+        "description": "Open data of the city Umeå in northen Sweden",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Umeå Open Data](https://opendata.umea.se/api/) | Open data of the city Umeå in northen Sweden | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-universities-list-github-com",
+      "name": "Universities List",
+      "category": "Open Data",
+      "docs_url": "https://github.com/Hipo/university-domains-list",
+      "description": "University names, countries and domains",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Universities List](https://github.com/Hipo/university-domains-list)",
+        "description": "University names, countries and domains",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Universities List](https://github.com/Hipo/university-domains-list) | University names, countries and domains | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-university-of-oslo-data-uio-no",
+      "name": "University of Oslo",
+      "category": "Open Data",
+      "docs_url": "https://data.uio.no/",
+      "description": "Courses, lecture videos, detailed information for courses etc. for the University of Oslo (Norway)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "data.uio.no"
+      ],
+      "raw_source": {
+        "api": "[University of Oslo](https://data.uio.no/)",
+        "description": "Courses, lecture videos, detailed information for courses etc. for the University of Oslo (Norway)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [University of Oslo](https://data.uio.no/) | Courses, lecture videos, detailed information for courses etc. for the University of Oslo (Norway) | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-wikipedia-mediawiki-org",
+      "name": "Wikipedia",
+      "category": "Open Data",
+      "docs_url": "https://www.mediawiki.org/wiki/API:Main_page",
+      "description": "Mediawiki Encyclopedia",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "mediawiki.org"
+      ],
+      "raw_source": {
+        "api": "[Wikipedia](https://www.mediawiki.org/wiki/API:Main_page)",
+        "description": "Mediawiki Encyclopedia",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) | Mediawiki Encyclopedia | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-black-history-facts-blackhistoryapi-io",
+      "name": "Black History Facts",
+      "category": "Open Data",
+      "docs_url": "https://www.blackhistoryapi.io/docs",
+      "description": "Contribute or search one of the largest black history fact databases on the web",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "blackhistoryapi.io"
+      ],
+      "raw_source": {
+        "api": "[Black History Facts](https://www.blackhistoryapi.io/docs)",
+        "description": "Contribute or search one of the largest black history fact databases on the web",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Black History Facts](https://www.blackhistoryapi.io/docs) | Contribute or search one of the largest black history fact databases on the web | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-carto-carto-com",
+      "name": "CARTO",
+      "category": "Open Data",
+      "docs_url": "https://carto.com/",
+      "description": "Location Information Prediction",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "carto.com"
+      ],
+      "raw_source": {
+        "api": "[CARTO](https://carto.com/)",
+        "description": "Location Information Prediction",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CARTO](https://carto.com/) | Location Information Prediction | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-enigma-public-developers-enigma-com",
+      "name": "Enigma Public",
+      "category": "Open Data",
+      "docs_url": "https://developers.enigma.com/docs",
+      "description": "Broadest collection of public data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "developers.enigma.com"
+      ],
+      "raw_source": {
+        "api": "[Enigma Public](https://developers.enigma.com/docs)",
+        "description": "Broadest collection of public data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Enigma Public](https://developers.enigma.com/docs) | Broadest collection of public data | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-joshua-project-api-joshuaproject-net",
+      "name": "Joshua Project",
+      "category": "Open Data",
+      "docs_url": "https://api.joshuaproject.net/",
+      "description": "People groups of the world with the fewest followers of Christ",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "api.joshuaproject.net"
+      ],
+      "raw_source": {
+        "api": "[Joshua Project](https://api.joshuaproject.net/)",
+        "description": "People groups of the world with the fewest followers of Christ",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Joshua Project](https://api.joshuaproject.net/) | People groups of the world with the fewest followers of Christ | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-kaggle-kaggle-com",
+      "name": "Kaggle",
+      "category": "Open Data",
+      "docs_url": "https://www.kaggle.com/docs/api",
+      "description": "Create and interact with Datasets, Notebooks, and connect with Kaggle",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "kaggle.com"
+      ],
+      "raw_source": {
+        "api": "[Kaggle](https://www.kaggle.com/docs/api)",
+        "description": "Create and interact with Datasets, Notebooks, and connect with Kaggle",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Kaggle](https://www.kaggle.com/docs/api) | Create and interact with Datasets, Notebooks, and connect with Kaggle | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-linkpreview-linkpreview-net",
+      "name": "LinkPreview",
+      "category": "Open Data",
+      "docs_url": "https://www.linkpreview.net",
+      "description": "Get JSON formatted summary with title, description and preview image for any requested URL",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "linkpreview.net"
+      ],
+      "raw_source": {
+        "api": "[LinkPreview](https://www.linkpreview.net)",
+        "description": "Get JSON formatted summary with title, description and preview image for any requested URL",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [LinkPreview](https://www.linkpreview.net) | Get JSON formatted summary with title, description and preview image for any requested URL | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-nasdaq-data-link-docs-data-nasdaq-com",
+      "name": "Nasdaq Data Link",
+      "category": "Open Data",
+      "docs_url": "https://docs.data.nasdaq.com/",
+      "description": "Stock market data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "docs.data.nasdaq.com"
+      ],
+      "raw_source": {
+        "api": "[Nasdaq Data Link](https://docs.data.nasdaq.com/)",
+        "description": "Stock market data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Nasdaq Data Link](https://docs.data.nasdaq.com/) | Stock market data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-opencorporates-api-opencorporates-com",
+      "name": "OpenCorporates",
+      "category": "Open Data",
+      "docs_url": "http://api.opencorporates.com/documentation/API-Reference",
+      "description": "Data on corporate entities and directors in many countries",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "api.opencorporates.com"
+      ],
+      "raw_source": {
+        "api": "[OpenCorporates](http://api.opencorporates.com/documentation/API-Reference)",
+        "description": "Data on corporate entities and directors in many countries",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OpenCorporates](http://api.opencorporates.com/documentation/API-Reference) | Data on corporate entities and directors in many countries | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-peakmetrics-rapidapi-com",
+      "name": "PeakMetrics",
+      "category": "Open Data",
+      "docs_url": "https://rapidapi.com/peakmetrics-peakmetrics-default/api/peakmetrics-news",
+      "description": "News articles and public datasets",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[PeakMetrics](https://rapidapi.com/peakmetrics-peakmetrics-default/api/peakmetrics-news)",
+        "description": "News articles and public datasets",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PeakMetrics](https://rapidapi.com/peakmetrics-peakmetrics-default/api/peakmetrics-news) | News articles and public datasets | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-recreation-information-database-ridb-recreation-gov",
+      "name": "Recreation Information Database",
+      "category": "Open Data",
+      "docs_url": "https://ridb.recreation.gov/",
+      "description": "Recreational areas, federal lands, historic sites, museums, and other attractions/resources(US)",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "ridb.recreation.gov"
+      ],
+      "raw_source": {
+        "api": "[Recreation Information Database](https://ridb.recreation.gov/)",
+        "description": "Recreational areas, federal lands, historic sites, museums, and other attractions/resources(US)",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Recreation Information Database](https://ridb.recreation.gov/) | Recreational areas, federal lands, historic sites, museums, and other attractions/resources(US) | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-upc-database-upcdatabase-org",
+      "name": "UPC database",
+      "category": "Open Data",
+      "docs_url": "https://upcdatabase.org/api",
+      "description": "More than 1.5 million barcode numbers from all around the world",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "upcdatabase.org"
+      ],
+      "raw_source": {
+        "api": "[UPC database](https://upcdatabase.org/api)",
+        "description": "More than 1.5 million barcode numbers from all around the world",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [UPC database](https://upcdatabase.org/api) | More than 1.5 million barcode numbers from all around the world | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-genesis-destatis-de",
+      "name": "GENESIS",
+      "category": "Open Data",
+      "docs_url": "https://www.destatis.de/EN/Service/OpenData/api-webservice.html",
+      "description": "Federal Statistical Office Germany",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "destatis.de"
+      ],
+      "raw_source": {
+        "api": "[GENESIS](https://www.destatis.de/EN/Service/OpenData/api-webservice.html)",
+        "description": "Federal Statistical Office Germany",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GENESIS](https://www.destatis.de/EN/Service/OpenData/api-webservice.html) | Federal Statistical Office Germany | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-socrata-dev-socrata-com",
+      "name": "Socrata",
+      "category": "Open Data",
+      "docs_url": "https://dev.socrata.com/",
+      "description": "Access to Open Data from Governments, Non-profits and NGOs around the world",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "oauth2",
+        "yes",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "dev.socrata.com"
+      ],
+      "raw_source": {
+        "api": "[Socrata](https://dev.socrata.com/)",
+        "description": "Access to Open Data from Governments, Non-profits and NGOs around the world",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Socrata](https://dev.socrata.com/) | Access to Open Data from Governments, Non-profits and NGOs around the world | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-wikidata-wikidata-org",
+      "name": "Wikidata",
+      "category": "Open Data",
+      "docs_url": "https://www.wikidata.org/w/api.php?action=help",
+      "description": "Collaboratively edited knowledge base operated by the Wikimedia Foundation",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "wikidata.org"
+      ],
+      "raw_source": {
+        "api": "[Wikidata](https://www.wikidata.org/w/api.php?action=help)",
+        "description": "Collaboratively edited knowledge base operated by the Wikimedia Foundation",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Wikidata](https://www.wikidata.org/w/api.php?action=help) | Collaboratively edited knowledge base operated by the Wikimedia Foundation | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-yelp-yelp-com",
+      "name": "Yelp",
+      "category": "Open Data",
+      "docs_url": "https://www.yelp.com/developers/documentation/v3",
+      "description": "Find Local Business",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "yelp.com"
+      ],
+      "raw_source": {
+        "api": "[Yelp](https://www.yelp.com/developers/documentation/v3)",
+        "description": "Find Local Business",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Yelp](https://www.yelp.com/developers/documentation/v3) | Find Local Business | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-18f-18f-github-io",
+      "name": "18F",
+      "category": "Open Data",
+      "docs_url": "http://18f.github.io/API-All-the-X/",
+      "description": "Unofficial US Federal Government API Development",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "18f.github.io"
+      ],
+      "raw_source": {
+        "api": "[18F](http://18f.github.io/API-All-the-X/)",
+        "description": "Unofficial US Federal Government API Development",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [18F](http://18f.github.io/API-All-the-X/) | Unofficial US Federal Government API Development | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-urban-observatory-urbanobservatory-ac-uk",
+      "name": "Urban Observatory",
+      "category": "Open Data",
+      "docs_url": "https://urbanobservatory.ac.uk",
+      "description": "The largest set of publicly available real time urban data in the UK",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "none",
+        "no",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "urbanobservatory.ac.uk"
+      ],
+      "raw_source": {
+        "api": "[Urban Observatory](https://urbanobservatory.ac.uk)",
+        "description": "The largest set of publicly available real time urban data in the UK",
+        "auth": "No",
+        "https": "No",
+        "cors": "No",
+        "markdown": "| [Urban Observatory](https://urbanobservatory.ac.uk) | The largest set of publicly available real time urban data in the UK | No | No | No |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "open-data-scoop-it-scoop-it",
+      "name": "Scoop.it",
+      "category": "Open Data",
+      "docs_url": "http://www.scoop.it/dev",
+      "description": "Content Curation Service",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "open-data",
+        "api_key",
+        "unknown",
+        "prospector",
+        "watchtower",
+        "finance",
+        "knowledge",
+        "atlas",
+        "hunter",
+        "strategist",
+        "cortex",
+        "scoop.it"
+      ],
+      "raw_source": {
+        "api": "[Scoop.it](http://www.scoop.it/dev)",
+        "description": "Content Curation Service",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Scoop.it](http://www.scoop.it/dev) | Content Curation Service | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 20,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

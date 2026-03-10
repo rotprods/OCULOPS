@@ -1,0 +1,1211 @@
+{
+  "category": "Documents & Productivity",
+  "slug": "documents-productivity",
+  "count": 28,
+  "entries": [
+    {
+      "slug": "documents-productivity-vector-express-v2-0-vector-express",
+      "name": "Vector Express v2.0",
+      "category": "Documents & Productivity",
+      "docs_url": "https://vector.express",
+      "description": "Free vector file converting API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "none",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "vector.express"
+      ],
+      "raw_source": {
+        "api": "[Vector Express v2.0](https://vector.express)",
+        "description": "Free vector file converting API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Vector Express v2.0](https://vector.express) | Free vector file converting API | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-wakatime-wakatime-com",
+      "name": "WakaTime",
+      "category": "Documents & Productivity",
+      "docs_url": "https://wakatime.com/developers",
+      "description": "Automated time tracking leaderboards for programmers",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "wakatime.com"
+      ],
+      "raw_source": {
+        "api": "[WakaTime](https://wakatime.com/developers)",
+        "description": "Automated time tracking leaderboards for programmers",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [WakaTime](https://wakatime.com/developers) | Automated time tracking leaderboards for programmers | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-airtable-airtable-com",
+      "name": "Airtable",
+      "category": "Documents & Productivity",
+      "docs_url": "https://airtable.com/api",
+      "description": "Integrate with Airtable",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "airtable.com"
+      ],
+      "raw_source": {
+        "api": "[Airtable](https://airtable.com/api)",
+        "description": "Integrate with Airtable",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Airtable](https://airtable.com/api) | Integrate with Airtable | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-api2convert-api2convert-com",
+      "name": "Api2Convert",
+      "category": "Documents & Productivity",
+      "docs_url": "https://www.api2convert.com/",
+      "description": "Online File Conversion API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api2convert.com"
+      ],
+      "raw_source": {
+        "api": "[Api2Convert](https://www.api2convert.com/)",
+        "description": "Online File Conversion API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Api2Convert](https://www.api2convert.com/) | Online File Conversion API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-apilayer-pdflayer-pdflayer-com",
+      "name": "apilayer pdflayer",
+      "category": "Documents & Productivity",
+      "docs_url": "https://pdflayer.com",
+      "description": "HTML/URL to PDF",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "pdflayer.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer pdflayer](https://pdflayer.com)",
+        "description": "HTML/URL to PDF",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer pdflayer](https://pdflayer.com) | HTML/URL to PDF | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-asana-developers-asana-com",
+      "name": "Asana",
+      "category": "Documents & Productivity",
+      "docs_url": "https://developers.asana.com/docs",
+      "description": "Programmatic access to all data in your asana system",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.asana.com"
+      ],
+      "raw_source": {
+        "api": "[Asana](https://developers.asana.com/docs)",
+        "description": "Programmatic access to all data in your asana system",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Asana](https://developers.asana.com/docs) | Programmatic access to all data in your asana system | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-clockify-clockify-me",
+      "name": "Clockify",
+      "category": "Documents & Productivity",
+      "docs_url": "https://clockify.me/developers-api",
+      "description": "Clockify's REST-based API can be used to push/pull data to/from it & integrate it with other systems",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "clockify.me"
+      ],
+      "raw_source": {
+        "api": "[Clockify](https://clockify.me/developers-api )",
+        "description": "Clockify's REST-based API can be used to push/pull data to/from it & integrate it with other systems",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Clockify](https://clockify.me/developers-api ) | Clockify's REST-based API can be used to push/pull data to/from it & integrate it with other systems | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-cloudconvert-cloudconvert-com",
+      "name": "CloudConvert",
+      "category": "Documents & Productivity",
+      "docs_url": "https://cloudconvert.com/api/v2",
+      "description": "Online file converter for audio, video, document, ebook, archive, image, spreadsheet, presentation",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "cloudconvert.com"
+      ],
+      "raw_source": {
+        "api": "[CloudConvert](https://cloudconvert.com/api/v2)",
+        "description": "Online file converter for audio, video, document, ebook, archive, image, spreadsheet, presentation",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CloudConvert](https://cloudconvert.com/api/v2) | Online file converter for audio, video, document, ebook, archive, image, spreadsheet, presentation | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-cloudmersive-document-and-data-conversion-cloudmersive-com",
+      "name": "Cloudmersive Document and Data Conversion",
+      "category": "Documents & Productivity",
+      "docs_url": "https://cloudmersive.com/convert-api",
+      "description": "HTML/URL to PDF/PNG, Office documents to PDF, image conversion",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "cloudmersive.com"
+      ],
+      "raw_source": {
+        "api": "[Cloudmersive Document and Data Conversion](https://cloudmersive.com/convert-api)",
+        "description": "HTML/URL to PDF/PNG, Office documents to PDF, image conversion",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Cloudmersive Document and Data Conversion](https://cloudmersive.com/convert-api) | HTML/URL to PDF/PNG, Office documents to PDF, image conversion | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-code-stats-codestats-net",
+      "name": "Code::Stats",
+      "category": "Documents & Productivity",
+      "docs_url": "https://codestats.net/api-docs",
+      "description": "Automatic time tracking for programmers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "codestats.net"
+      ],
+      "raw_source": {
+        "api": "[Code::Stats](https://codestats.net/api-docs)",
+        "description": "Automatic time tracking for programmers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Code::Stats](https://codestats.net/api-docs) | Automatic time tracking for programmers | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-craftmypdf-craftmypdf-com",
+      "name": "CraftMyPDF",
+      "category": "Documents & Productivity",
+      "docs_url": "https://craftmypdf.com",
+      "description": "Generate PDF documents from templates with a drop-and-drop editor and a simple API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "craftmypdf.com"
+      ],
+      "raw_source": {
+        "api": "[CraftMyPDF](https://craftmypdf.com)",
+        "description": "Generate PDF documents from templates with a drop-and-drop editor and a simple API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [CraftMyPDF](https://craftmypdf.com) | Generate PDF documents from templates with a drop-and-drop editor and a simple API | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-flowdash-docs-flowdash-com",
+      "name": "Flowdash",
+      "category": "Documents & Productivity",
+      "docs_url": "https://docs.flowdash.com/docs/api-introduction",
+      "description": "Automate business workflows",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "docs.flowdash.com"
+      ],
+      "raw_source": {
+        "api": "[Flowdash](https://docs.flowdash.com/docs/api-introduction)",
+        "description": "Automate business workflows",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Flowdash](https://docs.flowdash.com/docs/api-introduction) | Automate business workflows | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-html2pdf-html2pdf-app",
+      "name": "Html2PDF",
+      "category": "Documents & Productivity",
+      "docs_url": "https://html2pdf.app/",
+      "description": "HTML/URL to PDF",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "html2pdf.app"
+      ],
+      "raw_source": {
+        "api": "[Html2PDF](https://html2pdf.app/)",
+        "description": "HTML/URL to PDF",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Html2PDF](https://html2pdf.app/) | HTML/URL to PDF | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-ilovepdf-developer-ilovepdf-com",
+      "name": "iLovePDF",
+      "category": "Documents & Productivity",
+      "docs_url": "https://developer.ilovepdf.com/",
+      "description": "Convert, merge, split, extract text and add page numbers for PDFs. Free for 250 documents/month",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developer.ilovepdf.com"
+      ],
+      "raw_source": {
+        "api": "[iLovePDF](https://developer.ilovepdf.com/)",
+        "description": "Convert, merge, split, extract text and add page numbers for PDFs. Free for 250 documents/month",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [iLovePDF](https://developer.ilovepdf.com/) | Convert, merge, split, extract text and add page numbers for PDFs. Free for 250 documents/month | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-mercury-mercury-postlight-com",
+      "name": "Mercury",
+      "category": "Documents & Productivity",
+      "docs_url": "https://mercury.postlight.com/web-parser/",
+      "description": "Web parser",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "mercury.postlight.com"
+      ],
+      "raw_source": {
+        "api": "[Mercury](https://mercury.postlight.com/web-parser/)",
+        "description": "Web parser",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mercury](https://mercury.postlight.com/web-parser/) | Web parser | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-monday-api-developer-monday-com",
+      "name": "Monday",
+      "category": "Documents & Productivity",
+      "docs_url": "https://api.developer.monday.com/docs",
+      "description": "Programmatically access and update data inside a monday.com account",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api.developer.monday.com"
+      ],
+      "raw_source": {
+        "api": "[Monday](https://api.developer.monday.com/docs)",
+        "description": "Programmatically access and update data inside a monday.com account",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Monday](https://api.developer.monday.com/docs) | Programmatically access and update data inside a monday.com account | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-pandadoc-developers-pandadoc-com",
+      "name": "PandaDoc",
+      "category": "Documents & Productivity",
+      "docs_url": "https://developers.pandadoc.com",
+      "description": "DocGen and eSignatures API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.pandadoc.com"
+      ],
+      "raw_source": {
+        "api": "[PandaDoc](https://developers.pandadoc.com)",
+        "description": "DocGen and eSignatures API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [PandaDoc](https://developers.pandadoc.com) | DocGen and eSignatures API | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-prexview-prexview-com",
+      "name": "PrexView",
+      "category": "Documents & Productivity",
+      "docs_url": "https://prexview.com",
+      "description": "Data from XML or JSON to PDF, HTML or Image",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "prexview.com"
+      ],
+      "raw_source": {
+        "api": "[PrexView](https://prexview.com)",
+        "description": "Data from XML or JSON to PDF, HTML or Image",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PrexView](https://prexview.com) | Data from XML or JSON to PDF, HTML or Image | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-restpack-restpack-io",
+      "name": "Restpack",
+      "category": "Documents & Productivity",
+      "docs_url": "https://restpack.io/",
+      "description": "Provides screenshot, HTML to PDF and content extraction APIs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "restpack.io"
+      ],
+      "raw_source": {
+        "api": "[Restpack](https://restpack.io/)",
+        "description": "Provides screenshot, HTML to PDF and content extraction APIs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Restpack](https://restpack.io/) | Provides screenshot, HTML to PDF and content extraction APIs | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-smart-image-enhancement-api-apilayer-com",
+      "name": "Smart Image Enhancement API",
+      "category": "Documents & Productivity",
+      "docs_url": "https://apilayer.com/marketplace/image_enhancement-api",
+      "description": "Performs image upscaling by adding detail to images through multiple super-resolution algorithms",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "apilayer.com"
+      ],
+      "raw_source": {
+        "api": "[Smart Image Enhancement API](https://apilayer.com/marketplace/image_enhancement-api)",
+        "description": "Performs image upscaling by adding detail to images through multiple super-resolution algorithms",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Smart Image Enhancement API](https://apilayer.com/marketplace/image_enhancement-api) | Performs image upscaling by adding detail to images through multiple super-resolution algorithms | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-clickup-clickup-com",
+      "name": "ClickUp",
+      "category": "Documents & Productivity",
+      "docs_url": "https://clickup.com/api",
+      "description": "ClickUp is a robust, cloud-based project management tool for boosting productivity",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "clickup.com"
+      ],
+      "raw_source": {
+        "api": "[ClickUp](https://clickup.com/api)",
+        "description": "ClickUp is a robust, cloud-based project management tool for boosting productivity",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ClickUp](https://clickup.com/api) | ClickUp is a robust, cloud-based project management tool for boosting productivity | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-jira-developer-atlassian-com",
+      "name": "JIRA",
+      "category": "Documents & Productivity",
+      "docs_url": "https://developer.atlassian.com/server/jira/platform/rest-apis/",
+      "description": "JIRA is a proprietary issue tracking product that allows bug tracking and agile project management",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developer.atlassian.com"
+      ],
+      "raw_source": {
+        "api": "[JIRA](https://developer.atlassian.com/server/jira/platform/rest-apis/)",
+        "description": "JIRA is a proprietary issue tracking product that allows bug tracking and agile project management",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [JIRA](https://developer.atlassian.com/server/jira/platform/rest-apis/) | JIRA is a proprietary issue tracking product that allows bug tracking and agile project management | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-mattermost-api-mattermost-com",
+      "name": "Mattermost",
+      "category": "Documents & Productivity",
+      "docs_url": "https://api.mattermost.com/",
+      "description": "An open source platform for developer collaboration",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api.mattermost.com"
+      ],
+      "raw_source": {
+        "api": "[Mattermost](https://api.mattermost.com/)",
+        "description": "An open source platform for developer collaboration",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mattermost](https://api.mattermost.com/) | An open source platform for developer collaboration | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-notion-developers-notion-com",
+      "name": "Notion",
+      "category": "Documents & Productivity",
+      "docs_url": "https://developers.notion.com/docs/getting-started",
+      "description": "Integrate with Notion",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.notion.com"
+      ],
+      "raw_source": {
+        "api": "[Notion](https://developers.notion.com/docs/getting-started)",
+        "description": "Integrate with Notion",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Notion](https://developers.notion.com/docs/getting-started) | Integrate with Notion | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-pocket-getpocket-com",
+      "name": "Pocket",
+      "category": "Documents & Productivity",
+      "docs_url": "https://getpocket.com/developer/",
+      "description": "Bookmarking service",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "getpocket.com"
+      ],
+      "raw_source": {
+        "api": "[Pocket](https://getpocket.com/developer/)",
+        "description": "Bookmarking service",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Pocket](https://getpocket.com/developer/) | Bookmarking service | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-podio-developers-podio-com",
+      "name": "Podio",
+      "category": "Documents & Productivity",
+      "docs_url": "https://developers.podio.com",
+      "description": "File sharing and productivity",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.podio.com"
+      ],
+      "raw_source": {
+        "api": "[Podio](https://developers.podio.com)",
+        "description": "File sharing and productivity",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Podio](https://developers.podio.com) | File sharing and productivity | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-todoist-developer-todoist-com",
+      "name": "Todoist",
+      "category": "Documents & Productivity",
+      "docs_url": "https://developer.todoist.com",
+      "description": "Todo Lists",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developer.todoist.com"
+      ],
+      "raw_source": {
+        "api": "[Todoist](https://developer.todoist.com)",
+        "description": "Todo Lists",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Todoist](https://developer.todoist.com) | Todo Lists | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "documents-productivity-zube-zube-io",
+      "name": "Zube",
+      "category": "Documents & Productivity",
+      "docs_url": "https://zube.io/docs/api",
+      "description": "Full stack project management",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "documents-productivity",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "zube.io"
+      ],
+      "raw_source": {
+        "api": "[Zube](https://zube.io/docs/api)",
+        "description": "Full stack project management",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Zube](https://zube.io/docs/api) | Full stack project management | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

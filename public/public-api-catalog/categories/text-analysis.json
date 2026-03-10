@@ -1,0 +1,592 @@
+{
+  "category": "Text Analysis",
+  "slug": "text-analysis",
+  "count": 15,
+  "entries": [
+    {
+      "slug": "text-analysis-libretranslate-libretranslate-com",
+      "name": "LibreTranslate",
+      "category": "Text Analysis",
+      "docs_url": "https://libretranslate.com/docs",
+      "description": "Translation tool with 17 available languages",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "none",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "libretranslate.com"
+      ],
+      "raw_source": {
+        "api": "[LibreTranslate](https://libretranslate.com/docs)",
+        "description": "Translation tool with 17 available languages",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [LibreTranslate](https://libretranslate.com/docs) | Translation tool with 17 available languages | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-aylien-text-analysis-docs-aylien-com",
+      "name": "Aylien Text Analysis",
+      "category": "Text Analysis",
+      "docs_url": "https://docs.aylien.com/textapi/#getting-started",
+      "description": "A collection of information retrieval and natural language APIs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "docs.aylien.com"
+      ],
+      "raw_source": {
+        "api": "[Aylien Text Analysis](https://docs.aylien.com/textapi/#getting-started)",
+        "description": "A collection of information retrieval and natural language APIs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Aylien Text Analysis](https://docs.aylien.com/textapi/#getting-started) | A collection of information retrieval and natural language APIs | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-cloudmersive-natural-language-processing-cloudmersive-com",
+      "name": "Cloudmersive Natural Language Processing",
+      "category": "Text Analysis",
+      "docs_url": "https://www.cloudmersive.com/nlp-api",
+      "description": "Natural language processing and text analysis",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "yes",
+        "automation",
+        "cortex",
+        "outreach",
+        "cloudmersive.com"
+      ],
+      "raw_source": {
+        "api": "[Cloudmersive Natural Language Processing](https://www.cloudmersive.com/nlp-api)",
+        "description": "Natural language processing and text analysis",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Cloudmersive Natural Language Processing](https://www.cloudmersive.com/nlp-api) | Natural language processing and text analysis | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-detect-language-detectlanguage-com",
+      "name": "Detect Language",
+      "category": "Text Analysis",
+      "docs_url": "https://detectlanguage.com/",
+      "description": "Detects text language",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "detectlanguage.com"
+      ],
+      "raw_source": {
+        "api": "[Detect Language](https://detectlanguage.com/)",
+        "description": "Detects text language",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Detect Language](https://detectlanguage.com/) | Detects text language | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-eli-nlp-insightera-co-th",
+      "name": "ELI",
+      "category": "Text Analysis",
+      "docs_url": "https://nlp.insightera.co.th/docs/v1.0",
+      "description": "Natural Language Processing Tools for Thai Language",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "nlp.insightera.co.th"
+      ],
+      "raw_source": {
+        "api": "[ELI](https://nlp.insightera.co.th/docs/v1.0)",
+        "description": "Natural Language Processing Tools for Thai Language",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ELI](https://nlp.insightera.co.th/docs/v1.0) | Natural Language Processing Tools for Thai Language | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-google-cloud-natural-cloud-google-com",
+      "name": "Google Cloud Natural",
+      "category": "Text Analysis",
+      "docs_url": "https://cloud.google.com/natural-language/docs/",
+      "description": "Natural language understanding technology, including sentiment, entity and syntax analysis",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "cloud.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Cloud Natural](https://cloud.google.com/natural-language/docs/)",
+        "description": "Natural language understanding technology, including sentiment, entity and syntax analysis",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Cloud Natural](https://cloud.google.com/natural-language/docs/) | Natural language understanding technology, including sentiment, entity and syntax analysis | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-hirak-ocr-ocr-hirak-site",
+      "name": "Hirak OCR",
+      "category": "Text Analysis",
+      "docs_url": "https://ocr.hirak.site/",
+      "description": "Image to text -text recognition- from image more than 100 language, accurate, unlimited requests",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "ocr.hirak.site"
+      ],
+      "raw_source": {
+        "api": "[Hirak OCR](https://ocr.hirak.site/)",
+        "description": "Image to text -text recognition- from image more than 100 language, accurate, unlimited requests",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hirak OCR](https://ocr.hirak.site/) | Image to text -text recognition- from image more than 100 language, accurate, unlimited requests | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-hirak-translation-translate-hirak-site",
+      "name": "Hirak Translation",
+      "category": "Text Analysis",
+      "docs_url": "https://translate.hirak.site/",
+      "description": "Translate between 21 of most used languages, accurate, unlimited requests",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "translate.hirak.site"
+      ],
+      "raw_source": {
+        "api": "[Hirak Translation](https://translate.hirak.site/)",
+        "description": "Translate between 21 of most used languages, accurate, unlimited requests",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hirak Translation](https://translate.hirak.site/) | Translate between 21 of most used languages, accurate, unlimited requests | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-lecto-translation-rapidapi-com",
+      "name": "Lecto Translation",
+      "category": "Text Analysis",
+      "docs_url": "https://rapidapi.com/lecto-lecto-default/api/lecto-translation/",
+      "description": "Translation API with free tier and reasonable prices",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "yes",
+        "automation",
+        "cortex",
+        "outreach",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Lecto Translation](https://rapidapi.com/lecto-lecto-default/api/lecto-translation/)",
+        "description": "Translation API with free tier and reasonable prices",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Lecto Translation](https://rapidapi.com/lecto-lecto-default/api/lecto-translation/) | Translation API with free tier and reasonable prices | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-sentiment-analysis-meaningcloud-com",
+      "name": "Sentiment Analysis",
+      "category": "Text Analysis",
+      "docs_url": "https://www.meaningcloud.com/developer/sentiment-analysis",
+      "description": "Multilingual sentiment analysis of texts from different sources",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "api_key",
+        "yes",
+        "automation",
+        "cortex",
+        "outreach",
+        "meaningcloud.com"
+      ],
+      "raw_source": {
+        "api": "[Sentiment Analysis](https://www.meaningcloud.com/developer/sentiment-analysis)",
+        "description": "Multilingual sentiment analysis of texts from different sources",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Sentiment Analysis](https://www.meaningcloud.com/developer/sentiment-analysis) | Multilingual sentiment analysis of texts from different sources | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-apilayer-languagelayer-languagelayer-com",
+      "name": "apilayer languagelayer",
+      "category": "Text Analysis",
+      "docs_url": "https://languagelayer.com/",
+      "description": "Language Detection JSON API supporting 173 languages",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "oauth2",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "languagelayer.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer languagelayer](https://languagelayer.com/)",
+        "description": "Language Detection JSON API supporting 173 languages",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer languagelayer](https://languagelayer.com/) | Language Detection JSON API supporting 173 languages | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-code-detection-api-codedetectionapi-runtime-dev",
+      "name": "Code Detection API",
+      "category": "Text Analysis",
+      "docs_url": "https://codedetectionapi.runtime.dev",
+      "description": "Detect, label, format and enrich the code in your app or in your data pipeline",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "oauth2",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "codedetectionapi.runtime.dev"
+      ],
+      "raw_source": {
+        "api": "[Code Detection API](https://codedetectionapi.runtime.dev)",
+        "description": "Detect, label, format and enrich the code in your app or in your data pipeline",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Code Detection API](https://codedetectionapi.runtime.dev) | Detect, label, format and enrich the code in your app or in your data pipeline | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-semantria-semantria-readme-io",
+      "name": "Semantria",
+      "category": "Text Analysis",
+      "docs_url": "https://semantria.readme.io/docs",
+      "description": "Text Analytics with sentiment analysis, categorization & named entity extraction",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "oauth2",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "semantria.readme.io"
+      ],
+      "raw_source": {
+        "api": "[Semantria](https://semantria.readme.io/docs)",
+        "description": "Text Analytics with sentiment analysis, categorization & named entity extraction",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Semantria](https://semantria.readme.io/docs) | Text Analytics with sentiment analysis, categorization & named entity extraction | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-tisane-tisane-ai",
+      "name": "Tisane",
+      "category": "Text Analysis",
+      "docs_url": "https://tisane.ai/",
+      "description": "Text Analytics with focus on detection of abusive content and law enforcement applications",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "oauth2",
+        "yes",
+        "automation",
+        "cortex",
+        "outreach",
+        "tisane.ai"
+      ],
+      "raw_source": {
+        "api": "[Tisane](https://tisane.ai/)",
+        "description": "Text Analytics with focus on detection of abusive content and law enforcement applications",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Tisane](https://tisane.ai/) | Text Analytics with focus on detection of abusive content and law enforcement applications | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "text-analysis-watson-natural-language-understanding-cloud-ibm-com",
+      "name": "Watson Natural Language Understanding",
+      "category": "Text Analysis",
+      "docs_url": "https://cloud.ibm.com/apidocs/natural-language-understanding/natural-language-understanding",
+      "description": "Natural language processing for advanced text analysis",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach"
+      ],
+      "tags": [
+        "text-analysis",
+        "oauth2",
+        "unknown",
+        "automation",
+        "cortex",
+        "outreach",
+        "cloud.ibm.com"
+      ],
+      "raw_source": {
+        "api": "[Watson Natural Language Understanding](https://cloud.ibm.com/apidocs/natural-language-understanding/natural-language-understanding)",
+        "description": "Natural language processing for advanced text analysis",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Watson Natural Language Understanding](https://cloud.ibm.com/apidocs/natural-language-understanding/natural-language-understanding) | Natural language processing for advanced text analysis | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

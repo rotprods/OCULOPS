@@ -1,0 +1,100 @@
+{
+  "category": "Events",
+  "slug": "events",
+  "count": 3,
+  "entries": [
+    {
+      "slug": "events-seatgeek-platform-seatgeek-com",
+      "name": "SeatGeek",
+      "category": "Events",
+      "docs_url": "https://platform.seatgeek.com/",
+      "description": "Search events, venues and performers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "events",
+        "api_key",
+        "unknown",
+        "platform.seatgeek.com"
+      ],
+      "raw_source": {
+        "api": "[SeatGeek](https://platform.seatgeek.com/)",
+        "description": "Search events, venues and performers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SeatGeek](https://platform.seatgeek.com/) | Search events, venues and performers | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "events-ticketmaster-developer-ticketmaster-com",
+      "name": "Ticketmaster",
+      "category": "Events",
+      "docs_url": "http://developer.ticketmaster.com/products-and-docs/apis/getting-started/",
+      "description": "Search events, attractions, or venues",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "events",
+        "api_key",
+        "unknown",
+        "developer.ticketmaster.com"
+      ],
+      "raw_source": {
+        "api": "[Ticketmaster](http://developer.ticketmaster.com/products-and-docs/apis/getting-started/)",
+        "description": "Search events, attractions, or venues",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Ticketmaster](http://developer.ticketmaster.com/products-and-docs/apis/getting-started/) | Search events, attractions, or venues | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "events-eventbrite-eventbrite-com",
+      "name": "Eventbrite",
+      "category": "Events",
+      "docs_url": "https://www.eventbrite.com/platform/api/",
+      "description": "Find events",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "events",
+        "oauth2",
+        "unknown",
+        "eventbrite.com"
+      ],
+      "raw_source": {
+        "api": "[Eventbrite](https://www.eventbrite.com/platform/api/)",
+        "description": "Find events",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Eventbrite](https://www.eventbrite.com/platform/api/) | Find events | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

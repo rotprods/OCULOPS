@@ -1,0 +1,162 @@
+{
+  "category": "Programming",
+  "slug": "programming",
+  "count": 5,
+  "entries": [
+    {
+      "slug": "programming-codeforces-codeforces-com",
+      "name": "Codeforces",
+      "category": "Programming",
+      "docs_url": "https://codeforces.com/apiHelp",
+      "description": "Get access to Codeforces data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "programming",
+        "api_key",
+        "unknown",
+        "codeforces.com"
+      ],
+      "raw_source": {
+        "api": "[Codeforces](https://codeforces.com/apiHelp)",
+        "description": "Get access to Codeforces data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Codeforces](https://codeforces.com/apiHelp) | Get access to Codeforces data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "programming-hackerearth-hackerearth-com",
+      "name": "Hackerearth",
+      "category": "Programming",
+      "docs_url": "https://www.hackerearth.com/docs/wiki/developers/v4/",
+      "description": "For compiling and running code in several languages",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "programming",
+        "api_key",
+        "unknown",
+        "hackerearth.com"
+      ],
+      "raw_source": {
+        "api": "[Hackerearth](https://www.hackerearth.com/docs/wiki/developers/v4/)",
+        "description": "For compiling and running code in several languages",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hackerearth](https://www.hackerearth.com/docs/wiki/developers/v4/) | For compiling and running code in several languages | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "programming-mintlify-docs-mintlify-com",
+      "name": "Mintlify",
+      "category": "Programming",
+      "docs_url": "https://docs.mintlify.com",
+      "description": "For programmatically generating documentation for code",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "programming",
+        "api_key",
+        "yes",
+        "docs.mintlify.com"
+      ],
+      "raw_source": {
+        "api": "[Mintlify](https://docs.mintlify.com)",
+        "description": "For programmatically generating documentation for code",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Mintlify](https://docs.mintlify.com) | For programmatically generating documentation for code | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "programming-kontests-kontests-net",
+      "name": "KONTESTS",
+      "category": "Programming",
+      "docs_url": "https://kontests.net/api",
+      "description": "For upcoming and ongoing competitive coding contests",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "programming",
+        "none",
+        "unknown",
+        "kontests.net"
+      ],
+      "raw_source": {
+        "api": "[KONTESTS](https://kontests.net/api)",
+        "description": "For upcoming and ongoing competitive coding contests",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [KONTESTS](https://kontests.net/api) | For upcoming and ongoing competitive coding contests | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "programming-judge0-ce-ce-judge0-com",
+      "name": "Judge0 CE",
+      "category": "Programming",
+      "docs_url": "https://ce.judge0.com/",
+      "description": "Online code execution system",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "programming",
+        "api_key",
+        "unknown",
+        "ce.judge0.com"
+      ],
+      "raw_source": {
+        "api": "[Judge0 CE](https://ce.judge0.com/)",
+        "description": "Online code execution system",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Judge0 CE](https://ce.judge0.com/) | Online code execution system | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

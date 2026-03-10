@@ -1,0 +1,131 @@
+{
+  "category": "Patent",
+  "slug": "patent",
+  "count": 4,
+  "entries": [
+    {
+      "slug": "patent-patentsview-patentsview-org",
+      "name": "PatentsView",
+      "category": "Patent",
+      "docs_url": "https://patentsview.org/apis/purpose",
+      "description": "API is intended to explore and visualize trends/patterns across the US innovation landscape",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "patent",
+        "none",
+        "unknown",
+        "patentsview.org"
+      ],
+      "raw_source": {
+        "api": "[PatentsView ](https://patentsview.org/apis/purpose)",
+        "description": "API is intended to explore and visualize trends/patterns across the US innovation landscape",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PatentsView ](https://patentsview.org/apis/purpose) | API is intended to explore and visualize trends/patterns across the US innovation landscape | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "patent-tipo-tiponet-tipo-gov-tw",
+      "name": "TIPO",
+      "category": "Patent",
+      "docs_url": "https://tiponet.tipo.gov.tw/Gazette/OpenData/OD/OD05.aspx?QryDS=API00",
+      "description": "Taiwan patent search system api",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "patent",
+        "api_key",
+        "unknown",
+        "tiponet.tipo.gov.tw"
+      ],
+      "raw_source": {
+        "api": "[TIPO](https://tiponet.tipo.gov.tw/Gazette/OpenData/OD/OD05.aspx?QryDS=API00)",
+        "description": "Taiwan patent search system api",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [TIPO](https://tiponet.tipo.gov.tw/Gazette/OpenData/OD/OD05.aspx?QryDS=API00) | Taiwan patent search system api | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "patent-epo-developers-epo-org",
+      "name": "EPO",
+      "category": "Patent",
+      "docs_url": "https://developers.epo.org/",
+      "description": "European patent search system api",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "patent",
+        "oauth2",
+        "unknown",
+        "developers.epo.org"
+      ],
+      "raw_source": {
+        "api": "[EPO](https://developers.epo.org/)",
+        "description": "European patent search system api",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [EPO](https://developers.epo.org/) | European patent search system api | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "patent-uspto-uspto-gov",
+      "name": "USPTO",
+      "category": "Patent",
+      "docs_url": "https://www.uspto.gov/learning-and-resources/open-data-and-mobility",
+      "description": "USA patent api services",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "patent",
+        "none",
+        "unknown",
+        "uspto.gov"
+      ],
+      "raw_source": {
+        "api": "[USPTO](https://www.uspto.gov/learning-and-resources/open-data-and-mobility)",
+        "description": "USA patent api services",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [USPTO](https://www.uspto.gov/learning-and-resources/open-data-and-mobility) | USA patent api services | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

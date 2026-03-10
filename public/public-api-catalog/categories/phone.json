@@ -1,0 +1,162 @@
+{
+  "category": "Phone",
+  "slug": "phone",
+  "count": 5,
+  "entries": [
+    {
+      "slug": "phone-phone-specification-github-com",
+      "name": "Phone Specification",
+      "category": "Phone",
+      "docs_url": "https://github.com/azharimm/phone-specs-api",
+      "description": "Rest Api for Phone specifications",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "phone",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Phone Specification](https://github.com/azharimm/phone-specs-api)",
+        "description": "Rest Api for Phone specifications",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Phone Specification](https://github.com/azharimm/phone-specs-api) | Rest Api for Phone specifications | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "phone-apilayer-numverify-numverify-com",
+      "name": "apilayer numverify",
+      "category": "Phone",
+      "docs_url": "https://numverify.com",
+      "description": "Phone number validation",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "phone",
+        "api_key",
+        "unknown",
+        "numverify.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer numverify](https://numverify.com)",
+        "description": "Phone number validation",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer numverify](https://numverify.com) | Phone number validation | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "phone-cloudmersive-validate-cloudmersive-com",
+      "name": "Cloudmersive Validate",
+      "category": "Phone",
+      "docs_url": "https://cloudmersive.com/phone-number-validation-API",
+      "description": "Validate international phone numbers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "phone",
+        "api_key",
+        "yes",
+        "cloudmersive.com"
+      ],
+      "raw_source": {
+        "api": "[Cloudmersive Validate](https://cloudmersive.com/phone-number-validation-API)",
+        "description": "Validate international phone numbers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Cloudmersive Validate](https://cloudmersive.com/phone-number-validation-API) | Validate international phone numbers | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "phone-phone-validation-abstractapi-com",
+      "name": "Phone Validation",
+      "category": "Phone",
+      "docs_url": "https://www.abstractapi.com/phone-validation-api",
+      "description": "Validate phone numbers globally",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "phone",
+        "api_key",
+        "yes",
+        "abstractapi.com"
+      ],
+      "raw_source": {
+        "api": "[Phone Validation](https://www.abstractapi.com/phone-validation-api)",
+        "description": "Validate phone numbers globally",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Phone Validation](https://www.abstractapi.com/phone-validation-api) | Validate phone numbers globally | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "phone-veriphone-veriphone-io",
+      "name": "Veriphone",
+      "category": "Phone",
+      "docs_url": "https://veriphone.io",
+      "description": "Phone number validation & carrier lookup",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "phone",
+        "api_key",
+        "yes",
+        "veriphone.io"
+      ],
+      "raw_source": {
+        "api": "[Veriphone](https://veriphone.io)",
+        "description": "Phone number validation & carrier lookup",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Veriphone](https://veriphone.io) | Phone number validation & carrier lookup | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

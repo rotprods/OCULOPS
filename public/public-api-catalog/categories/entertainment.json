@@ -1,0 +1,317 @@
+{
+  "category": "Entertainment",
+  "slug": "entertainment",
+  "count": 10,
+  "entries": [
+    {
+      "slug": "entertainment-fun-fact-api-aakhilv-me",
+      "name": "Fun Fact",
+      "category": "Entertainment",
+      "docs_url": "https://api.aakhilv.me",
+      "description": "A simple HTTPS api that can randomly select and return a fact from the FFA database",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "yes",
+        "api.aakhilv.me"
+      ],
+      "raw_source": {
+        "api": "[Fun Fact](https://api.aakhilv.me)",
+        "description": "A simple HTTPS api that can randomly select and return a fact from the FFA database",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Fun Fact](https://api.aakhilv.me) | A simple HTTPS api that can randomly select and return a fact from the FFA database | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-techy-techy-api-vercel-app",
+      "name": "Techy",
+      "category": "Entertainment",
+      "docs_url": "https://techy-api.vercel.app/",
+      "description": "JSON and Plaintext API for tech-savvy sounding phrases",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "techy-api.vercel.app"
+      ],
+      "raw_source": {
+        "api": "[Techy](https://techy-api.vercel.app/)",
+        "description": "JSON and Plaintext API for tech-savvy sounding phrases",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Techy](https://techy-api.vercel.app/) | JSON and Plaintext API for tech-savvy sounding phrases | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-chucknorris-io-api-chucknorris-io",
+      "name": "chucknorris.io",
+      "category": "Entertainment",
+      "docs_url": "https://api.chucknorris.io",
+      "description": "JSON API for hand curated Chuck Norris jokes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "api.chucknorris.io"
+      ],
+      "raw_source": {
+        "api": "[chucknorris.io](https://api.chucknorris.io)",
+        "description": "JSON API for hand curated Chuck Norris jokes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [chucknorris.io](https://api.chucknorris.io) | JSON API for hand curated Chuck Norris jokes | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-corporate-buzz-words-github-com",
+      "name": "Corporate Buzz Words",
+      "category": "Entertainment",
+      "docs_url": "https://github.com/sameerkumar18/corporate-bs-generator-api",
+      "description": "REST API for Corporate Buzz Words",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Corporate Buzz Words](https://github.com/sameerkumar18/corporate-bs-generator-api)",
+        "description": "REST API for Corporate Buzz Words",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Corporate Buzz Words](https://github.com/sameerkumar18/corporate-bs-generator-api) | REST API for Corporate Buzz Words | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-excuser-excuser-herokuapp-com",
+      "name": "Excuser",
+      "category": "Entertainment",
+      "docs_url": "https://excuser.herokuapp.com/",
+      "description": "Get random excuses for various situations",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "excuser.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Excuser](https://excuser.herokuapp.com/)",
+        "description": "Get random excuses for various situations",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Excuser](https://excuser.herokuapp.com/) | Get random excuses for various situations | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-imgflip-imgflip-com",
+      "name": "Imgflip",
+      "category": "Entertainment",
+      "docs_url": "https://imgflip.com/api",
+      "description": "Gets an array of popular memes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "imgflip.com"
+      ],
+      "raw_source": {
+        "api": "[Imgflip](https://imgflip.com/api)",
+        "description": "Gets an array of popular memes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Imgflip](https://imgflip.com/api) | Gets an array of popular memes | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-meme-maker-mememaker-github-io",
+      "name": "Meme Maker",
+      "category": "Entertainment",
+      "docs_url": "https://mememaker.github.io/API/",
+      "description": "REST API for create your own meme",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "mememaker.github.io"
+      ],
+      "raw_source": {
+        "api": "[Meme Maker](https://mememaker.github.io/API/)",
+        "description": "REST API for create your own meme",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Meme Maker](https://mememaker.github.io/API/) | REST API for create your own meme | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-namomemes-github-com",
+      "name": "NaMoMemes",
+      "category": "Entertainment",
+      "docs_url": "https://github.com/theIYD/NaMoMemes",
+      "description": "Memes on Narendra Modi",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[NaMoMemes](https://github.com/theIYD/NaMoMemes)",
+        "description": "Memes on Narendra Modi",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NaMoMemes](https://github.com/theIYD/NaMoMemes) | Memes on Narendra Modi | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-random-useless-facts-uselessfacts-jsph-pl",
+      "name": "Random Useless Facts",
+      "category": "Entertainment",
+      "docs_url": "https://uselessfacts.jsph.pl/",
+      "description": "Get useless, but true facts",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "uselessfacts.jsph.pl"
+      ],
+      "raw_source": {
+        "api": "[Random Useless Facts](https://uselessfacts.jsph.pl/)",
+        "description": "Get useless, but true facts",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Random Useless Facts](https://uselessfacts.jsph.pl/) | Get useless, but true facts | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "entertainment-yo-momma-jokes-github-com",
+      "name": "Yo Momma Jokes",
+      "category": "Entertainment",
+      "docs_url": "https://github.com/beanboi7/yomomma-apiv2",
+      "description": "REST API for Yo Momma Jokes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "entertainment",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Yo Momma Jokes](https://github.com/beanboi7/yomomma-apiv2)",
+        "description": "REST API for Yo Momma Jokes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Yo Momma Jokes](https://github.com/beanboi7/yomomma-apiv2) | REST API for Yo Momma Jokes | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

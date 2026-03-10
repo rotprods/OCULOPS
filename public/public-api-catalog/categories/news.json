@@ -1,0 +1,824 @@
+{
+  "category": "News",
+  "slug": "news",
+  "count": 19,
+  "entries": [
+    {
+      "slug": "news-graphs-for-coronavirus-corona-dnsforfamily-com",
+      "name": "Graphs for Coronavirus",
+      "category": "News",
+      "docs_url": "https://corona.dnsforfamily.com/api.txt",
+      "description": "Each Country separately and Worldwide Graphs for Coronavirus. Daily updates",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "none",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "corona.dnsforfamily.com"
+      ],
+      "raw_source": {
+        "api": "[Graphs for Coronavirus](https://corona.dnsforfamily.com/api.txt)",
+        "description": "Each Country separately and Worldwide Graphs for Coronavirus. Daily updates",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Graphs for Coronavirus](https://corona.dnsforfamily.com/api.txt) | Each Country separately and Worldwide Graphs for Coronavirus. Daily updates | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-inshorts-news-github-com",
+      "name": "Inshorts News",
+      "category": "News",
+      "docs_url": "https://github.com/cyberboysumanjay/Inshorts-News-API",
+      "description": "Provides news from inshorts",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "none",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Inshorts News](https://github.com/cyberboysumanjay/Inshorts-News-API)",
+        "description": "Provides news from inshorts",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Inshorts News](https://github.com/cyberboysumanjay/Inshorts-News-API) | Provides news from inshorts | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-spaceflight-news-spaceflightnewsapi-net",
+      "name": "Spaceflight News",
+      "category": "News",
+      "docs_url": "https://spaceflightnewsapi.net",
+      "description": "Spaceflight related news 🚀",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "none",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "spaceflightnewsapi.net"
+      ],
+      "raw_source": {
+        "api": "[Spaceflight News](https://spaceflightnewsapi.net)",
+        "description": "Spaceflight related news 🚀",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Spaceflight News](https://spaceflightnewsapi.net) | Spaceflight related news 🚀 | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-apilayer-mediastack-mediastack-com",
+      "name": "apilayer mediastack",
+      "category": "News",
+      "docs_url": "https://mediastack.com/",
+      "description": "Free, Simple REST API for Live News & Blog Articles",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "mediastack.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer mediastack](https://mediastack.com/)",
+        "description": "Free, Simple REST API for Live News & Blog Articles",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer mediastack](https://mediastack.com/) | Free, Simple REST API for Live News & Blog Articles | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-associated-press-developer-ap-org",
+      "name": "Associated Press",
+      "category": "News",
+      "docs_url": "https://developer.ap.org/",
+      "description": "Search for news and metadata from Associated Press",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "developer.ap.org"
+      ],
+      "raw_source": {
+        "api": "[Associated Press](https://developer.ap.org/)",
+        "description": "Search for news and metadata from Associated Press",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Associated Press](https://developer.ap.org/) | Search for news and metadata from Associated Press | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-currents-currentsapi-services",
+      "name": "Currents",
+      "category": "News",
+      "docs_url": "https://currentsapi.services/",
+      "description": "Latest news published in various news sources, blogs and forums",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "currentsapi.services"
+      ],
+      "raw_source": {
+        "api": "[Currents](https://currentsapi.services/)",
+        "description": "Latest news published in various news sources, blogs and forums",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Currents](https://currentsapi.services/) | Latest news published in various news sources, blogs and forums | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-gnews-gnews-io",
+      "name": "GNews",
+      "category": "News",
+      "docs_url": "https://gnews.io/",
+      "description": "Search for news from various sources",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "gnews.io"
+      ],
+      "raw_source": {
+        "api": "[GNews](https://gnews.io/)",
+        "description": "Search for news from various sources",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [GNews](https://gnews.io/) | Search for news from various sources | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-marketaux-marketaux-com",
+      "name": "MarketAux",
+      "category": "News",
+      "docs_url": "https://www.marketaux.com/",
+      "description": "Live stock market news with tagged tickers + sentiment and stats JSON API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "marketaux.com"
+      ],
+      "raw_source": {
+        "api": "[MarketAux](https://www.marketaux.com/)",
+        "description": "Live stock market news with tagged tickers + sentiment and stats JSON API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [MarketAux](https://www.marketaux.com/) | Live stock market news with tagged tickers + sentiment and stats JSON API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-new-york-times-developer-nytimes-com",
+      "name": "New York Times",
+      "category": "News",
+      "docs_url": "https://developer.nytimes.com/",
+      "description": "The New York Times Developer Network",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "developer.nytimes.com"
+      ],
+      "raw_source": {
+        "api": "[New York Times](https://developer.nytimes.com/)",
+        "description": "The New York Times Developer Network",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [New York Times](https://developer.nytimes.com/) | The New York Times Developer Network | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-news-newsapi-org",
+      "name": "News",
+      "category": "News",
+      "docs_url": "https://newsapi.org/",
+      "description": "Headlines currently published on a range of news sources and blogs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "newsapi.org"
+      ],
+      "raw_source": {
+        "api": "[News](https://newsapi.org/)",
+        "description": "Headlines currently published on a range of news sources and blogs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [News](https://newsapi.org/) | Headlines currently published on a range of news sources and blogs | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-newsdata-newsdata-io",
+      "name": "NewsData",
+      "category": "News",
+      "docs_url": "https://newsdata.io/docs",
+      "description": "News data API for live-breaking news and headlines from reputed  news sources",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "newsdata.io"
+      ],
+      "raw_source": {
+        "api": "[NewsData](https://newsdata.io/docs)",
+        "description": "News data API for live-breaking news and headlines from reputed  news sources",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NewsData](https://newsdata.io/docs) | News data API for live-breaking news and headlines from reputed  news sources | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-newsx-rapidapi-com",
+      "name": "NewsX",
+      "category": "News",
+      "docs_url": "https://rapidapi.com/machaao-inc-machaao-inc-default/api/newsx/",
+      "description": "Get or Search Latest Breaking News with ML Powered Summaries 🤖",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[NewsX](https://rapidapi.com/machaao-inc-machaao-inc-default/api/newsx/)",
+        "description": "Get or Search Latest Breaking News with ML Powered Summaries 🤖",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NewsX](https://rapidapi.com/machaao-inc-machaao-inc-default/api/newsx/) | Get or Search Latest Breaking News with ML Powered Summaries 🤖 | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-the-guardian-open-platform-theguardian-com",
+      "name": "The Guardian",
+      "category": "News",
+      "docs_url": "http://open-platform.theguardian.com/",
+      "description": "Access all the content the Guardian creates, categorised by tags and section",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "open-platform.theguardian.com"
+      ],
+      "raw_source": {
+        "api": "[The Guardian](http://open-platform.theguardian.com/)",
+        "description": "Access all the content the Guardian creates, categorised by tags and section",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [The Guardian](http://open-platform.theguardian.com/) | Access all the content the Guardian creates, categorised by tags and section | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-the-old-reader-github-com",
+      "name": "The Old Reader",
+      "category": "News",
+      "docs_url": "https://github.com/theoldreader/api",
+      "description": "RSS reader",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[The Old Reader](https://github.com/theoldreader/api)",
+        "description": "RSS reader",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [The Old Reader](https://github.com/theoldreader/api) | RSS reader | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-thenews-thenewsapi-com",
+      "name": "TheNews",
+      "category": "News",
+      "docs_url": "https://www.thenewsapi.com/",
+      "description": "Aggregated headlines, top story and live news JSON API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "thenewsapi.com"
+      ],
+      "raw_source": {
+        "api": "[TheNews](https://www.thenewsapi.com/)",
+        "description": "Aggregated headlines, top story and live news JSON API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [TheNews](https://www.thenewsapi.com/) | Aggregated headlines, top story and live news JSON API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-trove-trove-nla-gov-au",
+      "name": "Trove",
+      "category": "News",
+      "docs_url": "https://trove.nla.gov.au/about/create-something/using-api",
+      "description": "Search through the National Library of Australia collection of 1000s of digitised newspapers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "trove.nla.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Trove](https://trove.nla.gov.au/about/create-something/using-api)",
+        "description": "Search through the National Library of Australia collection of 1000s of digitised newspapers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Trove](https://trove.nla.gov.au/about/create-something/using-api) | Search through the National Library of Australia collection of 1000s of digitised newspapers | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-feedbin-github-com",
+      "name": "Feedbin",
+      "category": "News",
+      "docs_url": "https://github.com/feedbin/feedbin-api",
+      "description": "RSS reader",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Feedbin](https://github.com/feedbin/feedbin-api)",
+        "description": "RSS reader",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Feedbin](https://github.com/feedbin/feedbin-api) | RSS reader | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-npr-one-dev-npr-org",
+      "name": "NPR One",
+      "category": "News",
+      "docs_url": "http://dev.npr.org/api/",
+      "description": "Personalized news listening experience from NPR",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dev.npr.org"
+      ],
+      "raw_source": {
+        "api": "[NPR One](http://dev.npr.org/api/)",
+        "description": "Personalized news listening experience from NPR",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NPR One](http://dev.npr.org/api/) | Personalized news listening experience from NPR | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "news-chronicling-america-chroniclingamerica-loc-gov",
+      "name": "Chronicling America",
+      "category": "News",
+      "docs_url": "http://chroniclingamerica.loc.gov/about/api/",
+      "description": "Provides access to millions of pages of historic US newspapers from the Library of Congress",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "news",
+        "none",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "chroniclingamerica.loc.gov"
+      ],
+      "raw_source": {
+        "api": "[Chronicling America](http://chroniclingamerica.loc.gov/about/api/)",
+        "description": "Provides access to millions of pages of historic US newspapers from the Library of Congress",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Chronicling America](http://chroniclingamerica.loc.gov/about/api/) | Provides access to millions of pages of historic US newspapers from the Library of Congress | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

@@ -1,0 +1,3877 @@
+{
+  "category": "Government",
+  "slug": "government",
+  "count": 86,
+  "entries": [
+    {
+      "slug": "government-bank-negara-malaysia-open-data-apikijangportal-bnm-gov-my",
+      "name": "Bank Negara Malaysia Open Data",
+      "category": "Government",
+      "docs_url": "https://apikijangportal.bnm.gov.my/",
+      "description": "Malaysia Central Bank Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "apikijangportal.bnm.gov.my"
+      ],
+      "raw_source": {
+        "api": "[Bank Negara Malaysia Open Data](https://apikijangportal.bnm.gov.my/)",
+        "description": "Malaysia Central Bank Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bank Negara Malaysia Open Data](https://apikijangportal.bnm.gov.my/) | Malaysia Central Bank Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-brazil-brasilapi-com-br",
+      "name": "Brazil",
+      "category": "Government",
+      "docs_url": "https://brasilapi.com.br/",
+      "description": "Community driven API for Brazil Public Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "yes",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "brasilapi.com.br"
+      ],
+      "raw_source": {
+        "api": "[Brazil](https://brasilapi.com.br/)",
+        "description": "Community driven API for Brazil Public Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Brazil](https://brasilapi.com.br/) | Community driven API for Brazil Public Data | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-brazil-central-bank-open-data-dadosabertos-bcb-gov-br",
+      "name": "Brazil Central Bank Open Data",
+      "category": "Government",
+      "docs_url": "https://dadosabertos.bcb.gov.br/",
+      "description": "Brazil Central Bank Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dadosabertos.bcb.gov.br"
+      ],
+      "raw_source": {
+        "api": "[Brazil Central Bank Open Data](https://dadosabertos.bcb.gov.br/)",
+        "description": "Brazil Central Bank Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Brazil Central Bank Open Data](https://dadosabertos.bcb.gov.br/) | Brazil Central Bank Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-brazil-receita-ws-receitaws-com-br",
+      "name": "Brazil Receita WS",
+      "category": "Government",
+      "docs_url": "https://www.receitaws.com.br/",
+      "description": "Consult companies by CNPJ for Brazilian companies",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "receitaws.com.br"
+      ],
+      "raw_source": {
+        "api": "[Brazil Receita WS](https://www.receitaws.com.br/)",
+        "description": "Consult companies by CNPJ for Brazilian companies",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Brazil Receita WS](https://www.receitaws.com.br/) | Consult companies by CNPJ for Brazilian companies | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-brazilian-chamber-of-deputies-open-data-dadosabertos-camara-leg-br",
+      "name": "Brazilian Chamber of Deputies Open Data",
+      "category": "Government",
+      "docs_url": "https://dadosabertos.camara.leg.br/swagger/api.html",
+      "description": "Provides legislative information in Apis XML and JSON, as well as files in various formats",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "no",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dadosabertos.camara.leg.br"
+      ],
+      "raw_source": {
+        "api": "[Brazilian Chamber of Deputies Open Data](https://dadosabertos.camara.leg.br/swagger/api.html)",
+        "description": "Provides legislative information in Apis XML and JSON, as well as files in various formats",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Brazilian Chamber of Deputies Open Data](https://dadosabertos.camara.leg.br/swagger/api.html) | Provides legislative information in Apis XML and JSON, as well as files in various formats | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-census-gov-census-gov",
+      "name": "Census.gov",
+      "category": "Government",
+      "docs_url": "https://www.census.gov/data/developers/data-sets.html",
+      "description": "The US Census Bureau provides various APIs and data sets on demographics and businesses",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "census.gov"
+      ],
+      "raw_source": {
+        "api": "[Census.gov](https://www.census.gov/data/developers/data-sets.html)",
+        "description": "The US Census Bureau provides various APIs and data sets on demographics and businesses",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Census.gov](https://www.census.gov/data/developers/data-sets.html) | The US Census Bureau provides various APIs and data sets on demographics and businesses | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-berlin-daten-berlin-de",
+      "name": "City, Berlin",
+      "category": "Government",
+      "docs_url": "https://daten.berlin.de/",
+      "description": "Berlin(DE) City Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "daten.berlin.de"
+      ],
+      "raw_source": {
+        "api": "[City, Berlin](https://daten.berlin.de/)",
+        "description": "Berlin(DE) City Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [City, Berlin](https://daten.berlin.de/) | Berlin(DE) City Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-gdansk-ckan-multimediagdansk-pl",
+      "name": "City, Gdańsk",
+      "category": "Government",
+      "docs_url": "https://ckan.multimediagdansk.pl/en",
+      "description": "Gdańsk (PL) City Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "ckan.multimediagdansk.pl"
+      ],
+      "raw_source": {
+        "api": "[City, Gdańsk](https://ckan.multimediagdansk.pl/en)",
+        "description": "Gdańsk (PL) City Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [City, Gdańsk](https://ckan.multimediagdansk.pl/en) | Gdańsk (PL) City Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-helsinki-hri-fi",
+      "name": "City, Helsinki",
+      "category": "Government",
+      "docs_url": "https://hri.fi/en_gb/",
+      "description": "Helsinki(FI) City Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "hri.fi"
+      ],
+      "raw_source": {
+        "api": "[City, Helsinki](https://hri.fi/en_gb/)",
+        "description": "Helsinki(FI) City Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [City, Helsinki](https://hri.fi/en_gb/) | Helsinki(FI) City Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-lviv-opendata-city-adm-lviv-ua",
+      "name": "City, Lviv",
+      "category": "Government",
+      "docs_url": "https://opendata.city-adm.lviv.ua/",
+      "description": "Lviv(UA) City Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "opendata.city-adm.lviv.ua"
+      ],
+      "raw_source": {
+        "api": "[City, Lviv](https://opendata.city-adm.lviv.ua/)",
+        "description": "Lviv(UA) City Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [City, Lviv](https://opendata.city-adm.lviv.ua/) | Lviv(UA) City Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-new-york-open-data-opendata-cityofnewyork-us",
+      "name": "City, New York Open Data",
+      "category": "Government",
+      "docs_url": "https://opendata.cityofnewyork.us/",
+      "description": "New York (US) City Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "opendata.cityofnewyork.us"
+      ],
+      "raw_source": {
+        "api": "[City, New York Open Data](https://opendata.cityofnewyork.us/)",
+        "description": "New York (US) City Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [City, New York Open Data](https://opendata.cityofnewyork.us/) | New York (US) City Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-toronto-open-data-open-toronto-ca",
+      "name": "City, Toronto Open Data",
+      "category": "Government",
+      "docs_url": "https://open.toronto.ca/",
+      "description": "Toronto (CA) City Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "yes",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "open.toronto.ca"
+      ],
+      "raw_source": {
+        "api": "[City, Toronto Open Data](https://open.toronto.ca/)",
+        "description": "Toronto (CA) City Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [City, Toronto Open Data](https://open.toronto.ca/) | Toronto (CA) City Open Data | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-colorado-information-marketplace-data-colorado-gov",
+      "name": "Colorado Information Marketplace",
+      "category": "Government",
+      "docs_url": "https://data.colorado.gov/",
+      "description": "Colorado State Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.colorado.gov"
+      ],
+      "raw_source": {
+        "api": "[Colorado Information Marketplace](https://data.colorado.gov/)",
+        "description": "Colorado State Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Colorado Information Marketplace](https://data.colorado.gov/) | Colorado State Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-data-usa-datausa-io",
+      "name": "Data USA",
+      "category": "Government",
+      "docs_url": "https://datausa.io/about/api/",
+      "description": "US Public Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "datausa.io"
+      ],
+      "raw_source": {
+        "api": "[Data USA](https://datausa.io/about/api/)",
+        "description": "US Public Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Data USA](https://datausa.io/about/api/) | US Public Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-district-of-columbia-open-data-opendata-dc-gov",
+      "name": "District of Columbia Open Data",
+      "category": "Government",
+      "docs_url": "http://opendata.dc.gov/pages/using-apis",
+      "description": "Contains D.C. government public datasets, including crime, GIS, financial data, and so on",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "opendata.dc.gov"
+      ],
+      "raw_source": {
+        "api": "[District of Columbia Open Data](http://opendata.dc.gov/pages/using-apis)",
+        "description": "Contains D.C. government public datasets, including crime, GIS, financial data, and so on",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [District of Columbia Open Data](http://opendata.dc.gov/pages/using-apis) | Contains D.C. government public datasets, including crime, GIS, financial data, and so on | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-epa-epa-gov",
+      "name": "EPA",
+      "category": "Government",
+      "docs_url": "https://www.epa.gov/developers/data-data-products#apis",
+      "description": "Web services and data sets from the US Environmental Protection Agency",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "epa.gov"
+      ],
+      "raw_source": {
+        "api": "[EPA](https://www.epa.gov/developers/data-data-products#apis)",
+        "description": "Web services and data sets from the US Environmental Protection Agency",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [EPA](https://www.epa.gov/developers/data-data-products#apis) | Web services and data sets from the US Environmental Protection Agency | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-fbi-wanted-fbi-gov",
+      "name": "FBI Wanted",
+      "category": "Government",
+      "docs_url": "https://www.fbi.gov/wanted/api",
+      "description": "Access information on the FBI Wanted program",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "fbi.gov"
+      ],
+      "raw_source": {
+        "api": "[FBI Wanted](https://www.fbi.gov/wanted/api)",
+        "description": "Access information on the FBI Wanted program",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FBI Wanted](https://www.fbi.gov/wanted/api) | Access information on the FBI Wanted program | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-federal-register-federalregister-gov",
+      "name": "Federal Register",
+      "category": "Government",
+      "docs_url": "https://www.federalregister.gov/reader-aids/developer-resources/rest-api",
+      "description": "The Daily Journal of the United States Government",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "federalregister.gov"
+      ],
+      "raw_source": {
+        "api": "[Federal Register](https://www.federalregister.gov/reader-aids/developer-resources/rest-api)",
+        "description": "The Daily Journal of the United States Government",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Federal Register](https://www.federalregister.gov/reader-aids/developer-resources/rest-api) | The Daily Journal of the United States Government | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-interpol-red-notices-interpol-api-bund-dev",
+      "name": "Interpol Red Notices",
+      "category": "Government",
+      "docs_url": "https://interpol.api.bund.dev/",
+      "description": "Access and search Interpol Red Notices",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "interpol.api.bund.dev"
+      ],
+      "raw_source": {
+        "api": "[Interpol Red Notices](https://interpol.api.bund.dev/)",
+        "description": "Access and search Interpol Red Notices",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Interpol Red Notices](https://interpol.api.bund.dev/) | Access and search Interpol Red Notices | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-istanbul-ibb-open-data-data-ibb-gov-tr",
+      "name": "Istanbul (İBB) Open Data",
+      "category": "Government",
+      "docs_url": "https://data.ibb.gov.tr",
+      "description": "Data sets from the İstanbul Metropolitan Municipality (İBB)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.ibb.gov.tr"
+      ],
+      "raw_source": {
+        "api": "[Istanbul (İBB) Open Data](https://data.ibb.gov.tr)",
+        "description": "Data sets from the İstanbul Metropolitan Municipality (İBB)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Istanbul (İBB) Open Data](https://data.ibb.gov.tr) | Data sets from the İstanbul Metropolitan Municipality (İBB) | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-act-data-act-gov-au",
+      "name": "Open Government, ACT",
+      "category": "Government",
+      "docs_url": "https://www.data.act.gov.au/",
+      "description": "Australian Capital Territory Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.act.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Open Government, ACT](https://www.data.act.gov.au/)",
+        "description": "Australian Capital Territory Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, ACT](https://www.data.act.gov.au/) | Australian Capital Territory Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-argentina-datos-gob-ar",
+      "name": "Open Government, Argentina",
+      "category": "Government",
+      "docs_url": "https://datos.gob.ar/",
+      "description": "Argentina Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "datos.gob.ar"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Argentina](https://datos.gob.ar/)",
+        "description": "Argentina Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Argentina](https://datos.gob.ar/) | Argentina Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-australia-data-gov-au",
+      "name": "Open Government, Australia",
+      "category": "Government",
+      "docs_url": "https://www.data.gov.au/",
+      "description": "Australian Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Australia](https://www.data.gov.au/)",
+        "description": "Australian Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Australia](https://www.data.gov.au/) | Australian Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-austria-data-gv-at",
+      "name": "Open Government, Austria",
+      "category": "Government",
+      "docs_url": "https://www.data.gv.at/",
+      "description": "Austria Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gv.at"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Austria](https://www.data.gv.at/)",
+        "description": "Austria Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Austria](https://www.data.gv.at/) | Austria Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-belgium-data-gov-be",
+      "name": "Open Government, Belgium",
+      "category": "Government",
+      "docs_url": "https://data.gov.be/",
+      "description": "Belgium Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.be"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Belgium](https://data.gov.be/)",
+        "description": "Belgium Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Belgium](https://data.gov.be/) | Belgium Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-cyprus-data-gov-cy",
+      "name": "Open Government, Cyprus",
+      "category": "Government",
+      "docs_url": "https://data.gov.cy/?language=en",
+      "description": "Cyprus Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.cy"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Cyprus](https://data.gov.cy/?language=en)",
+        "description": "Cyprus Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Cyprus](https://data.gov.cy/?language=en) | Cyprus Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-czech-republic-data-gov-cz",
+      "name": "Open Government, Czech Republic",
+      "category": "Government",
+      "docs_url": "https://data.gov.cz/english/",
+      "description": "Czech Republic Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.cz"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Czech Republic](https://data.gov.cz/english/)",
+        "description": "Czech Republic Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Czech Republic](https://data.gov.cz/english/) | Czech Republic Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-denmark-opendata-dk",
+      "name": "Open Government, Denmark",
+      "category": "Government",
+      "docs_url": "https://www.opendata.dk/",
+      "description": "Denmark Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "opendata.dk"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Denmark](https://www.opendata.dk/)",
+        "description": "Denmark Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Denmark](https://www.opendata.dk/) | Denmark Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-finland-avoindata-fi",
+      "name": "Open Government, Finland",
+      "category": "Government",
+      "docs_url": "https://www.avoindata.fi/en",
+      "description": "Finland Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "avoindata.fi"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Finland](https://www.avoindata.fi/en)",
+        "description": "Finland Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Finland](https://www.avoindata.fi/en) | Finland Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-germany-govdata-de",
+      "name": "Open Government, Germany",
+      "category": "Government",
+      "docs_url": "https://www.govdata.de/daten/-/details/govdata-metadatenkatalog",
+      "description": "Germany Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "govdata.de"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Germany](https://www.govdata.de/daten/-/details/govdata-metadatenkatalog)",
+        "description": "Germany Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Germany](https://www.govdata.de/daten/-/details/govdata-metadatenkatalog) | Germany Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-ireland-data-gov-ie",
+      "name": "Open Government, Ireland",
+      "category": "Government",
+      "docs_url": "https://data.gov.ie/pages/developers",
+      "description": "Ireland Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.ie"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Ireland](https://data.gov.ie/pages/developers)",
+        "description": "Ireland Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Ireland](https://data.gov.ie/pages/developers) | Ireland Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-italy-dati-gov-it",
+      "name": "Open Government, Italy",
+      "category": "Government",
+      "docs_url": "https://www.dati.gov.it/",
+      "description": "Italy Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dati.gov.it"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Italy](https://www.dati.gov.it/)",
+        "description": "Italy Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Italy](https://www.dati.gov.it/) | Italy Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-lithuania-data-gov-lt",
+      "name": "Open Government, Lithuania",
+      "category": "Government",
+      "docs_url": "https://data.gov.lt/public/api/1",
+      "description": "Lithuania Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.lt"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Lithuania](https://data.gov.lt/public/api/1)",
+        "description": "Lithuania Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Lithuania](https://data.gov.lt/public/api/1) | Lithuania Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-mexico-inegi-org-mx",
+      "name": "Open Government, Mexico",
+      "category": "Government",
+      "docs_url": "https://www.inegi.org.mx/datos/",
+      "description": "Mexican Statistical Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "inegi.org.mx"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Mexico](https://www.inegi.org.mx/datos/)",
+        "description": "Mexican Statistical Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Mexico](https://www.inegi.org.mx/datos/) | Mexican Statistical Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-mexico-datos-gob-mx",
+      "name": "Open Government, Mexico",
+      "category": "Government",
+      "docs_url": "https://datos.gob.mx/",
+      "description": "Mexico Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "datos.gob.mx"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Mexico](https://datos.gob.mx/)",
+        "description": "Mexico Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Mexico](https://datos.gob.mx/) | Mexico Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-netherlands-data-overheid-nl",
+      "name": "Open Government, Netherlands",
+      "category": "Government",
+      "docs_url": "https://data.overheid.nl/en/ondersteuning/data-publiceren/api",
+      "description": "Netherlands Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.overheid.nl"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Netherlands](https://data.overheid.nl/en/ondersteuning/data-publiceren/api)",
+        "description": "Netherlands Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Netherlands](https://data.overheid.nl/en/ondersteuning/data-publiceren/api) | Netherlands Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-new-zealand-data-govt-nz",
+      "name": "Open Government, New Zealand",
+      "category": "Government",
+      "docs_url": "https://www.data.govt.nz/",
+      "description": "New Zealand Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.govt.nz"
+      ],
+      "raw_source": {
+        "api": "[Open Government, New Zealand](https://www.data.govt.nz/)",
+        "description": "New Zealand Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, New Zealand](https://www.data.govt.nz/) | New Zealand Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-norway-data-norge-no",
+      "name": "Open Government, Norway",
+      "category": "Government",
+      "docs_url": "https://data.norge.no/dataservices",
+      "description": "Norwegian Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "yes",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.norge.no"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Norway](https://data.norge.no/dataservices)",
+        "description": "Norwegian Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Open Government, Norway](https://data.norge.no/dataservices) | Norwegian Government Open Data | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-peru-datosabiertos-gob-pe",
+      "name": "Open Government, Peru",
+      "category": "Government",
+      "docs_url": "https://www.datosabiertos.gob.pe/",
+      "description": "Peru Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "datosabiertos.gob.pe"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Peru](https://www.datosabiertos.gob.pe/)",
+        "description": "Peru Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Peru](https://www.datosabiertos.gob.pe/) | Peru Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-poland-dane-gov-pl",
+      "name": "Open Government, Poland",
+      "category": "Government",
+      "docs_url": "https://dane.gov.pl/en",
+      "description": "Poland Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "yes",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dane.gov.pl"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Poland](https://dane.gov.pl/en)",
+        "description": "Poland Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Open Government, Poland](https://dane.gov.pl/en) | Poland Government Open Data | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-portugal-dados-gov-pt",
+      "name": "Open Government, Portugal",
+      "category": "Government",
+      "docs_url": "https://dados.gov.pt/en/docapi/",
+      "description": "Portugal Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "yes",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dados.gov.pt"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Portugal](https://dados.gov.pt/en/docapi/)",
+        "description": "Portugal Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Open Government, Portugal](https://dados.gov.pt/en/docapi/) | Portugal Government Open Data | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-queensland-government-data-qld-gov-au",
+      "name": "Open Government, Queensland Government",
+      "category": "Government",
+      "docs_url": "https://www.data.qld.gov.au/",
+      "description": "Queensland Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.qld.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Queensland Government](https://www.data.qld.gov.au/)",
+        "description": "Queensland Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Queensland Government](https://www.data.qld.gov.au/) | Queensland Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-saudi-arabia-data-gov-sa",
+      "name": "Open Government, Saudi Arabia",
+      "category": "Government",
+      "docs_url": "https://data.gov.sa",
+      "description": "Saudi Arabia Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.sa"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Saudi Arabia](https://data.gov.sa)",
+        "description": "Saudi Arabia Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Saudi Arabia](https://data.gov.sa) | Saudi Arabia Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-singapore-data-gov-sg",
+      "name": "Open Government, Singapore",
+      "category": "Government",
+      "docs_url": "https://data.gov.sg/developer",
+      "description": "Singapore Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.sg"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Singapore](https://data.gov.sg/developer)",
+        "description": "Singapore Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Singapore](https://data.gov.sg/developer) | Singapore Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-slovakia-data-gov-sk",
+      "name": "Open Government, Slovakia",
+      "category": "Government",
+      "docs_url": "https://data.gov.sk/en/",
+      "description": "Slovakia Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.sk"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Slovakia](https://data.gov.sk/en/)",
+        "description": "Slovakia Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Slovakia](https://data.gov.sk/en/) | Slovakia Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-slovenia-podatki-gov-si",
+      "name": "Open Government, Slovenia",
+      "category": "Government",
+      "docs_url": "https://podatki.gov.si/",
+      "description": "Slovenia Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "no",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "podatki.gov.si"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Slovenia](https://podatki.gov.si/)",
+        "description": "Slovenia Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Open Government, Slovenia](https://podatki.gov.si/) | Slovenia Government Open Data | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-south-australian-government-data-sa-gov-au",
+      "name": "Open Government, South Australian Government",
+      "category": "Government",
+      "docs_url": "https://data.sa.gov.au/",
+      "description": "South Australian Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.sa.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Open Government, South Australian Government](https://data.sa.gov.au/)",
+        "description": "South Australian Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, South Australian Government](https://data.sa.gov.au/) | South Australian Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-spain-datos-gob-es",
+      "name": "Open Government, Spain",
+      "category": "Government",
+      "docs_url": "https://datos.gob.es/en",
+      "description": "Spain Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "datos.gob.es"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Spain](https://datos.gob.es/en)",
+        "description": "Spain Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Spain](https://datos.gob.es/en) | Spain Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-sweden-dataportal-se",
+      "name": "Open Government, Sweden",
+      "category": "Government",
+      "docs_url": "https://www.dataportal.se/en/dataservice/91_29789/api-for-the-statistical-database",
+      "description": "Sweden Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dataportal.se"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Sweden](https://www.dataportal.se/en/dataservice/91_29789/api-for-the-statistical-database)",
+        "description": "Sweden Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Sweden](https://www.dataportal.se/en/dataservice/91_29789/api-for-the-statistical-database) | Sweden Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-switzerland-handbook-opendata-swiss",
+      "name": "Open Government, Switzerland",
+      "category": "Government",
+      "docs_url": "https://handbook.opendata.swiss/de/content/nutzen/api-nutzen.html",
+      "description": "Switzerland Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "handbook.opendata.swiss"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Switzerland](https://handbook.opendata.swiss/de/content/nutzen/api-nutzen.html)",
+        "description": "Switzerland Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Switzerland](https://handbook.opendata.swiss/de/content/nutzen/api-nutzen.html) | Switzerland Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-taiwan-data-gov-tw",
+      "name": "Open Government, Taiwan",
+      "category": "Government",
+      "docs_url": "https://data.gov.tw/",
+      "description": "Taiwan Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.tw"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Taiwan](https://data.gov.tw/)",
+        "description": "Taiwan Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Taiwan](https://data.gov.tw/) | Taiwan Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-uk-data-gov-uk",
+      "name": "Open Government, UK",
+      "category": "Government",
+      "docs_url": "https://data.gov.uk/",
+      "description": "UK Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.uk"
+      ],
+      "raw_source": {
+        "api": "[Open Government, UK](https://data.gov.uk/)",
+        "description": "UK Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, UK](https://data.gov.uk/) | UK Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-usa-data-gov",
+      "name": "Open Government, USA",
+      "category": "Government",
+      "docs_url": "https://www.data.gov/",
+      "description": "United States Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov"
+      ],
+      "raw_source": {
+        "api": "[Open Government, USA](https://www.data.gov/)",
+        "description": "United States Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, USA](https://www.data.gov/) | United States Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-victoria-state-government-data-vic-gov-au",
+      "name": "Open Government, Victoria State Government",
+      "category": "Government",
+      "docs_url": "https://www.data.vic.gov.au/",
+      "description": "Victoria State Government Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.vic.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Victoria State Government](https://www.data.vic.gov.au/)",
+        "description": "Victoria State Government Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Victoria State Government](https://www.data.vic.gov.au/) | Victoria State Government Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-west-australia-data-wa-gov-au",
+      "name": "Open Government, West Australia",
+      "category": "Government",
+      "docs_url": "https://data.wa.gov.au/",
+      "description": "West Australia Open Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.wa.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Open Government, West Australia](https://data.wa.gov.au/)",
+        "description": "West Australia Open Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, West Australia](https://data.wa.gov.au/) | West Australia Open Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-prc-exam-schedule-api-whenisthenextboardexam-com",
+      "name": "PRC Exam Schedule",
+      "category": "Government",
+      "docs_url": "https://api.whenisthenextboardexam.com/docs/",
+      "description": "Unofficial Philippine Professional Regulation Commission's examination schedule",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "yes",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.whenisthenextboardexam.com"
+      ],
+      "raw_source": {
+        "api": "[PRC Exam Schedule](https://api.whenisthenextboardexam.com/docs/)",
+        "description": "Unofficial Philippine Professional Regulation Commission's examination schedule",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [PRC Exam Schedule](https://api.whenisthenextboardexam.com/docs/) | Unofficial Philippine Professional Regulation Commission's examination schedule | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-represent-by-open-north-represent-opennorth-ca",
+      "name": "Represent by Open North",
+      "category": "Government",
+      "docs_url": "https://represent.opennorth.ca/",
+      "description": "Find Canadian Government Representatives",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "represent.opennorth.ca"
+      ],
+      "raw_source": {
+        "api": "[Represent by Open North](https://represent.opennorth.ca/)",
+        "description": "Find Canadian Government Representatives",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Represent by Open North](https://represent.opennorth.ca/) | Find Canadian Government Representatives | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-us-presidential-election-data-by-togatech-uselection-togatech-org",
+      "name": "US Presidential Election Data by TogaTech",
+      "category": "Government",
+      "docs_url": "https://uselection.togatech.org/api/",
+      "description": "Basic candidate data and live electoral vote counts for top two parties in US presidential election",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "no",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "uselection.togatech.org"
+      ],
+      "raw_source": {
+        "api": "[US Presidential Election Data by TogaTech](https://uselection.togatech.org/api/)",
+        "description": "Basic candidate data and live electoral vote counts for top two parties in US presidential election",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [US Presidential Election Data by TogaTech](https://uselection.togatech.org/api/) | Basic candidate data and live electoral vote counts for top two parties in US presidential election | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-usaspending-gov-api-usaspending-gov",
+      "name": "USAspending.gov",
+      "category": "Government",
+      "docs_url": "https://api.usaspending.gov/",
+      "description": "US federal spending data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.usaspending.gov"
+      ],
+      "raw_source": {
+        "api": "[USAspending.gov](https://api.usaspending.gov/)",
+        "description": "US federal spending data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [USAspending.gov](https://api.usaspending.gov/) | US federal spending data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-nantes-open-data-data-nantesmetropole-fr",
+      "name": "City, Nantes Open Data",
+      "category": "Government",
+      "docs_url": "https://data.nantesmetropole.fr/pages/home/",
+      "description": "Nantes(FR) City Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.nantesmetropole.fr"
+      ],
+      "raw_source": {
+        "api": "[City, Nantes Open Data](https://data.nantesmetropole.fr/pages/home/)",
+        "description": "Nantes(FR) City Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [City, Nantes Open Data](https://data.nantesmetropole.fr/pages/home/) | Nantes(FR) City Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-code-gov-code-gov",
+      "name": "Code.gov",
+      "category": "Government",
+      "docs_url": "https://code.gov",
+      "description": "The primary platform for Open Source and code sharing for the U.S. Federal Government",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "code.gov"
+      ],
+      "raw_source": {
+        "api": "[Code.gov](https://code.gov)",
+        "description": "The primary platform for Open Source and code sharing for the U.S. Federal Government",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Code.gov](https://code.gov) | The primary platform for Open Source and code sharing for the U.S. Federal Government | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-data-gov-api-data-gov",
+      "name": "Data.gov",
+      "category": "Government",
+      "docs_url": "https://api.data.gov/",
+      "description": "US Government Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.data.gov"
+      ],
+      "raw_source": {
+        "api": "[Data.gov](https://api.data.gov/)",
+        "description": "US Government Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Data.gov](https://api.data.gov/) | US Government Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-deutscher-bundestag-dip-dip-bundestag-de",
+      "name": "Deutscher Bundestag DIP",
+      "category": "Government",
+      "docs_url": "https://dip.bundestag.de/documents/informationsblatt_zur_dip_api_v01.pdf",
+      "description": "This API provides read access to DIP entities (e.g. activities, persons, printed material)",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dip.bundestag.de"
+      ],
+      "raw_source": {
+        "api": "[Deutscher Bundestag DIP](https://dip.bundestag.de/documents/informationsblatt_zur_dip_api_v01.pdf)",
+        "description": "This API provides read access to DIP entities (e.g. activities, persons, printed material)",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Deutscher Bundestag DIP](https://dip.bundestag.de/documents/informationsblatt_zur_dip_api_v01.pdf) | This API provides read access to DIP entities (e.g. activities, persons, printed material) | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-fec-api-open-fec-gov",
+      "name": "FEC",
+      "category": "Government",
+      "docs_url": "https://api.open.fec.gov/developers/",
+      "description": "Information on campaign donations in federal elections",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.open.fec.gov"
+      ],
+      "raw_source": {
+        "api": "[FEC](https://api.open.fec.gov/developers/)",
+        "description": "Information on campaign donations in federal elections",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FEC](https://api.open.fec.gov/developers/) | Information on campaign donations in federal elections | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-gun-policy-gunpolicy-org",
+      "name": "Gun Policy",
+      "category": "Government",
+      "docs_url": "https://www.gunpolicy.org/api",
+      "description": "International firearm injury prevention and policy",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "gunpolicy.org"
+      ],
+      "raw_source": {
+        "api": "[Gun Policy](https://www.gunpolicy.org/api)",
+        "description": "International firearm injury prevention and policy",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gun Policy](https://www.gunpolicy.org/api) | International firearm injury prevention and policy | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-national-park-service-us-nps-gov",
+      "name": "National Park Service, US",
+      "category": "Government",
+      "docs_url": "https://www.nps.gov/subjects/developer/",
+      "description": "Data from the US National Park Service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "yes",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "nps.gov"
+      ],
+      "raw_source": {
+        "api": "[National Park Service, US](https://www.nps.gov/subjects/developer/)",
+        "description": "Data from the US National Park Service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [National Park Service, US](https://www.nps.gov/subjects/developer/) | Data from the US National Park Service | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-estonia-avaandmed-eesti-ee",
+      "name": "Open Government, Estonia",
+      "category": "Government",
+      "docs_url": "https://avaandmed.eesti.ee/instructions/opendata-dataset-api",
+      "description": "Estonia Government Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "avaandmed.eesti.ee"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Estonia](https://avaandmed.eesti.ee/instructions/opendata-dataset-api)",
+        "description": "Estonia Government Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Estonia](https://avaandmed.eesti.ee/instructions/opendata-dataset-api) | Estonia Government Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-france-data-gouv-fr",
+      "name": "Open Government, France",
+      "category": "Government",
+      "docs_url": "https://www.data.gouv.fr/",
+      "description": "French Government Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gouv.fr"
+      ],
+      "raw_source": {
+        "api": "[Open Government, France](https://www.data.gouv.fr/)",
+        "description": "French Government Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, France](https://www.data.gouv.fr/) | French Government Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-india-data-gov-in",
+      "name": "Open Government, India",
+      "category": "Government",
+      "docs_url": "https://data.gov.in/",
+      "description": "Indian Government Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.in"
+      ],
+      "raw_source": {
+        "api": "[Open Government, India](https://data.gov.in/)",
+        "description": "Indian Government Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, India](https://data.gov.in/) | Indian Government Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-korea-data-go-kr",
+      "name": "Open Government, Korea",
+      "category": "Government",
+      "docs_url": "https://www.data.go.kr/",
+      "description": "Korea Government Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.go.kr"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Korea](https://www.data.go.kr/)",
+        "description": "Korea Government Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Korea](https://www.data.go.kr/) | Korea Government Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-luxembourg-data-public-lu",
+      "name": "Open Government, Luxembourg",
+      "category": "Government",
+      "docs_url": "https://data.public.lu",
+      "description": "Luxembourgish Government Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.public.lu"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Luxembourg](https://data.public.lu)",
+        "description": "Luxembourgish Government Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Luxembourg](https://data.public.lu) | Luxembourgish Government Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-new-south-wales-api-nsw-gov-au",
+      "name": "Open Government, New South Wales",
+      "category": "Government",
+      "docs_url": "https://api.nsw.gov.au/",
+      "description": "New South Wales Government Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.nsw.gov.au"
+      ],
+      "raw_source": {
+        "api": "[Open Government, New South Wales](https://api.nsw.gov.au/)",
+        "description": "New South Wales Government Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, New South Wales](https://api.nsw.gov.au/) | New South Wales Government Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-thailand-data-go-th",
+      "name": "Open Government, Thailand",
+      "category": "Government",
+      "docs_url": "https://data.go.th/",
+      "description": "Thailand Government Open Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.go.th"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Thailand](https://data.go.th/)",
+        "description": "Thailand Government Open Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Thailand](https://data.go.th/) | Thailand Government Open Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-usa-gov-usa-gov",
+      "name": "USA.gov",
+      "category": "Government",
+      "docs_url": "https://www.usa.gov/developer",
+      "description": "Authoritative information on U.S. programs, events, services and more",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "usa.gov"
+      ],
+      "raw_source": {
+        "api": "[USA.gov](https://www.usa.gov/developer)",
+        "description": "Authoritative information on U.S. programs, events, services and more",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [USA.gov](https://www.usa.gov/developer) | Authoritative information on U.S. programs, events, services and more | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-gazette-data-uk-thegazette-co-uk",
+      "name": "Gazette Data, UK",
+      "category": "Government",
+      "docs_url": "https://www.thegazette.co.uk/data",
+      "description": "UK official public record API",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "thegazette.co.uk"
+      ],
+      "raw_source": {
+        "api": "[Gazette Data, UK](https://www.thegazette.co.uk/data)",
+        "description": "UK official public record API",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gazette Data, UK](https://www.thegazette.co.uk/data) | UK official public record API | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-greece-data-gov-gr",
+      "name": "Open Government, Greece",
+      "category": "Government",
+      "docs_url": "https://data.gov.gr/",
+      "description": "Greece Government Open Data",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.gr"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Greece](https://data.gov.gr/)",
+        "description": "Greece Government Open Data",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Greece](https://data.gov.gr/) | Greece Government Open Data | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-uk-companies-house-developer-company-information-service-gov-uk",
+      "name": "UK Companies House",
+      "category": "Government",
+      "docs_url": "https://developer.company-information.service.gov.uk/",
+      "description": "UK Companies House Data from the UK government",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "developer.company-information.service.gov.uk"
+      ],
+      "raw_source": {
+        "api": "[UK Companies House](https://developer.company-information.service.gov.uk/)",
+        "description": "UK Companies House Data from the UK government",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [UK Companies House](https://developer.company-information.service.gov.uk/) | UK Companies House Data from the UK government | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-bclaws-bclaws-gov-bc-ca",
+      "name": "BCLaws",
+      "category": "Government",
+      "docs_url": "https://www.bclaws.gov.bc.ca/civix/template/complete/api/index.html",
+      "description": "Access to the laws of British Columbia",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "bclaws.gov.bc.ca"
+      ],
+      "raw_source": {
+        "api": "[BCLaws](https://www.bclaws.gov.bc.ca/civix/template/complete/api/index.html)",
+        "description": "Access to the laws of British Columbia",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [BCLaws](https://www.bclaws.gov.bc.ca/civix/template/complete/api/index.html) | Access to the laws of British Columbia | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-gdynia-otwartedane-gdynia-pl",
+      "name": "City, Gdynia",
+      "category": "Government",
+      "docs_url": "http://otwartedane.gdynia.pl/en/api_doc.html",
+      "description": "Gdynia (PL) City Open Data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "otwartedane.gdynia.pl"
+      ],
+      "raw_source": {
+        "api": "[City, Gdynia](http://otwartedane.gdynia.pl/en/api_doc.html)",
+        "description": "Gdynia (PL) City Open Data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [City, Gdynia](http://otwartedane.gdynia.pl/en/api_doc.html) | Gdynia (PL) City Open Data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-city-prague-open-data-opendata-praha-eu",
+      "name": "City, Prague Open Data",
+      "category": "Government",
+      "docs_url": "http://opendata.praha.eu/en",
+      "description": "Prague(CZ) City Open Data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "opendata.praha.eu"
+      ],
+      "raw_source": {
+        "api": "[City, Prague Open Data](http://opendata.praha.eu/en)",
+        "description": "Prague(CZ) City Open Data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [City, Prague Open Data](http://opendata.praha.eu/en) | Prague(CZ) City Open Data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-data-parliament-uk-explore-data-parliament-uk",
+      "name": "Data.parliament.uk",
+      "category": "Government",
+      "docs_url": "https://explore.data.parliament.uk/?learnmore=Members",
+      "description": "Contains live datasets including information about petitions, bills, MP votes, attendance and more",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "explore.data.parliament.uk"
+      ],
+      "raw_source": {
+        "api": "[Data.parliament.uk](https://explore.data.parliament.uk/?learnmore=Members)",
+        "description": "Contains live datasets including information about petitions, bills, MP votes, attendance and more",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Data.parliament.uk](https://explore.data.parliament.uk/?learnmore=Members) | Contains live datasets including information about petitions, bills, MP votes, attendance and more | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-food-standards-agency-ratings-food-gov-uk",
+      "name": "Food Standards Agency",
+      "category": "Government",
+      "docs_url": "http://ratings.food.gov.uk/open-data/en-GB",
+      "description": "UK food hygiene rating data API",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "ratings.food.gov.uk"
+      ],
+      "raw_source": {
+        "api": "[Food Standards Agency](http://ratings.food.gov.uk/open-data/en-GB)",
+        "description": "UK food hygiene rating data API",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Food Standards Agency](http://ratings.food.gov.uk/open-data/en-GB) | UK food hygiene rating data API | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-inei-iinei-inei-gob-pe",
+      "name": "INEI",
+      "category": "Government",
+      "docs_url": "http://iinei.inei.gob.pe/microdatos/",
+      "description": "Peruvian Statistical Government Open Data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "iinei.inei.gob.pe"
+      ],
+      "raw_source": {
+        "api": "[INEI](http://iinei.inei.gob.pe/microdatos/)",
+        "description": "Peruvian Statistical Government Open Data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [INEI](http://iinei.inei.gob.pe/microdatos/) | Peruvian Statistical Government Open Data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-canada-open-canada-ca",
+      "name": "Open Government, Canada",
+      "category": "Government",
+      "docs_url": "http://open.canada.ca/en",
+      "description": "Canadian Government Open Data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "open.canada.ca"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Canada](http://open.canada.ca/en)",
+        "description": "Canadian Government Open Data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Canada](http://open.canada.ca/en) | Canadian Government Open Data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-colombia-dane-gov-co",
+      "name": "Open Government, Colombia",
+      "category": "Government",
+      "docs_url": "https://www.dane.gov.co/",
+      "description": "Colombia Government Open Data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dane.gov.co"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Colombia](https://www.dane.gov.co/)",
+        "description": "Colombia Government Open Data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Colombia](https://www.dane.gov.co/) | Colombia Government Open Data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "government-open-government-romania-data-gov-ro",
+      "name": "Open Government, Romania",
+      "category": "Government",
+      "docs_url": "http://data.gov.ro/",
+      "description": "Romania Government Open Data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "finance",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "government",
+        "none",
+        "unknown",
+        "watchtower",
+        "finance",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "data.gov.ro"
+      ],
+      "raw_source": {
+        "api": "[Open Government, Romania](http://data.gov.ro/)",
+        "description": "Romania Government Open Data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Open Government, Romania](http://data.gov.ro/) | Romania Government Open Data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

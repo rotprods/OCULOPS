@@ -1,0 +1,5167 @@
+{
+  "category": "Development",
+  "slug": "development",
+  "count": 120,
+  "entries": [
+    {
+      "slug": "development-apis-guru-apis-guru",
+      "name": "APIs.guru",
+      "category": "Development",
+      "docs_url": "https://apis.guru/api-doc/",
+      "description": "Wikipedia for Web APIs, OpenAPI/Swagger specs for public APIs",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "apis.guru"
+      ],
+      "raw_source": {
+        "api": "[APIs.guru](https://apis.guru/api-doc/)",
+        "description": "Wikipedia for Web APIs, OpenAPI/Swagger specs for public APIs",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [APIs.guru](https://apis.guru/api-doc/) | Wikipedia for Web APIs, OpenAPI/Swagger specs for public APIs | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": false,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-changelogs-md-changelogs-md",
+      "name": "Changelogs.md",
+      "category": "Development",
+      "docs_url": "https://changelogs.md",
+      "description": "Structured changelog metadata from open source projects",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "changelogs.md"
+      ],
+      "raw_source": {
+        "api": "[Changelogs.md](https://changelogs.md)",
+        "description": "Structured changelog metadata from open source projects",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Changelogs.md](https://changelogs.md) | Structured changelog metadata from open source projects | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-cloudflare-trace-github-com",
+      "name": "Cloudflare Trace",
+      "category": "Development",
+      "docs_url": "https://github.com/fawazahmed0/cloudflare-trace-api",
+      "description": "Get IP Address, Timestamp, User Agent, Country Code, IATA, HTTP Version, TLS/SSL Version & More",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Cloudflare Trace](https://github.com/fawazahmed0/cloudflare-trace-api)",
+        "description": "Get IP Address, Timestamp, User Agent, Country Code, IATA, HTTP Version, TLS/SSL Version & More",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Cloudflare Trace](https://github.com/fawazahmed0/cloudflare-trace-api) | Get IP Address, Timestamp, User Agent, Country Code, IATA, HTTP Version, TLS/SSL Version & More | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-codex-github-com",
+      "name": "Codex",
+      "category": "Development",
+      "docs_url": "https://github.com/Jaagrav/CodeX",
+      "description": "Online Compiler for Various Languages",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Codex](https://github.com/Jaagrav/CodeX)",
+        "description": "Online Compiler for Various Languages",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Codex](https://github.com/Jaagrav/CodeX) | Online Compiler for Various Languages | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-domaindb-info-api-domainsdb-info",
+      "name": "DomainDb Info",
+      "category": "Development",
+      "docs_url": "https://api.domainsdb.info/",
+      "description": "Domain name search to find all domains containing particular words/phrases/etc",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api.domainsdb.info"
+      ],
+      "raw_source": {
+        "api": "[DomainDb Info](https://api.domainsdb.info/)",
+        "description": "Domain name search to find all domains containing particular words/phrases/etc",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [DomainDb Info](https://api.domainsdb.info/) | Domain name search to find all domains containing particular words/phrases/etc | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-icanhazip-major-io",
+      "name": "Icanhazip",
+      "category": "Development",
+      "docs_url": "https://major.io/icanhazip-com-faq/",
+      "description": "IP Address API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "major.io"
+      ],
+      "raw_source": {
+        "api": "[Icanhazip](https://major.io/icanhazip-com-faq/)",
+        "description": "IP Address API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Icanhazip](https://major.io/icanhazip-com-faq/) | IP Address API | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ip-fast-com-ip-fast-com",
+      "name": "ip-fast.com",
+      "category": "Development",
+      "docs_url": "https://ip-fast.com/docs/",
+      "description": "IP address, country and city",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "ip-fast.com"
+      ],
+      "raw_source": {
+        "api": "[ip-fast.com](https://ip-fast.com/docs/)",
+        "description": "IP address, country and city",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ip-fast.com](https://ip-fast.com/docs/) | IP address, country and city | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ipify-ipify-org",
+      "name": "IPify",
+      "category": "Development",
+      "docs_url": "https://www.ipify.org/",
+      "description": "A simple IP Address API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "ipify.org"
+      ],
+      "raw_source": {
+        "api": "[IPify](https://www.ipify.org/)",
+        "description": "A simple IP Address API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IPify](https://www.ipify.org/) | A simple IP Address API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ipinfo-ipinfo-io",
+      "name": "IPinfo",
+      "category": "Development",
+      "docs_url": "https://ipinfo.io/developers",
+      "description": "Another simple IP Address API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "ipinfo.io"
+      ],
+      "raw_source": {
+        "api": "[IPinfo](https://ipinfo.io/developers)",
+        "description": "Another simple IP Address API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IPinfo](https://ipinfo.io/developers) | Another simple IP Address API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-json-2-jsonp-json2jsonp-com",
+      "name": "JSON 2 JSONP",
+      "category": "Development",
+      "docs_url": "https://json2jsonp.com/",
+      "description": "Convert JSON to JSONP (on-the-fly) for easy cross-domain data requests using client-side JavaScript",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "json2jsonp.com"
+      ],
+      "raw_source": {
+        "api": "[JSON 2 JSONP](https://json2jsonp.com/)",
+        "description": "Convert JSON to JSONP (on-the-fly) for easy cross-domain data requests using client-side JavaScript",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [JSON 2 JSONP](https://json2jsonp.com/) | Convert JSON to JSONP (on-the-fly) for easy cross-domain data requests using client-side JavaScript | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-kroki-kroki-io",
+      "name": "Kroki",
+      "category": "Development",
+      "docs_url": "https://kroki.io",
+      "description": "Creates diagrams from textual descriptions",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "kroki.io"
+      ],
+      "raw_source": {
+        "api": "[Kroki](https://kroki.io)",
+        "description": "Creates diagrams from textual descriptions",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Kroki](https://kroki.io) | Creates diagrams from textual descriptions | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-my-ip-myip-com",
+      "name": "MY IP",
+      "category": "Development",
+      "docs_url": "https://www.myip.com/api-docs/",
+      "description": "Get IP address information",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "myip.com"
+      ],
+      "raw_source": {
+        "api": "[MY IP](https://www.myip.com/api-docs/)",
+        "description": "Get IP address information",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MY IP](https://www.myip.com/api-docs/) | Get IP address information | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-oyyi-oyyi-xyz",
+      "name": "oyyi",
+      "category": "Development",
+      "docs_url": "https://oyyi.xyz/docs/1.0",
+      "description": "API for Fake Data, image/video conversion, optimization, pdf optimization and thumbnail generation",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "oyyi.xyz"
+      ],
+      "raw_source": {
+        "api": "[oyyi](https://oyyi.xyz/docs/1.0)",
+        "description": "API for Fake Data, image/video conversion, optimization, pdf optimization and thumbnail generation",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [oyyi](https://oyyi.xyz/docs/1.0) | API for Fake Data, image/video conversion, optimization, pdf optimization and thumbnail generation | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-serialif-color-color-serialif-com",
+      "name": "Serialif Color",
+      "category": "Development",
+      "docs_url": "https://color.serialif.com/",
+      "description": "Color conversion, complementary, grayscale and contrasted text",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "color.serialif.com"
+      ],
+      "raw_source": {
+        "api": "[Serialif Color](https://color.serialif.com/)",
+        "description": "Color conversion, complementary, grayscale and contrasted text",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Serialif Color](https://color.serialif.com/) | Color conversion, complementary, grayscale and contrasted text | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-wandbox-github-com",
+      "name": "Wandbox",
+      "category": "Development",
+      "docs_url": "https://github.com/melpon/wandbox/blob/master/kennel2/API.rst",
+      "description": "Code compiler supporting 35+ languages mentioned at wandbox.org",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Wandbox](https://github.com/melpon/wandbox/blob/master/kennel2/API.rst)",
+        "description": "Code compiler supporting 35+ languages mentioned at wandbox.org",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Wandbox](https://github.com/melpon/wandbox/blob/master/kennel2/API.rst) | Code compiler supporting 35+ languages mentioned at wandbox.org | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-contentful-images-contentful-com",
+      "name": "Contentful Images",
+      "category": "Development",
+      "docs_url": "https://www.contentful.com/developers/docs/references/images-api/",
+      "description": "Used to retrieve and apply transformations to images",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "contentful.com"
+      ],
+      "raw_source": {
+        "api": "[Contentful Images](https://www.contentful.com/developers/docs/references/images-api/)",
+        "description": "Used to retrieve and apply transformations to images",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Contentful Images](https://www.contentful.com/developers/docs/references/images-api/) | Used to retrieve and apply transformations to images | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-databricks-docs-databricks-com",
+      "name": "Databricks",
+      "category": "Development",
+      "docs_url": "https://docs.databricks.com/dev-tools/api/latest/index.html",
+      "description": "Service to manage your databricks account,clusters, notebooks, jobs and workspaces",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "docs.databricks.com"
+      ],
+      "raw_source": {
+        "api": "[Databricks](https://docs.databricks.com/dev-tools/api/latest/index.html)",
+        "description": "Service to manage your databricks account,clusters, notebooks, jobs and workspaces",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Databricks](https://docs.databricks.com/dev-tools/api/latest/index.html) | Service to manage your databricks account,clusters, notebooks, jobs and workspaces | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-geekflare-apidocs-geekflare-com",
+      "name": "GeekFlare",
+      "category": "Development",
+      "docs_url": "https://apidocs.geekflare.com/docs/geekflare-api",
+      "description": "Provide numerous capabilities for important testing and monitoring methods for websites",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "apidocs.geekflare.com"
+      ],
+      "raw_source": {
+        "api": "[GeekFlare](https://apidocs.geekflare.com/docs/geekflare-api)",
+        "description": "Provide numerous capabilities for important testing and monitoring methods for websites",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GeekFlare](https://apidocs.geekflare.com/docs/geekflare-api) | Provide numerous capabilities for important testing and monitoring methods for websites | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-getping-getping-info",
+      "name": "GETPing",
+      "category": "Development",
+      "docs_url": "https://www.getping.info",
+      "description": "Trigger an email notification with a simple GET request",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "getping.info"
+      ],
+      "raw_source": {
+        "api": "[GETPing](https://www.getping.info)",
+        "description": "Trigger an email notification with a simple GET request",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GETPing](https://www.getping.info) | Trigger an email notification with a simple GET request | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ghost-ghost-org",
+      "name": "Ghost",
+      "category": "Development",
+      "docs_url": "https://ghost.org/",
+      "description": "Get Published content into your Website, App or other embedded media",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "ghost.org"
+      ],
+      "raw_source": {
+        "api": "[Ghost](https://ghost.org/)",
+        "description": "Get Published content into your Website, App or other embedded media",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Ghost](https://ghost.org/) | Get Published content into your Website, App or other embedded media | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-google-fonts-developers-google-com",
+      "name": "Google Fonts",
+      "category": "Development",
+      "docs_url": "https://developers.google.com/fonts/docs/developer_api",
+      "description": "Metadata for all families served by Google Fonts",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Fonts](https://developers.google.com/fonts/docs/developer_api)",
+        "description": "Metadata for all families served by Google Fonts",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Fonts](https://developers.google.com/fonts/docs/developer_api) | Metadata for all families served by Google Fonts | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-host-io-host-io",
+      "name": "Host.io",
+      "category": "Development",
+      "docs_url": "https://host.io",
+      "description": "Domains Data API for Developers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "host.io"
+      ],
+      "raw_source": {
+        "api": "[Host.io](https://host.io)",
+        "description": "Domains Data API for Developers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Host.io](https://host.io) | Domains Data API for Developers | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-hunter-hunter-io",
+      "name": "Hunter",
+      "category": "Development",
+      "docs_url": "https://hunter.io/api",
+      "description": "API for domain search, professional email finder, author finder and email verifier",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "hunter.io"
+      ],
+      "raw_source": {
+        "api": "[Hunter](https://hunter.io/api)",
+        "description": "API for domain search, professional email finder, author finder and email verifier",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hunter](https://hunter.io/api) | API for domain search, professional email finder, author finder and email verifier | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ibm-text-to-speech-cloud-ibm-com",
+      "name": "IBM Text to Speech",
+      "category": "Development",
+      "docs_url": "https://cloud.ibm.com/docs/text-to-speech/getting-started.html",
+      "description": "Convert text to speech",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "cloud.ibm.com"
+      ],
+      "raw_source": {
+        "api": "[IBM Text to Speech](https://cloud.ibm.com/docs/text-to-speech/getting-started.html)",
+        "description": "Convert text to speech",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [IBM Text to Speech](https://cloud.ibm.com/docs/text-to-speech/getting-started.html) | Convert text to speech | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-import-io-api-docs-import-io",
+      "name": "import.io",
+      "category": "Development",
+      "docs_url": "http://api.docs.import.io/",
+      "description": "Retrieve structured data from a website or RSS feed",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api.docs.import.io"
+      ],
+      "raw_source": {
+        "api": "[import.io](http://api.docs.import.io/)",
+        "description": "Retrieve structured data from a website or RSS feed",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [import.io](http://api.docs.import.io/) | Retrieve structured data from a website or RSS feed | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ipfind-io-ipfind-io",
+      "name": "ipfind.io",
+      "category": "Development",
+      "docs_url": "https://ipfind.io",
+      "description": "Geographic location of an IP address or any domain name along with some other useful information",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "ipfind.io"
+      ],
+      "raw_source": {
+        "api": "[ipfind.io](https://ipfind.io)",
+        "description": "Geographic location of an IP address or any domain name along with some other useful information",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ipfind.io](https://ipfind.io) | Geographic location of an IP address or any domain name along with some other useful information | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-jsonbin-io-jsonbin-io",
+      "name": "JSONbin.io",
+      "category": "Development",
+      "docs_url": "https://jsonbin.io",
+      "description": "Free JSON storage service. Ideal for small scale Web apps, Websites and Mobile apps",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "jsonbin.io"
+      ],
+      "raw_source": {
+        "api": "[JSONbin.io](https://jsonbin.io)",
+        "description": "Free JSON storage service. Ideal for small scale Web apps, Websites and Mobile apps",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [JSONbin.io](https://jsonbin.io) | Free JSON storage service. Ideal for small scale Web apps, Websites and Mobile apps | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-mac-address-vendor-lookup-macaddress-io",
+      "name": "MAC address vendor lookup",
+      "category": "Development",
+      "docs_url": "https://macaddress.io/api",
+      "description": "Retrieve vendor details and other information regarding a given MAC address or an OUI",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "macaddress.io"
+      ],
+      "raw_source": {
+        "api": "[MAC address vendor lookup](https://macaddress.io/api)",
+        "description": "Retrieve vendor details and other information regarding a given MAC address or an OUI",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [MAC address vendor lookup](https://macaddress.io/api) | Retrieve vendor details and other information regarding a given MAC address or an OUI | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-micro-db-m3o-com",
+      "name": "Micro DB",
+      "category": "Development",
+      "docs_url": "https://m3o.com/db",
+      "description": "Simple database service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "m3o.com"
+      ],
+      "raw_source": {
+        "api": "[Micro DB](https://m3o.com/db)",
+        "description": "Simple database service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Micro DB](https://m3o.com/db) | Simple database service | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-onesignal-documentation-onesignal-com",
+      "name": "OneSignal",
+      "category": "Development",
+      "docs_url": "https://documentation.onesignal.com/docs/onesignal-api",
+      "description": "Self-serve customer engagement solution for Push Notifications, Email, SMS & In-App",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "documentation.onesignal.com"
+      ],
+      "raw_source": {
+        "api": "[OneSignal](https://documentation.onesignal.com/docs/onesignal-api)",
+        "description": "Self-serve customer engagement solution for Push Notifications, Email, SMS & In-App",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OneSignal](https://documentation.onesignal.com/docs/onesignal-api) | Self-serve customer engagement solution for Push Notifications, Email, SMS & In-App | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-open-page-rank-domcop-com",
+      "name": "Open Page Rank",
+      "category": "Development",
+      "docs_url": "https://www.domcop.com/openpagerank/",
+      "description": "API for calculating and comparing metrics of different websites using Page Rank algorithm",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "domcop.com"
+      ],
+      "raw_source": {
+        "api": "[Open Page Rank](https://www.domcop.com/openpagerank/)",
+        "description": "API for calculating and comparing metrics of different websites using Page Rank algorithm",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Page Rank](https://www.domcop.com/openpagerank/) | API for calculating and comparing metrics of different websites using Page Rank algorithm | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-openapihub-hub-openapihub-com",
+      "name": "OpenAPIHub",
+      "category": "Development",
+      "docs_url": "https://hub.openapihub.com/",
+      "description": "The All-in-one API Platform",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "hub.openapihub.com"
+      ],
+      "raw_source": {
+        "api": "[OpenAPIHub](https://hub.openapihub.com/)",
+        "description": "The All-in-one API Platform",
+        "auth": "`X-Mashape-Key`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OpenAPIHub](https://hub.openapihub.com/) | The All-in-one API Platform | `X-Mashape-Key` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-opengraphr-opengraphr-com",
+      "name": "OpenGraphr",
+      "category": "Development",
+      "docs_url": "https://opengraphr.com/docs/1.0/overview",
+      "description": "Really simple API to retrieve Open Graph data from an URL",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "opengraphr.com"
+      ],
+      "raw_source": {
+        "api": "[OpenGraphr](https://opengraphr.com/docs/1.0/overview)",
+        "description": "Really simple API to retrieve Open Graph data from an URL",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OpenGraphr](https://opengraphr.com/docs/1.0/overview) | Really simple API to retrieve Open Graph data from an URL | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-savepage-io-savepage-io",
+      "name": "SavePage.io",
+      "category": "Development",
+      "docs_url": "https://www.savepage.io",
+      "description": "A free, RESTful API used to screenshot any desktop, or mobile website",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "savepage.io"
+      ],
+      "raw_source": {
+        "api": "[SavePage.io](https://www.savepage.io)",
+        "description": "A free, RESTful API used to screenshot any desktop, or mobile website",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [SavePage.io](https://www.savepage.io) | A free, RESTful API used to screenshot any desktop, or mobile website | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-screenshot-abstractapi-com",
+      "name": "Screenshot",
+      "category": "Development",
+      "docs_url": "https://www.abstractapi.com/website-screenshot-api",
+      "description": "Take programmatic screenshots of web pages from any website",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "abstractapi.com"
+      ],
+      "raw_source": {
+        "api": "[Screenshot](https://www.abstractapi.com/website-screenshot-api)",
+        "description": "Take programmatic screenshots of web pages from any website",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Screenshot](https://www.abstractapi.com/website-screenshot-api) | Take programmatic screenshots of web pages from any website | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-screenshotapi-net-screenshotapi-net",
+      "name": "ScreenshotAPI.net",
+      "category": "Development",
+      "docs_url": "https://screenshotapi.net/",
+      "description": "Create pixel-perfect website screenshots",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "screenshotapi.net"
+      ],
+      "raw_source": {
+        "api": "[ScreenshotAPI.net](https://screenshotapi.net/)",
+        "description": "Create pixel-perfect website screenshots",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ScreenshotAPI.net](https://screenshotapi.net/) | Create pixel-perfect website screenshots | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-serpstack-serpstack-com",
+      "name": "serpstack",
+      "category": "Development",
+      "docs_url": "https://serpstack.com/",
+      "description": "Real-Time & Accurate Google Search Results API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "serpstack.com"
+      ],
+      "raw_source": {
+        "api": "[serpstack](https://serpstack.com/)",
+        "description": "Real-Time & Accurate Google Search Results API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [serpstack](https://serpstack.com/) | Real-Time & Accurate Google Search Results API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-google-docs-developers-google-com",
+      "name": "Google Docs",
+      "category": "Development",
+      "docs_url": "https://developers.google.com/docs/api/reference/rest",
+      "description": "API to read, write, and format Google Docs documents",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Docs](https://developers.google.com/docs/api/reference/rest)",
+        "description": "API to read, write, and format Google Docs documents",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Docs](https://developers.google.com/docs/api/reference/rest) | API to read, write, and format Google Docs documents | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-google-sheets-developers-google-com",
+      "name": "Google Sheets",
+      "category": "Development",
+      "docs_url": "https://developers.google.com/sheets/api/reference/rest",
+      "description": "API to read, write, and format Google Sheets data",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Sheets](https://developers.google.com/sheets/api/reference/rest)",
+        "description": "API to read, write, and format Google Sheets data",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Sheets](https://developers.google.com/sheets/api/reference/rest) | API to read, write, and format Google Sheets data | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-24-pull-requests-24pullrequests-com",
+      "name": "24 Pull Requests",
+      "category": "Development",
+      "docs_url": "https://24pullrequests.com/api",
+      "description": "Project to promote open source collaboration during December",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "24pullrequests.com"
+      ],
+      "raw_source": {
+        "api": "[24 Pull Requests](https://24pullrequests.com/api)",
+        "description": "Project to promote open source collaboration during December",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [24 Pull Requests](https://24pullrequests.com/api) | Project to promote open source collaboration during December | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-agify-io-agify-io",
+      "name": "Agify.io",
+      "category": "Development",
+      "docs_url": "https://agify.io",
+      "description": "Estimates the age from a first name",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "agify.io"
+      ],
+      "raw_source": {
+        "api": "[Agify.io](https://agify.io)",
+        "description": "Estimates the age from a first name",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Agify.io](https://agify.io) | Estimates the age from a first name | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-api-gratis-apigratis-com-br",
+      "name": "API Grátis",
+      "category": "Development",
+      "docs_url": "https://apigratis.com.br/",
+      "description": "Multiples services and public APIs",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "apigratis.com.br"
+      ],
+      "raw_source": {
+        "api": "[API Grátis](https://apigratis.com.br/)",
+        "description": "Multiples services and public APIs",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [API Grátis](https://apigratis.com.br/) | Multiples services and public APIs | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-apicagent-apicagent-com",
+      "name": "ApicAgent",
+      "category": "Development",
+      "docs_url": "https://www.apicagent.com",
+      "description": "Extract device details from user-agent string",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "apicagent.com"
+      ],
+      "raw_source": {
+        "api": "[ApicAgent](https://www.apicagent.com)",
+        "description": "Extract device details from user-agent string",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ApicAgent](https://www.apicagent.com) | Extract device details from user-agent string | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-beeceptor-beeceptor-com",
+      "name": "Beeceptor",
+      "category": "Development",
+      "docs_url": "https://beeceptor.com/",
+      "description": "Build a mock Rest API endpoint in seconds",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "beeceptor.com"
+      ],
+      "raw_source": {
+        "api": "[Beeceptor](https://beeceptor.com/)",
+        "description": "Build a mock Rest API endpoint in seconds",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Beeceptor](https://beeceptor.com/) | Build a mock Rest API endpoint in seconds | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-bored-boredapi-com",
+      "name": "Bored",
+      "category": "Development",
+      "docs_url": "https://www.boredapi.com/",
+      "description": "Find random activities to fight boredom",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "boredapi.com"
+      ],
+      "raw_source": {
+        "api": "[Bored](https://www.boredapi.com/)",
+        "description": "Find random activities to fight boredom",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bored](https://www.boredapi.com/) | Find random activities to fight boredom | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-cdnjs-api-cdnjs-com",
+      "name": "CDNJS",
+      "category": "Development",
+      "docs_url": "https://api.cdnjs.com/libraries/jquery",
+      "description": "Library info on CDNJS",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api.cdnjs.com"
+      ],
+      "raw_source": {
+        "api": "[CDNJS](https://api.cdnjs.com/libraries/jquery)",
+        "description": "Library info on CDNJS",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CDNJS](https://api.cdnjs.com/libraries/jquery) | Library info on CDNJS | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ciprand-github-com",
+      "name": "Ciprand",
+      "category": "Development",
+      "docs_url": "https://github.com/polarspetroll/ciprand",
+      "description": "Secure random string generator",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Ciprand](https://github.com/polarspetroll/ciprand)",
+        "description": "Secure random string generator",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Ciprand](https://github.com/polarspetroll/ciprand) | Secure random string generator | No | Yes | No |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-cors-proxy-github-com",
+      "name": "CORS Proxy",
+      "category": "Development",
+      "docs_url": "https://github.com/burhanuday/cors-proxy",
+      "description": "Get around the dreaded CORS error by using this proxy as a middle man",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[CORS Proxy](https://github.com/burhanuday/cors-proxy)",
+        "description": "Get around the dreaded CORS error by using this proxy as a middle man",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [CORS Proxy](https://github.com/burhanuday/cors-proxy) | Get around the dreaded CORS error by using this proxy as a middle man | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-countapi-countapi-xyz",
+      "name": "CountAPI",
+      "category": "Development",
+      "docs_url": "https://countapi.xyz",
+      "description": "Free and simple counting service. You can use it to track page hits and specific events",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "countapi.xyz"
+      ],
+      "raw_source": {
+        "api": "[CountAPI](https://countapi.xyz)",
+        "description": "Free and simple counting service. You can use it to track page hits and specific events",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [CountAPI](https://countapi.xyz) | Free and simple counting service. You can use it to track page hits and specific events | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-digitalocean-status-status-digitalocean-com",
+      "name": "DigitalOcean Status",
+      "category": "Development",
+      "docs_url": "https://status.digitalocean.com/api",
+      "description": "Status of all DigitalOcean services",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "status.digitalocean.com"
+      ],
+      "raw_source": {
+        "api": "[DigitalOcean Status](https://status.digitalocean.com/api)",
+        "description": "Status of all DigitalOcean services",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [DigitalOcean Status](https://status.digitalocean.com/api) | Status of all DigitalOcean services | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-extendsclass-json-storage-extendsclass-com",
+      "name": "ExtendsClass JSON Storage",
+      "category": "Development",
+      "docs_url": "https://extendsclass.com/json-storage.html",
+      "description": "A simple JSON store API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "extendsclass.com"
+      ],
+      "raw_source": {
+        "api": "[ExtendsClass JSON Storage](https://extendsclass.com/json-storage.html)",
+        "description": "A simple JSON store API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ExtendsClass JSON Storage](https://extendsclass.com/json-storage.html) | A simple JSON store API | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-genderize-io-genderize-io",
+      "name": "Genderize.io",
+      "category": "Development",
+      "docs_url": "https://genderize.io",
+      "description": "Estimates a gender from a first name",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "genderize.io"
+      ],
+      "raw_source": {
+        "api": "[Genderize.io](https://genderize.io)",
+        "description": "Estimates a gender from a first name",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Genderize.io](https://genderize.io) | Estimates a gender from a first name | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-host-t-com-host-t-com",
+      "name": "host-t.com",
+      "category": "Development",
+      "docs_url": "https://host-t.com",
+      "description": "Basic DNS query via HTTP GET request",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "host-t.com"
+      ],
+      "raw_source": {
+        "api": "[host-t.com](https://host-t.com)",
+        "description": "Basic DNS query via HTTP GET request",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [host-t.com](https://host-t.com) | Basic DNS query via HTTP GET request | No | Yes | No |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-http2-pro-http2-pro",
+      "name": "HTTP2.Pro",
+      "category": "Development",
+      "docs_url": "https://http2.pro/doc/api",
+      "description": "Test endpoints for client and server HTTP/2 protocol support",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "http2.pro"
+      ],
+      "raw_source": {
+        "api": "[HTTP2.Pro](https://http2.pro/doc/api)",
+        "description": "Test endpoints for client and server HTTP/2 protocol support",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [HTTP2.Pro](https://http2.pro/doc/api) | Test endpoints for client and server HTTP/2 protocol support | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-httpbin-httpbin-org",
+      "name": "Httpbin",
+      "category": "Development",
+      "docs_url": "https://httpbin.org/",
+      "description": "A Simple HTTP Request & Response Service",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "httpbin.org"
+      ],
+      "raw_source": {
+        "api": "[Httpbin](https://httpbin.org/)",
+        "description": "A Simple HTTP Request & Response Service",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Httpbin](https://httpbin.org/) | A Simple HTTP Request & Response Service | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-httpbin-cloudflare-cloudflare-quic-com",
+      "name": "Httpbin Cloudflare",
+      "category": "Development",
+      "docs_url": "https://cloudflare-quic.com/b/",
+      "description": "A Simple HTTP Request & Response Service with HTTP/3 Support by Cloudflare",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "cloudflare-quic.com"
+      ],
+      "raw_source": {
+        "api": "[Httpbin Cloudflare](https://cloudflare-quic.com/b/)",
+        "description": "A Simple HTTP Request & Response Service with HTTP/3 Support by Cloudflare",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Httpbin Cloudflare](https://cloudflare-quic.com/b/) | A Simple HTTP Request & Response Service with HTTP/3 Support by Cloudflare | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-icanhazepoch-icanhazepoch-com",
+      "name": "Icanhazepoch",
+      "category": "Development",
+      "docs_url": "https://icanhazepoch.com",
+      "description": "Get Epoch time",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "icanhazepoch.com"
+      ],
+      "raw_source": {
+        "api": "[Icanhazepoch](https://icanhazepoch.com)",
+        "description": "Get Epoch time",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Icanhazepoch](https://icanhazepoch.com) | Get Epoch time | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ifttt-platform-ifttt-com",
+      "name": "IFTTT",
+      "category": "Development",
+      "docs_url": "https://platform.ifttt.com/docs/connect_api",
+      "description": "IFTTT Connect API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "platform.ifttt.com"
+      ],
+      "raw_source": {
+        "api": "[IFTTT](https://platform.ifttt.com/docs/connect_api)",
+        "description": "IFTTT Connect API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IFTTT](https://platform.ifttt.com/docs/connect_api) | IFTTT Connect API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-image-charts-documentation-image-charts-com",
+      "name": "Image-Charts",
+      "category": "Development",
+      "docs_url": "https://documentation.image-charts.com/",
+      "description": "Generate charts, QR codes and graph images",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "documentation.image-charts.com"
+      ],
+      "raw_source": {
+        "api": "[Image-Charts](https://documentation.image-charts.com/)",
+        "description": "Generate charts, QR codes and graph images",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Image-Charts](https://documentation.image-charts.com/) | Generate charts, QR codes and graph images | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-jsdelivr-github-com",
+      "name": "jsDelivr",
+      "category": "Development",
+      "docs_url": "https://github.com/jsdelivr/data.jsdelivr.com",
+      "description": "Package info and download stats on jsDelivr CDN",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[jsDelivr](https://github.com/jsdelivr/data.jsdelivr.com)",
+        "description": "Package info and download stats on jsDelivr CDN",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [jsDelivr](https://github.com/jsdelivr/data.jsdelivr.com) | Package info and download stats on jsDelivr CDN | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-license-api-github-com",
+      "name": "License-API",
+      "category": "Development",
+      "docs_url": "https://github.com/cmccandless/license-api/blob/master/README.md",
+      "description": "Unofficial REST API for choosealicense.com",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[License-API](https://github.com/cmccandless/license-api/blob/master/README.md)",
+        "description": "Unofficial REST API for choosealicense.com",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [License-API](https://github.com/cmccandless/license-api/blob/master/README.md) | Unofficial REST API for choosealicense.com | No | Yes | No |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-lua-decompiler-lua-decompiler-ferib-dev",
+      "name": "Lua Decompiler",
+      "category": "Development",
+      "docs_url": "https://lua-decompiler.ferib.dev/",
+      "description": "Online Lua 5.1 Decompiler",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "lua-decompiler.ferib.dev"
+      ],
+      "raw_source": {
+        "api": "[Lua Decompiler](https://lua-decompiler.ferib.dev/)",
+        "description": "Online Lua 5.1 Decompiler",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Lua Decompiler](https://lua-decompiler.ferib.dev/) | Online Lua 5.1 Decompiler | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-microenv-microenv-com",
+      "name": "MicroENV",
+      "category": "Development",
+      "docs_url": "https://microenv.com/",
+      "description": "Fake Rest API for developers",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "microenv.com"
+      ],
+      "raw_source": {
+        "api": "[MicroENV](https://microenv.com/)",
+        "description": "Fake Rest API for developers",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MicroENV](https://microenv.com/) | Fake Rest API for developers | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-mocky-designer-mocky-io",
+      "name": "Mocky",
+      "category": "Development",
+      "docs_url": "https://designer.mocky.io/",
+      "description": "Mock user defined test JSON for REST API endpoints",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "designer.mocky.io"
+      ],
+      "raw_source": {
+        "api": "[Mocky](https://designer.mocky.io/)",
+        "description": "Mock user defined test JSON for REST API endpoints",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Mocky](https://designer.mocky.io/) | Mock user defined test JSON for REST API endpoints | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-nationalize-io-nationalize-io",
+      "name": "Nationalize.io",
+      "category": "Development",
+      "docs_url": "https://nationalize.io",
+      "description": "Estimate the nationality of a first name",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "nationalize.io"
+      ],
+      "raw_source": {
+        "api": "[Nationalize.io](https://nationalize.io)",
+        "description": "Estimate the nationality of a first name",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Nationalize.io](https://nationalize.io) | Estimate the nationality of a first name | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-networkcalc-networkcalc-com",
+      "name": "NetworkCalc",
+      "category": "Development",
+      "docs_url": "https://networkcalc.com/api/docs",
+      "description": "Network calculators, including subnets, DNS, binary, and security tools",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "networkcalc.com"
+      ],
+      "raw_source": {
+        "api": "[NetworkCalc](https://networkcalc.com/api/docs)",
+        "description": "Network calculators, including subnets, DNS, binary, and security tools",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [NetworkCalc](https://networkcalc.com/api/docs) | Network calculators, including subnets, DNS, binary, and security tools | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-npm-registry-github-com",
+      "name": "npm Registry",
+      "category": "Development",
+      "docs_url": "https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md",
+      "description": "Query information about your favorite Node.js libraries programatically",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[npm Registry](https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md)",
+        "description": "Query information about your favorite Node.js libraries programatically",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [npm Registry](https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md) | Query information about your favorite Node.js libraries programatically | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-qr-code-qrtag-net",
+      "name": "QR code",
+      "category": "Development",
+      "docs_url": "https://www.qrtag.net/api/",
+      "description": "Create an easy to read QR code and URL shortener",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "qrtag.net"
+      ],
+      "raw_source": {
+        "api": "[QR code](https://www.qrtag.net/api/)",
+        "description": "Create an easy to read QR code and URL shortener",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [QR code](https://www.qrtag.net/api/) | Create an easy to read QR code and URL shortener | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-qr-code-goqr-me",
+      "name": "QR code",
+      "category": "Development",
+      "docs_url": "http://goqr.me/api/",
+      "description": "Generate and decode / read QR code graphics",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "goqr.me"
+      ],
+      "raw_source": {
+        "api": "[QR code](http://goqr.me/api/)",
+        "description": "Generate and decode / read QR code graphics",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [QR code](http://goqr.me/api/) | Generate and decode / read QR code graphics | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-qrcode-monkey-qrcode-monkey-com",
+      "name": "Qrcode Monkey",
+      "category": "Development",
+      "docs_url": "https://www.qrcode-monkey.com/qr-code-api-with-logo/",
+      "description": "Integrate custom and unique looking QR codes into your system or workflow",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "qrcode-monkey.com"
+      ],
+      "raw_source": {
+        "api": "[Qrcode Monkey](https://www.qrcode-monkey.com/qr-code-api-with-logo/)",
+        "description": "Integrate custom and unique looking QR codes into your system or workflow",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Qrcode Monkey](https://www.qrcode-monkey.com/qr-code-api-with-logo/) | Integrate custom and unique looking QR codes into your system or workflow | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-quickchart-quickchart-io",
+      "name": "QuickChart",
+      "category": "Development",
+      "docs_url": "https://quickchart.io/",
+      "description": "Generate chart and graph images",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "quickchart.io"
+      ],
+      "raw_source": {
+        "api": "[QuickChart](https://quickchart.io/)",
+        "description": "Generate chart and graph images",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [QuickChart](https://quickchart.io/) | Generate chart and graph images | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-reqres-reqres-in",
+      "name": "ReqRes",
+      "category": "Development",
+      "docs_url": "https://reqres.in/",
+      "description": "A hosted REST-API ready to respond to your AJAX requests",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "reqres.in"
+      ],
+      "raw_source": {
+        "api": "[ReqRes](https://reqres.in/ )",
+        "description": "A hosted REST-API ready to respond to your AJAX requests",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ReqRes](https://reqres.in/ ) | A hosted REST-API ready to respond to your AJAX requests | No | Yes | Unknown |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-rss-feed-to-json-rss-to-json-serverless-api-vercel-app",
+      "name": "RSS feed to JSON",
+      "category": "Development",
+      "docs_url": "https://rss-to-json-serverless-api.vercel.app",
+      "description": "Returns RSS feed in JSON format using feed URL",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "rss-to-json-serverless-api.vercel.app"
+      ],
+      "raw_source": {
+        "api": "[RSS feed to JSON](https://rss-to-json-serverless-api.vercel.app)",
+        "description": "Returns RSS feed in JSON format using feed URL",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [RSS feed to JSON](https://rss-to-json-serverless-api.vercel.app) | Returns RSS feed in JSON format using feed URL | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-sonar-github-com",
+      "name": "Sonar",
+      "category": "Development",
+      "docs_url": "https://github.com/Cgboal/SonarSearch",
+      "description": "Project Sonar DNS Enumeration API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Sonar](https://github.com/Cgboal/SonarSearch)",
+        "description": "Project Sonar DNS Enumeration API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Sonar](https://github.com/Cgboal/SonarSearch) | Project Sonar DNS Enumeration API | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-statically-statically-io",
+      "name": "Statically",
+      "category": "Development",
+      "docs_url": "https://statically.io/",
+      "description": "A free CDN for developers",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "statically.io"
+      ],
+      "raw_source": {
+        "api": "[Statically](https://statically.io/)",
+        "description": "A free CDN for developers",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Statically](https://statically.io/) | A free CDN for developers | No | Yes | Yes |"
+      },
+      "business_fit_score": 45,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-apiflash-apiflash-com",
+      "name": "ApiFlash",
+      "category": "Development",
+      "docs_url": "https://apiflash.com/",
+      "description": "Chrome based screenshot API for developers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "apiflash.com"
+      ],
+      "raw_source": {
+        "api": "[ApiFlash](https://apiflash.com/)",
+        "description": "Chrome based screenshot API for developers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ApiFlash](https://apiflash.com/) | Chrome based screenshot API for developers | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-azure-devops-docs-microsoft-com",
+      "name": "Azure DevOps",
+      "category": "Development",
+      "docs_url": "https://docs.microsoft.com/en-us/rest/api/azure/devops",
+      "description": "The Azure DevOps basic components of a REST API request/response pair",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "docs.microsoft.com"
+      ],
+      "raw_source": {
+        "api": "[Azure DevOps](https://docs.microsoft.com/en-us/rest/api/azure/devops)",
+        "description": "The Azure DevOps basic components of a REST API request/response pair",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Azure DevOps](https://docs.microsoft.com/en-us/rest/api/azure/devops) | The Azure DevOps basic components of a REST API request/response pair | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-base-base-api-io",
+      "name": "Base",
+      "category": "Development",
+      "docs_url": "https://www.base-api.io/",
+      "description": "Building quick backends",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "base-api.io"
+      ],
+      "raw_source": {
+        "api": "[Base](https://www.base-api.io/)",
+        "description": "Building quick backends",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Base](https://www.base-api.io/) | Building quick backends | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-blague-xyz-blague-xyz",
+      "name": "Blague.xyz",
+      "category": "Development",
+      "docs_url": "https://blague.xyz/",
+      "description": "La plus grande API de Blagues FR/The biggest FR jokes API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "blague.xyz"
+      ],
+      "raw_source": {
+        "api": "[Blague.xyz](https://blague.xyz/)",
+        "description": "La plus grande API de Blagues FR/The biggest FR jokes API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Blague.xyz](https://blague.xyz/) | La plus grande API de Blagues FR/The biggest FR jokes API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-blitapp-blitapp-com",
+      "name": "Blitapp",
+      "category": "Development",
+      "docs_url": "https://blitapp.com/api/",
+      "description": "Schedule screenshots of web pages and sync them to your cloud",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "blitapp.com"
+      ],
+      "raw_source": {
+        "api": "[Blitapp](https://blitapp.com/api/)",
+        "description": "Schedule screenshots of web pages and sync them to your cloud",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Blitapp](https://blitapp.com/api/) | Schedule screenshots of web pages and sync them to your cloud | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-brainshop-ai-brainshop-ai",
+      "name": "Brainshop.ai",
+      "category": "Development",
+      "docs_url": "https://brainshop.ai/",
+      "description": "Make A Free A.I Brain",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "brainshop.ai"
+      ],
+      "raw_source": {
+        "api": "[Brainshop.ai](https://brainshop.ai/)",
+        "description": "Make A Free A.I Brain",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Brainshop.ai](https://brainshop.ai/) | Make A Free A.I Brain | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-browshot-browshot-com",
+      "name": "Browshot",
+      "category": "Development",
+      "docs_url": "https://browshot.com/api/documentation",
+      "description": "Easily make screenshots of web pages in any screen size, as any device",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "browshot.com"
+      ],
+      "raw_source": {
+        "api": "[Browshot](https://browshot.com/api/documentation)",
+        "description": "Easily make screenshots of web pages in any screen size, as any device",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Browshot](https://browshot.com/api/documentation) | Easily make screenshots of web pages in any screen size, as any device | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-docker-hub-docs-docker-com",
+      "name": "Docker Hub",
+      "category": "Development",
+      "docs_url": "https://docs.docker.com/docker-hub/api/latest/",
+      "description": "Interact with Docker Hub",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "docs.docker.com"
+      ],
+      "raw_source": {
+        "api": "[Docker Hub](https://docs.docker.com/docker-hub/api/latest/)",
+        "description": "Interact with Docker Hub",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Docker Hub](https://docs.docker.com/docker-hub/api/latest/) | Interact with Docker Hub | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-glitterly-developers-glitterly-app",
+      "name": "Glitterly",
+      "category": "Development",
+      "docs_url": "https://developers.glitterly.app",
+      "description": "Image generation API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.glitterly.app"
+      ],
+      "raw_source": {
+        "api": "[Glitterly](https://developers.glitterly.app)",
+        "description": "Image generation API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Glitterly](https://developers.glitterly.app) | Image generation API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-google-firebase-firebase-google-com",
+      "name": "Google Firebase",
+      "category": "Development",
+      "docs_url": "https://firebase.google.com/docs",
+      "description": "Google's mobile application development platform that helps build, improve, and grow app",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "firebase.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Firebase](https://firebase.google.com/docs)",
+        "description": "Google's mobile application development platform that helps build, improve, and grow app",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Google Firebase](https://firebase.google.com/docs) | Google's mobile application development platform that helps build, improve, and grow app | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-hasura-hasura-io",
+      "name": "Hasura",
+      "category": "Development",
+      "docs_url": "https://hasura.io/opensource/",
+      "description": "GraphQL and REST API Engine with built in Authorization",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "hasura.io"
+      ],
+      "raw_source": {
+        "api": "[Hasura](https://hasura.io/opensource/)",
+        "description": "GraphQL and REST API Engine with built in Authorization",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Hasura](https://hasura.io/opensource/) | GraphQL and REST API Engine with built in Authorization | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-ip2whois-information-lookup-ip2whois-com",
+      "name": "IP2WHOIS Information Lookup",
+      "category": "Development",
+      "docs_url": "https://www.ip2whois.com/",
+      "description": "WHOIS domain name lookup",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "ip2whois.com"
+      ],
+      "raw_source": {
+        "api": "[IP2WHOIS Information Lookup](https://www.ip2whois.com/)",
+        "description": "WHOIS domain name lookup",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IP2WHOIS Information Lookup](https://www.ip2whois.com/) | WHOIS domain name lookup | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-logs-to-logs-to",
+      "name": "Logs.to",
+      "category": "Development",
+      "docs_url": "https://logs.to/",
+      "description": "Generate logs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "logs.to"
+      ],
+      "raw_source": {
+        "api": "[Logs.to](https://logs.to/)",
+        "description": "Generate logs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Logs.to](https://logs.to/) | Generate logs | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-pagecdn-pagecdn-com",
+      "name": "PageCDN",
+      "category": "Development",
+      "docs_url": "https://pagecdn.com/docs/public-api",
+      "description": "Public API for javascript, css and font libraries on PageCDN",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "pagecdn.com"
+      ],
+      "raw_source": {
+        "api": "[PageCDN](https://pagecdn.com/docs/public-api)",
+        "description": "Public API for javascript, css and font libraries on PageCDN",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [PageCDN](https://pagecdn.com/docs/public-api) | Public API for javascript, css and font libraries on PageCDN | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-postman-postman-com",
+      "name": "Postman",
+      "category": "Development",
+      "docs_url": "https://www.postman.com/postman/workspace/postman-public-workspace/documentation/12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a",
+      "description": "Tool for testing APIs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "postman.com"
+      ],
+      "raw_source": {
+        "api": "[Postman](https://www.postman.com/postman/workspace/postman-public-workspace/documentation/12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a)",
+        "description": "Tool for testing APIs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Postman](https://www.postman.com/postman/workspace/postman-public-workspace/documentation/12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a) | Tool for testing APIs | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-proxycrawl-proxycrawl-com",
+      "name": "ProxyCrawl",
+      "category": "Development",
+      "docs_url": "https://proxycrawl.com",
+      "description": "Scraping and crawling anticaptcha service",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "proxycrawl.com"
+      ],
+      "raw_source": {
+        "api": "[ProxyCrawl](https://proxycrawl.com)",
+        "description": "Scraping and crawling anticaptcha service",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ProxyCrawl](https://proxycrawl.com) | Scraping and crawling anticaptcha service | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-proxykingdom-proxykingdom-com",
+      "name": "ProxyKingdom",
+      "category": "Development",
+      "docs_url": "https://proxykingdom.com",
+      "description": "Rotating Proxy API that produces a working proxy on every request",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "proxykingdom.com"
+      ],
+      "raw_source": {
+        "api": "[ProxyKingdom](https://proxykingdom.com)",
+        "description": "Rotating Proxy API that produces a working proxy on every request",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ProxyKingdom](https://proxykingdom.com) | Rotating Proxy API that produces a working proxy on every request | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-pusher-beams-pusher-com",
+      "name": "Pusher Beams",
+      "category": "Development",
+      "docs_url": "https://pusher.com/beams",
+      "description": "Push notifications for Android & iOS",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "pusher.com"
+      ],
+      "raw_source": {
+        "api": "[Pusher Beams](https://pusher.com/beams)",
+        "description": "Push notifications for Android & iOS",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Pusher Beams](https://pusher.com/beams) | Push notifications for Android & iOS | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-random-stuff-api-docs-pgamerx-com",
+      "name": "Random Stuff",
+      "category": "Development",
+      "docs_url": "https://api-docs.pgamerx.com/",
+      "description": "Can be used to get AI Response, jokes, memes, and much more at lightning-fast speed",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api-docs.pgamerx.com"
+      ],
+      "raw_source": {
+        "api": "[Random Stuff](https://api-docs.pgamerx.com/)",
+        "description": "Can be used to get AI Response, jokes, memes, and much more at lightning-fast speed",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Random Stuff](https://api-docs.pgamerx.com/) | Can be used to get AI Response, jokes, memes, and much more at lightning-fast speed | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-rejax-rejax-io",
+      "name": "Rejax",
+      "category": "Development",
+      "docs_url": "https://rejax.io/",
+      "description": "Reverse AJAX service to notify clients",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "no",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "rejax.io"
+      ],
+      "raw_source": {
+        "api": "[Rejax](https://rejax.io/)",
+        "description": "Reverse AJAX service to notify clients",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Rejax](https://rejax.io/) | Reverse AJAX service to notify clients | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-scrapeninja-scrapeninja-net",
+      "name": "ScrapeNinja",
+      "category": "Development",
+      "docs_url": "https://scrapeninja.net",
+      "description": "Scraping API with Chrome fingerprint and residential proxies",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "scrapeninja.net"
+      ],
+      "raw_source": {
+        "api": "[ScrapeNinja](https://scrapeninja.net)",
+        "description": "Scraping API with Chrome fingerprint and residential proxies",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ScrapeNinja](https://scrapeninja.net) | Scraping API with Chrome fingerprint and residential proxies | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-scraperapi-scraperapi-com",
+      "name": "ScraperApi",
+      "category": "Development",
+      "docs_url": "https://www.scraperapi.com",
+      "description": "Easily build scalable web scrapers",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "scraperapi.com"
+      ],
+      "raw_source": {
+        "api": "[ScraperApi](https://www.scraperapi.com)",
+        "description": "Easily build scalable web scrapers",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ScraperApi](https://www.scraperapi.com) | Easily build scalable web scrapers | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-scraperbox-scraperbox-com",
+      "name": "scraperBox",
+      "category": "Development",
+      "docs_url": "https://scraperbox.com/",
+      "description": "Undetectable web scraping API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "scraperbox.com"
+      ],
+      "raw_source": {
+        "api": "[scraperBox](https://scraperbox.com/)",
+        "description": "Undetectable web scraping API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [scraperBox](https://scraperbox.com/) | Undetectable web scraping API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-scrapestack-scrapestack-com",
+      "name": "scrapestack",
+      "category": "Development",
+      "docs_url": "https://scrapestack.com/",
+      "description": "Real-time, Scalable Proxy & Web Scraping REST API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "scrapestack.com"
+      ],
+      "raw_source": {
+        "api": "[scrapestack](https://scrapestack.com/)",
+        "description": "Real-time, Scalable Proxy & Web Scraping REST API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [scrapestack](https://scrapestack.com/) | Real-time, Scalable Proxy & Web Scraping REST API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-scrapingant-scrapingant-com",
+      "name": "ScrapingAnt",
+      "category": "Development",
+      "docs_url": "https://scrapingant.com",
+      "description": "Headless Chrome scraping with a simple API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "scrapingant.com"
+      ],
+      "raw_source": {
+        "api": "[ScrapingAnt](https://scrapingant.com)",
+        "description": "Headless Chrome scraping with a simple API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ScrapingAnt](https://scrapingant.com) | Headless Chrome scraping with a simple API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-scrapingdog-scrapingdog-com",
+      "name": "ScrapingDog",
+      "category": "Development",
+      "docs_url": "https://www.scrapingdog.com/",
+      "description": "Proxy API for Web scraping",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "scrapingdog.com"
+      ],
+      "raw_source": {
+        "api": "[ScrapingDog](https://www.scrapingdog.com/)",
+        "description": "Proxy API for Web scraping",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ScrapingDog](https://www.scrapingdog.com/) | Proxy API for Web scraping | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-sheetsu-sheetsu-com",
+      "name": "Sheetsu",
+      "category": "Development",
+      "docs_url": "https://sheetsu.com/",
+      "description": "Easy google sheets integration",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "sheetsu.com"
+      ],
+      "raw_source": {
+        "api": "[Sheetsu](https://sheetsu.com/)",
+        "description": "Easy google sheets integration",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Sheetsu](https://sheetsu.com/) | Easy google sheets integration | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-supportivekoala-developers-supportivekoala-com",
+      "name": "Supportivekoala",
+      "category": "Development",
+      "docs_url": "https://developers.supportivekoala.com/",
+      "description": "Autogenerate images with template",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.supportivekoala.com"
+      ],
+      "raw_source": {
+        "api": "[Supportivekoala](https://developers.supportivekoala.com/)",
+        "description": "Autogenerate images with template",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Supportivekoala](https://developers.supportivekoala.com/) | Autogenerate images with template | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-tyk-tyk-io",
+      "name": "Tyk",
+      "category": "Development",
+      "docs_url": "https://tyk.io/open-source/",
+      "description": "Api and service management platform",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "tyk.io"
+      ],
+      "raw_source": {
+        "api": "[Tyk](https://tyk.io/open-source/)",
+        "description": "Api and service management platform",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Tyk](https://tyk.io/open-source/) | Api and service management platform | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-webscraping-ai-webscraping-ai",
+      "name": "WebScraping.AI",
+      "category": "Development",
+      "docs_url": "https://webscraping.ai/",
+      "description": "Web Scraping API with built-in proxies and JS rendering",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "webscraping.ai"
+      ],
+      "raw_source": {
+        "api": "[WebScraping.AI](https://webscraping.ai/)",
+        "description": "Web Scraping API with built-in proxies and JS rendering",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [WebScraping.AI](https://webscraping.ai/) | Web Scraping API with built-in proxies and JS rendering | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-zenrows-zenrows-com",
+      "name": "ZenRows",
+      "category": "Development",
+      "docs_url": "https://www.zenrows.com/",
+      "description": "Web Scraping API that bypasses anti-bot solutions while offering JS rendering, and rotating proxies",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "zenrows.com"
+      ],
+      "raw_source": {
+        "api": "[ZenRows](https://www.zenrows.com/)",
+        "description": "Web Scraping API that bypasses anti-bot solutions while offering JS rendering, and rotating proxies",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ZenRows](https://www.zenrows.com/) | Web Scraping API that bypasses anti-bot solutions while offering JS rendering, and rotating proxies | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 40,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-apilayer-userstack-userstack-com",
+      "name": "apilayer userstack",
+      "category": "Development",
+      "docs_url": "https://userstack.com/",
+      "description": "Secure User-Agent String Lookup JSON API",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "userstack.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer userstack](https://userstack.com/)",
+        "description": "Secure User-Agent String Lookup JSON API",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer userstack](https://userstack.com/) | Secure User-Agent String Lookup JSON API | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-bitbucket-developer-atlassian-com",
+      "name": "Bitbucket",
+      "category": "Development",
+      "docs_url": "https://developer.atlassian.com/bitbucket/api/2/reference/",
+      "description": "Bitbucket API",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developer.atlassian.com"
+      ],
+      "raw_source": {
+        "api": "[Bitbucket](https://developer.atlassian.com/bitbucket/api/2/reference/)",
+        "description": "Bitbucket API",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bitbucket](https://developer.atlassian.com/bitbucket/api/2/reference/) | Bitbucket API | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-github-docs-github-com",
+      "name": "GitHub",
+      "category": "Development",
+      "docs_url": "https://docs.github.com/en/free-pro-team@latest/rest",
+      "description": "Make use of GitHub repositories, code and user info programmatically",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "docs.github.com"
+      ],
+      "raw_source": {
+        "api": "[GitHub](https://docs.github.com/en/free-pro-team@latest/rest)",
+        "description": "Make use of GitHub repositories, code and user info programmatically",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [GitHub](https://docs.github.com/en/free-pro-team@latest/rest) | Make use of GitHub repositories, code and user info programmatically | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-gitlab-docs-gitlab-com",
+      "name": "Gitlab",
+      "category": "Development",
+      "docs_url": "https://docs.gitlab.com/ee/api/",
+      "description": "Automate GitLab interaction programmatically",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "docs.gitlab.com"
+      ],
+      "raw_source": {
+        "api": "[Gitlab](https://docs.gitlab.com/ee/api/)",
+        "description": "Automate GitLab interaction programmatically",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gitlab](https://docs.gitlab.com/ee/api/) | Automate GitLab interaction programmatically | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-gitter-developer-gitter-im",
+      "name": "Gitter",
+      "category": "Development",
+      "docs_url": "https://developer.gitter.im/docs/welcome",
+      "description": "Chat for Developers",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developer.gitter.im"
+      ],
+      "raw_source": {
+        "api": "[Gitter](https://developer.gitter.im/docs/welcome)",
+        "description": "Chat for Developers",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gitter](https://developer.gitter.im/docs/welcome) | Chat for Developers | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-google-keep-developers-google-com",
+      "name": "Google Keep",
+      "category": "Development",
+      "docs_url": "https://developers.google.com/keep/api/reference/rest",
+      "description": "API to read, write, and format Google Keep notes",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Keep](https://developers.google.com/keep/api/reference/rest)",
+        "description": "API to read, write, and format Google Keep notes",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Keep](https://developers.google.com/keep/api/reference/rest) | API to read, write, and format Google Keep notes | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-google-slides-developers-google-com",
+      "name": "Google Slides",
+      "category": "Development",
+      "docs_url": "https://developers.google.com/slides/api/reference/rest",
+      "description": "API to read, write, and format Google Slides presentations",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Slides](https://developers.google.com/slides/api/reference/rest)",
+        "description": "API to read, write, and format Google Slides presentations",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Slides](https://developers.google.com/slides/api/reference/rest) | API to read, write, and format Google Slides presentations | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-gorest-gorest-co-in",
+      "name": "Gorest",
+      "category": "Development",
+      "docs_url": "https://gorest.co.in/",
+      "description": "Online REST API for Testing and Prototyping",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "gorest.co.in"
+      ],
+      "raw_source": {
+        "api": "[Gorest](https://gorest.co.in/)",
+        "description": "Online REST API for Testing and Prototyping",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gorest](https://gorest.co.in/) | Online REST API for Testing and Prototyping | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-heroku-devcenter-heroku-com",
+      "name": "Heroku",
+      "category": "Development",
+      "docs_url": "https://devcenter.heroku.com/articles/platform-api-reference/",
+      "description": "REST API to programmatically create apps, provision add-ons and perform other task on Heroku",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "yes",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "devcenter.heroku.com"
+      ],
+      "raw_source": {
+        "api": "[Heroku](https://devcenter.heroku.com/articles/platform-api-reference/)",
+        "description": "REST API to programmatically create apps, provision add-ons and perform other task on Heroku",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Heroku](https://devcenter.heroku.com/articles/platform-api-reference/) | REST API to programmatically create apps, provision add-ons and perform other task on Heroku | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-netlify-docs-netlify-com",
+      "name": "Netlify",
+      "category": "Development",
+      "docs_url": "https://docs.netlify.com/api/get-started/",
+      "description": "Netlify is a hosting service for the programmable web",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "docs.netlify.com"
+      ],
+      "raw_source": {
+        "api": "[Netlify](https://docs.netlify.com/api/get-started/)",
+        "description": "Netlify is a hosting service for the programmable web",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Netlify](https://docs.netlify.com/api/get-started/) | Netlify is a hosting service for the programmable web | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-sonarqube-sonarcloud-io",
+      "name": "SonarQube",
+      "category": "Development",
+      "docs_url": "https://sonarcloud.io/web_api",
+      "description": "SonarQube REST APIs to detect bugs, code smells & security vulnerabilities",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "sonarcloud.io"
+      ],
+      "raw_source": {
+        "api": "[SonarQube](https://sonarcloud.io/web_api)",
+        "description": "SonarQube REST APIs to detect bugs, code smells & security vulnerabilities",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SonarQube](https://sonarcloud.io/web_api) | SonarQube REST APIs to detect bugs, code smells & security vulnerabilities | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-stackexchange-api-stackexchange-com",
+      "name": "StackExchange",
+      "category": "Development",
+      "docs_url": "https://api.stackexchange.com/",
+      "description": "Q&A forum for developers",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "oauth2",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "api.stackexchange.com"
+      ],
+      "raw_source": {
+        "api": "[StackExchange](https://api.stackexchange.com/)",
+        "description": "Q&A forum for developers",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [StackExchange](https://api.stackexchange.com/) | Q&A forum for developers | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-shoutcloud-shoutcloud-io",
+      "name": "SHOUTCLOUD",
+      "category": "Development",
+      "docs_url": "http://shoutcloud.io/",
+      "description": "ALL-CAPS AS A SERVICE",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "none",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "shoutcloud.io"
+      ],
+      "raw_source": {
+        "api": "[SHOUTCLOUD](http://shoutcloud.io/)",
+        "description": "ALL-CAPS AS A SERVICE",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [SHOUTCLOUD](http://shoutcloud.io/) | ALL-CAPS AS A SERVICE | No | No | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "development-blynk-cloud-blynkapi-docs-apiary-io",
+      "name": "Blynk-Cloud",
+      "category": "Development",
+      "docs_url": "https://blynkapi.docs.apiary.io/#",
+      "description": "Control IoT Devices from Blynk IoT Cloud",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "automation",
+        "knowledge"
+      ],
+      "agent_targets": [
+        "cortex",
+        "outreach",
+        "strategist"
+      ],
+      "tags": [
+        "development",
+        "api_key",
+        "unknown",
+        "automation",
+        "knowledge",
+        "cortex",
+        "outreach",
+        "strategist",
+        "blynkapi.docs.apiary.io"
+      ],
+      "raw_source": {
+        "api": "[Blynk-Cloud](https://blynkapi.docs.apiary.io/#)",
+        "description": "Control IoT Devices from Blynk IoT Cloud",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Blynk-Cloud](https://blynkapi.docs.apiary.io/#) | Control IoT Devices from Blynk IoT Cloud | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

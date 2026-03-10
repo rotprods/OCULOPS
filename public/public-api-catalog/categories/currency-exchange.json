@@ -1,0 +1,534 @@
+{
+  "category": "Currency Exchange",
+  "slug": "currency-exchange",
+  "count": 17,
+  "entries": [
+    {
+      "slug": "currency-exchange-bank-of-russia-cbr-ru",
+      "name": "Bank of Russia",
+      "category": "Currency Exchange",
+      "docs_url": "https://www.cbr.ru/development/SXML/",
+      "description": "Exchange rates and currency conversion",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "unknown",
+        "cbr.ru"
+      ],
+      "raw_source": {
+        "api": "[Bank of Russia](https://www.cbr.ru/development/SXML/)",
+        "description": "Exchange rates and currency conversion",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bank of Russia](https://www.cbr.ru/development/SXML/) | Exchange rates and currency conversion | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-currency-api-github-com",
+      "name": "Currency-api",
+      "category": "Currency Exchange",
+      "docs_url": "https://github.com/fawazahmed0/currency-api#readme",
+      "description": "Free Currency Exchange Rates API with 150+ Currencies & No Rate Limits",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Currency-api](https://github.com/fawazahmed0/currency-api#readme)",
+        "description": "Free Currency Exchange Rates API with 150+ Currencies & No Rate Limits",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Currency-api](https://github.com/fawazahmed0/currency-api#readme) | Free Currency Exchange Rates API with 150+ Currencies & No Rate Limits | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-czech-national-bank-cnb-cz",
+      "name": "Czech National Bank",
+      "category": "Currency Exchange",
+      "docs_url": "https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.xml",
+      "description": "A collection of exchange rates",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "unknown",
+        "cnb.cz"
+      ],
+      "raw_source": {
+        "api": "[Czech National Bank](https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.xml)",
+        "description": "A collection of exchange rates",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Czech National Bank](https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.xml) | A collection of exchange rates | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-economia-awesome-docs-awesomeapi-com-br",
+      "name": "Economia.Awesome",
+      "category": "Currency Exchange",
+      "docs_url": "https://docs.awesomeapi.com.br/api-de-moedas",
+      "description": "Portuguese free currency prices and conversion with no rate limits",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "unknown",
+        "docs.awesomeapi.com.br"
+      ],
+      "raw_source": {
+        "api": "[Economia.Awesome](https://docs.awesomeapi.com.br/api-de-moedas)",
+        "description": "Portuguese free currency prices and conversion with no rate limits",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Economia.Awesome](https://docs.awesomeapi.com.br/api-de-moedas) | Portuguese free currency prices and conversion with no rate limits | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-exchangerate-host-exchangerate-host",
+      "name": "Exchangerate.host",
+      "category": "Currency Exchange",
+      "docs_url": "https://exchangerate.host",
+      "description": "Free foreign exchange & crypto rates API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "unknown",
+        "exchangerate.host"
+      ],
+      "raw_source": {
+        "api": "[Exchangerate.host](https://exchangerate.host)",
+        "description": "Free foreign exchange & crypto rates API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Exchangerate.host](https://exchangerate.host) | Free foreign exchange & crypto rates API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-frankfurter-frankfurter-app",
+      "name": "Frankfurter",
+      "category": "Currency Exchange",
+      "docs_url": "https://www.frankfurter.app/docs",
+      "description": "Exchange rates, currency conversion and time series",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "yes",
+        "frankfurter.app"
+      ],
+      "raw_source": {
+        "api": "[Frankfurter](https://www.frankfurter.app/docs)",
+        "description": "Exchange rates, currency conversion and time series",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Frankfurter](https://www.frankfurter.app/docs) | Exchange rates, currency conversion and time series | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-freeforexapi-freeforexapi-com",
+      "name": "FreeForexAPI",
+      "category": "Currency Exchange",
+      "docs_url": "https://freeforexapi.com/Home/Api",
+      "description": "Real-time foreign exchange rates for major currency pairs",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "no",
+        "freeforexapi.com"
+      ],
+      "raw_source": {
+        "api": "[FreeForexAPI](https://freeforexapi.com/Home/Api)",
+        "description": "Real-time foreign exchange rates for major currency pairs",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [FreeForexAPI](https://freeforexapi.com/Home/Api) | Real-time foreign exchange rates for major currency pairs | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-national-bank-of-poland-api-nbp-pl",
+      "name": "National Bank of Poland",
+      "category": "Currency Exchange",
+      "docs_url": "http://api.nbp.pl/en.html",
+      "description": "A collection of currency exchange rates (data in XML and JSON)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "yes",
+        "api.nbp.pl"
+      ],
+      "raw_source": {
+        "api": "[National Bank of Poland](http://api.nbp.pl/en.html)",
+        "description": "A collection of currency exchange rates (data in XML and JSON)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [National Bank of Poland](http://api.nbp.pl/en.html) | A collection of currency exchange rates (data in XML and JSON) | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-vatcomply-com-vatcomply-com",
+      "name": "VATComply.com",
+      "category": "Currency Exchange",
+      "docs_url": "https://www.vatcomply.com/documentation",
+      "description": "Exchange rates, geolocation and VAT number validation",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "none",
+        "yes",
+        "vatcomply.com"
+      ],
+      "raw_source": {
+        "api": "[VATComply.com](https://www.vatcomply.com/documentation)",
+        "description": "Exchange rates, geolocation and VAT number validation",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [VATComply.com](https://www.vatcomply.com/documentation) | Exchange rates, geolocation and VAT number validation | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-1forge-1forge-com",
+      "name": "1Forge",
+      "category": "Currency Exchange",
+      "docs_url": "https://1forge.com/forex-data-api/api-documentation",
+      "description": "Forex currency market data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "unknown",
+        "1forge.com"
+      ],
+      "raw_source": {
+        "api": "[1Forge](https://1forge.com/forex-data-api/api-documentation)",
+        "description": "Forex currency market data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [1Forge](https://1forge.com/forex-data-api/api-documentation) | Forex currency market data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-amdoren-amdoren-com",
+      "name": "Amdoren",
+      "category": "Currency Exchange",
+      "docs_url": "https://www.amdoren.com/currency-api/",
+      "description": "Free currency API with over 150 currencies",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "unknown",
+        "amdoren.com"
+      ],
+      "raw_source": {
+        "api": "[Amdoren](https://www.amdoren.com/currency-api/)",
+        "description": "Free currency API with over 150 currencies",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Amdoren](https://www.amdoren.com/currency-api/) | Free currency API with over 150 currencies | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-currencyfreaks-currencyfreaks-com",
+      "name": "CurrencyFreaks",
+      "category": "Currency Exchange",
+      "docs_url": "https://currencyfreaks.com/",
+      "description": "Provides current and historical currency exchange rates with free plan 1K requests/month",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "yes",
+        "currencyfreaks.com"
+      ],
+      "raw_source": {
+        "api": "[CurrencyFreaks](https://currencyfreaks.com/)",
+        "description": "Provides current and historical currency exchange rates with free plan 1K requests/month",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [CurrencyFreaks](https://currencyfreaks.com/) | Provides current and historical currency exchange rates with free plan 1K requests/month | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-currencylayer-currencylayer-com",
+      "name": "Currencylayer",
+      "category": "Currency Exchange",
+      "docs_url": "https://currencylayer.com/documentation",
+      "description": "Exchange rates and currency conversion",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "unknown",
+        "currencylayer.com"
+      ],
+      "raw_source": {
+        "api": "[Currencylayer](https://currencylayer.com/documentation)",
+        "description": "Exchange rates and currency conversion",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Currencylayer](https://currencylayer.com/documentation) | Exchange rates and currency conversion | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-currencyscoop-currencyscoop-com",
+      "name": "CurrencyScoop",
+      "category": "Currency Exchange",
+      "docs_url": "https://currencyscoop.com/api-documentation",
+      "description": "Real-time and historical currency rates JSON API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "yes",
+        "currencyscoop.com"
+      ],
+      "raw_source": {
+        "api": "[CurrencyScoop](https://currencyscoop.com/api-documentation)",
+        "description": "Real-time and historical currency rates JSON API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [CurrencyScoop](https://currencyscoop.com/api-documentation) | Real-time and historical currency rates JSON API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-exchangerate-api-exchangerate-api-com",
+      "name": "ExchangeRate-API",
+      "category": "Currency Exchange",
+      "docs_url": "https://www.exchangerate-api.com",
+      "description": "Free currency conversion",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "yes",
+        "exchangerate-api.com"
+      ],
+      "raw_source": {
+        "api": "[ExchangeRate-API](https://www.exchangerate-api.com)",
+        "description": "Free currency conversion",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ExchangeRate-API](https://www.exchangerate-api.com) | Free currency conversion | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-exchangeratesapi-io-exchangeratesapi-io",
+      "name": "Exchangeratesapi.io",
+      "category": "Currency Exchange",
+      "docs_url": "https://exchangeratesapi.io",
+      "description": "Exchange rates with currency conversion",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "yes",
+        "exchangeratesapi.io"
+      ],
+      "raw_source": {
+        "api": "[Exchangeratesapi.io](https://exchangeratesapi.io)",
+        "description": "Exchange rates with currency conversion",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Exchangeratesapi.io](https://exchangeratesapi.io) | Exchange rates with currency conversion | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "currency-exchange-apilayer-fixer-io-fixer-io",
+      "name": "apilayer fixer.io",
+      "category": "Currency Exchange",
+      "docs_url": "https://fixer.io",
+      "description": "Exchange rates and currency conversion",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "currency-exchange",
+        "api_key",
+        "unknown",
+        "fixer.io"
+      ],
+      "raw_source": {
+        "api": "[apilayer fixer.io](https://fixer.io)",
+        "description": "Exchange rates and currency conversion",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [apilayer fixer.io](https://fixer.io) | Exchange rates and currency conversion | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

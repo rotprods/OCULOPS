@@ -1,0 +1,723 @@
+{
+  "category": "Personality",
+  "slug": "personality",
+  "count": 23,
+  "entries": [
+    {
+      "slug": "personality-inspiration-inspiration-goprogram-ai",
+      "name": "Inspiration",
+      "category": "Personality",
+      "docs_url": "https://inspiration.goprogram.ai/docs/",
+      "description": "Motivational and Inspirational quotes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "yes",
+        "inspiration.goprogram.ai"
+      ],
+      "raw_source": {
+        "api": "[Inspiration](https://inspiration.goprogram.ai/docs/)",
+        "description": "Motivational and Inspirational quotes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Inspiration](https://inspiration.goprogram.ai/docs/) | Motivational and Inspirational quotes | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-quoteclear-quoteclear-web-app",
+      "name": "quoteclear",
+      "category": "Personality",
+      "docs_url": "https://quoteclear.web.app/",
+      "description": "Ever-growing list of James Clear quotes from the 3-2-1 Newsletter",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [
+        "strategist"
+      ],
+      "tags": [
+        "personality",
+        "none",
+        "yes",
+        "strategist",
+        "quoteclear.web.app"
+      ],
+      "raw_source": {
+        "api": "[quoteclear](https://quoteclear.web.app/)",
+        "description": "Ever-growing list of James Clear quotes from the 3-2-1 Newsletter",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [quoteclear](https://quoteclear.web.app/) | Ever-growing list of James Clear quotes from the 3-2-1 Newsletter | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-advice-slip-api-adviceslip-com",
+      "name": "Advice Slip",
+      "category": "Personality",
+      "docs_url": "http://api.adviceslip.com/",
+      "description": "Generate random advice slips",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "api.adviceslip.com"
+      ],
+      "raw_source": {
+        "api": "[Advice Slip](http://api.adviceslip.com/)",
+        "description": "Generate random advice slips",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Advice Slip](http://api.adviceslip.com/) | Generate random advice slips | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-biriyani-as-a-service-biriyani-anoram-com",
+      "name": "Biriyani As A Service",
+      "category": "Personality",
+      "docs_url": "https://biriyani.anoram.com/",
+      "description": "Biriyani images placeholder",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "no",
+        "biriyani.anoram.com"
+      ],
+      "raw_source": {
+        "api": "[Biriyani As A Service](https://biriyani.anoram.com/)",
+        "description": "Biriyani images placeholder",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Biriyani As A Service](https://biriyani.anoram.com/) | Biriyani images placeholder | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-dictum-github-com",
+      "name": "Dictum",
+      "category": "Personality",
+      "docs_url": "https://github.com/fisenkodv/dictum",
+      "description": "API to get access to the collection of the most inspiring expressions of mankind",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Dictum](https://github.com/fisenkodv/dictum)",
+        "description": "API to get access to the collection of the most inspiring expressions of mankind",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dictum](https://github.com/fisenkodv/dictum) | API to get access to the collection of the most inspiring expressions of mankind | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-icanhazdadjoke-icanhazdadjoke-com",
+      "name": "icanhazdadjoke",
+      "category": "Personality",
+      "docs_url": "https://icanhazdadjoke.com/api",
+      "description": "The largest selection of dad jokes on the internet",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "icanhazdadjoke.com"
+      ],
+      "raw_source": {
+        "api": "[icanhazdadjoke](https://icanhazdadjoke.com/api)",
+        "description": "The largest selection of dad jokes on the internet",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [icanhazdadjoke](https://icanhazdadjoke.com/api) | The largest selection of dad jokes on the internet | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-kanye-rest-kanye-rest",
+      "name": "kanye.rest",
+      "category": "Personality",
+      "docs_url": "https://kanye.rest",
+      "description": "REST API for random Kanye West quotes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "yes",
+        "kanye.rest"
+      ],
+      "raw_source": {
+        "api": "[kanye.rest](https://kanye.rest)",
+        "description": "REST API for random Kanye West quotes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [kanye.rest](https://kanye.rest) | REST API for random Kanye West quotes | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-kimiquotes-kimiquotes-herokuapp-com",
+      "name": "kimiquotes",
+      "category": "Personality",
+      "docs_url": "https://kimiquotes.herokuapp.com/doc",
+      "description": "Team radio and interview quotes by Finnish F1 legend Kimi Räikkönen",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "yes",
+        "kimiquotes.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[kimiquotes](https://kimiquotes.herokuapp.com/doc)",
+        "description": "Team radio and interview quotes by Finnish F1 legend Kimi Räikkönen",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [kimiquotes](https://kimiquotes.herokuapp.com/doc) | Team radio and interview quotes by Finnish F1 legend Kimi Räikkönen | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-programming-quotes-github-com",
+      "name": "Programming Quotes",
+      "category": "Personality",
+      "docs_url": "https://github.com/skolakoda/programming-quotes-api",
+      "description": "Programming Quotes API for open source projects",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Programming Quotes](https://github.com/skolakoda/programming-quotes-api)",
+        "description": "Programming Quotes API for open source projects",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Programming Quotes](https://github.com/skolakoda/programming-quotes-api) | Programming Quotes API for open source projects | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-quotable-quotes-github-com",
+      "name": "Quotable Quotes",
+      "category": "Personality",
+      "docs_url": "https://github.com/lukePeavey/quotable",
+      "description": "Quotable is a free, open source quotations API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Quotable Quotes](https://github.com/lukePeavey/quotable)",
+        "description": "Quotable is a free, open source quotations API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Quotable Quotes](https://github.com/lukePeavey/quotable) | Quotable is a free, open source quotations API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-quote-garden-pprathameshmore-github-io",
+      "name": "Quote Garden",
+      "category": "Personality",
+      "docs_url": "https://pprathameshmore.github.io/QuoteGarden/",
+      "description": "REST API for more than 5000 famous quotes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "pprathameshmore.github.io"
+      ],
+      "raw_source": {
+        "api": "[Quote Garden](https://pprathameshmore.github.io/QuoteGarden/)",
+        "description": "REST API for more than 5000 famous quotes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Quote Garden](https://pprathameshmore.github.io/QuoteGarden/) | REST API for more than 5000 famous quotes | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-quotes-on-design-quotesondesign-com",
+      "name": "Quotes on Design",
+      "category": "Personality",
+      "docs_url": "https://quotesondesign.com/api/",
+      "description": "Inspirational Quotes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "quotesondesign.com"
+      ],
+      "raw_source": {
+        "api": "[Quotes on Design](https://quotesondesign.com/api/)",
+        "description": "Inspirational Quotes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Quotes on Design](https://quotesondesign.com/api/) | Inspirational Quotes | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-stoicism-quote-github-com",
+      "name": "Stoicism Quote",
+      "category": "Personality",
+      "docs_url": "https://github.com/tlcheah2/stoic-quote-lambda-public-api",
+      "description": "Quotes about Stoicism",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Stoicism Quote](https://github.com/tlcheah2/stoic-quote-lambda-public-api)",
+        "description": "Quotes about Stoicism",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Stoicism Quote](https://github.com/tlcheah2/stoic-quote-lambda-public-api) | Quotes about Stoicism | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-they-said-so-quotes-theysaidso-com",
+      "name": "They Said So Quotes",
+      "category": "Personality",
+      "docs_url": "https://theysaidso.com/api/",
+      "description": "Quotes Trusted by many fortune brands around the world",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "theysaidso.com"
+      ],
+      "raw_source": {
+        "api": "[They Said So Quotes](https://theysaidso.com/api/)",
+        "description": "Quotes Trusted by many fortune brands around the world",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [They Said So Quotes](https://theysaidso.com/api/) | Quotes Trusted by many fortune brands around the world | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-traitify-app-traitify-com",
+      "name": "Traitify",
+      "category": "Personality",
+      "docs_url": "https://app.traitify.com/developer",
+      "description": "Assess, collect and analyze Personality",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "app.traitify.com"
+      ],
+      "raw_source": {
+        "api": "[Traitify](https://app.traitify.com/developer)",
+        "description": "Assess, collect and analyze Personality",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Traitify](https://app.traitify.com/developer) | Assess, collect and analyze Personality | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-vadivelu-http-codes-vadivelu-anoram-com",
+      "name": "Vadivelu HTTP Codes",
+      "category": "Personality",
+      "docs_url": "https://vadivelu.anoram.com/",
+      "description": "On demand HTTP Codes with images",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "no",
+        "vadivelu.anoram.com"
+      ],
+      "raw_source": {
+        "api": "[Vadivelu HTTP Codes](https://vadivelu.anoram.com/)",
+        "description": "On demand HTTP Codes with images",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Vadivelu HTTP Codes](https://vadivelu.anoram.com/) | On demand HTTP Codes with images | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-zen-quotes-zenquotes-io",
+      "name": "Zen Quotes",
+      "category": "Personality",
+      "docs_url": "https://zenquotes.io/",
+      "description": "Large collection of Zen quotes for inspiration",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "yes",
+        "zenquotes.io"
+      ],
+      "raw_source": {
+        "api": "[Zen Quotes](https://zenquotes.io/)",
+        "description": "Large collection of Zen quotes for inspiration",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Zen Quotes](https://zenquotes.io/) | Large collection of Zen quotes for inspiration | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-dev-to-developers-forem-com",
+      "name": "Dev.to",
+      "category": "Personality",
+      "docs_url": "https://developers.forem.com/api",
+      "description": "Access Forem articles, users and other resources via API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "api_key",
+        "unknown",
+        "developers.forem.com"
+      ],
+      "raw_source": {
+        "api": "[Dev.to](https://developers.forem.com/api)",
+        "description": "Access Forem articles, users and other resources via API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dev.to](https://developers.forem.com/api) | Access Forem articles, users and other resources via API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-favqs-com-favqs-com",
+      "name": "FavQs.com",
+      "category": "Personality",
+      "docs_url": "https://favqs.com/api",
+      "description": "FavQs allows you to collect, discover and share your favorite quotes",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "api_key",
+        "unknown",
+        "favqs.com"
+      ],
+      "raw_source": {
+        "api": "[FavQs.com](https://favqs.com/api)",
+        "description": "FavQs allows you to collect, discover and share your favorite quotes",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FavQs.com](https://favqs.com/api) | FavQs allows you to collect, discover and share your favorite quotes | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-udemy-instructor-udemy-com",
+      "name": "Udemy(instructor)",
+      "category": "Personality",
+      "docs_url": "https://www.udemy.com/developers/instructor/",
+      "description": "API for instructors on Udemy",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "api_key",
+        "unknown",
+        "udemy.com"
+      ],
+      "raw_source": {
+        "api": "[Udemy(instructor)](https://www.udemy.com/developers/instructor/)",
+        "description": "API for instructors on Udemy",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Udemy(instructor)](https://www.udemy.com/developers/instructor/) | API for instructors on Udemy | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-medium-github-com",
+      "name": "Medium",
+      "category": "Personality",
+      "docs_url": "https://github.com/Medium/medium-api-docs",
+      "description": "Community of readers and writers offering unique perspectives on ideas",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "oauth2",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Medium](https://github.com/Medium/medium-api-docs)",
+        "description": "Community of readers and writers offering unique perspectives on ideas",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Medium](https://github.com/Medium/medium-api-docs) | Community of readers and writers offering unique perspectives on ideas | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-foaas-foaas-com",
+      "name": "FOAAS",
+      "category": "Personality",
+      "docs_url": "http://www.foaas.com/",
+      "description": "Fuck Off As A Service",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "foaas.com"
+      ],
+      "raw_source": {
+        "api": "[FOAAS](http://www.foaas.com/)",
+        "description": "Fuck Off As A Service",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [FOAAS](http://www.foaas.com/) | Fuck Off As A Service | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "personality-forismatic-forismatic-com",
+      "name": "Forismatic",
+      "category": "Personality",
+      "docs_url": "http://forismatic.com/en/api/",
+      "description": "Inspirational Quotes",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "personality",
+        "none",
+        "unknown",
+        "forismatic.com"
+      ],
+      "raw_source": {
+        "api": "[Forismatic](http://forismatic.com/en/api/)",
+        "description": "Inspirational Quotes",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Forismatic](http://forismatic.com/en/api/) | Inspirational Quotes | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

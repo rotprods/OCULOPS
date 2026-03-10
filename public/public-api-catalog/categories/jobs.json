@@ -1,0 +1,670 @@
+{
+  "category": "Jobs",
+  "slug": "jobs",
+  "count": 17,
+  "entries": [
+    {
+      "slug": "jobs-arbeitnow-documenter-getpostman-com",
+      "name": "Arbeitnow",
+      "category": "Jobs",
+      "docs_url": "https://documenter.getpostman.com/view/18545278/UVJbJdKh",
+      "description": "API for Job board aggregator in Europe / Remote",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "none",
+        "yes",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "documenter.getpostman.com"
+      ],
+      "raw_source": {
+        "api": "[Arbeitnow](https://documenter.getpostman.com/view/18545278/UVJbJdKh)",
+        "description": "API for Job board aggregator in Europe / Remote",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Arbeitnow](https://documenter.getpostman.com/view/18545278/UVJbJdKh) | API for Job board aggregator in Europe / Remote | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-devitjobs-uk-devitjobs-uk",
+      "name": "DevITjobs UK",
+      "category": "Jobs",
+      "docs_url": "https://devitjobs.uk/job_feed.xml",
+      "description": "Jobs with GraphQL",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "none",
+        "yes",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "devitjobs.uk"
+      ],
+      "raw_source": {
+        "api": "[DevITjobs UK](https://devitjobs.uk/job_feed.xml)",
+        "description": "Jobs with GraphQL",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [DevITjobs UK](https://devitjobs.uk/job_feed.xml) | Jobs with GraphQL | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-graphql-jobs-graphql-jobs",
+      "name": "GraphQL Jobs",
+      "category": "Jobs",
+      "docs_url": "https://graphql.jobs/docs/api/",
+      "description": "Jobs with GraphQL",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "none",
+        "yes",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "graphql.jobs"
+      ],
+      "raw_source": {
+        "api": "[GraphQL Jobs](https://graphql.jobs/docs/api/)",
+        "description": "Jobs with GraphQL",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [GraphQL Jobs](https://graphql.jobs/docs/api/) | Jobs with GraphQL | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-adzuna-developer-adzuna-com",
+      "name": "Adzuna",
+      "category": "Jobs",
+      "docs_url": "https://developer.adzuna.com/overview",
+      "description": "Job board aggregator",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "developer.adzuna.com"
+      ],
+      "raw_source": {
+        "api": "[Adzuna](https://developer.adzuna.com/overview)",
+        "description": "Job board aggregator",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Adzuna](https://developer.adzuna.com/overview) | Job board aggregator | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-findwork-findwork-dev",
+      "name": "Findwork",
+      "category": "Jobs",
+      "docs_url": "https://findwork.dev/developers/",
+      "description": "Job board",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "findwork.dev"
+      ],
+      "raw_source": {
+        "api": "[Findwork](https://findwork.dev/developers/)",
+        "description": "Job board",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Findwork](https://findwork.dev/developers/) | Job board | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-jobs2careers-api-jobs2careers-com",
+      "name": "Jobs2Careers",
+      "category": "Jobs",
+      "docs_url": "http://api.jobs2careers.com/api/spec.pdf",
+      "description": "Job aggregator",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "api.jobs2careers.com"
+      ],
+      "raw_source": {
+        "api": "[Jobs2Careers](http://api.jobs2careers.com/api/spec.pdf)",
+        "description": "Job aggregator",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Jobs2Careers](http://api.jobs2careers.com/api/spec.pdf) | Job aggregator | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-jooble-jooble-org",
+      "name": "Jooble",
+      "category": "Jobs",
+      "docs_url": "https://jooble.org/api/about",
+      "description": "Job search engine",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "jooble.org"
+      ],
+      "raw_source": {
+        "api": "[Jooble](https://jooble.org/api/about)",
+        "description": "Job search engine",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Jooble](https://jooble.org/api/about) | Job search engine | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-reed-reed-co-uk",
+      "name": "Reed",
+      "category": "Jobs",
+      "docs_url": "https://www.reed.co.uk/developers",
+      "description": "Job board aggregator",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "reed.co.uk"
+      ],
+      "raw_source": {
+        "api": "[Reed](https://www.reed.co.uk/developers)",
+        "description": "Job board aggregator",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Reed](https://www.reed.co.uk/developers) | Job board aggregator | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-the-muse-themuse-com",
+      "name": "The Muse",
+      "category": "Jobs",
+      "docs_url": "https://www.themuse.com/developers/api/v2",
+      "description": "Job board and company profiles",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "themuse.com"
+      ],
+      "raw_source": {
+        "api": "[The Muse](https://www.themuse.com/developers/api/v2)",
+        "description": "Job board and company profiles",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [The Muse](https://www.themuse.com/developers/api/v2) | Job board and company profiles | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-usajobs-developer-usajobs-gov",
+      "name": "USAJOBS",
+      "category": "Jobs",
+      "docs_url": "https://developer.usajobs.gov/",
+      "description": "US government job board",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "developer.usajobs.gov"
+      ],
+      "raw_source": {
+        "api": "[USAJOBS](https://developer.usajobs.gov/)",
+        "description": "US government job board",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [USAJOBS](https://developer.usajobs.gov/) | US government job board | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-whatjobs-whatjobs-com",
+      "name": "WhatJobs",
+      "category": "Jobs",
+      "docs_url": "https://www.whatjobs.com/affiliates",
+      "description": "Job search engine",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "whatjobs.com"
+      ],
+      "raw_source": {
+        "api": "[WhatJobs](https://www.whatjobs.com/affiliates)",
+        "description": "Job search engine",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [WhatJobs](https://www.whatjobs.com/affiliates) | Job search engine | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-ziprecruiter-ziprecruiter-com",
+      "name": "ZipRecruiter",
+      "category": "Jobs",
+      "docs_url": "https://www.ziprecruiter.com/publishers",
+      "description": "Job search app and website",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "ziprecruiter.com"
+      ],
+      "raw_source": {
+        "api": "[ZipRecruiter](https://www.ziprecruiter.com/publishers)",
+        "description": "Job search app and website",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ZipRecruiter](https://www.ziprecruiter.com/publishers) | Job search app and website | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-arbeitsamt-jobsuche-api-bund-dev",
+      "name": "Arbeitsamt",
+      "category": "Jobs",
+      "docs_url": "https://jobsuche.api.bund.dev/",
+      "description": "API for the \"Arbeitsamt\", which is a german Job board aggregator",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "jobsuche.api.bund.dev"
+      ],
+      "raw_source": {
+        "api": "[Arbeitsamt](https://jobsuche.api.bund.dev/)",
+        "description": "API for the \"Arbeitsamt\", which is a german Job board aggregator",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Arbeitsamt](https://jobsuche.api.bund.dev/) | API for the \"Arbeitsamt\", which is a german Job board aggregator | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-upwork-developers-upwork-com",
+      "name": "Upwork",
+      "category": "Jobs",
+      "docs_url": "https://developers.upwork.com/",
+      "description": "Freelance job board and management system",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "developers.upwork.com"
+      ],
+      "raw_source": {
+        "api": "[Upwork](https://developers.upwork.com/)",
+        "description": "Freelance job board and management system",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Upwork](https://developers.upwork.com/) | Freelance job board and management system | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-open-skills-github-com",
+      "name": "Open Skills",
+      "category": "Jobs",
+      "docs_url": "https://github.com/workforce-data-initiative/skills-api/wiki/API-Overview",
+      "description": "Job titles, skills and related jobs data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "none",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Open Skills](https://github.com/workforce-data-initiative/skills-api/wiki/API-Overview)",
+        "description": "Job titles, skills and related jobs data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Open Skills](https://github.com/workforce-data-initiative/skills-api/wiki/API-Overview) | Job titles, skills and related jobs data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-careerjet-careerjet-com",
+      "name": "Careerjet",
+      "category": "Jobs",
+      "docs_url": "https://www.careerjet.com/partners/api/",
+      "description": "Job search engine",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "careerjet.com"
+      ],
+      "raw_source": {
+        "api": "[Careerjet](https://www.careerjet.com/partners/api/)",
+        "description": "Job search engine",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Careerjet](https://www.careerjet.com/partners/api/) | Job search engine | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 20,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "jobs-juju-juju-com",
+      "name": "Juju",
+      "category": "Jobs",
+      "docs_url": "http://www.juju.com/publisher/spec/",
+      "description": "Job search engine",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist"
+      ],
+      "tags": [
+        "jobs",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "atlas",
+        "strategist",
+        "juju.com"
+      ],
+      "raw_source": {
+        "api": "[Juju](http://www.juju.com/publisher/spec/)",
+        "description": "Job search engine",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Juju](http://www.juju.com/publisher/spec/) | Job search engine | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 20,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

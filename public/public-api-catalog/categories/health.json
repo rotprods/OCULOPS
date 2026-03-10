@@ -1,0 +1,971 @@
+{
+  "category": "Health",
+  "slug": "health",
+  "count": 31,
+  "entries": [
+    {
+      "slug": "health-coronavirus-pipedream-com",
+      "name": "Coronavirus",
+      "category": "Health",
+      "docs_url": "https://pipedream.com/@pravin/http-api-for-latest-wuhan-coronavirus-data-2019-ncov-p_G6CLVM/readme",
+      "description": "HTTP API for Latest Covid-19 Data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "pipedream.com"
+      ],
+      "raw_source": {
+        "api": "[Coronavirus](https://pipedream.com/@pravin/http-api-for-latest-wuhan-coronavirus-data-2019-ncov-p_G6CLVM/readme)",
+        "description": "HTTP API for Latest Covid-19 Data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Coronavirus](https://pipedream.com/@pravin/http-api-for-latest-wuhan-coronavirus-data-2019-ncov-p_G6CLVM/readme) | HTTP API for Latest Covid-19 Data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-coronavirus-in-the-uk-coronavirus-data-gov-uk",
+      "name": "Coronavirus in the UK",
+      "category": "Health",
+      "docs_url": "https://coronavirus.data.gov.uk/details/developers-guide",
+      "description": "UK Government coronavirus data, including deaths and cases by region",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "coronavirus.data.gov.uk"
+      ],
+      "raw_source": {
+        "api": "[Coronavirus in the UK](https://coronavirus.data.gov.uk/details/developers-guide)",
+        "description": "UK Government coronavirus data, including deaths and cases by region",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Coronavirus in the UK](https://coronavirus.data.gov.uk/details/developers-guide) | UK Government coronavirus data, including deaths and cases by region | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-tracking-project-covidtracking-com",
+      "name": "Covid Tracking Project",
+      "category": "Health",
+      "docs_url": "https://covidtracking.com/data/api/version-2",
+      "description": "Covid-19  data for the US",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "no",
+        "covidtracking.com"
+      ],
+      "raw_source": {
+        "api": "[Covid Tracking Project](https://covidtracking.com/data/api/version-2)",
+        "description": "Covid-19  data for the US",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Covid Tracking Project](https://covidtracking.com/data/api/version-2) | Covid-19  data for the US | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-datenhub-npgeo-corona-npgeo-de-hub-arcgis-com",
+      "name": "Covid-19 Datenhub",
+      "category": "Health",
+      "docs_url": "https://npgeo-corona-npgeo-de.hub.arcgis.com",
+      "description": "Maps, datasets, applications and more in the context of COVID-19",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "npgeo-corona-npgeo-de.hub.arcgis.com"
+      ],
+      "raw_source": {
+        "api": "[Covid-19 Datenhub](https://npgeo-corona-npgeo-de.hub.arcgis.com)",
+        "description": "Maps, datasets, applications and more in the context of COVID-19",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Covid-19 Datenhub](https://npgeo-corona-npgeo-de.hub.arcgis.com) | Maps, datasets, applications and more in the context of COVID-19 | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-government-response-covidtracker-bsg-ox-ac-uk",
+      "name": "Covid-19 Government Response",
+      "category": "Health",
+      "docs_url": "https://covidtracker.bsg.ox.ac.uk",
+      "description": "Government measures tracker to fight against the Covid-19 pandemic",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "covidtracker.bsg.ox.ac.uk"
+      ],
+      "raw_source": {
+        "api": "[Covid-19 Government Response](https://covidtracker.bsg.ox.ac.uk)",
+        "description": "Government measures tracker to fight against the Covid-19 pandemic",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Covid-19 Government Response](https://covidtracker.bsg.ox.ac.uk) | Government measures tracker to fight against the Covid-19 pandemic | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-live-data-github-com",
+      "name": "Covid-19 Live Data",
+      "category": "Health",
+      "docs_url": "https://github.com/mathdroid/covid-19-api",
+      "description": "Global and countrywise data of Covid 19 daily Summary, confirmed cases, recovered and deaths",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Covid-19 Live Data](https://github.com/mathdroid/covid-19-api)",
+        "description": "Global and countrywise data of Covid 19 daily Summary, confirmed cases, recovered and deaths",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Covid-19 Live Data](https://github.com/mathdroid/covid-19-api) | Global and countrywise data of Covid 19 daily Summary, confirmed cases, recovered and deaths | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-philippines-github-com",
+      "name": "Covid-19 Philippines",
+      "category": "Health",
+      "docs_url": "https://github.com/Simperfy/Covid-19-API-Philippines-DOH",
+      "description": "Unofficial Covid-19 Web API for Philippines from data collected by DOH",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Covid-19 Philippines](https://github.com/Simperfy/Covid-19-API-Philippines-DOH)",
+        "description": "Unofficial Covid-19 Web API for Philippines from data collected by DOH",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Covid-19 Philippines](https://github.com/Simperfy/Covid-19-API-Philippines-DOH) | Unofficial Covid-19 Web API for Philippines from data collected by DOH | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-id-data-covid19-go-id",
+      "name": "COVID-ID",
+      "category": "Health",
+      "docs_url": "https://data.covid19.go.id/public/api/prov.json",
+      "description": "Indonesian government Covid data per province",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "data.covid19.go.id"
+      ],
+      "raw_source": {
+        "api": "[COVID-ID](https://data.covid19.go.id/public/api/prov.json)",
+        "description": "Indonesian government Covid data per province",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [COVID-ID](https://data.covid19.go.id/public/api/prov.json) | Indonesian government Covid data per province | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-dataflow-kit-covid-19-covid-19-dataflowkit-com",
+      "name": "Dataflow Kit COVID-19",
+      "category": "Health",
+      "docs_url": "https://covid-19.dataflowkit.com",
+      "description": "COVID-19 live statistics into sites per hour",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "covid-19.dataflowkit.com"
+      ],
+      "raw_source": {
+        "api": "[Dataflow Kit COVID-19](https://covid-19.dataflowkit.com)",
+        "description": "COVID-19 live statistics into sites per hour",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dataflow Kit COVID-19](https://covid-19.dataflowkit.com) | COVID-19 live statistics into sites per hour | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-healthcare-gov-healthcare-gov",
+      "name": "Healthcare.gov",
+      "category": "Health",
+      "docs_url": "https://www.healthcare.gov/developers/",
+      "description": "Educational content about the US Health Insurance Marketplace",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "healthcare.gov"
+      ],
+      "raw_source": {
+        "api": "[Healthcare.gov](https://www.healthcare.gov/developers/)",
+        "description": "Educational content about the US Health Insurance Marketplace",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Healthcare.gov](https://www.healthcare.gov/developers/) | Educational content about the US Health Insurance Marketplace | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-humanitarian-data-exchange-data-humdata-org",
+      "name": "Humanitarian Data Exchange",
+      "category": "Health",
+      "docs_url": "https://data.humdata.org/",
+      "description": "Humanitarian Data Exchange (HDX) is open platform for sharing data across crises and organisations",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "data.humdata.org"
+      ],
+      "raw_source": {
+        "api": "[Humanitarian Data Exchange](https://data.humdata.org/)",
+        "description": "Humanitarian Data Exchange (HDX) is open platform for sharing data across crises and organisations",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Humanitarian Data Exchange](https://data.humdata.org/) | Humanitarian Data Exchange (HDX) is open platform for sharing data across crises and organisations | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-myvaccination-documenter-getpostman-com",
+      "name": "MyVaccination",
+      "category": "Health",
+      "docs_url": "https://documenter.getpostman.com/view/16605343/Tzm8GG7u",
+      "description": "Vaccination data for Malaysia",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "documenter.getpostman.com"
+      ],
+      "raw_source": {
+        "api": "[MyVaccination](https://documenter.getpostman.com/view/16605343/Tzm8GG7u)",
+        "description": "Vaccination data for Malaysia",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MyVaccination](https://documenter.getpostman.com/view/16605343/Tzm8GG7u) | Vaccination data for Malaysia | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-open-data-nhs-scotland-opendata-nhs-scot",
+      "name": "Open Data NHS Scotland",
+      "category": "Health",
+      "docs_url": "https://www.opendata.nhs.scot",
+      "description": "Medical reference data and statistics by Public Health Scotland",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "opendata.nhs.scot"
+      ],
+      "raw_source": {
+        "api": "[Open Data NHS Scotland](https://www.opendata.nhs.scot)",
+        "description": "Medical reference data and statistics by Public Health Scotland",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Data NHS Scotland](https://www.opendata.nhs.scot) | Medical reference data and statistics by Public Health Scotland | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-cms-gov-data-cms-gov",
+      "name": "CMS.gov",
+      "category": "Health",
+      "docs_url": "https://data.cms.gov/provider-data/",
+      "description": "Access to the data from the CMS - medicare.gov",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "api_key",
+        "unknown",
+        "data.cms.gov"
+      ],
+      "raw_source": {
+        "api": "[CMS.gov](https://data.cms.gov/provider-data/)",
+        "description": "Access to the data from the CMS - medicare.gov",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CMS.gov](https://data.cms.gov/provider-data/) | Access to the data from the CMS - medicare.gov | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-fooddata-central-fdc-nal-usda-gov",
+      "name": "FoodData Central",
+      "category": "Health",
+      "docs_url": "https://fdc.nal.usda.gov/",
+      "description": "National Nutrient Database for Standard Reference",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "api_key",
+        "unknown",
+        "fdc.nal.usda.gov"
+      ],
+      "raw_source": {
+        "api": "[FoodData Central](https://fdc.nal.usda.gov/)",
+        "description": "National Nutrient Database for Standard Reference",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [FoodData Central](https://fdc.nal.usda.gov/) | National Nutrient Database for Standard Reference | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-infermedica-developer-infermedica-com",
+      "name": "Infermedica",
+      "category": "Health",
+      "docs_url": "https://developer.infermedica.com/docs/",
+      "description": "NLP based symptom checker and patient triage API for health diagnosis from text",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "api_key",
+        "yes",
+        "developer.infermedica.com"
+      ],
+      "raw_source": {
+        "api": "[Infermedica](https://developer.infermedica.com/docs/)",
+        "description": "NLP based symptom checker and patient triage API for health diagnosis from text",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Infermedica](https://developer.infermedica.com/docs/) | NLP based symptom checker and patient triage API for health diagnosis from text | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-lexigram-docs-lexigram-io",
+      "name": "Lexigram",
+      "category": "Health",
+      "docs_url": "https://docs.lexigram.io/",
+      "description": "NLP that extracts mentions of clinical concepts from text, gives access to clinical ontology",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "api_key",
+        "unknown",
+        "docs.lexigram.io"
+      ],
+      "raw_source": {
+        "api": "[Lexigram](https://docs.lexigram.io/)",
+        "description": "NLP that extracts mentions of clinical concepts from text, gives access to clinical ontology",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Lexigram](https://docs.lexigram.io/) | NLP that extracts mentions of clinical concepts from text, gives access to clinical ontology | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-nutritionix-developer-nutritionix-com",
+      "name": "Nutritionix",
+      "category": "Health",
+      "docs_url": "https://developer.nutritionix.com/",
+      "description": "Worlds largest verified nutrition database",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "api_key",
+        "unknown",
+        "developer.nutritionix.com"
+      ],
+      "raw_source": {
+        "api": "[Nutritionix](https://developer.nutritionix.com/)",
+        "description": "Worlds largest verified nutrition database",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Nutritionix](https://developer.nutritionix.com/) | Worlds largest verified nutrition database | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-openfda-open-fda-gov",
+      "name": "openFDA",
+      "category": "Health",
+      "docs_url": "https://open.fda.gov",
+      "description": "Public FDA data about drugs, devices and foods",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "api_key",
+        "unknown",
+        "open.fda.gov"
+      ],
+      "raw_source": {
+        "api": "[openFDA](https://open.fda.gov)",
+        "description": "Public FDA data about drugs, devices and foods",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [openFDA](https://open.fda.gov) | Public FDA data about drugs, devices and foods | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-covid19api-com",
+      "name": "Covid-19",
+      "category": "Health",
+      "docs_url": "https://covid19api.com/",
+      "description": "Covid 19 spread, infection and recovery",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "covid19api.com"
+      ],
+      "raw_source": {
+        "api": "[Covid-19](https://covid19api.com/)",
+        "description": "Covid 19 spread, infection and recovery",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Covid-19](https://covid19api.com/) | Covid 19 spread, infection and recovery | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-github-com",
+      "name": "Covid-19",
+      "category": "Health",
+      "docs_url": "https://github.com/M-Media-Group/Covid-19-API",
+      "description": "Covid 19 cases, deaths and recovery per country",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Covid-19](https://github.com/M-Media-Group/Covid-19-API)",
+        "description": "Covid 19 cases, deaths and recovery per country",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Covid-19](https://github.com/M-Media-Group/Covid-19-API) | Covid 19 cases, deaths and recovery per country | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-india-data-covid19india-org",
+      "name": "Covid-19 India",
+      "category": "Health",
+      "docs_url": "https://data.covid19india.org/",
+      "description": "Covid 19 statistics state and district wise about cases, vaccinations, recovery within India",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "data.covid19india.org"
+      ],
+      "raw_source": {
+        "api": "[Covid-19 India](https://data.covid19india.org/)",
+        "description": "Covid 19 statistics state and district wise about cases, vaccinations, recovery within India",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Covid-19 India](https://data.covid19india.org/) | Covid 19 statistics state and district wise about cases, vaccinations, recovery within India | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-jhu-csse-nuttaphat-com",
+      "name": "Covid-19 JHU CSSE",
+      "category": "Health",
+      "docs_url": "https://nuttaphat.com/covid19-api/",
+      "description": "Open-source API for exploring Covid19 cases based on JHU CSSE",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "nuttaphat.com"
+      ],
+      "raw_source": {
+        "api": "[Covid-19 JHU CSSE](https://nuttaphat.com/covid19-api/)",
+        "description": "Open-source API for exploring Covid19 cases based on JHU CSSE",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Covid-19 JHU CSSE](https://nuttaphat.com/covid19-api/) | Open-source API for exploring Covid19 cases based on JHU CSSE | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-tracker-canada-api-covid19tracker-ca",
+      "name": "COVID-19 Tracker Canada",
+      "category": "Health",
+      "docs_url": "https://api.covid19tracker.ca/docs/1.0/overview",
+      "description": "Details on Covid-19 cases across Canada",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "api.covid19tracker.ca"
+      ],
+      "raw_source": {
+        "api": "[COVID-19 Tracker Canada](https://api.covid19tracker.ca/docs/1.0/overview)",
+        "description": "Details on Covid-19 cases across Canada",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [COVID-19 Tracker Canada](https://api.covid19tracker.ca/docs/1.0/overview) | Details on Covid-19 cases across Canada | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-covid-19-tracker-sri-lanka-hpb-health-gov-lk",
+      "name": "COVID-19 Tracker Sri Lanka",
+      "category": "Health",
+      "docs_url": "https://www.hpb.health.gov.lk/en/api-documentation",
+      "description": "Provides situation of the COVID-19 patients reported in Sri Lanka",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "strategist"
+      ],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "strategist",
+        "hpb.health.gov.lk"
+      ],
+      "raw_source": {
+        "api": "[COVID-19 Tracker Sri Lanka](https://www.hpb.health.gov.lk/en/api-documentation)",
+        "description": "Provides situation of the COVID-19 patients reported in Sri Lanka",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [COVID-19 Tracker Sri Lanka](https://www.hpb.health.gov.lk/en/api-documentation) | Provides situation of the COVID-19 patients reported in Sri Lanka | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-lapis-cov-spectrum-ethz-ch",
+      "name": "LAPIS",
+      "category": "Health",
+      "docs_url": "https://cov-spectrum.ethz.ch/public",
+      "description": "SARS-CoV-2 genomic sequences from public sources",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "cov-spectrum.ethz.ch"
+      ],
+      "raw_source": {
+        "api": "[LAPIS](https://cov-spectrum.ethz.ch/public)",
+        "description": "SARS-CoV-2 genomic sequences from public sources",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [LAPIS](https://cov-spectrum.ethz.ch/public) | SARS-CoV-2 genomic sequences from public sources | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-nppes-npiregistry-cms-hhs-gov",
+      "name": "NPPES",
+      "category": "Health",
+      "docs_url": "https://npiregistry.cms.hhs.gov/registry/help-api",
+      "description": "National Plan & Provider Enumeration System, info on healthcare providers registered in US",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "npiregistry.cms.hhs.gov"
+      ],
+      "raw_source": {
+        "api": "[NPPES](https://npiregistry.cms.hhs.gov/registry/help-api)",
+        "description": "National Plan & Provider Enumeration System, info on healthcare providers registered in US",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NPPES](https://npiregistry.cms.hhs.gov/registry/help-api) | National Plan & Provider Enumeration System, info on healthcare providers registered in US | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-open-disease-disease-sh",
+      "name": "Open Disease",
+      "category": "Health",
+      "docs_url": "https://disease.sh/",
+      "description": "API for Current cases and more stuff about COVID-19 and Influenza",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "disease.sh"
+      ],
+      "raw_source": {
+        "api": "[Open Disease](https://disease.sh/)",
+        "description": "API for Current cases and more stuff about COVID-19 and Influenza",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Open Disease](https://disease.sh/) | API for Current cases and more stuff about COVID-19 and Influenza | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-quarantine-quarantine-country",
+      "name": "Quarantine",
+      "category": "Health",
+      "docs_url": "https://quarantine.country/coronavirus/api/",
+      "description": "Coronavirus API with free COVID-19 live updates",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "yes",
+        "quarantine.country"
+      ],
+      "raw_source": {
+        "api": "[Quarantine](https://quarantine.country/coronavirus/api/)",
+        "description": "Coronavirus API with free COVID-19 live updates",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Quarantine](https://quarantine.country/coronavirus/api/) | Coronavirus API with free COVID-19 live updates | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-orion-health-developer-orionhealth-io",
+      "name": "Orion Health",
+      "category": "Health",
+      "docs_url": "https://developer.orionhealth.io/",
+      "description": "Medical platform which allows the development of applications for different healthcare scenarios",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "oauth2",
+        "unknown",
+        "developer.orionhealth.io"
+      ],
+      "raw_source": {
+        "api": "[Orion Health](https://developer.orionhealth.io/)",
+        "description": "Medical platform which allows the development of applications for different healthcare scenarios",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Orion Health](https://developer.orionhealth.io/) | Medical platform which allows the development of applications for different healthcare scenarios | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "health-makeup-makeup-api-herokuapp-com",
+      "name": "Makeup",
+      "category": "Health",
+      "docs_url": "http://makeup-api.herokuapp.com/",
+      "description": "Makeup Information",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "health",
+        "none",
+        "unknown",
+        "makeup-api.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Makeup](http://makeup-api.herokuapp.com/)",
+        "description": "Makeup Information",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Makeup](http://makeup-api.herokuapp.com/) | Makeup Information | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

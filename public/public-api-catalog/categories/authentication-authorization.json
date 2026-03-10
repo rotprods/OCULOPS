@@ -1,0 +1,224 @@
+{
+  "category": "Authentication & Authorization",
+  "slug": "authentication-authorization",
+  "count": 7,
+  "entries": [
+    {
+      "slug": "authentication-authorization-auth0-auth0-com",
+      "name": "Auth0",
+      "category": "Authentication & Authorization",
+      "docs_url": "https://auth0.com",
+      "description": "Easy to implement, adaptable authentication and authorization platform",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "authentication-authorization",
+        "api_key",
+        "yes",
+        "auth0.com"
+      ],
+      "raw_source": {
+        "api": "[Auth0](https://auth0.com)",
+        "description": "Easy to implement, adaptable authentication and authorization platform",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Auth0](https://auth0.com) | Easy to implement, adaptable authentication and authorization platform | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "authentication-authorization-getotp-otp-dev",
+      "name": "GetOTP",
+      "category": "Authentication & Authorization",
+      "docs_url": "https://otp.dev/en/docs/",
+      "description": "Implement OTP flow quickly",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "authentication-authorization",
+        "api_key",
+        "no",
+        "otp.dev"
+      ],
+      "raw_source": {
+        "api": "[GetOTP](https://otp.dev/en/docs/)",
+        "description": "Implement OTP flow quickly",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [GetOTP](https://otp.dev/en/docs/) | Implement OTP flow quickly | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "authentication-authorization-micro-user-service-m3o-com",
+      "name": "Micro User Service",
+      "category": "Authentication & Authorization",
+      "docs_url": "https://m3o.com/user",
+      "description": "User management and authentication",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "authentication-authorization",
+        "api_key",
+        "no",
+        "m3o.com"
+      ],
+      "raw_source": {
+        "api": "[Micro User Service](https://m3o.com/user)",
+        "description": "User management and authentication",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Micro User Service](https://m3o.com/user) | User management and authentication | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "authentication-authorization-mojoauth-mojoauth-com",
+      "name": "MojoAuth",
+      "category": "Authentication & Authorization",
+      "docs_url": "https://mojoauth.com",
+      "description": "Secure and modern passwordless authentication platform",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "authentication-authorization",
+        "api_key",
+        "yes",
+        "mojoauth.com"
+      ],
+      "raw_source": {
+        "api": "[MojoAuth](https://mojoauth.com)",
+        "description": "Secure and modern passwordless authentication platform",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [MojoAuth](https://mojoauth.com) | Secure and modern passwordless authentication platform | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "authentication-authorization-sawo-labs-sawolabs-com",
+      "name": "SAWO Labs",
+      "category": "Authentication & Authorization",
+      "docs_url": "https://sawolabs.com",
+      "description": "Simplify login and improve user experience by integrating passwordless authentication in your app",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "authentication-authorization",
+        "api_key",
+        "yes",
+        "sawolabs.com"
+      ],
+      "raw_source": {
+        "api": "[SAWO Labs](https://sawolabs.com)",
+        "description": "Simplify login and improve user experience by integrating passwordless authentication in your app",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [SAWO Labs](https://sawolabs.com) | Simplify login and improve user experience by integrating passwordless authentication in your app | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "authentication-authorization-stytch-stytch-com",
+      "name": "Stytch",
+      "category": "Authentication & Authorization",
+      "docs_url": "https://stytch.com/",
+      "description": "User infrastructure for modern applications",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "authentication-authorization",
+        "api_key",
+        "no",
+        "stytch.com"
+      ],
+      "raw_source": {
+        "api": "[Stytch](https://stytch.com/)",
+        "description": "User infrastructure for modern applications",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Stytch](https://stytch.com/) | User infrastructure for modern applications | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "authentication-authorization-warrant-warrant-dev",
+      "name": "Warrant",
+      "category": "Authentication & Authorization",
+      "docs_url": "https://warrant.dev/",
+      "description": "APIs for authorization and access control",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "authentication-authorization",
+        "api_key",
+        "yes",
+        "warrant.dev"
+      ],
+      "raw_source": {
+        "api": "[Warrant](https://warrant.dev/)",
+        "description": "APIs for authorization and access control",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Warrant](https://warrant.dev/) | APIs for authorization and access control | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

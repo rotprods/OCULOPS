@@ -1,0 +1,193 @@
+{
+  "category": "Continuous Integration",
+  "slug": "continuous-integration",
+  "count": 6,
+  "entries": [
+    {
+      "slug": "continuous-integration-bitrise-api-docs-bitrise-io",
+      "name": "Bitrise",
+      "category": "Continuous Integration",
+      "docs_url": "https://api-docs.bitrise.io/",
+      "description": "Build tool and processes integrations to create efficient development pipelines",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "continuous-integration",
+        "api_key",
+        "unknown",
+        "api-docs.bitrise.io"
+      ],
+      "raw_source": {
+        "api": "[Bitrise](https://api-docs.bitrise.io/)",
+        "description": "Build tool and processes integrations to create efficient development pipelines",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bitrise](https://api-docs.bitrise.io/) | Build tool and processes integrations to create efficient development pipelines | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "continuous-integration-circleci-circleci-com",
+      "name": "CircleCI",
+      "category": "Continuous Integration",
+      "docs_url": "https://circleci.com/docs/api/v1-reference/",
+      "description": "Automate the software development process using continuous integration and continuous delivery",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "continuous-integration",
+        "api_key",
+        "unknown",
+        "circleci.com"
+      ],
+      "raw_source": {
+        "api": "[CircleCI](https://circleci.com/docs/api/v1-reference/)",
+        "description": "Automate the software development process using continuous integration and continuous delivery",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CircleCI](https://circleci.com/docs/api/v1-reference/) | Automate the software development process using continuous integration and continuous delivery | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "continuous-integration-codeship-docs-cloudbees-com",
+      "name": "Codeship",
+      "category": "Continuous Integration",
+      "docs_url": "https://docs.cloudbees.com/docs/cloudbees-codeship/latest/api-overview/",
+      "description": "Codeship is a Continuous Integration Platform in the cloud",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "continuous-integration",
+        "api_key",
+        "unknown",
+        "docs.cloudbees.com"
+      ],
+      "raw_source": {
+        "api": "[Codeship](https://docs.cloudbees.com/docs/cloudbees-codeship/latest/api-overview/)",
+        "description": "Codeship is a Continuous Integration Platform in the cloud",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Codeship](https://docs.cloudbees.com/docs/cloudbees-codeship/latest/api-overview/) | Codeship is a Continuous Integration Platform in the cloud | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "continuous-integration-travis-ci-docs-travis-ci-com",
+      "name": "Travis CI",
+      "category": "Continuous Integration",
+      "docs_url": "https://docs.travis-ci.com/api/",
+      "description": "Sync your GitHub projects with Travis CI to test your code in minutes",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "continuous-integration",
+        "api_key",
+        "unknown",
+        "docs.travis-ci.com"
+      ],
+      "raw_source": {
+        "api": "[Travis CI](https://docs.travis-ci.com/api/)",
+        "description": "Sync your GitHub projects with Travis CI to test your code in minutes",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Travis CI](https://docs.travis-ci.com/api/) | Sync your GitHub projects with Travis CI to test your code in minutes | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "continuous-integration-buddy-buddy-works",
+      "name": "Buddy",
+      "category": "Continuous Integration",
+      "docs_url": "https://buddy.works/docs/api/getting-started/overview",
+      "description": "The fastest continuous integration and continuous delivery platform",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "continuous-integration",
+        "oauth2",
+        "unknown",
+        "buddy.works"
+      ],
+      "raw_source": {
+        "api": "[Buddy](https://buddy.works/docs/api/getting-started/overview)",
+        "description": "The fastest continuous integration and continuous delivery platform",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Buddy](https://buddy.works/docs/api/getting-started/overview) | The fastest continuous integration and continuous delivery platform | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "continuous-integration-azure-devops-health-docs-microsoft-com",
+      "name": "Azure DevOps Health",
+      "category": "Continuous Integration",
+      "docs_url": "https://docs.microsoft.com/en-us/rest/api/resourcehealth",
+      "description": "Resource health helps you diagnose and get support when an Azure issue impacts your resources",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "continuous-integration",
+        "api_key",
+        "no",
+        "docs.microsoft.com"
+      ],
+      "raw_source": {
+        "api": "[Azure DevOps Health](https://docs.microsoft.com/en-us/rest/api/resourcehealth)",
+        "description": "Resource health helps you diagnose and get support when an Azure issue impacts your resources",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "No",
+        "markdown": "| [Azure DevOps Health](https://docs.microsoft.com/en-us/rest/api/resourcehealth) | Resource health helps you diagnose and get support when an Azure issue impacts your resources | `apiKey` | No | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

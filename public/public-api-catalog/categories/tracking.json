@@ -1,0 +1,286 @@
+{
+  "category": "Tracking",
+  "slug": "tracking",
+  "count": 9,
+  "entries": [
+    {
+      "slug": "tracking-ups-ups-com",
+      "name": "UPS",
+      "category": "Tracking",
+      "docs_url": "https://www.ups.com/upsdeveloperkit",
+      "description": "Shipment and Address information",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "api_key",
+        "unknown",
+        "ups.com"
+      ],
+      "raw_source": {
+        "api": "[UPS](https://www.ups.com/upsdeveloperkit)",
+        "description": "Shipment and Address information",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [UPS](https://www.ups.com/upsdeveloperkit) | Shipment and Address information | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-wecantrack-docs-wecantrack-com",
+      "name": "WeCanTrack",
+      "category": "Tracking",
+      "docs_url": "https://docs.wecantrack.com",
+      "description": "Automatically place subids in affiliate links to attribute affiliate conversions to click data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "api_key",
+        "yes",
+        "docs.wecantrack.com"
+      ],
+      "raw_source": {
+        "api": "[WeCanTrack](https://docs.wecantrack.com)",
+        "description": "Automatically place subids in affiliate links to attribute affiliate conversions to click data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [WeCanTrack](https://docs.wecantrack.com) | Automatically place subids in affiliate links to attribute affiliate conversions to click data | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-postalpincode-postalpincode-in",
+      "name": "PostalPinCode",
+      "category": "Tracking",
+      "docs_url": "http://www.postalpincode.in/Api-Details",
+      "description": "API for getting Pincode details in India",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "none",
+        "unknown",
+        "postalpincode.in"
+      ],
+      "raw_source": {
+        "api": "[PostalPinCode](http://www.postalpincode.in/Api-Details)",
+        "description": "API for getting Pincode details in India",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PostalPinCode](http://www.postalpincode.in/Api-Details) | API for getting Pincode details in India | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-whatpulse-developer-whatpulse-org",
+      "name": "WhatPulse",
+      "category": "Tracking",
+      "docs_url": "https://developer.whatpulse.org/#web-api",
+      "description": "Small application that measures your keyboard/mouse usage",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "none",
+        "unknown",
+        "developer.whatpulse.org"
+      ],
+      "raw_source": {
+        "api": "[WhatPulse](https://developer.whatpulse.org/#web-api)",
+        "description": "Small application that measures your keyboard/mouse usage",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [WhatPulse](https://developer.whatpulse.org/#web-api) | Small application that measures your keyboard/mouse usage | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-aftership-developers-aftership-com",
+      "name": "Aftership",
+      "category": "Tracking",
+      "docs_url": "https://developers.aftership.com/reference/quick-start",
+      "description": "API to update, manage and track shipment efficiently",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "api_key",
+        "yes",
+        "developers.aftership.com"
+      ],
+      "raw_source": {
+        "api": "[Aftership](https://developers.aftership.com/reference/quick-start)",
+        "description": "API to update, manage and track shipment efficiently",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Aftership](https://developers.aftership.com/reference/quick-start) | API to update, manage and track shipment efficiently | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-correios-cws-correios-com-br",
+      "name": "Correios",
+      "category": "Tracking",
+      "docs_url": "https://cws.correios.com.br/ajuda",
+      "description": "Integration to provide information and prepare shipments using Correio's services",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "api_key",
+        "unknown",
+        "cws.correios.com.br"
+      ],
+      "raw_source": {
+        "api": "[Correios](https://cws.correios.com.br/ajuda)",
+        "description": "Integration to provide information and prepare shipments using Correio's services",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Correios](https://cws.correios.com.br/ajuda) | Integration to provide information and prepare shipments using Correio's services | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-pixela-pixe-la",
+      "name": "Pixela",
+      "category": "Tracking",
+      "docs_url": "https://pixe.la",
+      "description": "API for recording and tracking habits or effort, routines",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "api_key",
+        "yes",
+        "pixe.la"
+      ],
+      "raw_source": {
+        "api": "[Pixela](https://pixe.la)",
+        "description": "API for recording and tracking habits or effort, routines",
+        "auth": "`X-Mashape-Key`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Pixela](https://pixe.la) | API for recording and tracking habits or effort, routines | `X-Mashape-Key` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-postmon-postmon-com-br",
+      "name": "Postmon",
+      "category": "Tracking",
+      "docs_url": "http://postmon.com.br",
+      "description": "An API to query Brazilian ZIP codes and orders easily, quickly and free",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "none",
+        "unknown",
+        "postmon.com.br"
+      ],
+      "raw_source": {
+        "api": "[Postmon](http://postmon.com.br)",
+        "description": "An API to query Brazilian ZIP codes and orders easily, quickly and free",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Postmon](http://postmon.com.br) | An API to query Brazilian ZIP codes and orders easily, quickly and free | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "tracking-postnord-developer-postnord-com",
+      "name": "PostNord",
+      "category": "Tracking",
+      "docs_url": "https://developer.postnord.com/api",
+      "description": "Provides information about parcels in transport for Sweden and Denmark",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "tracking",
+        "api_key",
+        "unknown",
+        "developer.postnord.com"
+      ],
+      "raw_source": {
+        "api": "[PostNord](https://developer.postnord.com/api)",
+        "description": "Provides information about parcels in transport for Sweden and Denmark",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [PostNord](https://developer.postnord.com/api) | Provides information about parcels in transport for Sweden and Denmark | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

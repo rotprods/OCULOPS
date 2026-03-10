@@ -1,0 +1,729 @@
+{
+  "category": "Business",
+  "slug": "business",
+  "count": 23,
+  "entries": [
+    {
+      "slug": "business-domainsdb-info-domainsdb-info",
+      "name": "Domainsdb.info",
+      "category": "Business",
+      "docs_url": "https://domainsdb.info/",
+      "description": "Registered Domain Names Search",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "none",
+        "no",
+        "domainsdb.info"
+      ],
+      "raw_source": {
+        "api": "[Domainsdb.info](https://domainsdb.info/)",
+        "description": "Registered Domain Names Search",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Domainsdb.info](https://domainsdb.info/) | Registered Domain Names Search | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-tenders-in-hungary-tenders-guru",
+      "name": "Tenders in Hungary",
+      "category": "Business",
+      "docs_url": "https://tenders.guru/hu/api",
+      "description": "Get data for procurements in Hungary in JSON format",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "none",
+        "unknown",
+        "tenders.guru"
+      ],
+      "raw_source": {
+        "api": "[Tenders in Hungary](https://tenders.guru/hu/api)",
+        "description": "Get data for procurements in Hungary in JSON format",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tenders in Hungary](https://tenders.guru/hu/api) | Get data for procurements in Hungary in JSON format | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-tenders-in-poland-tenders-guru",
+      "name": "Tenders in Poland",
+      "category": "Business",
+      "docs_url": "https://tenders.guru/pl/api",
+      "description": "Get data for procurements in Poland in JSON format",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "none",
+        "unknown",
+        "tenders.guru"
+      ],
+      "raw_source": {
+        "api": "[Tenders in Poland](https://tenders.guru/pl/api)",
+        "description": "Get data for procurements in Poland in JSON format",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tenders in Poland](https://tenders.guru/pl/api) | Get data for procurements in Poland in JSON format | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-tenders-in-romania-tenders-guru",
+      "name": "Tenders in Romania",
+      "category": "Business",
+      "docs_url": "https://tenders.guru/ro/api",
+      "description": "Get data for procurements in Romania in JSON format",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "none",
+        "unknown",
+        "tenders.guru"
+      ],
+      "raw_source": {
+        "api": "[Tenders in Romania](https://tenders.guru/ro/api)",
+        "description": "Get data for procurements in Romania in JSON format",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tenders in Romania](https://tenders.guru/ro/api) | Get data for procurements in Romania in JSON format | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-tenders-in-spain-tenders-guru",
+      "name": "Tenders in Spain",
+      "category": "Business",
+      "docs_url": "https://tenders.guru/es/api",
+      "description": "Get data for procurements in Spain in JSON format",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "none",
+        "unknown",
+        "tenders.guru"
+      ],
+      "raw_source": {
+        "api": "[Tenders in Spain](https://tenders.guru/es/api)",
+        "description": "Get data for procurements in Spain in JSON format",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tenders in Spain](https://tenders.guru/es/api) | Get data for procurements in Spain in JSON format | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-tenders-in-ukraine-tenders-guru",
+      "name": "Tenders in Ukraine",
+      "category": "Business",
+      "docs_url": "https://tenders.guru/ua/api",
+      "description": "Get data for procurements in Ukraine in JSON format",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "none",
+        "unknown",
+        "tenders.guru"
+      ],
+      "raw_source": {
+        "api": "[Tenders in Ukraine](https://tenders.guru/ua/api)",
+        "description": "Get data for procurements in Ukraine in JSON format",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tenders in Ukraine](https://tenders.guru/ua/api) | Get data for procurements in Ukraine in JSON format | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-apache-superset-superset-apache-org",
+      "name": "Apache Superset",
+      "category": "Business",
+      "docs_url": "https://superset.apache.org/docs/api",
+      "description": "API to manage your BI dashboards and data sources on Superset",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "api_key",
+        "yes",
+        "superset.apache.org"
+      ],
+      "raw_source": {
+        "api": "[Apache Superset](https://superset.apache.org/docs/api)",
+        "description": "API to manage your BI dashboards and data sources on Superset",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Apache Superset](https://superset.apache.org/docs/api) | API to manage your BI dashboards and data sources on Superset | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-clearbit-logo-clearbit-com",
+      "name": "Clearbit Logo",
+      "category": "Business",
+      "docs_url": "https://clearbit.com/docs#logo-api",
+      "description": "Search for company logos and embed them in your projects",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "api_key",
+        "unknown",
+        "clearbit.com"
+      ],
+      "raw_source": {
+        "api": "[Clearbit Logo](https://clearbit.com/docs#logo-api)",
+        "description": "Search for company logos and embed them in your projects",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Clearbit Logo](https://clearbit.com/docs#logo-api) | Search for company logos and embed them in your projects | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-instatus-instatus-com",
+      "name": "Instatus",
+      "category": "Business",
+      "docs_url": "https://instatus.com/help/api",
+      "description": "Post to and update maintenance and incidents on your status page through an HTTP REST API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "api_key",
+        "unknown",
+        "instatus.com"
+      ],
+      "raw_source": {
+        "api": "[Instatus](https://instatus.com/help/api)",
+        "description": "Post to and update maintenance and incidents on your status page through an HTTP REST API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Instatus](https://instatus.com/help/api) | Post to and update maintenance and incidents on your status page through an HTTP REST API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-mailchimp-mailchimp-com",
+      "name": "Mailchimp",
+      "category": "Business",
+      "docs_url": "https://mailchimp.com/developer/",
+      "description": "Send marketing campaigns and transactional mails",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "api_key",
+        "unknown",
+        "mailchimp.com"
+      ],
+      "raw_source": {
+        "api": "[Mailchimp](https://mailchimp.com/developer/)",
+        "description": "Send marketing campaigns and transactional mails",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mailchimp](https://mailchimp.com/developer/) | Send marketing campaigns and transactional mails | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-mailjet-mailjet-com",
+      "name": "mailjet",
+      "category": "Business",
+      "docs_url": "https://www.mailjet.com/",
+      "description": "Marketing email can be sent and mail templates made in MJML or HTML can be sent using API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "business",
+        "api_key",
+        "unknown",
+        "hunter",
+        "mailjet.com"
+      ],
+      "raw_source": {
+        "api": "[mailjet](https://www.mailjet.com/)",
+        "description": "Marketing email can be sent and mail templates made in MJML or HTML can be sent using API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [mailjet](https://www.mailjet.com/) | Marketing email can be sent and mail templates made in MJML or HTML can be sent using API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-orb-intelligence-api-orb-intelligence-com",
+      "name": "ORB Intelligence",
+      "category": "Business",
+      "docs_url": "https://api.orb-intelligence.com/docs/",
+      "description": "Company lookup",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "api_key",
+        "unknown",
+        "api.orb-intelligence.com"
+      ],
+      "raw_source": {
+        "api": "[ORB Intelligence](https://api.orb-intelligence.com/docs/)",
+        "description": "Company lookup",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ORB Intelligence](https://api.orb-intelligence.com/docs/) | Company lookup | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-redash-redash-io",
+      "name": "Redash",
+      "category": "Business",
+      "docs_url": "https://redash.io/help/user-guide/integrations-and-api/api",
+      "description": "Access your queries and dashboards on Redash",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "api_key",
+        "yes",
+        "redash.io"
+      ],
+      "raw_source": {
+        "api": "[Redash](https://redash.io/help/user-guide/integrations-and-api/api)",
+        "description": "Access your queries and dashboards on Redash",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Redash](https://redash.io/help/user-guide/integrations-and-api/api) | Access your queries and dashboards on Redash | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-swiftkanban-digite-com",
+      "name": "SwiftKanban",
+      "category": "Business",
+      "docs_url": "https://www.digite.com/knowledge-base/swiftkanban/article/api-for-swift-kanban-web-services/#restapi",
+      "description": "Kanban software, Visualize Work, Increase Organizations Lead Time, Throughput & Productivity",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "business",
+        "api_key",
+        "unknown",
+        "hunter",
+        "digite.com"
+      ],
+      "raw_source": {
+        "api": "[SwiftKanban](https://www.digite.com/knowledge-base/swiftkanban/article/api-for-swift-kanban-web-services/#restapi)",
+        "description": "Kanban software, Visualize Work, Increase Organizations Lead Time, Throughput & Productivity",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SwiftKanban](https://www.digite.com/knowledge-base/swiftkanban/article/api-for-swift-kanban-web-services/#restapi) | Kanban software, Visualize Work, Increase Organizations Lead Time, Throughput & Productivity | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-tomba-email-finder-tomba-io",
+      "name": "Tomba email finder",
+      "category": "Business",
+      "docs_url": "https://tomba.io/api",
+      "description": "Email Finder for B2B sales and email marketing and email verifier",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "business",
+        "api_key",
+        "yes",
+        "hunter",
+        "tomba.io"
+      ],
+      "raw_source": {
+        "api": "[Tomba email finder](https://tomba.io/api)",
+        "description": "Email Finder for B2B sales and email marketing and email verifier",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Tomba email finder](https://tomba.io/api) | Email Finder for B2B sales and email marketing and email verifier | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-freelancer-developers-freelancer-com",
+      "name": "Freelancer",
+      "category": "Business",
+      "docs_url": "https://developers.freelancer.com",
+      "description": "Hire freelancers to get work done",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "oauth2",
+        "unknown",
+        "developers.freelancer.com"
+      ],
+      "raw_source": {
+        "api": "[Freelancer](https://developers.freelancer.com)",
+        "description": "Hire freelancers to get work done",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Freelancer](https://developers.freelancer.com) | Hire freelancers to get work done | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-gmail-developers-google-com",
+      "name": "Gmail",
+      "category": "Business",
+      "docs_url": "https://developers.google.com/gmail/api/",
+      "description": "Flexible, RESTful access to the user's inbox",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "oauth2",
+        "unknown",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Gmail](https://developers.google.com/gmail/api/)",
+        "description": "Flexible, RESTful access to the user's inbox",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gmail](https://developers.google.com/gmail/api/) | Flexible, RESTful access to the user's inbox | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-google-analytics-developers-google-com",
+      "name": "Google Analytics",
+      "category": "Business",
+      "docs_url": "https://developers.google.com/analytics/",
+      "description": "Collect, configure and analyze your data to reach the right audience",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "oauth2",
+        "unknown",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Analytics](https://developers.google.com/analytics/)",
+        "description": "Collect, configure and analyze your data to reach the right audience",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Analytics](https://developers.google.com/analytics/) | Collect, configure and analyze your data to reach the right audience | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-smartsheet-smartsheet-redoc-ly",
+      "name": "Smartsheet",
+      "category": "Business",
+      "docs_url": "https://smartsheet.redoc.ly/",
+      "description": "Allows you to programmatically access and Smartsheet data and account information",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "oauth2",
+        "no",
+        "smartsheet.redoc.ly"
+      ],
+      "raw_source": {
+        "api": "[Smartsheet](https://smartsheet.redoc.ly/)",
+        "description": "Allows you to programmatically access and Smartsheet data and account information",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Smartsheet](https://smartsheet.redoc.ly/) | Allows you to programmatically access and Smartsheet data and account information | `OAuth` | Yes | No |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-square-developer-squareup-com",
+      "name": "Square",
+      "category": "Business",
+      "docs_url": "https://developer.squareup.com/reference/square",
+      "description": "Easy way to take payments, manage refunds, and help customers checkout online",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "oauth2",
+        "unknown",
+        "developer.squareup.com"
+      ],
+      "raw_source": {
+        "api": "[Square](https://developer.squareup.com/reference/square)",
+        "description": "Easy way to take payments, manage refunds, and help customers checkout online",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Square](https://developer.squareup.com/reference/square) | Easy way to take payments, manage refunds, and help customers checkout online | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-trello-developers-trello-com",
+      "name": "Trello",
+      "category": "Business",
+      "docs_url": "https://developers.trello.com/",
+      "description": "Boards, lists and cards to help you organize and prioritize your projects",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "oauth2",
+        "unknown",
+        "developers.trello.com"
+      ],
+      "raw_source": {
+        "api": "[Trello](https://developers.trello.com/)",
+        "description": "Boards, lists and cards to help you organize and prioritize your projects",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Trello](https://developers.trello.com/) | Boards, lists and cards to help you organize and prioritize your projects | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-charity-search-charityapi-orghunter-com",
+      "name": "Charity Search",
+      "category": "Business",
+      "docs_url": "http://charityapi.orghunter.com/",
+      "description": "Non-profit charity data",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "api_key",
+        "unknown",
+        "charityapi.orghunter.com"
+      ],
+      "raw_source": {
+        "api": "[Charity Search](http://charityapi.orghunter.com/)",
+        "description": "Non-profit charity data",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Charity Search](http://charityapi.orghunter.com/) | Non-profit charity data | `apiKey` | No | Unknown "
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "business-markerapi-markerapi-com",
+      "name": "markerapi",
+      "category": "Business",
+      "docs_url": "https://markerapi.com",
+      "description": "Trademark Search",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "business",
+        "none",
+        "unknown",
+        "markerapi.com"
+      ],
+      "raw_source": {
+        "api": "[markerapi](https://markerapi.com)",
+        "description": "Trademark Search",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [markerapi](https://markerapi.com) | Trademark Search | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

@@ -1,0 +1,720 @@
+{
+  "category": "Books",
+  "slug": "books",
+  "count": 23,
+  "entries": [
+    {
+      "slug": "books-bhagavad-gita-telugu-gita-api-vercel-app",
+      "name": "Bhagavad Gita telugu",
+      "category": "Books",
+      "docs_url": "https://gita-api.vercel.app",
+      "description": "Bhagavad Gita API in telugu and odia languages",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "gita-api.vercel.app"
+      ],
+      "raw_source": {
+        "api": "[Bhagavad Gita telugu](https://gita-api.vercel.app)",
+        "description": "Bhagavad Gita API in telugu and odia languages",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Bhagavad Gita telugu](https://gita-api.vercel.app) | Bhagavad Gita API in telugu and odia languages | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-bible-api-bible-api-com",
+      "name": "Bible-api",
+      "category": "Books",
+      "docs_url": "https://bible-api.com/",
+      "description": "Free Bible API with multiple languages",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "bible-api.com"
+      ],
+      "raw_source": {
+        "api": "[Bible-api](https://bible-api.com/)",
+        "description": "Free Bible API with multiple languages",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Bible-api](https://bible-api.com/) | Free Bible API with multiple languages | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-crossref-metadata-search-github-com",
+      "name": "Crossref Metadata Search",
+      "category": "Books",
+      "docs_url": "https://github.com/CrossRef/rest-api-doc",
+      "description": "Books & Articles Metadata",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Crossref Metadata Search](https://github.com/CrossRef/rest-api-doc)",
+        "description": "Books & Articles Metadata",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Crossref Metadata Search](https://github.com/CrossRef/rest-api-doc) | Books & Articles Metadata | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-gutendex-gutendex-com",
+      "name": "Gutendex",
+      "category": "Books",
+      "docs_url": "https://gutendex.com/",
+      "description": "Web-API for fetching data from Project Gutenberg Books Library",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "unknown",
+        "gutendex.com"
+      ],
+      "raw_source": {
+        "api": "[Gutendex](https://gutendex.com/)",
+        "description": "Web-API for fetching data from Project Gutenberg Books Library",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gutendex](https://gutendex.com/) | Web-API for fetching data from Project Gutenberg Books Library | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-open-library-openlibrary-org",
+      "name": "Open Library",
+      "category": "Books",
+      "docs_url": "https://openlibrary.org/developers/api",
+      "description": "Books, book covers and related data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "no",
+        "openlibrary.org"
+      ],
+      "raw_source": {
+        "api": "[Open Library](https://openlibrary.org/developers/api)",
+        "description": "Books, book covers and related data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Open Library](https://openlibrary.org/developers/api) | Books, book covers and related data | No | Yes | No |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-penguin-publishing-penguinrandomhouse-biz",
+      "name": "Penguin Publishing",
+      "category": "Books",
+      "docs_url": "http://www.penguinrandomhouse.biz/webservices/rest/",
+      "description": "Books, book covers and related data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "penguinrandomhouse.biz"
+      ],
+      "raw_source": {
+        "api": "[Penguin Publishing](http://www.penguinrandomhouse.biz/webservices/rest/)",
+        "description": "Books, book covers and related data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Penguin Publishing](http://www.penguinrandomhouse.biz/webservices/rest/) | Books, book covers and related data | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-poetrydb-github-com",
+      "name": "PoetryDB",
+      "category": "Books",
+      "docs_url": "https://github.com/thundercomb/poetrydb#readme",
+      "description": "Enables you to get instant data from our vast poetry collection",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[PoetryDB](https://github.com/thundercomb/poetrydb#readme)",
+        "description": "Enables you to get instant data from our vast poetry collection",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [PoetryDB](https://github.com/thundercomb/poetrydb#readme) | Enables you to get instant data from our vast poetry collection | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-quran-quran-api-docs-io",
+      "name": "Quran",
+      "category": "Books",
+      "docs_url": "https://quran.api-docs.io/",
+      "description": "RESTful Quran API with multiple languages",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "quran.api-docs.io"
+      ],
+      "raw_source": {
+        "api": "[Quran](https://quran.api-docs.io/)",
+        "description": "RESTful Quran API with multiple languages",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Quran](https://quran.api-docs.io/) | RESTful Quran API with multiple languages | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-quran-api-github-com",
+      "name": "Quran-api",
+      "category": "Books",
+      "docs_url": "https://github.com/fawazahmed0/quran-api#readme",
+      "description": "Free Quran API Service with 90+ different languages and 400+ translations",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Quran-api](https://github.com/fawazahmed0/quran-api#readme)",
+        "description": "Free Quran API Service with 90+ different languages and 400+ translations",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Quran-api](https://github.com/fawazahmed0/quran-api#readme) | Free Quran API Service with 90+ different languages and 400+ translations | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-wolne-lektury-wolnelektury-pl",
+      "name": "Wolne Lektury",
+      "category": "Books",
+      "docs_url": "https://wolnelektury.pl/api/",
+      "description": "API for obtaining information about e-books available on the WolneLektury.pl website",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "unknown",
+        "wolnelektury.pl"
+      ],
+      "raw_source": {
+        "api": "[Wolne Lektury](https://wolnelektury.pl/api/)",
+        "description": "API for obtaining information about e-books available on the WolneLektury.pl website",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Wolne Lektury](https://wolnelektury.pl/api/) | API for obtaining information about e-books available on the WolneLektury.pl website | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-bhagavad-gita-bhagavadgita-io",
+      "name": "Bhagavad Gita",
+      "category": "Books",
+      "docs_url": "https://bhagavadgita.io/api",
+      "description": "Bhagavad Gita text",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "oauth2",
+        "yes",
+        "bhagavadgita.io"
+      ],
+      "raw_source": {
+        "api": "[Bhagavad Gita](https://bhagavadgita.io/api)",
+        "description": "Bhagavad Gita text",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Bhagavad Gita](https://bhagavadgita.io/api) | Bhagavad Gita text | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-a-biblia-digital-abibliadigital-com-br",
+      "name": "A Bíblia Digital",
+      "category": "Books",
+      "docs_url": "https://www.abibliadigital.com.br/en",
+      "description": "Do not worry about managing the multiple versions of the Bible",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "api_key",
+        "no",
+        "abibliadigital.com.br"
+      ],
+      "raw_source": {
+        "api": "[A Bíblia Digital](https://www.abibliadigital.com.br/en)",
+        "description": "Do not worry about managing the multiple versions of the Bible",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [A Bíblia Digital](https://www.abibliadigital.com.br/en) | Do not worry about managing the multiple versions of the Bible | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-bhagavad-gita-docs-bhagavadgitaapi-in",
+      "name": "Bhagavad Gita",
+      "category": "Books",
+      "docs_url": "https://docs.bhagavadgitaapi.in",
+      "description": "Open Source Shrimad Bhagavad Gita API including 21+ authors translation in Sanskrit/English/Hindi",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "api_key",
+        "yes",
+        "docs.bhagavadgitaapi.in"
+      ],
+      "raw_source": {
+        "api": "[Bhagavad Gita](https://docs.bhagavadgitaapi.in)",
+        "description": "Open Source Shrimad Bhagavad Gita API including 21+ authors translation in Sanskrit/English/Hindi",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Bhagavad Gita](https://docs.bhagavadgitaapi.in) | Open Source Shrimad Bhagavad Gita API including 21+ authors translation in Sanskrit/English/Hindi | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-british-national-bibliography-bnb-data-bl-uk",
+      "name": "British National Bibliography",
+      "category": "Books",
+      "docs_url": "http://bnb.data.bl.uk/",
+      "description": "Books",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "unknown",
+        "bnb.data.bl.uk"
+      ],
+      "raw_source": {
+        "api": "[British National Bibliography](http://bnb.data.bl.uk/)",
+        "description": "Books",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [British National Bibliography](http://bnb.data.bl.uk/) | Books | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-ganjoor-api-ganjoor-net",
+      "name": "Ganjoor",
+      "category": "Books",
+      "docs_url": "https://api.ganjoor.net",
+      "description": "Classic Persian poetry works including access to related manuscripts, recitations and music tracks",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "oauth2",
+        "yes",
+        "api.ganjoor.net"
+      ],
+      "raw_source": {
+        "api": "[Ganjoor](https://api.ganjoor.net)",
+        "description": "Classic Persian poetry works including access to related manuscripts, recitations and music tracks",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Ganjoor](https://api.ganjoor.net) | Classic Persian poetry works including access to related manuscripts, recitations and music tracks | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-google-books-developers-google-com",
+      "name": "Google Books",
+      "category": "Books",
+      "docs_url": "https://developers.google.com/books/",
+      "description": "Books",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "oauth2",
+        "unknown",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Books](https://developers.google.com/books/)",
+        "description": "Books",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Books](https://developers.google.com/books/) | Books | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-gurbaninow-github-com",
+      "name": "GurbaniNow",
+      "category": "Books",
+      "docs_url": "https://github.com/GurbaniNow/api",
+      "description": "Fast and Accurate Gurbani RESTful API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[GurbaniNow](https://github.com/GurbaniNow/api)",
+        "description": "Fast and Accurate Gurbani RESTful API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GurbaniNow](https://github.com/GurbaniNow/api) | Fast and Accurate Gurbani RESTful API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-quran-cloud-alquran-cloud",
+      "name": "Quran Cloud",
+      "category": "Books",
+      "docs_url": "https://alquran.cloud/api",
+      "description": "A RESTful Quran API to retrieve an Ayah, Surah, Juz or the entire Holy Quran",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "alquran.cloud"
+      ],
+      "raw_source": {
+        "api": "[Quran Cloud](https://alquran.cloud/api)",
+        "description": "A RESTful Quran API to retrieve an Ayah, Surah, Juz or the entire Holy Quran",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Quran Cloud](https://alquran.cloud/api) | A RESTful Quran API to retrieve an Ayah, Surah, Juz or the entire Holy Quran | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-rig-veda-aninditabasu-github-io",
+      "name": "Rig Veda",
+      "category": "Books",
+      "docs_url": "https://aninditabasu.github.io/indica/html/rv.html",
+      "description": "Gods and poets, their categories, and the verse meters, with the mandal and sukta number",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "unknown",
+        "aninditabasu.github.io"
+      ],
+      "raw_source": {
+        "api": "[Rig Veda](https://aninditabasu.github.io/indica/html/rv.html)",
+        "description": "Gods and poets, their categories, and the verse meters, with the mandal and sukta number",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Rig Veda](https://aninditabasu.github.io/indica/html/rv.html) | Gods and poets, their categories, and the verse meters, with the mandal and sukta number | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-the-bible-docs-api-bible",
+      "name": "The Bible",
+      "category": "Books",
+      "docs_url": "https://docs.api.bible",
+      "description": "Everything you need from the Bible in one discoverable place",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "api_key",
+        "unknown",
+        "docs.api.bible"
+      ],
+      "raw_source": {
+        "api": "[The Bible](https://docs.api.bible)",
+        "description": "Everything you need from the Bible in one discoverable place",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [The Bible](https://docs.api.bible) | Everything you need from the Bible in one discoverable place | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-thirukkural-api-thirukkural-web-app",
+      "name": "Thirukkural",
+      "category": "Books",
+      "docs_url": "https://api-thirukkural.web.app/",
+      "description": "1330 Thirukkural poems and explanation in Tamil and English",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "api-thirukkural.web.app"
+      ],
+      "raw_source": {
+        "api": "[Thirukkural](https://api-thirukkural.web.app/)",
+        "description": "1330 Thirukkural poems and explanation in Tamil and English",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Thirukkural](https://api-thirukkural.web.app/) | 1330 Thirukkural poems and explanation in Tamil and English | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-vedic-society-aninditabasu-github-io",
+      "name": "Vedic Society",
+      "category": "Books",
+      "docs_url": "https://aninditabasu.github.io/indica/html/vs.html",
+      "description": "Descriptions of all nouns (names, places, animals, things) from vedic literature",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "unknown",
+        "aninditabasu.github.io"
+      ],
+      "raw_source": {
+        "api": "[Vedic Society](https://aninditabasu.github.io/indica/html/vs.html)",
+        "description": "Descriptions of all nouns (names, places, animals, things) from vedic literature",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Vedic Society](https://aninditabasu.github.io/indica/html/vs.html) | Descriptions of all nouns (names, places, animals, things) from vedic literature | No | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "books-wizard-world-wizard-world-api-herokuapp-com",
+      "name": "Wizard World",
+      "category": "Books",
+      "docs_url": "https://wizard-world-api.herokuapp.com/swagger/index.html",
+      "description": "Get information from the Harry Potter universe",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "books",
+        "none",
+        "yes",
+        "wizard-world-api.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Wizard World](https://wizard-world-api.herokuapp.com/swagger/index.html)",
+        "description": "Get information from the Harry Potter universe",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Wizard World](https://wizard-world-api.herokuapp.com/swagger/index.html) | Get information from the Harry Potter universe | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

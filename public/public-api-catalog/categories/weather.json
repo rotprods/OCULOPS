@@ -1,0 +1,1340 @@
+{
+  "category": "Weather",
+  "slug": "weather",
+  "count": 31,
+  "entries": [
+    {
+      "slug": "weather-aviationweather-aviationweather-gov",
+      "name": "AviationWeather",
+      "category": "Weather",
+      "docs_url": "https://www.aviationweather.gov/dataserver",
+      "description": "NOAA aviation weather forecasts and observations",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "aviationweather.gov"
+      ],
+      "raw_source": {
+        "api": "[AviationWeather](https://www.aviationweather.gov/dataserver)",
+        "description": "NOAA aviation weather forecasts and observations",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [AviationWeather](https://www.aviationweather.gov/dataserver) | NOAA aviation weather forecasts and observations | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-hong-kong-obervatory-hko-gov-hk",
+      "name": "Hong Kong Obervatory",
+      "category": "Weather",
+      "docs_url": "https://www.hko.gov.hk/en/abouthko/opendata_intro.htm",
+      "description": "Provide weather information, earthquake information, and climate data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "hko.gov.hk"
+      ],
+      "raw_source": {
+        "api": "[Hong Kong Obervatory](https://www.hko.gov.hk/en/abouthko/opendata_intro.htm)",
+        "description": "Provide weather information, earthquake information, and climate data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hong Kong Obervatory](https://www.hko.gov.hk/en/abouthko/opendata_intro.htm) | Provide weather information, earthquake information, and climate data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-metaweather-metaweather-com",
+      "name": "MetaWeather",
+      "category": "Weather",
+      "docs_url": "https://www.metaweather.com/api/",
+      "description": "Weather",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "no",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "metaweather.com"
+      ],
+      "raw_source": {
+        "api": "[MetaWeather](https://www.metaweather.com/api/)",
+        "description": "Weather",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [MetaWeather](https://www.metaweather.com/api/) | Weather | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-open-meteo-open-meteo-com",
+      "name": "Open-Meteo",
+      "category": "Weather",
+      "docs_url": "https://open-meteo.com/",
+      "description": "Global weather forecast API for non-commercial use",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "open-meteo.com"
+      ],
+      "raw_source": {
+        "api": "[Open-Meteo](https://open-meteo.com/)",
+        "description": "Global weather forecast API for non-commercial use",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Open-Meteo](https://open-meteo.com/) | Global weather forecast API for non-commercial use | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-opensensemap-api-opensensemap-org",
+      "name": "openSenseMap",
+      "category": "Weather",
+      "docs_url": "https://api.opensensemap.org/",
+      "description": "Data from Personal Weather Stations called senseBoxes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.opensensemap.org"
+      ],
+      "raw_source": {
+        "api": "[openSenseMap](https://api.opensensemap.org/)",
+        "description": "Data from Personal Weather Stations called senseBoxes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [openSenseMap](https://api.opensensemap.org/) | Data from Personal Weather Stations called senseBoxes | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-rainviewer-rainviewer-com",
+      "name": "RainViewer",
+      "category": "Weather",
+      "docs_url": "https://www.rainviewer.com/api.html",
+      "description": "Radar data collected from different websites across the Internet",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "rainviewer.com"
+      ],
+      "raw_source": {
+        "api": "[RainViewer](https://www.rainviewer.com/api.html)",
+        "description": "Radar data collected from different websites across the Internet",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [RainViewer](https://www.rainviewer.com/api.html) | Radar data collected from different websites across the Internet | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-us-weather-weather-gov",
+      "name": "US Weather",
+      "category": "Weather",
+      "docs_url": "https://www.weather.gov/documentation/services-web-api",
+      "description": "US National Weather Service",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "weather.gov"
+      ],
+      "raw_source": {
+        "api": "[US Weather](https://www.weather.gov/documentation/services-web-api)",
+        "description": "US National Weather Service",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [US Weather](https://www.weather.gov/documentation/services-web-api) | US National Weather Service | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-weather-api-github-com",
+      "name": "weather-api",
+      "category": "Weather",
+      "docs_url": "https://github.com/robertoduessmann/weather-api",
+      "description": "A RESTful free API to check the weather",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "no",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[weather-api](https://github.com/robertoduessmann/weather-api)",
+        "description": "A RESTful free API to check the weather",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [weather-api](https://github.com/robertoduessmann/weather-api) | A RESTful free API to check the weather | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-aemet-opendata-aemet-es",
+      "name": "Aemet",
+      "category": "Weather",
+      "docs_url": "https://opendata.aemet.es/centrodedescargas/inicio",
+      "description": "Weather and forecast data from Spain",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "opendata.aemet.es"
+      ],
+      "raw_source": {
+        "api": "[Aemet](https://opendata.aemet.es/centrodedescargas/inicio)",
+        "description": "Weather and forecast data from Spain",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Aemet](https://opendata.aemet.es/centrodedescargas/inicio) | Weather and forecast data from Spain | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-apilayer-weatherstack-weatherstack-com",
+      "name": "apilayer weatherstack",
+      "category": "Weather",
+      "docs_url": "https://weatherstack.com/",
+      "description": "Real-Time & Historical World Weather Data API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "weatherstack.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer weatherstack](https://weatherstack.com/)",
+        "description": "Real-Time & Historical World Weather Data API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer weatherstack](https://weatherstack.com/) | Real-Time & Historical World Weather Data API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-apixu-apixu-com",
+      "name": "APIXU",
+      "category": "Weather",
+      "docs_url": "https://www.apixu.com/doc/request.aspx",
+      "description": "Weather",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "apixu.com"
+      ],
+      "raw_source": {
+        "api": "[APIXU](https://www.apixu.com/doc/request.aspx)",
+        "description": "Weather",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [APIXU](https://www.apixu.com/doc/request.aspx) | Weather | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-aqicn-aqicn-org",
+      "name": "AQICN",
+      "category": "Weather",
+      "docs_url": "https://aqicn.org/api/",
+      "description": "Air Quality Index Data for over 1000 cities",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "aqicn.org"
+      ],
+      "raw_source": {
+        "api": "[AQICN](https://aqicn.org/api/)",
+        "description": "Air Quality Index Data for over 1000 cities",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [AQICN](https://aqicn.org/api/) | Air Quality Index Data for over 1000 cities | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-colorfulclouds-open-caiyunapp-com",
+      "name": "ColorfulClouds",
+      "category": "Weather",
+      "docs_url": "https://open.caiyunapp.com/ColorfulClouds_Weather_API",
+      "description": "Weather",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "open.caiyunapp.com"
+      ],
+      "raw_source": {
+        "api": "[ColorfulClouds](https://open.caiyunapp.com/ColorfulClouds_Weather_API)",
+        "description": "Weather",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ColorfulClouds](https://open.caiyunapp.com/ColorfulClouds_Weather_API) | Weather | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-euskalmet-opendata-euskadi-eus",
+      "name": "Euskalmet",
+      "category": "Weather",
+      "docs_url": "https://opendata.euskadi.eus/api-euskalmet/-/api-de-euskalmet/",
+      "description": "Meteorological data of the Basque Country",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "opendata.euskadi.eus"
+      ],
+      "raw_source": {
+        "api": "[Euskalmet](https://opendata.euskadi.eus/api-euskalmet/-/api-de-euskalmet/)",
+        "description": "Meteorological data of the Basque Country",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Euskalmet](https://opendata.euskadi.eus/api-euskalmet/-/api-de-euskalmet/) | Meteorological data of the Basque Country | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-hg-weather-hgbrasil-com",
+      "name": "HG Weather",
+      "category": "Weather",
+      "docs_url": "https://hgbrasil.com/status/weather",
+      "description": "Provides weather forecast data for cities in Brazil",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "hgbrasil.com"
+      ],
+      "raw_source": {
+        "api": "[HG Weather](https://hgbrasil.com/status/weather)",
+        "description": "Provides weather forecast data for cities in Brazil",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [HG Weather](https://hgbrasil.com/status/weather) | Provides weather forecast data for cities in Brazil | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-micro-weather-m3o-com",
+      "name": "Micro Weather",
+      "category": "Weather",
+      "docs_url": "https://m3o.com/weather/api",
+      "description": "Real time weather forecasts and historic data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "m3o.com"
+      ],
+      "raw_source": {
+        "api": "[Micro Weather](https://m3o.com/weather/api)",
+        "description": "Real time weather forecasts and historic data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Micro Weather](https://m3o.com/weather/api) | Real time weather forecasts and historic data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-oikolab-docs-oikolab-com",
+      "name": "Oikolab",
+      "category": "Weather",
+      "docs_url": "https://docs.oikolab.com",
+      "description": "70+ years of global, hourly historical and forecast weather data from NOAA and ECMWF",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "docs.oikolab.com"
+      ],
+      "raw_source": {
+        "api": "[Oikolab](https://docs.oikolab.com)",
+        "description": "70+ years of global, hourly historical and forecast weather data from NOAA and ECMWF",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Oikolab](https://docs.oikolab.com) | 70+ years of global, hourly historical and forecast weather data from NOAA and ECMWF | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-openuv-openuv-io",
+      "name": "OpenUV",
+      "category": "Weather",
+      "docs_url": "https://www.openuv.io",
+      "description": "Real-time UV Index Forecast",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "openuv.io"
+      ],
+      "raw_source": {
+        "api": "[OpenUV](https://www.openuv.io)",
+        "description": "Real-time UV Index Forecast",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OpenUV](https://www.openuv.io) | Real-time UV Index Forecast | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-openweathermap-openweathermap-org",
+      "name": "OpenWeatherMap",
+      "category": "Weather",
+      "docs_url": "https://openweathermap.org/api",
+      "description": "Weather",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "openweathermap.org"
+      ],
+      "raw_source": {
+        "api": "[OpenWeatherMap](https://openweathermap.org/api)",
+        "description": "Weather",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OpenWeatherMap](https://openweathermap.org/api) | Weather | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-qweather-dev-qweather-com",
+      "name": "QWeather",
+      "category": "Weather",
+      "docs_url": "https://dev.qweather.com/en/",
+      "description": "Location-based weather data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "dev.qweather.com"
+      ],
+      "raw_source": {
+        "api": "[QWeather](https://dev.qweather.com/en/)",
+        "description": "Location-based weather data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [QWeather](https://dev.qweather.com/en/) | Location-based weather data | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-storm-glass-stormglass-io",
+      "name": "Storm Glass",
+      "category": "Weather",
+      "docs_url": "https://stormglass.io/",
+      "description": "Global marine weather from multiple sources",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "stormglass.io"
+      ],
+      "raw_source": {
+        "api": "[Storm Glass](https://stormglass.io/)",
+        "description": "Global marine weather from multiple sources",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Storm Glass](https://stormglass.io/) | Global marine weather from multiple sources | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-tomorrow-docs-tomorrow-io",
+      "name": "Tomorrow",
+      "category": "Weather",
+      "docs_url": "https://docs.tomorrow.io",
+      "description": "Weather API Powered by Proprietary Technology",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "docs.tomorrow.io"
+      ],
+      "raw_source": {
+        "api": "[Tomorrow](https://docs.tomorrow.io)",
+        "description": "Weather API Powered by Proprietary Technology",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tomorrow](https://docs.tomorrow.io) | Weather API Powered by Proprietary Technology | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-visual-crossing-visualcrossing-com",
+      "name": "Visual Crossing",
+      "category": "Weather",
+      "docs_url": "https://www.visualcrossing.com/weather-api",
+      "description": "Global historical and weather forecast data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "visualcrossing.com"
+      ],
+      "raw_source": {
+        "api": "[Visual Crossing](https://www.visualcrossing.com/weather-api)",
+        "description": "Global historical and weather forecast data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Visual Crossing](https://www.visualcrossing.com/weather-api) | Global historical and weather forecast data | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-weatherapi-weatherapi-com",
+      "name": "WeatherAPI",
+      "category": "Weather",
+      "docs_url": "https://www.weatherapi.com/",
+      "description": "Weather API with other stuff like Astronomy and Geolocation API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "yes",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "weatherapi.com"
+      ],
+      "raw_source": {
+        "api": "[WeatherAPI](https://www.weatherapi.com/)",
+        "description": "Weather API with other stuff like Astronomy and Geolocation API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [WeatherAPI](https://www.weatherapi.com/) | Weather API with other stuff like Astronomy and Geolocation API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-weatherbit-weatherbit-io",
+      "name": "Weatherbit",
+      "category": "Weather",
+      "docs_url": "https://www.weatherbit.io/api",
+      "description": "Weather",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "weatherbit.io"
+      ],
+      "raw_source": {
+        "api": "[Weatherbit](https://www.weatherbit.io/api)",
+        "description": "Weather",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Weatherbit](https://www.weatherbit.io/api) | Weather | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-yandex-weather-yandex-com",
+      "name": "Yandex.Weather",
+      "category": "Weather",
+      "docs_url": "https://yandex.com/dev/weather/",
+      "description": "Assesses weather condition in specific locations",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "no",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "yandex.com"
+      ],
+      "raw_source": {
+        "api": "[Yandex.Weather](https://yandex.com/dev/weather/)",
+        "description": "Assesses weather condition in specific locations",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Yandex.Weather](https://yandex.com/dev/weather/) | Assesses weather condition in specific locations | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-foreca-developer-foreca-com",
+      "name": "Foreca",
+      "category": "Weather",
+      "docs_url": "https://developer.foreca.com",
+      "description": "Weather",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "oauth2",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "developer.foreca.com"
+      ],
+      "raw_source": {
+        "api": "[Foreca](https://developer.foreca.com)",
+        "description": "Weather",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Foreca](https://developer.foreca.com) | Weather | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-meteorologisk-institutt-api-met-no",
+      "name": "Meteorologisk Institutt",
+      "category": "Weather",
+      "docs_url": "https://api.met.no/weatherapi/documentation",
+      "description": "Weather and climate data",
+      "auth_type": "header",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "header",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.met.no"
+      ],
+      "raw_source": {
+        "api": "[Meteorologisk Institutt](https://api.met.no/weatherapi/documentation)",
+        "description": "Weather and climate data",
+        "auth": "`User-Agent`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Meteorologisk Institutt](https://api.met.no/weatherapi/documentation) | Weather and climate data | `User-Agent` | Yes | Unknown |"
+      },
+      "business_fit_score": 55,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-7timer-7timer-info",
+      "name": "7Timer!",
+      "category": "Weather",
+      "docs_url": "http://www.7timer.info/doc.php?lang=en",
+      "description": "Weather, especially for Astroweather",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "7timer.info"
+      ],
+      "raw_source": {
+        "api": "[7Timer!](http://www.7timer.info/doc.php?lang=en)",
+        "description": "Weather, especially for Astroweather",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [7Timer!](http://www.7timer.info/doc.php?lang=en) | Weather, especially for Astroweather | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-odweather-api-oceandrivers-com",
+      "name": "ODWeather",
+      "category": "Weather",
+      "docs_url": "http://api.oceandrivers.com/static/docs.html",
+      "description": "Weather and weather webcams",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "none",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "api.oceandrivers.com"
+      ],
+      "raw_source": {
+        "api": "[ODWeather](http://api.oceandrivers.com/static/docs.html)",
+        "description": "Weather and weather webcams",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [ODWeather](http://api.oceandrivers.com/static/docs.html) | Weather and weather webcams | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "weather-accuweather-developer-accuweather-com",
+      "name": "AccuWeather",
+      "category": "Weather",
+      "docs_url": "https://developer.accuweather.com/apis",
+      "description": "Weather and forecast data",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "watchtower",
+        "world_monitor"
+      ],
+      "agent_targets": [
+        "atlas",
+        "strategist",
+        "cortex"
+      ],
+      "tags": [
+        "weather",
+        "api_key",
+        "unknown",
+        "watchtower",
+        "world_monitor",
+        "atlas",
+        "strategist",
+        "cortex",
+        "developer.accuweather.com"
+      ],
+      "raw_source": {
+        "api": "[AccuWeather](https://developer.accuweather.com/apis)",
+        "description": "Weather and forecast data",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [AccuWeather](https://developer.accuweather.com/apis) | Weather and forecast data | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 20,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "category": "Dictionaries",
+  "slug": "dictionaries",
+  "count": 13,
+  "entries": [
+    {
+      "slug": "dictionaries-chinese-text-project-ctext-org",
+      "name": "Chinese Text Project",
+      "category": "Dictionaries",
+      "docs_url": "https://ctext.org/tools/api",
+      "description": "Online open-access digital library for pre-modern Chinese texts",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "none",
+        "unknown",
+        "ctext.org"
+      ],
+      "raw_source": {
+        "api": "[Chinese Text Project](https://ctext.org/tools/api)",
+        "description": "Online open-access digital library for pre-modern Chinese texts",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Chinese Text Project](https://ctext.org/tools/api) | Online open-access digital library for pre-modern Chinese texts | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-wiktionary-en-wiktionary-org",
+      "name": "Wiktionary",
+      "category": "Dictionaries",
+      "docs_url": "https://en.wiktionary.org/w/api.php",
+      "description": "Collaborative dictionary data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "none",
+        "yes",
+        "en.wiktionary.org"
+      ],
+      "raw_source": {
+        "api": "[Wiktionary](https://en.wiktionary.org/w/api.php)",
+        "description": "Collaborative dictionary data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Wiktionary](https://en.wiktionary.org/w/api.php) | Collaborative dictionary data | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-collins-api-collinsdictionary-com",
+      "name": "Collins",
+      "category": "Dictionaries",
+      "docs_url": "https://api.collinsdictionary.com/api/v1/documentation/html/",
+      "description": "Bilingual Dictionary and Thesaurus Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "unknown",
+        "api.collinsdictionary.com"
+      ],
+      "raw_source": {
+        "api": "[Collins](https://api.collinsdictionary.com/api/v1/documentation/html/)",
+        "description": "Bilingual Dictionary and Thesaurus Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Collins](https://api.collinsdictionary.com/api/v1/documentation/html/) | Bilingual Dictionary and Thesaurus Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-merriam-webster-dictionaryapi-com",
+      "name": "Merriam-Webster",
+      "category": "Dictionaries",
+      "docs_url": "https://dictionaryapi.com/",
+      "description": "Dictionary and Thesaurus Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "unknown",
+        "dictionaryapi.com"
+      ],
+      "raw_source": {
+        "api": "[Merriam-Webster](https://dictionaryapi.com/)",
+        "description": "Dictionary and Thesaurus Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Merriam-Webster](https://dictionaryapi.com/) | Dictionary and Thesaurus Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-oxford-developer-oxforddictionaries-com",
+      "name": "Oxford",
+      "category": "Dictionaries",
+      "docs_url": "https://developer.oxforddictionaries.com/",
+      "description": "Dictionary Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "no",
+        "developer.oxforddictionaries.com"
+      ],
+      "raw_source": {
+        "api": "[Oxford](https://developer.oxforddictionaries.com/)",
+        "description": "Dictionary Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Oxford](https://developer.oxforddictionaries.com/) | Dictionary Data | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-wordnik-developer-wordnik-com",
+      "name": "Wordnik",
+      "category": "Dictionaries",
+      "docs_url": "https://developer.wordnik.com",
+      "description": "Dictionary Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "unknown",
+        "developer.wordnik.com"
+      ],
+      "raw_source": {
+        "api": "[Wordnik](https://developer.wordnik.com)",
+        "description": "Dictionary Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Wordnik](https://developer.wordnik.com) | Dictionary Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-free-dictionary-dictionaryapi-dev",
+      "name": "Free Dictionary",
+      "category": "Dictionaries",
+      "docs_url": "https://dictionaryapi.dev/",
+      "description": "Definitions, phonetics, pronounciations, parts of speech, examples, synonyms",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "none",
+        "unknown",
+        "dictionaryapi.dev"
+      ],
+      "raw_source": {
+        "api": "[Free Dictionary](https://dictionaryapi.dev/)",
+        "description": "Definitions, phonetics, pronounciations, parts of speech, examples, synonyms",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Free Dictionary](https://dictionaryapi.dev/) | Definitions, phonetics, pronounciations, parts of speech, examples, synonyms | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-indonesia-dictionary-new-kbbi-api-herokuapp-com",
+      "name": "Indonesia Dictionary",
+      "category": "Dictionaries",
+      "docs_url": "https://new-kbbi-api.herokuapp.com/",
+      "description": "Indonesia dictionary many words",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "none",
+        "unknown",
+        "new-kbbi-api.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Indonesia Dictionary](https://new-kbbi-api.herokuapp.com/)",
+        "description": "Indonesia dictionary many words",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Indonesia Dictionary](https://new-kbbi-api.herokuapp.com/) | Indonesia dictionary many words | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-lingua-robot-linguarobot-io",
+      "name": "Lingua Robot",
+      "category": "Dictionaries",
+      "docs_url": "https://www.linguarobot.io",
+      "description": "Word definitions, pronunciations, synonyms, antonyms and others",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "yes",
+        "linguarobot.io"
+      ],
+      "raw_source": {
+        "api": "[Lingua Robot](https://www.linguarobot.io)",
+        "description": "Word definitions, pronunciations, synonyms, antonyms and others",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Lingua Robot](https://www.linguarobot.io) | Word definitions, pronunciations, synonyms, antonyms and others | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-owlbot-owlbot-info",
+      "name": "OwlBot",
+      "category": "Dictionaries",
+      "docs_url": "https://owlbot.info/",
+      "description": "Definitions with example sentence and photo if available",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "yes",
+        "owlbot.info"
+      ],
+      "raw_source": {
+        "api": "[OwlBot](https://owlbot.info/)",
+        "description": "Definitions with example sentence and photo if available",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [OwlBot](https://owlbot.info/) | Definitions with example sentence and photo if available | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-synonyms-synonyms-com",
+      "name": "Synonyms",
+      "category": "Dictionaries",
+      "docs_url": "https://www.synonyms.com/synonyms_api.php",
+      "description": "Synonyms, thesaurus and antonyms information for any given word",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "unknown",
+        "synonyms.com"
+      ],
+      "raw_source": {
+        "api": "[Synonyms](https://www.synonyms.com/synonyms_api.php)",
+        "description": "Synonyms, thesaurus and antonyms information for any given word",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Synonyms](https://www.synonyms.com/synonyms_api.php) | Synonyms, thesaurus and antonyms information for any given word | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-words-wordsapi-com",
+      "name": "Words",
+      "category": "Dictionaries",
+      "docs_url": "https://www.wordsapi.com/docs/",
+      "description": "Definitions and synonyms for more than 150,000 words",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "api_key",
+        "unknown",
+        "wordsapi.com"
+      ],
+      "raw_source": {
+        "api": "[Words](https://www.wordsapi.com/docs/)",
+        "description": "Definitions and synonyms for more than 150,000 words",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Words](https://www.wordsapi.com/docs/) | Definitions and synonyms for more than 150,000 words | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "dictionaries-chinese-character-web-ccdb-hemiola-com",
+      "name": "Chinese Character Web",
+      "category": "Dictionaries",
+      "docs_url": "http://ccdb.hemiola.com/",
+      "description": "Chinese character definitions and pronunciations",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "dictionaries",
+        "none",
+        "no",
+        "ccdb.hemiola.com"
+      ],
+      "raw_source": {
+        "api": "[Chinese Character Web](http://ccdb.hemiola.com/)",
+        "description": "Chinese character definitions and pronunciations",
+        "auth": "No",
+        "https": "No",
+        "cors": "No",
+        "markdown": "| [Chinese Character Web](http://ccdb.hemiola.com/) | Chinese character definitions and pronunciations | No | No | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

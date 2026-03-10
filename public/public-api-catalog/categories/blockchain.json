@@ -1,0 +1,351 @@
+{
+  "category": "Blockchain",
+  "slug": "blockchain",
+  "count": 11,
+  "entries": [
+    {
+      "slug": "blockchain-chainpoint-tierion-com",
+      "name": "Chainpoint",
+      "category": "Blockchain",
+      "docs_url": "https://tierion.com/chainpoint/",
+      "description": "Chainpoint is a global network for anchoring data to the Bitcoin blockchain",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "none",
+        "unknown",
+        "tierion.com"
+      ],
+      "raw_source": {
+        "api": "[Chainpoint](https://tierion.com/chainpoint/)",
+        "description": "Chainpoint is a global network for anchoring data to the Bitcoin blockchain",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Chainpoint](https://tierion.com/chainpoint/) | Chainpoint is a global network for anchoring data to the Bitcoin blockchain | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-walltime-walltime-info",
+      "name": "Walltime",
+      "category": "Blockchain",
+      "docs_url": "https://walltime.info/api.html",
+      "description": "To retrieve Walltime's market info",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "none",
+        "unknown",
+        "walltime.info"
+      ],
+      "raw_source": {
+        "api": "[Walltime](https://walltime.info/api.html)",
+        "description": "To retrieve Walltime's market info",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Walltime](https://walltime.info/api.html) | To retrieve Walltime's market info | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-covalent-covalenthq-com",
+      "name": "Covalent",
+      "category": "Blockchain",
+      "docs_url": "https://www.covalenthq.com/docs/api/",
+      "description": "Multi-blockchain data aggregator platform",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "api_key",
+        "unknown",
+        "covalenthq.com"
+      ],
+      "raw_source": {
+        "api": "[Covalent](https://www.covalenthq.com/docs/api/)",
+        "description": "Multi-blockchain data aggregator platform",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Covalent](https://www.covalenthq.com/docs/api/) | Multi-blockchain data aggregator platform | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-watchdata-docs-watchdata-io",
+      "name": "Watchdata",
+      "category": "Blockchain",
+      "docs_url": "https://docs.watchdata.io",
+      "description": "Provide simple and reliable API access to Ethereum blockchain",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "api_key",
+        "unknown",
+        "docs.watchdata.io"
+      ],
+      "raw_source": {
+        "api": "[Watchdata](https://docs.watchdata.io)",
+        "description": "Provide simple and reliable API access to Ethereum blockchain",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Watchdata](https://docs.watchdata.io) | Provide simple and reliable API access to Ethereum blockchain | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-chainlink-chain-link",
+      "name": "Chainlink",
+      "category": "Blockchain",
+      "docs_url": "https://chain.link/developer-resources",
+      "description": "Build hybrid smart contracts with Chainlink",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "none",
+        "unknown",
+        "chain.link"
+      ],
+      "raw_source": {
+        "api": "[Chainlink](https://chain.link/developer-resources)",
+        "description": "Build hybrid smart contracts with Chainlink",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Chainlink](https://chain.link/developer-resources) | Build hybrid smart contracts with Chainlink | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-helium-docs-helium-com",
+      "name": "Helium",
+      "category": "Blockchain",
+      "docs_url": "https://docs.helium.com/api/blockchain/introduction/",
+      "description": "Helium is a global, distributed network of Hotspots that create public, long-range wireless coverage",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "none",
+        "unknown",
+        "docs.helium.com"
+      ],
+      "raw_source": {
+        "api": "[Helium](https://docs.helium.com/api/blockchain/introduction/)",
+        "description": "Helium is a global, distributed network of Hotspots that create public, long-range wireless coverage",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Helium](https://docs.helium.com/api/blockchain/introduction/) | Helium is a global, distributed network of Hotspots that create public, long-range wireless coverage | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-bitquery-graphql-bitquery-io",
+      "name": "Bitquery",
+      "category": "Blockchain",
+      "docs_url": "https://graphql.bitquery.io/ide",
+      "description": "Onchain GraphQL APIs & DEX APIs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "api_key",
+        "yes",
+        "graphql.bitquery.io"
+      ],
+      "raw_source": {
+        "api": "[Bitquery](https://graphql.bitquery.io/ide)",
+        "description": "Onchain GraphQL APIs & DEX APIs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Bitquery](https://graphql.bitquery.io/ide) | Onchain GraphQL APIs & DEX APIs | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-etherscan-etherscan-io",
+      "name": "Etherscan",
+      "category": "Blockchain",
+      "docs_url": "https://etherscan.io/apis",
+      "description": "Ethereum explorer API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "api_key",
+        "yes",
+        "etherscan.io"
+      ],
+      "raw_source": {
+        "api": "[Etherscan](https://etherscan.io/apis)",
+        "description": "Ethereum explorer API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Etherscan](https://etherscan.io/apis) | Ethereum explorer API | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-nownodes-nownodes-io",
+      "name": "Nownodes",
+      "category": "Blockchain",
+      "docs_url": "https://nownodes.io/",
+      "description": "Blockchain-as-a-service solution that provides high-quality connection via API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "api_key",
+        "unknown",
+        "nownodes.io"
+      ],
+      "raw_source": {
+        "api": "[Nownodes](https://nownodes.io/)",
+        "description": "Blockchain-as-a-service solution that provides high-quality connection via API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Nownodes](https://nownodes.io/) | Blockchain-as-a-service solution that provides high-quality connection via API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-the-graph-thegraph-com",
+      "name": "The Graph",
+      "category": "Blockchain",
+      "docs_url": "https://thegraph.com",
+      "description": "Indexing protocol for querying networks like Ethereum with GraphQL",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "blockchain",
+        "api_key",
+        "unknown",
+        "thegraph.com"
+      ],
+      "raw_source": {
+        "api": "[The Graph](https://thegraph.com)",
+        "description": "Indexing protocol for querying networks like Ethereum with GraphQL",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [The Graph](https://thegraph.com) | Indexing protocol for querying networks like Ethereum with GraphQL | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "blockchain-steem-developers-steem-io",
+      "name": "Steem",
+      "category": "Blockchain",
+      "docs_url": "https://developers.steem.io/",
+      "description": "Blockchain-based blogging and social media website",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "blockchain",
+        "none",
+        "no",
+        "hunter",
+        "developers.steem.io"
+      ],
+      "raw_source": {
+        "api": "[Steem](https://developers.steem.io/)",
+        "description": "Blockchain-based blogging and social media website",
+        "auth": "No",
+        "https": "No",
+        "cors": "No",
+        "markdown": "| [Steem](https://developers.steem.io/) | Blockchain-based blogging and social media website | No | No | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+/* ═══════════════════════════════════════════════════
+   ANTIGRAVITY OS — Notification Center v4
+   Premium Toast System
+   ═══════════════════════════════════════════════════ */
+
+.notification-center {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: var(--z-notification);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 380px;
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 14px var(--space-4);
+    background: var(--bg-card);
+    background-image: var(--gradient-surface);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl), var(--glass-inner-glow);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    pointer-events: all;
+    animation: toastIn 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.toast::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-shimmer);
+    background-size: 200% 100%;
+    opacity: 0;
+    animation: shimmer 3s ease-in-out 0.5s 1;
+    pointer-events: none;
+}
+
+.toast-success {
+    border-left: 2px solid var(--success);
+    box-shadow: var(--shadow-xl), var(--glass-inner-glow), var(--shadow-glow-success);
+}
+
+.toast-warning {
+    border-left: 2px solid var(--warning);
+}
+
+.toast-info {
+    border-left: 2px solid var(--info);
+}
+
+.toast-danger {
+    border-left: 2px solid var(--danger);
+}
+
+.toast-icon {
+    font-size: var(--text-lg);
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 4px currentColor);
+}
+
+.toast-message {
+    flex: 1;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: var(--leading-snug);
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-quaternary);
+    cursor: pointer;
+    font-size: var(--text-xs);
+    padding: 3px 7px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+}
+
+.toast-close:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(60px) scale(0.95);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0);
+    }
+}

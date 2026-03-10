@@ -1,0 +1,1033 @@
+{
+  "category": "Sports & Fitness",
+  "slug": "sports-fitness",
+  "count": 33,
+  "entries": [
+    {
+      "slug": "sports-fitness-balldontlie-balldontlie-io",
+      "name": "balldontlie",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.balldontlie.io",
+      "description": "Balldontlie provides access to stats data from the NBA",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "yes",
+        "balldontlie.io"
+      ],
+      "raw_source": {
+        "api": "[balldontlie](https://www.balldontlie.io)",
+        "description": "Balldontlie provides access to stats data from the NBA",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [balldontlie](https://www.balldontlie.io) | Balldontlie provides access to stats data from the NBA | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-ergast-f1-ergast-com",
+      "name": "Ergast F1",
+      "category": "Sports & Fitness",
+      "docs_url": "http://ergast.com/mrd/",
+      "description": "F1 data from the beginning of the world championships in 1950",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "unknown",
+        "ergast.com"
+      ],
+      "raw_source": {
+        "api": "[Ergast F1](http://ergast.com/mrd/)",
+        "description": "F1 data from the beginning of the world championships in 1950",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Ergast F1](http://ergast.com/mrd/) | F1 data from the beginning of the world championships in 1950 | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-football-standings-github-com",
+      "name": "Football Standings",
+      "category": "Sports & Fitness",
+      "docs_url": "https://github.com/azharimm/football-standings-api",
+      "description": "Display football standings e.g epl, la liga, serie a etc. The data is based on espn site",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Football Standings](https://github.com/azharimm/football-standings-api)",
+        "description": "Display football standings e.g epl, la liga, serie a etc. The data is based on espn site",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Football Standings](https://github.com/azharimm/football-standings-api) | Display football standings e.g epl, la liga, serie a etc. The data is based on espn site | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-nhl-records-and-stats-gitlab-com",
+      "name": "NHL Records and Stats",
+      "category": "Sports & Fitness",
+      "docs_url": "https://gitlab.com/dword4/nhlapi",
+      "description": "NHL historical data and statistics",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "unknown",
+        "gitlab.com"
+      ],
+      "raw_source": {
+        "api": "[NHL Records and Stats](https://gitlab.com/dword4/nhlapi)",
+        "description": "NHL historical data and statistics",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NHL Records and Stats](https://gitlab.com/dword4/nhlapi) | NHL historical data and statistics | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-sport-list-data-developers-decathlon-com",
+      "name": "Sport List & Data",
+      "category": "Sports & Fitness",
+      "docs_url": "https://developers.decathlon.com/products/sports",
+      "description": "List of and resources related to sports",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "yes",
+        "developers.decathlon.com"
+      ],
+      "raw_source": {
+        "api": "[Sport List & Data](https://developers.decathlon.com/products/sports)",
+        "description": "List of and resources related to sports",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Sport List & Data](https://developers.decathlon.com/products/sports) | List of and resources related to sports | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-collegefootballdata-com-collegefootballdata-com",
+      "name": "CollegeFootballData.com",
+      "category": "Sports & Fitness",
+      "docs_url": "https://collegefootballdata.com",
+      "description": "Unofficial detailed American college football statistics, records, and results API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "collegefootballdata.com"
+      ],
+      "raw_source": {
+        "api": "[CollegeFootballData.com](https://collegefootballdata.com)",
+        "description": "Unofficial detailed American college football statistics, records, and results API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CollegeFootballData.com](https://collegefootballdata.com) | Unofficial detailed American college football statistics, records, and results API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-football-rapidapi-com",
+      "name": "Football",
+      "category": "Sports & Fitness",
+      "docs_url": "https://rapidapi.com/GiulianoCrescimbeni/api/football98/",
+      "description": "A simple Open Source Football API to get squads’ stats, best scorers and more",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Football](https://rapidapi.com/GiulianoCrescimbeni/api/football98/)",
+        "description": "A simple Open Source Football API to get squads’ stats, best scorers and more",
+        "auth": "`X-Mashape-Key`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Football](https://rapidapi.com/GiulianoCrescimbeni/api/football98/) | A simple Open Source Football API to get squads’ stats, best scorers and more | `X-Mashape-Key` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-football-data-football-data-org",
+      "name": "Football-Data",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.football-data.org",
+      "description": "Football data with matches info, players, teams, and competitions",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "football-data.org"
+      ],
+      "raw_source": {
+        "api": "[Football-Data](https://www.football-data.org)",
+        "description": "Football data with matches info, players, teams, and competitions",
+        "auth": "`X-Mashape-Key`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Football-Data](https://www.football-data.org) | Football data with matches info, players, teams, and competitions | `X-Mashape-Key` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-nba-data-rapidapi-com",
+      "name": "NBA Data",
+      "category": "Sports & Fitness",
+      "docs_url": "https://rapidapi.com/api-sports/api/api-nba/",
+      "description": "All NBA Stats DATA, Games, Livescore, Standings, Statistics",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[NBA Data](https://rapidapi.com/api-sports/api/api-nba/)",
+        "description": "All NBA Stats DATA, Games, Livescore, Standings, Statistics",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NBA Data](https://rapidapi.com/api-sports/api/api-nba/) | All NBA Stats DATA, Games, Livescore, Standings, Statistics | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-sport-data-sportdataapi-com",
+      "name": "Sport Data",
+      "category": "Sports & Fitness",
+      "docs_url": "https://sportdataapi.com",
+      "description": "Get sports data from all over the world",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "sportdataapi.com"
+      ],
+      "raw_source": {
+        "api": "[Sport Data](https://sportdataapi.com)",
+        "description": "Get sports data from all over the world",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Sport Data](https://sportdataapi.com) | Get sports data from all over the world | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-sportmonks-football-docs-sportmonks-com",
+      "name": "Sportmonks Football",
+      "category": "Sports & Fitness",
+      "docs_url": "https://docs.sportmonks.com/football/",
+      "description": "Football score/schedule, news api, tv channels, stats, history, display standing e.g. epl, la liga",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "strategist"
+      ],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "strategist",
+        "docs.sportmonks.com"
+      ],
+      "raw_source": {
+        "api": "[Sportmonks Football](https://docs.sportmonks.com/football/)",
+        "description": "Football score/schedule, news api, tv channels, stats, history, display standing e.g. epl, la liga",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Sportmonks Football](https://docs.sportmonks.com/football/) | Football score/schedule, news api, tv channels, stats, history, display standing e.g. epl, la liga | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-thesportsdb-thesportsdb-com",
+      "name": "TheSportsDB",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.thesportsdb.com/api.php",
+      "description": "Crowd-Sourced Sports Data and Artwork",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "yes",
+        "thesportsdb.com"
+      ],
+      "raw_source": {
+        "api": "[TheSportsDB](https://www.thesportsdb.com/api.php)",
+        "description": "Crowd-Sourced Sports Data and Artwork",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [TheSportsDB](https://www.thesportsdb.com/api.php) | Crowd-Sourced Sports Data and Artwork | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-wger-wger-de",
+      "name": "Wger",
+      "category": "Sports & Fitness",
+      "docs_url": "https://wger.de/en/software/api",
+      "description": "Workout manager data as exercises, muscles or equipment",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "wger.de"
+      ],
+      "raw_source": {
+        "api": "[Wger](https://wger.de/en/software/api)",
+        "description": "Workout manager data as exercises, muscles or equipment",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Wger](https://wger.de/en/software/api) | Workout manager data as exercises, muscles or equipment | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-tredict-tredict-com",
+      "name": "Tredict",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.tredict.com/blog/oauth_docs/",
+      "description": "Get and set activities, health data and more",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "oauth2",
+        "unknown",
+        "tredict.com"
+      ],
+      "raw_source": {
+        "api": "[Tredict](https://www.tredict.com/blog/oauth_docs/)",
+        "description": "Get and set activities, health data and more",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tredict](https://www.tredict.com/blog/oauth_docs/) | Get and set activities, health data and more | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-city-bikes-api-citybik-es",
+      "name": "City Bikes",
+      "category": "Sports & Fitness",
+      "docs_url": "https://api.citybik.es/v2/",
+      "description": "City Bikes around the world",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "unknown",
+        "api.citybik.es"
+      ],
+      "raw_source": {
+        "api": "[City Bikes](https://api.citybik.es/v2/)",
+        "description": "City Bikes around the world",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [City Bikes](https://api.citybik.es/v2/) | City Bikes around the world | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-football-soccer-videos-scorebat-com",
+      "name": "Football (Soccer) Videos",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.scorebat.com/video-api/",
+      "description": "Embed codes for goals and highlights from Premier League, Bundesliga, Serie A and many more",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "yes",
+        "scorebat.com"
+      ],
+      "raw_source": {
+        "api": "[Football (Soccer) Videos](https://www.scorebat.com/video-api/)",
+        "description": "Embed codes for goals and highlights from Premier League, Bundesliga, Serie A and many more",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Football (Soccer) Videos](https://www.scorebat.com/video-api/) | Embed codes for goals and highlights from Premier League, Bundesliga, Serie A and many more | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-nba-stats-any-api-com",
+      "name": "NBA Stats",
+      "category": "Sports & Fitness",
+      "docs_url": "https://any-api.com/nba_com/nba_com/docs/API_Description",
+      "description": "Current and historical NBA Statistics",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "unknown",
+        "any-api.com"
+      ],
+      "raw_source": {
+        "api": "[NBA Stats](https://any-api.com/nba_com/nba_com/docs/API_Description)",
+        "description": "Current and historical NBA Statistics",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [NBA Stats](https://any-api.com/nba_com/nba_com/docs/API_Description) | Current and historical NBA Statistics | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-oddsmagnet-data-oddsmagnet-com",
+      "name": "Oddsmagnet",
+      "category": "Sports & Fitness",
+      "docs_url": "https://data.oddsmagnet.com",
+      "description": "Odds history from multiple UK bookmakers",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "yes",
+        "data.oddsmagnet.com"
+      ],
+      "raw_source": {
+        "api": "[Oddsmagnet](https://data.oddsmagnet.com)",
+        "description": "Odds history from multiple UK bookmakers",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Oddsmagnet](https://data.oddsmagnet.com) | Odds history from multiple UK bookmakers | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-openligadb-openligadb-de",
+      "name": "OpenLigaDB",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.openligadb.de",
+      "description": "Crowd sourced sports league results",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "yes",
+        "openligadb.de"
+      ],
+      "raw_source": {
+        "api": "[OpenLigaDB](https://www.openligadb.de)",
+        "description": "Crowd sourced sports league results",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [OpenLigaDB](https://www.openligadb.de) | Crowd sourced sports league results | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-sport-places-developers-decathlon-com",
+      "name": "Sport Places",
+      "category": "Sports & Fitness",
+      "docs_url": "https://developers.decathlon.com/products/sport-places",
+      "description": "Crowd-source sports places around the world",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "no",
+        "developers.decathlon.com"
+      ],
+      "raw_source": {
+        "api": "[Sport Places](https://developers.decathlon.com/products/sport-places)",
+        "description": "Crowd-source sports places around the world",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Sport Places](https://developers.decathlon.com/products/sport-places) | Crowd-source sports places around the world | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-squiggle-api-squiggle-com-au",
+      "name": "Squiggle",
+      "category": "Sports & Fitness",
+      "docs_url": "https://api.squiggle.com.au",
+      "description": "Fixtures, results and predictions for Australian Football League matches",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "yes",
+        "api.squiggle.com.au"
+      ],
+      "raw_source": {
+        "api": "[Squiggle](https://api.squiggle.com.au)",
+        "description": "Fixtures, results and predictions for Australian Football League matches",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Squiggle](https://api.squiggle.com.au) | Fixtures, results and predictions for Australian Football League matches | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-api-football-api-football-com",
+      "name": "API-FOOTBALL",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.api-football.com/documentation-v3",
+      "description": "Get information about Football Leagues & Cups",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "yes",
+        "api-football.com"
+      ],
+      "raw_source": {
+        "api": "[API-FOOTBALL](https://www.api-football.com/documentation-v3)",
+        "description": "Get information about Football Leagues & Cups",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [API-FOOTBALL](https://www.api-football.com/documentation-v3) | Get information about Football Leagues & Cups | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-apimedic-apimedic-com",
+      "name": "ApiMedic",
+      "category": "Sports & Fitness",
+      "docs_url": "https://apimedic.com/",
+      "description": "ApiMedic offers a medical symptom checker API primarily for patients",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "apimedic.com"
+      ],
+      "raw_source": {
+        "api": "[ApiMedic](https://apimedic.com/)",
+        "description": "ApiMedic offers a medical symptom checker API primarily for patients",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ApiMedic](https://apimedic.com/) | ApiMedic offers a medical symptom checker API primarily for patients | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-canadian-football-league-cfl-api-cfl-ca",
+      "name": "Canadian Football League (CFL)",
+      "category": "Sports & Fitness",
+      "docs_url": "http://api.cfl.ca/",
+      "description": "Official JSON API providing real-time league, team and player statistics about the CFL",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "no",
+        "api.cfl.ca"
+      ],
+      "raw_source": {
+        "api": "[Canadian Football League (CFL)](http://api.cfl.ca/)",
+        "description": "Official JSON API providing real-time league, team and player statistics about the CFL",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Canadian Football League (CFL)](http://api.cfl.ca/) | Official JSON API providing real-time league, team and player statistics about the CFL | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-cloudbet-cloudbet-com",
+      "name": "Cloudbet",
+      "category": "Sports & Fitness",
+      "docs_url": "https://www.cloudbet.com/api/",
+      "description": "Official Cloudbet API provides real-time sports odds and betting API to place bets programmatically",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "yes",
+        "cloudbet.com"
+      ],
+      "raw_source": {
+        "api": "[Cloudbet](https://www.cloudbet.com/api/)",
+        "description": "Official Cloudbet API provides real-time sports odds and betting API to place bets programmatically",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Cloudbet](https://www.cloudbet.com/api/) | Official Cloudbet API provides real-time sports odds and betting API to place bets programmatically | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-jcdecaux-bike-developer-jcdecaux-com",
+      "name": "JCDecaux Bike",
+      "category": "Sports & Fitness",
+      "docs_url": "https://developer.jcdecaux.com/",
+      "description": "JCDecaux's self-service bicycles",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "developer.jcdecaux.com"
+      ],
+      "raw_source": {
+        "api": "[JCDecaux Bike](https://developer.jcdecaux.com/)",
+        "description": "JCDecaux's self-service bicycles",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [JCDecaux Bike](https://developer.jcdecaux.com/) | JCDecaux's self-service bicycles | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-premier-league-standings-rapidapi-com",
+      "name": "Premier League Standings",
+      "category": "Sports & Fitness",
+      "docs_url": "https://rapidapi.com/heisenbug/api/premier-league-live-scores/",
+      "description": "All Current Premier League Standings and Statistics",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Premier League Standings ](https://rapidapi.com/heisenbug/api/premier-league-live-scores/)",
+        "description": "All Current Premier League Standings and Statistics",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Premier League Standings ](https://rapidapi.com/heisenbug/api/premier-league-live-scores/) | All Current Premier League Standings and Statistics | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-sport-vision-developers-decathlon-com",
+      "name": "Sport Vision",
+      "category": "Sports & Fitness",
+      "docs_url": "https://developers.decathlon.com/products/sport-vision",
+      "description": "Identify sport, brands and gear in an image. Also does image sports captioning",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "yes",
+        "developers.decathlon.com"
+      ],
+      "raw_source": {
+        "api": "[Sport Vision](https://developers.decathlon.com/products/sport-vision)",
+        "description": "Identify sport, brands and gear in an image. Also does image sports captioning",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Sport Vision](https://developers.decathlon.com/products/sport-vision) | Identify sport, brands and gear in an image. Also does image sports captioning | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-sportmonks-cricket-docs-sportmonks-com",
+      "name": "Sportmonks Cricket",
+      "category": "Sports & Fitness",
+      "docs_url": "https://docs.sportmonks.com/cricket/",
+      "description": "Live cricket score, player statistics and fantasy API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "api_key",
+        "unknown",
+        "docs.sportmonks.com"
+      ],
+      "raw_source": {
+        "api": "[Sportmonks Cricket](https://docs.sportmonks.com/cricket/)",
+        "description": "Live cricket score, player statistics and fantasy API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Sportmonks Cricket](https://docs.sportmonks.com/cricket/) | Live cricket score, player statistics and fantasy API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-fitbit-dev-fitbit-com",
+      "name": "Fitbit",
+      "category": "Sports & Fitness",
+      "docs_url": "https://dev.fitbit.com/",
+      "description": "Fitbit Information",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "oauth2",
+        "unknown",
+        "dev.fitbit.com"
+      ],
+      "raw_source": {
+        "api": "[Fitbit](https://dev.fitbit.com/)",
+        "description": "Fitbit Information",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Fitbit](https://dev.fitbit.com/) | Fitbit Information | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-strava-strava-github-io",
+      "name": "Strava",
+      "category": "Sports & Fitness",
+      "docs_url": "https://strava.github.io/api/",
+      "description": "Connect with athletes, activities and more",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "oauth2",
+        "unknown",
+        "strava.github.io"
+      ],
+      "raw_source": {
+        "api": "[Strava](https://strava.github.io/api/)",
+        "description": "Connect with athletes, activities and more",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Strava](https://strava.github.io/api/) | Connect with athletes, activities and more | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-mlb-records-and-stats-appac-github-io",
+      "name": "MLB Records and Stats",
+      "category": "Sports & Fitness",
+      "docs_url": "https://appac.github.io/mlb-data-api-docs/",
+      "description": "Current and historical MLB statistics",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "unknown",
+        "appac.github.io"
+      ],
+      "raw_source": {
+        "api": "[MLB Records and Stats](https://appac.github.io/mlb-data-api-docs/)",
+        "description": "Current and historical MLB statistics",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [MLB Records and Stats](https://appac.github.io/mlb-data-api-docs/) | Current and historical MLB statistics | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "sports-fitness-suredbits-suredbits-com",
+      "name": "SuredBits",
+      "category": "Sports & Fitness",
+      "docs_url": "https://suredbits.com/api/",
+      "description": "Query sports data, including teams, players, games, scores and statistics",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "sports-fitness",
+        "none",
+        "no",
+        "suredbits.com"
+      ],
+      "raw_source": {
+        "api": "[SuredBits](https://suredbits.com/api/)",
+        "description": "Query sports data, including teams, players, games, scores and statistics",
+        "auth": "No",
+        "https": "No",
+        "cors": "No",
+        "markdown": "| [SuredBits](https://suredbits.com/api/) | Query sports data, including teams, players, games, scores and statistics | No | No | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

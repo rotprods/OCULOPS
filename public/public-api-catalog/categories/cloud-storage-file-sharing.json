@@ -1,0 +1,596 @@
+{
+  "category": "Cloud Storage & File Sharing",
+  "slug": "cloud-storage-file-sharing",
+  "count": 19,
+  "entries": [
+    {
+      "slug": "cloud-storage-file-sharing-gofile-gofile-io",
+      "name": "GoFile",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://gofile.io/api",
+      "description": "Unlimited size file uploads for free",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "gofile.io"
+      ],
+      "raw_source": {
+        "api": "[GoFile](https://gofile.io/api)",
+        "description": "Unlimited size file uploads for free",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GoFile](https://gofile.io/api) | Unlimited size file uploads for free | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-imgbb-api-imgbb-com",
+      "name": "Imgbb",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://api.imgbb.com/",
+      "description": "Simple and quick private image sharing",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "api.imgbb.com"
+      ],
+      "raw_source": {
+        "api": "[Imgbb](https://api.imgbb.com/)",
+        "description": "Simple and quick private image sharing",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Imgbb](https://api.imgbb.com/) | Simple and quick private image sharing | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-pastebin-pastebin-com",
+      "name": "Pastebin",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://pastebin.com/doc_api",
+      "description": "Plain Text Storage",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "pastebin.com"
+      ],
+      "raw_source": {
+        "api": "[Pastebin](https://pastebin.com/doc_api)",
+        "description": "Plain Text Storage",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Pastebin](https://pastebin.com/doc_api) | Plain Text Storage | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-anonfiles-anonfiles-com",
+      "name": "AnonFiles",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://anonfiles.com/docs/api",
+      "description": "Upload and share your files anonymously",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "none",
+        "unknown",
+        "anonfiles.com"
+      ],
+      "raw_source": {
+        "api": "[AnonFiles](https://anonfiles.com/docs/api)",
+        "description": "Upload and share your files anonymously",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [AnonFiles](https://anonfiles.com/docs/api) | Upload and share your files anonymously | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-bayfiles-bayfiles-com",
+      "name": "BayFiles",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://bayfiles.com/docs/api",
+      "description": "Upload and share your files",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "none",
+        "unknown",
+        "bayfiles.com"
+      ],
+      "raw_source": {
+        "api": "[BayFiles](https://bayfiles.com/docs/api)",
+        "description": "Upload and share your files",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [BayFiles](https://bayfiles.com/docs/api) | Upload and share your files | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-file-io-file-io",
+      "name": "File.io",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://www.file.io",
+      "description": "Super simple file sharing, convenient, anonymous and secure",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "none",
+        "unknown",
+        "file.io"
+      ],
+      "raw_source": {
+        "api": "[File.io](https://www.file.io)",
+        "description": "Super simple file sharing, convenient, anonymous and secure",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [File.io](https://www.file.io) | Super simple file sharing, convenient, anonymous and secure | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-pantry-getpantry-cloud",
+      "name": "Pantry",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://getpantry.cloud/",
+      "description": "Free JSON storage for small projects",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "none",
+        "yes",
+        "getpantry.cloud"
+      ],
+      "raw_source": {
+        "api": "[Pantry](https://getpantry.cloud/)",
+        "description": "Free JSON storage for small projects",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Pantry](https://getpantry.cloud/) | Free JSON storage for small projects | No | Yes | Yes | |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-the-null-pointer-0x0-st",
+      "name": "The Null Pointer",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://0x0.st",
+      "description": "No-bullshit file hosting and URL shortening service",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "none",
+        "unknown",
+        "0x0.st"
+      ],
+      "raw_source": {
+        "api": "[The Null Pointer](https://0x0.st)",
+        "description": "No-bullshit file hosting and URL shortening service",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [The Null Pointer](https://0x0.st) | No-bullshit file hosting and URL shortening service | No | Yes | Unknown | |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-ddownload-ddownload-com",
+      "name": "ddownload",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://ddownload.com/api",
+      "description": "File Sharing and Storage",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "ddownload.com"
+      ],
+      "raw_source": {
+        "api": "[ddownload](https://ddownload.com/api)",
+        "description": "File Sharing and Storage",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ddownload](https://ddownload.com/api) | File Sharing and Storage | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-filestack-filestack-com",
+      "name": "Filestack",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://www.filestack.com",
+      "description": "Filestack File Uploader & File Upload API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "filestack.com"
+      ],
+      "raw_source": {
+        "api": "[Filestack](https://www.filestack.com)",
+        "description": "Filestack File Uploader & File Upload API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Filestack](https://www.filestack.com) | Filestack File Uploader & File Upload API | `apiKey` | Yes | Unknown |    |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-gyazo-gyazo-com",
+      "name": "Gyazo",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://gyazo.com/api/docs",
+      "description": "Save & Share screen captures instantly",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "gyazo.com"
+      ],
+      "raw_source": {
+        "api": "[Gyazo](https://gyazo.com/api/docs)",
+        "description": "Save & Share screen captures instantly",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Gyazo](https://gyazo.com/api/docs) | Save & Share screen captures instantly | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-pinata-docs-pinata-cloud",
+      "name": "Pinata",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://docs.pinata.cloud/",
+      "description": "IPFS Pinning Services API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "docs.pinata.cloud"
+      ],
+      "raw_source": {
+        "api": "[Pinata](https://docs.pinata.cloud/)",
+        "description": "IPFS Pinning Services API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Pinata](https://docs.pinata.cloud/) | IPFS Pinning Services API | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-quip-quip-com",
+      "name": "Quip",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://quip.com/dev/automation/documentation",
+      "description": "File Sharing and Storage for groups",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "yes",
+        "quip.com"
+      ],
+      "raw_source": {
+        "api": "[Quip](https://quip.com/dev/automation/documentation)",
+        "description": "File Sharing and Storage for groups",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Quip](https://quip.com/dev/automation/documentation) | File Sharing and Storage for groups | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-storj-docs-storj-io",
+      "name": "Storj",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://docs.storj.io/dcs/",
+      "description": "Decentralized Open-Source Cloud Storage",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "unknown",
+        "docs.storj.io"
+      ],
+      "raw_source": {
+        "api": "[Storj](https://docs.storj.io/dcs/)",
+        "description": "Decentralized Open-Source Cloud Storage",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Storj](https://docs.storj.io/dcs/) | Decentralized Open-Source Cloud Storage | `apiKey` | Yes | Unknown | |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-web3-storage-web3-storage",
+      "name": "Web3 Storage",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://web3.storage/",
+      "description": "File Sharing and Storage for Free with 1TB Space",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "api_key",
+        "yes",
+        "web3.storage"
+      ],
+      "raw_source": {
+        "api": "[Web3 Storage](https://web3.storage/)",
+        "description": "File Sharing and Storage for Free with 1TB Space",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Web3 Storage](https://web3.storage/) | File Sharing and Storage for Free with 1TB Space | `apiKey` | Yes | Yes | |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-box-developer-box-com",
+      "name": "Box",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://developer.box.com/",
+      "description": "File Sharing and Storage",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "oauth2",
+        "unknown",
+        "developer.box.com"
+      ],
+      "raw_source": {
+        "api": "[Box](https://developer.box.com/)",
+        "description": "File Sharing and Storage",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Box](https://developer.box.com/) | File Sharing and Storage | `OAuth` | Yes | Unknown | |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-dropbox-dropbox-com",
+      "name": "Dropbox",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://www.dropbox.com/developers",
+      "description": "File Sharing and Storage",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "oauth2",
+        "unknown",
+        "dropbox.com"
+      ],
+      "raw_source": {
+        "api": "[Dropbox](https://www.dropbox.com/developers)",
+        "description": "File Sharing and Storage",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dropbox](https://www.dropbox.com/developers) | File Sharing and Storage | `OAuth` | Yes | Unknown | |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-google-drive-developers-google-com",
+      "name": "Google Drive",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://developers.google.com/drive/",
+      "description": "File Sharing and Storage",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "oauth2",
+        "unknown",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Drive](https://developers.google.com/drive/)",
+        "description": "File Sharing and Storage",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Drive](https://developers.google.com/drive/) | File Sharing and Storage | `OAuth` | Yes | Unknown | |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "cloud-storage-file-sharing-onedrive-developer-microsoft-com",
+      "name": "OneDrive",
+      "category": "Cloud Storage & File Sharing",
+      "docs_url": "https://developer.microsoft.com/onedrive",
+      "description": "File Sharing and Storage",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "cloud-storage-file-sharing",
+        "oauth2",
+        "unknown",
+        "developer.microsoft.com"
+      ],
+      "raw_source": {
+        "api": "[OneDrive](https://developer.microsoft.com/onedrive)",
+        "description": "File Sharing and Storage",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OneDrive](https://developer.microsoft.com/onedrive) | File Sharing and Storage | `OAuth` | Yes | Unknown | |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

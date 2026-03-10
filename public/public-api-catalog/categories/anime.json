@@ -1,0 +1,599 @@
+{
+  "category": "Anime",
+  "slug": "anime",
+  "count": 19,
+  "entries": [
+    {
+      "slug": "anime-animenewsnetwork-animenewsnetwork-com",
+      "name": "AnimeNewsNetwork",
+      "category": "Anime",
+      "docs_url": "https://www.animenewsnetwork.com/encyclopedia/api.php",
+      "description": "Anime industry news",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [
+        "strategist"
+      ],
+      "tags": [
+        "anime",
+        "none",
+        "yes",
+        "strategist",
+        "animenewsnetwork.com"
+      ],
+      "raw_source": {
+        "api": "[AnimeNewsNetwork](https://www.animenewsnetwork.com/encyclopedia/api.php)",
+        "description": "Anime industry news",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [AnimeNewsNetwork](https://www.animenewsnetwork.com/encyclopedia/api.php) | Anime industry news | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-danbooru-anime-danbooru-donmai-us",
+      "name": "Danbooru Anime",
+      "category": "Anime",
+      "docs_url": "https://danbooru.donmai.us/wiki_pages/help:api",
+      "description": "Thousands of anime artist database to find good anime art",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "api_key",
+        "yes",
+        "danbooru.donmai.us"
+      ],
+      "raw_source": {
+        "api": "[Danbooru Anime](https://danbooru.donmai.us/wiki_pages/help:api)",
+        "description": "Thousands of anime artist database to find good anime art",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Danbooru Anime](https://danbooru.donmai.us/wiki_pages/help:api) | Thousands of anime artist database to find good anime art | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-mangadex-api-mangadex-org",
+      "name": "MangaDex",
+      "category": "Anime",
+      "docs_url": "https://api.mangadex.org/docs.html",
+      "description": "Manga Database and Community",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "api_key",
+        "unknown",
+        "api.mangadex.org"
+      ],
+      "raw_source": {
+        "api": "[MangaDex](https://api.mangadex.org/docs.html)",
+        "description": "Manga Database and Community",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MangaDex](https://api.mangadex.org/docs.html) | Manga Database and Community | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-mangapi-rapidapi-com",
+      "name": "Mangapi",
+      "category": "Anime",
+      "docs_url": "https://rapidapi.com/pierre.carcellermeunier/api/mangapi3/",
+      "description": "Translate manga pages from one language to another",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "api_key",
+        "unknown",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Mangapi](https://rapidapi.com/pierre.carcellermeunier/api/mangapi3/)",
+        "description": "Translate manga pages from one language to another",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mangapi](https://rapidapi.com/pierre.carcellermeunier/api/mangapi3/) | Translate manga pages from one language to another | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-myanimelist-myanimelist-net",
+      "name": "MyAnimeList",
+      "category": "Anime",
+      "docs_url": "https://myanimelist.net/clubs.php?cid=13727",
+      "description": "Anime and Manga Database and Community",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "oauth2",
+        "unknown",
+        "myanimelist.net"
+      ],
+      "raw_source": {
+        "api": "[MyAnimeList](https://myanimelist.net/clubs.php?cid=13727)",
+        "description": "Anime and Manga Database and Community",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [MyAnimeList](https://myanimelist.net/clubs.php?cid=13727) | Anime and Manga Database and Community | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-aniapi-aniapi-com",
+      "name": "AniAPI",
+      "category": "Anime",
+      "docs_url": "https://aniapi.com/docs/",
+      "description": "Anime discovery, streaming & syncing with trackers",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "oauth2",
+        "yes",
+        "aniapi.com"
+      ],
+      "raw_source": {
+        "api": "[AniAPI](https://aniapi.com/docs/)",
+        "description": "Anime discovery, streaming & syncing with trackers",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [AniAPI](https://aniapi.com/docs/) | Anime discovery, streaming & syncing with trackers | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-anidb-wiki-anidb-net",
+      "name": "AniDB",
+      "category": "Anime",
+      "docs_url": "https://wiki.anidb.net/HTTP_API_Definition",
+      "description": "Anime Database",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "api_key",
+        "unknown",
+        "wiki.anidb.net"
+      ],
+      "raw_source": {
+        "api": "[AniDB](https://wiki.anidb.net/HTTP_API_Definition)",
+        "description": "Anime Database",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [AniDB](https://wiki.anidb.net/HTTP_API_Definition) | Anime Database | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-anilist-github-com",
+      "name": "AniList",
+      "category": "Anime",
+      "docs_url": "https://github.com/AniList/ApiV2-GraphQL-Docs",
+      "description": "Anime discovery & tracking",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "oauth2",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[AniList](https://github.com/AniList/ApiV2-GraphQL-Docs)",
+        "description": "Anime discovery & tracking",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [AniList](https://github.com/AniList/ApiV2-GraphQL-Docs) | Anime discovery & tracking | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-animechan-github-com",
+      "name": "AnimeChan",
+      "category": "Anime",
+      "docs_url": "https://github.com/RocktimSaikia/anime-chan",
+      "description": "Anime quotes (over 10k+)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "no",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[AnimeChan](https://github.com/RocktimSaikia/anime-chan)",
+        "description": "Anime quotes (over 10k+)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [AnimeChan](https://github.com/RocktimSaikia/anime-chan) | Anime quotes (over 10k+) | No | Yes | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-animefacts-chandan-02-github-io",
+      "name": "AnimeFacts",
+      "category": "Anime",
+      "docs_url": "https://chandan-02.github.io/anime-facts-rest-api/",
+      "description": "Anime Facts (over 100+)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "yes",
+        "chandan-02.github.io"
+      ],
+      "raw_source": {
+        "api": "[AnimeFacts](https://chandan-02.github.io/anime-facts-rest-api/)",
+        "description": "Anime Facts (over 100+)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [AnimeFacts](https://chandan-02.github.io/anime-facts-rest-api/) | Anime Facts (over 100+) | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-catboy-catboys-com",
+      "name": "Catboy",
+      "category": "Anime",
+      "docs_url": "https://catboys.com/api",
+      "description": "Neko images, funny GIFs & more",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "yes",
+        "catboys.com"
+      ],
+      "raw_source": {
+        "api": "[Catboy](https://catboys.com/api)",
+        "description": "Neko images, funny GIFs & more",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Catboy](https://catboys.com/api) | Neko images, funny GIFs & more | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-jikan-jikan-moe",
+      "name": "Jikan",
+      "category": "Anime",
+      "docs_url": "https://jikan.moe",
+      "description": "Unofficial MyAnimeList API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "yes",
+        "jikan.moe"
+      ],
+      "raw_source": {
+        "api": "[Jikan](https://jikan.moe)",
+        "description": "Unofficial MyAnimeList API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Jikan](https://jikan.moe) | Unofficial MyAnimeList API | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-kitsu-kitsu-docs-apiary-io",
+      "name": "Kitsu",
+      "category": "Anime",
+      "docs_url": "https://kitsu.docs.apiary.io/",
+      "description": "Anime discovery platform",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "oauth2",
+        "yes",
+        "kitsu.docs.apiary.io"
+      ],
+      "raw_source": {
+        "api": "[Kitsu](https://kitsu.docs.apiary.io/)",
+        "description": "Anime discovery platform",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Kitsu](https://kitsu.docs.apiary.io/) | Anime discovery platform | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-nekosbest-docs-nekos-best",
+      "name": "NekosBest",
+      "category": "Anime",
+      "docs_url": "https://docs.nekos.best",
+      "description": "Neko Images & Anime roleplaying GIFs",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "yes",
+        "docs.nekos.best"
+      ],
+      "raw_source": {
+        "api": "[NekosBest](https://docs.nekos.best)",
+        "description": "Neko Images & Anime roleplaying GIFs",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [NekosBest](https://docs.nekos.best) | Neko Images & Anime roleplaying GIFs | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-shikimori-shikimori-one",
+      "name": "Shikimori",
+      "category": "Anime",
+      "docs_url": "https://shikimori.one/api/doc",
+      "description": "Anime discovery, tracking, forum, rates",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "oauth2",
+        "unknown",
+        "shikimori.one"
+      ],
+      "raw_source": {
+        "api": "[Shikimori](https://shikimori.one/api/doc)",
+        "description": "Anime discovery, tracking, forum, rates",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Shikimori](https://shikimori.one/api/doc) | Anime discovery, tracking, forum, rates | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-studio-ghibli-ghibliapi-herokuapp-com",
+      "name": "Studio Ghibli",
+      "category": "Anime",
+      "docs_url": "https://ghibliapi.herokuapp.com",
+      "description": "Resources from Studio Ghibli films",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "yes",
+        "ghibliapi.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Studio Ghibli](https://ghibliapi.herokuapp.com)",
+        "description": "Resources from Studio Ghibli films",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Studio Ghibli](https://ghibliapi.herokuapp.com) | Resources from Studio Ghibli films | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-trace-moe-soruly-github-io",
+      "name": "Trace Moe",
+      "category": "Anime",
+      "docs_url": "https://soruly.github.io/trace.moe-api/#/",
+      "description": "A useful tool to get the exact scene of an anime from a screenshot",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "no",
+        "soruly.github.io"
+      ],
+      "raw_source": {
+        "api": "[Trace Moe](https://soruly.github.io/trace.moe-api/#/)",
+        "description": "A useful tool to get the exact scene of an anime from a screenshot",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Trace Moe](https://soruly.github.io/trace.moe-api/#/) | A useful tool to get the exact scene of an anime from a screenshot | No | Yes | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-waifu-im-waifu-im",
+      "name": "Waifu.im",
+      "category": "Anime",
+      "docs_url": "https://waifu.im/docs",
+      "description": "Get waifu pictures from an archive of over 4000 images and multiple tags",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "yes",
+        "waifu.im"
+      ],
+      "raw_source": {
+        "api": "[Waifu.im](https://waifu.im/docs)",
+        "description": "Get waifu pictures from an archive of over 4000 images and multiple tags",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Waifu.im](https://waifu.im/docs) | Get waifu pictures from an archive of over 4000 images and multiple tags | No | Yes | Yes |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "anime-waifu-pics-waifu-pics",
+      "name": "Waifu.pics",
+      "category": "Anime",
+      "docs_url": "https://waifu.pics/docs",
+      "description": "Image sharing platform for anime images",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "anime",
+        "none",
+        "no",
+        "waifu.pics"
+      ],
+      "raw_source": {
+        "api": "[Waifu.pics](https://waifu.pics/docs)",
+        "description": "Image sharing platform for anime images",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Waifu.pics](https://waifu.pics/docs) | Image sharing platform for anime images | No | Yes | No |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

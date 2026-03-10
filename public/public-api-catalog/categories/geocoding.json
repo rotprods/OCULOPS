@@ -1,0 +1,3361 @@
+{
+  "category": "Geocoding",
+  "slug": "geocoding",
+  "count": 86,
+  "entries": [
+    {
+      "slug": "geocoding-administrative-divisons-db-github-com",
+      "name": "administrative-divisons-db",
+      "category": "Geocoding",
+      "docs_url": "https://github.com/kamikazechaser/administrative-divisions-db",
+      "description": "Get all administrative divisions of a country",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[administrative-divisons-db](https://github.com/kamikazechaser/administrative-divisions-db)",
+        "description": "Get all administrative divisions of a country",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [administrative-divisons-db](https://github.com/kamikazechaser/administrative-divisions-db) | Get all administrative divisions of a country | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-adresse-data-gouv-fr-adresse-data-gouv-fr",
+      "name": "adresse.data.gouv.fr",
+      "category": "Geocoding",
+      "docs_url": "https://adresse.data.gouv.fr",
+      "description": "Address database of France, geocoding and reverse",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "adresse.data.gouv.fr"
+      ],
+      "raw_source": {
+        "api": "[adresse.data.gouv.fr](https://adresse.data.gouv.fr)",
+        "description": "Address database of France, geocoding and reverse",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [adresse.data.gouv.fr](https://adresse.data.gouv.fr) | Address database of France, geocoding and reverse | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "adapter_ready",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-airtel-ip-sys-airtel-lv",
+      "name": "Airtel IP",
+      "category": "Geocoding",
+      "docs_url": "https://sys.airtel.lv/ip2country/1.1.1.1/?full=true",
+      "description": "IP Geolocation API. Collecting data from multiple sources",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "sys.airtel.lv"
+      ],
+      "raw_source": {
+        "api": "[Airtel IP](https://sys.airtel.lv/ip2country/1.1.1.1/?full=true)",
+        "description": "IP Geolocation API. Collecting data from multiple sources",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Airtel IP](https://sys.airtel.lv/ip2country/1.1.1.1/?full=true) | IP Geolocation API. Collecting data from multiple sources | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-bng2latlong-getthedata-com",
+      "name": "bng2latlong",
+      "category": "Geocoding",
+      "docs_url": "https://www.getthedata.com/bng2latlong",
+      "description": "Convert British OSGB36 easting and northing (British National Grid) to WGS84 latitude and longitude",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "getthedata.com"
+      ],
+      "raw_source": {
+        "api": "[bng2latlong](https://www.getthedata.com/bng2latlong)",
+        "description": "Convert British OSGB36 easting and northing (British National Grid) to WGS84 latitude and longitude",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [bng2latlong](https://www.getthedata.com/bng2latlong) | Convert British OSGB36 easting and northing (British National Grid) to WGS84 latitude and longitude | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-cartes-io-github-com",
+      "name": "Cartes.io",
+      "category": "Geocoding",
+      "docs_url": "https://github.com/M-Media-Group/Cartes.io/wiki/API",
+      "description": "Create maps and markers for anything",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Cartes.io](https://github.com/M-Media-Group/Cartes.io/wiki/API)",
+        "description": "Create maps and markers for anything",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Cartes.io](https://github.com/M-Media-Group/Cartes.io/wiki/API) | Create maps and markers for anything | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-citysdk-citysdk-eu",
+      "name": "CitySDK",
+      "category": "Geocoding",
+      "docs_url": "http://www.citysdk.eu/citysdk-toolkit/",
+      "description": "Open APIs for select European cities",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "citysdk.eu"
+      ],
+      "raw_source": {
+        "api": "[CitySDK](http://www.citysdk.eu/citysdk-toolkit/)",
+        "description": "Open APIs for select European cities",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [CitySDK](http://www.citysdk.eu/citysdk-toolkit/) | Open APIs for select European cities | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-country-country-is",
+      "name": "Country",
+      "category": "Geocoding",
+      "docs_url": "http://country.is/",
+      "description": "Get your visitor's country from their IP",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "country.is"
+      ],
+      "raw_source": {
+        "api": "[Country](http://country.is/)",
+        "description": "Get your visitor's country from their IP",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Country](http://country.is/) | Get your visitor's country from their IP | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ducks-unlimited-gis-ducks-org",
+      "name": "Ducks Unlimited",
+      "category": "Geocoding",
+      "docs_url": "https://gis.ducks.org/datasets/du-university-chapters/api",
+      "description": "API explorer that gives a query URL with a JSON response of locations and cities",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "no",
+        "prospector",
+        "atlas",
+        "hunter",
+        "gis.ducks.org"
+      ],
+      "raw_source": {
+        "api": "[Ducks Unlimited](https://gis.ducks.org/datasets/du-university-chapters/api)",
+        "description": "API explorer that gives a query URL with a JSON response of locations and cities",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Ducks Unlimited](https://gis.ducks.org/datasets/du-university-chapters/api) | API explorer that gives a query URL with a JSON response of locations and cities | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geoapi-api-gouv-fr",
+      "name": "GeoApi",
+      "category": "Geocoding",
+      "docs_url": "https://api.gouv.fr/api/geoapi.html",
+      "description": "French geographical data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "api.gouv.fr"
+      ],
+      "raw_source": {
+        "api": "[GeoApi](https://api.gouv.fr/api/geoapi.html)",
+        "description": "French geographical data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GeoApi](https://api.gouv.fr/api/geoapi.html) | French geographical data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geocode-xyz-geocode-xyz",
+      "name": "Geocode.xyz",
+      "category": "Geocoding",
+      "docs_url": "https://geocode.xyz/api",
+      "description": "Provides worldwide forward/reverse geocoding, batch geocoding and geoparsing",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geocode.xyz"
+      ],
+      "raw_source": {
+        "api": "[Geocode.xyz](https://geocode.xyz/api)",
+        "description": "Provides worldwide forward/reverse geocoding, batch geocoding and geoparsing",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Geocode.xyz](https://geocode.xyz/api) | Provides worldwide forward/reverse geocoding, batch geocoding and geoparsing | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geodata-gov-gr-geodata-gov-gr",
+      "name": "Geodata.gov.gr",
+      "category": "Geocoding",
+      "docs_url": "https://geodata.gov.gr/en/",
+      "description": "Open geospatial data and API service for Greece",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geodata.gov.gr"
+      ],
+      "raw_source": {
+        "api": "[Geodata.gov.gr](https://geodata.gov.gr/en/)",
+        "description": "Open geospatial data and API service for Greece",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Geodata.gov.gr](https://geodata.gov.gr/en/) | Open geospatial data and API service for Greece | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geographql-geographql-netlify-app",
+      "name": "GeographQL",
+      "category": "Geocoding",
+      "docs_url": "https://geographql.netlify.app",
+      "description": "A Country, State, and City GraphQL API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geographql.netlify.app"
+      ],
+      "raw_source": {
+        "api": "[GeographQL](https://geographql.netlify.app)",
+        "description": "A Country, State, and City GraphQL API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [GeographQL](https://geographql.netlify.app) | A Country, State, and City GraphQL API | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geojs-geojs-io",
+      "name": "GeoJS",
+      "category": "Geocoding",
+      "docs_url": "https://www.geojs.io/",
+      "description": "IP geolocation with ChatOps integration",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geojs.io"
+      ],
+      "raw_source": {
+        "api": "[GeoJS](https://www.geojs.io/)",
+        "description": "IP geolocation with ChatOps integration",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [GeoJS](https://www.geojs.io/) | IP geolocation with ChatOps integration | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geokeo-geokeo-com",
+      "name": "Geokeo",
+      "category": "Geocoding",
+      "docs_url": "https://geokeo.com",
+      "description": "Geokeo geocoding service- with 2500 free api requests daily",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geokeo.com"
+      ],
+      "raw_source": {
+        "api": "[Geokeo](https://geokeo.com)",
+        "description": "Geokeo geocoding service- with 2500 free api requests daily",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Geokeo](https://geokeo.com) | Geokeo geocoding service- with 2500 free api requests daily | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geoplugin-geoplugin-com",
+      "name": "geoPlugin",
+      "category": "Geocoding",
+      "docs_url": "https://www.geoplugin.com",
+      "description": "IP geolocation and currency conversion",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geoplugin.com"
+      ],
+      "raw_source": {
+        "api": "[geoPlugin](https://www.geoplugin.com)",
+        "description": "IP geolocation and currency conversion",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [geoPlugin](https://www.geoplugin.com) | IP geolocation and currency conversion | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-graph-countries-github-com",
+      "name": "Graph Countries",
+      "category": "Geocoding",
+      "docs_url": "https://github.com/lennertVanSever/graphcountries",
+      "description": "Country-related data like currencies, languages, flags, regions+subregions and bordering countries",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Graph Countries](https://github.com/lennertVanSever/graphcountries)",
+        "description": "Country-related data like currencies, languages, flags, regions+subregions and bordering countries",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Graph Countries](https://github.com/lennertVanSever/graphcountries) | Country-related data like currencies, languages, flags, regions+subregions and bordering countries | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-hellosalut-fourtonfish-com",
+      "name": "HelloSalut",
+      "category": "Geocoding",
+      "docs_url": "https://fourtonfish.com/project/hellosalut-api/",
+      "description": "Get hello translation following user language",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "fourtonfish.com"
+      ],
+      "raw_source": {
+        "api": "[HelloSalut](https://fourtonfish.com/project/hellosalut-api/)",
+        "description": "Get hello translation following user language",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [HelloSalut](https://fourtonfish.com/project/hellosalut-api/) | Get hello translation following user language | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-hong-kong-geodata-store-geodata-gov-hk",
+      "name": "Hong Kong GeoData Store",
+      "category": "Geocoding",
+      "docs_url": "https://geodata.gov.hk/gs/",
+      "description": "API for accessing geo-data of Hong Kong",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geodata.gov.hk"
+      ],
+      "raw_source": {
+        "api": "[Hong Kong GeoData Store](https://geodata.gov.hk/gs/)",
+        "description": "API for accessing geo-data of Hong Kong",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hong Kong GeoData Store](https://geodata.gov.hk/gs/) | API for accessing geo-data of Hong Kong | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ibge-servicodados-ibge-gov-br",
+      "name": "IBGE",
+      "category": "Geocoding",
+      "docs_url": "https://servicodados.ibge.gov.br/api/docs/",
+      "description": "Aggregate services of IBGE (Brazilian Institute of Geography and Statistics)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "servicodados.ibge.gov.br"
+      ],
+      "raw_source": {
+        "api": "[IBGE](https://servicodados.ibge.gov.br/api/docs/)",
+        "description": "Aggregate services of IBGE (Brazilian Institute of Geography and Statistics)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IBGE](https://servicodados.ibge.gov.br/api/docs/) | Aggregate services of IBGE (Brazilian Institute of Geography and Statistics) | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ip-2-country-ip2country-info",
+      "name": "IP 2 Country",
+      "category": "Geocoding",
+      "docs_url": "https://ip2country.info",
+      "description": "Map an IP to a country",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ip2country.info"
+      ],
+      "raw_source": {
+        "api": "[IP 2 Country](https://ip2country.info)",
+        "description": "Map an IP to a country",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IP 2 Country](https://ip2country.info) | Map an IP to a country | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ip-address-details-ipinfo-io",
+      "name": "IP Address Details",
+      "category": "Geocoding",
+      "docs_url": "https://ipinfo.io/",
+      "description": "Find geolocation with ip address",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipinfo.io"
+      ],
+      "raw_source": {
+        "api": "[IP Address Details](https://ipinfo.io/)",
+        "description": "Find geolocation with ip address",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IP Address Details](https://ipinfo.io/) | Find geolocation with ip address | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ip-vigilante-ipvigilante-com",
+      "name": "IP Vigilante",
+      "category": "Geocoding",
+      "docs_url": "https://www.ipvigilante.com/",
+      "description": "Free IP Geolocation API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipvigilante.com"
+      ],
+      "raw_source": {
+        "api": "[IP Vigilante](https://www.ipvigilante.com/)",
+        "description": "Free IP Geolocation API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IP Vigilante](https://www.ipvigilante.com/) | Free IP Geolocation API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ipapi-co-ipapi-co",
+      "name": "ipapi.co",
+      "category": "Geocoding",
+      "docs_url": "https://ipapi.co/api/#introduction",
+      "description": "Find IP address location information",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipapi.co"
+      ],
+      "raw_source": {
+        "api": "[ipapi.co](https://ipapi.co/api/#introduction)",
+        "description": "Find IP address location information",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ipapi.co](https://ipapi.co/api/#introduction) | Find IP address location information | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ipgeo-api-techniknews-net",
+      "name": "IPGEO",
+      "category": "Geocoding",
+      "docs_url": "https://api.techniknews.net/ipgeo/",
+      "description": "Unlimited free IP Address API with useful information",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "api.techniknews.net"
+      ],
+      "raw_source": {
+        "api": "[IPGEO](https://api.techniknews.net/ipgeo/)",
+        "description": "Unlimited free IP Address API with useful information",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IPGEO](https://api.techniknews.net/ipgeo/) | Unlimited free IP Address API with useful information | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-mexico-github-com",
+      "name": "Mexico",
+      "category": "Geocoding",
+      "docs_url": "https://github.com/IcaliaLabs/sepomex",
+      "description": "Mexico RESTful zip codes API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Mexico](https://github.com/IcaliaLabs/sepomex)",
+        "description": "Mexico RESTful zip codes API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mexico](https://github.com/IcaliaLabs/sepomex) | Mexico RESTful zip codes API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-nominatim-nominatim-org",
+      "name": "Nominatim",
+      "category": "Geocoding",
+      "docs_url": "https://nominatim.org/release-docs/latest/api/Overview/",
+      "description": "Provides worldwide forward / reverse geocoding",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "nominatim.org"
+      ],
+      "raw_source": {
+        "api": "[Nominatim](https://nominatim.org/release-docs/latest/api/Overview/)",
+        "description": "Provides worldwide forward / reverse geocoding",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Nominatim](https://nominatim.org/release-docs/latest/api/Overview/) | Provides worldwide forward / reverse geocoding | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-onwater-onwater-io",
+      "name": "OnWater",
+      "category": "Geocoding",
+      "docs_url": "https://onwater.io/",
+      "description": "Determine if a lat/lon is on water or land",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "onwater.io"
+      ],
+      "raw_source": {
+        "api": "[OnWater](https://onwater.io/)",
+        "description": "Determine if a lat/lon is on water or land",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OnWater](https://onwater.io/) | Determine if a lat/lon is on water or land | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-open-topo-data-opentopodata-org",
+      "name": "Open Topo Data",
+      "category": "Geocoding",
+      "docs_url": "https://www.opentopodata.org",
+      "description": "Elevation and ocean depth for a latitude and longitude",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "no",
+        "prospector",
+        "atlas",
+        "hunter",
+        "opentopodata.org"
+      ],
+      "raw_source": {
+        "api": "[Open Topo Data](https://www.opentopodata.org)",
+        "description": "Elevation and ocean depth for a latitude and longitude",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Open Topo Data](https://www.opentopodata.org) | Elevation and ocean depth for a latitude and longitude | No | Yes | No |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-pinball-map-pinballmap-com",
+      "name": "Pinball Map",
+      "category": "Geocoding",
+      "docs_url": "https://pinballmap.com/api/v1/docs",
+      "description": "A crowdsourced map of public pinball machines",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "pinballmap.com"
+      ],
+      "raw_source": {
+        "api": "[Pinball Map](https://pinballmap.com/api/v1/docs)",
+        "description": "A crowdsourced map of public pinball machines",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Pinball Map](https://pinballmap.com/api/v1/docs) | A crowdsourced map of public pinball machines | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-postali-postali-app",
+      "name": "Postali",
+      "category": "Geocoding",
+      "docs_url": "https://postali.app/api",
+      "description": "Mexico Zip Codes API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "postali.app"
+      ],
+      "raw_source": {
+        "api": "[Postali](https://postali.app/api)",
+        "description": "Mexico Zip Codes API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Postali](https://postali.app/api) | Mexico Zip Codes API | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-postcodes-io-postcodes-io",
+      "name": "Postcodes.io",
+      "category": "Geocoding",
+      "docs_url": "https://postcodes.io",
+      "description": "Postcode lookup & Geolocation for the UK",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "postcodes.io"
+      ],
+      "raw_source": {
+        "api": "[Postcodes.io](https://postcodes.io)",
+        "description": "Postcode lookup & Geolocation for the UK",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Postcodes.io](https://postcodes.io) | Postcode lookup & Geolocation for the UK | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-queimadas-inpe-queimadas-dgi-inpe-br",
+      "name": "Queimadas INPE",
+      "category": "Geocoding",
+      "docs_url": "https://queimadas.dgi.inpe.br/queimadas/dados-abertos/",
+      "description": "Access to heat focus data (probable wildfire)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "queimadas.dgi.inpe.br"
+      ],
+      "raw_source": {
+        "api": "[Queimadas INPE](https://queimadas.dgi.inpe.br/queimadas/dados-abertos/)",
+        "description": "Access to heat focus data (probable wildfire)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Queimadas INPE](https://queimadas.dgi.inpe.br/queimadas/dados-abertos/) | Access to heat focus data (probable wildfire) | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-rest-countries-restcountries-com",
+      "name": "REST Countries",
+      "category": "Geocoding",
+      "docs_url": "https://restcountries.com",
+      "description": "Get information about countries via a RESTful API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "restcountries.com"
+      ],
+      "raw_source": {
+        "api": "[REST Countries](https://restcountries.com)",
+        "description": "Get information about countries via a RESTful API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [REST Countries](https://restcountries.com) | Get information about countries via a RESTful API | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-rwanda-locations-rapidapi-com",
+      "name": "Rwanda Locations",
+      "category": "Geocoding",
+      "docs_url": "https://rapidapi.com/victorkarangwa4/api/rwanda",
+      "description": "Rwanda Provences, Districts, Cities, Capital City, Sector, cells, villages and streets",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Rwanda Locations](https://rapidapi.com/victorkarangwa4/api/rwanda)",
+        "description": "Rwanda Provences, Districts, Cities, Capital City, Sector, cells, villages and streets",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Rwanda Locations](https://rapidapi.com/victorkarangwa4/api/rwanda) | Rwanda Provences, Districts, Cities, Capital City, Sector, cells, villages and streets | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-slf-github-com",
+      "name": "SLF",
+      "category": "Geocoding",
+      "docs_url": "https://github.com/slftool/slftool.github.io/blob/master/API.md",
+      "description": "German city, country, river, database",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[SLF](https://github.com/slftool/slftool.github.io/blob/master/API.md)",
+        "description": "German city, country, river, database",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [SLF](https://github.com/slftool/slftool.github.io/blob/master/API.md) | German city, country, river, database | No | Yes | Yes |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-viacep-viacep-com-br",
+      "name": "ViaCep",
+      "category": "Geocoding",
+      "docs_url": "https://viacep.com.br",
+      "description": "Brazil RESTful zip codes API",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "viacep.com.br"
+      ],
+      "raw_source": {
+        "api": "[ViaCep](https://viacep.com.br)",
+        "description": "Brazil RESTful zip codes API",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ViaCep](https://viacep.com.br) | Brazil RESTful zip codes API | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ziptastic-ziptasticapi-com",
+      "name": "Ziptastic",
+      "category": "Geocoding",
+      "docs_url": "https://ziptasticapi.com/",
+      "description": "Get the country, state, and city of any US zip-code",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ziptasticapi.com"
+      ],
+      "raw_source": {
+        "api": "[Ziptastic](https://ziptasticapi.com/)",
+        "description": "Get the country, state, and city of any US zip-code",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Ziptastic](https://ziptasticapi.com/) | Get the country, state, and city of any US zip-code | No | Yes | Unknown |"
+      },
+      "business_fit_score": 65,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-actinia-grass-gis-actinia-mundialis-de",
+      "name": "Actinia Grass GIS",
+      "category": "Geocoding",
+      "docs_url": "https://actinia.mundialis.de/api_docs/",
+      "description": "Actinia is an open source REST API for geographical data that uses GRASS GIS",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "actinia.mundialis.de"
+      ],
+      "raw_source": {
+        "api": "[Actinia Grass GIS](https://actinia.mundialis.de/api_docs/)",
+        "description": "Actinia is an open source REST API for geographical data that uses GRASS GIS",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Actinia Grass GIS](https://actinia.mundialis.de/api_docs/) | Actinia is an open source REST API for geographical data that uses GRASS GIS | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-apiip-apiip-net",
+      "name": "Apiip",
+      "category": "Geocoding",
+      "docs_url": "https://apiip.net/",
+      "description": "Get location information by IP address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "apiip.net"
+      ],
+      "raw_source": {
+        "api": "[Apiip](https://apiip.net/)",
+        "description": "Get location information by IP address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Apiip](https://apiip.net/) | Get location information by IP address | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-apilayer-ipstack-ipstack-com",
+      "name": "apilayer ipstack",
+      "category": "Geocoding",
+      "docs_url": "https://ipstack.com/",
+      "description": "Locate and identify website visitors by IP address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipstack.com"
+      ],
+      "raw_source": {
+        "api": "[apilayer ipstack](https://ipstack.com/)",
+        "description": "Locate and identify website visitors by IP address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [apilayer ipstack](https://ipstack.com/) | Locate and identify website visitors by IP address | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-bigdatacloud-bigdatacloud-com",
+      "name": "BigDataCloud",
+      "category": "Geocoding",
+      "docs_url": "https://www.bigdatacloud.com/ip-geolocation-apis",
+      "description": "Provides fast and accurate IP geolocation APIs along with security checks and confidence area",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "bigdatacloud.com"
+      ],
+      "raw_source": {
+        "api": "[BigDataCloud](https://www.bigdatacloud.com/ip-geolocation-apis)",
+        "description": "Provides fast and accurate IP geolocation APIs along with security checks and confidence area",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [BigDataCloud](https://www.bigdatacloud.com/ip-geolocation-apis) | Provides fast and accurate IP geolocation APIs along with security checks and confidence area | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-bing-maps-microsoft-com",
+      "name": "Bing Maps",
+      "category": "Geocoding",
+      "docs_url": "https://www.microsoft.com/maps/",
+      "description": "Create/customize digital maps based on Bing Maps data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "microsoft.com"
+      ],
+      "raw_source": {
+        "api": "[Bing Maps](https://www.microsoft.com/maps/)",
+        "description": "Create/customize digital maps based on Bing Maps data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Bing Maps](https://www.microsoft.com/maps/) | Create/customize digital maps based on Bing Maps data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-countrystatecity-countrystatecity-in",
+      "name": "CountryStateCity",
+      "category": "Geocoding",
+      "docs_url": "https://countrystatecity.in/",
+      "description": "World countries, states, regions, provinces, cities & towns in JSON, SQL, XML, YAML, & CSV format",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "countrystatecity.in"
+      ],
+      "raw_source": {
+        "api": "[CountryStateCity](https://countrystatecity.in/)",
+        "description": "World countries, states, regions, provinces, cities & towns in JSON, SQL, XML, YAML, & CSV format",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [CountryStateCity](https://countrystatecity.in/) | World countries, states, regions, provinces, cities & towns in JSON, SQL, XML, YAML, & CSV format | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geoapify-geoapify-com",
+      "name": "Geoapify",
+      "category": "Geocoding",
+      "docs_url": "https://www.geoapify.com/api/geocoding-api/",
+      "description": "Forward and reverse geocoding, address autocomplete",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geoapify.com"
+      ],
+      "raw_source": {
+        "api": "[Geoapify](https://www.geoapify.com/api/geocoding-api/)",
+        "description": "Forward and reverse geocoding, address autocomplete",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Geoapify](https://www.geoapify.com/api/geocoding-api/) | Forward and reverse geocoding, address autocomplete | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geocod-io-geocod-io",
+      "name": "Geocod.io",
+      "category": "Geocoding",
+      "docs_url": "https://www.geocod.io/",
+      "description": "Address geocoding / reverse geocoding in bulk",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geocod.io"
+      ],
+      "raw_source": {
+        "api": "[Geocod.io](https://www.geocod.io/)",
+        "description": "Address geocoding / reverse geocoding in bulk",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Geocod.io](https://www.geocod.io/) | Address geocoding / reverse geocoding in bulk | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geocodify-com-geocodify-com",
+      "name": "Geocodify.com",
+      "category": "Geocoding",
+      "docs_url": "https://geocodify.com/",
+      "description": "Worldwide geocoding, geoparsing and autocomplete for addresses",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geocodify.com"
+      ],
+      "raw_source": {
+        "api": "[Geocodify.com](https://geocodify.com/)",
+        "description": "Worldwide geocoding, geoparsing and autocomplete for addresses",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Geocodify.com](https://geocodify.com/) | Worldwide geocoding, geoparsing and autocomplete for addresses | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geodatasource-geodatasource-com",
+      "name": "GeoDataSource",
+      "category": "Geocoding",
+      "docs_url": "https://www.geodatasource.com/web-service",
+      "description": "Geocoding of city name by using latitude and longitude coordinates",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geodatasource.com"
+      ],
+      "raw_source": {
+        "api": "[GeoDataSource](https://www.geodatasource.com/web-service)",
+        "description": "Geocoding of city name by using latitude and longitude coordinates",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GeoDataSource](https://www.geodatasource.com/web-service) | Geocoding of city name by using latitude and longitude coordinates | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geodb-cities-geodb-cities-api-wirefreethought-com",
+      "name": "GeoDB Cities",
+      "category": "Geocoding",
+      "docs_url": "http://geodb-cities-api.wirefreethought.com/",
+      "description": "Get global city, region, and country data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geodb-cities-api.wirefreethought.com"
+      ],
+      "raw_source": {
+        "api": "[GeoDB Cities](http://geodb-cities-api.wirefreethought.com/)",
+        "description": "Get global city, region, and country data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [GeoDB Cities](http://geodb-cities-api.wirefreethought.com/) | Get global city, region, and country data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-google-earth-engine-developers-google-com",
+      "name": "Google Earth Engine",
+      "category": "Geocoding",
+      "docs_url": "https://developers.google.com/earth-engine/",
+      "description": "A cloud-based platform for planetary-scale environmental data analysis",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Earth Engine](https://developers.google.com/earth-engine/)",
+        "description": "A cloud-based platform for planetary-scale environmental data analysis",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Earth Engine](https://developers.google.com/earth-engine/) | A cloud-based platform for planetary-scale environmental data analysis | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-google-maps-developers-google-com",
+      "name": "Google Maps",
+      "category": "Geocoding",
+      "docs_url": "https://developers.google.com/maps/",
+      "description": "Create/customize digital maps based on Google Maps data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "developers.google.com"
+      ],
+      "raw_source": {
+        "api": "[Google Maps](https://developers.google.com/maps/)",
+        "description": "Create/customize digital maps based on Google Maps data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Google Maps](https://developers.google.com/maps/) | Create/customize digital maps based on Google Maps data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-here-maps-developer-here-com",
+      "name": "HERE Maps",
+      "category": "Geocoding",
+      "docs_url": "https://developer.here.com",
+      "description": "Create/customize digital maps based on HERE Maps data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "developer.here.com"
+      ],
+      "raw_source": {
+        "api": "[HERE Maps](https://developer.here.com)",
+        "description": "Create/customize digital maps based on HERE Maps data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [HERE Maps](https://developer.here.com) | Create/customize digital maps based on HERE Maps data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-hirak-ip-to-country-iplocation-hirak-site",
+      "name": "Hirak IP to Country",
+      "category": "Geocoding",
+      "docs_url": "https://iplocation.hirak.site/",
+      "description": "Ip to location with country code, currency code & currency name, fast response, unlimited requests",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "iplocation.hirak.site"
+      ],
+      "raw_source": {
+        "api": "[Hirak IP to Country](https://iplocation.hirak.site/)",
+        "description": "Ip to location with country code, currency code & currency name, fast response, unlimited requests",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Hirak IP to Country](https://iplocation.hirak.site/) | Ip to location with country code, currency code & currency name, fast response, unlimited requests | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ip-geolocation-abstractapi-com",
+      "name": "IP Geolocation",
+      "category": "Geocoding",
+      "docs_url": "https://www.abstractapi.com/ip-geolocation-api",
+      "description": "Geolocate website visitors from their IPs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "abstractapi.com"
+      ],
+      "raw_source": {
+        "api": "[IP Geolocation](https://www.abstractapi.com/ip-geolocation-api)",
+        "description": "Geolocate website visitors from their IPs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [IP Geolocation](https://www.abstractapi.com/ip-geolocation-api) | Geolocate website visitors from their IPs | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ip2location-ip2location-com",
+      "name": "IP2Location",
+      "category": "Geocoding",
+      "docs_url": "https://www.ip2location.com/web-service/ip2location",
+      "description": "IP geolocation web service to get more than 55 parameters",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ip2location.com"
+      ],
+      "raw_source": {
+        "api": "[IP2Location](https://www.ip2location.com/web-service/ip2location)",
+        "description": "IP geolocation web service to get more than 55 parameters",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IP2Location](https://www.ip2location.com/web-service/ip2location) | IP geolocation web service to get more than 55 parameters | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ip2proxy-ip2location-com",
+      "name": "IP2Proxy",
+      "category": "Geocoding",
+      "docs_url": "https://www.ip2location.com/web-service/ip2proxy",
+      "description": "Detect proxy and VPN using IP address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ip2location.com"
+      ],
+      "raw_source": {
+        "api": "[IP2Proxy](https://www.ip2location.com/web-service/ip2proxy)",
+        "description": "Detect proxy and VPN using IP address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IP2Proxy](https://www.ip2location.com/web-service/ip2proxy) | Detect proxy and VPN using IP address | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ipapi-com-ipapi-com",
+      "name": "ipapi.com",
+      "category": "Geocoding",
+      "docs_url": "https://ipapi.com/",
+      "description": "Real-time Geolocation & Reverse IP Lookup REST API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipapi.com"
+      ],
+      "raw_source": {
+        "api": "[ipapi.com](https://ipapi.com/)",
+        "description": "Real-time Geolocation & Reverse IP Lookup REST API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ipapi.com](https://ipapi.com/) | Real-time Geolocation & Reverse IP Lookup REST API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ipgeolocation-ipgeolocation-io",
+      "name": "ipgeolocation",
+      "category": "Geocoding",
+      "docs_url": "https://ipgeolocation.io/",
+      "description": "IP Geolocation AP with free plan 30k requests per month",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipgeolocation.io"
+      ],
+      "raw_source": {
+        "api": "[ipgeolocation](https://ipgeolocation.io/)",
+        "description": "IP Geolocation AP with free plan 30k requests per month",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [ipgeolocation](https://ipgeolocation.io/) | IP Geolocation AP with free plan 30k requests per month | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ipinfodb-ipinfodb-com",
+      "name": "IPInfoDB",
+      "category": "Geocoding",
+      "docs_url": "https://www.ipinfodb.com/api",
+      "description": "Free Geolocation tools and APIs for country, region, city and time zone lookup by IP address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipinfodb.com"
+      ],
+      "raw_source": {
+        "api": "[IPInfoDB](https://www.ipinfodb.com/api)",
+        "description": "Free Geolocation tools and APIs for country, region, city and time zone lookup by IP address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [IPInfoDB](https://www.ipinfodb.com/api) | Free Geolocation tools and APIs for country, region, city and time zone lookup by IP address | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ipstack-ipstack-com",
+      "name": "ipstack",
+      "category": "Geocoding",
+      "docs_url": "https://ipstack.com/",
+      "description": "Locate and identify website visitors by IP address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ipstack.com"
+      ],
+      "raw_source": {
+        "api": "[ipstack](https://ipstack.com/)",
+        "description": "Locate and identify website visitors by IP address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ipstack](https://ipstack.com/) | Locate and identify website visitors by IP address | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-kakao-maps-apis-map-kakao-com",
+      "name": "Kakao Maps",
+      "category": "Geocoding",
+      "docs_url": "https://apis.map.kakao.com",
+      "description": "Kakao Maps provide multiple APIs for Korean maps",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "apis.map.kakao.com"
+      ],
+      "raw_source": {
+        "api": "[Kakao Maps](https://apis.map.kakao.com)",
+        "description": "Kakao Maps provide multiple APIs for Korean maps",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Kakao Maps](https://apis.map.kakao.com) | Kakao Maps provide multiple APIs for Korean maps | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-keycdn-ip-location-finder-tools-keycdn-com",
+      "name": "keycdn IP Location Finder",
+      "category": "Geocoding",
+      "docs_url": "https://tools.keycdn.com/geo",
+      "description": "Get the IP geolocation data through the simple REST API. All the responses are JSON encoded",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "tools.keycdn.com"
+      ],
+      "raw_source": {
+        "api": "[keycdn IP Location Finder](https://tools.keycdn.com/geo)",
+        "description": "Get the IP geolocation data through the simple REST API. All the responses are JSON encoded",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [keycdn IP Location Finder](https://tools.keycdn.com/geo) | Get the IP geolocation data through the simple REST API. All the responses are JSON encoded | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-locationiq-locationiq-org",
+      "name": "LocationIQ",
+      "category": "Geocoding",
+      "docs_url": "https://locationiq.org/docs/",
+      "description": "Provides forward/reverse geocoding and batch geocoding",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "locationiq.org"
+      ],
+      "raw_source": {
+        "api": "[LocationIQ](https://locationiq.org/docs/)",
+        "description": "Provides forward/reverse geocoding and batch geocoding",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [LocationIQ](https://locationiq.org/docs/) | Provides forward/reverse geocoding and batch geocoding | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-longdo-map-map-longdo-com",
+      "name": "Longdo Map",
+      "category": "Geocoding",
+      "docs_url": "https://map.longdo.com/docs/",
+      "description": "Interactive map with detailed places and information portal in Thailand",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "map.longdo.com"
+      ],
+      "raw_source": {
+        "api": "[Longdo Map](https://map.longdo.com/docs/)",
+        "description": "Interactive map with detailed places and information portal in Thailand",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Longdo Map](https://map.longdo.com/docs/) | Interactive map with detailed places and information portal in Thailand | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-mapbox-docs-mapbox-com",
+      "name": "Mapbox",
+      "category": "Geocoding",
+      "docs_url": "https://docs.mapbox.com/",
+      "description": "Create/customize beautiful digital maps",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "docs.mapbox.com"
+      ],
+      "raw_source": {
+        "api": "[Mapbox](https://docs.mapbox.com/)",
+        "description": "Create/customize beautiful digital maps",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mapbox](https://docs.mapbox.com/) | Create/customize beautiful digital maps | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-mapquest-developer-mapquest-com",
+      "name": "MapQuest",
+      "category": "Geocoding",
+      "docs_url": "https://developer.mapquest.com/",
+      "description": "To access tools and resources to map the world",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "no",
+        "prospector",
+        "atlas",
+        "hunter",
+        "developer.mapquest.com"
+      ],
+      "raw_source": {
+        "api": "[MapQuest](https://developer.mapquest.com/)",
+        "description": "To access tools and resources to map the world",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [MapQuest](https://developer.mapquest.com/) | To access tools and resources to map the world | `apiKey` | Yes | No | Yes"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-one-map-singapore-onemap-gov-sg",
+      "name": "One Map, Singapore",
+      "category": "Geocoding",
+      "docs_url": "https://www.onemap.gov.sg/docs/",
+      "description": "Singapore Land Authority REST API services for Singapore addresses",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "onemap.gov.sg"
+      ],
+      "raw_source": {
+        "api": "[One Map, Singapore](https://www.onemap.gov.sg/docs/)",
+        "description": "Singapore Land Authority REST API services for Singapore addresses",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [One Map, Singapore](https://www.onemap.gov.sg/docs/) | Singapore Land Authority REST API services for Singapore addresses | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-opencage-opencagedata-com",
+      "name": "OpenCage",
+      "category": "Geocoding",
+      "docs_url": "https://opencagedata.com",
+      "description": "Forward and reverse geocoding using open data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "opencagedata.com"
+      ],
+      "raw_source": {
+        "api": "[OpenCage](https://opencagedata.com)",
+        "description": "Forward and reverse geocoding using open data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [OpenCage](https://opencagedata.com) | Forward and reverse geocoding using open data | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-openrouteservice-org-openrouteservice-org",
+      "name": "openrouteservice.org",
+      "category": "Geocoding",
+      "docs_url": "https://openrouteservice.org/",
+      "description": "Directions, POIs, isochrones, geocoding (+reverse), elevation, and more",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "openrouteservice.org"
+      ],
+      "raw_source": {
+        "api": "[openrouteservice.org](https://openrouteservice.org/)",
+        "description": "Directions, POIs, isochrones, geocoding (+reverse), elevation, and more",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [openrouteservice.org](https://openrouteservice.org/) | Directions, POIs, isochrones, geocoding (+reverse), elevation, and more | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-positionstack-positionstack-com",
+      "name": "positionstack",
+      "category": "Geocoding",
+      "docs_url": "https://positionstack.com/",
+      "description": "Forward & Reverse Batch Geocoding REST API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "positionstack.com"
+      ],
+      "raw_source": {
+        "api": "[positionstack](https://positionstack.com/)",
+        "description": "Forward & Reverse Batch Geocoding REST API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [positionstack](https://positionstack.com/) | Forward & Reverse Batch Geocoding REST API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-roadgoat-cities-roadgoat-com",
+      "name": "RoadGoat Cities",
+      "category": "Geocoding",
+      "docs_url": "https://www.roadgoat.com/business/cities-api",
+      "description": "Cities content & photos API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "no",
+        "prospector",
+        "atlas",
+        "hunter",
+        "roadgoat.com"
+      ],
+      "raw_source": {
+        "api": "[RoadGoat Cities](https://www.roadgoat.com/business/cities-api)",
+        "description": "Cities content & photos API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [RoadGoat Cities](https://www.roadgoat.com/business/cities-api) | Cities content & photos API | `apiKey` | Yes | No |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-spotsense-spotsense-io",
+      "name": "SpotSense",
+      "category": "Geocoding",
+      "docs_url": "https://spotsense.io/",
+      "description": "Add location based interactions to your mobile app",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "spotsense.io"
+      ],
+      "raw_source": {
+        "api": "[SpotSense](https://spotsense.io/)",
+        "description": "Add location based interactions to your mobile app",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [SpotSense](https://spotsense.io/) | Add location based interactions to your mobile app | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-telize-rapidapi-com",
+      "name": "Telize",
+      "category": "Geocoding",
+      "docs_url": "https://rapidapi.com/fcambus/api/telize/",
+      "description": "Telize offers location information from any IP address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Telize](https://rapidapi.com/fcambus/api/telize/)",
+        "description": "Telize offers location information from any IP address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Telize](https://rapidapi.com/fcambus/api/telize/) | Telize offers location information from any IP address | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-tomtom-developer-tomtom-com",
+      "name": "TomTom",
+      "category": "Geocoding",
+      "docs_url": "https://developer.tomtom.com/",
+      "description": "Maps, Directions, Places and Traffic APIs",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "developer.tomtom.com"
+      ],
+      "raw_source": {
+        "api": "[TomTom](https://developer.tomtom.com/)",
+        "description": "Maps, Directions, Places and Traffic APIs",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [TomTom](https://developer.tomtom.com/) | Maps, Directions, Places and Traffic APIs | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-uebermaps-uebermaps-com",
+      "name": "Uebermaps",
+      "category": "Geocoding",
+      "docs_url": "https://uebermaps.com/api/v2",
+      "description": "Discover and share maps with friends",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "uebermaps.com"
+      ],
+      "raw_source": {
+        "api": "[Uebermaps](https://uebermaps.com/api/v2)",
+        "description": "Discover and share maps with friends",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Uebermaps](https://uebermaps.com/api/v2) | Discover and share maps with friends | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-us-zipcode-smarty-com",
+      "name": "US ZipCode",
+      "category": "Geocoding",
+      "docs_url": "https://www.smarty.com/docs/cloud/us-zipcode-api",
+      "description": "Validate and append data for any US ZipCode",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "yes",
+        "prospector",
+        "atlas",
+        "hunter",
+        "smarty.com"
+      ],
+      "raw_source": {
+        "api": "[US ZipCode](https://www.smarty.com/docs/cloud/us-zipcode-api)",
+        "description": "Validate and append data for any US ZipCode",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [US ZipCode](https://www.smarty.com/docs/cloud/us-zipcode-api) | Validate and append data for any US ZipCode | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-utah-agrc-api-mapserv-utah-gov",
+      "name": "Utah AGRC",
+      "category": "Geocoding",
+      "docs_url": "https://api.mapserv.utah.gov",
+      "description": "Utah Web API for geocoding Utah addresses",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "api.mapserv.utah.gov"
+      ],
+      "raw_source": {
+        "api": "[Utah AGRC](https://api.mapserv.utah.gov)",
+        "description": "Utah Web API for geocoding Utah addresses",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Utah AGRC](https://api.mapserv.utah.gov) | Utah Web API for geocoding Utah addresses | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-what3words-what3words-com",
+      "name": "What3Words",
+      "category": "Geocoding",
+      "docs_url": "https://what3words.com",
+      "description": "Three words as rememberable and unique coordinates worldwide",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "what3words.com"
+      ],
+      "raw_source": {
+        "api": "[What3Words](https://what3words.com)",
+        "description": "Three words as rememberable and unique coordinates worldwide",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [What3Words](https://what3words.com) | Three words as rememberable and unique coordinates worldwide | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-yandex-maps-geocoder-yandex-com",
+      "name": "Yandex.Maps Geocoder",
+      "category": "Geocoding",
+      "docs_url": "https://yandex.com/dev/maps/geocoder",
+      "description": "Use geocoding to get an object's coordinates from its address",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "yandex.com"
+      ],
+      "raw_source": {
+        "api": "[Yandex.Maps Geocoder](https://yandex.com/dev/maps/geocoder)",
+        "description": "Use geocoding to get an object's coordinates from its address",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Yandex.Maps Geocoder](https://yandex.com/dev/maps/geocoder) | Use geocoding to get an object's coordinates from its address | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-zipcodeapi-zipcodeapi-com",
+      "name": "ZipCodeAPI",
+      "category": "Geocoding",
+      "docs_url": "https://www.zipcodeapi.com",
+      "description": "US zip code distance, radius and location API",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "zipcodeapi.com"
+      ],
+      "raw_source": {
+        "api": "[ZipCodeAPI](https://www.zipcodeapi.com)",
+        "description": "US zip code distance, radius and location API",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [ZipCodeAPI](https://www.zipcodeapi.com) | US zip code distance, radius and location API | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 60,
+      "activation_tier": "candidate",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-cep-la-cep-la",
+      "name": "Cep.la",
+      "category": "Geocoding",
+      "docs_url": "http://cep.la/",
+      "description": "Brazil RESTful API to find information about streets, zip codes, neighborhoods, cities and states",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "cep.la"
+      ],
+      "raw_source": {
+        "api": "[Cep.la](http://cep.la/)",
+        "description": "Brazil RESTful API to find information about streets, zip codes, neighborhoods, cities and states",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Cep.la](http://cep.la/) | Brazil RESTful API to find information about streets, zip codes, neighborhoods, cities and states | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-geonames-geonames-org",
+      "name": "GeoNames",
+      "category": "Geocoding",
+      "docs_url": "http://www.geonames.org/export/web-services.html",
+      "description": "Place names and other geographical data",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "geonames.org"
+      ],
+      "raw_source": {
+        "api": "[GeoNames](http://www.geonames.org/export/web-services.html)",
+        "description": "Place names and other geographical data",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [GeoNames](http://www.geonames.org/export/web-services.html) | Place names and other geographical data | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-ip-api-ip-api-com",
+      "name": "ip-api",
+      "category": "Geocoding",
+      "docs_url": "https://ip-api.com/docs",
+      "description": "Find location with IP address or domain",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "ip-api.com"
+      ],
+      "raw_source": {
+        "api": "[ip-api](https://ip-api.com/docs)",
+        "description": "Find location with IP address or domain",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [ip-api](https://ip-api.com/docs) | Find location with IP address or domain | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-postcodedata-nl-api-postcodedata-nl",
+      "name": "PostcodeData.nl",
+      "category": "Geocoding",
+      "docs_url": "http://api.postcodedata.nl/v1/postcode/?postcode=1211EP&streetnumber=60&ref=domeinnaam.nl&type=json",
+      "description": "Provide geolocation data based on postcode for Dutch addresses",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "api.postcodedata.nl"
+      ],
+      "raw_source": {
+        "api": "[PostcodeData.nl](http://api.postcodedata.nl/v1/postcode/?postcode=1211EP&streetnumber=60&ref=domeinnaam.nl&type=json)",
+        "description": "Provide geolocation data based on postcode for Dutch addresses",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [PostcodeData.nl](http://api.postcodedata.nl/v1/postcode/?postcode=1211EP&streetnumber=60&ref=domeinnaam.nl&type=json) | Provide geolocation data based on postcode for Dutch addresses | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-zippopotam-us-zippopotam-us",
+      "name": "Zippopotam.us",
+      "category": "Geocoding",
+      "docs_url": "http://www.zippopotam.us",
+      "description": "Get information about place such as country, city, state, etc",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "none",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "zippopotam.us"
+      ],
+      "raw_source": {
+        "api": "[Zippopotam.us](http://www.zippopotam.us)",
+        "description": "Get information about place such as country, city, state, etc",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Zippopotam.us](http://www.zippopotam.us) | Get information about place such as country, city, state, etc | No | No | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-battuta-battuta-medunes-net",
+      "name": "Battuta",
+      "category": "Geocoding",
+      "docs_url": "http://battuta.medunes.net",
+      "description": "A (country/region/city) in-cascade location API",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "api_key",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "battuta.medunes.net"
+      ],
+      "raw_source": {
+        "api": "[Battuta](http://battuta.medunes.net)",
+        "description": "A (country/region/city) in-cascade location API",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Battuta](http://battuta.medunes.net) | A (country/region/city) in-cascade location API | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 20,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "geocoding-openstreetmap-wiki-openstreetmap-org",
+      "name": "OpenStreetMap",
+      "category": "Geocoding",
+      "docs_url": "http://wiki.openstreetmap.org/wiki/API",
+      "description": "Navigation, geolocation and geographical data",
+      "auth_type": "oauth2",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [
+        "prospector"
+      ],
+      "agent_targets": [
+        "atlas",
+        "hunter"
+      ],
+      "tags": [
+        "geocoding",
+        "oauth2",
+        "unknown",
+        "prospector",
+        "atlas",
+        "hunter",
+        "wiki.openstreetmap.org"
+      ],
+      "raw_source": {
+        "api": "[OpenStreetMap](http://wiki.openstreetmap.org/wiki/API)",
+        "description": "Navigation, geolocation and geographical data",
+        "auth": "`OAuth`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [OpenStreetMap](http://wiki.openstreetmap.org/wiki/API) | Navigation, geolocation and geographical data | `OAuth` | No | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

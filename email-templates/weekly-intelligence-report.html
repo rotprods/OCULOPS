@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="supported-color-schemes" content="dark">
+    <title>ANTIGRAVITY — Weekly Intelligence Report</title>
+    <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        table,
+        td {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #060708;
+            color: #E8E8E8;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        img {
+            border: 0;
+            display: block;
+            outline: none;
+        }
+
+        a {
+            color: #D4A574;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #E8C49A;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .wrapper {
+                width: 100% !important;
+            }
+
+            .kpi-cell {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 8px !important;
+            }
+
+            .content-pad {
+                padding: 16px !important;
+            }
+
+            .stage-bar {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 6px !important;
+            }
+
+            .agent-cell {
+                display: block !important;
+                width: 50% !important;
+                float: left !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin:0; padding:0; background-color:#060708;">
+
+    <!-- Preheader -->
+    <div style="display:none; max-height:0; overflow:hidden; font-size:1px; line-height:1px; color:#060708;">
+        Weekly Intelligence Report — Pipeline {{pipeline_value}} · {{deal_count}} Deals · Health {{health_score}}/100
+    </div>
+
+    <!-- OUTER WRAPPER -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+        style="background-color:#060708;">
+        <tr>
+            <td align="center" style="padding: 24px 16px;">
+
+                <!-- MAIN CONTAINER -->
+                <table role="presentation" class="wrapper" width="640" cellpadding="0" cellspacing="0" border="0"
+                    style="background-color:#0B0D0F; border-radius:16px; border:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+
+                    <!-- ═══════════ HEADER ═══════════ -->
+                    <tr>
+                        <td style="padding:32px 32px 24px 32px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="vertical-align:middle;">
+                                        <span style="font-size:28px; line-height:1;">⚡</span>
+                                        <span
+                                            style="font-size:18px; font-weight:900; letter-spacing:3px; color:#FFFFFF; vertical-align:middle; margin-left:8px;">ANTIGRAVITY</span>
+                                    </td>
+                                    <td align="right" style="vertical-align:middle;">
+                                        <span
+                                            style="font-size:11px; font-weight:600; color:#0B0D0F; background-color:#00E676; padding:3px 10px; border-radius:4px; letter-spacing:1px;">EN
+                                            VIVO</span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div
+                                style="margin-top:16px; font-size:22px; font-weight:800; color:#FFFFFF; letter-spacing:-0.5px;">
+                                Weekly Intelligence Report</div>
+                            <div
+                                style="margin-top:6px; font-size:12px; color:#888; letter-spacing:1px; text-transform:uppercase;">
+                                <span class="mono">{{report_date}}</span> · CONFIDENTIAL · ANTIGRAVITY OS v10
+                            </div>
+                            <!-- Gold separator -->
+                            <div
+                                style="margin-top:20px; height:2px; background: linear-gradient(90deg, #D4A574, transparent);">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- ═══════════ KPI CARDS ═══════════ -->
+                    <tr>
+                        <td style="padding:0 32px 24px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <!-- Pipeline Value -->
+                                    <td class="kpi-cell" width="25%" style="padding:0 4px;">
+                                        <div
+                                            style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; text-align:center;">
+                                            <div style="font-size:20px; margin-bottom:6px;">💰</div>
+                                            <div class="mono" style="font-size:22px; font-weight:800; color:#FFFFFF;">
+                                                €{{pipeline_value}}</div>
+                                            <div
+                                                style="font-size:10px; color:#888; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">
+                                                Pipeline</div>
+                                            <div style="font-size:10px; color:#00E676; margin-top:4px;">▲
+                                                {{pipeline_change}}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Active Deals -->
+                                    <td class="kpi-cell" width="25%" style="padding:0 4px;">
+                                        <div
+                                            style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; text-align:center;">
+                                            <div style="font-size:20px; margin-bottom:6px;">💎</div>
+                                            <div class="mono" style="font-size:22px; font-weight:800; color:#FFFFFF;">
+                                                {{deal_count}}</div>
+                                            <div
+                                                style="font-size:10px; color:#888; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">
+                                                Deals</div>
+                                            <div style="font-size:10px; color:#00E676; margin-top:4px;">+{{new_deals}}
+                                                new</div>
+                                        </div>
+                                    </td>
+                                    <!-- Signals -->
+                                    <td class="kpi-cell" width="25%" style="padding:0 4px;">
+                                        <div
+                                            style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; text-align:center;">
+                                            <div style="font-size:20px; margin-bottom:6px;">📡</div>
+                                            <div class="mono" style="font-size:22px; font-weight:800; color:#FFFFFF;">
+                                                {{signal_count}}</div>
+                                            <div
+                                                style="font-size:10px; color:#888; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">
+                                                Señales</div>
+                                            <div style="font-size:10px; color:#D4A574; margin-top:4px;">
+                                                {{critical_signals}} critical</div>
+                                        </div>
+                                    </td>
+                                    <!-- Health Score -->
+                                    <td class="kpi-cell" width="25%" style="padding:0 4px;">
+                                        <div
+                                            style="background:rgba(255,255,255,0.04); border:1px solid rgba(212,165,116,0.15); border-radius:12px; padding:16px; text-align:center;">
+                                            <div style="font-size:20px; margin-bottom:6px;">🎯</div>
+                                            <div class="mono" style="font-size:22px; font-weight:800; color:#D4A574;">
+                                                {{health_score}}</div>
+                                            <div
+                                                style="font-size:10px; color:#888; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">
+                                                Health</div>
+                                            <div style="font-size:10px; color:#FF6B6B; margin-top:4px;">
+                                                {{health_change}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- ═══════════ PIPELINE BREAKDOWN ═══════════ -->
+                    <tr>
+                        <td style="padding:0 32px 24px;">
+                            <div
+                                style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px;">
+                                <div
+                                    style="font-size:12px; font-weight:700; color:#888; text-transform:uppercase; letter-spacing:2px; margin-bottom:16px;">
+                                    📊 Pipeline Breakdown</div>
+
+                                {{#each stages}}
+                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                    style="margin-bottom:10px;">
+                                    <tr>
+                                        <td width="90"
+                                            style="font-size:11px; font-weight:600; color:#CCC; padding-right:12px;">
+                                            {{stage_name}}</td>
+                                        <td style="padding:2px 0;">
+                                            <div
+                                                style="background:rgba(255,255,255,0.06); border-radius:4px; height:24px; overflow:hidden;">
+                                                <div
+                                                    style="background:{{stage_color}}; height:24px; width:{{stage_pct}}%; border-radius:4px; min-width:2px;">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="80" align="right" style="padding-left:12px;">
+                                            <span class="mono"
+                                                style="font-size:11px; font-weight:700; color:#FFF;">€{{stage_value}}</span>
+                                            <span style="font-size:10px; color:#666;"> ({{stage_count}})</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                {{/each}}
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- ═══════════ TOP SIGNALS ═══════════ -->
+                    <tr>
+                        <td style="padding:0 32px 24px;">
+                            <div
+                                style="font-size:12px; font-weight:700; color:#888; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">
+                                📡 Top Signals</div>
+
+                            {{#each signals}}
+                            <div
+                                style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:16px; margin-bottom:8px;">
+                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <td>
+                                            <span
+                                                style="font-size:9px; font-weight:700; color:{{signal_color}}; background:{{signal_bg}}; padding:2px 8px; border-radius:4px; text-transform:uppercase; letter-spacing:1px;">{{signal_category}}</span>
+                                            <span
+                                                style="font-size:9px; font-weight:600; color:#666; margin-left:8px;">Impact:
+                                                <span class="mono"
+                                                    style="color:#D4A574;">{{signal_impact}}/100</span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-top:8px;">
+                                            <div style="font-size:13px; font-weight:700; color:#FFF;">{{signal_title}}
+                                            </div>
+                                            <div style="font-size:11px; color:#999; margin-top:4px;">
+                                                {{signal_implication}}</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            {{/each}}
+                        </td>
+                    </tr>
+
+                    <!-- ═══════════ AGENT STATUS ═══════════ -->
+                    <tr>
+                        <td style="padding:0 32px 24px;">
+                            <div
+                                style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px;">
+                                <div
+                                    style="font-size:12px; font-weight:700; color:#888; text-transform:uppercase; letter-spacing:2px; margin-bottom:16px;">
+                                    🤖 Agent Network Status</div>
+
+                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <td
+                                            style="font-size:9px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:1px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.06);">
+                                            Agent</td>
+                                        <td align="center"
+                                            style="font-size:9px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:1px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.06);">
+                                            Status</td>
+                                        <td align="center"
+                                            style="font-size:9px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:1px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.06);">
+                                            Runs</td>
+                                        <td align="right"
+                                            style="font-size:9px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:1px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.06);">
+                                            Last Run</td>
+                                    </tr>
+                                    {{#each agents}}
+                                    <tr>
+                                        <td
+                                            style="font-size:12px; font-weight:700; color:#FFF; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03);">
+                                            <span style="font-size:14px;">{{agent_icon}}</span> {{agent_name}}
+                                        </td>
+                                        <td align="center"
+                                            style="padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03);">
+                                            <span
+                                                style="display:inline-block; width:8px; height:8px; border-radius:50%; background:{{agent_status_color}};"></span>
+                                        </td>
+                                        <td align="center" class="mono"
+                                            style="font-size:11px; color:#AAA; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03);">
+                                            {{agent_runs}}</td>
+                                        <td align="right" class="mono"
+                                            style="font-size:10px; color:#666; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03);">
+                                            {{agent_last_run}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- ═══════════ KEY ACTIONS ═══════════ -->
+                    <tr>
+                        <td style="padding:0 32px 24px;">
+                            <div
+                                style="background:rgba(212,165,116,0.06); border:1px solid rgba(212,165,116,0.15); border-radius:12px; padding:20px;">
+                                <div
+                                    style="font-size:12px; font-weight:700; color:#D4A574; text-transform:uppercase; letter-spacing:2px; margin-bottom:14px;">
+                                    ⚡ Recommended Actions</div>
+
+                                {{#each actions}}
+                                <div style="margin-bottom:10px; padding-left:20px; position:relative;">
+                                    <div style="position:absolute; left:0; top:2px; font-size:12px; color:#D4A574;">
+                                        {{action_priority_icon}}</div>
+                                    <div style="font-size:12px; font-weight:600; color:#FFF;">{{action_title}}</div>
+                                    <div style="font-size:11px; color:#999; margin-top:2px;">{{action_description}}
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- ═══════════ CTA BUTTON ═══════════ -->
+                    <tr>
+                        <td align="center" style="padding:0 32px 32px;">
+                            <a href="https://antigravity-os-theta.vercel.app"
+                                style="display:inline-block; background: linear-gradient(135deg, #D4A574, #B8845A); color:#0B0D0F; font-size:13px; font-weight:800; padding:14px 40px; border-radius:8px; text-decoration:none; letter-spacing:1px; text-transform:uppercase;">
+                                Abrir Dashboard →
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- ═══════════ FOOTER ═══════════ -->
+                    <tr>
+                        <td style="padding:0 32px 32px;">
+                            <div
+                                style="border-top:1px solid rgba(255,255,255,0.06); padding-top:24px; text-align:center;">
+
+                                <!-- Social Links -->
+                                <div style="margin-bottom:16px;">
+                                    <a href="{{linkedin_url}}"
+                                        style="display:inline-block; width:36px; height:36px; line-height:36px; background:rgba(255,255,255,0.06); border-radius:8px; text-align:center; font-size:16px; margin:0 4px; text-decoration:none;">in</a>
+                                    <a href="{{instagram_url}}"
+                                        style="display:inline-block; width:36px; height:36px; line-height:36px; background:rgba(255,255,255,0.06); border-radius:8px; text-align:center; font-size:16px; margin:0 4px; text-decoration:none;">📸</a>
+                                    <a href="{{twitter_url}}"
+                                        style="display:inline-block; width:36px; height:36px; line-height:36px; background:rgba(255,255,255,0.06); border-radius:8px; text-align:center; font-size:16px; margin:0 4px; text-decoration:none;">𝕏</a>
+                                    <a href="{{website_url}}"
+                                        style="display:inline-block; width:36px; height:36px; line-height:36px; background:rgba(255,255,255,0.06); border-radius:8px; text-align:center; font-size:16px; margin:0 4px; text-decoration:none;">🌐</a>
+                                </div>
+
+                                <div style="font-size:11px; color:#555; margin-bottom:8px;">
+                                    <span style="font-weight:700; color:#888;">⚡ Powered by ANTIGRAVITY OS v10</span>
+                                </div>
+                                <div style="font-size:10px; color:#444;">
+                                    © 2026 ANTIGRAVITY. All rights reserved.<br>
+                                    <a href="{{unsubscribe_url}}"
+                                        style="color:#555; text-decoration:underline;">Unsubscribe</a> ·
+                                    <a href="{{preferences_url}}" style="color:#555; text-decoration:underline;">Manage
+                                        preferences</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+                <!-- /MAIN CONTAINER -->
+
+            </td>
+        </tr>
+    </table>
+    <!-- /OUTER WRAPPER -->
+
+</body>
+
+</html>

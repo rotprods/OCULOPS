@@ -1,0 +1,757 @@
+{
+  "category": "Food & Drink",
+  "slug": "food-drink",
+  "count": 24,
+  "entries": [
+    {
+      "slug": "food-drink-fruityvice-fruityvice-com",
+      "name": "Fruityvice",
+      "category": "Food & Drink",
+      "docs_url": "https://www.fruityvice.com",
+      "description": "Data about all kinds of fruit",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "unknown",
+        "fruityvice.com"
+      ],
+      "raw_source": {
+        "api": "[Fruityvice](https://www.fruityvice.com)",
+        "description": "Data about all kinds of fruit",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Fruityvice](https://www.fruityvice.com) | Data about all kinds of fruit | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-open-food-facts-world-openfoodfacts-org",
+      "name": "Open Food Facts",
+      "category": "Food & Drink",
+      "docs_url": "https://world.openfoodfacts.org/data",
+      "description": "Food Products Database",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "unknown",
+        "world.openfoodfacts.org"
+      ],
+      "raw_source": {
+        "api": "[Open Food Facts](https://world.openfoodfacts.org/data)",
+        "description": "Food Products Database",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Open Food Facts](https://world.openfoodfacts.org/data) | Food Products Database | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-whiskyhunter-whiskyhunter-net",
+      "name": "WhiskyHunter",
+      "category": "Food & Drink",
+      "docs_url": "https://whiskyhunter.net/api/",
+      "description": "Past online whisky auctions statistical data",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "unknown",
+        "whiskyhunter.net"
+      ],
+      "raw_source": {
+        "api": "[WhiskyHunter](https://whiskyhunter.net/api/)",
+        "description": "Past online whisky auctions statistical data",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [WhiskyHunter](https://whiskyhunter.net/api/) | Past online whisky auctions statistical data | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-chomp-chompthis-com",
+      "name": "Chomp",
+      "category": "Food & Drink",
+      "docs_url": "https://chompthis.com/api/",
+      "description": "Data about various grocery products and foods",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "chompthis.com"
+      ],
+      "raw_source": {
+        "api": "[Chomp](https://chompthis.com/api/)",
+        "description": "Data about various grocery products and foods",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Chomp](https://chompthis.com/api/) | Data about various grocery products and foods | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-edamam-recipes-developer-edamam-com",
+      "name": "Edamam recipes",
+      "category": "Food & Drink",
+      "docs_url": "https://developer.edamam.com/edamam-docs-recipe-api",
+      "description": "Recipe Search",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "developer.edamam.com"
+      ],
+      "raw_source": {
+        "api": "[Edamam recipes](https://developer.edamam.com/edamam-docs-recipe-api)",
+        "description": "Recipe Search",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Edamam recipes](https://developer.edamam.com/edamam-docs-recipe-api) | Recipe Search | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-kroger-developer-kroger-com",
+      "name": "Kroger",
+      "category": "Food & Drink",
+      "docs_url": "https://developer.kroger.com/reference",
+      "description": "Supermarket Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "developer.kroger.com"
+      ],
+      "raw_source": {
+        "api": "[Kroger](https://developer.kroger.com/reference)",
+        "description": "Supermarket Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Kroger](https://developer.kroger.com/reference) | Supermarket Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-tasty-rapidapi-com",
+      "name": "Tasty",
+      "category": "Food & Drink",
+      "docs_url": "https://rapidapi.com/apidojo/api/tasty/",
+      "description": "API to query data about recipe, plan, ingredients",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "rapidapi.com"
+      ],
+      "raw_source": {
+        "api": "[Tasty](https://rapidapi.com/apidojo/api/tasty/)",
+        "description": "API to query data about recipe, plan, ingredients",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tasty](https://rapidapi.com/apidojo/api/tasty/) | API to query data about recipe, plan, ingredients | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-untappd-untappd-com",
+      "name": "Untappd",
+      "category": "Food & Drink",
+      "docs_url": "https://untappd.com/api/docs",
+      "description": "Social beer sharing",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "hunter"
+      ],
+      "tags": [
+        "food-drink",
+        "oauth2",
+        "unknown",
+        "hunter",
+        "untappd.com"
+      ],
+      "raw_source": {
+        "api": "[Untappd](https://untappd.com/api/docs)",
+        "description": "Social beer sharing",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Untappd](https://untappd.com/api/docs) | Social beer sharing | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-baconmockup-baconmockup-com",
+      "name": "BaconMockup",
+      "category": "Food & Drink",
+      "docs_url": "https://baconmockup.com/",
+      "description": "Resizable bacon placeholder images",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "yes",
+        "baconmockup.com"
+      ],
+      "raw_source": {
+        "api": "[BaconMockup](https://baconmockup.com/)",
+        "description": "Resizable bacon placeholder images",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [BaconMockup](https://baconmockup.com/) | Resizable bacon placeholder images | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-coffee-coffee-alexflipnote-dev",
+      "name": "Coffee",
+      "category": "Food & Drink",
+      "docs_url": "https://coffee.alexflipnote.dev/",
+      "description": "Random pictures of coffee",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "unknown",
+        "coffee.alexflipnote.dev"
+      ],
+      "raw_source": {
+        "api": "[Coffee](https://coffee.alexflipnote.dev/)",
+        "description": "Random pictures of coffee",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Coffee](https://coffee.alexflipnote.dev/) | Random pictures of coffee | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-foodish-github-com",
+      "name": "Foodish",
+      "category": "Food & Drink",
+      "docs_url": "https://github.com/surhud004/Foodish#readme",
+      "description": "Random pictures of food dishes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Foodish](https://github.com/surhud004/Foodish#readme)",
+        "description": "Random pictures of food dishes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Foodish](https://github.com/surhud004/Foodish#readme) | Random pictures of food dishes | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-open-brewery-db-openbrewerydb-org",
+      "name": "Open Brewery DB",
+      "category": "Food & Drink",
+      "docs_url": "https://www.openbrewerydb.org",
+      "description": "Breweries, Cideries and Craft Beer Bottle Shops",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "yes",
+        "openbrewerydb.org"
+      ],
+      "raw_source": {
+        "api": "[Open Brewery DB](https://www.openbrewerydb.org)",
+        "description": "Breweries, Cideries and Craft Beer Bottle Shops",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Open Brewery DB](https://www.openbrewerydb.org) | Breweries, Cideries and Craft Beer Bottle Shops | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-punkapi-punkapi-com",
+      "name": "PunkAPI",
+      "category": "Food & Drink",
+      "docs_url": "https://punkapi.com/",
+      "description": "Brewdog Beer Recipes",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "unknown",
+        "punkapi.com"
+      ],
+      "raw_source": {
+        "api": "[PunkAPI](https://punkapi.com/)",
+        "description": "Brewdog Beer Recipes",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [PunkAPI](https://punkapi.com/) | Brewdog Beer Recipes | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-rustybeer-rustybeer-herokuapp-com",
+      "name": "Rustybeer",
+      "category": "Food & Drink",
+      "docs_url": "https://rustybeer.herokuapp.com/",
+      "description": "Beer brewing tools",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "no",
+        "rustybeer.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Rustybeer](https://rustybeer.herokuapp.com/)",
+        "description": "Beer brewing tools",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Rustybeer](https://rustybeer.herokuapp.com/) | Beer brewing tools | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-the-report-of-the-week-github-com",
+      "name": "The Report of the Week",
+      "category": "Food & Drink",
+      "docs_url": "https://github.com/andyklimczak/TheReportOfTheWeek-API",
+      "description": "Food & Drink Reviews",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [
+        "strategist"
+      ],
+      "tags": [
+        "food-drink",
+        "none",
+        "unknown",
+        "strategist",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[The Report of the Week](https://github.com/andyklimczak/TheReportOfTheWeek-API)",
+        "description": "Food & Drink Reviews",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [The Report of the Week](https://github.com/andyklimczak/TheReportOfTheWeek-API) | Food & Drink Reviews | No | Yes | Unknown |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-edamam-nutrition-developer-edamam-com",
+      "name": "Edamam nutrition",
+      "category": "Food & Drink",
+      "docs_url": "https://developer.edamam.com/edamam-docs-nutrition-api",
+      "description": "Nutrition Analysis",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "developer.edamam.com"
+      ],
+      "raw_source": {
+        "api": "[Edamam nutrition](https://developer.edamam.com/edamam-docs-nutrition-api)",
+        "description": "Nutrition Analysis",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Edamam nutrition](https://developer.edamam.com/edamam-docs-nutrition-api) | Nutrition Analysis | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-lcbo-lcboapi-com",
+      "name": "LCBO",
+      "category": "Food & Drink",
+      "docs_url": "https://lcboapi.com/",
+      "description": "Alcohol",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "lcboapi.com"
+      ],
+      "raw_source": {
+        "api": "[LCBO](https://lcboapi.com/)",
+        "description": "Alcohol",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [LCBO](https://lcboapi.com/) | Alcohol | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-spoonacular-spoonacular-com",
+      "name": "Spoonacular",
+      "category": "Food & Drink",
+      "docs_url": "https://spoonacular.com/food-api",
+      "description": "Recipes, Food Products, and Meal Planning",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "spoonacular.com"
+      ],
+      "raw_source": {
+        "api": "[Spoonacular](https://spoonacular.com/food-api)",
+        "description": "Recipes, Food Products, and Meal Planning",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Spoonacular](https://spoonacular.com/food-api) | Recipes, Food Products, and Meal Planning | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-systembolaget-api-portal-systembolaget-se",
+      "name": "Systembolaget",
+      "category": "Food & Drink",
+      "docs_url": "https://api-portal.systembolaget.se",
+      "description": "Govornment owned liqour store in Sweden",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "api-portal.systembolaget.se"
+      ],
+      "raw_source": {
+        "api": "[Systembolaget](https://api-portal.systembolaget.se)",
+        "description": "Govornment owned liqour store in Sweden",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Systembolaget](https://api-portal.systembolaget.se) | Govornment owned liqour store in Sweden | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-thecocktaildb-thecocktaildb-com",
+      "name": "TheCocktailDB",
+      "category": "Food & Drink",
+      "docs_url": "https://www.thecocktaildb.com/api.php",
+      "description": "Cocktail Recipes",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "yes",
+        "thecocktaildb.com"
+      ],
+      "raw_source": {
+        "api": "[TheCocktailDB](https://www.thecocktaildb.com/api.php)",
+        "description": "Cocktail Recipes",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [TheCocktailDB](https://www.thecocktaildb.com/api.php) | Cocktail Recipes | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-themealdb-themealdb-com",
+      "name": "TheMealDB",
+      "category": "Food & Drink",
+      "docs_url": "https://www.themealdb.com/api.php",
+      "description": "Meal Recipes",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "yes",
+        "themealdb.com"
+      ],
+      "raw_source": {
+        "api": "[TheMealDB](https://www.themealdb.com/api.php)",
+        "description": "Meal Recipes",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [TheMealDB](https://www.themealdb.com/api.php) | Meal Recipes | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-zestful-zestfuldata-com",
+      "name": "Zestful",
+      "category": "Food & Drink",
+      "docs_url": "https://zestfuldata.com/",
+      "description": "Parse recipe ingredients",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "yes",
+        "zestfuldata.com"
+      ],
+      "raw_source": {
+        "api": "[Zestful](https://zestfuldata.com/)",
+        "description": "Parse recipe ingredients",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Zestful](https://zestfuldata.com/) | Parse recipe ingredients | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-tacofancy-github-com",
+      "name": "TacoFancy",
+      "category": "Food & Drink",
+      "docs_url": "https://github.com/evz/tacofancy-api",
+      "description": "Community-driven taco database",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "none",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[TacoFancy](https://github.com/evz/tacofancy-api)",
+        "description": "Community-driven taco database",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [TacoFancy](https://github.com/evz/tacofancy-api) | Community-driven taco database | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "food-drink-what-s-on-the-menu-nypl-github-io",
+      "name": "What's on the menu?",
+      "category": "Food & Drink",
+      "docs_url": "http://nypl.github.io/menus-api/",
+      "description": "NYPL human-transcribed historical menu collection",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "food-drink",
+        "api_key",
+        "unknown",
+        "nypl.github.io"
+      ],
+      "raw_source": {
+        "api": "[What's on the menu?](http://nypl.github.io/menus-api/)",
+        "description": "NYPL human-transcribed historical menu collection",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [What's on the menu?](http://nypl.github.io/menus-api/) | NYPL human-transcribed historical menu collection | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "category": "Shopping",
+  "slug": "shopping",
+  "count": 14,
+  "entries": [
+    {
+      "slug": "shopping-best-buy-bestbuyapis-github-io",
+      "name": "Best Buy",
+      "category": "Shopping",
+      "docs_url": "https://bestbuyapis.github.io/api-documentation/#overview",
+      "description": "Products, Buying Options, Categories, Recommendations, Stores and Commerce",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "unknown",
+        "bestbuyapis.github.io"
+      ],
+      "raw_source": {
+        "api": "[Best Buy](https://bestbuyapis.github.io/api-documentation/#overview)",
+        "description": "Products, Buying Options, Categories, Recommendations, Stores and Commerce",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Best Buy](https://bestbuyapis.github.io/api-documentation/#overview) | Products, Buying Options, Categories, Recommendations, Stores and Commerce | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-dummy-products-dummyproducts-api-herokuapp-com",
+      "name": "Dummy Products",
+      "category": "Shopping",
+      "docs_url": "https://dummyproducts-api.herokuapp.com/",
+      "description": "An api to fetch dummy e-commerce products JSON data with placeholder images",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "yes",
+        "dummyproducts-api.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[Dummy Products](https://dummyproducts-api.herokuapp.com/)",
+        "description": "An api to fetch dummy e-commerce products JSON data with placeholder images",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Dummy Products](https://dummyproducts-api.herokuapp.com/) | An api to fetch dummy e-commerce products JSON data with placeholder images | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-mercadolibre-developers-mercadolibre-cl",
+      "name": "Mercadolibre",
+      "category": "Shopping",
+      "docs_url": "https://developers.mercadolibre.cl/es_ar/api-docs-es",
+      "description": "Manage sales, ads, products, services and Shops",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "unknown",
+        "developers.mercadolibre.cl"
+      ],
+      "raw_source": {
+        "api": "[Mercadolibre](https://developers.mercadolibre.cl/es_ar/api-docs-es)",
+        "description": "Manage sales, ads, products, services and Shops",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Mercadolibre](https://developers.mercadolibre.cl/es_ar/api-docs-es) | Manage sales, ads, products, services and Shops | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-octopart-octopart-com",
+      "name": "Octopart",
+      "category": "Shopping",
+      "docs_url": "https://octopart.com/api/v4/reference",
+      "description": "Electronic part data for manufacturing, design, and sourcing",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "unknown",
+        "octopart.com"
+      ],
+      "raw_source": {
+        "api": "[Octopart](https://octopart.com/api/v4/reference)",
+        "description": "Electronic part data for manufacturing, design, and sourcing",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Octopart](https://octopart.com/api/v4/reference) | Electronic part data for manufacturing, design, and sourcing | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-woocommerce-woocommerce-github-io",
+      "name": "WooCommerce",
+      "category": "Shopping",
+      "docs_url": "https://woocommerce.github.io/woocommerce-rest-api-docs/",
+      "description": "WooCommerce REST APIS to create, read, update, and delete data on wordpress website in JSON format",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "yes",
+        "woocommerce.github.io"
+      ],
+      "raw_source": {
+        "api": "[WooCommerce](https://woocommerce.github.io/woocommerce-rest-api-docs/)",
+        "description": "WooCommerce REST APIS to create, read, update, and delete data on wordpress website in JSON format",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [WooCommerce](https://woocommerce.github.io/woocommerce-rest-api-docs/) | WooCommerce REST APIS to create, read, update, and delete data on wordpress website in JSON format | `apiKey` | Yes | Yes |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-flipkart-marketplace-seller-flipkart-com",
+      "name": "Flipkart Marketplace",
+      "category": "Shopping",
+      "docs_url": "https://seller.flipkart.com/api-docs/FMSAPI.html",
+      "description": "Product listing management, Order Fulfilment in the Flipkart Marketplace",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "oauth2",
+        "yes",
+        "seller.flipkart.com"
+      ],
+      "raw_source": {
+        "api": "[Flipkart Marketplace](https://seller.flipkart.com/api-docs/FMSAPI.html)",
+        "description": "Product listing management, Order Fulfilment in the Flipkart Marketplace",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Flipkart Marketplace](https://seller.flipkart.com/api-docs/FMSAPI.html) | Product listing management, Order Fulfilment in the Flipkart Marketplace | `OAuth` | Yes | Yes |"
+      },
+      "business_fit_score": 25,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-lazada-open-lazada-com",
+      "name": "Lazada",
+      "category": "Shopping",
+      "docs_url": "https://open.lazada.com/doc/doc.htm",
+      "description": "Retrieve product ratings and seller performance metrics",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "unknown",
+        "open.lazada.com"
+      ],
+      "raw_source": {
+        "api": "[Lazada](https://open.lazada.com/doc/doc.htm)",
+        "description": "Retrieve product ratings and seller performance metrics",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Lazada](https://open.lazada.com/doc/doc.htm) | Retrieve product ratings and seller performance metrics | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-olx-poland-developer-olx-pl",
+      "name": "OLX Poland",
+      "category": "Shopping",
+      "docs_url": "https://developer.olx.pl/api/doc#section/",
+      "description": "Integrate with local sites by posting, managing adverts and communicating with OLX users",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "unknown",
+        "developer.olx.pl"
+      ],
+      "raw_source": {
+        "api": "[OLX Poland](https://developer.olx.pl/api/doc#section/)",
+        "description": "Integrate with local sites by posting, managing adverts and communicating with OLX users",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [OLX Poland](https://developer.olx.pl/api/doc#section/) | Integrate with local sites by posting, managing adverts and communicating with OLX users | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-shopee-open-shopee-com",
+      "name": "Shopee",
+      "category": "Shopping",
+      "docs_url": "https://open.shopee.com/documents?version=1",
+      "description": "Shopee's official API for integration of various services from Shopee",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "api_key",
+        "unknown",
+        "open.shopee.com"
+      ],
+      "raw_source": {
+        "api": "[Shopee](https://open.shopee.com/documents?version=1)",
+        "description": "Shopee's official API for integration of various services from Shopee",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Shopee](https://open.shopee.com/documents?version=1) | Shopee's official API for integration of various services from Shopee | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-digi-key-digikey-com",
+      "name": "Digi-Key",
+      "category": "Shopping",
+      "docs_url": "https://www.digikey.com/en/resources/api-solutions",
+      "description": "Retrieve price and inventory of electronic components as well as place orders",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "oauth2",
+        "unknown",
+        "digikey.com"
+      ],
+      "raw_source": {
+        "api": "[Digi-Key](https://www.digikey.com/en/resources/api-solutions)",
+        "description": "Retrieve price and inventory of electronic components as well as place orders",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Digi-Key](https://www.digikey.com/en/resources/api-solutions) | Retrieve price and inventory of electronic components as well as place orders | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-ebay-developer-ebay-com",
+      "name": "eBay",
+      "category": "Shopping",
+      "docs_url": "https://developer.ebay.com/",
+      "description": "Sell and Buy on eBay",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "oauth2",
+        "unknown",
+        "developer.ebay.com"
+      ],
+      "raw_source": {
+        "api": "[eBay](https://developer.ebay.com/)",
+        "description": "Sell and Buy on eBay",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [eBay](https://developer.ebay.com/) | Sell and Buy on eBay | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-etsy-etsy-com",
+      "name": "Etsy",
+      "category": "Shopping",
+      "docs_url": "https://www.etsy.com/developers/documentation/getting_started/api_basics",
+      "description": "Manage shop and interact with listings",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "oauth2",
+        "unknown",
+        "etsy.com"
+      ],
+      "raw_source": {
+        "api": "[Etsy](https://www.etsy.com/developers/documentation/getting_started/api_basics)",
+        "description": "Manage shop and interact with listings",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Etsy](https://www.etsy.com/developers/documentation/getting_started/api_basics) | Manage shop and interact with listings | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-rappi-dev-portal-rappi-com",
+      "name": "Rappi",
+      "category": "Shopping",
+      "docs_url": "https://dev-portal.rappi.com/",
+      "description": "Manage orders from Rappi's app",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "oauth2",
+        "unknown",
+        "dev-portal.rappi.com"
+      ],
+      "raw_source": {
+        "api": "[Rappi](https://dev-portal.rappi.com/)",
+        "description": "Manage orders from Rappi's app",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Rappi](https://dev-portal.rappi.com/) | Manage orders from Rappi's app | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "shopping-tokopedia-developer-tokopedia-com",
+      "name": "Tokopedia",
+      "category": "Shopping",
+      "docs_url": "https://developer.tokopedia.com/openapi/guide/#/",
+      "description": "Tokopedia's Official API for integration of various services from Tokopedia",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "shopping",
+        "oauth2",
+        "unknown",
+        "developer.tokopedia.com"
+      ],
+      "raw_source": {
+        "api": "[Tokopedia](https://developer.tokopedia.com/openapi/guide/#/)",
+        "description": "Tokopedia's Official API for integration of various services from Tokopedia",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Tokopedia](https://developer.tokopedia.com/openapi/guide/#/) | Tokopedia's Official API for integration of various services from Tokopedia | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}

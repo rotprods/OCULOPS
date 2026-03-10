@@ -1,0 +1,627 @@
+{
+  "category": "Art & Design",
+  "slug": "art-design",
+  "count": 20,
+  "entries": [
+    {
+      "slug": "art-design-icon-horse-icon-horse",
+      "name": "Icon Horse",
+      "category": "Art & Design",
+      "docs_url": "https://icon.horse",
+      "description": "Favicons for any website, with fallbacks",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "yes",
+        "icon.horse"
+      ],
+      "raw_source": {
+        "api": "[Icon Horse](https://icon.horse)",
+        "description": "Favicons for any website, with fallbacks",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Icon Horse](https://icon.horse) | Favicons for any website, with fallbacks | No | Yes | Yes |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-icons8-img-icons8-com",
+      "name": "Icons8",
+      "category": "Art & Design",
+      "docs_url": "https://img.icons8.com/",
+      "description": "Icons (find \"search icon\" hyperlink in page)",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "unknown",
+        "img.icons8.com"
+      ],
+      "raw_source": {
+        "api": "[Icons8](https://img.icons8.com/)",
+        "description": "Icons (find \"search icon\" hyperlink in page)",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Icons8](https://img.icons8.com/) | Icons (find \"search icon\" hyperlink in page) | No | Yes | Unknown |"
+      },
+      "business_fit_score": 35,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-europeana-pro-europeana-eu",
+      "name": "Europeana",
+      "category": "Art & Design",
+      "docs_url": "https://pro.europeana.eu/resources/apis/search",
+      "description": "European Museum and Galleries content",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "api_key",
+        "unknown",
+        "pro.europeana.eu"
+      ],
+      "raw_source": {
+        "api": "[Europeana](https://pro.europeana.eu/resources/apis/search)",
+        "description": "European Museum and Galleries content",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Europeana](https://pro.europeana.eu/resources/apis/search) | European Museum and Galleries content | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-rijksmuseum-data-rijksmuseum-nl",
+      "name": "Rijksmuseum",
+      "category": "Art & Design",
+      "docs_url": "https://data.rijksmuseum.nl/object-metadata/api/",
+      "description": "RijksMuseum Data",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "api_key",
+        "unknown",
+        "data.rijksmuseum.nl"
+      ],
+      "raw_source": {
+        "api": "[Rijksmuseum](https://data.rijksmuseum.nl/object-metadata/api/)",
+        "description": "RijksMuseum Data",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Rijksmuseum](https://data.rijksmuseum.nl/object-metadata/api/) | RijksMuseum Data | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 30,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-art-institute-of-chicago-api-artic-edu",
+      "name": "Art Institute of Chicago",
+      "category": "Art & Design",
+      "docs_url": "https://api.artic.edu/docs/",
+      "description": "Art",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "yes",
+        "api.artic.edu"
+      ],
+      "raw_source": {
+        "api": "[Art Institute of Chicago](https://api.artic.edu/docs/)",
+        "description": "Art",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Art Institute of Chicago](https://api.artic.edu/docs/) | Art | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-emojihub-github-com",
+      "name": "EmojiHub",
+      "category": "Art & Design",
+      "docs_url": "https://github.com/cheatsnake/emojihub",
+      "description": "Get emojis by categories and groups",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "yes",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[EmojiHub](https://github.com/cheatsnake/emojihub)",
+        "description": "Get emojis by categories and groups",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [EmojiHub](https://github.com/cheatsnake/emojihub) | Get emojis by categories and groups | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-lordicon-lordicon-com",
+      "name": "Lordicon",
+      "category": "Art & Design",
+      "docs_url": "https://lordicon.com/",
+      "description": "Icons with predone Animations",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "yes",
+        "lordicon.com"
+      ],
+      "raw_source": {
+        "api": "[Lordicon](https://lordicon.com/)",
+        "description": "Icons with predone Animations",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [Lordicon](https://lordicon.com/) | Icons with predone Animations | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-metropolitan-museum-of-art-metmuseum-github-io",
+      "name": "Metropolitan Museum of Art",
+      "category": "Art & Design",
+      "docs_url": "https://metmuseum.github.io/",
+      "description": "Met Museum of Art",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "no",
+        "metmuseum.github.io"
+      ],
+      "raw_source": {
+        "api": "[Metropolitan Museum of Art](https://metmuseum.github.io/)",
+        "description": "Met Museum of Art",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Metropolitan Museum of Art](https://metmuseum.github.io/) | Met Museum of Art | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-php-noise-php-noise-com",
+      "name": "PHP-Noise",
+      "category": "Art & Design",
+      "docs_url": "https://php-noise.com/",
+      "description": "Noise Background Image Generator",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "yes",
+        "php-noise.com"
+      ],
+      "raw_source": {
+        "api": "[PHP-Noise](https://php-noise.com/)",
+        "description": "Noise Background Image Generator",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [PHP-Noise](https://php-noise.com/) | Noise Background Image Generator | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-pixel-encounter-pixelencounter-com",
+      "name": "Pixel Encounter",
+      "category": "Art & Design",
+      "docs_url": "https://pixelencounter.com/api",
+      "description": "SVG Icon Generator",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "No",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "no",
+        "pixelencounter.com"
+      ],
+      "raw_source": {
+        "api": "[Pixel Encounter](https://pixelencounter.com/api)",
+        "description": "SVG Icon Generator",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "No",
+        "markdown": "| [Pixel Encounter](https://pixelencounter.com/api) | SVG Icon Generator | No | Yes | No |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-xcolors-x-colors-herokuapp-com",
+      "name": "xColors",
+      "category": "Art & Design",
+      "docs_url": "https://x-colors.herokuapp.com/",
+      "description": "Generate & convert colors",
+      "auth_type": "none",
+      "https_only": true,
+      "cors_policy": "Yes",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "yes",
+        "x-colors.herokuapp.com"
+      ],
+      "raw_source": {
+        "api": "[xColors](https://x-colors.herokuapp.com/)",
+        "description": "Generate & convert colors",
+        "auth": "No",
+        "https": "Yes",
+        "cors": "Yes",
+        "markdown": "| [xColors](https://x-colors.herokuapp.com/) | Generate & convert colors | No | Yes | Yes |"
+      },
+      "business_fit_score": 15,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-amethyste-api-amethyste-moe",
+      "name": "Améthyste",
+      "category": "Art & Design",
+      "docs_url": "https://api.amethyste.moe/",
+      "description": "Generate images for Discord users",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "api_key",
+        "unknown",
+        "api.amethyste.moe"
+      ],
+      "raw_source": {
+        "api": "[Améthyste](https://api.amethyste.moe/)",
+        "description": "Generate images for Discord users",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Améthyste](https://api.amethyste.moe/) | Generate images for Discord users | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-cooper-hewitt-collection-cooperhewitt-org",
+      "name": "Cooper Hewitt",
+      "category": "Art & Design",
+      "docs_url": "https://collection.cooperhewitt.org/api",
+      "description": "Smithsonian Design Museum",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "api_key",
+        "unknown",
+        "collection.cooperhewitt.org"
+      ],
+      "raw_source": {
+        "api": "[Cooper Hewitt](https://collection.cooperhewitt.org/api)",
+        "description": "Smithsonian Design Museum",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Cooper Hewitt](https://collection.cooperhewitt.org/api) | Smithsonian Design Museum | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-iconfinder-developer-iconfinder-com",
+      "name": "Iconfinder",
+      "category": "Art & Design",
+      "docs_url": "https://developer.iconfinder.com",
+      "description": "Icons",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "api_key",
+        "unknown",
+        "developer.iconfinder.com"
+      ],
+      "raw_source": {
+        "api": "[Iconfinder](https://developer.iconfinder.com)",
+        "description": "Icons",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Iconfinder](https://developer.iconfinder.com) | Icons | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-word-cloud-wordcloudapi-com",
+      "name": "Word Cloud",
+      "category": "Art & Design",
+      "docs_url": "https://wordcloudapi.com/",
+      "description": "Easily create word clouds",
+      "auth_type": "api_key",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "api_key",
+        "unknown",
+        "wordcloudapi.com"
+      ],
+      "raw_source": {
+        "api": "[Word Cloud](https://wordcloudapi.com/)",
+        "description": "Easily create word clouds",
+        "auth": "`apiKey`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Word Cloud](https://wordcloudapi.com/) | Easily create word clouds | `apiKey` | Yes | Unknown |"
+      },
+      "business_fit_score": 10,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-dribbble-developer-dribbble-com",
+      "name": "Dribbble",
+      "category": "Art & Design",
+      "docs_url": "https://developer.dribbble.com",
+      "description": "Discover the world’s top designers & creatives",
+      "auth_type": "oauth2",
+      "https_only": true,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "oauth2",
+        "unknown",
+        "developer.dribbble.com"
+      ],
+      "raw_source": {
+        "api": "[Dribbble](https://developer.dribbble.com)",
+        "description": "Discover the world’s top designers & creatives",
+        "auth": "`OAuth`",
+        "https": "Yes",
+        "cors": "Unknown",
+        "markdown": "| [Dribbble](https://developer.dribbble.com) | Discover the world’s top designers & creatives | `OAuth` | Yes | Unknown |"
+      },
+      "business_fit_score": 5,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-colormind-colormind-io",
+      "name": "Colormind",
+      "category": "Art & Design",
+      "docs_url": "http://colormind.io/api-access/",
+      "description": "Color scheme generator",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "unknown",
+        "colormind.io"
+      ],
+      "raw_source": {
+        "api": "[Colormind](http://colormind.io/api-access/)",
+        "description": "Color scheme generator",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Colormind](http://colormind.io/api-access/) | Color scheme generator | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-colourlovers-colourlovers-com",
+      "name": "ColourLovers",
+      "category": "Art & Design",
+      "docs_url": "http://www.colourlovers.com/api",
+      "description": "Get various patterns, palettes and images",
+      "auth_type": "none",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "none",
+        "unknown",
+        "colourlovers.com"
+      ],
+      "raw_source": {
+        "api": "[ColourLovers](http://www.colourlovers.com/api)",
+        "description": "Get various patterns, palettes and images",
+        "auth": "No",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [ColourLovers](http://www.colourlovers.com/api) | Get various patterns, palettes and images | No | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-harvard-art-museums-github-com",
+      "name": "Harvard Art Museums",
+      "category": "Art & Design",
+      "docs_url": "https://github.com/harvardartmuseums/api-docs",
+      "description": "Art",
+      "auth_type": "api_key",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "api_key",
+        "unknown",
+        "github.com"
+      ],
+      "raw_source": {
+        "api": "[Harvard Art Museums](https://github.com/harvardartmuseums/api-docs)",
+        "description": "Art",
+        "auth": "`apiKey`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Harvard Art Museums](https://github.com/harvardartmuseums/api-docs) | Art | `apiKey` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    },
+    {
+      "slug": "art-design-noun-project-api-thenounproject-com",
+      "name": "Noun Project",
+      "category": "Art & Design",
+      "docs_url": "http://api.thenounproject.com/index.html",
+      "description": "Icons",
+      "auth_type": "oauth2",
+      "https_only": false,
+      "cors_policy": "Unknown",
+      "module_targets": [],
+      "agent_targets": [],
+      "tags": [
+        "art-design",
+        "oauth2",
+        "unknown",
+        "api.thenounproject.com"
+      ],
+      "raw_source": {
+        "api": "[Noun Project](http://api.thenounproject.com/index.html)",
+        "description": "Icons",
+        "auth": "`OAuth`",
+        "https": "No",
+        "cors": "Unknown",
+        "markdown": "| [Noun Project](http://api.thenounproject.com/index.html) | Icons | `OAuth` | No | Unknown |"
+      },
+      "business_fit_score": 0,
+      "activation_tier": "catalog_only",
+      "is_listed": true,
+      "first_seen_at": "2026-03-08T18:02:15.427Z",
+      "last_seen_at": "2026-03-08T18:02:15.427Z"
+    }
+  ]
+}
