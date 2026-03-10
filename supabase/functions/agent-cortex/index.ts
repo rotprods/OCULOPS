@@ -59,6 +59,27 @@ Deno.serve(async (req: Request) => {
       handler: async () => {
         let scanId = body.scan_id || null;
         let atlasResult: Record<string, unknown> | null = null;
+        let publicData: Record<string, unknown> | null = null;
+
+        // New Action: Dynamically query any public catalog API based on intent
+        if (action === "query_public_data" && body.query) {
+          const { executeDynamicPublicApi } = await import("../_shared/public-catalog-router.ts");
+          const data = await executeDynamicPublicApi("cortex", body.query);
+          publicData = {
+            intent: body.query,
+            fetched_data: data
+          };
+
+          // Format a nice summary to be injected straight into the Telegram message
+          const dataPreview = JSON.stringify(data, null, 2).slice(0, 1500);
+
+          // We can stop here for this specific action type, avoiding the whole pipeline
+          return {
+            summary: `Fetched Public Data\nIntent: ${body.query}\n\nResults Preview:\n${dataPreview}…`,
+            action,
+            public_data: publicData
+          };
+        }
 
         if (!scanId) {
           atlasResult = await callAgent("agent-atlas", {
@@ -70,6 +91,7 @@ Deno.serve(async (req: Request) => {
             radius: body.radius,
             user_id: body.user_id,
             maxResults: body.maxResults,
+            skip_telegram: true,
           });
           scanId = String((atlasResult.output as Record<string, unknown> | undefined)?.scan?.id || "");
         }
@@ -78,15 +100,18 @@ Deno.serve(async (req: Request) => {
           action: "cycle",
           scan_id: scanId,
           user_id: body.user_id,
+          skip_telegram: true,
         });
         const strategistResult = await callAgent("agent-strategist", {
           action: "cycle",
           scan_id: scanId,
           user_id: body.user_id,
+          skip_telegram: true,
         });
         const outreachResult = await callAgent("agent-outreach", {
           action: "cycle",
           user_id: body.user_id,
+          skip_telegram: true,
         });
 
         return {

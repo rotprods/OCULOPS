@@ -408,10 +408,14 @@ export async function runAgentTask<T>({
         },
       });
 
-      await deliverAgentStudy(study, {
-        userId,
-        manual: false,
-      });
+      if (payload?.skip_telegram !== true) {
+        await deliverAgentStudy(study, {
+          userId,
+          manual: false,
+        });
+      } else {
+        console.log(`[agents] Skipping Telegram delivery for ${codeName} (skip_telegram=true in payload)`);
+      }
     } catch (studyError) {
       console.error(`Failed to publish study for ${codeName}:`, studyError);
     }

@@ -57,6 +57,26 @@ const API_CONFIGS: Record<string, ApiConfig> = {
     // ── AI & Media ──
     "everart": { base: "https://api.everart.ai/v1", authType: "bearer", envKey: "EVERART_API_KEY" },
 
+    // ── AI & Models ──
+    "openai": { base: "https://api.openai.com/v1", authType: "bearer", envKey: "OPENAI_API_KEY" },
+    "anthropic": { base: "https://api.anthropic.com/v1", authType: "custom-header", envKey: "ANTHROPIC_API_KEY", headerName: "x-api-key", extraHeaders: { "anthropic-version": "2023-06-01" } },
+    "higgsfield": { base: "https://api.higgsfield.ai/v1", authType: "bearer", envKey: "HIGGSFIELD_API_SECRET" },
+
+    // ── Social & Advertising ──
+    "meta": { base: "https://graph.facebook.com/v22.0", authType: "bearer", envKey: "META_ACCESS_TOKEN" },
+    "tiktok": { base: "https://business-api.tiktok.com/open_api/v1.3", authType: "custom-header", envKey: "TIKTOK_ACCESS_TOKEN", headerName: "Access-Token" },
+
+    // ── Messaging & Chatbots ──
+    "whatsapp": { base: "https://graph.facebook.com/v22.0", authType: "bearer", envKey: "WHATSAPP_TOKEN" },
+    "manychat": { base: "https://api.manychat.com/fb", authType: "bearer", envKey: "MANYCHAT_API_KEY" },
+    "telegram": { base: "https://api.telegram.org", authType: "none", envKey: "TELEGRAM_BOT_TOKEN" }, // Requires `/bot<token>` in endpoint
+
+    // ── Workflows & Automation ──
+    "n8n": { base: "https://rotprods.app.n8n.cloud/api/v1", authType: "custom-header", envKey: "N8N_API_KEY", headerName: "X-N8N-API-KEY" },
+
+    // ── Analytics ──
+    "posthog": { base: "https://us.i.posthog.com", authType: "bearer", envKey: "POSTHOG_API_KEY" },
+
     // ── Scraping ──
     "apify": { base: "https://api.apify.com/v2", authType: "bearer", envKey: "APIFY_TOKEN" },
 };
@@ -107,41 +127,64 @@ Deno.serve(async (req: Request) => {
 
     // ── 2. Get API config ──
     const config = API_CONFIGS[api];
-    if (!config) {
-        return errorResponse(`API '${api}' is not configured in the gateway`, 400);
-    }
-
-    const apiKey = Deno.env.get(config.envKey)
-        || config.envFallbackKeys?.map((key) => Deno.env.get(key)).find(Boolean);
-    if (!apiKey) {
-        const expectedKeys = [config.envKey, ...(config.envFallbackKeys || [])].join(" or ");
-        return errorResponse(`API key not set: ${expectedKeys}. Add it as a Supabase secret.`, 500);
-    }
-
-    // ── 3. Build request ──
-    const url = new URL(endpoint.startsWith("/") ? `${config.base}${endpoint}` : `${config.base}/${endpoint}`);
-
-    // Add query params
-    for (const [key, value] of Object.entries(params)) {
-        url.searchParams.set(key, value);
-    }
-
-    // Add auth via query param if needed
-    if (config.authType === "query-param" && config.paramName) {
-        url.searchParams.set(config.paramName, apiKey);
-    }
-
+    let apiKey: string | undefined = undefined;
+    let url: URL;
     const headers: Record<string, string> = {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        ...(config.extraHeaders || {}),
     };
 
-    // Add auth header
-    if (config.authType === "bearer") {
-        headers["Authorization"] = `Bearer ${apiKey}`;
-    } else if (config.authType === "custom-header" && config.headerName) {
-        headers[config.headerName] = apiKey;
+    if (!config) {
+        // Fallback: If it's an allowed API but has no config, we treat it as a Public API
+        if (!endpoint.startsWith("http")) {
+            return errorResponse(`API '${api}' not configured. For public catalog APIs, provide the full absolute URL in 'endpoint'.`, 400);
+        }
+        url = new URL(endpoint);
+
+        // Add query params
+        for (const [key, value] of Object.entries(params)) {
+            url.searchParams.set(key, value);
+        }
+    } else {
+        // Handle configured API with auth
+        apiKey = Deno.env.get(config.envKey)
+            || config.envFallbackKeys?.map((key) => Deno.env.get(key)).find(Boolean);
+
+        if (!apiKey && config.authType !== "none") {
+            const expectedKeys = [config.envKey, ...(config.envFallbackKeys || [])].join(" or ");
+            return errorResponse(`API key not set: ${expectedKeys}. Add it as a Supabase secret.`, 500);
+        }
+
+        // ── 3. Build request ──
+        let endpointUrl = endpoint;
+        if (api === "telegram" && apiKey) {
+            // Telegram expects the token in the URL path: /bot<token>/METHOD
+            endpointUrl = `/bot${apiKey}${endpoint.startsWith("/") ? endpoint : `/${endpoint}`}`;
+        }
+
+        url = new URL(endpointUrl.startsWith("/") ? `${config.base}${endpointUrl}` : `${config.base}/${endpointUrl}`);
+
+        // Add query params
+        for (const [key, value] of Object.entries(params)) {
+            url.searchParams.set(key, value);
+        }
+
+        // Add auth via query param if needed
+        if (config.authType === "query-param" && config.paramName && apiKey) {
+            url.searchParams.set(config.paramName, apiKey);
+        }
+
+        // Extra headers
+        if (config.extraHeaders) {
+            Object.assign(headers, config.extraHeaders);
+        }
+
+        // Add auth header
+        if (config.authType === "bearer" && apiKey) {
+            headers["Authorization"] = `Bearer ${apiKey}`;
+        } else if (config.authType === "custom-header" && config.headerName && apiKey) {
+            headers[config.headerName] = apiKey;
+        }
     }
 
     const fetchOptions: RequestInit = {
