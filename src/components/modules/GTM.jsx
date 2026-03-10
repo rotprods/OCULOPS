@@ -116,17 +116,15 @@ function GTM() {
     }
 
     return (
-        <div className="fade-in">
-            <div className="module-header">
-                <h1>GTM Machine</h1>
-                <p>Define tu ICP, gestiona leads hipercualificados y usa scripts de outreach probados.</p>
+        <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px', height: '100%', overflowY: 'auto', paddingBottom: '32px' }}>
+            <div style={{ paddingBottom: '16px', borderBottom: '1px solid var(--border-default)' }}>
+                <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0, textTransform: 'uppercase' }}>GTM Machine</h1>
+                <p className="mono text-xs text-tertiary" style={{ marginTop: '8px', letterSpacing: '0.05em' }}>/// GO-TO-MARKET ORCHESTRATION // ICP DEFINITION & QUALIFIED OUTREACH</p>
             </div>
 
             {/* ICP */}
-            <div className="card mb-6">
-                <div className="card-header">
-                    <div className="card-title">🎯 ICP (Ideal Customer Profile)</div>
-                </div>
+            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '24px' }}>
+                <div className="mono text-xs font-bold text-primary" style={{ marginBottom: '20px', letterSpacing: '0.1em' }}>/// IDEAL CUSTOMER PROFILE (ICP)</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 'var(--space-3)' }}>
                     {[
                         { key: 'companySize', label: 'Tamaño empresa' },
@@ -145,10 +143,12 @@ function GTM() {
             </div>
 
             {/* Leads */}
-            <div className="card mb-6">
-                <div className="card-header">
-                    <div className="card-title">👤 Leads Hipercualificados ({leads.length})</div>
-                    <button className="btn btn-primary" onClick={() => setShowAddLead(!showAddLead)}>+ Lead</button>
+            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div className="mono text-xs font-bold text-primary" style={{ letterSpacing: '0.1em' }}>/// HYPER-QUALIFIED LEADS ({leads.length})</div>
+                    <button className="btn btn-primary mono" style={{ borderRadius: 0, fontSize: '10px', padding: '6px 12px', letterSpacing: '0.1em' }} onClick={() => setShowAddLead(!showAddLead)}>
+                        {showAddLead ? 'CANCEL' : 'ADD MANUAL LEAD'}
+                    </button>
                 </div>
 
                 {showAddLead && (
@@ -172,41 +172,45 @@ function GTM() {
                 )}
 
                 {leads.length === 0 ? (
-                    <div style={{ textAlign: 'center', padding: 'var(--space-8)', color: 'var(--text-tertiary)' }}>
-                        <div style={{ fontSize: '2.5rem', marginBottom: 'var(--space-3)' }}>🎯</div>
-                        <h3>Sin leads todavía</h3>
-                        <p style={{ fontSize: 'var(--text-sm)' }}>Empieza con 30 leads hipercualificados con señal de compra visible</p>
+                    <div style={{ textAlign: 'center', padding: '64px 24px', color: 'var(--text-tertiary)' }}>
+                        <div style={{ fontSize: '2rem', marginBottom: '16px', opacity: 0.5 }}>🎯</div>
+                        <div className="mono text-sm text-secondary" style={{ marginBottom: '8px' }}>NO LEADS IN TARGET LIST</div>
+                        <div className="mono text-xs opacity-70">AWAITING INITIAL TARGET INGESTION OR MANUAL ENTRY</div>
                     </div>
                 ) : (
                     <div style={{ overflowX: 'auto' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--text-sm)' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                             <thead>
-                                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                                    <th style={{ textAlign: 'left', padding: '8px', color: 'var(--text-tertiary)', fontWeight: 600 }}>Nombre</th>
-                                    <th style={{ textAlign: 'left', padding: '8px', color: 'var(--text-tertiary)', fontWeight: 600 }}>Empresa</th>
-                                    <th style={{ textAlign: 'left', padding: '8px', color: 'var(--text-tertiary)', fontWeight: 600 }}>Rol</th>
-                                    <th style={{ textAlign: 'left', padding: '8px', color: 'var(--text-tertiary)', fontWeight: 600 }}>Señal</th>
-                                    <th style={{ textAlign: 'left', padding: '8px', color: 'var(--text-tertiary)', fontWeight: 600 }}>Estado</th>
-                                    <th style={{ textAlign: 'left', padding: '8px', color: 'var(--text-tertiary)', fontWeight: 600 }}>Score</th>
-                                    <th style={{ padding: '8px' }}></th>
+                                <tr className="mono" style={{ borderBottom: '1px solid var(--border-default)', background: 'rgba(0,0,0,0.2)' }}>
+                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>NAME</th>
+                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>COMPANY</th>
+                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>ROLE</th>
+                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>BUY_SIGNAL</th>
+                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>STATUS</th>
+                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>SCORE</th>
+                                    <th style={{ padding: '12px 24px' }}></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="mono">
                                 {leads.map(l => (
                                     <tr key={l.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                                        <td style={{ padding: '8px', fontWeight: 600 }}>{l.name}</td>
-                                        <td style={{ padding: '8px' }}>{l.company || '-'}</td>
-                                        <td style={{ padding: '8px' }}>{l.role || '-'}</td>
-                                        <td style={{ padding: '8px', fontSize: 'var(--text-xs)' }}>{l.buySignal || '-'}</td>
-                                        <td style={{ padding: '8px' }}><span className={`badge ${STATUS_BADGE[l.status] || 'badge-neutral'}`}>{l.status}</span></td>
-                                        <td style={{ padding: '8px' }}>
-                                            <div style={{ width: 32, height: 32, borderRadius: '50%', border: `2px solid var(--accent-primary)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
+                                        <td style={{ padding: '12px 24px', fontWeight: 600, color: 'var(--color-text)' }}>{l.name}</td>
+                                        <td style={{ padding: '12px 24px', color: 'var(--text-secondary)' }}>{l.company || '-'}</td>
+                                        <td style={{ padding: '12px 24px', color: 'var(--text-tertiary)' }}>{l.role || '-'}</td>
+                                        <td style={{ padding: '12px 24px', fontSize: '10px', color: 'var(--text-tertiary)', maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{l.buySignal || '-'}</td>
+                                        <td style={{ padding: '12px 24px' }}>
+                                            <span className={`badge ${STATUS_BADGE[l.status] || 'badge-neutral'}`} style={{ borderRadius: 0, padding: '4px 8px', fontSize: '9px', letterSpacing: '0.05em' }}>
+                                                {l.status.toUpperCase()}
+                                            </span>
+                                        </td>
+                                        <td style={{ padding: '12px 24px' }}>
+                                            <div style={{ width: 28, height: 28, border: `1px solid var(--accent-primary)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'var(--accent-primary)' }}>
                                                 {l.confidence || 50}
                                             </div>
                                         </td>
-                                        <td style={{ padding: '8px', display: 'flex', gap: '4px' }}>
-                                            <button className="btn btn-ghost" style={{ fontSize: '11px', padding: '4px 8px' }} onClick={() => moveToPipeline(l.id)}>→ Pipeline</button>
-                                            <button className="btn btn-danger" style={{ fontSize: '11px', padding: '4px 8px' }} onClick={() => removeLead(l.id)}>✕</button>
+                                        <td style={{ padding: '12px 24px', display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                                            <button className="btn btn-ghost" style={{ fontSize: '10px', padding: '4px 8px', borderRadius: 0 }} onClick={() => moveToPipeline(l.id)}>→ PIPE</button>
+                                            <button className="btn btn-ghost text-danger" style={{ fontSize: '10px', padding: '4px 8px', borderRadius: 0 }} onClick={() => removeLead(l.id)}>DEL</button>
                                         </td>
                                     </tr>
                                 ))}
@@ -217,8 +221,8 @@ function GTM() {
             </div>
 
             {/* Outreach Scripts */}
-            <div className="card mb-6">
-                <div className="card-header"><div className="card-title">📝 Scripts de Outreach</div></div>
+            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '24px' }}>
+                <div className="mono text-xs font-bold text-primary" style={{ marginBottom: '20px', letterSpacing: '0.1em' }}>/// OUTREACH FRAMEWORKS</div>
                 <div style={{ display: 'flex', gap: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
                     {SCRIPT_TABS.map(tab => (
                         <button
@@ -231,9 +235,9 @@ function GTM() {
                         </button>
                     ))}
                 </div>
-                <div style={{
-                    background: 'var(--bg-primary)', borderRadius: 'var(--radius-sm)',
-                    padding: 'var(--space-4)', fontSize: 'var(--text-sm)', lineHeight: 1.8,
+                <div className="mono" style={{
+                    background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-subtle)',
+                    padding: '24px', fontSize: '12px', lineHeight: 1.8,
                     whiteSpace: 'pre-wrap', color: 'var(--text-secondary)'
                 }}>
                     {SCRIPTS[activeScript]}
