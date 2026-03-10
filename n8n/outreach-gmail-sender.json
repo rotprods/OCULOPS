@@ -120,7 +120,7 @@
             ],
             "credentials": {
                 "gmailOAuth2": {
-                    "id": "YOUR_GMAIL_CREDENTIAL_ID",
+                    "id": "",
                     "name": "Gmail ANTIGRAVITY"
                 }
             }
@@ -254,7 +254,7 @@
             ],
             "credentials": {
                 "gmailOAuth2": {
-                    "id": "YOUR_GMAIL_CREDENTIAL_ID",
+                    "id": "",
                     "name": "Gmail ANTIGRAVITY"
                 }
             }

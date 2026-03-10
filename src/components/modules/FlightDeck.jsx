@@ -1,3 +1,8 @@
+// /////////////////////////////////////////////////////////////////////////////
+// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// ANTIGRAVITY OS — Flight Deck
+// /////////////////////////////////////////////////////////////////////////////
+
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'

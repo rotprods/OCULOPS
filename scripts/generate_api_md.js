@@ -119,6 +119,25 @@ async function generateMasterCatalog() {
     const outPath = path.join(DOCS_DIR, 'api-master-catalog.md');
     fs.writeFileSync(outPath, mdContent);
     console.log(`Successfully wrote ${allApis.length} APIs to docs/api-master-catalog.md`);
+
+    // Output JSON for the frontend to consume
+    const fullJsonExport = {
+        generated_at: new Date().toISOString(),
+        source_repo: 'https://github.com/public-apis/public-apis',
+        stats: { entryCount: allApis.length },
+        entries: allApis.map(api => ({
+            slug: api.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''),
+            name: api.name,
+            url: api.url,
+            description: api.description,
+            category: api.category,
+            auth: api.auth,
+            source: api.source
+        }))
+    };
+    const jsonPath = path.join(PUBLIC_CATALOG_DIR, 'full.json');
+    fs.writeFileSync(jsonPath, JSON.stringify(fullJsonExport, null, 2));
+    console.log(`Successfully updated ${jsonPath} with ${allApis.length} APIs`);
 }
 
 generateMasterCatalog().catch(console.error);

@@ -1,9 +1,9 @@
 // ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — HERALD Agent Module
-// Telegram Daily Briefing Bot Management
+// 100-Year UX: telegram bot orchestrator
 // ═══════════════════════════════════════════════════
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, Fragment } from 'react'
 import { supabase } from '../../lib/supabase'
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
@@ -56,7 +56,7 @@ function HeraldAgent() {
     // Trigger manual briefing
     const triggerBriefing = useCallback(async () => {
         if (!heraldReady) {
-            setLastResult({ success: false, error: 'Supabase edge functions are not configured' })
+            setLastResult({ success: false, error: 'SUPABASE EDGE FUNCTIONS OFFLINE' })
             return
         }
 
@@ -75,112 +75,116 @@ function HeraldAgent() {
             setLastResult(result)
             await fetchAgent()
         } catch (err) {
-            setLastResult({ success: false, error: err.message })
+            setLastResult({ success: false, error: err.message.toUpperCase() })
         }
         setSending(false)
     }, [fetchAgent, heraldReady])
 
     const formatTime = (iso) => {
-        if (!iso) return '—'
+        if (!iso) return '--:--'
         const d = new Date(iso)
-        return d.toLocaleString('es-ES', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+        return d.toLocaleString('en-US', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).toUpperCase()
     }
 
     if (loading) return (
-        <div className="fade-in" style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-tertiary)' }}>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>📱</div>
-            ⏳ Loading HERALD...
+        <div className="fade-in mono text-xs" style={{ padding: '3rem', textAlign: 'center', color: 'var(--color-primary)' }}>
+            /// ESTABLISHING COMMS WITH HERALD...
         </div>
     )
 
     if (!heraldReady) return (
         <div className="fade-in">
-            <div className="module-header">
-                <h1>📱 HERALD — Telegram Briefing Bot</h1>
-                <p>Configura `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` para activar el briefing operativo.</p>
+            <div className="module-header" style={{ borderBottom: '1px solid var(--border-danger)', paddingBottom: '16px' }}>
+                <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-danger)' }}>HERALD // TELEGRAM BOT</h1>
+                <p className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>MODULE DISABLED. CONFIGURE VITE_SUPABASE_URL TO ACTIVATE.</p>
             </div>
-            <div className="empty-state">
-                <div className="empty-icon">📴</div>
-                <h3>HERALD no configurado</h3>
-                <p>El módulo queda en modo seguro hasta que el runtime de Supabase esté disponible.</p>
+            <div style={{ padding: '32px', border: '1px solid var(--border-danger)', background: 'var(--danger-bg)', marginTop: '24px', textAlign: 'center' }}>
+                <div className="mono text-sm" style={{ color: 'var(--color-danger)', fontWeight: 'bold' }}>[ OFFLINE ]</div>
+                <p className="mono text-xs" style={{ margin: '12px 0 0 0', color: 'var(--text-secondary)' }}>RUNTIME ENVIRONMENT NOT READY FOR DEPLOYMENT.</p>
             </div>
         </div>
     )
 
     return (
-        <div className="fade-in">
+        <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── Header ── */}
-            <div className="module-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--border-default)', paddingBottom: '16px', marginBottom: '24px' }}>
                 <div>
-                    <h1>📱 HERALD — Telegram Briefing Bot</h1>
-                    <p>Envía briefings diarios de inteligencia por Telegram. Pipeline, señales, agentes, tareas y health score.</p>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>HERALD COMMAND</h1>
+                    <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>TELEGRAM ORCHESTRATOR // TRANSMITS DAILY OPERATION BRIEFINGS</p>
                 </div>
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-primary mono"
                     onClick={triggerBriefing}
                     disabled={sending}
-                    style={{ whiteSpace: 'nowrap' }}
+                    style={{ whiteSpace: 'nowrap', fontSize: '11px', padding: '12px 24px', letterSpacing: '0.05em' }}
                 >
-                    {sending ? '⏳ Enviando...' : '📱 Enviar Briefing Ahora'}
+                    {sending ? '[ TRANSMITTING ]' : 'INITIATE BRIEFING'}
                 </button>
             </div>
 
-            {/* ── Agent Status Card ── */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '12px', marginBottom: '24px' }}>
-                <div className="kpi-card">
-                    <div className="kpi-value" style={{ color: agent?.status === 'online' ? 'var(--success)' : 'var(--danger)' }}>
-                        {agent?.status === 'online' ? '🟢' : '🔴'} {agent?.status || 'unknown'}
+            {/* ── Agent Status Grid ── */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)', marginBottom: '24px' }}>
+                <div style={{ background: '#000', padding: '16px' }}>
+                    <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginBottom: '8px' }}>AGENT STATUS</div>
+                    <div className="mono font-bold" style={{ fontSize: '16px', color: agent?.status === 'online' ? 'var(--color-success)' : 'var(--color-danger)' }}>
+                        {agent?.status === 'online' ? '[ ONLINE ]' : '[ OFFLINE ]'}
                     </div>
-                    <div className="kpi-label">Estado</div>
                 </div>
-                <div className="kpi-card">
-                    <div className="kpi-value">{agent?.total_runs || 0}</div>
-                    <div className="kpi-label">Total Runs</div>
+                <div style={{ background: '#000', padding: '16px' }}>
+                    <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginBottom: '8px' }}>TOTAL RUNS</div>
+                    <div className="mono font-bold" style={{ fontSize: '16px', color: 'var(--color-text)' }}>
+                        {agent?.total_runs || 0}
+                    </div>
                 </div>
-                <div className="kpi-card">
-                    <div className="kpi-value" style={{ fontSize: '14px' }}>{formatTime(agent?.last_run_at)}</div>
-                    <div className="kpi-label">Último Envío</div>
+                <div style={{ background: '#000', padding: '16px' }}>
+                    <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginBottom: '8px' }}>LAST TRANSMISSION</div>
+                    <div className="mono font-bold" style={{ fontSize: '13px', color: 'var(--color-text)' }}>
+                        {formatTime(agent?.last_run_at)}
+                    </div>
                 </div>
-                <div className="kpi-card">
-                    <div className="kpi-value">08:00</div>
-                    <div className="kpi-label">Siguiente Briefing</div>
+                <div style={{ background: '#000', padding: '16px' }}>
+                    <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginBottom: '8px' }}>NEXT SCHEDULED</div>
+                    <div className="mono font-bold" style={{ fontSize: '16px', color: 'var(--color-info)' }}>
+                        08:00 AM
+                    </div>
                 </div>
             </div>
 
             {/* ── Last Send Result ── */}
             {lastResult && (
-                <div className="card mb-6" style={{ borderLeft: `3px solid ${lastResult.success ? 'var(--success)' : 'var(--danger)'}` }}>
-                    <div className="card-header">
-                        <div className="card-title">{lastResult.success ? '✅ Briefing enviado correctamente' : '❌ Error al enviar'}</div>
+                <div style={{ border: `1px solid ${lastResult.success ? 'var(--color-success)' : 'var(--color-danger)'}`, background: 'var(--color-bg-2)', marginBottom: '24px' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '8px 12px', background: lastResult.success ? 'var(--color-success)' : 'var(--color-danger)', color: '#000' }}>
+                        {lastResult.success ? '/// TRANSMISSION SUCCESSFUL' : '/// TRANSMISSION FAILURE'}
                     </div>
-                    {lastResult.success ? (
-                        <div style={{ fontSize: '12px', color: 'var(--text-secondary)', padding: '12px' }}>
-                            <strong>telegram_sent:</strong> {String(lastResult.telegram_sent)} · <strong>Pipeline:</strong> {lastResult.briefing_data?.pipeline_total?.toLocaleString()}€ · <strong>Deals:</strong> {lastResult.briefing_data?.deal_count}
-                        </div>
-                    ) : (
-                        <div style={{ fontSize: '12px', color: 'var(--danger)', padding: '12px' }}>
-                            {lastResult.error}
-                        </div>
-                    )}
+                    <div className="mono text-xs" style={{ padding: '12px', color: 'var(--text-secondary)' }}>
+                        {lastResult.success ? (
+                            <>
+                                <strong>COMMS:</strong> {String(lastResult.telegram_sent).toUpperCase()} | <strong>PIPE:</strong> ${lastResult.briefing_data?.pipeline_total?.toLocaleString()} | <strong>DEALS:</strong> {lastResult.briefing_data?.deal_count}
+                            </>
+                        ) : (
+                            lastResult.error
+                        )}
+                    </div>
                 </div>
             )}
 
             {/* ── Tab Navigation ── */}
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '16px' }}>
                 {[
-                    { key: 'overview', label: '📊 Live Data', icon: '' },
-                    { key: 'preview', label: '👁️ Preview', icon: '' },
-                    { key: 'config', label: '⚙️ Config', icon: '' },
+                    { key: 'overview', label: 'LIVE DATA FEED' },
+                    { key: 'preview', label: 'PAYLOAD PREVIEW' },
+                    { key: 'config', label: 'SYSTEM CONFIG' },
                 ].map(tab => (
                     <button
                         key={tab.key}
                         onClick={() => setActiveTab(tab.key)}
-                        className="btn btn-sm"
+                        className="btn btn-ghost mono"
                         style={{
-                            background: activeTab === tab.key ? 'rgba(250,204,21,0.15)' : 'transparent',
-                            borderColor: activeTab === tab.key ? '#facc15' : 'var(--border-subtle)',
-                            color: activeTab === tab.key ? '#facc15' : 'var(--text-tertiary)',
-                            textTransform: 'uppercase', letterSpacing: '1px', fontSize: '11px',
+                            background: activeTab === tab.key ? 'var(--color-primary)' : 'transparent',
+                            borderColor: activeTab === tab.key ? 'var(--color-primary)' : 'var(--border-subtle)',
+                            color: activeTab === tab.key ? '#000' : 'var(--text-secondary)',
+                            fontSize: '10px', padding: '6px 12px'
                         }}
                     >
                         {tab.label}
@@ -189,127 +193,138 @@ function HeraldAgent() {
             </div>
 
             {/* ── Live Data Tab ── */}
-            {activeTab === 'overview' && briefingData && (
-                <div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', marginBottom: '20px' }}>
-                        <div className="card" style={{ padding: '16px', borderLeft: '3px solid var(--success)' }}>
-                            <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>💰 Pipeline</div>
-                            <div style={{ fontSize: '28px', fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--success)' }}>{briefingData.pipeline_total?.toLocaleString()}€</div>
-                            <div style={{ fontSize: '11px', color: briefingData.pipeline_change_pct >= 0 ? 'var(--success)' : 'var(--danger)' }}>
-                                {briefingData.pipeline_change_pct >= 0 ? '📈' : '📉'} {briefingData.pipeline_change_pct >= 0 ? '+' : ''}{briefingData.pipeline_change_pct}% vs ayer
-                            </div>
-                        </div>
-                        <div className="card" style={{ padding: '16px', borderLeft: '3px solid var(--accent-primary)' }}>
-                            <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>💎 Deals Activos</div>
-                            <div style={{ fontSize: '28px', fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)' }}>{briefingData.deal_count}</div>
-                            <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>
-                                {(briefingData.stale_deals || []).length > 0 ? `⚠️ ${briefingData.stale_deals.length} necesitan atención` : '✅ Todos activos'}
-                            </div>
-                        </div>
-                        <div className="card" style={{ padding: '16px', borderLeft: '3px solid var(--warning)' }}>
-                            <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>📡 Signals</div>
-                            <div style={{ fontSize: '28px', fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--warning)' }}>{briefingData.signal_count}</div>
-                            <div style={{ fontSize: '11px', color: 'var(--danger)' }}>🔴 {briefingData.critical_signals} critical</div>
-                        </div>
-                        <div className="card" style={{ padding: '16px', borderLeft: '3px solid #facc15' }}>
-                            <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-tertiary)', letterSpacing: '1px' }}>🎯 Health Score</div>
-                            <div style={{ fontSize: '28px', fontWeight: 800, fontFamily: 'var(--font-mono)', color: '#facc15' }}>{briefingData.health_score}/100</div>
-                            <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>🤖 {briefingData.agents_online}/{briefingData.agents_total} agents online</div>
-                        </div>
-                    </div>
+            <div style={{ flex: 1, overflowY: 'auto' }}>
+                {activeTab === 'overview' && briefingData && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
-                    {/* Signals detail */}
-                    <div className="card mb-6">
-                        <div className="card-header"><div className="card-title">📡 Top Signals</div></div>
-                        {(briefingData.signals || []).map((s, i) => (
-                            <div key={i} style={{ padding: '10px 14px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div>
-                                    <span style={{ marginRight: '8px' }}>{s.impact >= 9 ? '🔴' : s.impact >= 8 ? '🟠' : '🟡'}</span>
-                                    <span style={{ fontWeight: 600, fontSize: '13px' }}>{s.title}</span>
-                                    <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginLeft: '8px' }}>{s.category}</span>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
+                            <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <div className="mono text-2xs text-tertiary">GROSS PIPELINE</div>
+                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-success)' }}>${briefingData.pipeline_total?.toLocaleString()}</div>
+                                <div className="mono text-2xs" style={{ color: briefingData.pipeline_change_pct >= 0 ? 'var(--color-success)' : 'var(--color-danger)' }}>
+                                    {briefingData.pipeline_change_pct >= 0 ? '[+]' : '[-]'}{briefingData.pipeline_change_pct}% VS D-1
                                 </div>
-                                <span className="badge badge-neutral" style={{ fontFamily: 'var(--font-mono)', fontSize: '11px' }}>{s.impact}/10</span>
                             </div>
-                        ))}
-                    </div>
-
-                    {/* Top Tasks */}
-                    <div className="card">
-                        <div className="card-header"><div className="card-title">📋 Top Tasks</div></div>
-                        {(briefingData.top_tasks || []).map((t, i) => (
-                            <div key={i} style={{ padding: '10px 14px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div>
-                                    <span style={{ marginRight: '8px' }}>{t.priority === 'urgent' ? '🔴' : t.priority === 'high' ? '🟠' : '🟡'}</span>
-                                    <span style={{ fontWeight: 600, fontSize: '13px' }}>{t.title}</span>
+                            <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <div className="mono text-2xs text-tertiary">ACTIVE DEALS</div>
+                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-primary)' }}>{briefingData.deal_count}</div>
+                                <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>
+                                    {(briefingData.stale_deals || []).length > 0 ? `[ ERR ] ${(briefingData.stale_deals.length)} STALE` : '[ OK ] ALL NOMINAL'}
                                 </div>
-                                <span className={`badge ${t.status === 'done' ? 'badge-success' : 'badge-neutral'}`} style={{ fontSize: '10px' }}>{t.status}</span>
                             </div>
-                        ))}
-                    </div>
-                </div>
-            )}
+                            <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <div className="mono text-2xs text-tertiary">RADAR SIGNALS</div>
+                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-warning)' }}>{briefingData.signal_count}</div>
+                                <div className="mono text-2xs" style={{ color: 'var(--color-danger)' }}>[ {briefingData.critical_signals} ] CRITICAL</div>
+                            </div>
+                            <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <div className="mono text-2xs text-tertiary">SYSTEM HEALTH</div>
+                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-primary)' }}>{briefingData.health_score}/100</div>
+                                <div className="mono text-2xs" style={{ color: 'var(--text-secondary)' }}>[ {briefingData.agents_online}/{briefingData.agents_total} ] AGENTS ONLINE</div>
+                            </div>
+                        </div>
 
-            {/* ── Preview Tab ── */}
-            {activeTab === 'preview' && briefingData && (
-                <div className="card" style={{ padding: '24px', background: '#1a1a2e', borderRadius: '12px', fontFamily: 'monospace', lineHeight: 1.6 }}>
-                    <div style={{ fontSize: '13px', whiteSpace: 'pre-wrap', color: '#e0e0e0' }}>
-                        {`⚡ ANTIGRAVITY — Daily Briefing
-━━━━━━━━━━━━━━━━━━━━━━
-📅 ${briefingData.date}
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
+                            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)' }}>
+                                <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// SIGNAL FEEDS</div>
+                                <div>
+                                    {(briefingData.signals || []).map((s, i) => (
+                                        <div key={i} style={{ padding: '12px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <span className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                                                {s.impact >= 9 ? '[CRIT]' : s.impact >= 8 ? '[WARN]' : '[INFO]'} {s.title.toUpperCase()}
+                                            </span>
+                                            <span className="mono text-2xs" style={{ color: 'var(--color-primary)' }}>LVL_{s.impact}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
 
-💰 PIPELINE
-  ${briefingData.pipeline_total?.toLocaleString()}€ ${briefingData.pipeline_change_pct >= 0 ? '📈' : '📉'} ${briefingData.pipeline_change_pct >= 0 ? '+' : ''}${briefingData.pipeline_change_pct}% vs ayer
-  💎 ${briefingData.deal_count} deals activos
-
-📡 SIGNALS (${briefingData.signal_count} total / ${briefingData.critical_signals} critical)
-${(briefingData.signals || []).map(s => `  ${s.impact >= 9 ? '🔴' : s.impact >= 8 ? '🟠' : '🟡'} ${s.title} — Impact ${s.impact}/10`).join('\n')}
-
-🤖 AGENTS: ✅ ${briefingData.agents_online}/${briefingData.agents_total} online
-
-📋 TOP TASKS
-${(briefingData.top_tasks || []).map(t => `  ${t.priority === 'urgent' ? '🔴' : t.priority === 'high' ? '🟠' : '🟡'} ${t.title}`).join('\n')}
-
-🎯 HEALTH: ${briefingData.health_score}/100
-  ${'█'.repeat(Math.round(briefingData.health_score / 10))}${'░'.repeat(10 - Math.round(briefingData.health_score / 10))}
-
-🌐 Abrir Dashboard`}
-                    </div>
-                </div>
-            )}
-
-            {/* ── Config Tab ── */}
-            {activeTab === 'config' && (
-                <div>
-                    <div className="card mb-6">
-                        <div className="card-header"><div className="card-title">⚙️ Configuración HERALD</div></div>
-                        <div className="table-container">
-                            <table>
-                                <tbody>
-                                    <tr><td style={{ fontWeight: 600, width: '200px' }}>Bot Username</td><td><code>@aiopsinternalbot</code></td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Canal</td><td>Telegram (Private Chat)</td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Horario</td><td>Todos los días a las <strong>08:00 AM</strong></td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Edge Function</td><td><code>agent-herald</code> v3 — ACTIVE</td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>n8n Workflow</td><td>HERALD — Daily Telegram Briefing (8AM)</td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Modelo</td><td><code>{agent?.model || 'system'}</code></td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Ciclo</td><td>{agent?.cycle_minutes || 1440} minutos (24h)</td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Total Runs</td><td>{agent?.total_runs || 0}</td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Último Run</td><td>{formatTime(agent?.last_run_at)}</td></tr>
-                                    <tr><td style={{ fontWeight: 600 }}>Parent Agent</td><td>CORTEX</td></tr>
-                                </tbody>
-                            </table>
+                            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)' }}>
+                                <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// PRIORITY TASKS</div>
+                                <div>
+                                    {(briefingData.top_tasks || []).map((t, i) => (
+                                        <div key={i} style={{ padding: '12px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <span className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                                                {t.priority === 'urgent' ? '[PRI_0]' : t.priority === 'high' ? '[PRI_1]' : '[PRI_2]'} {t.title.toUpperCase()}
+                                            </span>
+                                            <span className="mono text-2xs" style={{ color: t.status === 'done' ? 'var(--color-success)' : 'var(--text-tertiary)' }}>[{t.status.toUpperCase()}]</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
+                )}
 
-                    <div className="card">
-                        <div className="card-header"><div className="card-title">📋 Capabilities</div></div>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '14px' }}>
-                            {(agent?.capabilities || []).map(cap => (
-                                <span key={cap} className="badge badge-neutral" style={{ fontSize: '11px' }}>{cap.replace(/_/g, ' ')}</span>
-                            ))}
+                {/* ── Preview Tab ── */}
+                {activeTab === 'preview' && briefingData && (
+                    <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '24px' }}>
+                        <pre className="mono text-xs" style={{ color: 'var(--color-success)', whiteSpace: 'pre-wrap', lineHeight: 1.6, margin: 0 }}>
+                            {`/// HERALD PAYLOAD
+/// T:${briefingData.date}
+
+[ PIPELINE STATUS ]
+TARGET:  $${briefingData.pipeline_total?.toLocaleString()} (${briefingData.pipeline_change_pct >= 0 ? '+' : ''}${briefingData.pipeline_change_pct}% D-1)
+ACTIVE:  [${briefingData.deal_count}] DEALS
+
+[ SIGNALS PROTOCOL ]
+TOTAL:   ${briefingData.signal_count} DETECTED
+CRIT:    ${briefingData.critical_signals} ACTION REQUIRED
+${(briefingData.signals || []).map(s => `> LVL_${s.impact} | ${s.title.toUpperCase()}`).join('\n')}
+
+[ TASKS QUEUE ]
+${(briefingData.top_tasks || []).map(t => `> [${t.status.toUpperCase()}] ${t.priority.toUpperCase()} | ${t.title.toUpperCase()}`).join('\n')}
+
+[ AGENT NETWORK ]
+NET:     [ ${briefingData.agents_online}/${briefingData.agents_total} ] ONLINE
+HLTH:    ${briefingData.health_score}/100 
+         ${'█'.repeat(Math.round(briefingData.health_score / 10))}${'░'.repeat(10 - Math.round(briefingData.health_score / 10))}
+
+END OF TRANSMISSION.`}
+                        </pre>
+                    </div>
+                )}
+
+                {/* ── Config Tab ── */}
+                {activeTab === 'config' && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// OPERATIONAL SYSTEM RECORD</div>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(200px, 1fr) 2fr' }}>
+                                {[
+                                    { label: 'BOT TARGET', value: '@aiopsinternalbot' },
+                                    { label: 'CHANNEL LINK', value: 'PRIVATE' },
+                                    { label: 'CRON FREQ', value: '08:00 AM DAILY' },
+                                    { label: 'EDGE RUNTIME', value: 'agent-herald v3 [ACTIVE]' },
+                                    { label: 'WORKFLOW', value: 'HERALD_8AM_DISPATCH' },
+                                    { label: 'SUB-MODEL', value: agent?.model?.toUpperCase() || 'SYSTEM DEFAULT' },
+                                    { label: 'REST CYCLE', value: `${agent?.cycle_minutes || 1440} MINS` },
+                                    { label: 'PARENT NODE', value: 'CORTEX OS' }
+                                ].map((row, idx) => (
+                                    <Fragment key={idx}>
+                                        <div className="mono text-xs text-tertiary" style={{ padding: '12px', borderBottom: '1px solid var(--border-subtle)', borderRight: '1px solid var(--border-subtle)' }}>{row.label}</div>
+                                        <div className="mono text-xs text-primary" style={{ padding: '12px', borderBottom: '1px solid var(--border-subtle)' }}>{row.value}</div>
+                                    </Fragment>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// AGENT DIRECTIVES</div>
+                            <div style={{ padding: '16px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                                {(agent?.capabilities || []).map(cap => (
+                                    <span key={cap} className="mono text-2xs" style={{ border: '1px solid var(--border-default)', padding: '4px 8px', background: '#000', color: 'var(--text-secondary)' }}>
+                                        {cap.toUpperCase().replace(/_/g, ' ')}
+                                    </span>
+                                ))}
+                                {(!agent?.capabilities || agent.capabilities.length === 0) && (
+                                    <span className="mono text-2xs text-tertiary">[ NO DIRECTIVES ALLOCATED ]</span>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     )
 }

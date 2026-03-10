@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — System Intelligence Panel
-// Live dashboard with agent status strip
+// ANTIGRAVITY OS — Intelligence Terminal Masterpiece (Control Tower)
+// 100-Year UX: Military-grade, Bloomberg-style, OLED Black, Gold accents
 // ═══════════════════════════════════════════════════
 
 import { useMemo, useEffect } from 'react'
@@ -9,70 +9,38 @@ import { useDeals } from '../../hooks/useDeals'
 import { useAlerts } from '../../hooks/useAlerts'
 import { useTasks } from '../../hooks/useTasks'
 import { useSignals } from '../../hooks/useSignals'
-import { useBets } from '../../hooks/useBets'
-import { useNiches } from '../../hooks/useNiches'
 import { useSnapshots } from '../../hooks/useSnapshots'
 import { useAIAdvisor } from '../../hooks/useAIAdvisor'
 import useAgents from '../../hooks/useAgents'
-import './ControlTower.css'
 
-// ── Mini SVG Sparkline ──
-function Sparkline({ data = [], color = 'var(--accent-primary)', width = 80, height = 24 }) {
-    if (data.length < 2) return <span className="sparkline-no-data">—</span>
+// ── Ultra-Sharp Sparkline ──
+function Sparkline({ data = [], color = 'var(--color-primary)', width = 80, height = 24 }) {
+    if (data.length < 2) return <span className="mono text-tertiary">—</span>
     const max = Math.max(...data, 1)
     const min = Math.min(...data, 0)
     const range = max - min || 1
     const points = data.map((v, i) => `${(i / (data.length - 1)) * width},${height - ((v - min) / range) * height}`).join(' ')
     return (
-        <svg width={width} height={height} className="sparkline-svg">
-            <polyline points={points} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <svg width={width} height={height} style={{ overflow: 'visible' }}>
+            <polyline points={points} fill="none" stroke={color} strokeWidth="3" opacity="0.2" strokeLinecap="round" strokeLinejoin="round" style={{ filter: 'blur(2px)' }} />
+            <polyline points={points} fill="none" stroke={color} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
-
-// ── Health Ring ──
-function HealthRing({ score, size = 80 }) {
-    const r = (size - 8) / 2
-    const circ = 2 * Math.PI * r
-    const offset = circ - (score / 100) * circ
-    const color = score >= 70 ? 'var(--success)' : score >= 40 ? 'var(--warning)' : 'var(--danger)'
-    return (
-        <svg width={size} height={size} className="health-ring-svg">
-            <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--border-subtle)" strokeWidth="6" />
-            <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth="6" strokeDasharray={circ} strokeDashoffset={offset}
-                strokeLinecap="round" className="health-ring-circle" />
-            <text x={size / 2} y={size / 2} fill={color} fontSize="18" fontWeight="800" textAnchor="middle" dominantBaseline="middle"
-                className="health-ring-text">{score}</text>
-        </svg>
-    )
-}
-
-const quickActions = [
-    { label: 'Añadir Lead', icon: '➕', module: '/gtm' },
-    { label: 'Nueva Señal', icon: '📡', module: '/intelligence' },
-    { label: 'Crear Tarea', icon: '📋', module: '/execution' },
-    { label: 'Nuevo Experimento', icon: '🧪', module: '/experiments' },
-    { label: 'Buscar Leads', icon: '🔭', module: '/prospector' },
-    { label: 'Ver Mensajes', icon: '💬', module: '/messaging' },
-]
 
 function ControlTower() {
     const { deals, loading: dealsLoading } = useDeals()
     const { alerts, loading: alertsLoading } = useAlerts()
     const { completionRate, currentDay, loading: tasksLoading } = useTasks()
     const { signals, loading: signalsLoading } = useSignals()
-    const { active: activeBets } = useBets()
-    const { scored: nicheRanking } = useNiches()
-    const { mrrHistory, clientHistory, pipelineHistory, healthHistory } = useSnapshots(30)
-    const { insights, loading: aiLoading, source: aiSource, fetchInsights } = useAIAdvisor()
+    const { mrrHistory, clientHistory, pipelineHistory } = useSnapshots(30)
+    const { insights, loading: aiLoading, fetchInsights } = useAIAdvisor()
     const { agents, stats: agentStats } = useAgents()
 
     const loading = dealsLoading || alertsLoading || tasksLoading || signalsLoading
 
-    // Auto-fetch AI insights on mount
     useEffect(() => { fetchInsights() }, [fetchInsights])
 
-    // ── Live KPI calculations ──
     const mrr = useMemo(() => {
         return (deals || [])
             .filter(d => ['closed_won', 'onboarding'].includes(d.stage))
@@ -91,236 +59,149 @@ function ControlTower() {
 
     const activeAlerts = (alerts || []).filter(a => a.status === 'active').length
 
-    // Health score — shared formula with daily-snapshot edge function
     const healthScore = useMemo(
         () => computeHealthScore({ mrr, pipelineTotal, completionRate, activeAlerts }),
         [mrr, pipelineTotal, completionRate, activeAlerts]
     )
 
     const kpis = [
-        { label: 'MRR', value: `€${mrr.toLocaleString()}`, target: '€20k', icon: '💰', trend: mrrHistory, trendColor: 'var(--success)' },
-        { label: 'Clientes', value: clients, target: '5', icon: '👥', trend: clientHistory, trendColor: 'var(--info)' },
-        { label: 'Pipeline', value: `€${Math.round(pipelineTotal).toLocaleString()}`, target: '€50k', icon: '💎', trend: pipelineHistory, trendColor: 'var(--accent-primary)' },
-        { label: 'Alertas', value: activeAlerts, target: '<3', icon: '🔔', trend: null, trendColor: activeAlerts > 3 ? 'var(--danger)' : 'var(--success)' },
-        { label: 'Completado', value: `${completionRate}%`, target: '80%', icon: '✅', trend: null, trendColor: 'var(--success)' },
-        { label: 'Señales', value: (signals || []).length, target: '10+', icon: '📡', trend: null, trendColor: 'var(--accent-secondary)' },
+        { label: 'GROSS MRR', value: `€${mrr.toLocaleString()}`, icon: '⚡', trend: mrrHistory, target: '€20K' },
+        { label: 'ACTIVE DEPLOYMENTS', value: clients, icon: '🛡️', trend: clientHistory, target: '5.0' },
+        { label: 'PIPELINE VALUATION', value: `€${Math.round(pipelineTotal).toLocaleString()}`, icon: '💎', trend: pipelineHistory, target: '€50K' },
+        { label: 'CRITICAL ALERTS', value: activeAlerts, icon: '⚠️', trendColor: activeAlerts > 0 ? 'var(--color-danger)' : 'var(--color-success)', target: '0' },
+        { label: 'COMPLETION RATIO', value: `${completionRate}%`, icon: '🎯', trendColor: 'var(--color-success)', target: '100%' },
+        { label: 'SIGNAL INTERCEPTS', value: (signals || []).length, icon: '📡', trendColor: 'var(--color-primary)', target: '10+' },
     ]
 
-    // Recent items for activity feed
-    const recentSignals = (signals || []).slice(-3).reverse()
-    const recentAlerts = (alerts || []).filter(a => a.status === 'active').slice(0, 3)
+    const recentSignals = (signals || []).slice(-4).reverse()
 
     return (
-        <div className="control-tower fade-in">
-            {/* ── Status Banner ── */}
-            <div className="status-banner">
-                <div className="banner-content">
-                    <div className="banner-icon">⚡</div>
+        <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            {/* ── COMMAND HEADER ── */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ width: '48px', height: '48px', background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', borderRadius: '0' }}>
+                        <span style={{ fontSize: '24px' }}>⚡</span>
+                    </div>
                     <div>
-                        <h2 className="banner-title">SYSTEM INTELLIGENCE PANEL</h2>
-                        <p className="text-sm text-secondary">
-                            {loading ? '⏳ Sincronizando datos...' : `Día ${currentDay} | ${clients} clientes | ${activeAlerts} alertas activas`}
-                        </p>
+                        <h1 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontSize: '28px', color: 'var(--color-primary)', letterSpacing: '0.05em', lineHeight: '1' }}>SYSTEM INTELLIGENCE PANEL</h1>
+                        <span className="mono text-xs text-tertiary">ANTIGRAVITY OS CORE TERMINAL // ENCRYPTED CONNECTION</span>
                     </div>
                 </div>
-                <div className="banner-status">
-                    <span className="status-dot" style={{ background: loading ? 'var(--warning)' : 'var(--success)' }}></span>
-                    <span className="mono text-xs">{loading ? 'SINCRONIZANDO' : 'EN VIVO'}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '8px 16px' }}>
+                    <div className="mono text-xs">
+                        <span style={{ color: 'var(--text-tertiary)' }}>SYSTEM STATUS:</span> <span style={{ color: loading ? 'var(--color-warning)' : 'var(--color-success)', fontWeight: 'bold', marginLeft: '8px' }}>{loading ? 'SYNCING DATA' : 'OPERATIONAL'}</span>
+                    </div>
+                    <div className="mono text-xs" style={{ borderLeft: '1px solid var(--border-subtle)', paddingLeft: '16px' }}>
+                        <span style={{ color: 'var(--text-tertiary)' }}>DAY SEQUENCE:</span> <span style={{ color: 'var(--color-primary)', fontWeight: 'bold', marginLeft: '8px' }}>T+{currentDay}</span>
+                    </div>
+                    <div className="status-dot active"></div>
                 </div>
             </div>
 
-            {/* ── Agent Status Strip ── */}
-            <div className="agent-status-strip">
-                {(agents || []).slice(0, 8).map(agent => {
-                    const statusColor = agent.status === 'online' ? 'var(--success)' : agent.status === 'running' ? 'var(--accent-primary)' : agent.status === 'error' ? 'var(--danger)' : 'var(--text-quaternary)'
-                    return (
-                        <div key={agent.id || agent.code_name} className="agent-node-dot" title={`${agent.code_name || agent.name}: ${agent.status}`}>
-                            <span className="agent-dot" style={{ background: statusColor, boxShadow: `0 0 8px ${statusColor}` }} />
-                            <span className="agent-dot-label">{(agent.code_name || agent.name || '').slice(0, 6).toUpperCase()}</span>
+            {/* ── CORTEX NETWORK STATUS ── */}
+            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '12px 16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px', overflowX: 'auto' }}>
+                <span className="mono text-xs font-bold" style={{ color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>CORTEX NETWORK:</span>
+                <div style={{ display: 'flex', gap: '12px', flex: 1 }}>
+                    {(agents || []).slice(0, 10).map(agent => (
+                        <div key={agent.id} className="mono" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', background: '#000', padding: '4px 8px', border: '1px solid var(--border-subtle)' }}>
+                            <div className={`status-dot ${agent.status === 'online' ? 'active' : agent.status === 'running' ? 'warning pulse' : 'error'}`} style={{ width: '6px', height: '6px' }}></div>
+                            <span style={{ color: 'var(--color-text)' }}>{(agent.code_name || agent.name || 'UKNOWN').slice(0, 6).toUpperCase()}</span>
                         </div>
-                    )
-                })}
-                {agents.length === 0 && <span className="text-xs text-tertiary">No agents connected</span>}
-                <span className="agent-strip-summary">{agentStats.online} online · {agentStats.running} running</span>
+                    ))}
+                </div>
+                <span className="mono text-xs text-tertiary" style={{ whiteSpace: 'nowrap' }}>{agentStats?.online || 0} SECURE NODES</span>
             </div>
 
-            {/* ── Health Score + KPI Grid ── */}
-            <section className="section">
-                <h3 className="section-title">📊 Métricas Clave</h3>
-                <div className="health-score-layout">
-                    {/* Health ring */}
-                    <div className="health-score-container">
-                        <HealthRing score={healthScore} size={100} />
-                        <span className="health-score-label">HEALTH SCORE</span>
-                        {healthHistory.length > 1 && <Sparkline data={healthHistory} color={healthScore >= 70 ? 'var(--success)' : 'var(--warning)'} width={90} height={20} />}
+            {/* ── HIGH DENSITY GRID ── */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2.5fr', gap: '16px', flex: 1, minHeight: 0, paddingBottom: '32px' }}>
+                {/* LEFT COLUMN: VITAL STATS */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto' }}>
+                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// HEALTH TELEMETRY</div>
+                        <div style={{ padding: '48px 16px', textAlign: 'center' }}>
+                            <div style={{ fontSize: '84px', fontFamily: 'var(--font-mono)', fontWeight: '800', lineHeight: '1', color: healthScore >= 70 ? 'var(--color-success)' : healthScore >= 40 ? 'var(--color-primary)' : 'var(--color-danger)', textShadow: '0 0 20px rgba(255,255,255,0.1)' }}>
+                                {healthScore}
+                            </div>
+                            <div className="mono text-xs text-tertiary" style={{ marginTop: '16px' }}>AGGREGATE HEALTH SCORE</div>
+                        </div>
                     </div>
 
-                    {/* KPI Grid */}
-                    <div className="kpi-grid">
-                        {kpis.map((kpi, i) => (
-                            <div key={i} className="kpi-card card">
-                                <div className="kpi-header">
-                                    <span className="kpi-icon">{kpi.icon}</span>
-                                    {kpi.trend && kpi.trend.length > 1 && <Sparkline data={kpi.trend} color={kpi.trendColor} />}
+                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// CRITICAL SIGNALS</div>
+                        <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto', flex: 1 }}>
+                            {recentSignals.map(s => (
+                                <div key={s.id} style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderLeft: '2px solid var(--color-primary)', paddingLeft: '12px' }}>
+                                    <div className="mono text-xs" style={{ color: 'var(--color-text)', fontWeight: '700' }}>{s.title.toUpperCase()}</div>
+                                    <div className="mono" style={{ fontSize: '10px', color: 'var(--text-tertiary)' }}>{s.category.toUpperCase()} | {s.indicator.toUpperCase()} | IMP: {s.impact}</div>
                                 </div>
-                                <div className="kpi-value">{kpi.value}</div>
-                                <div className="kpi-label">{kpi.label}</div>
-                                <div className="kpi-target">
-                                    <span className="text-xs text-tertiary">Target: {kpi.target}</span>
+                            ))}
+                            {recentSignals.length === 0 && (
+                                <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', fontStyle: 'italic', marginTop: '32px' }}>NO INBOUND SIGNALS</div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                {/* RIGHT COLUMN: BIG METRICS & AI ADVISOR */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+                        {kpis.map((kpi, i) => (
+                            <div key={i} style={{ background: 'var(--color-bg-2)', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <span className="mono text-xs text-tertiary font-bold">{kpi.label}</span>
+                                    <span style={{ fontSize: '18px', filter: 'grayscale(100%) brightness(200%)' }}>{kpi.icon}</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                                    <span className="mono" style={{ fontSize: '32px', fontWeight: '800', lineHeight: '1', color: kpi.trendColor || 'var(--color-text)' }}>{kpi.value}</span>
+                                    {kpi.trend && kpi.trend.length > 1 && (
+                                        <div style={{ marginBottom: '4px' }}>
+                                            <Sparkline data={kpi.trend} color={kpi.trendColor || 'var(--color-primary)'} width={60} height={20} />
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="mono" style={{ fontSize: '10px', color: 'var(--text-tertiary)' }}>
+                                    TRG: {kpi.target}
                                 </div>
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
 
-            {/* ── Quick Actions ── */}
-            <section className="section">
-                <h3 className="section-title">⚡ Acciones Rápidas</h3>
-                <div className="actions-grid">
-                    {quickActions.map((action, i) => (
-                        <a key={i} href={action.module} className="action-card card">
-                            <span className="action-icon">{action.icon}</span>
-                            <span className="action-label">{action.label}</span>
-                        </a>
-                    ))}
-                </div>
-            </section>
-
-            {/* ── AI Strategy Advisor ── */}
-            <section className="section">
-                <h3 className="section-title">
-                    🧠 AI Strategy Advisor
-                    <button className="btn btn-sm action-btn-update" onClick={fetchInsights} disabled={aiLoading}>
-                        {aiLoading ? '⏳ Analizando...' : '🔄 Actualizar'}
-                    </button>
-                    {aiSource && <span className="ai-source-label">vía {aiSource}</span>}
-                </h3>
-                <div className="ai-advisor-grid">
-                    {(insights.length > 0 ? insights : [
-                        { type: 'action', title: 'Esperando datos...', description: 'Haz click en Actualizar para obtener insights.', priority: 'low', confidence: 0 },
-                    ]).map((insight, i) => {
-                        const typeConfig = { risk: { icon: '🔴', color: 'var(--danger)' }, opportunity: { icon: '🟢', color: 'var(--success)' }, action: { icon: '🔵', color: 'var(--accent-primary)' } }
-                        const cfg = typeConfig[insight.type] || typeConfig.action
-                        return (
-                            <div key={i} className="card ai-insight-card" style={{ borderTop: `3px solid ${cfg.color}` }}>
-                                <div className="ai-insight-header">
-                                    <span className="ai-insight-icon">{cfg.icon}</span>
-                                    <span className="ai-insight-title">{insight.title}</span>
-                                </div>
-                                <p className="ai-insight-description">{insight.description}</p>
-                                <div className="ai-insight-footer">
-                                    <span className="badge ai-insight-badge" style={{ background: cfg.color + '22', color: cfg.color }}>{insight.type}</span>
-                                    {insight.priority && <span className={`badge ai-insight-badge ${insight.priority === 'high' ? 'badge-danger' : insight.priority === 'medium' ? 'badge-warning' : 'badge-neutral'}`}>{insight.priority}</span>}
-                                    {insight.confidence > 0 && <span className="badge badge-neutral ai-insight-badge">{insight.confidence}% confident</span>}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </section>
-
-            {/* ── Intel Feed ── */}
-            <div className="grid-2-col">
-                {/* Top Niches */}
-                <section className="section">
-                    <h3 className="section-title">🧬 Top Nichos</h3>
-                    <div className="card">
-                        {nicheRanking.length === 0 ? (
-                            <div className="empty-state">Sin nichos evaluados</div>
-                        ) : (
-                            <div className="flex-col-container">
-                                {nicheRanking.slice(0, 5).map((n, i) => (
-                                    <div key={n.id} className="list-item">
-                                        <span className="list-item-rank" style={{ color: i === 0 ? 'var(--accent-primary)' : 'var(--text-tertiary)' }}>{i + 1}</span>
-                                        <span className="list-item-name">{n.name}</span>
-                                        <span className="list-item-score" style={{ color: n.ceoScore > 60 ? 'var(--success)' : 'var(--warning)' }}>{n.ceoScore}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </section>
-
-                {/* Active Bets */}
-                <section className="section">
-                    <h3 className="section-title">🎯 Apuestas Activas</h3>
-                    <div className="card">
-                        {activeBets.length === 0 ? (
-                            <div className="empty-state">Sin apuestas activas</div>
-                        ) : (
-                            <div className="flex-col-container">
-                                {activeBets.slice(0, 5).map(bet => (
-                                    <div key={bet.id} className="list-item">
-                                        <span style={{ fontSize: '12px' }}>{bet.type === 'core' ? '🔵' : '🟢'}</span>
-                                        <span className="list-item-name">{bet.name}</span>
-                                        <span className="badge badge-info ai-insight-badge">{bet.type}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </section>
-            </div>
-
-            {/* ── Recent Activity ── */}
-            <div className="grid-2-col">
-                {recentSignals.length > 0 && (
-                    <section className="section">
-                        <h3 className="section-title">📡 Últimas Señales</h3>
-                        <div className="card">
-                            {recentSignals.map(s => (
-                                <div key={s.id} className="list-item" style={{ fontSize: '12px' }}>
-                                    <div style={{ fontWeight: 600 }}>{s.title}</div>
-                                    <div style={{ color: 'var(--text-tertiary)', fontSize: '10px', marginTop: '2px' }}>{s.category} | {s.indicator} | impact: {s.impact}</div>
-                                </div>
-                            ))}
+                    <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>/// CORTEX ADVISOR PROTOCOL</span>
+                            <button className="btn btn-ghost mono" style={{ padding: '4px 12px', fontSize: '9px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }} onClick={fetchInsights} disabled={aiLoading}>
+                                {aiLoading ? 'ANALYZING...' : 'RERUN ANALYSIS'}
+                            </button>
                         </div>
-                    </section>
-                )}
-
-                {recentAlerts.length > 0 && (
-                    <section className="section">
-                        <h3 className="section-title">🔔 Alertas Activas</h3>
-                        <div className="card">
-                            {recentAlerts.map(a => (
-                                <div key={a.id} className="list-item" style={{ fontSize: '12px', borderLeft: `3px solid ${a.severity === 1 ? 'var(--danger)' : 'var(--warning)'}` }}>
-                                    <div style={{ fontWeight: 600 }}>{a.description}</div>
-                                    {a.action_required && <div style={{ color: 'var(--accent-primary)', fontSize: '10px', marginTop: '2px' }}>🎯 {a.action_required}</div>}
+                        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflowY: 'auto' }}>
+                            {(insights || []).length === 0 ? (
+                                <div className="mono text-xs text-tertiary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, minHeight: '100px' }}>
+                                    AWAITING STRATEGIC DIRECTIVES...
                                 </div>
-                            ))}
+                            ) : (
+                                insights.map((insight, i) => (
+                                    <div key={i} style={{ padding: '24px', borderBottom: i < insights.length - 1 ? '1px solid var(--border-subtle)' : 'none', display: 'flex', gap: '20px', background: i % 2 === 0 ? 'transparent' : '#000' }}>
+                                        <div style={{ color: insight.type === 'risk' ? 'var(--color-danger)' : insight.type === 'opportunity' ? 'var(--color-success)' : 'var(--color-primary)', fontSize: '24px', marginTop: '4px' }}>
+                                            {insight.type === 'risk' ? '⚠️' : insight.type === 'opportunity' ? '🎯' : '⚡'}
+                                        </div>
+                                        <div style={{ flex: 1 }}>
+                                            <div className="mono text-md font-bold" style={{ marginBottom: '8px', color: 'var(--color-text)' }}>{insight.title.toUpperCase()}</div>
+                                            <div className="mono text-xs text-secondary" style={{ lineHeight: '1.6', opacity: 0.9 }}>{insight.description.toUpperCase()}</div>
+                                            <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+                                                <span className="mono text-xs" style={{ border: '1px solid var(--border-subtle)', padding: '2px 8px', color: 'var(--text-tertiary)' }}>{insight.type.toUpperCase()}</span>
+                                                <span className="mono text-xs" style={{ border: `1px solid ${insight.priority === 'high' ? 'var(--color-danger)' : 'var(--color-warning)'}`, color: insight.priority === 'high' ? 'var(--color-danger)' : 'var(--color-warning)', padding: '2px 8px' }}>
+                                                    PRIORITY: {insight.priority.toUpperCase()}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
-                    </section>
-                )}
-            </div>
-
-            {/* ── System Status ── */}
-            <section className="section">
-                <h3 className="section-title">🔧 Estado del Sistema</h3>
-                <div className="grid-auto">
-                    <div className="card">
-                        <div className="text-sm text-secondary">Base de Datos</div>
-                        <div className="text-lg" style={{ color: 'var(--success)' }}>✅ Conectada (Supabase)</div>
-                        <p className="text-xs text-tertiary" style={{ marginTop: 'var(--space-2)' }}>
-                            28 tablas · RLS activo · Realtime habilitado
-                        </p>
-                    </div>
-                    <div className="card">
-                        <div className="text-sm text-secondary">Edge Functions</div>
-                        <div className="text-lg" style={{ color: 'var(--success)' }}>✅ 2 activas</div>
-                        <p className="text-xs text-tertiary" style={{ marginTop: 'var(--space-2)' }}>
-                            daily-snapshot · ai-advisor
-                        </p>
-                    </div>
-                    <div className="card">
-                        <div className="text-sm text-secondary">Modo</div>
-                        <div className="text-lg text-accent">🖥️ Desktop (Electron)</div>
-                        <p className="text-xs text-tertiary" style={{ marginTop: 'var(--space-2)' }}>
-                            Ejecuta con: npm run electron:dev
-                        </p>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
     )
 }

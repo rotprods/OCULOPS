@@ -1,204 +1,171 @@
-// ===================================================
+// ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Creative Studio Module
-// Biblioteca de briefs y plantillas de contenido
-// ===================================================
+// 100-Year UX: tactical deployment screens utilizing 1px grid
+// ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
+import { useGenerativeMedia } from '../../hooks/useGenerativeMedia'
+import { useAppStore } from '../../stores/useAppStore'
 
-const BRIEF_TEMPLATES = [
-  {
-    id: 'chatbot',
-    title: 'Setup Chatbot IA',
-    category: 'Producto',
-    tags: ['IA', 'automatizacion', 'WhatsApp'],
-    sections: [
-      { label: 'Objetivo', placeholder: 'Automatizar la atencion al cliente 24/7 en WhatsApp' },
-      { label: 'Audiencia objetivo', placeholder: 'Clientes actuales que contactan via WhatsApp' },
-      { label: 'Tono de voz', placeholder: 'Profesional, cercano, directo' },
-      { label: 'Integraciones requeridas', placeholder: 'WhatsApp Cloud API, CRM, n8n' },
-      { label: 'KPI de exito', placeholder: '80% de consultas resueltas sin intervencion humana' },
-    ]
-  },
-  {
-    id: 'meta-ads',
-    title: 'Campana Meta Ads',
-    category: 'Marketing',
-    tags: ['Meta', 'Facebook', 'Instagram', 'paid'],
-    sections: [
-      { label: 'Objetivo de campana', placeholder: 'Generacion de leads para clinica estetica' },
-      { label: 'Audiencia', placeholder: 'Mujeres 25-45, Madrid, interes en estetica' },
-      { label: 'Presupuesto diario', placeholder: '€50/dia durante 30 dias' },
-      { label: 'Creatividades necesarias', placeholder: '3 imagenes + 2 videos cortos' },
-      { label: 'Mensaje principal', placeholder: 'Primera consulta GRATIS — solo esta semana' },
-      { label: 'Metricas objetivo', placeholder: 'CPL < €15, CTR > 2%' },
-    ]
-  },
-  {
-    id: 'prospecting',
-    title: 'Brief de Prospecting',
-    category: 'Ventas',
-    tags: ['prospecting', 'outreach', 'B2B'],
-    sections: [
-      { label: 'Sector objetivo', placeholder: 'Clinicas de estetica en Madrid y Barcelona' },
-      { label: 'Tamano de empresa', placeholder: '5-50 empleados, ticket > €3.000/mes' },
-      { label: 'Pain points', placeholder: 'Sin presencia digital, atencion manual, sin automatizacion' },
-      { label: 'Propuesta de valor', placeholder: 'Automatizar WhatsApp + Meta Ads + CRM en 30 dias' },
-      { label: 'Canal de outreach', placeholder: 'LinkedIn + email frio + llamada en 3 pasos' },
-    ]
-  },
-  {
-    id: 'content',
-    title: 'Estrategia de Contenido',
-    category: 'Contenido',
-    tags: ['contenido', 'LinkedIn', 'RRSS'],
-    sections: [
-      { label: 'Pilares de contenido', placeholder: '1. Casos de exito  2. Educacion IA  3. Behind the scenes' },
-      { label: 'Frecuencia', placeholder: '3 posts/semana en LinkedIn, 1 newsletter mensual' },
-      { label: 'Formato principal', placeholder: 'Carruseles + videos cortos' },
-      { label: 'CTA principal', placeholder: 'Reserva llamada de diagnostico gratuita' },
-    ]
-  },
+const ASSET_TYPES = [
+  { id: 'image', label: 'STATIC INTEL (IMG)', icon: '[IMG]' },
+  { id: 'video', label: 'KINETIC INTEL (VID)', icon: '[VID]' }
 ]
 
-function BriefEditor({ template, onClose }) {
-  const [values, setValues] = useState(() =>
-    Object.fromEntries(template.sections.map(s => [s.label, '']))
-  )
-  const [copied, setCopied] = useState(false)
+function CreativeStudio() {
+  const { generateVideo, generateImage, isGeneratingVFX, isGeneratingImage, error } = useGenerativeMedia()
+  const { toast } = useAppStore(s => ({ toast: s.toast }))
 
-  const exportBrief = () => {
-    const text = [
-      `BRIEF: ${template.title}`,
-      `Categoria: ${template.category}`,
-      `Tags: ${template.tags.join(', ')}`,
-      `Fecha: ${new Date().toLocaleDateString('es-ES')}`,
-      '='.repeat(40),
-      ...template.sections.map(s => `\n${s.label.toUpperCase()}:\n${values[s.label] || '(pendiente)'}`)
-    ].join('\n')
-    navigator.clipboard.writeText(text)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  const [prompt, setPrompt] = useState('')
+  const [assetType, setAssetType] = useState('image')
+  const [mediaVault, setMediaVault] = useState([]) // Mock local store for session assets
+
+  const handleDeploy = async () => {
+    if (!prompt.trim()) return
+
+    try {
+      if (assetType === 'image') {
+        const result = await generateImage(prompt)
+        // Assume result contains an imageUrl or base64
+        setMediaVault(prev => [{
+          id: Date.now(),
+          type: 'image',
+          url: result?.output_url || result?.image || 'https://via.placeholder.com/600x400/000000/FFD700?text=AI+ASSET+DEPLOYED', // mock fallback
+          prompt,
+          timestamp: new Date().toISOString()
+        }, ...prev])
+        toast('TARGET IMAGE ASSET EXTRACTED TO VAULT.', 'success')
+      } else {
+        const result = await generateVideo(prompt)
+        // Assume result contains videoUrl
+        setMediaVault(prev => [{
+          id: Date.now(),
+          type: 'video',
+          url: result?.url || result?.video_url || 'https://www.w3schools.com/html/mov_bbb.mp4', // mock fallback
+          prompt,
+          timestamp: new Date().toISOString()
+        }, ...prev])
+        toast('TARGET VIDEO ASSET EXTRACTED TO VAULT.', 'success')
+      }
+    } catch (err) {
+      toast(`FAILED TO EXTRACT ASSET: ${err.message}`, 'error')
+    }
   }
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-      <div className="card" style={{ width: '600px', maxHeight: '80vh', overflow: 'auto', position: 'relative' }}>
-        <div className="card-header" style={{ position: 'sticky', top: 0, background: 'var(--color-bg-3)', zIndex: 1 }}>
-          <div>
-            <div className="card-title">{template.title}</div>
-            <div style={{ display: 'flex', gap: '4px', marginTop: '4px' }}>
-              {template.tags.map(t => <span key={t} className="badge badge-neutral" style={{ fontSize: '10px' }}>{t}</span>)}
-            </div>
+    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {/* ── HEADER ── */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '24px' }}>
+        <div>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>CREATIVE LAB</h1>
+          <span className="mono text-xs text-tertiary">TACTICAL ASSET GENERATION // GENERATIVE MEDIA PROTOCOL</span>
+        </div>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <div className="mono text-xs" style={{ padding: '6px 12px', border: `1px solid ${isGeneratingImage ? 'var(--color-warning)' : 'var(--color-success)'}`, color: isGeneratingImage ? 'var(--color-warning)' : 'var(--color-success)', background: '#000' }}>
+            NANO BANANA: {isGeneratingImage ? 'ACTIVE' : 'READY'}
           </div>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button className="btn btn-sm btn-primary" onClick={exportBrief}>{copied ? 'Copiado' : 'Copiar brief'}</button>
-            <button className="btn btn-sm" onClick={onClose}>Cerrar</button>
+          <div className="mono text-xs" style={{ padding: '6px 12px', border: `1px solid ${isGeneratingVFX ? 'var(--color-warning)' : 'var(--color-success)'}`, color: isGeneratingVFX ? 'var(--color-warning)' : 'var(--color-success)', background: '#000' }}>
+            VEO 3 API: {isGeneratingVFX ? 'ACTIVE' : 'READY'}
           </div>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '16px 0' }}>
-          {template.sections.map(section => (
-            <div key={section.label} className="input-group">
-              <label>{section.label}</label>
-              <textarea
-                className="input"
-                rows={3}
-                placeholder={section.placeholder}
-                value={values[section.label]}
-                onChange={e => setValues(v => ({ ...v, [section.label]: e.target.value }))}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function CreativeStudio() {
-  const [activeTemplate, setActiveTemplate] = useState(null)
-  const [filterCat, setFilterCat] = useState('Todos')
-
-  const categories = ['Todos', ...new Set(BRIEF_TEMPLATES.map(t => t.category))]
-  const filtered = filterCat === 'Todos' ? BRIEF_TEMPLATES : BRIEF_TEMPLATES.filter(t => t.category === filterCat)
-
-  return (
-    <div className="fade-in">
-      <div className="module-header">
-        <h1>Creative Studio</h1>
-        <p>Biblioteca de briefs y plantillas de contenido para la agencia.</p>
-      </div>
-
-      <div className="grid-4 mb-6">
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-primary)22', color: 'var(--color-primary)' }}>📋</div>
-          <div className="kpi-value">{BRIEF_TEMPLATES.length}</div>
-          <div className="kpi-label">Plantillas</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-info)22', color: 'var(--color-info)' }}>🗂️</div>
-          <div className="kpi-value">{categories.length - 1}</div>
-          <div className="kpi-label">Categorias</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-success)22', color: 'var(--color-success)' }}>🏷️</div>
-          <div className="kpi-value">{[...new Set(BRIEF_TEMPLATES.flatMap(t => t.tags))].length}</div>
-          <div className="kpi-label">Tags unicos</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-text-2)22', color: 'var(--color-text-2)' }}>📅</div>
-          <div className="kpi-value">Pronto</div>
-          <div className="kpi-label">Calendario</div>
         </div>
       </div>
 
-      <div className="card mb-6">
-        <div className="card-header">
-          <div className="card-title">Biblioteca de Briefs</div>
-          <div style={{ display: 'flex', gap: '6px' }}>
-            {categories.map(c => (
-              <button key={c} className={`btn btn-sm ${filterCat === c ? 'btn-primary' : ''}`} onClick={() => setFilterCat(c)}>
-                {c}
-              </button>
-            ))}
+      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: 'minmax(400px, 1fr) minmax(500px, 1.5fr)', gap: '24px' }}>
+
+        {/* ── COMMAND TERMINAL ── */}
+        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+            <span>/// COMMAND INPUT</span>
+            <span style={{ color: 'var(--color-success)' }}>[ AWAITING DIRECTIVE ]</span>
           </div>
-        </div>
-        <div className="grid-2" style={{ gap: '12px' }}>
-          {filtered.map(template => (
-            <div
-              key={template.id}
-              className="card"
-              style={{ cursor: 'pointer', transition: 'border-color 0.15s' }}
-              onClick={() => setActiveTemplate(template)}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                <div style={{ fontWeight: 700, fontSize: '14px' }}>{template.title}</div>
-                <span className="badge badge-neutral">{template.category}</span>
-              </div>
-              <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                {template.tags.map(t => (
-                  <span key={t} className="badge" style={{ fontSize: '10px', background: 'var(--color-primary)22', color: 'var(--color-primary)', border: 'none' }}>{t}</span>
+
+          <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '24px', flex: 1 }}>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <label className="mono text-2xs text-tertiary">TARGET ASSET TYPE</label>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {ASSET_TYPES.map(t => (
+                  <button
+                    key={t.id}
+                    className="btn btn-ghost mono"
+                    style={{ flex: 1, padding: '12px', fontSize: '11px', border: assetType === t.id ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)', background: assetType === t.id ? 'var(--color-primary)' : '#000', color: assetType === t.id ? '#000' : 'var(--color-text)' }}
+                    onClick={() => setAssetType(t.id)}
+                  >
+                    {t.icon} {t.label}
+                  </button>
                 ))}
               </div>
-              <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--color-text-2)' }}>
-                {template.sections.length} secciones
-              </div>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="card">
-        <div className="card-header"><div className="card-title">Calendario de Contenido</div><span className="badge badge-neutral">Proximamente</span></div>
-        <div className="empty-state">
-          <div className="empty-icon">📅</div>
-          <h3>Calendario en desarrollo</h3>
-          <p>La vista de calendario de contenido se activara en una proxima version.</p>
-        </div>
-      </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <label className="mono text-2xs text-tertiary">GENERATION DIRECTIVE</label>
+              <textarea
+                className="mono"
+                style={{ flex: 1, background: '#000', border: '1px solid var(--border-subtle)', padding: '16px', color: 'var(--color-primary)', fontSize: '12px', outline: 'none', resize: 'none' }}
+                placeholder="ENTER TACTICAL PARAMETERS FOR ASSET GENERATION..."
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+              />
+            </div>
 
-      {activeTemplate && (
-        <BriefEditor template={activeTemplate} onClose={() => setActiveTemplate(null)} />
-      )}
+            {error && (
+              <div style={{ padding: '12px', background: 'var(--color-bg)', border: '1px solid var(--color-danger)', color: 'var(--color-danger)' }}>
+                <span className="mono text-xs font-bold">ERR: </span>{error.toUpperCase()}
+              </div>
+            )}
+
+            <button
+              className="btn btn-ghost mono"
+              style={{ width: '100%', padding: '16px', fontSize: '12px', fontWeight: 'bold', background: isGeneratingVFX || isGeneratingImage ? 'transparent' : 'var(--color-primary)', color: isGeneratingVFX || isGeneratingImage ? 'var(--color-warning)' : '#000', border: isGeneratingVFX || isGeneratingImage ? '1px solid var(--color-warning)' : '1px solid var(--color-primary)' }}
+              onClick={handleDeploy}
+              disabled={isGeneratingVFX || isGeneratingImage || !prompt.trim()}
+            >
+              {isGeneratingVFX || isGeneratingImage ? 'DEPLOYING ASSET (WAIT)...' : 'INITIATE GENERATION SEQUENCE'}
+            </button>
+          </div>
+        </div>
+
+        {/* ── SECURE MEDIA VAULT ── */}
+        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+            <span>/// SECURE MEDIA VAULT</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>{mediaVault.length} ASSETS LOGGED</span>
+          </div>
+
+          <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {mediaVault.length === 0 ? (
+              <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: 'var(--text-tertiary)' }}>
+                <div className="mono">
+                  <div style={{ fontSize: '24px', marginBottom: '8px' }}>[   ]</div>
+                  VAULT IS EMPTY.<br />READY FOR INBOUND ASSETS.
+                </div>
+              </div>
+            ) : (
+              mediaVault.map(asset => (
+                <div key={asset.id} style={{ border: '1px solid var(--border-subtle)', background: '#000' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '200px', borderBottom: '1px solid var(--border-subtle)' }}>
+                    {asset.type === 'video' ? (
+                      <video src={asset.url} controls autoPlay loop muted style={{ width: '100%', maxHeight: '350px', objectFit: 'contain' }} />
+                    ) : (
+                      <img src={asset.url} alt="Generated Asset" style={{ width: '100%', maxHeight: '350px', objectFit: 'contain' }} />
+                    )}
+                  </div>
+                  <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <span className="mono text-xs font-bold" style={{ color: 'var(--color-primary)' }}>{asset.type.toUpperCase()} ASSET</span>
+                      <span className="mono text-xs text-secondary">{new Date(asset.timestamp).toLocaleTimeString()}</span>
+                    </div>
+                    <div className="mono text-xs" style={{ color: 'var(--text-tertiary)', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', lineHeight: '1.4' }}>
+                      &gt; {asset.prompt.toUpperCase()}
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+      </div>
     </div>
   )
 }

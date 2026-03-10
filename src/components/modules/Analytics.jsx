@@ -1,31 +1,29 @@
-// ===================================================
+// ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Analytics Module
-// Funnel de conversion y tasas por fuente
-// ===================================================
+// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// ═══════════════════════════════════════════════════
 
 import { useLeads } from '../../hooks/useLeads'
 import { useDeals } from '../../hooks/useDeals'
 
 const STAGES = [
-  { id: 'lead',        label: 'Lead captado',    color: 'var(--color-info)' },
-  { id: 'contacted',   label: 'Contactado',       color: 'var(--color-primary)' },
-  { id: 'meeting',     label: 'Reunion agendada', color: '#FF9500' },
-  { id: 'proposal',    label: 'Propuesta enviada', color: '#AF52DE' },
-  { id: 'closed_won',  label: 'Cerrado (won)',    color: 'var(--color-success)' },
+  { id: 'lead', label: 'ACQUIRED LEAD', color: 'var(--color-info)' },
+  { id: 'contacted', label: 'OUTREACH ACTIVE', color: 'var(--color-primary)' },
+  { id: 'meeting', label: 'MEETING BOOKED', color: '#FF9500' },
+  { id: 'proposal', label: 'PROPOSAL SENT', color: '#AF52DE' },
+  { id: 'closed_won', label: 'CLOSED WON', color: 'var(--color-success)' },
 ]
 
 function FunnelBar({ label, count, max, color }) {
   const pct = max > 0 ? Math.round((count / max) * 100) : 0
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-      <div style={{ width: '150px', fontSize: '12px', color: 'var(--color-text-2)', textAlign: 'right', flexShrink: 0 }}>{label}</div>
-      <div style={{ flex: 1, background: 'var(--color-bg-3)', borderRadius: '4px', overflow: 'hidden', height: '24px' }}>
-        <div style={{ width: `${pct}%`, height: '100%', background: color, borderRadius: '4px', minWidth: count > 0 ? '4px' : '0', display: 'flex', alignItems: 'center', paddingLeft: '8px', transition: 'width 0.4s ease' }}>
-          {pct > 10 && <span style={{ fontSize: '11px', fontWeight: 700, color: '#000' }}>{count}</span>}
-        </div>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '8px' }}>
+      <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0 }}>{label}</div>
+      <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '16px', position: 'relative' }}>
+        <div style={{ width: `${pct}%`, height: '100%', background: color, transition: 'width 0.4s ease' }} />
       </div>
-      <div style={{ width: '36px', textAlign: 'right', fontSize: '13px', fontWeight: 700 }}>{count}</div>
-      <div style={{ width: '40px', textAlign: 'right', fontSize: '11px', color: 'var(--color-text-2)' }}>{pct}%</div>
+      <div className="mono font-bold" style={{ width: '40px', textAlign: 'right', fontSize: '13px', color: 'var(--color-text)' }}>{count}</div>
+      <div className="mono text-xs" style={{ width: '40px', textAlign: 'right', color: 'var(--text-tertiary)' }}>{pct}%</div>
     </div>
   )
 }
@@ -38,10 +36,10 @@ function Analytics() {
 
   // Funnel: lead count by stage
   const funnelCounts = {
-    lead:       leads.length + (pipelineView['lead'] || []).length,
-    contacted:  (pipelineView['contacted'] || []).length,
-    meeting:    (pipelineView['meeting'] || []).length,
-    proposal:   (pipelineView['proposal'] || []).length,
+    lead: leads.length + (pipelineView['lead'] || []).length,
+    contacted: (pipelineView['contacted'] || []).length,
+    meeting: (pipelineView['meeting'] || []).length,
+    proposal: (pipelineView['proposal'] || []).length,
     closed_won: (pipelineView['closed_won'] || []).length,
   }
   const maxCount = funnelCounts.lead || 1
@@ -56,7 +54,7 @@ function Analytics() {
 
   // Source breakdown from leads
   const sourceMap = leads.reduce((acc, l) => {
-    const src = l.source || 'Sin fuente'
+    const src = l.source || 'UNKNOWN SOURCE'
     acc[src] = (acc[src] || 0) + 1
     return acc
   }, {})
@@ -71,93 +69,112 @@ function Analytics() {
   const avgDealValue = wonDeals > 0 ? Math.round(totalValue / totalDeals) : 0
 
   if (loading) return (
-    <div className="fade-in" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-2)' }}>
-      Cargando analytics...
+    <div className="fade-in mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>
+      CALCULATING TELEMETRY...
     </div>
   )
 
   return (
-    <div className="fade-in">
-      <div className="module-header">
-        <h1>Analytics</h1>
-        <p>Funnel de conversion, tasas por fuente y metricas de pipeline.</p>
-      </div>
-
-      <div className="grid-4 mb-6">
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-info)22', color: 'var(--color-info)' }}>👥</div>
-          <div className="kpi-value">{leads.length}</div>
-          <div className="kpi-label">Total leads</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-success)22', color: 'var(--color-success)' }}>%</div>
-          <div className="kpi-value">{winRate}%</div>
-          <div className="kpi-label">Win rate</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-primary)22', color: 'var(--color-primary)' }}>€</div>
-          <div className="kpi-value">€{avgDealValue.toLocaleString()}</div>
-          <div className="kpi-label">Ticket medio</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-success)22', color: 'var(--color-success)' }}>⟳</div>
-          <div className="kpi-value">€{Math.round(weightedValue).toLocaleString()}</div>
-          <div className="kpi-label">Pipeline ponderado</div>
+    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {/* ── HEADER ── */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+        <div>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>ORBITAL ANALYTICS</h1>
+          <span className="mono text-xs text-tertiary">CONVERSION FUNNEL, TRAFFIC SOURCES & PIPELINE METRICS</span>
         </div>
       </div>
 
-      <div className="grid-2 mb-6">
-        <div className="card">
-          <div className="card-header"><div className="card-title">Funnel de conversion</div></div>
-          <div style={{ marginTop: '8px' }}>
-            {convRates.map((stage) => (
-              <FunnelBar
-                key={stage.id}
-                label={stage.label}
-                count={stage.count}
-                max={maxCount}
-                color={stage.color}
-              />
-            ))}
+      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
+
+        {/* ── KPI STRIP ── */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">TOTAL LEADS</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-info)' }}>👥</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{leads.length}</span>
+          </div>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">WIN RATE</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-success)' }}>%</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>{winRate}%</span>
+          </div>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">AVG TICKET</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-primary)' }}>€</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-primary)' }}>€{avgDealValue.toLocaleString()}</span>
+          </div>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">WEIGHTED VALUE</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-warning)' }}>⟳</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>€{Math.round(weightedValue).toLocaleString()}</span>
           </div>
         </div>
 
-        <div className="card">
-          <div className="card-header"><div className="card-title">Conversion por etapa</div></div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px' }}>
-            {convRates.slice(1).map((stage) => (
-              <div key={stage.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 10px', background: 'var(--color-bg)', borderRadius: '6px' }}>
-                <span style={{ fontSize: '12px', color: 'var(--color-text-2)' }}>{STAGES[convRates.indexOf(stage) - 1]?.label ?? ''} → {stage.label}</span>
-                <span style={{ fontWeight: 700, fontSize: '13px', color: stage.conv >= 50 ? 'var(--color-success)' : stage.conv >= 25 ? 'var(--color-primary)' : 'var(--color-danger)' }}>
-                  {stage.conv}%
-                </span>
-              </div>
-            ))}
+        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px' }}>
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// FUNNEL TELEMETRY</div>
+            <div style={{ padding: '24px' }}>
+              {convRates.map((stage) => (
+                <FunnelBar
+                  key={stage.id}
+                  label={stage.label}
+                  count={stage.count}
+                  max={maxCount}
+                  color={stage.color}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className="card">
-        <div className="card-header"><div className="card-title">Leads por fuente</div></div>
-        {sourceEntries.length === 0 ? (
-          <div className="empty-state"><div className="empty-icon">📡</div><h3>Sin datos de fuente</h3></div>
-        ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px' }}>
-            {sourceEntries.map(([source, count]) => {
-              const pct = Math.round((count / totalLeads) * 100)
-              return (
-                <div key={source} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '120px', fontSize: '12px', color: 'var(--color-text-2)', flexShrink: 0 }}>{source}</div>
-                  <div style={{ flex: 1, background: 'var(--color-bg-3)', borderRadius: '4px', height: '20px' }}>
-                    <div style={{ width: `${pct}%`, height: '100%', background: 'var(--color-primary)', borderRadius: '4px', minWidth: '4px' }} />
-                  </div>
-                  <div style={{ width: '30px', textAlign: 'right', fontSize: '13px', fontWeight: 700 }}>{count}</div>
-                  <div style={{ width: '36px', textAlign: 'right', fontSize: '11px', color: 'var(--color-text-2)' }}>{pct}%</div>
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// CONVERSION COEFFICIENTS</div>
+            <div style={{ display: 'flex', flexDirection: 'column', padding: '16px' }}>
+              {convRates.slice(1).map((stage) => (
+                <div key={stage.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--border-subtle)' }}>
+                  <span className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                    {STAGES[convRates.indexOf(stage) - 1]?.label ?? ''}
+                    <span style={{ color: 'var(--text-tertiary)', margin: '0 8px' }}>→</span>
+                    {stage.label}
+                  </span>
+                  <span className="mono font-bold text-sm" style={{ color: stage.conv >= 50 ? 'var(--color-success)' : stage.conv >= 25 ? 'var(--color-primary)' : 'var(--color-danger)' }}>
+                    {stage.conv}%
+                  </span>
                 </div>
-              )
-            })}
+              ))}
+            </div>
           </div>
-        )}
+        </div>
+
+        <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// LEAD TRAFFIC ORIGIN</div>
+          {sourceEntries.length === 0 ? (
+            <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO ORIGIN DATA AVAILABLE</div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '24px' }}>
+              {sourceEntries.map(([source, count]) => {
+                const pct = Math.round((count / totalLeads) * 100)
+                return (
+                  <div key={source} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0 }}>{source.toUpperCase()}</div>
+                    <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '12px', position: 'relative' }}>
+                      <div style={{ width: `${pct}%`, height: '100%', background: 'var(--color-primary)' }} />
+                    </div>
+                    <div className="mono font-bold" style={{ width: '40px', textAlign: 'right', fontSize: '13px', color: 'var(--color-text)' }}>{count}</div>
+                    <div className="mono text-xs" style={{ width: '40px', textAlign: 'right', color: 'var(--text-tertiary)' }}>{pct}%</div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

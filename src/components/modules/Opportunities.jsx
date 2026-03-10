@@ -1,20 +1,25 @@
-// ===================================================
+// ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Opportunities Scanner
-// Wired to Supabase via useOpportunities hook
-// ===================================================
+// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
 import { useOpportunities } from '../../hooks/useOpportunities'
 
 const STATUSES = [
-    { value: 'identified', label: 'Identificada', color: 'var(--info)', icon: '🔍' },
-    { value: 'evaluating', label: 'Evaluando', color: 'var(--warning)', icon: '🔄' },
-    { value: 'pursuing', label: 'Persiguiendo', color: 'var(--accent-primary)', icon: '🎯' },
-    { value: 'won', label: 'Ganada', color: 'var(--success)', icon: '🏆' },
-    { value: 'passed', label: 'Descartada', color: 'var(--text-tertiary)', icon: '⏭️' },
+    { value: 'identified', label: 'IDENTIFIED', color: 'var(--color-info)', symbol: '[?]' },
+    { value: 'evaluating', label: 'EVALUATING', color: 'var(--color-warning)', symbol: '[~]' },
+    { value: 'pursuing', label: 'PURSUING', color: 'var(--color-primary)', symbol: '[>]' },
+    { value: 'won', label: 'WON', color: 'var(--color-success)', symbol: '[+]' },
+    { value: 'passed', label: 'PASSED', color: 'var(--text-tertiary)', symbol: '[-]' },
 ]
 
 const emptyForm = { title: '', description: '', potential_value: '', source: '', urgency: 'medium' }
+
+function formatCurrency(val) {
+    if (!val) return '$0'
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val)
+}
 
 function Opportunities() {
     const { opportunities, loading, addOpportunity, updateOpportunity, removeOpportunity, byStatus } = useOpportunities()
@@ -35,67 +40,124 @@ function Opportunities() {
         if (idx < order.length - 1) await updateOpportunity(opp.id, { status: order[idx + 1] })
     }
 
-    if (loading) return <div className="fade-in" style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-tertiary)' }}>⏳ Cargando oportunidades...</div>
+    if (loading) return <div className="fade-in mono text-xs" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-primary)' }}>/// INTERCEPTING OPPORTUNITY SIGNALS...</div>
 
     return (
-        <div className="fade-in">
-            <div className="module-header">
-                <h1>Opportunity Scanner</h1>
-                <p>Detecta, evalúa y persigue oportunidades de negocio. Click en el estado para avanzar en el funnel.</p>
-            </div>
-
-            <div className="grid-5 mb-6">
-                {STATUSES.map(s => (
-                    <div key={s.value} className="kpi-card">
-                        <div style={{ fontSize: '20px' }}>{s.icon}</div>
-                        <div className="kpi-value" style={{ color: s.color }}>{(byStatus[s.value] || []).length}</div>
-                        <div className="kpi-label">{s.label}</div>
-                    </div>
-                ))}
-            </div>
-
-            <div className="card mb-6">
-                <div className="card-header"><div className="card-title">Oportunidades ({opportunities.length})</div></div>
-                {opportunities.length === 0 ? (
-                    <div className="empty-state"><div className="empty-icon">📡</div><h3>Sin oportunidades detectadas</h3></div>
-                ) : (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        {opportunities.sort((a, b) => (b.potential_value || 0) - (a.potential_value || 0)).map(opp => {
-                            const status = STATUSES.find(s => s.value === opp.status) || STATUSES[0]
-                            return (
-                                <div key={opp.id} className="card" style={{ padding: '14px', borderLeft: `3px solid ${status.color}` }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                                        <div>
-                                            <div style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{opp.title}</div>
-                                            {opp.description && <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>{opp.description}</div>}
-                                            <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '4px' }}>{opp.source ? `📌 ${opp.source}` : ''} {opp.date ? `| ${opp.date}` : ''}</div>
-                                        </div>
-                                        <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                                            {opp.potential_value > 0 && <span style={{ fontWeight: 800, color: 'var(--success)' }}>€{opp.potential_value.toLocaleString()}</span>}
-                                            <span className="badge" style={{ cursor: 'pointer', background: status.color + '22', color: status.color }} onClick={() => advanceStatus(opp)}>
-                                                {status.icon} {status.label}
-                                            </span>
-                                            <button className="btn btn-sm" style={{ color: 'var(--text-tertiary)' }} onClick={() => updateOpportunity(opp.id, { status: 'passed' })}>⏭️</button>
-                                            <button className="btn btn-sm btn-danger" onClick={() => removeOpportunity(opp.id)}>✕</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                )}
-            </div>
-
-            <div className="card">
-                <div className="card-header"><div className="card-title">Registrar Oportunidad</div></div>
-                <div className="grid-2" style={{ gap: '12px' }}>
-                    <div className="input-group"><label>Título</label><input className="input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="Nombre de la oportunidad" /></div>
-                    <div className="input-group"><label>Valor potencial (€)</label><input className="input" type="number" value={form.potential_value} onChange={e => setForm(f => ({ ...f, potential_value: e.target.value }))} placeholder="5000" /></div>
-                    <div className="input-group"><label>Fuente</label><input className="input" value={form.source} onChange={e => setForm(f => ({ ...f, source: e.target.value }))} placeholder="LinkedIn, referral, etc." /></div>
-                    <div className="input-group"><label>Urgencia</label><select className="input" value={form.urgency} onChange={e => setForm(f => ({ ...f, urgency: e.target.value }))}><option value="low">Baja</option><option value="medium">Media</option><option value="high">Alta</option></select></div>
-                    <div className="input-group" style={{ gridColumn: 'span 2' }}><label>Descripción</label><textarea className="input" rows="2" value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Detalles de la oportunidad" /></div>
+        <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            {/* ── HEADER ── */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+                <div>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>OPPORTUNITY MATRIX</h1>
+                    <span className="mono text-xs text-tertiary">SIGNAL EVALUATION & PURSUIT LOG</span>
                 </div>
-                <button className="btn btn-primary" style={{ marginTop: '16px' }} onClick={handleAdd} disabled={saving}>{saving ? '⏳ Guardando...' : 'Registrar Oportunidad'}</button>
+            </div>
+
+            <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
+
+                {/* ── KPI STRIP ── */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-default)' }}>
+                    {STATUSES.map(s => (
+                        <div key={s.value} style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>{s.symbol} {s.label}</div>
+                            <div className="mono" style={{ fontSize: '20px', fontWeight: 'bold', color: s.color }}>
+                                {(byStatus[s.value] || []).length}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* ── SIGNAL LIST ── */}
+                <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+                        /// DETECTED OPPORTUNITIES [{opportunities.length}]
+                    </div>
+                    {opportunities.length === 0 ? (
+                        <div style={{ padding: '32px', textAlign: 'center', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+                            CLEAR SKIES. NO OPPORTUNITIES DETECTED.
+                        </div>
+                    ) : (
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)', textAlign: 'left' }}>
+                            <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
+                                <tr>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>ID</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>DESIGNATION / DETAILS</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SOURCE</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>PROJECTED VAL</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>STATUS</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {opportunities.sort((a, b) => (b.potential_value || 0) - (a.potential_value || 0)).map((opp, idx) => {
+                                    const statusObj = STATUSES.find(s => s.value === opp.status) || STATUSES[0]
+                                    return (
+                                        <tr key={opp.id} style={{ borderBottom: idx < opportunities.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000' }}>
+                                            <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{opp.id.slice(0, 6).toUpperCase()}</td>
+                                            <td style={{ padding: '12px 16px' }}>
+                                                <div style={{ fontWeight: 'bold', color: 'var(--color-text)' }}>{opp.title.toUpperCase()}</div>
+                                                {opp.description && <div style={{ color: 'var(--text-tertiary)', fontSize: '9px', marginTop: '4px' }}>{opp.description.toUpperCase()}</div>}
+                                            </td>
+                                            <td style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>{opp.source ? opp.source.toUpperCase() : 'UNKNOWN'}</td>
+                                            <td style={{ padding: '12px 16px', color: 'var(--color-success)', fontWeight: 'bold' }}>{opp.potential_value > 0 ? formatCurrency(opp.potential_value) : '—'}</td>
+                                            <td style={{ padding: '12px 16px' }}>
+                                                <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '4px 8px', border: `1px solid ${statusObj.color}`, color: statusObj.color, background: 'transparent' }} onClick={() => advanceStatus(opp)}>
+                                                    {statusObj.label} &rarr;
+                                                </button>
+                                            </td>
+                                            <td style={{ padding: '12px 16px', textAlign: 'right', display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                                                <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--text-tertiary)', color: 'var(--text-tertiary)' }} onClick={() => updateOpportunity(opp.id, { status: 'passed' })}>PASS</button>
+                                                <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeOpportunity(opp.id)}>DEL</button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+
+                {/* ── INPUT MATRIX ── */}
+                <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>
+                        /// COMPILE NEW OPPORTUNITY DOSSIER
+                    </div>
+                    <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) 120px', gap: '12px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>OPP DESIGNATION</label>
+                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="PROJECT TARGET" />
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>PROJECTED VAL ($)</label>
+                                <input className="mono" type="number" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-success)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.potential_value} onChange={e => setForm(f => ({ ...f, potential_value: e.target.value }))} placeholder="0.00" />
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>INTEL SOURCE</label>
+                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.source} onChange={e => setForm(f => ({ ...f, source: e.target.value }))} placeholder="REFERRAL, SOCIAL..." />
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>URGENCY</label>
+                                <select className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-warning)', padding: '9px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.urgency} onChange={e => setForm(f => ({ ...f, urgency: e.target.value }))}>
+                                    <option value="low">LOW</option>
+                                    <option value="medium">MED</option>
+                                    <option value="high">HIGH</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                            <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>EXPANDED INTEL (OPTIONAL)</label>
+                            <textarea className="mono" rows="2" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%', resize: 'vertical' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="OPERATIONAL DETAILS..." />
+                        </div>
+
+                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
+                            <button className="btn btn-ghost mono" style={{ fontSize: '10px', padding: '10px 24px', border: '1px solid var(--color-primary)', color: 'var(--color-bg)', background: 'var(--color-primary)' }} onClick={handleAdd} disabled={saving}>
+                                {saving ? 'TRANSMITTING...' : 'REGISTER OPP'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     )

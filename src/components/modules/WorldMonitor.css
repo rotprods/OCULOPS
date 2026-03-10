@@ -1,25 +1,26 @@
 /* ═══════════════════════════════════════════════════
-   ANTIGRAVITY OS — World Monitor v4
-   Premium Map Intelligence
+   ANTIGRAVITY OS — World Monitor
+   100-Year UX: Tactical Map Intelligence
    ═══════════════════════════════════════════════════ */
 
-.world-monitor {
+.wm-container {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: var(--bg-primary);
+    background: #000;
 }
 
 /* ── Map Container ── */
 .wm-map {
     width: 100%;
     height: 100%;
+    background: #000;
 }
 
 /* Leaflet dark overrides */
 .wm-map .leaflet-container {
-    background: #0B0D0F !important;
+    background: #000 !important;
 }
 
 .wm-map .leaflet-control-zoom {
@@ -31,76 +32,56 @@
 }
 
 .wm-map .leaflet-tile-pane {
-    filter: brightness(0.85) contrast(1.15) saturate(0.8);
+    filter: brightness(0.6) contrast(1.4) grayscale(1);
+    opacity: 0.7;
 }
 
-/* ── Floating Top Bar ── */
+/* ── Top Bar ── */
 .wm-topbar {
     position: absolute;
-    top: var(--space-4);
-    left: var(--space-4);
-    right: var(--space-4);
+    top: 16px;
+    left: 16px;
+    right: 16px;
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 20px;
-    background: var(--glass-bg);
-    background-image: var(--gradient-surface);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-lg), var(--glass-inner-glow);
+    padding: 12px 16px;
+    background: #000;
+    border: 1px solid var(--border-default);
 }
 
 .wm-topbar-left {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: 16px;
 }
 
-.wm-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-}
-
-.wm-logo-icon {
+.wm-topbar-title {
+    font-family: var(--font-editorial);
     font-size: 20px;
-    filter: drop-shadow(0 0 6px rgba(var(--accent-primary-rgb), 0.3));
-}
-
-.wm-logo-text {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: var(--tracking-wider);
-    color: var(--text-primary);
+    color: var(--color-primary);
     text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .wm-live-badge {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 4px 10px;
-    background: rgba(52, 199, 89, 0.10);
-    border: 1px solid rgba(52, 199, 89, 0.15);
-    border-radius: var(--radius-full);
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--success);
-    letter-spacing: var(--tracking-wide);
+    padding: 4px 8px;
+    border: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-success);
+    letter-spacing: 0.1em;
+    background: rgba(0, 255, 102, 0.05);
 }
 
-.wm-live-dot {
+.live-dot {
     width: 6px;
     height: 6px;
-    border-radius: 50%;
-    background: var(--success);
-    box-shadow: var(--success-glow);
-    animation: pulse 2.5s ease-in-out infinite;
+    background: var(--color-success);
 }
 
 .wm-topbar-center {
@@ -109,394 +90,315 @@
 }
 
 .wm-time-btn {
-    padding: 5px 13px;
-    border-radius: var(--radius-full);
-    font-size: 11px;
-    font-weight: 600;
+    padding: 6px 12px;
+    font-size: 10px;
     font-family: var(--font-mono);
     color: var(--text-tertiary);
     background: transparent;
-    border: 1px solid transparent;
-    transition: all var(--transition-fast);
-    letter-spacing: 0.02em;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+    cursor: pointer;
 }
 
 .wm-time-btn:hover {
-    color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.04);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .wm-time-btn.active {
-    color: var(--accent-primary);
-    background: var(--accent-muted);
-    border-color: rgba(var(--accent-primary-rgb), 0.15);
-    box-shadow: 0 0 10px rgba(var(--accent-primary-rgb), 0.08);
+    color: #000;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .wm-topbar-right {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
+    gap: 24px;
 }
 
 .wm-stat {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     gap: 2px;
 }
 
 .wm-stat-value {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-primary);
-    letter-spacing: var(--tracking-tighter);
 }
 
 .wm-stat-label {
-    font-size: 8px;
-    font-weight: 700;
-    color: var(--text-quaternary);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
+    letter-spacing: 0.1em;
 }
 
-/* ── Left Control Panel ── */
+/* ── Side Panel ── */
 .wm-panel {
     position: absolute;
     top: 80px;
-    left: var(--space-4);
+    left: 16px;
+    bottom: 16px;
     z-index: 1000;
-    width: 260px;
-    background: var(--glass-bg);
-    background-image: var(--gradient-surface);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-lg), var(--glass-inner-glow);
-    transition: all var(--transition-slow);
+    width: 300px;
+    background: #000;
+    border: 1px solid var(--border-default);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s;
 }
 
 .wm-panel.collapsed {
     width: 44px;
-    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
-.wm-panel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border-subtle);
-}
-
-.wm-panel-title {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-}
-
 .wm-panel-toggle {
+    position: absolute;
+    top: 12px;
+    right: 12px;
     width: 24px;
     height: 24px;
-    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--color-primary);
     font-size: 10px;
-    color: var(--text-quaternary);
-    transition: all var(--transition-fast);
+    cursor: pointer;
+    z-index: 10;
 }
 
-.wm-panel-toggle:hover {
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--text-secondary);
+.wm-panel-section {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* ── Layer Buttons ── */
-.wm-layers {
-    padding: var(--space-2);
+.wm-panel-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
 }
 
 .wm-layer-btn {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: 9px 12px;
-    border-radius: var(--radius-md);
+    gap: 12px;
+    padding: 8px 12px;
     width: 100%;
     text-align: left;
-    transition: all var(--transition-fast);
-    border: 1px solid transparent;
-}
-
-.wm-layer-btn:hover {
-    background: rgba(255, 255, 255, 0.03);
+    background: #000;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .wm-layer-btn.active {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: var(--glass-border-hover);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 .wm-layer-icon {
     font-size: 14px;
-    width: 22px;
-    text-align: center;
-    flex-shrink: 0;
 }
 
 .wm-layer-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-secondary);
     flex: 1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .wm-layer-count {
     font-size: 10px;
-    font-weight: 700;
-    font-family: var(--font-mono);
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
 }
 
 .wm-layer-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
 }
 
-.wm-layer-btn.active .wm-layer-dot {
-    animation: pulse 2.5s ease-in-out infinite;
-}
-
-/* ── Live Feed ── */
 .wm-feed {
-    border-top: 1px solid var(--border-subtle);
-    padding: var(--space-3);
-}
-
-.wm-feed-title {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border-subtle);
+    overflow-y: auto;
+    max-height: 240px;
 }
 
 .wm-feed-item {
+    background: #000;
+    padding: 12px;
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-2);
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border-subtle);
+    gap: 12px;
+    cursor: pointer;
 }
 
-.wm-feed-item:last-child {
-    border-bottom: none;
+.wm-feed-item:hover {
+    background: var(--color-bg-2);
 }
 
-.wm-feed-bar {
-    width: 3px;
-    min-height: 28px;
-    border-radius: var(--radius-full);
+.wm-feed-urgency {
+    width: 2px;
     flex-shrink: 0;
-    margin-top: 2px;
 }
 
-.wm-feed-text {
+.wm-feed-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wm-feed-name {
+    font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--text-secondary);
+    color: var(--color-primary);
+    text-transform: uppercase;
 }
 
 .wm-feed-time {
-    font-size: 9px;
-    color: var(--text-quaternary);
-    margin-top: 2px;
     font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
 }
 
 /* ── Detail Card ── */
-.wm-detail {
+.wm-detail-card {
     position: absolute;
-    bottom: var(--space-6);
-    right: var(--space-4);
+    bottom: 56px;
+    right: 16px;
     z-index: 1000;
-    width: 320px;
-    background: var(--glass-bg);
-    background-image: var(--gradient-surface);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
-    padding: var(--space-5);
-    box-shadow: var(--shadow-xl), var(--glass-inner-glow);
-    animation: fadeInUp 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 340px;
+    background: #000;
+    border: 1px solid var(--border-default);
+    padding: 16px;
 }
 
 .wm-detail-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--space-3);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
 }
 
-.wm-detail-category {
-    font-size: 10px;
-    font-weight: 700;
+.wm-detail-type {
+    font-family: var(--font-mono);
+    font-size: 9px;
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-}
-
-.wm-detail-close {
-    width: 24px;
-    height: 24px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: var(--text-quaternary);
-    transition: all var(--transition-fast);
-}
-
-.wm-detail-close:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
 }
 
 .wm-detail-name {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 800;
-    margin-bottom: 6px;
-    letter-spacing: var(--tracking-tighter);
+    font-family: var(--font-editorial);
+    font-size: 24px;
+    color: var(--color-primary);
+    line-height: 1.1;
 }
 
-.wm-detail-desc {
-    font-size: 12px;
+.wm-detail-close {
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 16px;
+}
+
+.wm-detail-body {
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--text-secondary);
-    margin-bottom: var(--space-4);
     line-height: 1.5;
+    margin-bottom: 16px;
+    text-transform: uppercase;
 }
 
-.wm-detail-metrics {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: var(--space-4);
-    padding: var(--space-3);
-    background: rgba(0, 0, 0, 0.15);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-subtle);
-}
-
-.wm-detail-metric {
+.wm-detail-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
 }
 
-.wm-detail-metric-label {
+.wm-detail-row:last-of-type {
+    border-bottom: none;
+    margin-bottom: 16px;
+}
+
+.wm-detail-row span:first-child {
     color: var(--text-tertiary);
-    font-weight: 500;
-}
-
-.wm-detail-metric-value {
-    color: var(--text-primary);
-    font-weight: 700;
-    font-family: var(--font-display);
 }
 
 .wm-detail-actions {
     display: flex;
-    gap: var(--space-2);
+    gap: 8px;
+    margin-top: 16px;
 }
 
 /* ── Bottom Legend ── */
 .wm-legend {
     position: absolute;
-    bottom: var(--space-4);
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 16px;
+    left: 332px;
     z-index: 1000;
     display: flex;
     align-items: center;
-    gap: var(--space-5);
-    padding: 8px 20px;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur-sm);
-    -webkit-backdrop-filter: var(--glass-blur-sm);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-full);
-    box-shadow: var(--shadow-md), var(--glass-inner-glow);
+    gap: 16px;
+    padding: 8px 16px;
+    background: #000;
+    border: 1px solid var(--border-default);
 }
 
 .wm-legend-item {
     display: flex;
     align-items: center;
-    gap: 7px;
-    font-size: 10px;
-    font-weight: 600;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 9px;
     color: var(--text-tertiary);
-    letter-spacing: 0.01em;
+    text-transform: uppercase;
 }
 
 .wm-legend-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
+    width: 6px;
+    height: 6px;
 }
 
-/* ── Pulse Markers (Leaflet custom) ── */
-.wm-marker {
-    position: relative;
-    border-radius: 50%;
-    box-shadow: 0 0 12px currentColor;
-    animation: markerPulse 3s ease-in-out infinite;
+/* Leaflet tooltips */
+.ag-tooltip {
+    background: #000;
+    border: 1px solid var(--color-primary);
+    border-radius: 0;
+    color: var(--text-primary);
+    box-shadow: none;
+    padding: 8px;
 }
 
-.wm-marker::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 1.5px solid currentColor;
-    opacity: 0;
-    animation: markerRing 3s ease-in-out infinite;
-}
-
-@keyframes markerPulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.9;
-    }
-
-    50% {
-        transform: scale(1.15);
-        opacity: 1;
-    }
-}
-
-@keyframes markerRing {
-    0% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: scale(2.2);
-        opacity: 0;
-    }
+.ag-tooltip::before {
+    display: none;
 }

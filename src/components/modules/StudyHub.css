@@ -1,96 +1,82 @@
 /* ═══════════════════════════════════════════════════
-   ANTIGRAVITY OS — Study Hub v4
-   Premium Knowledge Base Viewer
+   ANTIGRAVITY OS — Study Hub Styles (100-Year UX)
+   OLED Black, 1px Primitives, Mono Typographics
    ═══════════════════════════════════════════════════ */
 
 /* ── Hero Banner ── */
 .study-hub {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: 24px;
+    height: 100%;
 }
 
 .study-hero {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    background-image: var(--gradient-surface);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-2xl);
-    padding: var(--space-10) var(--space-8);
+    background: #000;
+    border: 1px solid var(--border-default);
+    padding: 32px;
     position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg), var(--glass-inner-glow);
-}
-
-.study-hero::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--accent-primary-rgb), 0.06) 0%, transparent 60%);
-    pointer-events: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .study-hero-badge {
-    font-family: var(--font-display);
-    font-size: var(--text-2xs);
+    font-family: var(--font-mono);
+    font-size: 10px;
     font-weight: 800;
-    color: var(--accent-primary);
+    color: var(--color-primary);
     text-transform: uppercase;
-    letter-spacing: var(--tracking-widest);
-    margin-bottom: var(--space-2);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
 }
 
 .study-hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-family: var(--font-editorial);
+    font-size: 48px;
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: var(--tracking-tighter);
+    letter-spacing: -0.01em;
     line-height: 1;
-    margin-bottom: var(--space-1);
+    margin-bottom: 8px;
 }
 
 .study-hero-subtitle {
-    font-size: var(--text-lg);
-    font-weight: 600;
-    color: var(--accent-primary);
-    letter-spacing: var(--tracking-tight);
-    margin-bottom: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--color-primary);
+    letter-spacing: 0em;
+    margin-bottom: 12px;
 }
 
 .study-hero-meta {
-    font-size: var(--text-sm);
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--text-tertiary);
-    margin-bottom: var(--space-6);
+    margin-bottom: 32px;
+    text-transform: uppercase;
 }
 
 .study-hero-kpis {
     display: flex;
-    gap: var(--space-8);
-    flex-wrap: wrap;
+    gap: 32px;
 }
 
 .study-hero-kpi-value {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
+    font-family: var(--font-mono);
+    font-size: 24px;
     font-weight: 800;
-    color: var(--accent-primary);
-    letter-spacing: var(--tracking-tighter);
-    filter: drop-shadow(0 0 6px rgba(var(--accent-primary-rgb), 0.2));
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
 }
 
 .study-hero-kpi-label {
-    font-size: var(--text-2xs);
+    font-family: var(--font-mono);
+    font-size: 9px;
     font-weight: 700;
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    margin-top: 2px;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
 }
 
 /* ── Index Header + Progress ── */
@@ -98,92 +84,67 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .study-index-header h2 {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
+    font-family: var(--font-mono);
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: var(--tracking-tight);
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
 }
 
 .study-progress-badge {
-    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    font-size: 11px;
     font-weight: 600;
-    color: var(--text-tertiary);
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-full);
-    padding: 6px 14px;
+    color: var(--text-info);
 }
 
 .study-progress-bar {
-    height: 3px;
-    background: var(--bg-inset);
-    border-radius: var(--radius-full);
-    overflow: hidden;
+    height: 1px;
+    background: var(--border-subtle);
+    width: 100%;
 }
 
 .study-progress-fill {
-    height: 100%;
-    background: var(--gradient-accent);
-    border-radius: var(--radius-full);
+    height: 1px;
+    background: var(--color-primary);
     transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 0 8px rgba(var(--accent-primary-rgb), 0.3);
 }
 
 /* ── Study Cards Grid ── */
 .study-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--space-4);
+    gap: 16px;
 }
 
 .study-card {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    background-image: var(--gradient-surface);
+    background: var(--color-bg-2);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-xl);
-    padding: var(--space-5);
+    padding: 20px;
     cursor: pointer;
     text-align: left;
     color: inherit;
     font-family: inherit;
-    transition: all var(--transition-3d);
+    transition: all 0.2s;
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 12px;
     position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-sm), var(--glass-inner-glow);
-}
-
-.study-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gradient-shimmer);
-    background-size: 200% 100%;
-    opacity: 0;
-    transition: opacity var(--transition-slow);
-    pointer-events: none;
 }
 
 .study-card:hover {
-    border-color: var(--glass-border-hover);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg), var(--glass-inner-glow);
-}
-
-.study-card:hover::before {
-    opacity: 1;
-    animation: shimmer 2s ease-in-out infinite;
+    border-color: var(--color-primary);
+    background: #000;
 }
 
 .study-card-completed {
-    border-color: rgba(52, 199, 89, 0.15);
+    border-color: var(--color-success);
 }
 
 .study-card-header {
@@ -194,61 +155,53 @@
 
 .study-card-number {
     font-family: var(--font-mono);
-    font-size: var(--text-2xs);
+    font-size: 10px;
     font-weight: 700;
-    color: var(--accent-primary);
-    background: var(--accent-muted);
-    padding: 3px 8px;
-    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    padding: 2px 6px;
 }
 
 .study-card-check {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border-default);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: var(--font-mono);
     font-size: 10px;
-    color: transparent;
-    transition: all var(--transition-fast);
+    color: var(--text-tertiary);
 }
 
 .study-card-check.checked {
-    background: var(--success);
-    border-color: var(--success);
-    color: #fff;
+    color: var(--color-success);
 }
 
 .study-card-icon {
-    font-size: var(--text-xl);
-    margin: var(--space-1) 0;
+    font-size: 24px;
+    margin: 8px 0;
 }
 
 .study-card-title {
-    font-family: var(--font-display);
-    font-size: var(--text-base);
+    font-family: var(--font-editorial);
+    font-size: 18px;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.01em;
-    position: relative;
 }
 
 .study-card-desc {
-    font-size: var(--text-xs);
-    color: var(--text-tertiary);
-    line-height: var(--leading-snug);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.4;
     flex: 1;
-    position: relative;
+    text-transform: uppercase;
 }
 
 .study-card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: var(--space-2);
-    position: relative;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
 }
 
 .study-card-tags {
@@ -257,39 +210,39 @@
 }
 
 .study-card-tag {
+    font-family: var(--font-mono);
     font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
+    letter-spacing: 0.05em;
     padding: 2px 6px;
-    border-radius: var(--radius-xs);
-    background: rgba(255, 255, 255, 0.03);
+    background: #000;
     border: 1px solid currentColor;
-    opacity: 0.7;
 }
 
 .study-card-time {
-    font-size: var(--text-2xs);
-    color: var(--text-quaternary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
     font-weight: 500;
 }
 
 /* ═══════════════════════════════════════════════════
-   READER VIEW
-   ═══════════════════════════════════════════════════ */
+      READER VIEW
+      ═══════════════════════════════════════════════════ */
 .study-reader {
     display: flex;
     gap: 0;
     height: calc(100vh - 80px);
     margin: calc(-1 * var(--space-6));
+    background: #000;
 }
 
 /* ── Reader Sidebar ── */
 .study-sidebar {
     width: 260px;
-    background: var(--bg-card);
-    background-image: var(--gradient-surface);
-    border-right: 1px solid var(--border-subtle);
+    background: #000;
+    border-right: 1px solid var(--border-default);
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -297,67 +250,67 @@
 }
 
 .study-sidebar-back {
-    padding: 14px var(--space-4);
+    padding: 16px;
     border: none;
     background: transparent;
-    color: var(--text-secondary);
-    font-size: var(--text-sm);
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 11px;
     font-weight: 600;
-    font-family: var(--font-sans);
     cursor: pointer;
     text-align: left;
-    border-bottom: 1px solid var(--border-subtle);
-    transition: all var(--transition-fast);
+    border-bottom: 1px solid var(--border-default);
+    transition: all 0.2s;
+    text-transform: uppercase;
 }
 
 .study-sidebar-back:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-primary);
+    color: #000;
 }
 
 .study-sidebar-list {
     flex: 1;
     overflow-y: auto;
-    padding: var(--space-2) 0;
 }
 
 .study-sidebar-item {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 12px;
     width: 100%;
-    padding: 8px var(--space-3);
+    padding: 12px 16px;
     border: none;
+    border-bottom: 1px solid var(--border-subtle);
     background: transparent;
     color: var(--text-secondary);
-    font-size: var(--text-xs);
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
+    font-size: 11px;
     cursor: pointer;
     text-align: left;
-    transition: all var(--transition-fast);
-    border-left: 2px solid transparent;
+    transition: all 0.2s;
 }
 
 .study-sidebar-item:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-bg-2);
     color: var(--text-primary);
 }
 
 .study-sidebar-item.active {
-    background: rgba(var(--accent-primary-rgb), 0.05);
-    color: var(--text-primary);
-    border-left-color: var(--accent-primary);
+    background: var(--color-bg-2);
+    color: var(--color-primary);
+    border-left: 2px solid var(--color-primary);
 }
 
 .study-sidebar-item.completed .study-sidebar-num {
-    color: var(--success);
+    color: var(--color-success);
 }
 
 .study-sidebar-num {
     font-family: var(--font-mono);
     font-size: 9px;
     font-weight: 700;
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
     width: 18px;
     flex-shrink: 0;
 }
@@ -378,149 +331,152 @@
 .study-main {
     flex: 1;
     overflow-y: auto;
-    padding: var(--space-6) var(--space-8);
+    padding: 40px 60px;
     max-width: 900px;
+    margin: 0 auto;
 }
 
 .study-breadcrumb {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-xs);
-    color: var(--text-quaternary);
-    margin-bottom: var(--space-4);
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-bottom: 24px;
 }
 
 .study-breadcrumb button {
     background: none;
     border: none;
-    color: var(--text-tertiary);
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 11px;
     cursor: pointer;
     padding: 0;
-    transition: color var(--transition-fast);
+    text-transform: uppercase;
 }
 
 .study-breadcrumb button:hover {
-    color: var(--accent-primary);
+    color: var(--color-primary);
 }
 
 .study-main-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: var(--space-4);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .study-main-tags {
     display: flex;
-    gap: var(--space-2);
+    gap: 8px;
     align-items: center;
 }
 
 .study-tag {
+    font-family: var(--font-mono);
     font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
     padding: 3px 8px;
-    border-radius: var(--radius-sm);
     border: 1px solid;
-    background: rgba(255, 255, 255, 0.02);
+    background: transparent;
 }
 
 .study-read-time {
-    font-size: var(--text-2xs);
-    color: var(--text-quaternary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
     font-weight: 500;
+    margin-left: 8px;
 }
 
 .study-mark-btn {
     padding: 6px 14px;
     border: 1px solid var(--border-default);
-    background: rgba(255, 255, 255, 0.03);
+    background: transparent;
     color: var(--text-secondary);
-    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    font-size: 11px;
     font-weight: 600;
-    font-family: var(--font-sans);
-    border-radius: var(--radius-md);
     cursor: pointer;
-    transition: all var(--transition-base);
+    transition: all 0.2s;
+    text-transform: uppercase;
 }
 
 .study-mark-btn:hover {
-    border-color: var(--success);
-    color: var(--success);
+    border-color: var(--color-success);
+    color: var(--color-success);
 }
 
 .study-mark-btn.marked {
-    background: rgba(52, 199, 89, 0.1);
-    border-color: var(--success);
-    color: var(--success);
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: #000;
 }
 
 .study-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-family: var(--font-editorial);
+    font-size: 32px;
+    line-height: 1.1;
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: var(--tracking-tighter);
-    line-height: 1.15;
-    margin-bottom: var(--space-3);
+    margin-bottom: 16px;
 }
 
 .study-title-bar {
-    width: 50px;
-    height: 3px;
-    background: var(--gradient-accent);
-    border-radius: var(--radius-full);
-    margin-bottom: var(--space-6);
-    box-shadow: 0 0 8px rgba(var(--accent-primary-rgb), 0.3);
+    width: 100%;
+    height: 1px;
+    background: var(--border-default);
+    margin-bottom: 24px;
 }
 
 .study-meta-box {
-    background: var(--bg-card);
-    background-image: var(--gradient-surface);
+    background: var(--color-bg-2);
     border: 1px solid var(--border-subtle);
-    border-left: 3px solid var(--accent-primary);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    margin-bottom: var(--space-8);
-    font-size: var(--text-sm);
+    padding: 16px;
+    margin-bottom: 32px;
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
+    line-height: 1.6;
+    text-transform: uppercase;
 }
 
 .study-meta-box strong {
-    color: var(--accent-primary);
+    color: var(--color-primary);
 }
 
 /* ── Section Blocks ── */
 .study-section {
-    margin-bottom: var(--space-8);
-    padding-bottom: var(--space-6);
-    border-bottom: 1px solid var(--border-subtle);
-}
-
-.study-section:last-of-type {
-    border-bottom: none;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
 }
 
 .study-section-title {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
+    font-family: var(--font-mono);
+    font-size: 14px;
     font-weight: 800;
-    color: var(--accent-primary);
-    letter-spacing: var(--tracking-tight);
-    margin-bottom: var(--space-4);
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
     text-transform: uppercase;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
 }
 
 .study-section-content {
-    font-size: var(--text-sm);
+    font-family: var(--font-mono);
+    font-size: 12px;
     color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
+    line-height: 1.8;
+}
+
+.study-section-content p {
+    margin-bottom: 16px;
 }
 
 .study-section-content strong {
@@ -530,18 +486,18 @@
 
 .study-section-content code {
     font-family: var(--font-mono);
-    font-size: var(--text-2xs);
-    background: var(--bg-inset);
+    font-size: 11px;
+    background: #000;
+    border: 1px solid var(--border-subtle);
     padding: 2px 6px;
-    border-radius: var(--radius-xs);
-    color: var(--accent-primary);
+    color: var(--color-primary);
     white-space: pre-wrap;
 }
 
 .study-section-content ul {
     list-style: none;
     padding: 0;
-    margin: var(--space-2) 0;
+    margin: 16px 0;
 }
 
 .study-section-content li {
@@ -550,33 +506,34 @@
 }
 
 .study-section-content li::before {
-    content: '—';
+    content: '>';
     position: absolute;
     left: 0;
-    color: var(--accent-primary);
+    color: var(--color-primary);
     font-weight: 700;
 }
 
 .study-section-content h3 {
-    font-size: var(--text-base);
+    font-size: 13px;
     font-weight: 700;
     color: var(--text-primary);
-    margin: var(--space-4) 0 var(--space-2);
+    margin: 24px 0 8px;
+    text-transform: uppercase;
 }
 
 .study-section-content h4 {
-    font-size: var(--text-sm);
+    font-size: 12px;
     font-weight: 700;
-    color: var(--text-primary);
-    margin: var(--space-3) 0 var(--space-1);
+    color: var(--color-info);
+    margin: 16px 0 8px;
+    text-transform: uppercase;
 }
 
 /* ── Tables ── */
 .study-table-wrap {
     overflow-x: auto;
-    margin: var(--space-3) 0;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-subtle);
+    margin: 16px 0;
+    border: 1px solid var(--border-default);
 }
 
 .study-table {
@@ -585,30 +542,28 @@
 }
 
 .study-table th {
-    font-size: var(--text-2xs);
+    font-family: var(--font-mono);
+    font-size: 10px;
     font-weight: 700;
-    color: var(--accent-primary);
+    color: var(--color-primary);
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    padding: 10px 14px;
+    padding: 12px 16px;
     text-align: left;
-    border-bottom: 1px solid var(--border-subtle);
-    background: rgba(255, 255, 255, 0.015);
+    border-bottom: 1px solid var(--border-default);
+    background: var(--border-subtle);
 }
 
 .study-table td {
-    padding: 10px 14px;
-    font-size: var(--text-sm);
+    font-family: var(--font-mono);
+    padding: 12px 16px;
+    font-size: 12px;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-subtle);
-}
-
-.study-table tr:last-child td {
-    border-bottom: none;
+    background: #000;
 }
 
 .study-table tr:hover td {
-    background: rgba(255, 255, 255, 0.015);
+    background: var(--color-bg-2);
 }
 
 .study-table td strong {
@@ -618,16 +573,15 @@
 .study-inline-table {
     width: 100%;
     border-collapse: collapse;
-    margin: var(--space-3) 0;
+    margin: 16px 0;
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
 }
 
 .study-inline-table td,
 .study-inline-table th {
+    font-family: var(--font-mono);
     padding: 8px 12px;
-    font-size: var(--text-sm);
+    font-size: 12px;
     border-bottom: 1px solid var(--border-subtle);
     color: var(--text-secondary);
 }
@@ -635,8 +589,8 @@
 /* ── Navigation buttons ── */
 .study-nav-buttons {
     display: flex;
-    gap: var(--space-3);
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--border-subtle);
+    justify-content: space-between;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-default);
 }

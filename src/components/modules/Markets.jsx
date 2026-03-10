@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Markets Module
-// Leadership market context for budget, timing, and risk appetite
+// 100-Year UX: Leadership telemetry and macro indices
 // ═══════════════════════════════════════════════════
 
 import { useEffect, useMemo, useState } from 'react'
@@ -8,9 +8,9 @@ import { useMarkets } from '../../hooks/useMarkets'
 import './Markets.css'
 
 const GROUP_LABELS = {
-  stock: 'Equities',
-  forex: 'FX',
-  crypto: 'Crypto',
+  stock: 'EQUITIES',
+  forex: 'FX [USD BASE]',
+  crypto: 'CRYPTO PROTOCOLS',
 }
 
 const compactNumber = new Intl.NumberFormat('en-US', {
@@ -41,18 +41,18 @@ function formatPercent(value) {
 }
 
 function formatVolume(value) {
-  if (!value) return '—'
+  if (!value) return '--'
   return compactNumber.format(value)
 }
 
 function formatTimestamp(value) {
-  if (!value) return '—'
+  if (!value) return '--:--'
   return new Intl.DateTimeFormat('en-US', {
     month: 'short',
     day: 'numeric',
     hour: 'numeric',
     minute: '2-digit',
-  }).format(new Date(value))
+  }).format(new Date(value)).toUpperCase()
 }
 
 function toneClass(change) {
@@ -63,12 +63,12 @@ function toneClass(change) {
 
 function Sparkline({ points, tone = 'is-flat', detailed = false }) {
   if (!points || points.length < 2) {
-    return <div className={`markets__sparkline markets__sparkline--empty ${detailed ? 'markets__sparkline--detail' : ''}`}>No trend yet</div>
+    return <div className={`markets__sparkline markets__sparkline--empty ${detailed ? 'markets__sparkline--detail' : ''}`}>[ INSUFFICIENT DATA ]</div>
   }
 
   const width = detailed ? 640 : 120
-  const height = detailed ? 240 : 44
-  const padding = detailed ? 18 : 4
+  const height = detailed ? 280 : 60
+  const padding = detailed ? 24 : 8
   const values = points.map((point) => point.price)
   const min = Math.min(...values)
   const max = Math.max(...values)
@@ -80,6 +80,7 @@ function Sparkline({ points, tone = 'is-flat', detailed = false }) {
     return { x, y, price: point.price, snapshotAt: point.snapshotAt }
   })
 
+  // Sharp terminal steps or raw lines? Raw lines, but sharp corners
   const polyline = chartPoints.map((point) => `${point.x},${point.y}`).join(' ')
   const area = `${polyline} ${chartPoints[chartPoints.length - 1].x},${height - padding} ${chartPoints[0].x},${height - padding}`
 
@@ -92,9 +93,9 @@ function Sparkline({ points, tone = 'is-flat', detailed = false }) {
     >
       {detailed && (
         <>
-          <line x1={padding} y1={padding} x2={width - padding} y2={padding} className="markets__sparkline-grid" />
-          <line x1={padding} y1={height / 2} x2={width - padding} y2={height / 2} className="markets__sparkline-grid" />
-          <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} className="markets__sparkline-grid" />
+          <line x1={0} y1={padding} x2={width} y2={padding} className="markets__sparkline-grid" />
+          <line x1={0} y1={height / 2} x2={width} y2={height / 2} className="markets__sparkline-grid" />
+          <line x1={0} y1={height - padding} x2={width} y2={height - padding} className="markets__sparkline-grid" />
         </>
       )}
       <polygon points={area} className={`markets__sparkline-area ${tone}`} />
@@ -104,10 +105,10 @@ function Sparkline({ points, tone = 'is-flat', detailed = false }) {
           key={`${point.snapshotAt}-${point.price}`}
           cx={point.x}
           cy={point.y}
-          r="3"
+          r="2.5"
           className={`markets__sparkline-dot ${tone}`}
         >
-          <title>{`${formatTimestamp(point.snapshotAt)} · $${point.price.toLocaleString('en-US')}`}</title>
+          <title>{`${formatTimestamp(point.snapshotAt)} // $${point.price.toLocaleString('en-US')}`}</title>
         </circle>
       ))}
     </svg>
@@ -121,28 +122,28 @@ function buildInsights(selectedAsset, summary, topMovers) {
 
   insights.push(
     summary.riskOnScore >= 60
-      ? 'Risk appetite is constructive. Push faster campaign tests and outbound experiments while buyers are less defensive.'
-      : 'Risk appetite is cautious. Favor retention, pipeline hygiene, and tighter CAC discipline before scaling spend.',
+      ? 'RISK APPETITE IS CONSTRUCTIVE. INITIATE CAMPAIGN EXPERIMENTS WHILE MACRO DEFENSIVENESS IS LOW.'
+      : 'RISK APPETITE IS CAUTIOUS. FAVOR RETENTION, HYGIENE, AND TIGHT CAC DISCIPLINE.',
   )
 
   if (selectedAsset.assetType === 'forex') {
     insights.push(
-      `${selectedAsset.displayName} is a margin signal. A stronger dollar can squeeze software, media, or contractor costs billed in USD.`,
+      `${selectedAsset.displayName.toUpperCase()} IS A MARGIN SIGNAL. A STRONGER DOLLAR PRESSURES SOFTWARE/MEDIA ACQUISITION.`,
     )
   } else if (selectedAsset.assetType === 'crypto') {
     insights.push(
-      `${selectedAsset.displayName} is acting as a sentiment proxy. Strong upside usually lines up with higher founder optimism and looser experimentation.`,
+      `${selectedAsset.displayName.toUpperCase()} ACTS AS A SENTIMENT PROXY. CORRELATES WITH AGGRESSIVE R&D SPEND.`,
     )
   } else {
     insights.push(
-      `${selectedAsset.displayName} is a proxy for enterprise tech confidence. If leadership names weaken, expect longer buying cycles and stricter approvals.`,
+      `${selectedAsset.displayName.toUpperCase()} IS A PROXY FOR ENTERPRISE TECH CONFIDENCE. LONG BUYING CYCLES EXPECTED IF WEAK.`,
     )
   }
 
   const mover = topMovers[0]
   if (mover) {
     insights.push(
-      `${mover.displayName} is the fastest mover on the board at ${formatPercent(mover.change24h)}. Watch how narrative volatility changes decision speed in sales conversations.`,
+      `${mover.displayName.toUpperCase()} IS FASTEST MOVER AT ${formatPercent(mover.change24h)}. MONITOR SPILLOVER EFFECTS INTO VENDOR BUDGETS.`,
     )
   }
 
@@ -185,81 +186,75 @@ function Markets() {
     () => buildInsights(selectedAsset, summary, topMovers),
     [selectedAsset, summary, topMovers],
   )
-  const feedBadgeClass = dataMode === 'live'
-    ? 'badge-success'
-    : dataMode === 'mixed'
-      ? 'badge-warning'
-      : runtimeConfigured
-        ? 'badge-info'
-        : 'badge-muted'
+
   const feedBadgeLabel = dataMode === 'live'
-    ? 'live feed'
+    ? '[ LIVE SYNC ]'
     : dataMode === 'mixed'
-      ? 'mixed live'
+      ? '[ MIXED FEED ]'
       : runtimeConfigured
-        ? 'syncing live'
-        : 'demo feed'
+        ? '[ SECURING SYNC ]'
+        : '[ SIMULATED FEED ]'
 
   if (loading && assets.length === 0) {
-    return <div className="markets markets--loading fade-in">Loading market feed...</div>
+    return <div className="markets markets--loading fade-in">/// ESTABLISHING FINANCIAL DATA LINK...</div>
   }
 
   return (
     <div className="markets fade-in">
-      <div className="module-header markets__header">
+      <div className="markets__header">
         <div>
-          <h1>Markets</h1>
-          <p>Leadership context for budget timing, buyer confidence, and macro-sensitive campaign decisions.</p>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', fontSize: '28px', margin: 0 }}>MACRO TELEMETRY</h1>
+          <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>LEADERSHIP CONTEXT FOR MACRO-SENSITIVE CAMPAIGN DECISIONS.</p>
         </div>
         <div className="markets__actions">
-          <span className={`badge ${feedBadgeClass}`}>
+          <span className="mono text-xs" style={{ padding: '8px 12px', border: '1px solid var(--border-subtle)', color: 'var(--color-primary)' }}>
             {feedBadgeLabel}
           </span>
-          <button className="btn btn-primary" onClick={refresh} disabled={refreshing}>
-            {refreshing ? 'Syncing…' : 'Sync Market Data'}
+          <button className="btn btn-primary mono" style={{ padding: '8px 16px', fontSize: '11px', letterSpacing: '0.05em' }} onClick={refresh} disabled={refreshing}>
+            {refreshing ? '[ SYNCING ]' : 'INITIATE SYNC'}
           </button>
         </div>
       </div>
 
       {refreshError && (
         <div className="markets__banner">
-          <strong>Sync notice:</strong> {refreshError}
+          <strong style={{ color: 'var(--color-warning)' }}>ERR:</strong> {refreshError.toUpperCase()}
         </div>
       )}
 
       <section className="markets__stats">
-        <article className="stat-card">
-          <span className="stat-label">Tracked Assets</span>
-          <strong className="stat-value">{summary.trackedCount}</strong>
-          <span className="stat-change up">Cross-asset leadership watchlist</span>
+        <article style={{ padding: '16px', background: '#000' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>TRACKED ASSETS</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{summary.trackedCount}</strong>
+          <span className="mono text-2xs" style={{ color: 'var(--color-success)', marginTop: '8px', display: 'block' }}>CROSS-ASSET WATCHLIST</span>
         </article>
-        <article className="stat-card">
-          <span className="stat-label">Advancers / Decliners</span>
-          <strong className="stat-value">{summary.advancers} / {summary.decliners}</strong>
-          <span className={`stat-change ${summary.advancers >= summary.decliners ? 'up' : 'down'}`}>
-            Breadth {summary.advancers >= summary.decliners ? 'supports' : 'pressures'} risk appetite
+        <article style={{ padding: '16px', background: '#000' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>A/D LINE</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{summary.advancers} / {summary.decliners}</strong>
+          <span className="mono text-2xs" style={{ color: summary.advancers >= summary.decliners ? 'var(--color-success)' : 'var(--color-danger)', marginTop: '8px', display: 'block' }}>
+            BREADTH {summary.advancers >= summary.decliners ? 'SUPPORTS' : 'PRESSURES'} RISK
           </span>
         </article>
-        <article className="stat-card">
-          <span className="stat-label">Risk-On Score</span>
-          <strong className="stat-value">{summary.riskOnScore}%</strong>
-          <span className={`stat-change ${summary.riskOnScore >= 60 ? 'up' : 'down'}`}>
-            {summary.riskOnScore >= 60 ? 'Campaign velocity can stay high' : 'Operate with tighter spend control'}
+        <article style={{ padding: '16px', background: '#000' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>RISK-ON CONFIG</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{summary.riskOnScore}%</strong>
+          <span className="mono text-2xs" style={{ color: summary.riskOnScore >= 60 ? 'var(--color-success)' : 'var(--color-danger)', marginTop: '8px', display: 'block' }}>
+            {summary.riskOnScore >= 60 ? 'VELOCITY APPROVED' : 'TIGHTEN SPEND LOGIC'}
           </span>
         </article>
-        <article className="stat-card">
-          <span className="stat-label">24H Volume</span>
-          <strong className="stat-value">{formatVolume(summary.totalVolume)}</strong>
-          <span className="stat-change up">Last sync {formatTimestamp(lastUpdated)}</span>
+        <article style={{ padding: '16px', background: '#000' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>24H EXCHANGE VOL</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{formatVolume(summary.totalVolume)}</strong>
+          <span className="mono text-2xs" style={{ color: 'var(--text-secondary)', marginTop: '8px', display: 'block' }}>SYNC: {formatTimestamp(lastUpdated)}</span>
         </article>
       </section>
 
       <section className="markets__hero">
-        <article className="card markets__focus">
+        <article className="markets__focus">
           <div className="markets__focus-header">
             <div>
-              <span className="markets__eyebrow">Market Focus</span>
-              <h2>{selectedAsset?.displayName || 'No asset selected'}</h2>
+              <span className="markets__eyebrow">/// PRIMARY TARGET</span>
+              <h2>{selectedAsset?.displayName.toUpperCase() || 'NO TARGET ASSIGNED'}</h2>
             </div>
             {selectedAsset && (
               <span className={`markets__delta ${toneClass(selectedAsset.change24h)}`}>
@@ -272,42 +267,42 @@ function Markets() {
             <>
               <div className="markets__focus-meta">
                 <div>
-                  <span className="markets__meta-label">Price</span>
+                  <span className="markets__meta-label">LAST BLOCK PRICE</span>
                   <strong className="markets__price">
                     {selectedAsset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(selectedAsset)}
                   </strong>
                 </div>
                 <div>
-                  <span className="markets__meta-label">Session Range</span>
+                  <span className="markets__meta-label">SESSION VARIANCE</span>
                   <strong className="markets__range">
                     {selectedAsset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice({ ...selectedAsset, price: selectedAsset.rangeLow })}
-                    {' '}→{' '}
+                    {' '}➔{' '}
                     {selectedAsset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice({ ...selectedAsset, price: selectedAsset.rangeHigh })}
                   </strong>
                 </div>
                 <div>
-                  <span className="markets__meta-label">Source</span>
-                  <strong className="markets__range">{selectedAsset.source.replace('_', ' ')}</strong>
+                  <span className="markets__meta-label">DATA UPLINK</span>
+                  <strong className="markets__range" style={{ textTransform: 'uppercase' }}>{selectedAsset.source.replace('_', ' ')}</strong>
                 </div>
               </div>
 
               <Sparkline points={selectedAsset.history} tone={toneClass(selectedAsset.change24h)} detailed />
 
               <div className="markets__focus-footer">
-                <span className="badge badge-muted">{GROUP_LABELS[selectedAsset.assetType]}</span>
-                <span className="badge badge-muted">{selectedAsset.baseCurrency}/{selectedAsset.quoteCurrency}</span>
-                <span className="badge badge-muted">Volume {formatVolume(selectedAsset.volume)}</span>
-                <span className="badge badge-muted">Updated {formatTimestamp(selectedAsset.snapshotAt)}</span>
+                <span className="badge">[{GROUP_LABELS[selectedAsset.assetType]}]</span>
+                <span className="badge">[{selectedAsset.baseCurrency}/{selectedAsset.quoteCurrency}]</span>
+                <span className="badge">[VOL: {formatVolume(selectedAsset.volume)}]</span>
+                <span className="badge">[T:{formatTimestamp(selectedAsset.snapshotAt)}]</span>
               </div>
             </>
           )}
         </article>
 
-        <article className="card markets__intel">
+        <article className="markets__intel">
           <div className="markets__intel-header">
             <div>
-              <span className="markets__eyebrow">Operating Read</span>
-              <h2>What this means for the SaaS</h2>
+              <span className="markets__eyebrow">/// MACHINE ANALYSIS</span>
+              <h2>STRATEGIC IMPLICATIONS</h2>
             </div>
             {summary.topMover && (
               <span className={`markets__delta ${toneClass(summary.topMover.change24h)}`}>
@@ -326,7 +321,7 @@ function Markets() {
           </div>
 
           <div className="markets__movers">
-            <span className="markets__eyebrow">Top Movers</span>
+            <span className="markets__eyebrow" style={{ padding: '0 0 8px 0', borderBottom: '1px solid var(--border-subtle)', marginBottom: '16px' }}>/// HIGHEST VOLATILITY</span>
             {topMovers.map((asset) => (
               <button
                 key={asset.symbol}
@@ -338,7 +333,7 @@ function Markets() {
                   <strong>{asset.symbol}</strong>
                   <span>{asset.displayName}</span>
                 </div>
-                <span className={toneClass(asset.change24h)}>{formatPercent(asset.change24h)}</span>
+                <span className={`markets__delta ${toneClass(asset.change24h)}`} style={{ background: 'transparent', padding: 0 }}>{formatPercent(asset.change24h)}</span>
               </button>
             ))}
           </div>
@@ -347,11 +342,11 @@ function Markets() {
 
       <section className="markets__groups">
         {Object.entries(groupedAssets).map(([group, entries]) => (
-          <article key={group} className="card markets__group">
+          <article key={group} className="markets__group">
             <div className="markets__group-header">
               <div>
-                <span className="markets__eyebrow">{GROUP_LABELS[group]}</span>
-                <h2>{entries.length} assets</h2>
+                <span className="markets__eyebrow">/// {GROUP_LABELS[group]}</span>
+                <h2>{entries.length} LOGGED</h2>
               </div>
             </div>
             <div className="markets__asset-list">
@@ -370,7 +365,7 @@ function Markets() {
                     <Sparkline points={asset.history} tone={toneClass(asset.change24h)} />
                   </div>
                   <div className="markets__asset-metrics">
-                    <strong>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</strong>
+                    <strong style={{ color: 'var(--color-text)' }}>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</strong>
                     <span className={toneClass(asset.change24h)}>{formatPercent(asset.change24h)}</span>
                   </div>
                 </button>
@@ -380,26 +375,26 @@ function Markets() {
         ))}
       </section>
 
-      <section className="card markets__table-card">
+      <section className="markets__table-card">
         <div className="markets__table-header">
           <div>
-            <span className="markets__eyebrow">Watchlist</span>
-            <h2>Snapshot board</h2>
+            <span className="markets__eyebrow">/// FULL RADAR SUMMARY</span>
+            <h2>MARKET SNAPSHOT</h2>
           </div>
-          <span className="badge badge-muted">Last sync {formatTimestamp(lastUpdated)}</span>
+          <span className="mono text-xs text-secondary">[ T:{formatTimestamp(lastUpdated)} ]</span>
         </div>
 
         <div className="markets__table-wrap">
           <table>
             <thead>
               <tr>
-                <th>Asset</th>
-                <th>Type</th>
-                <th>Price</th>
-                <th>24H</th>
-                <th>Volume</th>
-                <th>Trend</th>
-                <th>Source</th>
+                <th>ASSET / TICKER</th>
+                <th>CLASS</th>
+                <th>LATEST QUOTE</th>
+                <th>DELTA (24H)</th>
+                <th>24H VOL</th>
+                <th>TRAJECTORY</th>
+                <th>UPLINK SOURCE</th>
               </tr>
             </thead>
             <tbody>
@@ -410,15 +405,16 @@ function Markets() {
                       type="button"
                       className="markets__table-symbol"
                       onClick={() => setSelectedSymbol(asset.symbol)}
+                      style={{ background: 'transparent', border: 'none', color: 'inherit' }}
                     >
-                      <strong>{asset.symbol}</strong>
+                      <strong style={{ color: 'var(--color-primary)' }}>{asset.symbol}</strong>
                       <span>{asset.displayName}</span>
                     </button>
                   </td>
                   <td>{GROUP_LABELS[asset.assetType]}</td>
-                  <td>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</td>
+                  <td style={{ color: 'var(--color-text)' }}>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</td>
                   <td>
-                    <span className={`markets__delta ${toneClass(asset.change24h)}`}>
+                    <span className={`markets__delta ${toneClass(asset.change24h)}`} style={{ background: 'transparent', padding: 0 }}>
                       {formatPercent(asset.change24h)}
                     </span>
                   </td>
@@ -426,7 +422,7 @@ function Markets() {
                   <td className="markets__table-chart">
                     <Sparkline points={asset.history} tone={toneClass(asset.change24h)} />
                   </td>
-                  <td>{asset.source.replace('_', ' ')}</td>
+                  <td style={{ textTransform: 'uppercase' }}>{asset.source.replace('_', ' ')}</td>
                 </tr>
               ))}
             </tbody>

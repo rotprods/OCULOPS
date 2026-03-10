@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Module Placeholder Component
-// Temporary component for modules not yet migrated
+// 100-Year UX: Strict Terminal Paradigm
 // ═══════════════════════════════════════════════════
 
 function Placeholder({ name, icon }) {
@@ -10,40 +10,51 @@ function Placeholder({ name, icon }) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '60vh',
+            height: '100%',
             textAlign: 'center',
-            gap: 'var(--space-4)',
+            gap: '24px',
+            background: '#000',
+            border: '1px solid var(--border-default)',
+            padding: '48px',
         }}>
             <div style={{
-                fontSize: '4rem',
-                filter: 'drop-shadow(0 0 20px rgba(var(--accent-primary-rgb), 0.3))',
+                fontSize: '48px',
+                color: 'var(--text-tertiary)',
             }}>
                 {icon}
             </div>
-            <h2 style={{
-                fontSize: 'var(--text-2xl)',
-                fontWeight: 800,
-                background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-            }}>
-                {name}
-            </h2>
-            <p className="text-secondary" style={{ maxWidth: '400px' }}>
-                Este módulo está pendiente de migración a React.
-                Ejecuta Claude Code para completar la implementación.
-            </p>
-            <div className="badge badge-warning mono">
-                EN DESARROLLO
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
+                <h2 className="mono" style={{
+                    fontSize: '24px',
+                    fontWeight: 'bold',
+                    color: 'var(--color-primary)',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    margin: 0
+                }}>
+                    /// {name} ///
+                </h2>
+                <div className="mono text-xs" style={{ color: 'var(--color-warning)', border: '1px solid var(--border-subtle)', padding: '4px 12px', letterSpacing: '0.1em' }}>
+                    [ MODULE OFFLINE. AWAITING DEPLOYMENT ]
+                </div>
             </div>
-            <code className="mono text-xs text-tertiary" style={{
-                marginTop: 'var(--space-4)',
-                padding: 'var(--space-3) var(--space-5)',
-                background: 'var(--bg-card)',
-                borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--border-subtle)',
+
+            <p className="mono font-bold" style={{ maxWidth: '400px', fontSize: '11px', color: 'var(--text-tertiary)', lineHeight: 1.6, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                THIS NODE IS PENDING 100-YEAR UX ARCHITECTURE SPECIFICATIONS.
+                EXECUTE CORTEX DEPLOYMENT BATCH OR FALLBACK TO LEGACY SYSTEM OVERRIDE.
+            </p>
+
+            <code className="mono font-bold" style={{
+                marginTop: '16px',
+                padding: '16px 24px',
+                background: 'var(--color-bg-2)',
+                border: '1px solid var(--border-default)',
+                color: 'var(--color-primary)',
+                fontSize: '11px',
+                letterSpacing: '0.05em'
             }}>
-                claude "Migrate {name} module from legacy/js/ to React component"
+                &gt; BUILD_SEQUENCE --target="{name.toUpperCase()}" --protocol=100YR_UX
             </code>
         </div>
     )

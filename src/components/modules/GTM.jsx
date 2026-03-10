@@ -1,6 +1,6 @@
 // ===================================================
 // ANTIGRAVITY OS — GTM Machine
-// Migrated from legacy/js/gtm.js
+// 100-Year UX: rigorous pipeline orchestration
 // ===================================================
 
 import { useState } from 'react'
@@ -65,17 +65,13 @@ Follow-up 4 (30 días después - break-up):
 }
 
 const SCRIPT_TABS = [
-    { key: 'dm', label: 'DM LinkedIn' },
-    { key: 'email', label: 'Cold Email' },
-    { key: 'followup', label: 'Follow-up' },
-    { key: 'objections', label: 'Objeciones' },
+    { key: 'dm', label: 'DM LINKEDIN' },
+    { key: 'email', label: 'COLD EMAIL' },
+    { key: 'followup', label: 'FOLLOW-UP SEQ' },
+    { key: 'objections', label: 'OBJECTIONS' },
 ]
 
-const SOURCES = ['LinkedIn', 'Referral', 'Web', 'Evento', 'Cold Research', 'Google Maps', 'Meta', 'TikTok']
-const STATUS_BADGE = {
-    raw: 'badge-neutral', qualified: 'badge-success', contacted: 'badge-info',
-    responded: 'badge-accent', meeting: 'badge-warning'
-}
+const SOURCES = ['LINKEDIN', 'REFERRAL', 'WEB', 'EVENT', 'COLD OP', 'MAPS', 'META', 'TIKTOK']
 
 function GTM() {
     const { data, updateData, toast } = useAppStore()
@@ -84,21 +80,21 @@ function GTM() {
     const [activeScript, setActiveScript] = useState('dm')
     const [showAddLead, setShowAddLead] = useState(false)
     const [isProspecting, setIsProspecting] = useState(false)
-    const [form, setForm] = useState({ name: '', company: '', role: '', email: '', linkedin: '', buySignal: '', source: 'LinkedIn', confidence: 60 })
+    const [form, setForm] = useState({ name: '', company: '', role: '', email: '', linkedin: '', buySignal: '', source: 'LINKEDIN', confidence: 60 })
 
     const saveICP = (field, value) => {
         updateData(d => ({ ...d, icp: { ...d.icp, [field]: value } }))
     }
 
     const addLead = () => {
-        if (!form.name.trim()) return toast('Nombre requerido', 'warning')
+        if (!form.name.trim()) return toast('ERR_NO_NAME', 'warning')
         updateData(d => ({
             ...d,
             leads: [...d.leads, { ...form, id: uid(), status: 'raw', timestamp: new Date().toISOString() }]
         }))
-        setForm({ name: '', company: '', role: '', email: '', linkedin: '', buySignal: '', source: 'LinkedIn', confidence: 60 })
+        setForm({ name: '', company: '', role: '', email: '', linkedin: '', buySignal: '', source: 'LINKEDIN', confidence: 60 })
         setShowAddLead(false)
-        toast('Lead añadido', 'success')
+        toast('TARGET COMMITTED', 'success')
     }
 
     const removeLead = (id) => {
@@ -107,10 +103,10 @@ function GTM() {
 
     const autoProspect = async () => {
         const target = form.company || form.name;
-        if (!target) return toast('ENTER COMPANY OR NAME TO AUTO-PROSPECT', 'warning');
+        if (!target) return toast('AWAITING TARGET ID', 'warning');
 
         setIsProspecting(true);
-        toast('CORTEX INITIALIZED. SCANNING PUBLIC API NETWORK...', 'info');
+        toast('CORTEX SCAN INITIATED...', 'info');
 
         try {
             const url = import.meta.env.VITE_SUPABASE_URL + '/functions/v1/agent-cortex';
@@ -134,13 +130,13 @@ function GTM() {
                     buySignal: (f.buySignal ? f.buySignal + ' | ' : '') + 'CORTEX: ' + summary.slice(0, 100).replace(/\n/g, ' ') + '...',
                     confidence: 85
                 }));
-                toast('LEAD ENRICHED VIA PUBLIC API CATALOG', 'success');
+                toast('TARGET ENRICHED', 'success');
             } else {
-                toast('NO PUBLIC SECURE DATA FOUND', 'warning');
+                toast('NULL RESPONSE', 'warning');
             }
         } catch (e) {
             console.error(e);
-            toast('PROSPECTING SECURE CONNECTION FAILED', 'error');
+            toast('ENRICH_FAIL', 'error');
         } finally {
             setIsProspecting(false);
         }
@@ -154,133 +150,52 @@ function GTM() {
             leads: d.leads.map(l => l.id === id ? { ...l, status: 'contacted' } : l),
             pipeline: { ...d.pipeline, lead: [...(d.pipeline?.lead || []), { ...lead, pipelineDate: new Date().toISOString() }] }
         }))
-        toast(`${lead.name} movido al pipeline`, 'success')
+        toast(`[${lead.name.toUpperCase()}] > PIPELINE`, 'success')
     }
 
     return (
-        <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px', height: '100%', overflowY: 'auto', paddingBottom: '32px' }}>
-            <div style={{ paddingBottom: '16px', borderBottom: '1px solid var(--border-default)' }}>
-                <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0, textTransform: 'uppercase' }}>GTM Machine</h1>
-                <p className="mono text-xs text-tertiary" style={{ marginTop: '8px', letterSpacing: '0.05em' }}>/// GO-TO-MARKET ORCHESTRATION // ICP DEFINITION & QUALIFIED OUTREACH</p>
+        <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px', height: '100%', overflowY: 'auto' }}>
+            <div style={{ paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+                <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0, fontSize: '28px' }}>GTM ORCHESTRATION</h1>
+                <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>ICP PARAMETERS & TARGET INGESTION PROTOCOLS.</p>
             </div>
 
             {/* ICP */}
-            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '24px' }}>
-                <div className="mono text-xs font-bold text-primary" style={{ marginBottom: '20px', letterSpacing: '0.1em' }}>/// IDEAL CUSTOMER PROFILE (ICP)</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 'var(--space-3)' }}>
+            <div style={{ background: '#000', border: '1px solid var(--border-default)', padding: '24px' }}>
+                <div className="mono text-xs font-bold text-primary" style={{ marginBottom: '20px', letterSpacing: '0.1em' }}>/// IDEAL CUSTOMER PROFILE COMPILER</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
                     {[
-                        { key: 'companySize', label: 'Tamaño empresa' },
-                        { key: 'decisionMaker', label: 'Decision Maker' },
-                        { key: 'painPoints', label: 'Pain Points' },
-                        { key: 'techStack', label: 'Tech Stack' },
-                        { key: 'budget', label: 'Presupuesto' },
-                        { key: 'buySignals', label: 'Señales de compra' },
+                        { key: 'companySize', label: 'TEAM SCALAR' },
+                        { key: 'decisionMaker', label: 'PRIMARY CMDR' },
+                        { key: 'painPoints', label: 'VULNERABILITY' },
+                        { key: 'techStack', label: 'API STACK' },
+                        { key: 'budget', label: 'AUM/BUDGET' },
+                        { key: 'buySignals', label: 'BUY TRIGGERS' },
                     ].map(f => (
                         <div key={f.key} className="input-group">
-                            <label>{f.label}</label>
-                            <input className="input" value={icp[f.key] || ''} onChange={e => saveICP(f.key, e.target.value)} />
+                            <label className="mono text-2xs text-tertiary">{f.label}</label>
+                            <input className="input mono text-xs" style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', borderRadius: 0 }} value={icp[f.key] || ''} onChange={e => saveICP(f.key, e.target.value)} />
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Leads */}
-            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div className="mono text-xs font-bold text-primary" style={{ letterSpacing: '0.1em' }}>/// HYPER-QUALIFIED LEADS ({leads.length})</div>
-                    <button className="btn btn-primary mono" style={{ borderRadius: 0, fontSize: '10px', padding: '6px 12px', letterSpacing: '0.1em' }} onClick={() => setShowAddLead(!showAddLead)}>
-                        {showAddLead ? 'CANCEL' : 'ADD MANUAL LEAD'}
-                    </button>
-                </div>
-
-                {showAddLead && (
-                    <div style={{ background: 'var(--bg-primary)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)', marginBottom: 'var(--space-4)' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 'var(--space-3)' }}>
-                            <div className="input-group"><label>Nombre</label><input className="input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /></div>
-                            <div className="input-group"><label>Empresa</label><input className="input" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} /></div>
-                            <div className="input-group"><label>Rol</label><input className="input" value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} /></div>
-                            <div className="input-group"><label>Email</label><input className="input" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
-                            <div className="input-group"><label>LinkedIn</label><input className="input" value={form.linkedin} onChange={e => setForm({ ...form, linkedin: e.target.value })} /></div>
-                            <div className="input-group"><label>Señal de compra</label><input className="input" value={form.buySignal} onChange={e => setForm({ ...form, buySignal: e.target.value })} placeholder="Ej: Acaba de cerrar ronda serie A" /></div>
-                            <div className="input-group"><label>Fuente</label>
-                                <select className="input" value={form.source} onChange={e => setForm({ ...form, source: e.target.value })}>
-                                    {SOURCES.map(s => <option key={s}>{s}</option>)}
-                                </select>
-                            </div>
-                            <div className="input-group"><label>Confianza (0-100)</label><input className="input" type="number" value={form.confidence} onChange={e => setForm({ ...form, confidence: parseInt(e.target.value) || 0 })} min="0" max="100" /></div>
-                        </div>
-                        <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
-                            <button className="btn btn-primary mono" style={{ borderRadius: 0, padding: '12px 24px', letterSpacing: '0.1em' }} onClick={addLead}>SAVE LEAD</button>
-                            <button
-                                className="btn mono"
-                                style={{ borderRadius: 0, padding: '12px 24px', letterSpacing: '0.1em', background: 'transparent', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }}
-                                onClick={autoProspect}
-                                disabled={isProspecting}
-                            >
-                                {isProspecting ? 'SCANNING...' : 'AUTO-ENRICH [CORTEX]'}
-                            </button>
-                        </div>
-                    </div>
-                )}
-
-                {leads.length === 0 ? (
-                    <div style={{ textAlign: 'center', padding: '64px 24px', color: 'var(--text-tertiary)' }}>
-                        <div style={{ fontSize: '2rem', marginBottom: '16px', opacity: 0.5 }}>🎯</div>
-                        <div className="mono text-sm text-secondary" style={{ marginBottom: '8px' }}>NO LEADS IN TARGET LIST</div>
-                        <div className="mono text-xs opacity-70">AWAITING INITIAL TARGET INGESTION OR MANUAL ENTRY</div>
-                    </div>
-                ) : (
-                    <div style={{ overflowX: 'auto' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
-                            <thead>
-                                <tr className="mono" style={{ borderBottom: '1px solid var(--border-default)', background: 'rgba(0,0,0,0.2)' }}>
-                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>NAME</th>
-                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>COMPANY</th>
-                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>ROLE</th>
-                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>BUY_SIGNAL</th>
-                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>STATUS</th>
-                                    <th style={{ padding: '12px 24px', color: 'var(--color-primary)' }}>SCORE</th>
-                                    <th style={{ padding: '12px 24px' }}></th>
-                                </tr>
-                            </thead>
-                            <tbody className="mono">
-                                {leads.map(l => (
-                                    <tr key={l.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                                        <td style={{ padding: '12px 24px', fontWeight: 600, color: 'var(--color-text)' }}>{l.name}</td>
-                                        <td style={{ padding: '12px 24px', color: 'var(--text-secondary)' }}>{l.company || '-'}</td>
-                                        <td style={{ padding: '12px 24px', color: 'var(--text-tertiary)' }}>{l.role || '-'}</td>
-                                        <td style={{ padding: '12px 24px', fontSize: '10px', color: 'var(--text-tertiary)', maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{l.buySignal || '-'}</td>
-                                        <td style={{ padding: '12px 24px' }}>
-                                            <span className={`badge ${STATUS_BADGE[l.status] || 'badge-neutral'}`} style={{ borderRadius: 0, padding: '4px 8px', fontSize: '9px', letterSpacing: '0.05em' }}>
-                                                {l.status.toUpperCase()}
-                                            </span>
-                                        </td>
-                                        <td style={{ padding: '12px 24px' }}>
-                                            <div style={{ width: 28, height: 28, border: `1px solid var(--accent-primary)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'var(--accent-primary)' }}>
-                                                {l.confidence || 50}
-                                            </div>
-                                        </td>
-                                        <td style={{ padding: '12px 24px', display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                                            <button className="btn btn-ghost" style={{ fontSize: '10px', padding: '4px 8px', borderRadius: 0 }} onClick={() => moveToPipeline(l.id)}>→ PIPE</button>
-                                            <button className="btn btn-ghost text-danger" style={{ fontSize: '10px', padding: '4px 8px', borderRadius: 0 }} onClick={() => removeLead(l.id)}>DEL</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
-            </div>
-
-            {/* Outreach Scripts */}
-            <div style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-default)', padding: '24px' }}>
+            {/* Scripting */}
+            <div style={{ background: '#000', border: '1px solid var(--border-default)', padding: '24px' }}>
                 <div className="mono text-xs font-bold text-primary" style={{ marginBottom: '20px', letterSpacing: '0.1em' }}>/// OUTREACH FRAMEWORKS</div>
-                <div style={{ display: 'flex', gap: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
+                <div style={{ display: 'flex', gap: '1px', marginBottom: '16px', border: '1px solid var(--border-subtle)', background: 'var(--border-subtle)' }}>
                     {SCRIPT_TABS.map(tab => (
                         <button
                             key={tab.key}
-                            className={`btn ${activeScript === tab.key ? 'btn-primary' : 'btn-ghost'}`}
-                            style={{ fontSize: '12px', padding: '6px 12px' }}
+                            className={`btn mono text-xs ${activeScript === tab.key ? 'btn-primary' : ''}`}
+                            style={{
+                                flex: 1,
+                                borderRadius: 0,
+                                padding: '12px',
+                                background: activeScript === tab.key ? 'var(--color-primary)' : '#000',
+                                border: 'none',
+                                color: activeScript === tab.key ? '#000' : 'var(--text-secondary)'
+                            }}
                             onClick={() => setActiveScript(tab.key)}
                         >
                             {tab.label}
@@ -288,12 +203,99 @@ function GTM() {
                     ))}
                 </div>
                 <div className="mono" style={{
-                    background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-subtle)',
-                    padding: '24px', fontSize: '12px', lineHeight: 1.8,
+                    background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)',
+                    padding: '24px', fontSize: '11px', lineHeight: 2,
                     whiteSpace: 'pre-wrap', color: 'var(--text-secondary)'
                 }}>
                     {SCRIPTS[activeScript]}
                 </div>
+            </div>
+
+            {/* Leads */}
+            <div style={{ background: '#000', border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div style={{ padding: '16px 24px', borderBottom: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--border-subtle)' }}>
+                    <div className="mono text-xs font-bold text-primary" style={{ letterSpacing: '0.1em' }}>/// TARGET QUEUE ({leads.length})</div>
+                    <button className="btn btn-primary mono" style={{ borderRadius: 0, fontSize: '10px', padding: '6px 12px', letterSpacing: '0.1em' }} onClick={() => setShowAddLead(!showAddLead)}>
+                        {showAddLead ? '[ CANCEL INGEST ]' : '[ APPEND MANUAL TARGET ]'}
+                    </button>
+                </div>
+
+                {showAddLead && (
+                    <div style={{ background: 'var(--color-bg-2)', padding: '24px', borderBottom: '1px solid var(--border-default)' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '16px' }}>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">NODE NAME</label><input className="input mono" style={{ borderRadius: 0, background: '#000' }} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /></div>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">ORG</label><input className="input mono" style={{ borderRadius: 0, background: '#000' }} value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} /></div>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">CLEARANCE</label><input className="input mono" style={{ borderRadius: 0, background: '#000' }} value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} /></div>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">COMMS PROTOCOL</label><input className="input mono" style={{ borderRadius: 0, background: '#000' }} type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">LI ID</label><input className="input mono" style={{ borderRadius: 0, background: '#000' }} value={form.linkedin} onChange={e => setForm({ ...form, linkedin: e.target.value })} /></div>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">PURCHASE TRIGGERS</label><input className="input mono" style={{ borderRadius: 0, background: '#000' }} value={form.buySignal} onChange={e => setForm({ ...form, buySignal: e.target.value })} /></div>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">VECTOR</label>
+                                <select className="input mono" style={{ borderRadius: 0, background: '#000' }} value={form.source} onChange={e => setForm({ ...form, source: e.target.value })}>
+                                    {SOURCES.map(s => <option key={s}>{s}</option>)}
+                                </select>
+                            </div>
+                            <div className="input-group"><label className="mono text-2xs text-tertiary">CONFIDENCE (0-100)</label><input className="input mono" style={{ borderRadius: 0, background: '#000' }} type="number" value={form.confidence} onChange={e => setForm({ ...form, confidence: parseInt(e.target.value) || 0 })} min="0" max="100" /></div>
+                        </div>
+                        <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
+                            <button className="btn btn-primary mono text-xs" style={{ borderRadius: 0, padding: '12px 24px', letterSpacing: '0.1em' }} onClick={addLead}>[ COMMIT TO DB ]</button>
+                            <button
+                                className="btn btn-ghost mono text-xs"
+                                style={{ borderRadius: 0, padding: '12px 24px', letterSpacing: '0.1em', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }}
+                                onClick={autoProspect}
+                                disabled={isProspecting}
+                            >
+                                {isProspecting ? '[ CORTEX SCAN // ]' : '[ RUN ENRICHMENT AI ]'}
+                            </button>
+                        </div>
+                    </div>
+                )}
+
+                {leads.length === 0 ? (
+                    <div style={{ textAlign: 'center', padding: '64px 24px', color: 'var(--text-tertiary)' }}>
+                        <div className="mono font-bold" style={{ fontSize: '24px', marginBottom: '16px', color: 'var(--color-primary)' }}>[ NULL ROSTER ]</div>
+                        <div className="mono text-sm text-secondary" style={{ marginBottom: '8px' }}>NO TARGETS IN LOCAL QUEUE</div>
+                    </div>
+                ) : (
+                    <div style={{ overflowX: 'auto', background: '#000' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                            <thead>
+                                <tr className="mono text-2xs" style={{ borderBottom: '1px solid var(--border-subtle)', background: 'var(--border-subtle)' }}>
+                                    <th style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>NODE_ID</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>ORG</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>VECTOR</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>PARAMS</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-primary)' }}>STATUS</th>
+                                    <th style={{ padding: '12px 16px' }}>CONFIDENCE</th>
+                                    <th style={{ padding: '12px 16px' }}>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody className="mono text-xs">
+                                {leads.map(l => (
+                                    <tr key={l.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                                        <td style={{ padding: '12px 16px', fontWeight: 'bold', color: 'var(--color-text)' }}>{l.name.toUpperCase()}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>{l.company ? l.company.toUpperCase() : '[ UNKNOWN ]'}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{l.role ? l.role.toUpperCase() : '[ NULL ]'}</td>
+                                        <td style={{ padding: '12px 16px', fontSize: '9px', color: 'var(--color-primary)', maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{l.buySignal ? l.buySignal.toUpperCase() : '[ OK ]'}</td>
+                                        <td style={{ padding: '12px 16px' }}>
+                                            <span style={{ border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)', padding: '2px 6px', fontSize: '9px' }}>
+                                                {l.status.toUpperCase()}
+                                            </span>
+                                        </td>
+                                        <td style={{ padding: '12px 16px' }}>
+                                            <div style={{ color: l.confidence > 70 ? 'var(--color-success)' : 'var(--color-warning)' }}>
+                                                {l.confidence || 50}%
+                                            </div>
+                                        </td>
+                                        <td style={{ padding: '12px 16px', display: 'flex', gap: '8px' }}>
+                                            <button className="btn btn-ghost" style={{ fontSize: '9px', padding: '4px 8px', borderRadius: 0, border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }} onClick={() => moveToPipeline(l.id)}>[ ADV ]</button>
+                                            <button className="btn btn-ghost" style={{ fontSize: '9px', padding: '4px 8px', borderRadius: 0, border: '1px solid var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeLead(l.id)}>[ DEL ]</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
             </div>
         </div>
     )

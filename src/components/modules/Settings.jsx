@@ -1,17 +1,17 @@
-// ===================================================
+// ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Settings Module
-// Configuracion del sistema: agencia, integraciones, tema
-// ===================================================
+// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
 
 const AGENCY_DEFAULTS = {
-  name: 'ANTIGRAVITY Agency',
+  name: 'ANTIGRAVITY AGENCY',
   website: '',
   email: '',
   phone: '',
-  icp: 'PYMEs 10-200 empleados — e-commerce, clinicas, inmobiliarias, SaaS B2B',
-  services: 'Chatbots IA, Automatizacion, Meta Ads, Prospecting automatico',
+  icp: 'SMB 10-200 EMPLOYEES — E-COMMERCE, CLINICS, REAL ESTATE, B2B SAAS',
+  services: 'AI CHATBOTS, AUTOMATION, META ADS, AUTO-PROSPECTING',
 }
 
 function maskKey(key) {
@@ -20,7 +20,7 @@ function maskKey(key) {
 }
 
 function formatPublicValue(key, value) {
-  if (!value) return 'NO CONFIGURADA'
+  if (!value) return 'UNCONFIGURED [SYS_WARN]'
   if (key === 'VITE_SUPABASE_URL') {
     try {
       return new URL(value).origin
@@ -39,15 +39,15 @@ function Settings() {
   const [activeTab, setActiveTab] = useState('agency')
 
   const publicEnvKeys = [
-    { label: 'Supabase URL',          key: 'VITE_SUPABASE_URL' },
-    { label: 'Supabase Anon Key',     key: 'VITE_SUPABASE_ANON_KEY' },
+    { label: 'SUPABASE URL', key: 'VITE_SUPABASE_URL' },
+    { label: 'SUPABASE ANON KEY', key: 'VITE_SUPABASE_ANON_KEY' },
   ]
 
   const protectedIntegrations = [
-    { label: 'OpenAI', location: 'Supabase Edge Functions secrets / server env' },
-    { label: 'Anthropic', location: 'Supabase Edge Functions secrets / server env' },
-    { label: 'Meta Ads / Graph', location: 'Supabase secrets o backend privado' },
-    { label: 'WhatsApp', location: 'Webhook backend y secrets privados' },
+    { label: 'OPENAI INGRESS', location: 'SUPABASE EDGE FUNCTIONS / PRIVATE ENV' },
+    { label: 'ANTHROPIC CLAUDE', location: 'SUPABASE EDGE FUNCTIONS / PRIVATE ENV' },
+    { label: 'META GRAPH API', location: 'SUPABASE SECRETS / PRIVATE BACKEND' },
+    { label: 'META WHATSAPP', location: 'PRIVATE WEBHOOKS / SECRETS' },
   ]
 
   const saveAgency = () => {
@@ -63,147 +63,175 @@ function Settings() {
   }
 
   const tabs = [
-    { id: 'agency', label: 'Agencia' },
-    { id: 'integrations', label: 'Integraciones' },
-    { id: 'system', label: 'Sistema' },
+    { id: 'agency', label: '01. DIRECTIVE PROFILE' },
+    { id: 'integrations', label: '02. INTEGRATION MATRIX' },
+    { id: 'system', label: '03. SYSTEM CORE' },
   ]
 
   return (
-    <div className="fade-in">
-      <div className="module-header">
-        <h1>Configuracion</h1>
-        <p>Perfil de agencia, integraciones activas y preferencias del sistema.</p>
+    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {/* ── HEADER ── */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+        <div>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>SYSTEM CONFIGURATION</h1>
+          <span className="mono text-xs text-tertiary">AGENCY PROFILE, INTEGRATION SECRETS & SYSTEM CORE SETTINGS</span>
+        </div>
+        <div style={{ display: 'flex', gap: '2px' }}>
+          {tabs.map(t => (
+            <button
+              key={t.id}
+              className="mono"
+              style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t.id ? 'var(--color-primary)' : 'transparent', color: activeTab === t.id ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
+              onClick={() => setActiveTab(t.id)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
-        {tabs.map(t => (
-          <button
-            key={t.id}
-            className={`btn btn-sm ${activeTab === t.id ? 'btn-primary' : ''}`}
-            onClick={() => setActiveTab(t.id)}
-          >
-            {t.label}
-          </button>
-        ))}
+      <div style={{ flex: 1, overflowY: 'auto' }}>
+        {activeTab === 'agency' && (
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// CORE AGENCY PARAMETERS</div>
+            <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) minmax(250px, 1fr)', gap: '16px' }}>
+                <div className="input-group">
+                  <label className="mono text-xs">AGENCY DESIGNATION</label>
+                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.name} onChange={e => setAgency(a => ({ ...a, name: e.target.value }))} placeholder="AGENCY OR ORG NAME" />
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">EXTERNAL DOMAIN / WEBSITE</label>
+                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.website} onChange={e => setAgency(a => ({ ...a, website: e.target.value }))} placeholder="HTTPS://DOMAIN.COM" />
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">PRIMARY COMMS (EMAIL)</label>
+                  <input className="input mono text-xs" type="email" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.email} onChange={e => setAgency(a => ({ ...a, email: e.target.value }))} placeholder="COMM@DOMAIN.COM" />
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">PRIMARY CONTACT (PHONE)</label>
+                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.phone} onChange={e => setAgency(a => ({ ...a, phone: e.target.value }))} placeholder="+1 555-000-0000" />
+                </div>
+              </div>
+
+              <div className="input-group">
+                <label className="mono text-xs">ICP (IDEAL CUSTOMER PROFILE) MATRIX</label>
+                <textarea className="input mono text-xs" rows={2} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.icp} onChange={e => setAgency(a => ({ ...a, icp: e.target.value }))} />
+              </div>
+
+              <div className="input-group">
+                <label className="mono text-xs">PRIMARY DEPLOYMENT SERVICES</label>
+                <textarea className="input mono text-xs" rows={2} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.services} onChange={e => setAgency(a => ({ ...a, services: e.target.value }))} />
+              </div>
+
+              <div style={{ marginTop: '16px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+                <button className="btn mono" style={{ border: '1px solid var(--color-primary)', background: saved ? 'var(--color-primary)' : '#000', color: saved ? '#000' : 'var(--color-primary)', borderRadius: 0, padding: '12px 24px' }} onClick={saveAgency}>
+                  {saved ? 'PARAMETERS SECURED' : 'SECURE NEW PARAMETERS'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'integrations' && (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '32px' }}>
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', gap: '16px' }}>
+                <span>/// PUBLIC RUNTIME MATRIX</span>
+                <span style={{ color: 'var(--color-info)' }}>[READ ONLY]</span>
+              </div>
+              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <p className="mono text-xs" style={{ color: 'var(--text-tertiary)', lineHeight: '1.4' }}>
+                  DISPLAYING CLIENT-SAFE VARIABLES ONLY. VENDOR SECRETS MUST NOT BE EXPOSED VIA `VITE_*`.
+                </p>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
+                  <tbody>
+                    {publicEnvKeys.map(({ label, key }) => {
+                      const val = import.meta.env[key]
+                      return (
+                        <tr key={key} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                          <td style={{ padding: '12px 0' }}>
+                            <div style={{ fontWeight: 'bold', color: 'var(--color-text)', marginBottom: '4px' }}>{label}</div>
+                            <div style={{ color: 'var(--text-tertiary)' }}>{key}</div>
+                          </td>
+                          <td style={{ padding: '12px 0', textAlign: 'right', color: val ? 'var(--color-success)' : 'var(--color-danger)' }}>
+                            {formatPublicValue(key, val)}
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)', display: 'flex', gap: '16px' }}>
+                <span>/// PROTECTED ASSETS</span>
+                <span style={{ color: 'var(--color-danger)' }}>[BACKEND DEPLOYMENT ONLY]</span>
+              </div>
+              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <p className="mono text-xs" style={{ color: 'var(--text-tertiary)', lineHeight: '1.4' }}>
+                  CREDENTIALS SECURED IN SUPABASE SECRETS, PRIVATE WEBHOOKS, OR SERVER-SIDE ENV VARIABLES. UNREADABLE FROM CLOUD CLIENT.
+                </p>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
+                  <tbody>
+                    {protectedIntegrations.map(({ label, location }) => (
+                      <tr key={label} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                        <td style={{ padding: '12px 0' }}>
+                          <div style={{ fontWeight: 'bold', color: 'var(--color-text)', marginBottom: '4px' }}>{label}</div>
+                          <div style={{ color: 'var(--text-secondary)' }}>{location}</div>
+                        </td>
+                        <td style={{ padding: '12px 0', textAlign: 'right', color: 'var(--text-tertiary)' }}>
+                          NON_VISIBLE_CLIENT
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'system' && (
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// CORE OVERVIEW</div>
+              <div style={{ padding: '24px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
+                  <tbody>
+                    {[
+                      { label: 'OS VERSION', value: 'V10.3 (ALPHA)' },
+                      { label: 'RUNTIME STACK', value: 'REACT 19 + VITE 7 + ELECTRON 35' },
+                      { label: 'DB LAYER', value: 'SUPABASE POSTGRESQL // EDGE' },
+                      { label: 'CURRENT MODE', value: import.meta.env.VITE_DEV_MODE !== 'false' ? 'DEV_MODE = TRUE' : 'PRODUCTION' },
+                      { label: 'NODE ENVIRONMENT', value: import.meta.env.MODE.toUpperCase() },
+                    ].map(({ label, value }) => (
+                      <tr key={label} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                        <td style={{ padding: '12px 0', color: 'var(--text-secondary)' }}>{label}</td>
+                        <td style={{ padding: '12px 0', textAlign: 'right', color: 'var(--color-primary)', fontWeight: 'bold' }}>{value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)' }}>/// MEMORY CONTROL</div>
+              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <p className="mono text-xs" style={{ color: 'var(--text-tertiary)', lineHeight: '1.4' }}>
+                  WIPE LOCAL BROWSER CACHE (LOCALSTORAGE). ACTIVE SUPABASE DB LAYER IS UNAFFECTED.
+                </p>
+                <button className="btn mono" style={{ border: '1px solid var(--color-danger)', background: 'transparent', color: 'var(--color-danger)', borderRadius: 0, padding: '12px' }} onClick={clearCache}>
+                  PURGE LOCAL MEMORY
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-
-      {activeTab === 'agency' && (
-        <div className="card">
-          <div className="card-header">
-            <div className="card-title">Perfil de Agencia</div>
-          </div>
-          <div className="grid-2" style={{ gap: '12px' }}>
-            <div className="input-group">
-              <label>Nombre</label>
-              <input className="input" value={agency.name} onChange={e => setAgency(a => ({ ...a, name: e.target.value }))} placeholder="Nombre de la agencia" />
-            </div>
-            <div className="input-group">
-              <label>Website</label>
-              <input className="input" value={agency.website} onChange={e => setAgency(a => ({ ...a, website: e.target.value }))} placeholder="https://agencia.com" />
-            </div>
-            <div className="input-group">
-              <label>Email</label>
-              <input className="input" type="email" value={agency.email} onChange={e => setAgency(a => ({ ...a, email: e.target.value }))} placeholder="hola@agencia.com" />
-            </div>
-            <div className="input-group">
-              <label>Telefono</label>
-              <input className="input" value={agency.phone} onChange={e => setAgency(a => ({ ...a, phone: e.target.value }))} placeholder="+34 600 000 000" />
-            </div>
-            <div className="input-group" style={{ gridColumn: '1 / -1' }}>
-              <label>ICP (cliente ideal)</label>
-              <textarea className="input" rows={2} value={agency.icp} onChange={e => setAgency(a => ({ ...a, icp: e.target.value }))} />
-            </div>
-            <div className="input-group" style={{ gridColumn: '1 / -1' }}>
-              <label>Servicios principales</label>
-              <textarea className="input" rows={2} value={agency.services} onChange={e => setAgency(a => ({ ...a, services: e.target.value }))} />
-            </div>
-          </div>
-          <button className="btn btn-primary" style={{ marginTop: '16px' }} onClick={saveAgency}>
-            {saved ? 'Guardado' : 'Guardar cambios'}
-          </button>
-        </div>
-      )}
-
-      {activeTab === 'integrations' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="card">
-            <div className="card-header">
-              <div className="card-title">Runtime publico</div>
-              <span className="badge badge-neutral">Solo lectura</span>
-            </div>
-            <p style={{ color: 'var(--color-text-2)', fontSize: '13px', marginBottom: '16px' }}>
-              Solo se muestran variables seguras para el cliente. Los secretos de proveedores no deben exponerse via `VITE_*`.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {publicEnvKeys.map(({ label, key }) => {
-                const val = import.meta.env[key]
-                return (
-                  <div key={key} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', background: 'var(--color-bg-3)', borderRadius: '6px', border: '1px solid var(--color-border)' }}>
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: '13px' }}>{label}</div>
-                      <div style={{ fontSize: '11px', color: 'var(--color-text-2)', fontFamily: 'JetBrains Mono, monospace' }}>{key}</div>
-                    </div>
-                    <span style={{ fontSize: '12px', fontFamily: 'JetBrains Mono, monospace', color: val ? 'var(--color-success)' : 'var(--color-danger)' }}>
-                      {formatPublicValue(key, val)}
-                    </span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-header">
-              <div className="card-title">Integraciones protegidas</div>
-              <span className="badge badge-neutral">Backend only</span>
-            </div>
-            <p style={{ color: 'var(--color-text-2)', fontSize: '13px', marginBottom: '16px' }}>
-              Estas credenciales deben vivir en Supabase secrets, webhooks privados o variables server-side. No se leen desde la app.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {protectedIntegrations.map(({ label, location }) => (
-                <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', background: 'var(--color-bg-3)', borderRadius: '6px', border: '1px solid var(--color-border)' }}>
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: '13px' }}>{label}</div>
-                    <div style={{ fontSize: '11px', color: 'var(--color-text-2)' }}>{location}</div>
-                  </div>
-                  <span style={{ fontSize: '12px', color: 'var(--color-text-2)' }}>No visible en cliente</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {activeTab === 'system' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="card">
-            <div className="card-header"><div className="card-title">Informacion del sistema</div></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {[
-                { label: 'Version', value: 'v10.3' },
-                { label: 'Stack', value: 'React 19 + Vite 7 + Electron 35' },
-                { label: 'Base de datos', value: 'Supabase (PostgreSQL)' },
-                { label: 'Modo', value: import.meta.env.VITE_DEV_MODE !== 'false' ? 'Desarrollo (DEV_MODE)' : 'Produccion' },
-                { label: 'Entorno', value: import.meta.env.MODE },
-              ].map(({ label, value }) => (
-                <div key={label} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid var(--color-border)' }}>
-                  <span style={{ color: 'var(--color-text-2)', fontSize: '13px' }}>{label}</span>
-                  <span style={{ fontWeight: 600, fontSize: '13px', fontFamily: 'JetBrains Mono, monospace' }}>{value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-header"><div className="card-title">Gestion de datos locales</div></div>
-            <p style={{ color: 'var(--color-text-2)', fontSize: '13px', marginBottom: '16px' }}>
-              Limpia la cache local del navegador (localStorage). Los datos en Supabase no se ven afectados.
-            </p>
-            <button className="btn btn-danger" onClick={clearCache}>Limpiar cache local</button>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

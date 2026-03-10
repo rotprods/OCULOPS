@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Study Hub
-// 14 Business Intelligence Studies
+// 100-Year UX: rigorous documentation reader
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect } from 'react'
@@ -30,36 +30,36 @@ function StudyHub() {
         return (
             <div className="study-hub fade-in">
                 <div className="study-hero">
-                    <div className="study-hero-badge">ANTIGRAVITY</div>
-                    <h1 className="study-hero-title">ESTUDIO COMPLETO</h1>
-                    <p className="study-hero-subtitle">Plan de Negocio 2026</p>
+                    <div className="study-hero-badge">TELEMETRY ARCHIVE</div>
+                    <h1 className="study-hero-title">INTELLIGENCE DOSSIER</h1>
+                    <p className="study-hero-subtitle">MASTER BUSINESS PLAN 2026 // RESTRICTED ACCESS</p>
                     <p className="study-hero-meta">
-                        {studies.length} documentos · Estrategia de negocio · Pricing · GTM · KPIs
+                        {studies.length} DOCUMENTS · STRATEGY · PRICING · GTM · KPIs
                     </p>
                     <div className="study-hero-kpis">
                         <div className="study-hero-kpi">
-                            <div className="study-hero-kpi-value">€20K</div>
+                            <div className="study-hero-kpi-value">$20K</div>
                             <div className="study-hero-kpi-label">MRR TARGET Q4</div>
                         </div>
                         <div className="study-hero-kpi">
-                            <div className="study-hero-kpi-value">92.458</div>
-                            <div className="study-hero-kpi-label">EMPRESAS MURCIA</div>
+                            <div className="study-hero-kpi-value">92,458</div>
+                            <div className="study-hero-kpi-label">COMPANIES RECORDED</div>
                         </div>
                         <div className="study-hero-kpi">
                             <div className="study-hero-kpi-value">25</div>
-                            <div className="study-hero-kpi-label">CLIENTES TARGET</div>
+                            <div className="study-hero-kpi-label">TARGET CLIENTS</div>
                         </div>
                         <div className="study-hero-kpi">
-                            <div className="study-hero-kpi-value">€500</div>
-                            <div className="study-hero-kpi-label">PACK STARTER</div>
+                            <div className="study-hero-kpi-value">$500</div>
+                            <div className="study-hero-kpi-label">STARTER TIER</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="study-index-header">
-                    <h2>Módulos de Estudio</h2>
+                    <h2>/// KNOWLEDGE MODULES</h2>
                     <div className="study-progress-badge">
-                        📖 {completed.length} / {studies.length} completados
+                        [{completed.length} / {studies.length} EXTRACTED]
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@ function StudyHub() {
                             <div className="study-card-header">
                                 <span className="study-card-number">{String(study.id).padStart(2, '0')}</span>
                                 <div className={`study-card-check ${completed.includes(study.id) ? 'checked' : ''}`}>
-                                    {completed.includes(study.id) ? '✓' : ''}
+                                    {completed.includes(study.id) ? '[ OK ]' : '[ -- ]'}
                                 </div>
                             </div>
                             <div className="study-card-icon">{study.icon}</div>
@@ -98,7 +98,7 @@ function StudyHub() {
                                         </span>
                                     ))}
                                 </div>
-                                <span className="study-card-time">⏱ {study.readTime} min</span>
+                                <span className="study-card-time">⏱ {study.readTime} MIN RUN</span>
                             </div>
                         </button>
                     ))}
@@ -116,7 +116,7 @@ function StudyHub() {
             {/* Sidebar nav */}
             <nav className="study-sidebar">
                 <button className="study-sidebar-back" onClick={() => setActiveStudy(null)}>
-                    ← Volver
+                    {'< TERMINATE SESSION'}
                 </button>
                 <div className="study-sidebar-list">
                     {studies.map(s => (
@@ -136,9 +136,9 @@ function StudyHub() {
             {/* Main content */}
             <main className="study-main">
                 <div className="study-breadcrumb">
-                    <button onClick={() => setActiveStudy(null)}>Study Hub</button>
-                    <span>›</span>
-                    <span>{String(study.id).padStart(2, '0')} — {study.title}</span>
+                    <button onClick={() => setActiveStudy(null)}>ARCHIVE</button>
+                    <span>/</span>
+                    <span style={{ color: 'var(--color-primary)' }}>{String(study.id).padStart(2, '0')} — {study.title}</span>
                 </div>
 
                 <div className="study-main-header">
@@ -148,13 +148,13 @@ function StudyHub() {
                                 {STUDY_CATEGORIES[cat]?.label}
                             </span>
                         ))}
-                        <span className="study-read-time">⏱ {study.readTime} min</span>
+                        <span className="study-read-time">⏱ {study.readTime} MIN RUN</span>
                     </div>
                     <button
                         className={`study-mark-btn ${completed.includes(study.id) ? 'marked' : ''}`}
                         onClick={() => toggleCompleted(study.id)}
                     >
-                        {completed.includes(study.id) ? '✅ Completado' : 'Marcar como leído'}
+                        {completed.includes(study.id) ? '[ STATUS: LOGGED ]' : '[ MARK COMPLETE ]'}
                     </button>
                 </div>
 
@@ -163,15 +163,15 @@ function StudyHub() {
 
                 {study.subtitle && (
                     <div className="study-meta-box">
-                        <div><strong>Alcance:</strong> Región de Murcia · Agencia AI · 2026</div>
-                        <div><strong>Metodología:</strong> Fuentes públicas, datos de plataformas, benchmarks</div>
-                        <div><strong>Fecha:</strong> Marzo 2026</div>
+                        <div><strong>SCOPE:</strong> GLOBAL / AI OPERATIONS / 2026</div>
+                        <div><strong>METHOD:</strong> DIRECT INTEL, SECURE DATASETS, FORECASTING</div>
+                        <div><strong>TIMESTAMP:</strong> MARCH 2026</div>
                     </div>
                 )}
 
                 {study.sections.map((section, i) => (
                     <div key={i} className="study-section">
-                        <h2 className="study-section-title">{section.title}</h2>
+                        <h2 className="study-section-title">/// {section.title}</h2>
                         {section.content && (
                             <div
                                 className="study-section-content"
@@ -206,15 +206,15 @@ function StudyHub() {
                 ))}
 
                 <div className="study-nav-buttons">
-                    {study.id > 0 && (
-                        <button className="btn" onClick={() => setActiveStudy(study.id - 1)}>
-                            ← {studies[study.id - 1]?.title}
+                    {study.id > 0 ? (
+                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }} onClick={() => setActiveStudy(study.id - 1)}>
+                            &lt; PREV: {studies[study.id - 1]?.title.substring(0, 20).toUpperCase()}...
                         </button>
-                    )}
-                    <div style={{ flex: 1 }} />
+                    ) : <div></div>}
+
                     {study.id < studies.length - 1 && (
-                        <button className="btn btn-primary" onClick={() => setActiveStudy(study.id + 1)}>
-                            {studies[study.id + 1]?.title} →
+                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--color-primary)', background: 'var(--color-primary)', color: '#000' }} onClick={() => setActiveStudy(study.id + 1)}>
+                            NEXT MODULE &gt;
                         </button>
                     )}
                 </div>
@@ -235,7 +235,7 @@ function renderMarkdown(text) {
         .replace(/`([^`]+)`/g, '<code>$1</code>')
         // Headers within content
         .replace(/^### (.*$)/gm, '<h4>$1</h4>')
-        .replace(/^## (.*$)/gm, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gm, '<h3>/// $1</h3>')
         // Tables (simple markdown tables)
         .replace(/^\|(.+)\|$/gm, (match) => {
             const cells = match.split('|').filter(c => c.trim())

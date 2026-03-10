@@ -1,16 +1,16 @@
-// ===================================================
+// ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Billing Module
-// MRR, facturas de clientes y estado de pagos
-// ===================================================
+// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
 import { useDeals } from '../../hooks/useDeals'
 import { useFinance } from '../../hooks/useFinance'
 
 const INVOICE_STATUS = {
-  paid:     { label: 'Pagado',   className: 'badge-success' },
-  pending:  { label: 'Pendiente', className: 'badge-neutral' },
-  overdue:  { label: 'Vencida',  className: 'badge-danger' },
+  paid: { label: 'CLEARED', color: 'var(--color-success)' },
+  pending: { label: 'PENDING', color: 'var(--text-tertiary)' },
+  overdue: { label: 'OVERDUE', color: 'var(--color-danger)' },
 }
 
 function Billing() {
@@ -26,7 +26,7 @@ function Billing() {
   const wonDeals = pipelineView['closed_won'] || []
   const clientsMRR = wonDeals.map(d => ({
     id: d.id,
-    name: d.contact?.name || d.company?.name || 'Cliente sin nombre',
+    name: d.contact?.name || d.company?.name || 'UNIDENTIFIED CLIENT',
     company: d.company?.name || '',
     value: parseFloat(d.value) || 0,
     stage: d.stage,
@@ -54,142 +54,168 @@ function Billing() {
   }
 
   if (loading) return (
-    <div className="fade-in" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-2)' }}>
-      Cargando facturacion...
+    <div className="fade-in mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>
+      CALCULATING FINANCE MATRIX...
     </div>
   )
 
   return (
-    <div className="fade-in">
-      <div className="module-header">
-        <h1>Facturacion</h1>
-        <p>MRR de clientes activos, facturas y estado de cobros.</p>
+    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {/* ── HEADER ── */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+        <div>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>FINANCE LEDGER</h1>
+          <span className="mono text-xs text-tertiary">RECURRING REVENUE, INWARD FLOW & ACTIVE ACCOUNTS</span>
+        </div>
+        <button className="btn btn-primary mono text-xs" style={{ borderRadius: 0, padding: '8px 16px' }} onClick={() => setShowForm(v => !v)}>
+          {showForm ? 'CANCEL INVOICE' : 'GENERATE INVOICE'}
+        </button>
       </div>
 
-      <div className="grid-4 mb-6">
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-primary)22', color: 'var(--color-primary)' }}>📈</div>
-          <div className="kpi-value">€{mrr.toLocaleString()}</div>
-          <div className="kpi-label">MRR</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-success)22', color: 'var(--color-success)' }}>💰</div>
-          <div className="kpi-value">€{totalRevenue.toLocaleString()}</div>
-          <div className="kpi-label">Revenue total</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-info)22', color: 'var(--color-info)' }}>👥</div>
-          <div className="kpi-value">{clientsMRR.length}</div>
-          <div className="kpi-label">Clientes activos</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-danger)22', color: 'var(--color-danger)' }}>💸</div>
-          <div className="kpi-value">€{totalExpenses.toLocaleString()}</div>
-          <div className="kpi-label">Gastos</div>
-        </div>
-      </div>
+      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
 
-      {clientsMRR.length > 0 && (
-        <div className="card mb-6">
-          <div className="card-header"><div className="card-title">Clientes con MRR</div></div>
-          <div className="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Cliente</th>
-                  <th>Empresa</th>
-                  <th>Valor deal</th>
-                  <th>% del MRR total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {clientsMRR.map(c => (
-                  <tr key={c.id}>
-                    <td style={{ fontWeight: 600 }}>{c.name}</td>
-                    <td style={{ color: 'var(--color-text-2)', fontSize: '12px' }}>{c.company || '—'}</td>
-                    <td style={{ fontWeight: 700, color: 'var(--color-success)' }}>€{c.value.toLocaleString()}</td>
-                    <td>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div style={{ flex: 1, background: 'var(--color-bg-3)', borderRadius: '3px', height: '6px' }}>
-                          <div style={{ width: `${Math.round((c.value / Math.max(...clientsMRR.map(x => x.value))) * 100)}%`, height: '100%', background: 'var(--color-primary)', borderRadius: '3px' }} />
-                        </div>
-                        <span style={{ fontSize: '11px', color: 'var(--color-text-2)', width: '36px' }}>
-                          {mrr > 0 ? Math.round((c.value / mrr) * 100) : 0}%
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* ── KPI STRIP ── */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">MRR (RECURRING)</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-primary)' }}>📈</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>€{mrr.toLocaleString()}</span>
+          </div>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">TOTAL REVENUE</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-success)' }}>💰</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>€{totalRevenue.toLocaleString()}</span>
+          </div>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">ACTIVE PORTFOLIO</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-info)' }}>👥</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-info)' }}>{clientsMRR.length}</span>
+          </div>
+          <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <span className="mono text-xs text-tertiary">BURNOUT EXPENSES</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-danger)' }}>💸</span>
+            </div>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--color-danger)' }}>€{totalExpenses.toLocaleString()}</span>
           </div>
         </div>
-      )}
 
-      <div className="card mb-6">
-        <div className="card-header">
-          <div className="card-title">Facturas ({invoices.length})</div>
-          <button className="btn btn-sm btn-primary" onClick={() => setShowForm(v => !v)}>
-            {showForm ? 'Cancelar' : '+ Nueva factura'}
-          </button>
-        </div>
-
+        {/* ── INVOICE CREATION TERMINAL ── */}
         {showForm && (
-          <div className="grid-2" style={{ gap: '12px', padding: '16px 0', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
-            <div className="input-group">
-              <label>Cliente</label>
-              <input className="input" value={form.client} onChange={e => setForm(f => ({ ...f, client: e.target.value }))} placeholder="Nombre del cliente" />
+          <div style={{ border: '1px solid var(--color-primary)', background: '#000', display: 'flex', flexDirection: 'column', height: 'fit-content' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--color-primary)', color: '#000' }}>
+                        /// EXECUTE NEW INVOICE
             </div>
-            <div className="input-group">
-              <label>Descripcion</label>
-              <input className="input" value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Ej: Servicio mensual Abril" />
-            </div>
-            <div className="input-group">
-              <label>Monto (€)</label>
-              <input className="input" type="number" value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} placeholder="2000" />
-            </div>
-            <div className="input-group">
-              <label>Fecha</label>
-              <input className="input" type="date" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
-            </div>
-            <div style={{ gridColumn: '1 / -1' }}>
-              <button className="btn btn-primary" onClick={handleAddInvoice} disabled={saving}>
-                {saving ? 'Guardando...' : 'Crear factura'}
-              </button>
+            <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(200px, 1fr) 2fr', gap: '16px' }}>
+                <div className="input-group">
+                  <label className="mono text-xs">CLIENT IDENTIFIER</label>
+                  <input className="input mono text-xs" value={form.client} onChange={e => setForm(f => ({ ...f, client: e.target.value }))} placeholder="EX: ACME CORP" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} />
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">SERVICES RENDERED</label>
+                  <input className="input mono text-xs" value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="EX: MONTHLY AUTOMATION RETAINER" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="input-group">
+                  <label className="mono text-xs">CAPITAL TRANSFER (€)</label>
+                  <input className="input mono text-xs" type="number" value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} placeholder="5000" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} />
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">EXECUTION DATE</label>
+                  <input className="input mono text-xs" type="date" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} />
+                </div>
+              </div>
+
+              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+                <button className="btn btn-primary mono text-xs" onClick={handleAddInvoice} disabled={saving} style={{ borderRadius: 0, padding: '12px 24px' }}>
+                  {saving ? 'TRANSMITTING...' : 'REGISTER TRANSFER'}
+                </button>
+              </div>
             </div>
           </div>
         )}
 
-        {invoices.length === 0 ? (
-          <div className="empty-state">
-            <div className="empty-icon">🧾</div>
-            <h3>Sin facturas</h3>
-            <p>Registra tu primera factura para empezar el seguimiento.</p>
-          </div>
-        ) : (
-          <div className="table-container">
-            <table>
-              <thead>
-                <tr><th>Fecha</th><th>Descripcion</th><th>Monto</th><th>Recurrente</th></tr>
-              </thead>
-              <tbody>
-                {invoices.map(inv => (
-                  <tr key={inv.id}>
-                    <td className="mono text-xs">{inv.date}</td>
-                    <td style={{ fontWeight: 600 }}>{inv.description}</td>
-                    <td style={{ fontWeight: 800, color: 'var(--color-success)' }}>€{(parseFloat(inv.amount) || 0).toLocaleString()}</td>
-                    <td>
-                      {inv.is_recurring
-                        ? <span className="badge badge-success">Recurrente</span>
-                        : <span className="badge badge-neutral">Unica</span>
-                      }
-                    </td>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 400px', gap: '16px' }}>
+          {/* ── INVOICE LEDGER ── */}
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// TRANSACTIONS LOG [{invoices.length}]</div>
+            {invoices.length === 0 ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO INVOICES ON RECORD.</div>
+            ) : (
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)', background: '#000', color: 'var(--color-primary)' }}>
+                    <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 'bold' }}>DATE</th>
+                    <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 'bold' }}>DESCRIPTOR</th>
+                    <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 'bold' }}>VALUE</th>
+                    <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 'bold' }}>TYPE</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {invoices.map((inv, idx) => (
+                    <tr key={inv.id} style={{ borderBottom: idx < invoices.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000' }}>
+                      <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{inv.date}</td>
+                      <td style={{ padding: '12px 16px', color: 'var(--color-text)', fontWeight: 'bold' }}>{inv.description.toUpperCase()}</td>
+                      <td style={{ padding: '12px 16px', color: 'var(--color-success)', fontWeight: 'bold' }}>€{(parseFloat(inv.amount) || 0).toLocaleString()}</td>
+                      <td style={{ padding: '12px 16px' }}>
+                        {inv.is_recurring ? (
+                          <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--color-success)', color: 'var(--color-success)' }}>RECURRING</span>
+                        ) : (
+                          <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>ONE-OFF</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
-        )}
+
+          {/* ── CLIENT MRR PORTFOLIO ── */}
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', height: 'fit-content' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)' }}>/// ACTIVE PORTFOLIO MRR</div>
+            {clientsMRR.length === 0 ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO RECURRING CLIENTS SECURED.</div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {clientsMRR.map((c, idx) => {
+                  const mrrPct = mrr > 0 ? Math.round((c.value / mrr) * 100) : 0
+                  const maxVal = Math.max(...clientsMRR.map(x => x.value))
+                  const barPct = Math.round((c.value / maxVal) * 100)
+
+                  return (
+                    <div key={c.id} style={{ display: 'flex', flexDirection: 'column', padding: '16px', borderBottom: idx < clientsMRR.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                        <div>
+                          <div className="mono text-sm font-bold" style={{ color: 'var(--color-text)' }}>{c.name.toUpperCase()}</div>
+                          <div className="mono text-xs" style={{ color: 'var(--text-tertiary)', marginTop: '2px' }}>{c.company.toUpperCase() || 'N/A'}</div>
+                        </div>
+                        <div className="mono text-sm font-bold" style={{ color: 'var(--color-success)' }}>€{c.value.toLocaleString()}</div>
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '6px', position: 'relative' }}>
+                          <div style={{ width: `${barPct}%`, height: '100%', background: 'var(--color-primary)' }} />
+                        </div>
+                        <span className="mono text-xs" style={{ color: 'var(--text-secondary)', width: '30px', textAlign: 'right' }}>{mrrPct}%</span>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+
       </div>
     </div>
   )

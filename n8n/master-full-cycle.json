@@ -359,7 +359,13 @@
             "position": [
                 2120,
                 500
-            ]
+            ],
+            "credentials": {
+                "gmailOAuth2": {
+                    "id": "",
+                    "name": "Gmail ANTIGRAVITY"
+                }
+            }
         }
     ],
     "connections": {

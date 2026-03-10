@@ -1,7 +1,7 @@
-// ===================================================
-// ANTIGRAVITY OS — Sales Pipeline
-// Kanban DnD via @dnd-kit/core + Supabase useDeals
-// ===================================================
+// /////////////////////////////////////////////////////////////////////////////
+// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// ANTIGRAVITY OS — Sales Pipeline (Kanban DnD)
+// /////////////////////////////////////////////////////////////////////////////
 
 import { useMemo, useState, useCallback } from 'react'
 import {
@@ -20,12 +20,12 @@ import { Charts } from '../../lib/charts'
 
 // ── Stage config aligned with DB values ──────────────────
 const STAGES = [
-  { id: 'lead',        label: 'Lead',        color: 'var(--color-text-2)' },
-  { id: 'contacted',   label: 'Contactado',  color: 'var(--color-info)' },
-  { id: 'meeting',     label: 'Meeting',     color: 'var(--color-primary)' },
-  { id: 'proposal',    label: 'Propuesta',   color: '#FF9500' },
-  { id: 'closed_won',  label: 'Cerrado',     color: 'var(--color-success)' },
-  { id: 'closed_lost', label: 'Perdido',     color: 'var(--color-danger)' },
+  { id: 'lead', label: 'LEAD', color: 'var(--text-tertiary)' },
+  { id: 'contacted', label: 'CONTACTED', color: 'var(--color-info)' },
+  { id: 'meeting', label: 'MEETING', color: 'var(--color-primary)' },
+  { id: 'proposal', label: 'PROPOSAL', color: 'var(--color-warning)' },
+  { id: 'closed_won', label: 'CLOSED WON', color: 'var(--color-success)' },
+  { id: 'closed_lost', label: 'CLOSED LOST', color: 'var(--color-danger)' },
 ]
 
 const STAGE_MAP = Object.fromEntries(STAGES.map(s => [s.id, s]))
@@ -41,10 +41,13 @@ function DealCard({ deal, stage, onRemove, isDragging }) {
     opacity: isDragging ? 0.4 : 1,
     cursor: 'grab',
     touchAction: 'none',
-    padding: '10px',
+    padding: '12px',
     marginBottom: '8px',
+    border: '1px solid var(--border-subtle)',
     borderLeft: `3px solid ${stage?.color || 'var(--color-border)'}`,
     userSelect: 'none',
+    background: 'var(--color-bg-2)',
+    borderRadius: '0'
   }
 
   return (
@@ -53,35 +56,45 @@ function DealCard({ deal, stage, onRemove, isDragging }) {
       style={style}
       {...listeners}
       {...attributes}
-      className="card"
+      className="mono"
     >
-      <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-text)', lineHeight: 1.3 }}>
-        {deal.title || deal.name || 'Sin nombre'}
+      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        {deal.title || deal.name || '[ UNNAMED ]'}
       </div>
       {deal.company && (
-        <div style={{ fontSize: '11px', color: 'var(--color-text-2)', marginTop: '2px' }}>
+        <div style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '4px', textTransform: 'uppercase' }}>
           {deal.company?.name || deal.company}
         </div>
       )}
-      <div style={{ fontSize: '11px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--color-success)', marginTop: '6px' }}>
-        €{(parseFloat(deal.value) || 0).toLocaleString()}
+      <div style={{ fontSize: '11px', color: 'var(--color-success)', marginTop: '8px' }}>
+        EUR {(parseFloat(deal.value) || 0).toLocaleString()}
         {deal.probability > 0 && (
-          <span style={{ color: 'var(--color-text-2)', marginLeft: '6px' }}>{deal.probability}%</span>
+          <span style={{ color: 'var(--text-tertiary)', marginLeft: '8px' }}>[ {deal.probability}% P ]</span>
         )}
       </div>
       {deal.contact_person && (
-        <div style={{ fontSize: '10px', color: 'var(--color-text-2)', marginTop: '4px' }}>
-          {deal.contact_person}
+        <div style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '6px', textTransform: 'uppercase' }}>
+          CONTACT: {deal.contact_person}
         </div>
       )}
-      <button
-        className="btn btn-sm btn-danger"
-        style={{ marginTop: '8px', fontSize: '10px', padding: '2px 8px' }}
-        onPointerDown={e => e.stopPropagation()}
-        onClick={e => { e.stopPropagation(); onRemove(deal.id) }}
-      >
-        Eliminar
-      </button>
+      <div style={{ marginTop: '12px', textAlign: 'right' }}>
+        <button
+          style={{
+            background: 'transparent',
+            border: '1px solid var(--color-danger)',
+            color: 'var(--color-danger)',
+            fontSize: '9px',
+            padding: '4px 8px',
+            cursor: 'pointer',
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em'
+          }}
+          onPointerDown={e => e.stopPropagation()}
+          onClick={e => { e.stopPropagation(); onRemove(deal.id) }}
+        >
+          [ PURGE ]
+        </button>
+      </div>
     </div>
   )
 }
@@ -92,19 +105,21 @@ function DragOverlayCard({ deal }) {
   const stage = STAGE_MAP[deal.stage]
   return (
     <div
-      className="card"
+      className="mono"
       style={{
-        padding: '10px',
+        padding: '12px',
+        border: '1px solid var(--border-default)',
         borderLeft: `3px solid ${stage?.color || 'var(--color-primary)'}`,
-        width: '180px',
+        width: '200px',
         cursor: 'grabbing',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+        background: 'var(--color-bg-2)',
+        boxShadow: '0 0 20px rgba(0,0,0,0.8)',
         transform: 'rotate(2deg)',
       }}
     >
-      <div style={{ fontSize: '12px', fontWeight: 700 }}>{deal.title || 'Deal'}</div>
-      <div style={{ fontSize: '11px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--color-success)', marginTop: '4px' }}>
-        €{(parseFloat(deal.value) || 0).toLocaleString()}
+      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase' }}>{deal.title || '[ DEAL ]'}</div>
+      <div style={{ fontSize: '11px', color: 'var(--color-success)', marginTop: '6px' }}>
+        EUR {(parseFloat(deal.value) || 0).toLocaleString()}
       </div>
     </div>
   )
@@ -116,18 +131,26 @@ function KanbanColumn({ stage, deals, onRemove, activeId }) {
   const stageTotal = deals.reduce((s, d) => s + (parseFloat(d.value) || 0), 0)
 
   return (
-    <div style={{ minWidth: '160px', flex: 1 }}>
+    <div style={{ minWidth: '220px', flex: 1, display: 'flex', flexDirection: 'column' }}>
       {/* Column header */}
       <div style={{
-        fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px',
-        color: stage.color, marginBottom: '10px', textAlign: 'center',
-        padding: '6px 4px', background: 'var(--color-bg-3)', borderRadius: '6px',
-        border: `1px solid ${stage.color}33`,
-      }}>
-        {stage.label} <span style={{ opacity: 0.7 }}>({deals.length})</span>
+        fontSize: '10px',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        letterSpacing: '0.1em',
+        color: stage.color,
+        marginBottom: '12px',
+        textAlign: 'center',
+        padding: '8px',
+        background: 'var(--color-bg)',
+        border: `1px solid var(--border-subtle)`,
+        borderTop: `2px solid ${stage.color}`
+      }}
+        className="mono">
+        {stage.label} <span style={{ opacity: 0.7 }}>[ {deals.length} ]</span>
         {stageTotal > 0 && (
-          <div style={{ fontSize: '9px', opacity: 0.6, marginTop: '2px', fontFamily: 'JetBrains Mono, monospace' }}>
-            €{stageTotal.toLocaleString()}
+          <div style={{ fontSize: '9px', opacity: 0.6, marginTop: '4px' }}>
+            EUR {stageTotal.toLocaleString()}
           </div>
         )}
       </div>
@@ -136,12 +159,12 @@ function KanbanColumn({ stage, deals, onRemove, activeId }) {
       <div
         ref={setNodeRef}
         style={{
-          minHeight: '120px',
-          padding: '6px',
-          borderRadius: '8px',
-          background: isOver ? `${stage.color}10` : 'transparent',
-          border: isOver ? `2px dashed ${stage.color}80` : '2px dashed transparent',
-          transition: 'background 0.15s, border-color 0.15s',
+          flex: 1,
+          minHeight: '200px',
+          padding: '8px',
+          background: isOver ? 'var(--color-bg-2)' : '#000',
+          border: isOver ? `1px dashed ${stage.color}` : '1px dashed var(--border-subtle)',
+          transition: 'all 0.2s ease',
         }}
       >
         {deals.map(deal => (
@@ -154,8 +177,8 @@ function KanbanColumn({ stage, deals, onRemove, activeId }) {
           />
         ))}
         {deals.length === 0 && (
-          <div style={{ textAlign: 'center', fontSize: '10px', color: 'var(--color-text-2)', padding: '20px 8px', opacity: 0.4 }}>
-            Arrastra aqui
+          <div className="mono" style={{ textAlign: 'center', fontSize: '9px', color: 'var(--color-text-2)', padding: '24px 8px', letterSpacing: '0.1em' }}>
+            [ AWAITING DEPLOYMENT ]
           </div>
         )}
       </div>
@@ -221,92 +244,128 @@ function Pipeline() {
   const closedWon = (pipelineView['closed_won'] || []).length
 
   if (loading) return (
-    <div className="fade-in" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-2)' }}>
-      Cargando pipeline...
+    <div className="fade-in mono" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-primary)', fontSize: '12px', letterSpacing: '0.1em' }}>
+      [ INITIALIZING PIPELINE DATASTREAM... ]
     </div>
   )
 
   return (
-    <div className="fade-in">
-      <div className="module-header" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+    <div className="fade-in" style={{ padding: '24px' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border-default)', paddingBottom: '24px', marginBottom: '24px' }}>
         <div>
-          <h1>Sales Pipeline</h1>
-          <p>{deals.length} deals · {closedWon} cerrados · €{(totalValue || 0).toLocaleString()} valor total</p>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--text-primary)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>PIPELINE ORCHESTRATION</h1>
+          <p className="mono font-bold" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '8px', letterSpacing: '0.1em' }}>
+             /// ACTIVE NODES: {deals.length} | YIELD: {closedWon} | VOLUME: EUR {(totalValue || 0).toLocaleString()}
+          </p>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>
-          <button className={`btn btn-sm ${showClosedLost ? 'btn-primary' : ''}`} onClick={toggleClosedLost}>
-            {showClosedLost ? 'Ocultar perdidos' : 'Ver perdidos'}
+          <button
+            className="mono font-bold"
+            style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+            onClick={toggleClosedLost}
+          >
+            {showClosedLost ? '[ HIDE LOST ]' : '[ SHOW LOST ]'}
           </button>
-          <button className="btn btn-primary" onClick={() => setShowForm(v => !v)}>
-            {showForm ? 'Cancelar' : '+ Nuevo Deal'}
+          <button
+            className="mono font-bold"
+            style={{ background: 'var(--color-primary)', border: '1px solid var(--color-primary)', color: '#000', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+            onClick={() => setShowForm(v => !v)}
+          >
+            {showForm ? '[ ABORT ]' : '[ INTEL CAPTURE ]'}
           </button>
         </div>
       </div>
 
       {showForm && (
-        <div className="card mb-6">
-          <div className="card-header"><div className="card-title">Nuevo Deal</div></div>
-          <div className="grid-2" style={{ gap: '12px' }}>
-            <div className="input-group"><label>Nombre del deal *</label><input className="input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="Ej: Chatbot para Clinica Lopez" /></div>
-            <div className="input-group"><label>Empresa</label><input className="input" value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="Clinica Lopez" /></div>
-            <div className="input-group"><label>Valor estimado (€)</label><input className="input" type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} placeholder="3000" /></div>
-            <div className="input-group"><label>Probabilidad (%)</label><input className="input" type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} /></div>
-            <div className="input-group" style={{ gridColumn: 'span 2' }}><label>Contacto</label><input className="input" value={form.contact_person} onChange={e => setForm(f => ({ ...f, contact_person: e.target.value }))} placeholder="Maria Garcia, CEO" /></div>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '24px', marginBottom: '24px' }}>
+          <div className="mono font-bold text-primary mb-6" style={{ fontSize: '12px', letterSpacing: '0.1em' }}>/// NEW DEAL DIRECTIVE</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Target Designation *</label>
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. ALPHA PROJECT" />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Entity Affiliation</label>
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="e.g. UNIFIED CORP" />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Asset Value (EUR)</label>
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} placeholder="0.00" />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Success Vector (%)</label>
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', gridColumn: 'span 2' }}>
+              <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Liaison Operative</label>
+              <input style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.contact_person} onChange={e => setForm(f => ({ ...f, contact_person: e.target.value }))} placeholder="e.g. AGENT SMITH" />
+            </div>
           </div>
-          <button className="btn btn-primary" style={{ marginTop: '16px' }} onClick={handleAdd} disabled={saving}>
-            {saving ? 'Guardando...' : 'Crear Deal'}
+          <button
+            className="mono font-bold"
+            style={{ marginTop: '24px', background: 'var(--color-primary)', color: '#000', border: 'none', padding: '12px 24px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+            onClick={handleAdd}
+            disabled={saving}
+          >
+            {saving ? '[ TRANSMITTING... ]' : '[ INITIATE DIRECTIVE ]'}
           </button>
         </div>
       )}
 
       {/* KPI bar */}
-      <div className="grid-3 mb-6">
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-primary)22', color: 'var(--color-primary)' }}>💎</div>
-          <div className="kpi-value">{deals.length}</div>
-          <div className="kpi-label">Deals totales</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '32px' }}>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+          <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ GLOBAL ENTITIES ]</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-primary)' }}>{deals.length}</div>
         </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-success)22', color: 'var(--color-success)' }}>💰</div>
-          <div className="kpi-value">€{(totalValue || 0).toLocaleString()}</div>
-          <div className="kpi-label">Valor pipeline</div>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+          <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ PIPELINE VOLUME ]</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--text-primary)' }}>EUR {(totalValue || 0).toLocaleString()}</div>
         </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--color-info)22', color: 'var(--color-info)' }}>⟳</div>
-          <div className="kpi-value">€{Math.round(weightedValue || 0).toLocaleString()}</div>
-          <div className="kpi-label">Valor ponderado</div>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
+          <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ WEIGHTED INDEX ]</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--text-secondary)' }}>EUR {Math.round(weightedValue || 0).toLocaleString()}</div>
         </div>
       </div>
 
       {/* Kanban board */}
-      <div className="card mb-6" style={{ overflowX: 'auto' }}>
-        <div className="card-header"><div className="card-title">Board — arrastra para mover etapa</div></div>
-        <DndContext
-          sensors={sensors}
-          onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-        >
-          <div style={{ display: 'flex', gap: '12px', padding: '4px 0 8px', minWidth: 'max-content' }}>
-            {visibleStages.map(stage => (
-              <KanbanColumn
-                key={stage.id}
-                stage={stage}
-                deals={pipelineView[stage.id] || []}
-                onRemove={removeDeal}
-                activeId={activeId}
-              />
-            ))}
-          </div>
-          <DragOverlay>
-            <DragOverlayCard deal={activeDeal} />
-          </DragOverlay>
-        </DndContext>
+      <div style={{ border: '1px solid var(--border-default)', background: '#000', marginBottom: '32px' }}>
+        <div className="mono font-bold text-tertiary" style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
+          <span>/// KANBAN MATRIX</span>
+          <span>[ DRAG TO REASSIGN ]</span>
+        </div>
+        <div style={{ padding: '24px', overflowX: 'auto' }}>
+          <DndContext
+            sensors={sensors}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <div style={{ display: 'flex', gap: '16px', minWidth: 'max-content' }}>
+              {visibleStages.map(stage => (
+                <KanbanColumn
+                  key={stage.id}
+                  stage={stage}
+                  deals={pipelineView[stage.id] || []}
+                  onRemove={removeDeal}
+                  activeId={activeId}
+                />
+              ))}
+            </div>
+            <DragOverlay>
+              <DragOverlayCard deal={activeDeal} />
+            </DragOverlay>
+          </DndContext>
+        </div>
       </div>
 
       {/* Funnel chart */}
-      <div className="card">
-        <div className="card-header"><div className="card-title">Conversion Funnel</div></div>
-        <div dangerouslySetInnerHTML={{ __html: Charts.funnel(funnelData) }} />
+      <div style={{ border: '1px solid var(--border-default)', background: '#000' }}>
+        <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
+            /// CONVERSION FLOW
+        </div>
+        <div style={{ padding: '24px' }}>
+          <div dangerouslySetInnerHTML={{ __html: Charts.funnel(funnelData) }} />
+        </div>
       </div>
     </div>
   )

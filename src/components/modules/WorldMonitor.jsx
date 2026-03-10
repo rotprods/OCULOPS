@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — World Monitor
-// Real geospatial intelligence dashboard powered by Supabase data
+// 100-Year UX: tactical terminal cartography
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
@@ -17,15 +17,15 @@ import { useConnectionStatus } from '../../hooks/useConnectionStatus'
 import './WorldMonitor.css'
 
 const LAYERS = [
-    { id: 'markets', label: 'Target Markets', icon: '📍', color: '#FFD60A', active: true },
-    { id: 'prospects', label: 'Prospects', icon: '🔭', color: '#34A853', active: true },
-    { id: 'clients', label: 'Active Clients', icon: '💎', color: '#4285F4', active: false },
-    { id: 'competitors', label: 'Competitor Intel', icon: '⚔️', color: '#FF453A', active: false },
-    { id: 'signals', label: 'Signals & Alerts', icon: '📡', color: '#FF9F0A', active: true },
-    { id: 'opportunities', label: 'Opportunities', icon: '🎯', color: '#30D158', active: true },
+    { id: 'markets', label: 'TARGET MARKETS', icon: '[O]', color: '#FFD60A', active: true },
+    { id: 'prospects', label: 'PROSPECTS', icon: '[+]', color: '#34A853', active: true },
+    { id: 'clients', label: 'ACTIVE CLIENTS', icon: '[*]', color: '#4285F4', active: false },
+    { id: 'competitors', label: 'COMPETITOR IO', icon: '[X]', color: '#FF453A', active: false },
+    { id: 'signals', label: 'SIGNALS', icon: '[!]', color: '#FF9F0A', active: true },
+    { id: 'opportunities', label: 'PIPELINE', icon: '[$]', color: '#30D158', active: true },
 ]
 
-const TIME_RANGES = ['24h', '7d', '30d', '90d', 'All']
+const TIME_RANGES = ['24H', '7D', '30D', '90D', 'ALL']
 const LAYER_COLORS = Object.fromEntries(LAYERS.map(layer => [layer.id, layer.color]))
 
 function toNumber(value) {
@@ -38,25 +38,25 @@ function toNumber(value) {
 }
 
 function formatRelativeTime(value) {
-    if (!value) return 'now'
+    if (!value) return 'NOW'
     const diffMs = Date.now() - new Date(value).getTime()
     const diffMinutes = Math.round(diffMs / 60000)
-    if (diffMinutes < 1) return 'just now'
-    if (diffMinutes < 60) return `${diffMinutes}m ago`
+    if (diffMinutes < 1) return 'JUST NOW'
+    if (diffMinutes < 60) return `${diffMinutes}M AGO`
     const diffHours = Math.round(diffMinutes / 60)
-    if (diffHours < 24) return `${diffHours}h ago`
+    if (diffHours < 24) return `${diffHours}H AGO`
     const diffDays = Math.round(diffHours / 24)
-    return `${diffDays}d ago`
+    return `${diffDays}D AGO`
 }
 
 function matchesTimeRange(value, range) {
-    if (!value || range === 'All') return true
+    if (!value || range === 'ALL') return true
     const age = Date.now() - new Date(value).getTime()
     const windows = {
-        '24h': 24 * 60 * 60 * 1000,
-        '7d': 7 * 24 * 60 * 60 * 1000,
-        '30d': 30 * 24 * 60 * 60 * 1000,
-        '90d': 90 * 24 * 60 * 60 * 1000,
+        '24H': 24 * 60 * 60 * 1000,
+        '7D': 7 * 24 * 60 * 60 * 1000,
+        '30D': 30 * 24 * 60 * 60 * 1000,
+        '90D': 90 * 24 * 60 * 60 * 1000,
     }
     return age <= (windows[range] || Number.MAX_SAFE_INTEGER)
 }
@@ -78,7 +78,7 @@ function getMarkerColor(item) {
 function getIntensityRadius(item) {
     if ((item.score || 0) >= 85 || item.intensity === 'high' || item.urgency === 'high') return 20
     if ((item.score || 0) >= 70 || item.intensity === 'medium' || item.urgency === 'medium') return 14
-    return 10
+    return 8
 }
 
 function normalizeCoordinates(source) {
@@ -113,8 +113,8 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
                 id: `market-${scan.id}`,
                 ...coords,
                 type: 'markets',
-                name: scan.area_label || scan.location || 'Target market',
-                details: `${resultsCount} targets · ${scan.source || 'atlas'} · ${formatRelativeTime(scan.completed_at || scan.created_at)}`,
+                name: scan.area_label || scan.location || 'TARGET MARKET',
+                details: `${resultsCount} NODES · ${scan.source || 'ATLAS'} · ${formatRelativeTime(scan.completed_at || scan.created_at)}`,
                 score: Math.min(100, resultsCount * 4),
                 intensity: resultsCount >= 20 ? 'high' : resultsCount >= 8 ? 'medium' : 'low',
                 population: null,
@@ -133,19 +133,19 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
 
             const score = Number(lead.ai_score || lead.score || 0)
             const signal = lead.status === 'pursuing'
-                ? '🟢 pursuing'
+                ? 'PURSUING'
                 : lead.status === 'qualified'
-                    ? '🟡 qualified'
+                    ? 'QUALIFIED'
                     : lead.status === 'promoted'
-                        ? '🔵 promoted'
-                        : '⚪ detected'
+                        ? 'PROMOTED'
+                        : 'DETECTED'
 
             return {
                 id: `prospect-${lead.id}`,
                 ...coords,
                 type: 'prospects',
-                name: lead.name || lead.business_name || 'Unnamed lead',
-                details: [lead.category, lead.address || lead.city, lead.website ? 'website detected' : 'no website'].filter(Boolean).join(' · '),
+                name: lead.name || lead.business_name || 'UNNAMED TARGET',
+                details: [lead.category, lead.address || lead.city, lead.website ? 'URL SECURED' : 'NO URL'].filter(Boolean).join(' · '),
                 score,
                 signal,
                 status: lead.status,
@@ -162,7 +162,7 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
             ...item,
             id: `client-${item.raw.id}`,
             type: 'clients',
-            details: `${item.name} · active account · ${item.raw.website ? 'website synced' : 'local presence only'}`,
+            details: `${item.name} · ACTIVE NODE · ${item.raw.website ? 'SYNCED' : 'LOCAL ONLY'}`,
             mrr: item.raw.estimated_deal_value ? formatCompactCurrency(item.raw.estimated_deal_value) : null,
         }))
 
@@ -177,7 +177,7 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
                 lng: linkedScan.lng,
                 type: 'competitors',
                 name: signal.title,
-                details: signal.implication || signal.source || 'Competitor intelligence',
+                details: signal.implication || signal.source || 'COMPETITOR IO',
                 threat: signal.impact >= 75 ? 'high' : signal.impact >= 50 ? 'medium' : 'low',
                 score: signal.impact || 0,
                 time: formatRelativeTime(signal.updated_at || signal.created_at),
@@ -197,8 +197,8 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
                     lat: linkedScan.lat,
                     lng: linkedScan.lng,
                     type: 'signals',
-                    name: alert.title || alert.subject || 'Operational alert',
-                    details: alert.description || alert.category || 'Live alert',
+                    name: alert.title || alert.subject || 'OPS ALERT',
+                    details: alert.description || alert.category || 'LIVE EVENT',
                     urgency: Number(alert.severity || 0) >= 3 ? 'high' : Number(alert.severity || 0) >= 2 ? 'medium' : 'low',
                     time: formatRelativeTime(alert.created_at),
                     timestamp: alert.created_at,
@@ -212,8 +212,8 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
                 lat: item.lat,
                 lng: item.lng,
                 type: 'signals',
-                name: `${item.name} scan spike`,
-                details: `${item.raw.results_count || 0} businesses captured in the latest sweep`,
+                name: `${item.name} SPIKE`,
+                details: `${item.raw.results_count || 0} LOGGED IN SWEEP`,
                 urgency: item.intensity,
                 time: item.time,
                 timestamp: item.timestamp,
@@ -222,12 +222,12 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
     ]
 
     const opportunityItems = prospectItems
-        .filter(item => (item.score || 0) >= 70 || ['qualified', 'pursuing'].includes(item.status))
+        .filter(item => (item.score || 0) >= 70 || ['qualified', 'pursuing'].includes(item.status.toLowerCase()))
         .map(item => ({
             ...item,
             id: `opportunity-${item.raw.id}`,
             type: 'opportunities',
-            details: `${item.name} · ${(item.raw.review_count || item.raw.reviews_count || 0)} reviews · ${item.raw.website ? 'ready to enrich' : 'missing website'}`,
+            details: `${item.name} · ${(item.raw.review_count || item.raw.reviews_count || 0)} REVIEWS · ${item.raw.website ? 'READY' : 'INCOMPLETE'}`,
             value: formatCompactCurrency(item.raw.estimated_deal_value || Math.max(1200, (item.score || 0) * 35)),
         }))
 
@@ -236,8 +236,8 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
             .filter(alert => alert.status === 'active')
             .map(alert => ({
                 id: `feed-alert-${alert.id}`,
-                name: alert.title || alert.subject || 'Operational alert',
-                details: alert.description || alert.category || 'Live alert',
+                name: alert.title || alert.subject || 'OPS ALERT',
+                details: alert.description || alert.category || 'LIVE EVENT',
                 urgency: Number(alert.severity || 0) >= 3 ? 'high' : Number(alert.severity || 0) >= 2 ? 'medium' : 'low',
                 time: formatRelativeTime(alert.created_at),
                 timestamp: alert.created_at,
@@ -247,7 +247,7 @@ function buildLayerData({ scans, leads, deals, alerts, signals, socialSignals, t
             .map(signal => ({
                 id: `feed-social-${signal.id}`,
                 name: signal.title,
-                details: `${signal.platform} · ${signal.topic} · score ${signal.opportunityScore}`,
+                details: `${signal.platform} · ${signal.topic} · SQ ${signal.opportunityScore}`,
                 urgency: signal.opportunityScore >= 75 ? 'high' : signal.opportunityScore >= 55 ? 'medium' : 'low',
                 time: formatRelativeTime(signal.publishedAt),
                 timestamp: signal.publishedAt,
@@ -306,7 +306,7 @@ export default function WorldMonitor() {
     const [activeLayers, setActiveLayers] = useState(() =>
         LAYERS.reduce((acc, layer) => ({ ...acc, [layer.id]: layer.active }), {})
     )
-    const [timeRange, setTimeRange] = useState('7d')
+    const [timeRange, setTimeRange] = useState('7D')
     const [selectedItem, setSelectedItem] = useState(null)
     const [panelExpanded, setPanelExpanded] = useState(true)
     const liveWorldApps = worldMonitorApps.filter(app => app.connectorStatus === 'live')
@@ -376,14 +376,14 @@ export default function WorldMonitor() {
             const marker = L.circleMarker([item.lat, item.lng], {
                 radius,
                 fillColor: color,
-                fillOpacity: 0.35,
+                fillOpacity: 0.2,
                 color,
-                weight: 1.5,
+                weight: 1,
                 opacity: 0.8,
             }).addTo(mapInstance.current)
 
             const core = L.circleMarker([item.lat, item.lng], {
-                radius: 4,
+                radius: 3,
                 fillColor: color,
                 fillOpacity: 1,
                 color: '#fff',
@@ -392,9 +392,9 @@ export default function WorldMonitor() {
             }).addTo(mapInstance.current)
 
             marker.bindTooltip(`
-                <div style="font-family:Inter,sans-serif;font-size:11px;min-width:180px">
-                    <div style="font-weight:700;font-size:12px;margin-bottom:3px;color:${color}">${item.name}</div>
-                    <div style="color:#86868B;font-size:10px;line-height:1.4">${item.details || ''}</div>
+                <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase">
+                    <div style="color:${color};font-weight:bold;margin-bottom:4px">${item.name}</div>
+                    <div style="color:var(--text-tertiary)">${item.details || ''}</div>
                 </div>
             `, {
                 direction: 'top',
@@ -420,16 +420,15 @@ export default function WorldMonitor() {
     }, [executeConnector])
 
     return (
-        <div className="wm-container">
+        <div className="wm-container fade-in">
             <div ref={mapRef} className="wm-map" />
 
             <div className="wm-topbar">
                 <div className="wm-topbar-left">
-                    <span style={{ fontSize: '16px' }}>🌍</span>
-                    <span className="wm-topbar-title">WORLD MONITOR</span>
+                    <span className="wm-topbar-title">GEO INTELLIGENCE</span>
                     <div className="wm-live-badge">
-                        <div className="live-dot" style={{ background: isOnline ? undefined : connectionStatus === 'connecting' ? 'var(--warning)' : 'var(--danger)' }} />
-                        {isOnline ? 'LIVE' : connectionStatus === 'connecting' ? 'SYNC' : 'OFFLINE'}
+                        <div className="live-dot" style={{ background: isOnline ? undefined : connectionStatus === 'connecting' ? 'var(--color-warning)' : 'var(--color-danger)' }} />
+                        {isOnline ? '[ LIVE ]' : connectionStatus === 'connecting' ? '[ SYNC ]' : '[ OFFLINE ]'}
                     </div>
                 </div>
                 <div className="wm-topbar-center">
@@ -446,30 +445,27 @@ export default function WorldMonitor() {
                 <div className="wm-topbar-right">
                     <div className="wm-stat">
                         <span className="wm-stat-value">{computedStats.markers}</span>
-                        <span className="wm-stat-label">POINTS</span>
+                        <span className="wm-stat-label">NODES</span>
                     </div>
                     <div className="wm-stat">
-                        <span className="wm-stat-value" style={{ color: computedStats.alerts > 0 ? 'var(--danger)' : 'var(--text-primary)' }}>
+                        <span className="wm-stat-value" style={{ color: computedStats.alerts > 0 ? 'var(--color-danger)' : 'var(--text-primary)' }}>
                             {computedStats.alerts}
                         </span>
                         <span className="wm-stat-label">ALERTS</span>
                     </div>
                     <div className="wm-stat">
-                        <span className="wm-stat-value" style={{ color: 'var(--success)' }}>{computedStats.value}</span>
-                        <span className="wm-stat-label">PIPELINE</span>
+                        <span className="wm-stat-value" style={{ color: 'var(--color-success)' }}>{computedStats.value}</span>
+                        <span className="wm-stat-label">PIPELINE VALUE</span>
                     </div>
                 </div>
             </div>
 
             <div className={`wm-panel ${panelExpanded ? 'expanded' : 'collapsed'}`}>
-                <button className="wm-panel-toggle" onClick={() => setPanelExpanded(prev => !prev)}>
-                    {panelExpanded ? '◀' : '▶'}
-                </button>
-
                 {panelExpanded && (
                     <>
+                        <button className="wm-panel-toggle" onClick={() => setPanelExpanded(false)}>[ X ]</button>
                         <div className="wm-panel-section">
-                            <div className="wm-panel-title">DATA LAYERS</div>
+                            <div className="wm-panel-title">TELEMETRY LAYERS</div>
                             {LAYERS.map(layer => (
                                 <button
                                     key={layer.id}
@@ -478,26 +474,19 @@ export default function WorldMonitor() {
                                 >
                                     <span className="wm-layer-icon">{layer.icon}</span>
                                     <span className="wm-layer-label">{layer.label}</span>
-                                    <div
-                                        className="wm-layer-dot"
-                                        style={{
-                                            background: activeLayers[layer.id] ? layer.color : 'var(--text-tertiary)',
-                                            boxShadow: activeLayers[layer.id] ? `0 0 6px ${layer.color}60` : 'none',
-                                        }}
-                                    />
-                                    <span className="wm-layer-count">{(liveData[layer.id] || []).length}</span>
+                                    <span className="wm-layer-count">({(liveData[layer.id] || []).length})</span>
                                 </button>
                             ))}
                         </div>
 
-                        <div className="wm-panel-section">
-                            <div className="wm-panel-title">LIVE FEED</div>
+                        <div className="wm-panel-section" style={{ flex: 1, paddingBottom: 0, paddingRight: 0 }}>
+                            <div className="wm-panel-title">EVENT STREAM</div>
                             <div className="wm-feed">
                                 {liveData.feedItems.length === 0 && (
                                     <div className="wm-feed-item">
                                         <div className="wm-feed-content">
-                                            <div className="wm-feed-name">No live events yet</div>
-                                            <div className="wm-feed-time">Run scans, alerts, or social collectors to populate this feed.</div>
+                                            <div className="wm-feed-name" style={{ color: 'var(--text-tertiary)' }}>STREAM EMPTY</div>
+                                            <div className="wm-feed-time">AWAITING GEO-PING DATA</div>
                                         </div>
                                     </div>
                                 )}
@@ -516,9 +505,9 @@ export default function WorldMonitor() {
                                             className="wm-feed-urgency"
                                             style={{
                                                 background: item.urgency === 'high'
-                                                    ? 'var(--danger)'
+                                                    ? 'var(--color-danger)'
                                                     : item.urgency === 'medium'
-                                                        ? 'var(--warning)'
+                                                        ? 'var(--color-warning)'
                                                         : 'var(--text-tertiary)',
                                             }}
                                         />
@@ -530,33 +519,32 @@ export default function WorldMonitor() {
                                 ))}
                             </div>
 
-                            <div style={{ marginTop: '14px', fontSize: '10px', color: 'var(--text-tertiary)', lineHeight: 1.6 }}>
-                                Prospector: {prospectorLoading ? 'syncing' : `${leads.length} leads · ${scans.length} scans`}
+                            <div style={{ marginTop: '16px', fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--text-tertiary)', lineHeight: 1.6, textTransform: 'uppercase' }}>
+                                PROSPECTOR: {prospectorLoading ? 'SYNCING...' : `${leads.length} TARGETS`}
                                 <br />
-                                Social: {socialDataMode === 'live' ? `${socialSummary.trackedCount} live signals` : 'waiting for live social rows'}
+                                SOCIAL: {socialDataMode === 'live' ? `${socialSummary.trackedCount} LIVE PING` : 'NO LIVE ROW'}
                             </div>
 
                             {liveWorldApps.length > 0 && (
-                                <div style={{ marginTop: '14px' }}>
-                                    <div className="wm-panel-title" style={{ marginBottom: '8px' }}>CONNECTOR FEEDS</div>
-                                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '8px' }}>
+                                <div style={{ marginTop: '16px', paddingBottom: '16px' }}>
+                                    <div className="wm-panel-title">API OVERRIDES</div>
+                                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                                         {liveWorldApps.map(app => (
-                                            <button key={app.connectorId} className="wm-time-btn" onClick={() => runFeed(app)}>
-                                                {connectorFeedLoading ? '⏳' : app.icon} {app.name}
+                                            <button key={app.connectorId} className="btn btn-ghost mono" style={{ fontSize: '10px', padding: '6px 12px', border: '1px solid var(--border-subtle)' }} onClick={() => runFeed(app)}>
+                                                {connectorFeedLoading ? '[...] ' : ''}{app.name.toUpperCase()}
                                             </button>
                                         ))}
                                     </div>
                                     {(connectorFeedData || connectorFeedError) && (
                                         <pre style={{
-                                            margin: 0,
-                                            padding: '10px',
-                                            background: 'rgba(255,255,255,0.04)',
-                                            borderRadius: '10px',
-                                            fontSize: '10px',
-                                            color: connectorFeedError ? 'var(--danger)' : 'var(--text-secondary)',
+                                            marginTop: '8px',
+                                            padding: '12px',
+                                            background: 'var(--border-subtle)',
+                                            fontSize: '9px',
+                                            color: connectorFeedError ? 'var(--color-danger)' : 'var(--text-secondary)',
                                             whiteSpace: 'pre-wrap',
                                             fontFamily: 'var(--font-mono)',
-                                            maxHeight: '180px',
+                                            maxHeight: '120px',
                                             overflow: 'auto',
                                         }}>
                                             {connectorFeedError
@@ -569,6 +557,9 @@ export default function WorldMonitor() {
                         </div>
                     </>
                 )}
+                {!panelExpanded && (
+                    <button className="wm-panel-toggle" style={{ top: 0, right: 0, width: '100%', height: '100%', border: 'none' }} onClick={() => setPanelExpanded(true)}>[+]</button>
+                )}
             </div>
 
             {selectedItem && (
@@ -576,60 +567,61 @@ export default function WorldMonitor() {
                     <div className="wm-detail-header">
                         <div>
                             <div className="wm-detail-type" style={{ color: getMarkerColor(selectedItem) }}>
-                                {(selectedItem.type || 'event').toUpperCase()}
+                                /// {(selectedItem.type || 'event').toUpperCase()}
                             </div>
                             <div className="wm-detail-name">{selectedItem.name}</div>
                         </div>
-                        <button className="wm-detail-close" onClick={() => setSelectedItem(null)}>✕</button>
+                        <button className="wm-detail-close" onClick={() => setSelectedItem(null)}>[ X ]</button>
                     </div>
-                    <div className="wm-detail-body">{selectedItem.details || 'No detail available yet.'}</div>
-                    {selectedItem.score != null && (
-                        <div className="wm-detail-row">
-                            <span>AI Score</span>
-                            <span style={{
-                                color: selectedItem.score > 80 ? 'var(--success)' : selectedItem.score > 60 ? 'var(--warning)' : 'var(--danger)',
-                                fontWeight: 700,
-                                fontFamily: 'var(--font-mono)',
-                            }}>{selectedItem.score}/100</span>
-                        </div>
-                    )}
-                    {selectedItem.signal && (
-                        <div className="wm-detail-row">
-                            <span>Status</span>
-                            <span>{selectedItem.signal}</span>
-                        </div>
-                    )}
-                    {selectedItem.mrr && (
-                        <div className="wm-detail-row">
-                            <span>MRR</span>
-                            <span style={{ color: 'var(--success)', fontWeight: 700 }}>{selectedItem.mrr}</span>
-                        </div>
-                    )}
-                    {selectedItem.value && (
-                        <div className="wm-detail-row">
-                            <span>Estimated Value</span>
-                            <span style={{ color: 'var(--accent-primary)', fontWeight: 700 }}>{selectedItem.value}</span>
-                        </div>
-                    )}
-                    {selectedItem.threat && (
-                        <div className="wm-detail-row">
-                            <span>Threat Level</span>
-                            <span style={{
-                                color: selectedItem.threat === 'high' ? 'var(--danger)' : selectedItem.threat === 'medium' ? 'var(--warning)' : 'var(--success)',
-                                fontWeight: 700,
-                                textTransform: 'uppercase',
-                            }}>{selectedItem.threat}</span>
-                        </div>
-                    )}
-                    {selectedItem.time && (
-                        <div className="wm-detail-row">
-                            <span>Detected</span>
-                            <span style={{ fontFamily: 'var(--font-mono)' }}>{selectedItem.time}</span>
-                        </div>
-                    )}
+                    <div className="wm-detail-body">{selectedItem.details || 'UNVERIFIED DATA.'}</div>
+
+                    <div style={{ padding: '12px', background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)' }}>
+                        {selectedItem.score != null && (
+                            <div className="wm-detail-row">
+                                <span>AI CONFIDENCE</span>
+                                <span style={{
+                                    color: selectedItem.score > 80 ? 'var(--color-success)' : selectedItem.score > 60 ? 'var(--color-warning)' : 'var(--color-danger)',
+                                }}>{selectedItem.score}/100</span>
+                            </div>
+                        )}
+                        {selectedItem.signal && (
+                            <div className="wm-detail-row">
+                                <span>STATUS</span>
+                                <span>{selectedItem.signal}</span>
+                            </div>
+                        )}
+                        {selectedItem.mrr && (
+                            <div className="wm-detail-row">
+                                <span>MRR</span>
+                                <span style={{ color: 'var(--color-success)' }}>{selectedItem.mrr}</span>
+                            </div>
+                        )}
+                        {selectedItem.value && (
+                            <div className="wm-detail-row">
+                                <span>EST. PIPELINE</span>
+                                <span style={{ color: 'var(--color-primary)' }}>{selectedItem.value}</span>
+                            </div>
+                        )}
+                        {selectedItem.threat && (
+                            <div className="wm-detail-row">
+                                <span>THREAT IO</span>
+                                <span style={{
+                                    color: selectedItem.threat === 'high' ? 'var(--color-danger)' : selectedItem.threat === 'medium' ? 'var(--color-warning)' : 'var(--color-success)',
+                                }}>{selectedItem.threat}</span>
+                            </div>
+                        )}
+                        {selectedItem.time && (
+                            <div className="wm-detail-row">
+                                <span>TIMESTAMP</span>
+                                <span>{selectedItem.time}</span>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="wm-detail-actions">
                         <button
-                            className="btn btn-primary btn-sm"
+                            className="btn btn-primary mono"
+                            style={{ fontSize: '11px', padding: '10px' }}
                             onClick={() => {
                                 if (typeof selectedItem.lat === 'number' && typeof selectedItem.lng === 'number') {
                                     mapInstance.current?.flyTo([selectedItem.lat, selectedItem.lng], 14, { duration: 1.2 })
@@ -637,7 +629,7 @@ export default function WorldMonitor() {
                             }}
                             disabled={typeof selectedItem.lat !== 'number' || typeof selectedItem.lng !== 'number'}
                         >
-                            🎯 Focus
+                            [ ENTER FOCUS VECTOR ]
                         </button>
                     </div>
                 </div>

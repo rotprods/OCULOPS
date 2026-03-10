@@ -1,7 +1,7 @@
-// ===================================================
+// ═══════════════════════════════════════════════════
 // ANTIGRAVITY OS — Execution Module
-// Wired to Supabase via useTasks hook
-// ===================================================
+// 100-Year UX: rigorous objective pipeline
+// ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
 import { useTasks } from '../../hooks/useTasks'
@@ -31,94 +31,118 @@ function Execution() {
     .filter(t => filterStatus === 'all' || t.status === filterStatus)
     .sort((a, b) => (a.day || 0) - (b.day || 0))
 
-  const statusIcon = s => s === 'done' ? '✅' : s === 'in_progress' ? '🔄' : '⬜'
-  const statusColor = s => s === 'done' ? 'var(--success)' : s === 'in_progress' ? 'var(--warning)' : 'var(--text-tertiary)'
+  const statusMap = {
+    'done': { icon: '[✓]', color: 'var(--color-success)', label: 'VERIFIED' },
+    'in_progress': { icon: '[///]', color: 'var(--color-warning)', label: 'ACTIVE' },
+    'pending': { icon: '[ ]', color: 'var(--text-tertiary)', label: 'PENDING' }
+  }
 
-  if (loading) return <div className="fade-in" style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-tertiary)' }}>⏳ Cargando tareas...</div>
+  if (loading) return <div className="fade-in mono text-xs" style={{ padding: '3rem', textAlign: 'center', color: 'var(--color-primary)' }}>/// ACCESSING EXECUTION MATRIX...</div>
 
   return (
-    <div className="fade-in">
-      <div className="module-header">
-        <h1>Execution OS</h1>
-        <p>Plan de 30 días para escalar de 0 a 20k€/mes. Click para cambiar el estado de cada tarea.</p>
-      </div>
+    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
 
-      {/* Progress KPIs */}
-      <div className="grid-3 mb-6">
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--accent-primary)22', color: 'var(--accent-primary)' }}>📅</div>
-          <div className="kpi-value">Día {currentDay}</div>
-          <div className="kpi-label">Progreso actual</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--success)22', color: 'var(--success)' }}>✅</div>
-          <div className="kpi-value">{completionRate}%</div>
-          <div className="kpi-label">Completado</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'var(--warning)22', color: 'var(--warning)' }}>🔥</div>
-          <div className="kpi-value">{tasks.filter(t => t.status === 'in_progress').length}</div>
-          <div className="kpi-label">En progreso</div>
+      {/* ── HEADER ── */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '24px' }}>
+        <div>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0, fontSize: '28px' }}>EXECUTION OS</h1>
+          <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>30-DAY ESCALATION PROTOCOL: 0 TO $20K/MO. SELECT DIRECTIVE TO UPDATE STATUS.</p>
         </div>
       </div>
 
-      {/* Filter */}
-      <div className="card">
-        <div className="card-header">
-          <div className="card-title">Plan de Ejecución ({filtered.length} tareas)</div>
+      {/* ── Progress KPIs ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)', marginBottom: '24px' }}>
+        <div style={{ background: '#000', padding: '16px' }}>
+          <div className="mono text-2xs text-tertiary" style={{ marginBottom: '8px' }}>CURRENT VECTOR</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-primary)' }}>DAY {currentDay}</div>
+        </div>
+        <div style={{ background: '#000', padding: '16px' }}>
+          <div className="mono text-2xs text-tertiary" style={{ marginBottom: '8px' }}>COMPLETION TRAJECTORY</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-success)' }}>{completionRate}%</div>
+        </div>
+        <div style={{ background: '#000', padding: '16px' }}>
+          <div className="mono text-2xs text-tertiary" style={{ marginBottom: '8px' }}>ACTIVE PARALLEL PROCESSES</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-warning)' }}>{tasks.filter(t => t.status === 'in_progress').length}</div>
+        </div>
+      </div>
+
+      {/* ── MAIN POOL ── */}
+      <div style={{ flex: 1, border: '1px solid var(--border-default)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+
+        {/* Toolbar */}
+        <div style={{ padding: '16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="mono text-xs font-bold" style={{ color: 'var(--color-primary)' }}>/// DIRECTIVE MATRIX ({filtered.length} LOGGED)</div>
           <div style={{ display: 'flex', gap: '8px' }}>
             {['all', 'pending', 'in_progress', 'done'].map(f => (
-              <button key={f} className={`btn btn-sm ${filterStatus === f ? 'btn-primary' : ''}`} onClick={() => setFilterStatus(f)}>
-                {f === 'all' ? 'Todas' : f === 'pending' ? '⬜ Pendientes' : f === 'in_progress' ? '🔄 En progreso' : '✅ Completadas'}
+              <button
+                key={f}
+                className="btn btn-ghost mono text-2xs"
+                style={{
+                  padding: '6px 12px',
+                  background: filterStatus === f ? 'var(--color-primary)' : 'transparent',
+                  color: filterStatus === f ? '#000' : 'var(--text-secondary)',
+                  border: filterStatus === f ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)'
+                }}
+                onClick={() => setFilterStatus(f)}
+              >
+                {f === 'all' ? 'ALL' : statusMap[f].label}
               </button>
             ))}
           </div>
         </div>
 
         {/* Progress bar */}
-        <div style={{ background: 'var(--bg-primary)', borderRadius: '8px', height: '8px', margin: '0 0 16px', overflow: 'hidden' }}>
-          <div style={{ width: `${completionRate}%`, height: '100%', background: 'linear-gradient(90deg, var(--accent-primary), var(--success))', borderRadius: '8px', transition: 'width 0.5s ease' }} />
+        <div style={{ background: '#000', height: '2px', borderBottom: '1px solid var(--border-default)' }}>
+          <div style={{ width: `${completionRate}%`, height: '100%', background: 'var(--color-primary)', transition: 'width 0.5s ease' }} />
         </div>
 
-        {tasks.length === 0 && !loading ? (
-          <div className="empty-state">
-            <div className="empty-icon">🚀</div>
-            <h3>Plan no inicializado</h3>
-            <p className="text-muted">Carga el plan de 30 días para escalar de 0 a 20k€/mes</p>
-            <button className="btn btn-primary" style={{ marginTop: '16px' }} onClick={seedDefaultPlan} disabled={seeding}>
-              {seeding ? 'Inicializando...' : 'Inicializar Plan de 30 Días'}
-            </button>
-          </div>
-        ) : filtered.length === 0 ? (
-          <div className="empty-state">
-            <div className="empty-icon">✅</div>
-            <h3>Sin tareas en esta categoría</h3>
-          </div>
-        ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            {filtered.map(task => (
-              <div
-                key={task.id}
-                onClick={() => toggleStatus(task)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px',
-                  background: task.status === 'done' ? 'rgba(0,210,106,0.05)' : 'transparent',
-                  borderRadius: '8px', cursor: 'pointer', transition: 'background 0.2s',
-                  borderLeft: `3px solid ${statusColor(task.status)}`,
-                }}
-              >
-                <span style={{ fontSize: '16px', flexShrink: 0 }}>{statusIcon(task.status)}</span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-tertiary)', width: '32px', flexShrink: 0 }}>D{task.day}</span>
-                <span style={{ flex: 1, color: task.status === 'done' ? 'var(--text-tertiary)' : 'var(--text-primary)', textDecoration: task.status === 'done' ? 'line-through' : 'none', fontSize: '13px' }}>
-                  {task.task || task.title}
-                </span>
-                {task.gate && (
-                  <span className="badge badge-warning" style={{ fontSize: '10px' }}>🚧 {task.gate}</span>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+        {/* List */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {tasks.length === 0 && !loading ? (
+            <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', color: 'var(--text-tertiary)', textAlign: 'center' }}>
+              <div className="mono" style={{ fontSize: '24px', marginBottom: '16px' }}>[ NULL POINTER ]</div>
+              <h3 className="mono font-bold text-sm" style={{ color: 'var(--color-primary)', marginBottom: '8px' }}>EXECUTION MATRIX UNINITIALIZED</h3>
+              <p className="mono text-xs" style={{ marginBottom: '24px' }}>AWAITING PROTOCOL INJECTION (0 TO 20K PLAN).</p>
+              <button className="btn btn-ghost mono" style={{ border: '1px solid var(--color-primary)', color: 'var(--color-primary)', padding: '16px' }} onClick={seedDefaultPlan} disabled={seeding}>
+                {seeding ? '[ INJECTING... ]' : '[ INITIALIZE PROTOCOL ]'}
+              </button>
+            </div>
+          ) : filtered.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '48px 0', color: 'var(--text-tertiary)' }} className="mono text-xs">
+              [ NO DIRECTIVES FOUND IN CURRENT CONTEXT ]
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              {filtered.map(task => {
+                const isDone = task.status === 'done'
+                const sm = statusMap[task.status] || statusMap['pending']
+
+                return (
+                  <div
+                    key={task.id}
+                    onClick={() => toggleStatus(task)}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: '16px', padding: '14px 16px',
+                      background: isDone ? 'rgba(0,0,0,0.5)' : '#000',
+                      border: `1px solid ${isDone ? 'var(--border-subtle)' : 'var(--border-default)'}`,
+                      borderLeft: `3px solid ${sm.color}`,
+                      cursor: 'pointer', transition: 'all 0.2s',
+                    }}
+                  >
+                    <span className="mono" style={{ fontSize: '12px', color: sm.color, width: '32px', flexShrink: 0 }}>{sm.icon}</span>
+                    <span className="mono font-bold" style={{ fontSize: '11px', color: 'var(--color-primary)', width: '32px', flexShrink: 0 }}>D{String(task.day).padStart(2, '0')}</span>
+                    <span className="mono" style={{ flex: 1, color: isDone ? 'var(--text-tertiary)' : 'var(--color-text)', textDecoration: isDone ? 'line-through' : 'none', fontSize: '12px', textTransform: 'uppercase' }}>
+                      {task.task || task.title}
+                    </span>
+                    {task.gate && (
+                      <span className="mono" style={{ fontSize: '9px', padding: '4px 8px', background: 'var(--warning-bg)', border: '1px solid var(--color-warning)', color: 'var(--color-warning)', textTransform: 'uppercase' }}>GATE: {task.gate}</span>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
