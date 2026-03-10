@@ -188,6 +188,21 @@ Open Access (No Auth): 668
 | Charity Search | [Docs](http://charityapi.orghunter.com/) | Non-profit charity data | api_key |  |
 | markerapi | [Docs](https://markerapi.com) | Trademark Search | none |  |
 
+## 📂 Marketing & Social
+
+| Name | Link | Description | Auth | Agents |
+| :--- | :--- | :---------- | :--- | :----- |
+| NewsAPI | [Docs](https://newsapi.org/docs) | 100 free requests/day; fetch headlines/articles by keyword, source, or country for campaign briefs or news feeds. | api_key | intelligence |
+| The Guardian Open Platform | [Docs](https://open-platform.theguardian.com/documentation/) | 500/day; full Guardian archives with metadata and media ideal for curated news studies. | api_key | intelligence |
+| NewsData.io | [Docs](https://newsdata.io/docs) | 200/day across 84 countries; filters (country, category, sentiment) bring global context for intelligence threads. | api_key | intelligence |
+| Currents API | [Docs](https://currentsapi.services/en/docs/) | 600/day; similar to NewsAPI but higher quota; useful for dashboards or hourly newsletter sync. | api_key | intelligence |
+| GNews API | [Docs](https://gnews.io/docs/) | 100/day; pulls recent articles plus extracted full text to capture the latest buzz. | api_key | intelligence |
+| MediaStack | [Docs](https://mediastack.com/documentation) | 75k sources; real-time news tracking by location/language for automated release monitoring. | api_key | intelligence |
+| Meta Graph API | [Docs](https://developers.facebook.com/docs/graph-api) | Marketing control for FB/IG ads, creatives, and reporting; essential for agent-driven paid campaigns (requires Meta dev app). | oauth2 | marketer |
+| TikTok for Developers | [Docs](https://developers.tiktok.com/doc/) | Access trending videos, creator analytics, and commerce hooks to monitor viral signals. | api_key | marketer |
+| LinkedIn Marketing Developer Platform | [Docs](https://learn.microsoft.com/en-us/linkedin/marketing/) | Post scheduling, analytics, and lead-gen data for B2B growth workflows (OAuth required). | oauth2 | marketer |
+| X (Twitter) API v2 | [Docs](https://developer.twitter.com/en/docs/twitter-api) | Filtered streams, recent tweets, and engagement metrics for PR/brand sentiment monitoring. | oauth2 | marketer |
+
 ## 📂 Calendar
 
 | Name | Link | Description | Auth | Agents |
@@ -1683,4 +1698,3 @@ Open Access (No Auth): 668
 | 7Timer! | [Docs](http://www.7timer.info/doc.php?lang=en) | Weather, especially for Astroweather | none | atlas, strategist, cortex |
 | ODWeather | [Docs](http://api.oceandrivers.com/static/docs.html) | Weather and weather webcams | none | atlas, strategist, cortex |
 | AccuWeather | [Docs](https://developer.accuweather.com/apis) | Weather and forecast data | api_key | atlas, strategist, cortex |
-

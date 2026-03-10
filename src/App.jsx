@@ -8,6 +8,7 @@ import { useAuth } from './hooks/useAuth'
 import Layout from './components/layout/Layout'
 import Auth from './components/Auth'
 import { NotificationCenter } from './components/ui/NotificationCenter'
+import { ErrorBoundary } from './components/ui/ErrorBoundary'
 
 // DEV MODE: skip auth gate but keep Supabase data connection
 // Default false — must be explicitly set to 'true' in .env to activate
