@@ -1,12 +1,12 @@
-# ANTIGRAVITY OS — Project Brain
-> Vision: SaaS de marketing con IA #1 del mundo | Palantir + McKinsey + Goldman Sachs + Unidad 8200
+# OCULOPS — Project Brain
+> Vision: Autonomous Growth Operating System | AI Agents + Market Intelligence + Pipeline Automation
 > Actualizado: 2026-03-10 | Session sync for multi-terminal workflow
 
 ---
 
 ## Vision y Mision
 
-**ANTIGRAVITY OS** es el SaaS de marketing con IA mas avanzado del mercado:
+**OCULOPS** es el Autonomous Growth Operating System mas avanzado del mercado:
 - 7 agentes IA autonomos que buscan clientes, llenan el CRM y gestionan campanas
 - War room de inteligencia: dashboard en tiempo real con datos LIVE de Supabase
 - Filosofia visual: sala de mandos de un general — terminal Bloomberg para marketing
@@ -15,8 +15,8 @@
 **Stack**: React 19 + Vite 7 + Electron 35 + Supabase + Zustand 5 + React Router 7
 **Package manager**: npm
 **Deploy**: Vercel (LIVE) + Electron (desktop)
-**Repo**: github.com/rotprods/ANTIGRAVITY-OS (branch: main)
-**Vercel URL**: https://antigravity-os-theta.vercel.app
+**Repo**: github.com/rotprods/ANTIGRAVITY-OS (branch: main) — pending rename to OCULOPS
+**Vercel URL**: https://oculops.vercel.app (pending Vercel rebrand)
 **Supabase project**: yxzdafptqtcvpsbqkmkm
 
 ---
@@ -57,7 +57,7 @@
 ## Infraestructura de Deploy
 
 ### Vercel
-- **URL**: https://antigravity-os-theta.vercel.app
+- **URL**: https://oculops.vercel.app (pending Vercel rebrand)
 - **Env vars set**: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `N8N_API_KEY`, `N8N_API_URL`, `N8N_WEBHOOK_URL`, `SUPABASE_*` (7 vars), `GOOGLE_APP_PASSWORD_N8N`
 - **Config**: `vercel.json` con SPA rewrites + asset caching
 
@@ -297,7 +297,7 @@ Cortex chain: Atlas → Hunter → Strategist → Outreach (via `agent-cortex/in
 
 - **Agent-Vault**: `~/agent-vault/` — 414 agents across 13 namespaces
 - **Agent-OS**: `~/agent-os/` — Router, manifest (v2.0.0), presets, runtime session
-- **Bridge to ANTIGRAVITY**: Phase 4 (pending)
+- **Bridge to OCULOPS**: Phase 4 (pending)
 
 ---
 
@@ -315,8 +315,65 @@ Cortex chain: Atlas → Hunter → Strategist → Outreach (via `agent-cortex/in
 - `ControlTower.jsx` + `Agents.jsx` + `CRM.jsx` son los modulos de referencia de calidad
 - Modal pattern: overlay rgba(0,0,0,0.85), panel bg-2, ESC close, PURGE/ABORT/COMMIT buttons
 - Al terminar cada intervencion: actualizar este CLAUDE.md
+- Al terminar cada sesion: append a `docs/session-log.md` con fecha, terminal, cambios, archivos, deploy status
 - NO hacer commits sin pedir confirmacion
 - Security fixes: ULTIMO paso antes de deploy publico
+
+---
+
+## Tooling Guardrails — GitNexus / Context / Google Workspace
+
+- `claude.md` es el archivo central del proyecto. No permitir que herramientas externas lo reemplacen con `CLAUDE.md`.
+- GitNexus esta integrado via wrapper local:
+  - `scripts/gitnexus.mjs`
+  - `.mcp.json`
+  - `.gitnexus/`
+  - `.claude/skills/gitnexus/`
+- El wrapper de GitNexus restaura `claude.md` y limpia `AGENTS.md` / `CLAUDE.md` generados automaticamente para evitar colision en macOS case-insensitive.
+- El auditor de contexto oficial del proyecto es:
+  - `scripts/context-audit.mjs`
+- El wrapper oficial de Google Workspace es:
+  - `scripts/gws.mjs`
+- Nunca borrar estos artefactos de integracion sin reemplazo equivalente:
+  - `.mcp.json`
+  - `.gitnexus/`
+  - `.claude/skills/gitnexus/`
+  - `scripts/gitnexus.mjs`
+  - `scripts/context-audit.mjs`
+  - `scripts/gws.mjs`
+
+### Deployment Gate — ejecutar en cada deploy o handoff fuerte
+
+```bash
+npm run context:audit
+npm run gitnexus:status
+npm run build
+npm run lint
+npm test
+git status --short
+```
+
+Reglas:
+- Si `gitnexus:status` no da `up-to-date`, ejecutar `npm run gitnexus:index` antes de deploy.
+- Si se quiere mejor busqueda semantica, ejecutar `npm run gitnexus:index:embeddings`.
+- Si `context:audit` sube por encima de 12%, recortar contexto antes de seguir metiendo instrucciones nuevas.
+- Si `git status --short` muestra borrados (`D`), detenerse y validar que no se haya eliminado ningun archivo central o artefacto de integracion por error.
+- Si el deploy toca Gmail, Drive, Calendar o Docs, verificar credenciales de Google Workspace CLI antes del deploy.
+
+### Google Workspace CLI
+
+- Wrapper local:
+  - `npm run gws -- <comando>`
+- Helpers:
+  - `npm run gws:auth:setup`
+  - `npm run gws:auth:login`
+  - `npm run gws:drive:recent`
+- Auth soportada por env:
+  - `GOOGLE_WORKSPACE_CLI_CLIENT_ID`
+  - `GOOGLE_WORKSPACE_CLI_CLIENT_SECRET`
+  - `GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE`
+  - `GOOGLE_WORKSPACE_CLI_TOKEN`
+  - `GOOGLE_WORKSPACE_PROJECT_ID`
 
 ---
 
@@ -331,6 +388,10 @@ supabase functions deploy <name>                         # Deploy edge function
 vercel --prod                                            # Deploy a Vercel produccion
 supabase secrets set KEY=value                           # Set remote secret
 vercel env add KEY production                            # Set Vercel env var
+npm run context:audit                                    # Auditoria de contexto del proyecto
+npm run gitnexus:index                                   # Reindexar knowledge graph local
+npm run gitnexus:mcp                                     # Levantar MCP GitNexus
+npm run gws -- drive files list --params '{"pageSize": 5}'  # Google Workspace CLI via wrapper
 ```
 
 ---
@@ -355,10 +416,10 @@ vercel env add KEY production                            # Set Vercel env var
 - [x] 3.5 Pipeline DnD — @dnd-kit already implemented
 - [x] 3.6 ControlTower war room — Live KPIs from real hooks
 
-### Phase 4: Bridge Agent-OS ↔ ANTIGRAVITY
-- [ ] 4.1 ANTIGRAVITY-specific presets in agent-os
+### Phase 4: Bridge Agent-OS ↔ OCULOPS
+- [ ] 4.1 OCULOPS-specific presets in agent-os
 - [ ] 4.2 Map vault agents to business roles
-- [ ] 4.3 antigravity-bridge.py
+- [ ] 4.3 oculops-bridge.py
 - [ ] 4.4 Watchtower as monitoring surface
 - [ ] 4.5 Knowledge + pgvector
 
