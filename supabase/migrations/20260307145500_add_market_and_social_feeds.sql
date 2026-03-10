@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Market + Social Feeds
+-- OCULOPS OS — Market + Social Feeds
 -- Leadership context feeds for markets and social demand radar
 -- ═══════════════════════════════════════════════════
 

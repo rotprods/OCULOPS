@@ -1,5 +1,5 @@
 // ===================================================
-// ANTIGRAVITY OS — SVG Chart Library
+// OCULOPS — SVG Chart Library
 // Pure functions returning HTML/SVG strings.
 // Use with dangerouslySetInnerHTML in React.
 // ===================================================

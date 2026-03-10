@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useOpportunities
+// OCULOPS — React Hook: useOpportunities
 // Supabase-connected hook for opportunity scanner
 // ═══════════════════════════════════════════════════
 

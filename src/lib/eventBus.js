@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Event Bus Helper
+// OCULOPS — Event Bus Helper
 // Insert events into event_log → triggers pg_notify
 // ═══════════════════════════════════════════════════
 

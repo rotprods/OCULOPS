@@ -1,10 +1,10 @@
-# ANTIGRAVITY OS — Claude Execution Brief v1
+# OCULOPS OS — Claude Execution Brief v1
 
 ## Next-Gen Autonomous Intelligence Layer
 
 > **Para**: Claude (o cualquier AI Agent con acceso al codebase)
 > **De**: Roberto Ortega, Founder
-> **Contexto**: Este documento contiene las instrucciones para construir las próximas capas del sistema operativo ANTIGRAVITY OS — una plataforma de inteligencia empresarial autónoma diseñada para escalar una agencia de IA a €100k/mes.
+> **Contexto**: Este documento contiene las instrucciones para construir las próximas capas del sistema operativo OCULOPS OS — una plataforma de inteligencia empresarial autónoma diseñada para escalar una agencia de IA a €100k/mes.
 
 ---
 

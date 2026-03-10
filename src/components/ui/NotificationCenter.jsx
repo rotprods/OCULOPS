@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Notification Center
+// OCULOPS — Notification Center
 // Real-time toast notifications from Supabase events
 // ═══════════════════════════════════════════════════
 

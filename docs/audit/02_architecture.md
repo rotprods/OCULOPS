@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Audit: Arquitectura React
+# OCULOPS — Audit: Arquitectura React
 **Fecha:** 2026-03-06
 
 ---
@@ -52,7 +52,7 @@ export const useAppStore = create(
       toast: (message, type) => ...,
       triggerFeedback: (event, data) => ...
     }),
-    { name: 'antigravity-os-v10' }
+    { name: 'oculops-v10' }
   )
 )
 ```
@@ -197,7 +197,7 @@ const DEV_MODE = !import.meta.env.VITE_SUPABASE_URL;
 
 if (DEV_MODE) {
   // Salta auth completamente, usa usuario mock
-  return <AppRoutes user={{ email: 'dev@antigravity.os', id: 'dev' }} />;
+  return <AppRoutes user={{ email: 'dev@oculops.com', id: 'dev' }} />;
 }
 ```
 
@@ -206,7 +206,7 @@ Correcto para desarrollo local, pero hay riesgo de que llegue a producción sin 
 **Fix:** Agregar warning visible:
 ```jsx
 if (DEV_MODE) {
-  console.warn('⚠️ ANTIGRAVITY OS corriendo en DEV_MODE. Configurar VITE_SUPABASE_URL para producción.');
+  console.warn('⚠️ OCULOPS corriendo en DEV_MODE. Configurar VITE_SUPABASE_URL para producción.');
   // opcional: banner visible en la UI
 }
 ```

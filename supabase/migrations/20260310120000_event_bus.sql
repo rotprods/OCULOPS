@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Event Bus (pg_notify)
+-- OCULOPS OS — Event Bus (pg_notify)
 -- Cross-cutting event log + realtime broadcast
 -- ═══════════════════════════════════════════════════
 
@@ -39,7 +39,7 @@ CREATE POLICY "Anon insert events"
 CREATE OR REPLACE FUNCTION public.notify_event_bus()
 RETURNS trigger AS $$
 BEGIN
-    PERFORM pg_notify('antigravity:events', row_to_json(NEW)::text);
+    PERFORM pg_notify('oculops:events', row_to_json(NEW)::text);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

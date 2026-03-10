@@ -37,7 +37,7 @@ const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 const CRON_SECRET = Deno.env.get("CRON_SECRET");
 const REDDIT_CLIENT_ID = Deno.env.get("REDDIT_CLIENT_ID");
 const REDDIT_CLIENT_SECRET = Deno.env.get("REDDIT_CLIENT_SECRET");
-const REDDIT_USER_AGENT = Deno.env.get("REDDIT_USER_AGENT") || "ANTIGRAVITY-OS/1.0 social-signals";
+const REDDIT_USER_AGENT = Deno.env.get("REDDIT_USER_AGENT") || "OCULOPS-OS/1.0 social-signals";
 const APIFY_TOKEN = Deno.env.get("APIFY_TOKEN");
 const APIFY_REDDIT_ACTOR_ID = Deno.env.get("APIFY_REDDIT_ACTOR_ID") || "trudax/reddit-scraper";
 

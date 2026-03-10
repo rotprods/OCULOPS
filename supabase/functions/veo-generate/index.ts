@@ -30,7 +30,7 @@ serve(async (req) => {
             // Return a simulated mock response if API keys are not yet configured
             return new Response(JSON.stringify({
                 status: 'success',
-                mediaUrl: 'https://storage.googleapis.com/antigravity-mock/mock-video-veo.mp4',
+                mediaUrl: 'https://storage.googleapis.com/oculops-mock/mock-video-veo.mp4',
                 message: 'Mocked successful Veo3 response due to missing API key.'
             }), {
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' },

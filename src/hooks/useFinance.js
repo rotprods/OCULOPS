@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useFinance
+// OCULOPS — React Hook: useFinance
 // Supabase-connected hook for finance entries
 // ═══════════════════════════════════════════════════
 

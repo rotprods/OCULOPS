@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Niches Analysis
+// OCULOPS — Niches Analysis
 // 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 

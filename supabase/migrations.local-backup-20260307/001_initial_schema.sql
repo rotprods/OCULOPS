@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Database Schema v1
+-- OCULOPS OS — Database Schema v1
 -- Full-stack migration from localStorage → Supabase
 -- ═══════════════════════════════════════════════════
 
@@ -12,7 +12,7 @@ CREATE TABLE profiles (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   email TEXT UNIQUE NOT NULL,
   full_name TEXT,
-  agency_name TEXT DEFAULT 'Antigravity Agency',
+  agency_name TEXT DEFAULT 'Oculops Agency',
   avatar_url TEXT,
   target_mrr INTEGER DEFAULT 20000,
   ultimate_target INTEGER DEFAULT 100000,

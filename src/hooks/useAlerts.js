@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useAlerts
+// OCULOPS — React Hook: useAlerts
 // Supabase-connected hook for Watchtower alerts
 // ═══════════════════════════════════════════════════
 

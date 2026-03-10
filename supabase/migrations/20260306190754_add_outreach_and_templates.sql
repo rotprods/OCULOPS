@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS outreach_queue (
   subject TEXT NOT NULL,
   html_body TEXT NOT NULL,
   pdf_url TEXT,
-  calendly_link TEXT DEFAULT 'https://calendly.com/antigravity-murcia/30min',
+  calendly_link TEXT DEFAULT 'https://calendly.com/oculops-murcia/30min',
   status TEXT DEFAULT 'staged',
   approved_at TIMESTAMPTZ,
   sent_at TIMESTAMPTZ,

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useBets
+// OCULOPS — React Hook: useBets
 // Supabase-connected hook for portfolio/bets
 // ═══════════════════════════════════════════════════
 

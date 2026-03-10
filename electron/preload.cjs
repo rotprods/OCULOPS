@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Electron Preload Script
+// OCULOPS — Electron Preload Script
 // ═══════════════════════════════════════════════════
 
 const { contextBridge, ipcRenderer } = require('electron');
@@ -16,6 +16,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // Native notifications
     showNotification: (title, body) => ipcRenderer.send('notification:show', { title, body }),
 
-    // File export (saves to ~/Downloads/AntigravityOS/)
+    // File export (saves to ~/Downloads/OCULOPS/)
     saveFile: (data, filename) => ipcRenderer.invoke('file:save', { data, filename }),
 });

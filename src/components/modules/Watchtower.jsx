@@ -1,13 +1,15 @@
 // /////////////////////////////////////////////////////////////////////////////
 // 100-Year UX: strictly OLED Black, Gold, 1px Primitives
-// ANTIGRAVITY OS — Watchtower (Alerts)
+// OCULOPS — Watchtower (Alerts)
 // Wired to Supabase via useAlerts hook
 // /////////////////////////////////////////////////////////////////////////////
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useAlerts } from '../../hooks/useAlerts'
+import { useAgents } from '../../hooks/useAgents'
 import { useApiCatalog } from '../../hooks/useApiCatalog'
 import { useConnectorProxy } from '../../hooks/useConnectorProxy'
+import { useAgentVault } from '../../hooks/useAgentVault'
 
 const SEVERITY_CONFIG = {
     1: { label: 'CRITICAL', color: 'var(--color-danger)', marker: '[ CRIT ]' },
@@ -20,6 +22,8 @@ const emptyForm = { type: 'risk', severity: 2, description: '', title: '' }
 
 function Watchtower() {
     const { alerts, loading, addAlert, resolveAlert } = useAlerts()
+    const { agents: oculopsAgents, stats: agentStats } = useAgents()
+    const { totalAgents: vaultTotal, canonicalCount: vaultCanonical, namespaces: vaultNamespaces } = useAgentVault()
     const { installedApps: watchtowerApps } = useApiCatalog({ moduleTarget: 'watchtower' })
     const { execute: executeConnector, data: feedData, loading: feedLoading, error: feedError } = useConnectorProxy({}, { cacheTTL: 30000 })
     const [form, setForm] = useState(emptyForm)
@@ -83,6 +87,43 @@ function Watchtower() {
                 <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
                     <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ TOTAL PROCESSED ]</div>
                     <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-text-2)' }}>{alerts.length}</div>
+                </div>
+            </div>
+
+            {/* AGENT MONITORING */}
+            <div style={{ border: '1px solid var(--color-border)', background: '#000', marginBottom: '32px' }}>
+                <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
+                    /// AGENT NETWORK MONITORING
+                </div>
+                <div style={{ padding: '20px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '20px' }}>
+                        <div style={{ border: '1px solid var(--border-subtle)', padding: '16px' }}>
+                            <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', letterSpacing: '0.1em', marginBottom: '4px' }}>OCULOPS AGENTS</div>
+                            <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-primary)' }}>{agentStats.online}/{agentStats.total}</div>
+                            <div className="mono" style={{ fontSize: '9px', color: 'var(--color-success)', marginTop: '4px' }}>{agentStats.running} RUNNING</div>
+                        </div>
+                        <div style={{ border: '1px solid var(--border-subtle)', padding: '16px' }}>
+                            <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', letterSpacing: '0.1em', marginBottom: '4px' }}>VAULT ARSENAL</div>
+                            <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-info)' }}>{vaultTotal}</div>
+                            <div className="mono" style={{ fontSize: '9px', color: 'var(--color-text-3)', marginTop: '4px' }}>{vaultCanonical} CANONICAL / {vaultNamespaces.length} NS</div>
+                        </div>
+                        <div style={{ border: '1px solid var(--border-subtle)', padding: '16px' }}>
+                            <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', letterSpacing: '0.1em', marginBottom: '4px' }}>SYSTEM CYCLES</div>
+                            <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-text)' }}>{agentStats.totalRuns}</div>
+                            <div className="mono" style={{ fontSize: '9px', color: 'var(--color-text-3)', marginTop: '4px' }}>{agentStats.queuedTasks} QUEUED</div>
+                        </div>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        {oculopsAgents.map(ag => (
+                            <div key={ag.id} className="mono" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '8px 12px', background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', fontSize: '10px' }}>
+                                <div style={{ width: 6, height: 6, background: ag.status === 'online' ? 'var(--color-success)' : ag.status === 'running' ? 'var(--color-warning)' : 'var(--color-danger)' }} />
+                                <span style={{ width: '100px', fontWeight: 'bold', color: 'var(--color-primary)' }}>{ag.code_name.toUpperCase()}</span>
+                                <span style={{ flex: 1, color: 'var(--color-text-2)' }}>{ag.name.toUpperCase()}</span>
+                                <span style={{ color: 'var(--text-tertiary)' }}>RUNS: {ag.total_runs || 0}</span>
+                                <span style={{ color: ag.status === 'online' ? 'var(--color-success)' : 'var(--color-warning)' }}>[{ag.status.toUpperCase()}]</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 

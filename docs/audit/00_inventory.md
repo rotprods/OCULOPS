@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Audit: Inventario del Proyecto
+# OCULOPS OS — Audit: Inventario del Proyecto
 **Fecha:** 2026-03-06 | **Versión:** v10.0.0 | **Stack:** React 19 + Vite 7 + Electron 35 + Supabase
 
 ---
@@ -52,7 +52,7 @@
 ## Estructura de ficheros
 
 ```
-ANTIGRAVITY-OS/
+OCULOPS-OS/
 ├── src/
 │   ├── App.jsx                   # Router + 21 rutas + auth check
 │   ├── main.jsx                  # Entry point

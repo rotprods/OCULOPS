@@ -12,7 +12,7 @@ async function fetchWebsiteHtml(url: string) {
   try {
     const response = await fetch(url, {
       headers: {
-        "User-Agent": "ANTIGRAVITY-OS/1.0 (+https://antigravity.os)",
+        "User-Agent": "OCULOPS-OS/1.0 (+https://oculops.os)",
       },
       signal: controller.signal,
     });

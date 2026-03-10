@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useCampaigns
+// OCULOPS — React Hook: useCampaigns
 // Supabase-connected hook for marketing campaigns + metrics
 // ═══════════════════════════════════════════════════
 

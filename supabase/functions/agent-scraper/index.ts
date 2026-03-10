@@ -71,7 +71,7 @@ Deno.serve(async (req) => {
       try {
         // Fetch the website
         const res = await fetch(competitor.url, {
-          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; ANTIGRAVITY-Bot/1.0)' },
+          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; OCULOPS-Bot/1.0)' },
           signal: AbortSignal.timeout(10000)
         });
         const html = await res.text();
@@ -86,7 +86,7 @@ Deno.serve(async (req) => {
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${openaiKey}` },
             body: JSON.stringify({
               model: 'gpt-4o-mini',
-              messages: [{ role: 'user', content: `Analiza esta página web del competidor "${competitor.name}" (${competitor.url}) para ANTIGRAVITY, una agencia IA boutique en Murcia.\n\nContenido extraído:\n${extracted}\n\nGenera un JSON con:\n{"company": "${competitor.name}", "services": ["lista de servicios que ofrecen"], "pricing_signals": ["cualquier indicación de precios"], "target_audience": "a quién se dirigen", "positioning": "cómo se posicionan", "strengths": ["fortalezas"], "weaknesses": ["debilidades percibidas"], "differentiation_opportunity": "cómo ANTIGRAVITY puede diferenciarse de este competidor"}` }],
+              messages: [{ role: 'user', content: `Analiza esta página web del competidor "${competitor.name}" (${competitor.url}) para OCULOPS, una agencia IA boutique en Murcia.\n\nContenido extraído:\n${extracted}\n\nGenera un JSON con:\n{"company": "${competitor.name}", "services": ["lista de servicios que ofrecen"], "pricing_signals": ["cualquier indicación de precios"], "target_audience": "a quién se dirigen", "positioning": "cómo se posicionan", "strengths": ["fortalezas"], "weaknesses": ["debilidades percibidas"], "differentiation_opportunity": "cómo OCULOPS puede diferenciarse de este competidor"}` }],
               temperature: 0.3,
               max_tokens: 800,
               response_format: { type: 'json_object' }

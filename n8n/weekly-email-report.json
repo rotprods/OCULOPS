@@ -70,9 +70,9 @@
         },
         {
             "parameters": {
-                "fromEmail": "reports@antigravity.os",
-                "toEmail": "roberto@antigravity.os",
-                "subject": "⚡ ANTIGRAVITY — Weekly Intelligence Report | {{ $json.report_date }}",
+                "fromEmail": "reports@oculops.os",
+                "toEmail": "roberto@oculops.os",
+                "subject": "⚡ OCULOPS — Weekly Intelligence Report | {{ $json.report_date }}",
                 "emailType": "html",
                 "html": "={{ $json.html_email }}",
                 "options": {}
@@ -111,7 +111,7 @@
                 },
                 "sendBody": true,
                 "specifyBody": "json",
-                "jsonBody": "={{ JSON.stringify({ action: 'log_email_sent', report_date: $json.report_date, recipient: 'roberto@antigravity.os' }) }}"
+                "jsonBody": "={{ JSON.stringify({ action: 'log_email_sent', report_date: $json.report_date, recipient: 'roberto@oculops.os' }) }}"
             },
             "id": "log-to-scribe",
             "name": "Log to SCRIBE Agent",
@@ -174,7 +174,7 @@
     },
     "tags": [
         {
-            "name": "ANTIGRAVITY"
+            "name": "OCULOPS"
         },
         {
             "name": "SCRIBE"

@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Plan de Implementación Post-Auditoría
+# OCULOPS OS — Plan de Implementación Post-Auditoría
 **Fecha:** 2026-03-06 | Basado en auditoría completa v10.0.0
 
 ---
@@ -32,7 +32,7 @@ ipcMain.on('notification:show', (_, { title, body }) => {
 ipcMain.handle('file:save', async (_, { data, filename }) => {
   const safeName = path.basename(filename);
   if (!safeName || safeName.includes('..')) throw new Error('Invalid filename');
-  const dir = path.join(app.getPath('downloads'), 'AntigravityOS');
+  const dir = path.join(app.getPath('downloads'), 'OculopsOS');
   await mkdir(dir, { recursive: true });
   await writeFile(path.join(dir, safeName), data, 'utf8');
   return { success: true, path: path.join(dir, safeName) };

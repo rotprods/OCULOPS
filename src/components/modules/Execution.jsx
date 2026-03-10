@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Execution Module
+// OCULOPS — Execution Module
 // 100-Year UX: rigorous objective pipeline (Hacker IDE Mode)
 // ═══════════════════════════════════════════════════
 
@@ -72,7 +72,7 @@ function Execution() {
         {/* Toolbar */}
         <div style={{ padding: '16px', background: 'var(--color-bg-2)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="mono text-xs font-bold" style={{ color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: 'var(--color-primary)' }}>root@antigravity:~#</span>
+            <span style={{ color: 'var(--color-primary)' }}>root@oculops:~#</span>
             <span>cat ./directives.log | filter --status</span>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>

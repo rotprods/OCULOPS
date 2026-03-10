@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useTasks
+// OCULOPS — React Hook: useTasks
 // Supabase-connected hook for execution tasks
 // ═══════════════════════════════════════════════════
 

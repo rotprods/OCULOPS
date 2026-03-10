@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Remove cron jobs that target missing functions
+-- OCULOPS OS — Remove cron jobs that target missing functions
 -- ═══════════════════════════════════════════════════
 
 DO $$

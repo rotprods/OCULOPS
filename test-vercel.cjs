@@ -7,7 +7,7 @@ const { JSDOM, ResourceLoader } = require('jsdom');
             userAgent: "Mozilla/5.0",
         });
 
-        const dom = await JSDOM.fromURL("https://antigravity-os-theta.vercel.app", {
+        const dom = await JSDOM.fromURL("https://oculops-os.vercel.app /* TODO: update after Vercel rebrand — currently still antigravity-os-theta.vercel.app */", {
             runScripts: "dangerously",
             resources: "usable",
             pretendToBeVisual: true,

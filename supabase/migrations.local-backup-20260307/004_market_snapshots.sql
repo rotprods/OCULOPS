@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Market Snapshots
+-- OCULOPS OS — Market Snapshots
 -- Financial markets feed for leadership context
 -- ═══════════════════════════════════════════════════
 

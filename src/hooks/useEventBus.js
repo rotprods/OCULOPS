@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — useEventBus Hook
+// OCULOPS — useEventBus Hook
 // Cross-cutting realtime event bus via Supabase broadcast
 // ═══════════════════════════════════════════════════
 
@@ -32,7 +32,7 @@ export function useEventBus() {
         if (!isSupabaseConfigured) return
 
         const channel = supabase
-            .channel('antigravity:events')
+            .channel('oculops:events')
             .on('broadcast', { event: 'event' }, ({ payload }) => {
                 if (!payload) return
                 setLastEvent(payload)
@@ -80,7 +80,7 @@ export function useEventBus() {
 
         // Also broadcast directly for instant client-to-client delivery
         if (isSupabaseConfigured) {
-            supabase.channel('antigravity:events').send({
+            supabase.channel('oculops:events').send({
                 type: 'broadcast',
                 event: 'event',
                 payload: {

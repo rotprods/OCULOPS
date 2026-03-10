@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Master API Registry & Integration Atlas
+# OCULOPS OS — Master API Registry & Integration Atlas
 
 > **Objetivo**: Documento de referencia para activar progresivamente TODAS las APIs que componen la red de inteligencia del OS. Cada API tiene los pasos exactos para obtener las keys, configurar el `.env`, y activar la edge function correspondiente.
 

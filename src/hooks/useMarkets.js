@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useMarkets
+// OCULOPS — React Hook: useMarkets
 // Live market snapshots with demo fallback and manual sync
 // ═══════════════════════════════════════════════════
 

@@ -1,12 +1,12 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Settings Module
+// OCULOPS — Settings Module
 // 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
 
 const AGENCY_DEFAULTS = {
-  name: 'ANTIGRAVITY AGENCY',
+  name: 'OCULOPS AGENCY',
   website: '',
   email: '',
   phone: '',
@@ -57,7 +57,7 @@ function Settings() {
   }
 
   const clearCache = () => {
-    const keys = Object.keys(localStorage).filter(k => k.startsWith('ag_') || k.startsWith('antigravity'))
+    const keys = Object.keys(localStorage).filter(k => k.startsWith('ag_') || k.startsWith('oculops'))
     keys.forEach(k => localStorage.removeItem(k))
     window.location.reload()
   }

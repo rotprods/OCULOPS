@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useCompanies
+// OCULOPS — React Hook: useCompanies
 // Supabase-connected hook for CRM companies
 // ═══════════════════════════════════════════════════
 

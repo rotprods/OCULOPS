@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — useAgents Hook
+// OCULOPS — useAgents Hook
 // Manages agent registry, tasks, logs, and triggers
 // ═══════════════════════════════════════════════════
 

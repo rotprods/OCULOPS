@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useDetectedLeads
+// OCULOPS — React Hook: useDetectedLeads
 // Supabase-connected hook for lead prospector/detector
 // ═══════════════════════════════════════════════════
 

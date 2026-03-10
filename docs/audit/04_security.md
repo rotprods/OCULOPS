@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Audit: Seguridad & Configuración
+# OCULOPS OS — Audit: Seguridad & Configuración
 **Fecha:** 2026-03-06
 
 ---
@@ -137,7 +137,7 @@ saveFile: (data, filename) => ipcRenderer.invoke('file:save', { data, filename }
 ipcMain.handle('file:save', async (event, { data, filename }) => {
   const safeName = path.basename(filename); // elimina path traversal
   if (!safeName || safeName.includes('..')) throw new Error('Invalid filename');
-  const dir = path.join(app.getPath('downloads'), 'AntigravityOS');
+  const dir = path.join(app.getPath('downloads'), 'OculopsOS');
   await fs.promises.mkdir(dir, { recursive: true });
   await fs.promises.writeFile(path.join(dir, safeName), data, 'utf8');
   return { success: true };

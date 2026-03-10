@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Migration 002: Personal Tool RLS
+-- OCULOPS OS — Migration 002: Personal Tool RLS
 -- This is a SINGLE-USER personal tool.
 -- Replace per-user RLS policies with open access.
 -- Apply in Supabase dashboard > SQL Editor.

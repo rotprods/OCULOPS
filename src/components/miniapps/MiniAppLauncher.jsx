@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Mini-App Launcher
+// OCULOPS — Mini-App Launcher
 // Core apps + installed connectors + public API catalog
 // ═══════════════════════════════════════════════════
 
@@ -10,9 +10,14 @@ import ApiIntelligenceCard from './ApiIntelligenceCard'
 import { useApiCatalog } from '../../hooks/useApiCatalog'
 import { useApiNetwork } from '../../hooks/useApiNetwork'
 import { buildCatalogMiniApp, getTemplateByCatalogSlug } from '../../lib/publicApiConnectorTemplates'
-import { groupApiIntelligenceEntries } from '../../lib/publicApiCatalog'
+import { groupApiIntelligenceEntries, groupCatalogEntriesByAccessBurden } from '../../lib/publicApiCatalog'
 
 const PAGE_SIZE = 60
+const CATALOG_VIEW_MODES = [
+  { id: 'access', label: 'By Access' },
+  { id: 'theme', label: 'By Theme' },
+  { id: 'open_only', label: 'Open Only' },
+]
 
 const SECTIONS = [
   { id: 'core', label: 'Core', description: 'First-party live APIs, edge functions, and workflow bridges' },
@@ -68,6 +73,7 @@ export default function MiniAppLauncher() {
   const [search, setSearch] = useState('')
   const [moduleFilter, setModuleFilter] = useState('all')
   const [agentFilter, setAgentFilter] = useState('all')
+  const [catalogView, setCatalogView] = useState('access')
   const [page, setPage] = useState(1)
   const [installingSlug, setInstallingSlug] = useState(null)
   const {
@@ -98,7 +104,7 @@ export default function MiniAppLauncher() {
 
   useEffect(() => {
     setPage(1)
-  }, [search, moduleFilter, agentFilter, section])
+  }, [search, moduleFilter, agentFilter, section, catalogView])
 
   const connectorAppBySlug = useMemo(
     () => new Map(installedApps.map(app => [app.catalogSlug, app])),
@@ -122,10 +128,17 @@ export default function MiniAppLauncher() {
     [catalogEntries]
   )
 
-  const pageCount = Math.max(1, Math.ceil(visibleCatalogEntries.length / PAGE_SIZE))
+  const filteredCatalogEntries = useMemo(
+    () => catalogView === 'open_only'
+      ? visibleCatalogEntries.filter(entry => entry.auth_type === 'none')
+      : visibleCatalogEntries,
+    [catalogView, visibleCatalogEntries]
+  )
+
+  const pageCount = Math.max(1, Math.ceil(filteredCatalogEntries.length / PAGE_SIZE))
   const pagedCatalogEntries = useMemo(
-    () => visibleCatalogEntries.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
-    [page, visibleCatalogEntries]
+    () => filteredCatalogEntries.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [filteredCatalogEntries, page]
   )
 
   const sectionApps = {
@@ -139,7 +152,7 @@ export default function MiniAppLauncher() {
     core: coreApps.length,
     installed: installedCatalogEntries.length,
     adapter_ready: adapterReadyCatalogEntries.length,
-    catalog: visibleCatalogEntries.length,
+    catalog: filteredCatalogEntries.length,
   }
 
   const filters = useMemo(() => {
@@ -188,8 +201,22 @@ export default function MiniAppLauncher() {
         ? adapterReadyCatalogEntries
         : pagedCatalogEntries
 
+    if (section === 'catalog' && catalogView !== 'theme') {
+      return groupCatalogEntriesByAccessBurden(entriesForSection).filter(group => group.entries.length > 0)
+    }
+
     return groupApiIntelligenceEntries(entriesForSection).filter(group => group.entries.length > 0)
-  }, [adapterReadyCatalogEntries, installedCatalogEntries, pagedCatalogEntries, section])
+  }, [adapterReadyCatalogEntries, catalogView, installedCatalogEntries, pagedCatalogEntries, section])
+
+  const catalogSummaryGroups = useMemo(() => {
+    if (section !== 'catalog') return []
+
+    if (catalogView !== 'theme') {
+      return groupCatalogEntriesByAccessBurden(filteredCatalogEntries).filter(group => group.entries.length > 0)
+    }
+
+    return groupApiIntelligenceEntries(filteredCatalogEntries).filter(group => group.entries.length > 0)
+  }, [catalogView, filteredCatalogEntries, section])
 
   if (selectedApp) {
     return (
@@ -302,9 +329,38 @@ export default function MiniAppLauncher() {
         <div>
           <div style={{ fontSize: '13px', fontWeight: 700 }}>{SECTIONS.find(item => item.id === section)?.label}</div>
           <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>{SECTIONS.find(item => item.id === section)?.description}</div>
+          {section === 'catalog' && (
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '8px' }}>
+              {catalogSummaryGroups.map(group => (
+                <span
+                  key={group.key}
+                  className="badge badge-neutral"
+                  style={{
+                    fontSize: '10px',
+                    borderColor: `${group.color}55`,
+                    color: group.color,
+                  }}
+                >
+                  {group.label}: {group.entries.length}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         {section === 'catalog' && (
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
+              {CATALOG_VIEW_MODES.map(mode => (
+                <button
+                  key={mode.id}
+                  className={`btn btn-sm ${catalogView === mode.id ? 'btn-primary' : 'btn-ghost'}`}
+                  onClick={() => setCatalogView(mode.id)}
+                  style={{ fontSize: '10px' }}
+                >
+                  {mode.label}
+                </button>
+              ))}
+            </div>
             <button className="btn btn-sm btn-ghost" disabled={page === 1} onClick={() => setPage(current => Math.max(1, current - 1))}>← Prev</button>
             <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>Page {page} / {pageCount}</span>
             <button className="btn btn-sm btn-ghost" disabled={page === pageCount} onClick={() => setPage(current => Math.min(pageCount, current + 1))}>Next →</button>
@@ -437,7 +493,17 @@ export default function MiniAppLauncher() {
                   <div style={{ fontSize: '13px', fontWeight: 700 }}>{group.label}</div>
                   <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>{group.description}</div>
                 </div>
-                <span className="badge badge-neutral">{group.entries.length} APIs</span>
+                <span
+                  className="badge badge-neutral"
+                  style={section === 'catalog'
+                    ? {
+                        borderColor: `${group.color}55`,
+                        color: group.color,
+                      }
+                    : undefined}
+                >
+                  {group.entries.length} APIs
+                </span>
               </div>
 
               <div style={{

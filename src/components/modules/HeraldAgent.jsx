@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — HERALD Agent Module
+// OCULOPS — HERALD Agent Module
 // 100-Year UX: telegram bot orchestrator
 // ═══════════════════════════════════════════════════
 

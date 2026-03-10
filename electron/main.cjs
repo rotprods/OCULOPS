@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Electron Main Process
+// OCULOPS — Electron Main Process
 // ═══════════════════════════════════════════════════
 
 const { app, BrowserWindow, Menu, Tray, nativeImage, ipcMain, Notification, shell } = require('electron');
@@ -23,7 +23,7 @@ function createWindow() {
         height: 900,
         minWidth: 1024,
         minHeight: 700,
-        title: 'ANTIGRAVITY OS',
+        title: 'OCULOPS',
         titleBarStyle: 'hiddenInset',
         backgroundColor: '#0a0e17',
         webPreferences: {
@@ -69,10 +69,10 @@ function createTray() {
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
     );
     tray = new Tray(icon);
-    tray.setToolTip('ANTIGRAVITY OS');
+    tray.setToolTip('OCULOPS');
 
     const contextMenu = Menu.buildFromTemplate([
-        { label: 'Open Antigravity', click: () => mainWindow?.show() },
+        { label: 'Open OCULOPS', click: () => mainWindow?.show() },
         { type: 'separator' },
         { label: 'Quit', click: () => app.quit() },
     ]);
@@ -99,7 +99,7 @@ ipcMain.on('notification:show', (_event, { title, body }) => {
     }
 });
 
-// File save — restricted to Downloads/AntigravityOS, no path traversal
+// File save — restricted to Downloads/OCULOPS, no path traversal
 ipcMain.handle('file:save', async (_event, { data, filename }) => {
     try {
         const safeName = path.basename(filename);
@@ -107,7 +107,7 @@ ipcMain.handle('file:save', async (_event, { data, filename }) => {
             return { success: false, error: 'Invalid filename' };
         }
 
-        const dir = path.join(app.getPath('downloads'), 'AntigravityOS');
+        const dir = path.join(app.getPath('downloads'), 'OCULOPS');
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }

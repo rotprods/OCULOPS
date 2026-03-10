@@ -37,7 +37,7 @@
                 },
                 "sendBody": true,
                 "specifyBody": "json",
-                "jsonBody": "={\n  \"model\": \"gpt-4o-mini\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres el asistente virtual de ANTIGRAVITY, una agencia de IA y marketing digital premium en Murcia. Tu objetivo es:\\n1. Responder preguntas sobre nuestros servicios\\n2. Cualificar al lead (tamaño empresa, presupuesto, necesidades)\\n3. Capturar información de contacto\\n4. Agendar reuniones\\n\\nServicios: Automatización con IA, Marketing Digital, Desarrollo Web, Chatbots, Analítica de Datos, Estrategia Digital.\\n\\nSé profesional, innovador y cercano. Responde en español.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $json.body.message }}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 500\n}",
+                "jsonBody": "={\n  \"model\": \"gpt-4o-mini\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres el asistente virtual de OCULOPS, una agencia de IA y marketing digital premium en Murcia. Tu objetivo es:\\n1. Responder preguntas sobre nuestros servicios\\n2. Cualificar al lead (tamaño empresa, presupuesto, necesidades)\\n3. Capturar información de contacto\\n4. Agendar reuniones\\n\\nServicios: Automatización con IA, Marketing Digital, Desarrollo Web, Chatbots, Analítica de Datos, Estrategia Digital.\\n\\nSé profesional, innovador y cercano. Responde en español.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $json.body.message }}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 500\n}",
                 "options": {
                     "timeout": 15000
                 }
@@ -135,7 +135,7 @@
     },
     "tags": [
         {
-            "name": "ANTIGRAVITY"
+            "name": "OCULOPS"
         },
         {
             "name": "CHATBOT"

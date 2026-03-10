@@ -58,7 +58,7 @@ export function useMessagingChannels() {
         if (typeof window === 'undefined') return undefined
 
         const handleMessage = (event) => {
-            if (event?.data?.type === 'antigravity:channel-connected') {
+            if (event?.data?.type === 'oculops:channel-connected') {
                 loadChannels()
             }
         }

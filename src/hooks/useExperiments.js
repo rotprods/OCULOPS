@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useExperiments
+// OCULOPS — React Hook: useExperiments
 // Supabase-connected hook for experiments/lab
 // ═══════════════════════════════════════════════════
 

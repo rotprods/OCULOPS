@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Public API Catalog + Connector Activation
+-- OCULOPS OS — Public API Catalog + Connector Activation
 -- ═══════════════════════════════════════════════════
 
 CREATE TABLE IF NOT EXISTS api_catalog_sync_runs (

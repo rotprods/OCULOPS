@@ -1,12 +1,12 @@
-# ANTIGRAVITY OS — Claude Code Handoff
+# OCULOPS — Claude Code Handoff
 
 > **Role**: You (Claude Code) are the **Execution Agent** for this project.
-> **Antigravity** (Google Deepmind Assistant) is the **Architecture Agent**.
+> **OCULOPS** (Google Deepmind Assistant) is the **Architecture Agent**.
 > The human is **Roberto Ortega**, CEO and sole operator.
 
 ## Project Overview
 
-ANTIGRAVITY OS is Roberto's personal command center for running his AI automation agency.
+OCULOPS is Roberto's personal command center for running his AI automation agency.
 The project has been restructured from static HTML/CSS/JS into **Vite + React + Electron**.
 Supabase is the backend (PostgreSQL + Realtime + Edge Functions).
 
@@ -89,7 +89,7 @@ export const useLeadStore = create(
       })),
       removeLead: (id) => set((s) => ({ leads: s.leads.filter((l) => l.id !== id) })),
     }),
-    { name: 'antigravity-leads' }
+    { name: 'oculops-leads' }
   )
 )
 ```

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hooks Index
+// OCULOPS — React Hooks Index
 // Re-export all hooks for clean imports
 // ═══════════════════════════════════════════════════
 

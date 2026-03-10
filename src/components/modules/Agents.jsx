@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — AI Agents Hub (CORTEX Network)
+// OCULOPS — AI Agents Hub (CORTEX Network)
 // Multi-Agent Orchestration Dashboard - 100-Year UX
 // ═══════════════════════════════════════════════════
 
@@ -7,6 +7,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAppStore } from '../../stores/useAppStore'
 import { useAgents } from '../../hooks/useAgents'
 import { useAgentStudies } from '../../hooks/useAgentStudies'
+import { useAgentVault, ROLE_CAPABILITY_MAP } from '../../hooks/useAgentVault'
 import { AGENT_AUTOMATION_PACKS } from '../../data/agentAutomationPacks'
 
 const AGENT_ICONS = { cortex: '🧠', atlas: '🌍', hunter: '🎯', oracle: '📊', sentinel: '🛡️', forge: '✍️', strategist: '⚖️', scribe: '📝', herald: '📱' }
@@ -28,6 +29,7 @@ function Agents() {
   const { toast } = useAppStore()
   const { agents, tasks, logs, stats, triggerAgent, runCortexCycle } = useAgents()
   const { studies, telegramTarget, loading: studiesLoading, busy: studiesBusy, postStudy, resendStudy, saveTelegramTarget } = useAgentStudies()
+  const { filteredAgents: vaultAgents, namespaces: vaultNamespaces, loading: vaultLoading, error: vaultError, filters: vaultFilters, setNamespace: setVaultNamespace, setSearch: setVaultSearch, setRole: setVaultRole, suggestRole, totalAgents: vaultTotal, canonicalCount: vaultCanonical } = useAgentVault()
 
   const [triggering, setTriggering] = useState(null)
   const [activeTab, setActiveTab] = useState('network')
@@ -123,7 +125,7 @@ function Agents() {
         </div>
 
         <div style={{ display: 'flex', gap: '2px' }}>
-          {['network', 'queue', 'logs', 'studies', 'automation'].map(t => (
+          {['network', 'queue', 'logs', 'studies', 'automation', 'vault'].map(t => (
             <button key={t} className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t ? 'var(--color-primary)' : 'transparent', color: activeTab === t ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveTab(t)}>{t.toUpperCase()}</button>
           ))}
         </div>
@@ -395,6 +397,129 @@ function Agents() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {activeTab === 'vault' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
+            {/* VAULT STATS BAR */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
+              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+                <span className="mono text-xs text-tertiary">TOTAL AGENTS</span>
+                <div className="mono text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{vaultTotal}</div>
+              </div>
+              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+                <span className="mono text-xs text-tertiary">CANONICAL</span>
+                <div className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{vaultCanonical}</div>
+              </div>
+              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+                <span className="mono text-xs text-tertiary">NAMESPACES</span>
+                <div className="mono text-lg font-bold" style={{ color: 'var(--color-info)' }}>{vaultNamespaces.length}</div>
+              </div>
+              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+                <span className="mono text-xs text-tertiary">FILTERED</span>
+                <div className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{vaultAgents.length}</div>
+              </div>
+            </div>
+
+            {/* FILTERS */}
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <input
+                className="input mono text-xs"
+                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px 12px', width: '240px', background: '#000' }}
+                placeholder="SEARCH AGENTS..."
+                value={vaultFilters.search}
+                onChange={e => setVaultSearch(e.target.value)}
+              />
+              <select
+                className="input mono text-xs"
+                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--color-text)' }}
+                value={vaultFilters.namespace}
+                onChange={e => setVaultNamespace(e.target.value)}
+              >
+                <option value="all">ALL NAMESPACES</option>
+                {vaultNamespaces.map(ns => (
+                  <option key={ns} value={ns}>{ns.toUpperCase()}</option>
+                ))}
+              </select>
+              <select
+                className="input mono text-xs"
+                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--color-text)' }}
+                value={vaultFilters.role}
+                onChange={e => setVaultRole(e.target.value)}
+              >
+                <option value="all">ALL ROLES</option>
+                {Object.keys(ROLE_CAPABILITY_MAP).map(r => (
+                  <option key={r} value={r}>{r.toUpperCase()}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* NAMESPACE QUICK FILTERS */}
+            <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+              <button
+                className="mono"
+                style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === 'all' ? 'var(--color-primary)' : '#000', color: vaultFilters.namespace === 'all' ? '#000' : 'var(--color-text-2)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
+                onClick={() => setVaultNamespace('all')}
+              >ALL</button>
+              {vaultNamespaces.map(ns => (
+                <button
+                  key={ns}
+                  className="mono"
+                  style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === ns ? 'var(--color-primary)' : '#000', color: vaultFilters.namespace === ns ? '#000' : 'var(--color-text-2)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
+                  onClick={() => setVaultNamespace(ns)}
+                >{ns.toUpperCase()}</button>
+              ))}
+            </div>
+
+            {/* VAULT CONTENT */}
+            {vaultLoading ? (
+              <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '48px' }}>LOADING AGENT-OS MANIFEST...</div>
+            ) : vaultError ? (
+              <div style={{ border: '1px solid var(--color-danger)', background: 'var(--color-bg-2)', padding: '24px', textAlign: 'center' }}>
+                <div className="mono text-xs" style={{ color: 'var(--color-danger)' }}>{vaultError}</div>
+              </div>
+            ) : (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
+                {vaultAgents.map(va => {
+                  const role = suggestRole(va)
+                  return (
+                    <div key={va.name} style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <div style={{ width: 6, height: 6, background: role ? (AGENT_COLORS[role] || 'var(--color-primary)') : 'var(--color-text-3)' }} />
+                          <span className="mono text-xs font-bold" style={{ color: 'var(--color-text)' }}>{va.name.toUpperCase()}</span>
+                        </div>
+                        <span className="mono" style={{ fontSize: '9px', color: 'var(--color-text-3)', background: '#000', border: '1px solid var(--border-subtle)', padding: '2px 6px' }}>
+                          {va.namespace.toUpperCase()}
+                        </span>
+                      </div>
+                      <div style={{ padding: '12px 14px', display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+                        {va.description && (
+                          <div className="mono text-xs text-tertiary" style={{ lineHeight: '1.4' }}>
+                            {va.description.length > 100 ? va.description.slice(0, 100).toUpperCase() + '...' : va.description.toUpperCase()}
+                          </div>
+                        )}
+                        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: 'auto' }}>
+                          {(va.capabilities || []).slice(0, 4).map(cap => (
+                            <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--color-text-2)', padding: '1px 5px', fontSize: '8px', fontFamily: 'var(--font-mono)' }}>
+                              {cap.toUpperCase()}
+                            </span>
+                          ))}
+                        </div>
+                        {role && (
+                          <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '8px', marginTop: '4px' }}>
+                            <span className="mono" style={{ fontSize: '9px', color: AGENT_COLORS[role] || 'var(--color-primary)', fontWeight: 'bold' }}>
+                              {AGENT_ICONS[role] || '●'} {role.toUpperCase()} COMPATIBLE
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
           </div>
         )}
       </div>

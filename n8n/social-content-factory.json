@@ -40,7 +40,7 @@
                 },
                 "sendBody": true,
                 "specifyBody": "json",
-                "jsonBody": "{\n  \"model\": \"gpt-4o-mini\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres un community manager experto para una agencia de IA y marketing digital premium en Murcia, España llamada ANTIGRAVITY. Genera contenido profesional, innovador y que genere engagement. Responde SOLO con JSON válido.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Genera contenido para hoy. Crea un JSON con:\\n1. linkedin_post: {text, hashtags[]}\\n2. instagram_post: {caption, hashtags[], suggested_image_prompt}\\n3. twitter_post: {text, hashtags[]}\\n4. tiktok_idea: {concept, script_outline, hook}\\n\\nTemas sugeridos: automatización con IA, casos de éxito, tips de marketing digital, tendencias tech, productividad empresarial.\\n\\nJSON válido solamente.\"\n    }\n  ],\n  \"temperature\": 0.85,\n  \"max_tokens\": 1200\n}",
+                "jsonBody": "{\n  \"model\": \"gpt-4o-mini\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres un community manager experto para una agencia de IA y marketing digital premium en Murcia, España llamada OCULOPS. Genera contenido profesional, innovador y que genere engagement. Responde SOLO con JSON válido.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Genera contenido para hoy. Crea un JSON con:\\n1. linkedin_post: {text, hashtags[]}\\n2. instagram_post: {caption, hashtags[], suggested_image_prompt}\\n3. twitter_post: {text, hashtags[]}\\n4. tiktok_idea: {concept, script_outline, hook}\\n\\nTemas sugeridos: automatización con IA, casos de éxito, tips de marketing digital, tendencias tech, productividad empresarial.\\n\\nJSON válido solamente.\"\n    }\n  ],\n  \"temperature\": 0.85,\n  \"max_tokens\": 1200\n}",
                 "options": {
                     "timeout": 30000
                 }
@@ -159,7 +159,7 @@
     },
     "tags": [
         {
-            "name": "ANTIGRAVITY"
+            "name": "OCULOPS"
         },
         {
             "name": "SOCIAL"

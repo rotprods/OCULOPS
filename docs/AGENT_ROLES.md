@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Agent Roles & Responsibilities
+# OCULOPS OS — Agent Roles & Responsibilities
 
 > Cada agente AI tiene un rol específico y una misión clara. Este documento asigna responsabilidades para la ejecución autónoma 24/7.
 

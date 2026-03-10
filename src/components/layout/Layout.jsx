@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Layout v5
+// OCULOPS — Layout v5
 // Premium Sidebar — Bloomberg Terminal / War Room
 // ═══════════════════════════════════════════════════
 
@@ -138,7 +138,7 @@ function Layout({ children, modules, sidebarCollapsed, onToggleSidebar, user }) 
                     <div className="sidebar-logo">
                         {!sidebarCollapsed && (
                             <span className="sidebar-logo-wordmark">
-                                ANTIGRAVITY<span className="sidebar-logo-dot"> OS</span>
+                                OCULOPS<span className="sidebar-logo-dot"></span>
                             </span>
                         )}
                         {sidebarCollapsed && (

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — useConnectionStatus Hook
+// OCULOPS — useConnectionStatus Hook
 // Tracks Supabase WebSocket connection state
 // ═══════════════════════════════════════════════════
 

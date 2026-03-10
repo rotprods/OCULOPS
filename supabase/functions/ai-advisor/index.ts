@@ -205,7 +205,7 @@ async function generateOpenAIInsights(context: ReturnType<typeof computeContext>
       messages: [
         {
           role: "system",
-          content: "You are the ANTIGRAVITY OS strategy advisor. Return compact JSON with an insights array. Each insight must include type, title, description, priority, confidence. Only use risk, opportunity, or action. Confidence must be 0-100.",
+          content: "You are the OCULOPS OS strategy advisor. Return compact JSON with an insights array. Each insight must include type, title, description, priority, confidence. Only use risk, opportunity, or action. Confidence must be 0-100.",
         },
         {
           role: "user",

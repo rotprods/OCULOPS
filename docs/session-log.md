@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Session Log
+# OCULOPS OS — Session Log
 > Cada terminal registra aqui lo que hizo. Append-only. No borrar entradas anteriores.
 
 ---
@@ -36,7 +36,7 @@
 - Verified live data: contacts, deals, companies, signals, crm_activities, agent_logs all returning real data
 
 ### Deploy
-- Vercel production deploy: https://antigravity-os-theta.vercel.app
+- Vercel production deploy: https://oculops-os-theta.vercel.app
 - Build clean: 4.5s, 0 errors
 - Git: 2 commits pushed to main (`90695bd`, `ffafc69`)
 
@@ -86,7 +86,7 @@ CREATED:
 
 ### Pending After This Session
 - [ ] 3.2 Wire n8n webhooks as event bus consumers
-- [ ] Phase 4: Bridge Agent-OS ↔ ANTIGRAVITY-OS
+- [ ] Phase 4: Bridge Agent-OS ↔ OCULOPS-OS
 - [ ] Phase 5: SaaS + Production (multi-tenancy, Stripe, testing, CI/CD)
 - [ ] Security sweep (DEV_MODE=false, RLS, ProtectedRoute) — LAST before public
 - [ ] Set WhatsApp/Meta/TikTok/ManyChat secrets when activating channels

@@ -1,11 +1,11 @@
-# ANTIGRAVITY OS — Agency Context
+# OCULOPS — Agency Context
 
-> This file is read by AI agents (Antigravity + Claude Code) to understand the business.
+> This file is read by AI agents (OCULOPS + Claude Code) to understand the business.
 > **Roberto**: Fill in the placeholders below with your real data.
 
 ## Agency Profile
 
-- **Name**: [Tu nombre de agencia — ej: Antigravity Agency]
+- **Name**: [Tu nombre de agencia — ej: OCULOPS Agency]
 - **Founder**: Roberto Ortega
 - **Location**: España
 - **Founded**: 2024
@@ -73,7 +73,7 @@
 
 ## LLM Handoff Summary (GPT-5.4)
 
-- **Current status**: Codex verified AGENTS.md, ANTIGRAVITY_OS master snapshot, `codex.md`, and `CURRENT_TRUTH.md` (2026-03-10) and confirms the React/Vite migration plus Supabase-backed automation surfaces are live.
+- **Current status**: Codex verified AGENTS.md, OCULOPS master snapshot, `codex.md`, and `CURRENT_TRUTH.md` (2026-03-10) and confirms the React/Vite migration plus Supabase-backed automation surfaces are live.
 - **Outstanding blockers**: Supabase CLI re-auth, blocked deploys for `ai-advisor`, `messaging-dispatch`, `api-proxy`, missing `ALPHA_VANTAGE_KEY`, scheduler gaps for `market-data`/`social-signals`, and unstable Reddit ingestion.
 - **Integrations in flight**: Electron entrypoints (`electron/*.cjs`), Supabase Edge Functions holding provider secrets, and n8n agents coordinating automation dashboards with live data pushes.
 - **Next actions for new LLMs**: Connect dashboards to real-time data feeds, verify n8n agents are routing through Supabase, keep secrets strictly in `.env` files, and refresh this doc once deployments pass.

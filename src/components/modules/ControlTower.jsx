@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Intelligence Terminal Masterpiece (Control Tower)
+// OCULOPS — Intelligence Terminal Masterpiece (Control Tower)
 // 100-Year UX: Military-grade, Bloomberg-style, OLED Black, Gold accents
 // ═══════════════════════════════════════════════════
 
@@ -77,7 +77,7 @@ function ControlTower() {
                     </div>
                     <div>
                         <h1 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontSize: '28px', color: 'var(--color-primary)', letterSpacing: '0.05em', lineHeight: '1' }}>SYSTEM INTELLIGENCE PANEL</h1>
-                        <span className="mono text-xs text-tertiary">ANTIGRAVITY OS CORE TERMINAL // ENCRYPTED CONNECTION</span>
+                        <span className="mono text-xs text-tertiary">OCULOPS CORE TERMINAL // ENCRYPTED CONNECTION</span>
                     </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', background: 'var(--color-bg-2)', border: '1px solid var(--color-border)', padding: '8px 16px' }}>

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Study Hub Data
+// OCULOPS — Study Hub Data
 // 14 Business Intelligence Studies
 // ═══════════════════════════════════════════════════
 
@@ -24,7 +24,7 @@ export const studies = [
         sections: [
             {
                 title: '1. VISIÓN Y PROPUESTA DE VALOR',
-                content: `ANTIGRAVITY es una agencia de marketing digital potenciada por inteligencia artificial, con sede en la **Región de Murcia**. Nuestro diferenciador: operamos un sistema operativo propietario (ANTIGRAVITY OS) que automatiza el **80% de las tareas repetitivas** de una agencia tradicional, permitiendo ofrecer resultados premium a una fracción del coste.
+                content: `OCULOPS es una agencia de marketing digital potenciada por inteligencia artificial, con sede en la **Región de Murcia**. Nuestro diferenciador: operamos un sistema operativo propietario (OCULOPS) que automatiza el **80% de las tareas repetitivas** de una agencia tradicional, permitiendo ofrecer resultados premium a una fracción del coste.
 
 **Mercado objetivo:** Las +92.000 PYMEs de la Región de Murcia, donde el **99.86% son SMEs** y la penetración de marketing digital profesional es inferior al 15%.
 
@@ -60,7 +60,7 @@ export const studies = [
                 title: '4. PLAN DE ACCIÓN 90 DÍAS',
                 content: `**Días 1–30 (Fundación):**
 - Alta de autónomo, branding básico, landing page
-- Configurar ANTIGRAVITY OS completo (Supabase, edge functions)
+- Configurar OCULOPS completo (Supabase, edge functions)
 - Escanear 500 negocios de hostelería en Murcia capital
 - Contactar 50 restaurantes (cold email + visita)
 - Cerrar 2 piloto gratuitos (15 días, para portfolio)
@@ -438,7 +438,7 @@ Cuerpo: mencionar competidor que sí tiene RRSS activas o buena web, CTA final.`
 | Semana | Acciones | Output |
 | --- | --- | --- |
 | S1 | Alta autónomo, cuenta bancaria business, dominio + email | Legal ✅ |
-| S1–S2 | Deploy ANTIGRAVITY OS, landing page, branding kit | Producto ✅ |
+| S1–S2 | Deploy OCULOPS, landing page, branding kit | Producto ✅ |
 | S2 | Primer scan de 500 negocios hostelería Murcia | 150 leads cualificados |
 | S3 | Contactar top 50, ofrecer piloto gratis 15 días | 5–10 interesados |
 | S4 | Ejecutar 2 pilotos, documentar resultados | 2 casos de estudio |`,
@@ -650,7 +650,7 @@ Cuerpo: mencionar competidor que sí tiene RRSS activas o buena web, CTA final.`
                         ['Financial model (Excel)', '⬜', 'Proyección 3 años'],
                         ['Portfolio / Casos de estudio', '⬜', 'Mínimo 3 necesarios'],
                         ['Testimonios de clientes', '⬜', 'Video + escrito'],
-                        ['Demo de ANTIGRAVITY OS', '⬜', 'Video walkthrough 3 min'],
+                        ['Demo de OCULOPS', '⬜', 'Video walkthrough 3 min'],
                     ],
                 },
             },
@@ -671,10 +671,10 @@ Cuerpo: mencionar competidor que sí tiene RRSS activas o buena web, CTA final.`
                 table: {
                     headers: ['#', 'Slide', 'Mensaje clave', 'Duración'],
                     rows: [
-                        ['1', 'Cover', 'ANTIGRAVITY — AI-Powered Marketing Agency', '15s'],
+                        ['1', 'Cover', 'OCULOPS — AI-Powered Marketing Agency', '15s'],
                         ['2', 'Problema', 'El 85% de PYMEs en Murcia no tienen marketing digital efectivo', '45s'],
                         ['3', 'Solución', 'Agencia AI que automatiza el 80% del trabajo → precio competitivo', '60s'],
-                        ['4', 'Producto', 'Demo visual de ANTIGRAVITY OS + servicios', '90s'],
+                        ['4', 'Producto', 'Demo visual de OCULOPS + servicios', '90s'],
                         ['5', 'Mercado', 'TAM €333M, SAM €48M, SOM €180K año 1', '45s'],
                         ['6', 'Modelo de negocio', 'Suscripciones €500–€5K/mes, margen 75–82%', '45s'],
                         ['7', 'Tracción', 'X clientes, €X MRR, pipeline €X', '30s'],
@@ -692,7 +692,7 @@ Cuerpo: mencionar competidor que sí tiene RRSS activas o buena web, CTA final.`
 - "Resultado: PYMEs perdiendo clientes ante competidores digitalizados."
 
 **Slide 3 — Solución:**
-- "ANTIGRAVITY usa IA propietaria para ejecutar en horas lo que tarda semanas."
+- "OCULOPS usa IA propietaria para ejecutar en horas lo que tarda semanas."
 - "Mismo resultado, 60% menos coste operativo."
 - "Escalable: 1 operador puede gestionar 15–20 clientes con nuestro OS."
 
@@ -782,7 +782,7 @@ Cuerpo: mencionar competidor que sí tiene RRSS activas o buena web, CTA final.`
 | Milestone | Target | Status |
 | --- | --- | --- |
 | Legal setup (autónomo) | Completar | ⬜ |
-| ANTIGRAVITY OS v1 deployed | Funcional | ⬜ |
+| OCULOPS v1 deployed | Funcional | ⬜ |
 | Landing page live | Conversión >3% | ⬜ |
 | 5 clientes de pago | MRR €2.500 | ⬜ |
 | 3 casos de estudio publicados | Social proof | ⬜ |
@@ -822,7 +822,7 @@ Cuerpo: mencionar competidor que sí tiene RRSS activas o buena web, CTA final.`
 | --- | --- | --- |
 | 25+ clientes activos | MRR €20.000+ | ⬜ |
 | Equipo de 3–4 personas | Full time | ⬜ |
-| ANTIGRAVITY OS v2 (white-label?) | Explorar | ⬜ |
+| OCULOPS v2 (white-label?) | Explorar | ⬜ |
 | Oficina/coworking en Murcia | Presencia física | ⬜ |
 | Revenue anualizado | >€240.000 | ⬜ |
 | Plan 2027 definido | Expansión regional | ⬜ |`,

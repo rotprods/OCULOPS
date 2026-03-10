@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Decision Log
+// OCULOPS — Decision Log
 // 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 

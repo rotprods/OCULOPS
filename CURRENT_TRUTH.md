@@ -2,9 +2,9 @@
 
 Updated: 2026-03-10
 
-## What ANTIGRAVITY OS Is
+## What OCULOPS OS Is
 
-- ANTIGRAVITY OS is Roberto Ortega's internal operating system for running an AI automation agency focused on Spanish and European SMBs.
+- OCULOPS OS is Roberto Ortega's internal operating system for running an AI automation agency focused on Spanish and European SMBs.
 - The current execution phase is operator-grade internal platform, not public SaaS.
 - The long-term ambition can be larger, but product and engineering decisions should optimize for Roberto-first operations now.
 
@@ -20,7 +20,7 @@ When docs conflict, trust them in this order:
 6. `docs/MASTER_API_REGISTRY.md`
 7. Older planning and audit docs
 
-`ANTIGRAVITY_OS_MASTER_SNAPSHOT.md` and `ANTIGRAVITY_OS_MASTER_SNAPSHOT_CURATED.md` are archive/recovery documents. They are not safe operational docs and must not be treated as live source of truth.
+`OCULOPS_OS_MASTER_SNAPSHOT.md` and `OCULOPS_OS_MASTER_SNAPSHOT_CURATED.md` are archive/recovery documents. They are not safe operational docs and must not be treated as live source of truth.
 
 ## What Is Already True
 

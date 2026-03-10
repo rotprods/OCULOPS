@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Markets Module
+// OCULOPS — Markets Module
 // 100-Year UX: Leadership telemetry and macro indices
 // ═══════════════════════════════════════════════════
 

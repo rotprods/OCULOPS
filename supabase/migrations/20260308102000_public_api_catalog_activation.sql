@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Public API Catalog + Connector Activation
+-- OCULOPS OS — Public API Catalog + Connector Activation
 -- Moves catalog schema into the active migration tree.
 -- ═══════════════════════════════════════════════════
 

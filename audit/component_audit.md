@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-The current ANTIGRAVITY OS v10 frontend relies heavily on a global CSS utility architecture rather than encapsulated React components for basic UI elements like buttons, cards, inputs, and badges. While functional, the visual styling is standard SaaS and lacks a premium editorial identity.
+The current OCULOPS OS v10 frontend relies heavily on a global CSS utility architecture rather than encapsulated React components for basic UI elements like buttons, cards, inputs, and badges. While functional, the visual styling is standard SaaS and lacks a premium editorial identity.
 
 ## COMPONENT SCORECARD
 

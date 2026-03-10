@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS v10 — React Entry Point
+// OCULOPS — React Entry Point
 // ═══════════════════════════════════════════════════
 
 import React from 'react'

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useContacts
+// OCULOPS — React Hook: useContacts
 // Supabase-connected hook for CRM contacts
 // ═══════════════════════════════════════════════════
 

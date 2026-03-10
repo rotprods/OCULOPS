@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Experiments Lab
+// OCULOPS — Experiments Lab
 // 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 

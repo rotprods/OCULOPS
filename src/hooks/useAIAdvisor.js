@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useAIAdvisor
+// OCULOPS — React Hook: useAIAdvisor
 // Calls the ai-advisor edge function for strategic insights
 // ═══════════════════════════════════════════════════
 

@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Mega API Catalog
+# OCULOPS OS — Mega API Catalog
 
 > This master catalog contains **1435** public APIs compiled from multiple open sources, including the public-apis registry and our internal verified directory.
 

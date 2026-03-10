@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Social Signals
+-- OCULOPS OS — Social Signals
 -- Social chatter feed for demand, urgency, and buyer pain detection
 -- ═══════════════════════════════════════════════════
 

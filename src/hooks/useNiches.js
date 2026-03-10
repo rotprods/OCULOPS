@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useNiches
+// OCULOPS — React Hook: useNiches
 // Supabase-connected hook for niche analysis
 // ═══════════════════════════════════════════════════
 

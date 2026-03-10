@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useDecisions
+// OCULOPS — React Hook: useDecisions
 // Supabase-connected hook for decision log
 // ═══════════════════════════════════════════════════
 

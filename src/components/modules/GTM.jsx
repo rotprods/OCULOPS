@@ -1,5 +1,5 @@
 // ===================================================
-// ANTIGRAVITY OS — GTM Machine
+// OCULOPS — GTM Machine
 // 100-Year UX: rigorous pipeline orchestration
 // ===================================================
 

@@ -4,8 +4,8 @@ Updated: 2026-03-10
 
 ## Role
 
-- Codex is the execution and stabilization agent for ANTIGRAVITY OS.
-- Default assumption: ANTIGRAVITY OS is Roberto's internal operating system first.
+- Codex is the execution and stabilization agent for OCULOPS OS.
+- Default assumption: OCULOPS OS is Roberto's internal operating system first.
 - Do not expand scope to public multi-tenant SaaS unless Roberto explicitly asks for it.
 
 ## Source Priority
@@ -19,7 +19,7 @@ Use documents in this order when they conflict:
 5. `docs/AGENT_ROLES.md`
 6. `docs/MASTER_API_REGISTRY.md`
 7. `claude.md`, `HANDOFF.md`, `docs/CLAUDE_EXECUTION_BRIEF.md`, `docs/audit*`
-8. `ANTIGRAVITY_OS_MASTER_SNAPSHOT*.md` as archive only, never as live operational truth
+8. `OCULOPS_OS_MASTER_SNAPSHOT*.md` as archive only, never as live operational truth
 
 ## Product Boundaries
 

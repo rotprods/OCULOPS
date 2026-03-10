@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Sync missing agents and briefing RPC
+-- OCULOPS OS — Sync missing agents and briefing RPC
 -- ═══════════════════════════════════════════════════
 
 INSERT INTO agent_registry (

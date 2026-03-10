@@ -107,7 +107,7 @@
                 "message": "={{ $json.html_body }}",
                 "options": {
                     "replyTo": "rot.prods@gmail.com",
-                    "senderName": "ANTIGRAVITY - IA Boutique"
+                    "senderName": "OCULOPS - IA Boutique"
                 }
             },
             "id": "gmail-send",
@@ -121,7 +121,7 @@
             "credentials": {
                 "gmailOAuth2": {
                     "id": "",
-                    "name": "Gmail ANTIGRAVITY"
+                    "name": "Gmail OCULOPS"
                 }
             }
         },
@@ -237,11 +237,11 @@
         {
             "parameters": {
                 "sendTo": "rot.prods@gmail.com",
-                "subject": "=📧 ANTIGRAVITY Outreach Report — {{ new Date().toLocaleDateString('es-ES') }}",
+                "subject": "=📧 OCULOPS Outreach Report — {{ new Date().toLocaleDateString('es-ES') }}",
                 "emailType": "html",
-                "message": "=<div style=\"font-family:system-ui;max-width:600px;margin:0 auto;background:#0a0a0a;color:#e2e8f0;padding:30px;border-radius:12px\">\n<h1 style=\"color:#7c3aed;font-size:20px;margin:0 0 20px\">📧 Outreach Report</h1>\n<table style=\"width:100%;border-collapse:collapse;font-size:14px\">\n<tr><td style=\"padding:8px;color:#94a3b8\">Pendientes</td><td style=\"padding:8px;font-weight:700;color:#eab308\">{{ $json.stats?.staged || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Aprobados</td><td style=\"padding:8px;font-weight:700;color:#3b82f6\">{{ $json.stats?.approved || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Enviados</td><td style=\"padding:8px;font-weight:700;color:#22c55e\">{{ $json.stats?.sent || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Respondidos</td><td style=\"padding:8px;font-weight:700;color:#a78bfa\">{{ $json.stats?.replied || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Total</td><td style=\"padding:8px;font-weight:700;color:#fff\">{{ $json.stats?.total || 0 }}</td></tr>\n</table>\n<p style=\"color:#64748b;font-size:12px;margin-top:20px\">ANTIGRAVITY OS — Outreach Pipeline</p>\n</div>",
+                "message": "=<div style=\"font-family:system-ui;max-width:600px;margin:0 auto;background:#0a0a0a;color:#e2e8f0;padding:30px;border-radius:12px\">\n<h1 style=\"color:#7c3aed;font-size:20px;margin:0 0 20px\">📧 Outreach Report</h1>\n<table style=\"width:100%;border-collapse:collapse;font-size:14px\">\n<tr><td style=\"padding:8px;color:#94a3b8\">Pendientes</td><td style=\"padding:8px;font-weight:700;color:#eab308\">{{ $json.stats?.staged || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Aprobados</td><td style=\"padding:8px;font-weight:700;color:#3b82f6\">{{ $json.stats?.approved || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Enviados</td><td style=\"padding:8px;font-weight:700;color:#22c55e\">{{ $json.stats?.sent || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Respondidos</td><td style=\"padding:8px;font-weight:700;color:#a78bfa\">{{ $json.stats?.replied || 0 }}</td></tr>\n<tr><td style=\"padding:8px;color:#94a3b8\">Total</td><td style=\"padding:8px;font-weight:700;color:#fff\">{{ $json.stats?.total || 0 }}</td></tr>\n</table>\n<p style=\"color:#64748b;font-size:12px;margin-top:20px\">OCULOPS OS — Outreach Pipeline</p>\n</div>",
                 "options": {
-                    "senderName": "ANTIGRAVITY OS"
+                    "senderName": "OCULOPS OS"
                 }
             },
             "id": "notify-summary",
@@ -255,7 +255,7 @@
             "credentials": {
                 "gmailOAuth2": {
                     "id": "",
-                    "name": "Gmail ANTIGRAVITY"
+                    "name": "Gmail OCULOPS"
                 }
             }
         }
@@ -362,7 +362,7 @@
     },
     "tags": [
         {
-            "name": "ANTIGRAVITY"
+            "name": "OCULOPS"
         },
         {
             "name": "OUTREACH"

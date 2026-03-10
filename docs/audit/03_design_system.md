@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Audit: Sistema de Diseño & UX
+# OCULOPS OS — Audit: Sistema de Diseño & UX
 **Fecha:** 2026-03-06
 
 ---

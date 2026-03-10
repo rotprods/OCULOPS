@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Simulation Engine
+// OCULOPS — Simulation Engine
 // 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 

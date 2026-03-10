@@ -1,8 +1,8 @@
-# ANTIGRAVITY OS — RAG Knowledge Base
+# OCULOPS OS — RAG Knowledge Base
 
 # Región de Murcia Market Intelligence + Global Data
 
-> **Propósito:** Base de datos de conocimiento para el sistema RAG de ANTIGRAVITY OS.
+> **Propósito:** Base de datos de conocimiento para el sistema RAG de OCULOPS OS.
 > **Agente responsable:** Apex (Strategy Advisor) + Scout (Lead Qualifier)
 > **Última actualización:** 2026-03-06
 > **Fuentes:** INE, BBVA Research, CaixaBank Research, AIReF, DIRCE, FUNCAS, HISPALINK, CARM
@@ -192,7 +192,7 @@
 | Social signals aggregator | 0 de 18 |
 | Financial markets monitoring | 0 de 18 |
 
-**Conclusión:** NINGUNA agencia en Murcia ofrece inteligencia artificial real ni automatización avanzada. El mercado está 100% dominado por servicios manuales tradicionales. ANTIGRAVITY OS es una propuesta radicalmente diferenciada.
+**Conclusión:** NINGUNA agencia en Murcia ofrece inteligencia artificial real ni automatización avanzada. El mercado está 100% dominado por servicios manuales tradicionales. OCULOPS OS es una propuesta radicalmente diferenciada.
 
 ---
 
@@ -539,7 +539,7 @@ Target MRR Mes 24: €250,000 (180 clientes)
 **Versión WhatsApp:**
 
 ```
-Hola [Nombre], soy [Tu nombre] de ANTIGRAVITY, una agencia de inteligencia digital en Murcia.
+Hola [Nombre], soy [Tu nombre] de OCULOPS, una agencia de inteligencia digital en Murcia.
 
 Hemos analizado [Negocio] con nuestra IA y detectamos 3 oportunidades concretas para aumentar tus clientes:
 
@@ -555,7 +555,7 @@ Hemos analizado [Negocio] con nuestra IA y detectamos 3 oportunidades concretas 
 ```
 Hola [Nombre],
 
-Soy [Tu nombre], fundador de ANTIGRAVITY, una agencia de inteligencia digital basada en IA en Murcia.
+Soy [Tu nombre], fundador de OCULOPS, una agencia de inteligencia digital basada en IA en Murcia.
 
 Nuestro sistema de inteligencia artificial ha analizado automáticamente [Negocio] y ha detectado oportunidades de mejora en tu presencia digital que podrían traducirse en [X]% más de clientes.
 
@@ -568,14 +568,14 @@ Me gustaría mostrarte el informe completo en una videollamada de 15 minutos. ¿
 
 Un saludo,
 [Tu nombre]
-ANTIGRAVITY — AI-Powered Digital Intelligence
+OCULOPS — AI-Powered Digital Intelligence
 ```
 
 ---
 
 ## 13. FRAMEWORKS DE ANÁLISIS
 
-### 13.1 SWOT — ANTIGRAVITY en Murcia
+### 13.1 SWOT — OCULOPS en Murcia
 
 | | Positivo | Negativo |
 |---|----------|----------|

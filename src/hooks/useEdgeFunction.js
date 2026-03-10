@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — useEdgeFunction Hook
+// OCULOPS — useEdgeFunction Hook
 // Generic hook to call any Supabase Edge Function
 // ═══════════════════════════════════════════════════
 

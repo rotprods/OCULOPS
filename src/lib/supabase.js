@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Supabase Client
+// OCULOPS — Supabase Client
 // ═══════════════════════════════════════════════════
 
 import { createClient } from '@supabase/supabase-js';

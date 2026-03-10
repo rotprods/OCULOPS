@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Mini-App Registry
+// OCULOPS — Mini-App Registry
 // First-party API surface for the API Network dashboard
 // ═══════════════════════════════════════════════════
 

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — useAuth Hook
+// OCULOPS — useAuth Hook
 // Manages auth state, session, and user profile
 // ═══════════════════════════════════════════════════
 

@@ -31,7 +31,7 @@ serve(async (req) => {
             // Return a simulated mock response if API keys are not yet configured
             return new Response(JSON.stringify({
                 status: 'success',
-                mediaUrl: 'https://storage.googleapis.com/antigravity-mock/mock-image-banana.png',
+                mediaUrl: 'https://storage.googleapis.com/oculops-mock/mock-image-banana.png',
                 message: 'Mocked successful Nano Banana response due to missing API key.'
             }), {
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' },

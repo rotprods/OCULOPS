@@ -42,7 +42,7 @@ function callbackHtml(ok: boolean, message: string) {
     <main>
       <h1>${ok ? "Channel connected" : "Connection failed"}</h1>
       <p>${message}</p>
-      <button onclick="window.opener && window.opener.postMessage({ type: 'antigravity:channel-connected', ok: ${ok ? "true" : "false"} }, '*'); window.location.href='${appUrl}'">Back to app</button>
+      <button onclick="window.opener && window.opener.postMessage({ type: 'oculops:channel-connected', ok: ${ok ? "true" : "false"} }, '*'); window.location.href='${appUrl}'">Back to app</button>
     </main>
   </body>
 </html>`;

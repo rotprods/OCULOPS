@@ -345,6 +345,7 @@ Cortex chain: Atlas → Hunter → Strategist → Outreach (via `agent-cortex/in
 ### Deployment Gate — ejecutar en cada deploy o handoff fuerte
 
 ```bash
+npm run deploy:gate
 npm run context:audit
 npm run gitnexus:status
 npm run build
@@ -383,6 +384,7 @@ Reglas:
 npm run dev                                              # Vite dev (puerto 5173)
 npm run electron                                         # Electron + Vite
 NODE_OPTIONS=--no-experimental-require-module npm run build  # Build produccion (Node v24 fix)
+npm run deploy:gate                                      # Gate completo antes de deploy/handoff
 npx supabase db push --linked                            # Aplicar migraciones a remote
 supabase functions deploy <name>                         # Deploy edge function
 vercel --prod                                            # Deploy a Vercel produccion

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useAutomation
+// OCULOPS — React Hook: useAutomation
 // Supabase-connected hook for automation workflows + runs
 // ═══════════════════════════════════════════════════
 

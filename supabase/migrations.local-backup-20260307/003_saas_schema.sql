@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Database Schema v3
+-- OCULOPS OS — Database Schema v3
 -- SaaS Layer: Multi-tenancy, AI Agents, Assets, Audit
 -- Prerequisite: 001_initial_schema.sql
 -- ═══════════════════════════════════════════════════

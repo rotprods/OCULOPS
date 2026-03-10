@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useKnowledge
+// OCULOPS — React Hook: useKnowledge
 // Supabase-connected hook for knowledge vault
 // ═══════════════════════════════════════════════════
 

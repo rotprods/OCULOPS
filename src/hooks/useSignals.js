@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useSignals
+// OCULOPS — React Hook: useSignals
 // Supabase-connected hook for market signals
 // ═══════════════════════════════════════════════════
 

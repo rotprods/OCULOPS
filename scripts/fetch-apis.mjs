@@ -1,5 +1,5 @@
 /**
- * ANTIGRAVITY OS — API Mega Harvester
+ * OCULOPS OS — API Mega Harvester
  * Target: 10,000 APIs from free, no-auth sources
  *
  * Sources:
@@ -33,7 +33,7 @@ try {
 // ─── helpers ────────────────────────────────────────────────────────────────
 
 function ghHeaders() {
-  const h = { 'User-Agent': 'antigravity-os-harvester/1.0' };
+  const h = { 'User-Agent': 'oculops-os-harvester/1.0' };
   if (GH_TOKEN) h['Authorization'] = `Bearer ${GH_TOKEN}`;
   return h;
 }
@@ -41,7 +41,7 @@ function ghHeaders() {
 async function fetchJSON(url, label, useGhAuth = false) {
   try {
     const res = await fetch(url, {
-      headers: useGhAuth ? ghHeaders() : { 'User-Agent': 'antigravity-os-harvester/1.0' },
+      headers: useGhAuth ? ghHeaders() : { 'User-Agent': 'oculops-os-harvester/1.0' },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
@@ -54,7 +54,7 @@ async function fetchJSON(url, label, useGhAuth = false) {
 async function fetchText(url, label) {
   try {
     const res = await fetch(url, {
-      headers: { 'User-Agent': 'antigravity-os-harvester/1.0' },
+      headers: { 'User-Agent': 'oculops-os-harvester/1.0' },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.text();
@@ -382,7 +382,7 @@ async function fetchGitHubCodeSearch() {
 
 async function main() {
   console.log('═══════════════════════════════════════════');
-  console.log(' ANTIGRAVITY OS — API Mega Harvester');
+  console.log(' OCULOPS OS — API Mega Harvester');
   console.log('═══════════════════════════════════════════');
 
   // Run sequentially to respect rate limits on GitHub

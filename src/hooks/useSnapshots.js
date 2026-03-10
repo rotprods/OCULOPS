@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useSnapshots
+// OCULOPS — React Hook: useSnapshots
 // Supabase-connected hook for daily historical data
 // Used by sparklines and trend charts
 // ═══════════════════════════════════════════════════

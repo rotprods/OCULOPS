@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Study Hub
+// OCULOPS — Study Hub
 // 100-Year UX: rigorous documentation reader
 // ═══════════════════════════════════════════════════
 
@@ -11,12 +11,12 @@ function StudyHub() {
     const [activeStudy, setActiveStudy] = useState(null)
     const [completed, setCompleted] = useState(() => {
         try {
-            return JSON.parse(localStorage.getItem('antigravity_studies_completed') || '[]')
+            return JSON.parse(localStorage.getItem('oculops_studies_completed') || '[]')
         } catch { return [] }
     })
 
     useEffect(() => {
-        localStorage.setItem('antigravity_studies_completed', JSON.stringify(completed))
+        localStorage.setItem('oculops_studies_completed', JSON.stringify(completed))
     }, [completed])
 
     const toggleCompleted = (id) => {

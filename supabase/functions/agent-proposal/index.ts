@@ -88,7 +88,7 @@ Deno.serve(async (req) => {
 </style></head><body>
 <div class="page">
   <div class="cover">
-    <h1>ANTIGRAVITY</h1>
+    <h1>OCULOPS</h1>
     <div class="glow"></div>
     <h2>Propuesta Personalizada</h2>
     <p>Preparada para ${business_name}</p>
@@ -103,7 +103,7 @@ Deno.serve(async (req) => {
 
   <div class="section">
     <h2>\u{1F680} <span>La Solución</span></h2>
-    <p>ANTIGRAVITY es una agencia boutique de IA en Murcia. Diseñamos soluciones personalizadas que transforman tu presencia digital:</p>
+    <p>OCULOPS es una agencia boutique de IA en Murcia. Diseñamos soluciones personalizadas que transforman tu presencia digital:</p>
     ${(recommended_services || ['Marketing digital con IA que atrae clientes automáticamente', 'Automatización de procesos que ahorra tiempo y dinero', 'Presencia online premium que transmite profesionalidad']).map((s: string) => `<div class="solution-card"><h4>\u2705 Solución</h4><p>${s}</p></div>`).join('')}
   </div>
 
@@ -123,13 +123,13 @@ Deno.serve(async (req) => {
 
   <div class="cta-section">
     <p style="color:#e2e8f0;font-size:16px;margin-bottom:20px">¿Listo para desafiar la gravedad?</p>
-    <a href="https://calendly.com/antigravity-murcia/30min" class="cta-btn">\u{1F4C5} Reservar Llamada Gratuita</a>
+    <a href="https://calendly.com/oculops-murcia/30min" class="cta-btn">\u{1F4C5} Reservar Llamada Gratuita</a>
     <p style="color:#64748b;font-size:12px;margin-top:16px">15 minutos, sin compromiso</p>
   </div>
 
   <div class="footer">
-    <p>ANTIGRAVITY \u2014 Agencia IA Boutique</p>
-    <p>Murcia, España \u2022 antigravity.ia</p>
+    <p>OCULOPS \u2014 Agencia IA Boutique</p>
+    <p>Murcia, España \u2022 oculops.ia</p>
   </div>
 </div></body></html>`;
 

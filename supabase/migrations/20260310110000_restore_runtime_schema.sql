@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Restore runtime tables for live functions
+-- OCULOPS OS — Restore runtime tables for live functions
 -- ═══════════════════════════════════════════════════
 
 CREATE TABLE IF NOT EXISTS api_connectors (

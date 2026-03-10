@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS — Continuity Status
+# OCULOPS OS — Continuity Status
 
 Updated: March 9, 2026
 

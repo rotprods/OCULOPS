@@ -1,4 +1,4 @@
-# ANTIGRAVITY OS Operations Architecture
+# OCULOPS OS Operations Architecture
 
 Updated: March 7, 2026
 

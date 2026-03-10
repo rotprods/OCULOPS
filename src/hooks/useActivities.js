@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useActivities
+// OCULOPS — React Hook: useActivities
 // Supabase-connected hook for CRM activity timeline
 // ═══════════════════════════════════════════════════
 

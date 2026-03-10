@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — MiniApp Component
+// OCULOPS — MiniApp Component
 // Generic panel for core edge functions and public connector mini-apps
 // ═══════════════════════════════════════════════════
 

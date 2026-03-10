@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS v10 — Root App Component
+// OCULOPS — Root App Component
 // ═══════════════════════════════════════════════════
 
 import { useState, lazy, Suspense } from 'react'
@@ -14,7 +14,7 @@ import { ErrorBoundary } from './components/ui/ErrorBoundary'
 // Default false — must be explicitly set to 'true' in .env to activate
 const DEV_MODE = import.meta.env.VITE_DEV_MODE === 'true'
 
-console.log('🚀 [ANTIGRAVITY] Booting OS...', { devMode: DEV_MODE })
+console.log('🚀 [OCULOPS] Booting OS...', { devMode: DEV_MODE })
 
 // ─── Lazy-loaded modules — each becomes a separate chunk ───────────────────
 
@@ -177,14 +177,14 @@ function App() {
             <span style={{ fontSize: '2rem', animation: 'spin 2s linear infinite' }}>⚡</span>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
               <span style={{ fontWeight: 800, color: 'var(--color-text)' }}>INITIALIZING</span>
-              <span style={{ fontSize: '10px', color: 'var(--color-text-3)', letterSpacing: '2px' }}>ANTIGRAVITY OS v10.3</span>
+              <span style={{ fontSize: '10px', color: 'var(--color-text-3)', letterSpacing: '2px' }}>OCULOPS v10.3</span>
             </div>
           </div>
         ) : DEV_MODE ? (
           <BrowserRouter>
             <NotificationCenter />
             <AppRoutes
-              user={{ email: 'dev@antigravity.os', id: 'dev' }}
+              user={{ email: 'dev@oculops.com', id: 'dev' }}
               profile={{ full_name: 'Roberto Ortega' }}
             />
           </BrowserRouter>

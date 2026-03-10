@@ -14,7 +14,7 @@ async function fetchWebsiteAnalysis(website: string | null | undefined) {
   try {
     const response = await fetch(website, {
       headers: {
-        "User-Agent": "ANTIGRAVITY-OS/1.0 (+https://antigravity.os)",
+        "User-Agent": "OCULOPS-OS/1.0 (+https://oculops.os)",
       },
       signal: controller.signal,
     });

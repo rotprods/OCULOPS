@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useConversations
+// OCULOPS — React Hook: useConversations
 // Supabase-connected hook for messaging conversations + messages
 // ═══════════════════════════════════════════════════
 

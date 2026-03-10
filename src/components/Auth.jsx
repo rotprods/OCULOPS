@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Auth Component
+// OCULOPS — Auth Component
 // Login / Signup with email+password and magic link
 // ═══════════════════════════════════════════════════
 
@@ -88,15 +88,15 @@ export default function Auth() {
                 animate="visible"
             >
                 <Motion.div variants={itemVariants} className="auth-logo">
-                    <div className="auth-logo-icon">AG</div>
+                    <div className="auth-logo-icon">OC</div>
                     <div>
-                        <div className="auth-logo-text">ANTIGRAVITY</div>
+                        <div className="auth-logo-text">OCULOPS</div>
                         <div className="auth-logo-version">OS v10</div>
                     </div>
                 </Motion.div>
 
                 <Motion.p variants={itemVariants} className="auth-subtitle">
-                    Strategic Intelligence Operating System
+                    Autonomous Growth Operating System
                 </Motion.p>
 
                 <AnimatePresence>

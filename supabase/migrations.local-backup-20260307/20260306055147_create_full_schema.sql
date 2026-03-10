@@ -1,6 +1,6 @@
 
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Full Database Schema
+-- OCULOPS OS — Full Database Schema
 -- ═══════════════════════════════════════════════════
 
 -- ── Profiles ──

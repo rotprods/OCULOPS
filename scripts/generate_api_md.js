@@ -99,7 +99,7 @@ async function generateMasterCatalog() {
     // Sort by category
     allApis.sort((a, b) => a.category.localeCompare(b.category));
 
-    let mdContent = `# ANTIGRAVITY OS — Mega API Catalog\n\n`;
+    let mdContent = `# OCULOPS OS — Mega API Catalog\n\n`;
     mdContent += `> This master catalog contains **${allApis.length}** public APIs compiled from multiple open sources, including the public-apis registry and our internal verified directory.\n\n`;
 
     let activeCategory = '';

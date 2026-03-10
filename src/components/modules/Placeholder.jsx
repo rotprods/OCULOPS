@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Module Placeholder Component
+// OCULOPS — Module Placeholder Component
 // 100-Year UX: Strict Terminal Paradigm
 // ═══════════════════════════════════════════════════
 

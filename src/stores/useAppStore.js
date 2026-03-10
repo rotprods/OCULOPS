@@ -1,5 +1,5 @@
 // ===================================================
-// ANTIGRAVITY OS — Global State Store (Zustand)
+// OCULOPS — Global State Store (Zustand)
 // Mirrors legacy App.data + App methods
 // ===================================================
 
@@ -144,6 +144,6 @@ export const useAppStore = create(
         }
       },
     }),
-    { name: 'antigravity-os-v10' }
+    { name: 'oculops-v10' }
   )
 )

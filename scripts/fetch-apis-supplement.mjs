@@ -1,5 +1,5 @@
 /**
- * ANTIGRAVITY OS — API Supplement Harvester
+ * OCULOPS OS — API Supplement Harvester
  * Adds more unique APIs to the existing catalog via GitHub Code Search
  * Runs the queries that were rate-limited in the main harvester.
  */
@@ -26,7 +26,7 @@ async function fetchJSON(url) {
   try {
     const res = await fetch(url, {
       headers: {
-        'User-Agent': 'antigravity-os-harvester/1.0',
+        'User-Agent': 'oculops-os-harvester/1.0',
         ...(GH_TOKEN ? { Authorization: `Bearer ${GH_TOKEN}` } : {}),
       },
     });
@@ -120,7 +120,7 @@ async function codeSearch(query, maxPages = 10) {
 
 async function main() {
   console.log('═══════════════════════════════════════════════');
-  console.log(' ANTIGRAVITY OS — API Supplement Harvester');
+  console.log(' OCULOPS OS — API Supplement Harvester');
   console.log('═══════════════════════════════════════════════');
 
   // Load existing catalog

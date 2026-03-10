@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useDeals
+// OCULOPS — React Hook: useDeals
 // Supabase-connected hook for CRM deals/pipeline
 // ═══════════════════════════════════════════════════
 

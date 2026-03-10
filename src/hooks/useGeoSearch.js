@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — useGeoSearch Hook
+// OCULOPS — useGeoSearch Hook
 // Calls google-maps-search and web-analyzer edge functions
 // ═══════════════════════════════════════════════════
 

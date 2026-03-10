@@ -168,6 +168,27 @@ export const API_INTELLIGENCE_SECTIONS = [
   },
 ]
 
+export const API_ACCESS_GROUPS = [
+  {
+    key: 'open_access',
+    label: 'No Auth',
+    description: 'No account, no approval, direct docs-first activation.',
+    color: '#22C55E',
+  },
+  {
+    key: 'api_key_easy',
+    label: 'API Key Easy',
+    description: 'Usually just sign up, generate a key, and wire the secret.',
+    color: '#F59E0B',
+  },
+  {
+    key: 'oauth_review',
+    label: 'OAuth / Review',
+    description: 'Usually needs app registration, OAuth flow, headers, or provider approval.',
+    color: '#EF4444',
+  },
+]
+
 const TARGET_CATEGORIES = new Set(Object.keys(MODULE_TARGET_MAP))
 const ENTERTAINMENT_CATEGORIES = new Set([
   'Anime',
@@ -517,6 +538,47 @@ export function groupApiIntelligenceEntries(entries = []) {
         return left.name.localeCompare(right.name)
       }),
     }))
+}
+
+export function getApiAccessGroup(entry = {}) {
+  if (entry.auth_type === 'none') {
+    return API_ACCESS_GROUPS[0]
+  }
+
+  if (entry.auth_type === 'api_key' || entry.auth_type === 'header') {
+    return API_ACCESS_GROUPS[1]
+  }
+
+  return API_ACCESS_GROUPS[2]
+}
+
+export function groupCatalogEntriesByAccessBurden(entries = []) {
+  const buckets = new Map(
+    API_ACCESS_GROUPS.map(group => [group.key, { ...group, entries: [] }])
+  )
+
+  for (const entry of entries) {
+    const decoratedEntry = {
+      ...entry,
+      ...buildApiIntelligencePresentation(entry),
+    }
+    const group = getApiAccessGroup(entry)
+    buckets.get(group.key)?.entries.push(decoratedEntry)
+  }
+
+  return API_ACCESS_GROUPS.map(group => {
+    const bucket = buckets.get(group.key) || { ...group, entries: [] }
+
+    return {
+      ...bucket,
+      entries: bucket.entries.sort((left, right) => {
+        if ((right.featured_score || 0) !== (left.featured_score || 0)) {
+          return (right.featured_score || 0) - (left.featured_score || 0)
+        }
+        return left.name.localeCompare(right.name)
+      }),
+    }
+  })
 }
 
 export function buildCatalogSlug(category, name, docsUrl) {

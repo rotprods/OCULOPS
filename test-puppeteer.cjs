@@ -16,7 +16,7 @@ const puppeteer = require('puppeteer');
 
   try {
     console.log('Navigating to Vercel...');
-    await page.goto('https://antigravity-os-theta.vercel.app/', { waitUntil: 'domcontentloaded', timeout: 10000 });
+    await page.goto('https://oculops-os.vercel.app/ /* TODO: update after Vercel rebrand — currently still antigravity-os-theta.vercel.app */', { waitUntil: 'domcontentloaded', timeout: 10000 });
 
     console.log('Waiting 3s for React to attempt rendering...');
     await new Promise(r => setTimeout(r, 3000));

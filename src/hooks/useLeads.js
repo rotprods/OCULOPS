@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — React Hook: useLeads
+// OCULOPS — React Hook: useLeads
 // Canonical lead intake via prospector_leads
 // ═══════════════════════════════════════════════════
 

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — useRealtime Hook
+// OCULOPS — useRealtime Hook
 // Generic real-time subscription for any Supabase table
 // ═══════════════════════════════════════════════════
 

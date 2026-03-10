@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════
--- ANTIGRAVITY OS — Schedule live market and social sync jobs
+-- OCULOPS OS — Schedule live market and social sync jobs
 -- ═══════════════════════════════════════════════════
 
 DO $$

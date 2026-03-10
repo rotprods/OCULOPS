@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════
-// ANTIGRAVITY OS — Error Boundary
+// OCULOPS — Error Boundary
 // Catches render errors per-module, prevents full crash
 // ═══════════════════════════════════════════════════
 
