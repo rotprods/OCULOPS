@@ -193,7 +193,7 @@ function Automation() {
                             <div className="auto-sequence-preview">
                                 <div className="mono text-xs text-tertiary" style={{ marginBottom: 'var(--space-2)' }}>Sequence preview:</div>
                                 <div className="auto-sequence-flow">
-                                    <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{getTriggerMeta(form.trigger).label}</span>
+                                    <span className="badge" style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>{getTriggerMeta(form.trigger).label}</span>
                                     {form.actions.map(a => <><span key={`arrow-${a}`} className="text-tertiary">→</span><span key={a} className="badge">{getActionMeta(a).label}</span></>)}
                                 </div>
                             </div>
@@ -213,7 +213,7 @@ function Automation() {
                                         <div className="mono text-xs font-bold">{t.name}</div>
                                         <div className="mono text-xs text-tertiary" style={{ margin: '4px 0 8px' }}>{t.desc}</div>
                                         <div style={{ display: 'flex', gap: 4 }}>
-                                            <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{getTriggerMeta(t.trigger).label}</span>
+                                            <span className="badge" style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>{getTriggerMeta(t.trigger).label}</span>
                                             <span className="badge">{t.actions.length} actions</span>
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@ function Automation() {
                                         <div className="mono text-xs font-bold" style={{ color: 'var(--color-info)' }}>{pack.label}</div>
                                         <div className="mono text-xs text-tertiary" style={{ margin: '4px 0 12px', flex: 1 }}>{pack.objective}</div>
                                         <div className="auto-pack-tags">
-                                            <span className="badge" style={{ color: 'var(--accent-primary)' }}>Trigger: {pack.defaultTrigger}</span>
+                                            <span className="badge" style={{ color: 'var(--color-primary)' }}>Trigger: {pack.defaultTrigger}</span>
                                             {pack.defaultActions.map(a => <span key={a} className="badge">{a}</span>)}
                                         </div>
                                         <button className="btn btn-sm btn-ghost" onClick={() => seedAgentPack(pack)}>Use template</button>
@@ -252,7 +252,7 @@ function Automation() {
                             <div>{automationVaultAgents.map((agent, i) => (
                                 <div key={agent.name || i} className="lab-log-row">
                                     <span className="mono text-xs font-bold" style={{ minWidth: 180 }}>{agent.name || ''}</span>
-                                    <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{agent.namespace || ''}</span>
+                                    <span className="badge" style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>{agent.namespace || ''}</span>
                                     <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', flex: 1 }}>
                                         {(agent.capabilities || []).map(cap => <span key={cap} className="badge" style={{ color: VAULT_AUTOMATION_CAPS.includes(cap) ? 'var(--color-info)' : 'var(--text-tertiary)' }}>{cap}</span>)}
                                     </div>
@@ -279,7 +279,7 @@ function Automation() {
                                             <div className="mono text-sm font-bold">{wf.name}</div>
                                             {wf.description && <div className="mono text-xs text-tertiary" style={{ marginTop: 2 }}>{wf.description}</div>}
                                             <div className="auto-wf-tags">
-                                                <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{trigger.label}</span>
+                                                <span className="badge" style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>{trigger.label}</span>
                                                 {steps.map(s => <span key={s.id || s.type} className="badge">{getActionMeta(s.type).label}</span>)}
                                                 {hasLaunch && <span className="badge" style={{ color: 'var(--color-info)', borderColor: 'var(--color-info)' }}>Linked channel</span>}
                                             </div>
@@ -326,7 +326,7 @@ function Automation() {
                                                     {step.config?.connectorId && <div className="mono text-xs text-tertiary">Connector: {step.config.connectorId}</div>}
                                                     {step.config?.endpoint && <div className="mono text-xs text-tertiary">API: {step.config.label || step.config.endpoint}</div>}
                                                     {step.config?.agentCodeName && <div className="mono text-xs text-tertiary">Agent: {step.config.agentCodeName}</div>}
-                                                    {step.config?.workflowTemplate && <div className="mono text-xs text-tertiary">Template: {step.config.workflowTemplateLabel || step.config.workflowTemplate}{step.config?.workflowTemplateUrl && <a href={step.config.workflowTemplateUrl} target="_blank" rel="noreferrer" style={{ marginLeft: 8, color: 'var(--accent-primary)' }}>Docs</a>}</div>}
+                                                    {step.config?.workflowTemplate && <div className="mono text-xs text-tertiary">Template: {step.config.workflowTemplateLabel || step.config.workflowTemplate}{step.config?.workflowTemplateUrl && <a href={step.config.workflowTemplateUrl} target="_blank" rel="noreferrer" style={{ marginLeft: 8, color: 'var(--color-primary)' }}>Docs</a>}</div>}
                                                 </div>
                                             ))}
                                         </div>
