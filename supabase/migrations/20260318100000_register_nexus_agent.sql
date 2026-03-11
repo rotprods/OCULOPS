@@ -3,16 +3,18 @@
 -- that decomposes complex goals into multi-agent plans.
 
 INSERT INTO agent_registry (
+  name,
   code_name,
-  display_name,
+  role,
   description,
   status,
   total_runs,
   avg_duration_ms,
   config
 ) VALUES (
-  'nexus',
   'NEXUS Director',
+  'nexus',
+  'Director / Meta-Orchestrator',
   'Top-level director agent. Decomposes complex business objectives into multi-agent plans, delegates to domain agents (ATLAS, HUNTER, ORACLE, SENTINEL, FORGE, HERALD, OUTREACH, CORTEX), and consolidates results.',
   'online',
   0,
@@ -36,6 +38,8 @@ INSERT INTO agent_registry (
     'kpis', jsonb_build_array('plan_success_rate', 'delegation_accuracy', 'consolidation_quality')
   )
 ) ON CONFLICT (code_name) DO UPDATE SET
-  display_name = EXCLUDED.display_name,
+  name = EXCLUDED.name,
+  role = EXCLUDED.role,
   description = EXCLUDED.description,
+  status = EXCLUDED.status,
   config = EXCLUDED.config;

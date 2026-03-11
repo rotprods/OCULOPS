@@ -125,6 +125,12 @@ function Automation() {
 
     const selectWorkflow = async (wf) => { setSelectedWorkflowId(wf.id); await loadRuns(wf.id) }
 
+    const openWorkflowDraft = (wf) => {
+        const draftStep = (wf.steps || []).find(s => s?.config?.launch_url)
+        if (!draftStep?.config?.launch_url) return toast('No linked channel found', 'warning')
+        window.open(draftStep.config.launch_url, '_blank', 'noopener,noreferrer')
+    }
+
     const executeWorkflow = async (wf, { sendLive = false } = {}) => {
         if (!wf?.id) return
         const result = await runWorkflow(wf.id, { sendLive, context: { workflow_name: wf.name } })
@@ -265,6 +271,7 @@ function Automation() {
                             <div>{workflows.map(wf => {
                                 const trigger = getTriggerMeta(wf.trigger_config?.key || wf.trigger_type)
                                 const steps = Array.isArray(wf.steps) ? wf.steps : []
+                                const hasLaunch = steps.some(s => s?.config?.launch_url)
                                 return (
                                     <div key={wf.id} className={`auto-wf-item ${selectedWorkflow?.id === wf.id ? 'selected' : ''}`} onClick={() => selectWorkflow(wf)}>
                                         <div className={`auto-wf-dot ${wf.is_active ? 'auto-wf-dot--active' : 'auto-wf-dot--inactive'}`} />
@@ -274,6 +281,7 @@ function Automation() {
                                             <div className="auto-wf-tags">
                                                 <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{trigger.label}</span>
                                                 {steps.map(s => <span key={s.id || s.type} className="badge">{getActionMeta(s.type).label}</span>)}
+                                                {hasLaunch && <span className="badge" style={{ color: 'var(--color-info)', borderColor: 'var(--color-info)' }}>Linked channel</span>}
                                             </div>
                                         </div>
                                         <div className="mono text-xs text-tertiary" style={{ alignSelf: 'flex-start' }}>{wf.run_count || 0} runs</div>
@@ -298,6 +306,7 @@ function Automation() {
                                     <div style={{ display: 'flex', gap: 4 }}>
                                         <button className="btn btn-sm btn-ghost" onClick={() => executeWorkflow(selectedWorkflow)} disabled={runningWorkflowId === selectedWorkflow.id}>Run</button>
                                         {workflowSupportsLiveSend(selectedWorkflow) && <button className="btn btn-sm btn-ghost" style={{ color: 'var(--color-danger)' }} onClick={() => executeWorkflow(selectedWorkflow, { sendLive: true })} disabled={runningWorkflowId === selectedWorkflow.id}>Send live</button>}
+                                        {selectedWorkflow.steps?.some(s => s?.config?.launch_url) && <button className="btn btn-sm btn-ghost" onClick={() => openWorkflowDraft(selectedWorkflow)}>Open link</button>}
                                     </div>
                                 </div>
                                 <div className="ct-section-body lab-col-layout">
@@ -313,6 +322,7 @@ function Automation() {
                                             {(selectedWorkflow.steps || []).map(step => (
                                                 <div key={step.id || step.type} className="auto-step-card">
                                                     <div className="mono text-xs font-bold">{getActionMeta(step.type).label}</div>
+                                                    {step.config?.launch_url && <div className="mono text-xs" style={{ color: 'var(--color-info)' }}>Linked: secure open</div>}
                                                     {step.config?.connectorId && <div className="mono text-xs text-tertiary">Connector: {step.config.connectorId}</div>}
                                                     {step.config?.endpoint && <div className="mono text-xs text-tertiary">API: {step.config.label || step.config.endpoint}</div>}
                                                     {step.config?.agentCodeName && <div className="mono text-xs text-tertiary">Agent: {step.config.agentCodeName}</div>}

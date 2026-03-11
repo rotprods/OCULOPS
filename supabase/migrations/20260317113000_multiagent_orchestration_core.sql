@@ -313,6 +313,9 @@ END $$;
 DROP POLICY IF EXISTS "Users read own events" ON public.event_log;
 DROP POLICY IF EXISTS "Users insert events" ON public.event_log;
 DROP POLICY IF EXISTS "Anon insert events" ON public.event_log;
+DROP POLICY IF EXISTS "org_select_event_log" ON public.event_log;
+DROP POLICY IF EXISTS "org_insert_event_log" ON public.event_log;
+DROP POLICY IF EXISTS "anon_insert_event_log" ON public.event_log;
 
 CREATE POLICY "org_select_event_log" ON public.event_log
   FOR SELECT TO authenticated
