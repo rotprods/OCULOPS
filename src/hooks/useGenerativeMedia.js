@@ -16,7 +16,7 @@ export function useGenerativeMedia() {
 
             if (fnError) throw fnError
 
-            return data
+            return { ...data, url: data?.url ?? data?.output ?? data?.mediaUrl ?? null }
         } catch (err) {
             if (import.meta.env.DEV) console.error('Failed to generate Veo3 Video:', err)
             setError(err.message)
@@ -36,7 +36,7 @@ export function useGenerativeMedia() {
 
             if (fnError) throw fnError
 
-            return data
+            return { ...data, url: data?.url ?? data?.output ?? data?.mediaUrl ?? null }
         } catch (err) {
             if (import.meta.env.DEV) console.error('Failed to generate Nano Banana Image:', err)
             setError(err.message)

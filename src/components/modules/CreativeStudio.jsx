@@ -210,7 +210,7 @@ function CreativeStudio() {
                             <div className="cs-asset-error">FAILED: {asset.error}</div>
                           ) : (
                             asset.type === 'video'
-                              ? <img src={asset.url} alt="Video preview" className="cs-asset-media" />
+                              ? <video src={asset.url} controls autoPlay muted loop className="cs-asset-media" />
                               : <img src={asset.url} alt="Generated asset" className="cs-asset-media" />
                           )}
                         </div>
