@@ -60,11 +60,14 @@ function Agents() {
   const { toast } = useAppStore()
   const { agents, tasks, logs, stats, triggerAgent, runCortexCycle } = useAgents()
   const { studies, telegramTarget, loading: studiesLoading, busy: studiesBusy, postStudy, resendStudy, saveTelegramTarget } = useAgentStudies()
-  const { filteredAgents: vaultAgents, namespaces: vaultNamespaces, loading: vaultLoading, error: vaultError, filters: vaultFilters, setNamespace: setVaultNamespace, setSearch: setVaultSearch, setRole: setVaultRole, suggestRole, totalAgents: vaultTotal, canonicalCount: vaultCanonical } = useAgentVault()
+  const { filteredAgents: vaultAgents, namespaces: vaultNamespaces, loading: vaultLoading, error: vaultError, filters: vaultFilters, setNamespace: setVaultNamespace, setSearch: setVaultSearch, setRole: setVaultRole, suggestRole, toggleActive: toggleVaultAgent, runAgent: runVaultAgent, runningAgent: vaultRunning, totalAgents: vaultTotal, activeCount: vaultActive, canonicalCount: vaultCanonical } = useAgentVault()
   const { agentHealth, runningAgents } = useAgentState()
 
   const [triggering, setTriggering] = useState(null)
   const [activeTab, setActiveTab] = useState('network')
+  const [vaultRunModal, setVaultRunModal] = useState(null) // { code_name, display_name }
+  const [vaultGoal, setVaultGoal] = useState('')
+  const [vaultResult, setVaultResult] = useState(null)
   const [studyForm, setStudyForm] = useState(INITIAL_STUDY_FORM)
   const [telegramForm, setTelegramForm] = useState(INITIAL_TELEGRAM_FORM)
 
@@ -384,8 +387,8 @@ function Agents() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
             {/* Vault KPIs */}
             <div className="kpi-strip kpi-strip-4">
-              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Total agents</span></div><div className="kpi-value">{vaultTotal}</div></div>
-              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Canonical</span></div><div className="kpi-value">{vaultCanonical}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Total</span></div><div className="kpi-value">{vaultTotal}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Active</span></div><div className="kpi-value">{vaultActive}</div></div>
               <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Namespaces</span></div><div className="kpi-value">{vaultNamespaces.length}</div></div>
               <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Filtered</span></div><div className="kpi-value">{vaultAgents.length}</div></div>
             </div>
@@ -407,38 +410,109 @@ function Agents() {
             </div>
 
             {/* Vault Grid */}
-            {vaultLoading ? <div className="crm-table-empty">Loading agent vault...</div> :
+            {vaultLoading ? <div className="crm-table-empty">Loading vault agents from Supabase...</div> :
               vaultError ? <div className="ag-vault-error">{vaultError}</div> :
                 <div className="ag-grid">
                   {vaultAgents.map(va => {
                     const role = suggestRole(va)
+                    const isRunning = vaultRunning === va.code_name
                     return (
-                      <div key={va.name} className="ag-card">
+                      <div key={va.code_name} className="ag-card" style={{ opacity: va.is_active ? 1 : 0.5 }}>
                         <div className="ag-card-header">
                           <div className="ag-card-identity">
-                            <div className="ag-card-dot" style={{ background: role ? (AGENT_COLORS[role] || 'var(--accent-primary)') : 'var(--text-tertiary)' }} />
-                            <span className="ag-card-codename">{va.name}</span>
+                            <div className="ag-card-dot" style={{ background: va.is_active ? (role ? (AGENT_COLORS[role] || 'var(--color-primary)') : 'var(--color-success)') : 'var(--color-text-3)' }} />
+                            <span className="ag-card-codename">{va.code_name}</span>
                           </div>
                           <span className="badge badge-default">{va.namespace}</span>
                         </div>
                         <div className="ag-card-body">
                           {va.description && <div className="ag-card-desc">{va.description.length > 100 ? va.description.slice(0, 100) + '...' : va.description}</div>}
                           <div className="ag-card-caps">
-                            {(va.capabilities || []).slice(0, 4).map(cap => <span key={cap} className="badge badge-default">{cap}</span>)}
+                            {(va.tags || []).slice(0, 4).map(tag => <span key={tag} className="badge badge-default">{tag}</span>)}
                           </div>
-                          {role && (
-                            <div className="ag-card-footer">
-                              <span style={{ color: AGENT_COLORS[role] || 'var(--accent-primary)', fontWeight: 'var(--weight-semibold)' }}>
-                                {role} compatible
-                              </span>
+                          {va.total_runs > 0 && (
+                            <div style={{ fontSize: '11px', color: 'var(--color-text-3)', marginTop: 'var(--space-1)' }}>
+                              {va.total_runs} runs | avg {va.avg_duration_ms ? `${(va.avg_duration_ms / 1000).toFixed(1)}s` : '—'}
                             </div>
                           )}
+                          <div className="ag-card-footer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'var(--space-2)' }}>
+                            <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center' }}>
+                              <button
+                                className="btn btn-primary btn-sm"
+                                disabled={!va.is_active || isRunning}
+                                onClick={() => { setVaultRunModal(va); setVaultGoal(''); setVaultResult(null) }}
+                              >
+                                {isRunning ? 'Running...' : 'Run'}
+                              </button>
+                              <button
+                                className="btn btn-sm"
+                                style={{ background: 'transparent', border: '1px solid var(--color-border)', color: 'var(--color-text-2)', cursor: 'pointer' }}
+                                onClick={() => toggleVaultAgent(va.id, va.is_active)}
+                              >
+                                {va.is_active ? 'Disable' : 'Enable'}
+                              </button>
+                            </div>
+                            {role && (
+                              <span style={{ color: AGENT_COLORS[role] || 'var(--color-primary)', fontWeight: 'var(--weight-semibold)', fontSize: '11px' }}>
+                                {role}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
                     )
                   })}
                 </div>
             }
+
+            {/* Run Agent Modal */}
+            {vaultRunModal && (
+              <div className="modal-overlay" onClick={() => setVaultRunModal(null)}>
+                <div className="modal-panel" style={{ maxWidth: 600 }} onClick={e => e.stopPropagation()}>
+                  <div className="modal-header">
+                    <h3>Run {vaultRunModal.code_name}</h3>
+                    <button className="modal-close" onClick={() => setVaultRunModal(null)}>&times;</button>
+                  </div>
+                  <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                    <div>
+                      <label className="form-label">Goal</label>
+                      <textarea
+                        className="form-input"
+                        rows={3}
+                        placeholder={vaultRunModal.goal_template || `What should ${vaultRunModal.code_name} do?`}
+                        value={vaultGoal}
+                        onChange={e => setVaultGoal(e.target.value)}
+                      />
+                    </div>
+                    <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+                      <button
+                        className="btn btn-primary"
+                        disabled={!vaultGoal.trim() || vaultRunning === vaultRunModal.code_name}
+                        onClick={async () => {
+                          const res = await runVaultAgent(vaultRunModal.code_name, vaultGoal)
+                          setVaultResult(res)
+                          if (res?.success) toast(`${vaultRunModal.code_name} completed`, 'success')
+                          else toast(res?.error || 'Agent failed', 'warning')
+                        }}
+                      >
+                        {vaultRunning === vaultRunModal.code_name ? 'Running...' : 'Execute'}
+                      </button>
+                      <button className="btn" style={{ background: 'transparent', border: '1px solid var(--color-border)', color: 'var(--color-text-2)' }} onClick={() => setVaultRunModal(null)}>Close</button>
+                    </div>
+                    {vaultResult && (
+                      <div style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: 8, padding: 'var(--space-3)', maxHeight: 300, overflow: 'auto' }}>
+                        <div style={{ fontSize: '11px', color: 'var(--color-text-3)', marginBottom: 'var(--space-2)' }}>
+                          Status: {vaultResult.status || '—'} | Rounds: {vaultResult.rounds || 0} | Skills: {vaultResult.skills_used?.length || 0} | {vaultResult.duration_ms ? `${(vaultResult.duration_ms / 1000).toFixed(1)}s` : ''}
+                        </div>
+                        <pre style={{ whiteSpace: 'pre-wrap', fontSize: '12px', color: 'var(--color-text)', fontFamily: 'var(--font-mono)', margin: 0 }}>
+                          {vaultResult.answer || vaultResult.error || JSON.stringify(vaultResult, null, 2)}
+                        </pre>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

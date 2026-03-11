@@ -1,133 +1,150 @@
 // ═══════════════════════════════════════════════════
 // OCULOPS — useAgentVault Hook
-// Loads Agent-OS vault manifest (414 agents, 13 namespaces)
+// Reads agent_definitions from Supabase + runs agents via agent-runner
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
-// Agent-OS manifest is loaded as static JSON at build time
-// In Electron: reads from ~/agent-os/registry/manifest.json
-// In web: fetched from /data/agent-manifest.json (must be copied)
-const MANIFEST_PATHS = [
-    '/data/agent-manifest.json',
-    './data/agent-manifest.json',
-]
-
-// Business role mapping: which vault capabilities map to OCULOPS agents
+// Business role mapping: which vault namespaces map to OCULOPS agents
 export const ROLE_CAPABILITY_MAP = {
-    atlas: ['research', 'data-engineering', 'web-scraping'],
-    hunter: ['data-engineering', 'web-scraping', 'api-design'],
-    oracle: ['data-engineering', 'ml-ai', 'data'],
-    forge: ['content', 'documentation', 'copywriting'],
-    sentinel: ['security', 'research', 'code-review'],
-    scribe: ['documentation', 'content', 'reporting'],
-    strategist: ['orchestration', 'research', 'product'],
-    cortex: ['orchestration', 'ml-ai'],
+  atlas: ['research', 'data', 'content'],
+  hunter: ['data', 'engineering', 'product'],
+  oracle: ['data', 'research', 'architecture'],
+  forge: ['content', 'design', 'engineering'],
+  sentinel: ['security', 'testing', 'infra'],
+  herald: ['content', 'research', 'orchestration'],
+  outreach: ['content', 'product', 'orchestration'],
+  cortex: ['orchestration', 'engineering', 'data'],
+  nexus: ['orchestration', 'product', 'research'],
 }
 
 export function useAgentVault() {
-    const [manifest, setManifest] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-    const [filters, setFilters] = useState({ namespace: 'all', search: '', role: 'all' })
+  const [agents, setAgents] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [filters, setFilters] = useState({ namespace: 'all', search: '', role: 'all' })
+  const [runningAgent, setRunningAgent] = useState(null)
 
-    useEffect(() => {
-        async function loadManifest() {
-            // Try Electron IPC first
-            if (window.electronAPI?.readFile) {
-                try {
-                    const homeDir = await window.electronAPI.getHomeDir?.() || ''
-                    const data = await window.electronAPI.readFile(`${homeDir}/agent-os/registry/manifest.json`)
-                    if (data) {
-                        setManifest(JSON.parse(data))
-                        setLoading(false)
-                        return
-                    }
-                } catch (_) { /* fall through to fetch */ }
-            }
-
-            // Try web fetch
-            for (const path of MANIFEST_PATHS) {
-                try {
-                    const res = await fetch(path)
-                    if (res.ok) {
-                        const data = await res.json()
-                        setManifest(data)
-                        setLoading(false)
-                        return
-                    }
-                } catch (_) { /* try next */ }
-            }
-
-            setError('Agent-OS manifest not found. Copy ~/agent-os/registry/manifest.json to public/data/agent-manifest.json')
-            setLoading(false)
-        }
-        loadManifest()
-    }, [])
-
-    const agents = useMemo(() => {
-        if (!manifest?.agents) return []
-        return manifest.agents.filter(a => !a.is_alias)
-    }, [manifest])
-
-    const namespaces = useMemo(() => {
-        if (!manifest?.namespaces) return []
-        return manifest.namespaces
-    }, [manifest])
-
-    const filteredAgents = useMemo(() => {
-        let result = agents
-        if (filters.namespace !== 'all') {
-            result = result.filter(a => a.namespace === filters.namespace)
-        }
-        if (filters.search) {
-            const q = filters.search.toLowerCase()
-            result = result.filter(a =>
-                a.name.toLowerCase().includes(q) ||
-                (a.capabilities || []).some(c => c.toLowerCase().includes(q)) ||
-                (a.namespace || '').toLowerCase().includes(q)
-            )
-        }
-        if (filters.role !== 'all') {
-            const roleCaps = ROLE_CAPABILITY_MAP[filters.role] || []
-            result = result.filter(a =>
-                (a.capabilities || []).some(c => roleCaps.includes(c))
-            )
-        }
-        return result
-    }, [agents, filters])
-
-    const suggestRole = useCallback((agent) => {
-        const caps = agent.capabilities || []
-        let bestRole = null
-        let bestScore = 0
-        for (const [role, roleCaps] of Object.entries(ROLE_CAPABILITY_MAP)) {
-            const score = caps.filter(c => roleCaps.includes(c)).length
-            if (score > bestScore) {
-                bestScore = score
-                bestRole = role
-            }
-        }
-        return bestRole
-    }, [])
-
-    const setNamespace = useCallback((ns) => setFilters(f => ({ ...f, namespace: ns })), [])
-    const setSearch = useCallback((s) => setFilters(f => ({ ...f, search: s })), [])
-    const setRole = useCallback((r) => setFilters(f => ({ ...f, role: r })), [])
-
-    return {
-        manifest,
-        agents,
-        filteredAgents,
-        namespaces,
-        loading,
-        error,
-        filters,
-        setNamespace,
-        setSearch,
-        setRole,
-        suggestRole,
-        totalAgents: manifest?.total_agents || 0,
-        canonicalCount: manifest?.canonical_count || 0,
+  // ── Load from Supabase ──
+  const refresh = useCallback(async () => {
+    if (!isSupabaseConfigured) {
+      setError('Supabase not configured')
+      setLoading(false)
+      return
     }
+    const { data, error: err } = await supabase
+      .from('agent_definitions')
+      .select('*')
+      .order('namespace')
+      .order('code_name')
+    if (err) {
+      setError(err.message)
+    } else {
+      setAgents(data || [])
+      setError(null)
+    }
+    setLoading(false)
+  }, [])
+
+  useEffect(() => { refresh() }, [refresh])
+
+  // ── Derived data ──
+  const namespaces = useMemo(() =>
+    [...new Set(agents.map(a => a.namespace).filter(Boolean))].sort(),
+    [agents]
+  )
+
+  const filteredAgents = useMemo(() => {
+    let result = agents
+    if (filters.namespace !== 'all') {
+      result = result.filter(a => a.namespace === filters.namespace)
+    }
+    if (filters.search) {
+      const q = filters.search.toLowerCase()
+      result = result.filter(a =>
+        a.code_name.toLowerCase().includes(q) ||
+        (a.display_name || '').toLowerCase().includes(q) ||
+        (a.description || '').toLowerCase().includes(q) ||
+        (a.namespace || '').toLowerCase().includes(q) ||
+        (a.tags || []).some(t => t.toLowerCase().includes(q))
+      )
+    }
+    if (filters.role !== 'all') {
+      const roleNs = ROLE_CAPABILITY_MAP[filters.role] || []
+      result = result.filter(a => roleNs.includes(a.namespace))
+    }
+    return result
+  }, [agents, filters])
+
+  const suggestRole = useCallback((agent) => {
+    const ns = agent.namespace || ''
+    let bestRole = null
+    let bestScore = 0
+    for (const [role, roleNs] of Object.entries(ROLE_CAPABILITY_MAP)) {
+      const score = roleNs.includes(ns) ? 1 : 0
+      if (score > bestScore) {
+        bestScore = score
+        bestRole = role
+      }
+    }
+    return bestRole
+  }, [])
+
+  // ── Toggle active ──
+  const toggleActive = useCallback(async (id, currentState) => {
+    await supabase
+      .from('agent_definitions')
+      .update({ is_active: !currentState })
+      .eq('id', id)
+    setAgents(prev => prev.map(a => a.id === id ? { ...a, is_active: !currentState } : a))
+  }, [])
+
+  // ── Run agent via agent-runner ──
+  const runAgent = useCallback(async (codeName, goal, context = {}) => {
+    setRunningAgent(codeName)
+    try {
+      const { data, error: err } = await supabase.functions.invoke('agent-runner', {
+        body: { agent: codeName, goal, context },
+      })
+      if (err) throw err
+      // Update local stats
+      setAgents(prev => prev.map(a =>
+        a.code_name === codeName
+          ? { ...a, total_runs: (a.total_runs || 0) + 1, last_run_at: new Date().toISOString() }
+          : a
+      ))
+      return data
+    } catch (err) {
+      return { success: false, error: err.message || 'Agent execution failed' }
+    } finally {
+      setRunningAgent(null)
+    }
+  }, [])
+
+  // ── Filter setters ──
+  const setNamespace = useCallback((ns) => setFilters(f => ({ ...f, namespace: ns })), [])
+  const setSearch = useCallback((s) => setFilters(f => ({ ...f, search: s })), [])
+  const setRole = useCallback((r) => setFilters(f => ({ ...f, role: r })), [])
+
+  return {
+    agents: filteredAgents,
+    allAgents: agents,
+    filteredAgents,
+    namespaces,
+    loading,
+    error,
+    filters,
+    setNamespace,
+    setSearch,
+    setRole,
+    suggestRole,
+    toggleActive,
+    runAgent,
+    runningAgent,
+    refresh,
+    totalAgents: agents.length,
+    activeCount: agents.filter(a => a.is_active).length,
+    canonicalCount: agents.length,
+  }
 }
