@@ -45,9 +45,19 @@ const CommandCenter  = lazy(() => import('./components/modules/CommandCenter'))
 // ─── Loading screen ───────────────────────────────────────────────────────────
 function LoadingOS() {
   return (
-    <div className="h-screen w-screen bg-[#050505] flex flex-col items-center justify-center font-mono">
-      <div className="animate-spin h-10 w-10 border-4 border-[#1a1a1a] border-t-[#FFD400] rounded-full mb-4" />
-      <div className="text-xs tracking-[0.2em] text-[#FFD400] animate-pulse">INITIALIZING OCULOPS v2...</div>
+    <div style={{
+      height: '100vh', width: '100vw', background: 'var(--color-bg)',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      fontFamily: 'var(--font-mono)', position: 'relative', zIndex: 2,
+    }}>
+      <div style={{
+        width: 40, height: 40, borderRadius: '50%',
+        border: '3px solid var(--color-border)', borderTopColor: 'var(--color-primary)',
+        animation: 'spin 1s linear infinite', marginBottom: 16,
+      }} />
+      <div style={{
+        fontSize: 11, letterSpacing: '0.2em', color: 'var(--color-primary)', opacity: 0.8,
+      }}>INITIALIZING OCULOPS v2...</div>
     </div>
   )
 }
@@ -70,12 +80,28 @@ function AppContent() {
     return () => subscription.unsubscribe()
   }, [])
 
-  if (authLoading || (session && orgLoading)) return <><ParticleField /><LoadingOS /></>
-  if (!session)    return <><ParticleField /><Auth /></>
-  if (!currentOrg) return <><ParticleField /><OnboardingSetup /></>
+  const content = (() => {
+    if (authLoading || (session && orgLoading)) return <LoadingOS />
+    if (!session)    return <Auth />
+    if (!currentOrg) return <OnboardingSetup />
+    return null
+  })()
+
+  if (content) {
+    return (
+      <>
+        <ParticleField />
+        {content}
+      </>
+    )
+  }
 
   return (
-    <div className="flex h-screen bg-[#000000] text-white overflow-hidden" style={{ fontFamily: 'var(--font-sans)' }}>
+    <div style={{
+      display: 'flex', height: '100vh', background: 'var(--color-bg)',
+      color: 'var(--color-text)', overflow: 'hidden', fontFamily: 'var(--font-sans)',
+      position: 'relative',
+    }}>
       <Toaster
         position="top-right"
         toastOptions={{
@@ -94,10 +120,17 @@ function AppContent() {
 
       <Sidebar />
 
-      <main className="flex-1 ml-[220px] h-full overflow-hidden flex flex-col">
-        <div className="flex-1 overflow-y-auto">
+      <main style={{
+        flex: 1, marginLeft: 220, height: '100%', overflow: 'hidden',
+        display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 2,
+      }}>
+        <div style={{ flex: 1, overflowY: 'auto' }}>
           <Suspense fallback={
-            <div className="flex items-center justify-center h-full text-[#6b7280] font-mono text-xs">
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              height: '100%', color: 'var(--color-text-3)',
+              fontFamily: 'var(--font-mono)', fontSize: 11,
+            }}>
               LOADING MODULE...
             </div>
           }>
@@ -149,8 +182,11 @@ function AppContent() {
               <Route path="/settings"       element={<Settings />} />
 
               <Route path="*" element={
-                <div className="flex flex-col items-center justify-center h-full text-[#6b7280]">
-                  <div className="font-mono text-xs">MODULE NOT FOUND</div>
+                <div style={{
+                  display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  justifyContent: 'center', height: '100%', color: 'var(--color-text-3)',
+                }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>MODULE NOT FOUND</div>
                 </div>
               } />
             </Routes>

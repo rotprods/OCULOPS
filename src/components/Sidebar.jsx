@@ -83,7 +83,7 @@ export default function Sidebar() {
       position: 'fixed',
       left: 0,
       top: 0,
-      zIndex: 30,
+      zIndex: 10,
       overflow: 'hidden',
     }}>
 

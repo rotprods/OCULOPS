@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useOrg } from '../hooks/useOrg'
-import {
-    UserCircleIcon,
-    ArrowRightOnRectangleIcon,
-    Cog6ToothIcon
-} from '@heroicons/react/24/outline'
 
 export default function UserMenu() {
     const { setOrganizations, setCurrentOrg } = useOrg()
@@ -20,39 +15,62 @@ export default function UserMenu() {
         await supabase.auth.signOut()
         setOrganizations([])
         setCurrentOrg(null)
-        // App.jsx will handle the redirect based on auth state
     }
 
     if (!user) return null
 
     return (
-        <div className="mt-auto border-t border-slate-800 pt-4 relative">
+        <div style={{ position: 'relative' }}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-3 w-full p-2 hover:bg-slate-800 rounded transition-colors"
+                style={{
+                    display: 'flex', alignItems: 'center', gap: 10, width: '100%',
+                    padding: '6px 4px', background: 'none', border: 'none',
+                    cursor: 'pointer', borderRadius: 4,
+                }}
             >
-                <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-xs font-bold text-white uppercase">
+                <div style={{
+                    width: 28, height: 28, borderRadius: '50%',
+                    background: 'var(--color-primary)', display: 'flex',
+                    alignItems: 'center', justifyContent: 'center',
+                    fontSize: 11, fontWeight: 700, color: '#000',
+                    fontFamily: 'var(--font-mono)', flexShrink: 0,
+                    textTransform: 'uppercase',
+                }}>
                     {user.email[0]}
                 </div>
-                <div className="flex-1 text-left overflow-hidden">
-                    <div className="text-sm text-slate-200 font-medium truncate">{user.email}</div>
-                    <div className="text-xs text-slate-500 truncate">Operator</div>
+                <div style={{ flex: 1, textAlign: 'left', overflow: 'hidden' }}>
+                    <div style={{
+                        fontSize: 11, color: 'var(--color-text-2)',
+                        fontFamily: 'var(--font-mono)', whiteSpace: 'nowrap',
+                        overflow: 'hidden', textOverflow: 'ellipsis',
+                    }}>{user.email}</div>
+                    <div style={{
+                        fontSize: 9, color: 'var(--color-text-3)',
+                        fontFamily: 'var(--font-mono)', letterSpacing: '0.08em',
+                    }}>OPERATOR</div>
                 </div>
             </button>
 
             {isOpen && (
-                <div className="absolute bottom-full left-0 w-full mb-2 bg-[#0A0A0A] border border-slate-700 rounded-md shadow-xl overflow-hidden z-20">
-                    <button className="flex items-center gap-2 w-full px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
-                        <Cog6ToothIcon className="h-4 w-4" />
-                        <span>Settings</span>
-                    </button>
-                    <div className="h-px bg-slate-800 my-0"></div>
+                <div style={{
+                    position: 'absolute', bottom: '100%', left: 0, width: '100%',
+                    marginBottom: 4, background: 'var(--color-bg-2)',
+                    border: '1px solid var(--color-border)', borderRadius: 4,
+                    overflow: 'hidden', zIndex: 50,
+                    boxShadow: '0 -4px 20px rgba(0,0,0,0.5)',
+                }}>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-2 w-full px-4 py-3 text-sm text-red-400 hover:bg-red-900/20 transition-colors"
+                        style={{
+                            display: 'flex', alignItems: 'center', gap: 8,
+                            width: '100%', padding: '10px 12px',
+                            fontSize: 11, fontFamily: 'var(--font-mono)',
+                            color: 'var(--color-danger)', background: 'none',
+                            border: 'none', cursor: 'pointer', letterSpacing: '0.05em',
+                        }}
                     >
-                        <ArrowRightOnRectangleIcon className="h-4 w-4" />
-                        <span>Disconnect</span>
+                        DISCONNECT
                     </button>
                 </div>
             )}
