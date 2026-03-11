@@ -43,12 +43,23 @@ Deno.serve(async (req: Request) => {
         try { result.content = JSON.parse(c.replace(/```json\n?|```/g, '')); } catch { result.content = { raw: c }; }
         result.tokens_used = d.usage?.total_tokens || 0;
 
+        const assetTitle = `FORGE ${content_type} — ${new Date().toISOString().split('T')[0]}`;
         await supabase.from('knowledge_entries').insert({
-          title: `FORGE ${content_type} — ${new Date().toISOString().split('T')[0]}`,
+          title: assetTitle,
           content: JSON.stringify(result.content, null, 2),
           category: 'content', type: 'ai_generated', source: 'FORGE',
           tags: ['content', content_type, 'auto']
         });
+        const { data: creativeAsset } = await supabase.from('creative_assets').insert({
+          title: assetTitle,
+          asset_type: 'copy',
+          engine: 'forge',
+          prompt_used: prompt,
+          status: 'ready',
+          metadata: { content_type, topic, audience, tone, content: result.content },
+          tags: ['content', content_type, 'forge']
+        }).select('id').single();
+        if (creativeAsset) result.creative_asset_id = creativeAsset.id;
       }
     } else if (!openaiKey) {
       result = { error: 'No OpenAI key configured' };

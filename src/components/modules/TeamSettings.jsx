@@ -22,11 +22,11 @@ export default function TeamSettings() {
     const [feedback, setFeedback] = useState({ type: '', msg: '' })
 
     useEffect(() => {
-        if (currentOrg) {
-            fetchMembers(currentOrg.id)
-            fetchPendingInvites(currentOrg.id)
-        }
-    }, [currentOrg])
+    if (currentOrg) {
+        fetchMembers(currentOrg.id)
+        fetchPendingInvites(currentOrg.id)
+    }
+}, [currentOrg, fetchMembers, fetchPendingInvites])
 
     const handleInvite = async (e) => {
         e.preventDefault()

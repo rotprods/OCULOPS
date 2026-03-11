@@ -230,7 +230,7 @@ function CopilotChat() {
     }
 
     setSending(false)
-  }, [input, sending, messages, execute, navigate])
+  }, [input, sending, messages, execute, findSkillForText, triggerNavigation])
 
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Enter' && !e.shiftKey) {

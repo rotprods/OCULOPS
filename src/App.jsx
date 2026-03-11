@@ -90,6 +90,7 @@ function AppContent() {
   const { session, loading: authLoading } = useAuth()
   const { currentOrg, loading: orgLoading } = useOrg()
   const [copilotOpen, setCopilotOpen] = useState(false)
+  const [onboardingActive, setOnboardingActive] = useState(false)
 
   // Cmd+K / Ctrl+K to toggle Copilot
   const handleGlobalKey = useCallback((e) => {
@@ -107,7 +108,20 @@ function AppContent() {
   // If user already has an org on first load, skip onboarding
   const needsOnboarding = session && !orgLoading && !currentOrg && !onboardingDone
 
+  // Latch: once onboarding starts, keep it mounted even if loading states flicker.
+  // This prevents remounts that reset the step wizard to 0.
+  useEffect(() => {
+    if (needsOnboarding && !onboardingActive) {
+      setOnboardingActive(true)
+    } else if (!needsOnboarding && onboardingActive) {
+      setOnboardingActive(false)
+    }
+  }, [needsOnboarding, onboardingActive])
+
   const content = (() => {
+    if (onboardingActive) {
+      return <OnboardingSetup onComplete={() => setOnboardingDone(true)} />
+    }
     if (authLoading || (session && orgLoading)) return <LoadingOS />
     if (!session)        return <Auth />
     if (needsOnboarding) return <OnboardingSetup onComplete={() => setOnboardingDone(true)} />

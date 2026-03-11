@@ -9,7 +9,7 @@ export function useCreativeAssets() {
         setLoading(true)
         const { data } = await supabase
             .from('creative_assets')
-            .select('*')
+            .select('id, asset_type, prompt_used, public_url, status, metadata')
             .order('created_at', { ascending: false })
             .limit(30)
         setAssets(data || [])

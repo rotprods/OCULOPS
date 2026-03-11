@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 export function useGenerativeMedia() {
     const [isGeneratingVFX, setIsGeneratingVFX] = useState(false)
     const [isGeneratingImage, setIsGeneratingImage] = useState(false)
+    const [isGeneratingCopy, setIsGeneratingCopy] = useState(false)
     const [error, setError] = useState(null)
 
     const generateVideo = useCallback(async (prompt, options = {}) => {
@@ -46,11 +47,31 @@ export function useGenerativeMedia() {
         }
     }, [])
 
+    const generateCopy = useCallback(async (topic, contentType = 'social_post') => {
+        setIsGeneratingCopy(true)
+        setError(null)
+        try {
+            const { data, error: fnError } = await supabase.functions.invoke('agent-forge', {
+                body: { action: 'generate', content_type: contentType, topic }
+            })
+            if (fnError) throw fnError
+            return data?.result ?? data
+        } catch (err) {
+            if (import.meta.env.DEV) console.error('Failed to generate FORGE copy:', err)
+            setError(err.message)
+            throw err
+        } finally {
+            setIsGeneratingCopy(false)
+        }
+    }, [])
+
     return {
         generateVideo,
         generateImage,
+        generateCopy,
         isGeneratingVFX,
         isGeneratingImage,
+        isGeneratingCopy,
         error
     }
 }

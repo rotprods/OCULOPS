@@ -102,18 +102,18 @@ export function useOrg() {
 
     // Re-hydrate currentOrg and fetch members when org changes
     useEffect(() => {
-        if (currentOrg && !currentOrg.name && organizations.length > 0) {
-            const fullOrg = organizations.find(o => o.id === currentOrg.id)
-            if (fullOrg) {
-                store.setCurrentOrg(fullOrg)
-            } else {
-                // Persisted org doesn't exist anymore — pick the first available
-                store.setCurrentOrg(organizations[0])
-            }
-        } else if (currentOrg?.id && currentOrg?.name) {
-            fetchMembers(currentOrg.id)
+    if (currentOrg && !currentOrg.name && organizations.length > 0) {
+        const fullOrg = organizations.find(o => o.id === currentOrg.id)
+        if (fullOrg) {
+            store.setCurrentOrg(fullOrg)
+        } else {
+            // Persisted org doesn't exist anymore — pick the first available
+            store.setCurrentOrg(organizations[0])
         }
-    }, [currentOrg?.id, organizations])
+    } else if (currentOrg?.id && currentOrg?.name) {
+        fetchMembers(currentOrg.id)
+    }
+    }, [currentOrg, organizations, fetchMembers, store])
 
 
     const fetchOrganizations = useCallback(async () => {
@@ -166,7 +166,7 @@ export function useOrg() {
             console.error('Critical member fetch error:', err)
             store.setMembers([])
         }
-    }, [])
+    }, [store])
 
     // ─── ACTIONS ────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ export function useOrg() {
         }
     }, [store])
 
-    const switchOrganization = useCallback((org) => store.setCurrentOrg(org), [])
+    const switchOrganization = useCallback((org) => store.setCurrentOrg(org), [store])
 
     // ─── INVITATION LOGIC ───────────────────────────────────────
 
@@ -233,7 +233,7 @@ export function useOrg() {
             .eq('status', 'pending')
 
         if (!error) store.setPendingInvites(data || [])
-    }, [])
+    }, [store])
 
     const inviteMember = useCallback(async (email, roleName = 'member') => {
         if (!store.currentOrg) throw new Error('No active organization')
@@ -254,7 +254,7 @@ export function useOrg() {
         if (error) throw error
         store.setPendingInvites([...store.pendingInvites, data])
         return data
-    }, [store.currentOrg, store.pendingInvites])
+    }, [store])
 
     return {
         ...store,
