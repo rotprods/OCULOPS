@@ -33,14 +33,54 @@ export async function checkPolicy(
   _payload: Record<string, unknown> = {},
 ): Promise<PolicyResult> {
 
-  const entry = AGENT_REGISTRY[agent];
+  let entry = AGENT_REGISTRY[agent];
 
-  // Unknown agent
+  // Fallback: check agent_definitions (vault-imported dynamic agents)
+  if (!entry) {
+    const { data: dbDef } = await admin
+      .from("agent_definitions")
+      .select("allowed_skills, restricted_skills, requires_approval, safe_mode, max_spend_usd")
+      .eq("code_name", agent)
+      .eq("is_active", true)
+      .maybeSingle();
+
+    if (dbDef) {
+      // Build a minimal registry entry from DB definition
+      entry = {
+        code_name: agent,
+        display_name: agent,
+        type: "domain",
+        hierarchy_level: 2,
+        domain: "dynamic",
+        goal_template: "",
+        allowed_skills: dbDef.allowed_skills || [],
+        restricted_skills: dbDef.restricted_skills || [],
+        requires_approval_for: dbDef.requires_approval || [],
+        policy_set: {
+          can_write_crm: false,
+          can_send_external: false,
+          can_call_agents: [],
+          can_delete: false,
+          max_spend_per_run_usd: dbDef.max_spend_usd || 0.20,
+          confidence_threshold: 0.70,
+          safe_mode: dbDef.safe_mode || false,
+        },
+        memory_scope: { can_write: ["episodic"], can_read: ["knowledge", "episodic"], ttl_days: { episodic: 30 } },
+        escalation_path: "nexus",
+        retry_limit: 2,
+        timeout_ms: 45000,
+        max_rounds: 4,
+        kpis: [],
+      };
+    }
+  }
+
+  // Unknown agent (not in static registry or DB)
   if (!entry) {
     return {
       allowed: false,
       risk_level: 4,
-      reason: `Agent '${agent}' not found in registry`,
+      reason: `Agent '${agent}' not found in registry or agent_definitions`,
       requires_approval: false,
     };
   }
