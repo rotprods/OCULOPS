@@ -10,6 +10,7 @@ import { useAutomation } from '../../hooks/useAutomation'
 import { useAgentVault } from '../../hooks/useAgentVault'
 import { AGENT_AUTOMATION_PACKS } from '../../data/agentAutomationPacks'
 import { CORE_MINI_APPS } from '../miniapps/MiniAppRegistry'
+import ModuleSkeleton from '../ui/ModuleSkeleton'
 
 const VAULT_AUTOMATION_CAPS = ['orchestration', 'ml-ai', 'api-design']
 
@@ -342,7 +343,7 @@ function Automation() {
                         </div>
                         <div style={{ background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
                             {vaultLoading ? (
-                                <div className="mono text-xs text-tertiary" style={{ padding: '24px', textAlign: 'center' }}>LOADING VAULT MANIFEST...</div>
+                                <ModuleSkeleton variant="table" rows={3} />
                             ) : automationVaultAgents.length === 0 ? (
                                 <div className="mono text-xs text-tertiary" style={{ padding: '24px', textAlign: 'center' }}>NO AUTOMATION-COMPATIBLE AGENTS IN VAULT</div>
                             ) : (
@@ -367,7 +368,7 @@ function Automation() {
                     <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
                         <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// STORED DIRECTIVES</div>
                         <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--color-bg-2)', flex: 1 }}>
-                            {loading ? <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>ACCESSING STORAGE...</div> :
+                            {loading ? <ModuleSkeleton variant="table" rows={4} /> :
                                 workflows.length === 0 ? <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO DIRECTIVES STORED.</div> :
                                     workflows.map(wf => {
                                         const trigger = getTriggerMeta(wf.trigger_config?.key || wf.trigger_type)

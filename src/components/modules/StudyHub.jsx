@@ -6,6 +6,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { studies, STUDY_CATEGORIES } from '../../data/studies'
 import { supabase, getCurrentUserId } from '../../lib/supabase'
+import ModuleSkeleton from '../ui/ModuleSkeleton'
 import './StudyHub.css'
 
 function useAgentStudies() {
@@ -95,7 +96,7 @@ function StudyHub() {
                 {viewMode === 'agent' && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
                         {agentLoading ? (
-                            <div className="mono" style={{ padding: '24px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '11px' }}>[ LOADING AGENT STUDIES... ]</div>
+                            <ModuleSkeleton variant="table" rows={3} />
                         ) : agentStudies.length === 0 ? (
                             <div className="mono" style={{ padding: '24px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '11px' }}>[ NO AGENT STUDIES YET — RUN AGENTS TO GENERATE ]</div>
                         ) : agentStudies.map(s => (

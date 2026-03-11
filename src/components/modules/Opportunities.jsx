@@ -59,7 +59,7 @@ function Opportunities() {
                 {/* ── KPI STRIP ── */}
                 <div className="kpi-strip kpi-strip-5">
                     {STATUSES.map(s => (
-                        <div key={s.value} style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <div key={s.value} className="kpi-strip-cell" style={{ gap: '8px' }}>
                             <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>{s.symbol} {s.label}</div>
                             <div className="mono" style={{ fontSize: '20px', fontWeight: 'bold', color: s.color }}>
                                 {(byStatus[s.value] || []).length}
@@ -125,21 +125,21 @@ function Opportunities() {
                     </div>
                     <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) 120px', gap: '12px' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>OPP DESIGNATION</label>
-                                <input className="mono" className="input-terminal" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="PROJECT TARGET" />
+                            <div className="input-group">
+                                <label className="mono text-2xs text-tertiary">OPP DESIGNATION</label>
+                                <input className="input-terminal" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="PROJECT TARGET" />
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>PROJECTED VAL ($)</label>
-                                <input className="mono" type="number" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-success)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.potential_value} onChange={e => setForm(f => ({ ...f, potential_value: e.target.value }))} placeholder="0.00" />
+                            <div className="input-group">
+                                <label className="mono text-2xs text-tertiary">PROJECTED VAL ($)</label>
+                                <input className="input-terminal" type="number" style={{ color: 'var(--color-success)' }} value={form.potential_value} onChange={e => setForm(f => ({ ...f, potential_value: e.target.value }))} placeholder="0.00" />
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>INTEL SOURCE</label>
-                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.source} onChange={e => setForm(f => ({ ...f, source: e.target.value }))} placeholder="REFERRAL, SOCIAL..." />
+                            <div className="input-group">
+                                <label className="mono text-2xs text-tertiary">INTEL SOURCE</label>
+                                <input className="input-terminal" style={{ color: 'var(--color-primary)' }} value={form.source} onChange={e => setForm(f => ({ ...f, source: e.target.value }))} placeholder="REFERRAL, SOCIAL..." />
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>URGENCY</label>
-                                <select className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-warning)', padding: '9px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.urgency} onChange={e => setForm(f => ({ ...f, urgency: e.target.value }))}>
+                            <div className="input-group">
+                                <label className="mono text-2xs text-tertiary">URGENCY</label>
+                                <select className="input-terminal" style={{ color: 'var(--color-warning)' }} value={form.urgency} onChange={e => setForm(f => ({ ...f, urgency: e.target.value }))}>
                                     <option value="low">LOW</option>
                                     <option value="medium">MED</option>
                                     <option value="high">HIGH</option>
@@ -147,13 +147,13 @@ function Opportunities() {
                             </div>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                            <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>EXPANDED INTEL (OPTIONAL)</label>
-                            <textarea className="mono" rows="2" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%', resize: 'vertical' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="OPERATIONAL DETAILS..." />
+                        <div className="input-group">
+                            <label className="mono text-2xs text-tertiary">EXPANDED INTEL (OPTIONAL)</label>
+                            <textarea className="input-terminal" rows="2" style={{ resize: 'vertical' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="OPERATIONAL DETAILS..." />
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
-                            <button className="btn btn-ghost mono" style={{ fontSize: '10px', padding: '10px 24px', border: '1px solid var(--color-primary)', color: 'var(--color-bg)', background: 'var(--color-primary)' }} onClick={handleAdd} disabled={saving}>
+                            <button className="btn btn-primary mono" style={{ fontSize: '10px', padding: '10px 24px', borderRadius: 0 }} onClick={handleAdd} disabled={saving}>
                                 {saving ? 'TRANSMITTING...' : 'REGISTER OPP'}
                             </button>
                         </div>

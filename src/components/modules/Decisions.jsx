@@ -26,35 +26,35 @@ function Decisions() {
     if (loading) return <ModuleSkeleton variant="kpi" rows={3} />
 
     return (
-        <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div className="fade-in module-wrap">
             {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
+            <div className="module-header-bar">
                 <div>
                     <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>DECISION LEDGER</h1>
                     <span className="mono text-xs text-tertiary">STRATEGIC ARCHIVES & RATIONALE TRACKING</span>
                 </div>
             </div>
 
-            <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
+            <div className="module-scroll">
 
                 {/* ── KPI STRIP ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
-                    <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div className="kpi-strip kpi-strip-3">
+                    <div className="kpi-strip-cell">
+                        <div className="kpi-strip-cell-header">
                             <span className="mono text-xs text-tertiary">TOTAL DECISIONS</span>
                             <span style={{ fontSize: '14px', color: 'var(--color-primary)' }}>⚖️</span>
                         </div>
                         <span className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{decisions.length}</span>
                     </div>
-                    <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div className="kpi-strip-cell">
+                        <div className="kpi-strip-cell-header">
                             <span className="mono text-xs text-tertiary">PENDING REVIEW</span>
                             <span style={{ fontSize: '14px', color: 'var(--color-warning)' }}>⚠️</span>
                         </div>
                         <span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{pendingReview.length}</span>
                     </div>
-                    <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div className="kpi-strip-cell">
+                        <div className="kpi-strip-cell-header">
                             <span className="mono text-xs text-tertiary">REVIEWED & SEALED</span>
                             <span style={{ fontSize: '14px', color: 'var(--color-success)' }}>✅</span>
                         </div>
@@ -62,37 +62,37 @@ function Decisions() {
                     </div>
                 </div>
 
-                <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--color-primary)', color: '#000' }}>
+                <div className="section-box--gold">
+                    <div className="section-header--gold mono text-xs font-bold" style={{ padding: '12px 16px' }}>
                         /// INITIALIZE NEW DECISION RECORD
                     </div>
-                    <div style={{ padding: '16px', background: '#000', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                    <div style={{ padding: '16px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                         <div className="input-group">
                             <label className="mono text-xs">DECISION VECTOR</label>
-                            <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="EX: PIVOT TO ENTERPRISE SAAS" />
+                            <input className="input-terminal" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="EX: PIVOT TO ENTERPRISE SAAS" />
                         </div>
                         <div className="input-group">
                             <label className="mono text-xs">TARGET REVIEW DATE</label>
-                            <input className="input mono text-xs" type="date" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.review_date} onChange={e => setForm(f => ({ ...f, review_date: e.target.value }))} />
+                            <input className="input-terminal" type="date" value={form.review_date} onChange={e => setForm(f => ({ ...f, review_date: e.target.value }))} />
                         </div>
 
                         <div className="input-group" style={{ gridColumn: 'span 2' }}>
                             <label className="mono text-xs">OPERATIONAL CONTEXT</label>
-                            <textarea className="input mono text-xs" rows="2" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', resize: 'vertical' }} value={form.context} onChange={e => setForm(f => ({ ...f, context: e.target.value }))} placeholder="CURRENT MARKET CONDITIONS OR INTERNAL CATALYSTS..." />
+                            <textarea className="input-terminal" rows="2" style={{ resize: 'vertical' }} value={form.context} onChange={e => setForm(f => ({ ...f, context: e.target.value }))} placeholder="CURRENT MARKET CONDITIONS OR INTERNAL CATALYSTS..." />
                         </div>
 
                         <div className="input-group">
                             <label className="mono text-xs">OPTIONS EVALUATED</label>
-                            <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.options} onChange={e => setForm(f => ({ ...f, options: e.target.value }))} placeholder="OPTION A VS OPTION B" />
+                            <input className="input-terminal" value={form.options} onChange={e => setForm(f => ({ ...f, options: e.target.value }))} placeholder="OPTION A VS OPTION B" />
                         </div>
                         <div className="input-group">
                             <label className="mono text-xs">STRATEGIC RATIONALE</label>
-                            <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.rationale} onChange={e => setForm(f => ({ ...f, rationale: e.target.value }))} placeholder="WHY WAS THIS OPTION SELECTED?" />
+                            <input className="input-terminal" value={form.rationale} onChange={e => setForm(f => ({ ...f, rationale: e.target.value }))} placeholder="WHY WAS THIS OPTION SELECTED?" />
                         </div>
 
                         <div className="input-group" style={{ gridColumn: 'span 2' }}>
                             <label className="mono text-xs">PROJECTED OUTCOME</label>
-                            <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={form.expected_outcome} onChange={e => setForm(f => ({ ...f, expected_outcome: e.target.value }))} placeholder="EXPECTED RESULT IN 30/60/90 DAYS..." />
+                            <input className="input-terminal" value={form.expected_outcome} onChange={e => setForm(f => ({ ...f, expected_outcome: e.target.value }))} placeholder="EXPECTED RESULT IN 30/60/90 DAYS..." />
                         </div>
 
                         <div style={{ gridColumn: 'span 2', marginTop: '8px' }}>
@@ -126,8 +126,8 @@ function Decisions() {
                     </div>
                 )}
 
-                <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>
+                <div className="section-box">
+                    <div className="section-header">
                         /// HISTORICAL LEDGER [{decisions.length}]
                     </div>
                     {decisions.length === 0 ? (
