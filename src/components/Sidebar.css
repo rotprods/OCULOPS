@@ -133,6 +133,14 @@
     opacity: 1;
 }
 
+/* ── Activity Feed ── */
+.os-sidebar-feed {
+    flex-shrink: 0;
+    border-top: 1px solid var(--border-default);
+    max-height: 280px;
+    overflow: hidden;
+}
+
 /* ── Footer ── */
 .os-sidebar-footer {
     padding: var(--space-3) var(--space-4);

@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import OrgSelector from './OrgSelector'
 import UserMenu from './UserMenu'
+import ActivityFeed from './ui/ActivityFeed'
 import './Sidebar.css'
 import {
   BoltIcon,
@@ -146,6 +147,11 @@ function Sidebar() {
           </div>
         ))}
       </nav>
+
+      {/* Live Activity Feed */}
+      <div className="os-sidebar-feed">
+        <ActivityFeed collapsed maxItems={15} />
+      </div>
 
       {/* User Menu */}
       <div className="os-sidebar-footer">
