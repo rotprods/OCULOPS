@@ -100,22 +100,6 @@ export function useOrg() {
         ensureOrgBootstrap()
     }, [])
 
-    // Re-hydrate currentOrg and fetch members when org changes
-    useEffect(() => {
-    if (currentOrg && !currentOrg.name && organizations.length > 0) {
-        const fullOrg = organizations.find(o => o.id === currentOrg.id)
-        if (fullOrg) {
-            store.setCurrentOrg(fullOrg)
-        } else {
-            // Persisted org doesn't exist anymore — pick the first available
-            store.setCurrentOrg(organizations[0])
-        }
-    } else if (currentOrg?.id && currentOrg?.name) {
-        fetchMembers(currentOrg.id)
-    }
-    }, [currentOrg, organizations, fetchMembers, store])
-
-
     const fetchOrganizations = useCallback(async () => {
         return fetchOrganizationsInternal({ blocking: true })
     }, [])
@@ -167,6 +151,20 @@ export function useOrg() {
             store.setMembers([])
         }
     }, [store])
+
+    // Re-hydrate currentOrg and fetch members when org changes
+    useEffect(() => {
+        if (currentOrg && !currentOrg.name && organizations.length > 0) {
+            const fullOrg = organizations.find(o => o.id === currentOrg.id)
+            if (fullOrg) {
+                store.setCurrentOrg(fullOrg)
+            } else {
+                store.setCurrentOrg(organizations[0])
+            }
+        } else if (currentOrg?.id && currentOrg?.name) {
+            fetchMembers(currentOrg.id)
+        }
+    }, [currentOrg, organizations, fetchMembers, store])
 
     // ─── ACTIONS ────────────────────────────────────────────────
 

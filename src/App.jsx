@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar'
 import OnboardingSetup from './components/OnboardingSetup'
 import Auth from './components/Auth'
 import { ErrorBoundary } from './components/ui/ErrorBoundary'
+import { SentryErrorBoundary } from './components/ui/SentryErrorBoundary'
 import ModuleSkeleton, { RouteAwareSkeleton } from './components/ui/ModuleSkeleton'
 import { Toaster } from 'react-hot-toast'
 import CopilotPanel from './components/ui/CopilotPanel'
@@ -63,6 +64,7 @@ const Analytics      = lazy(() => import('./components/modules/Analytics'))
 const Markets        = lazy(() => import('./components/modules/Markets'))
 const FlightDeck     = lazy(() => import('./components/modules/FlightDeck'))
 const CommandCenter  = lazy(() => import('./components/modules/CommandCenter'))
+const PixelOffice    = lazy(() => import('./components/modules/PixelOffice'))
 
 // ─── Loading screen ───────────────────────────────────────────────────────────
 function LoadingOS() {
@@ -215,6 +217,7 @@ function AppContent() {
               <Route path="/prospector"     element={guard(ProspectorHub)} />
               <Route path="/automation"     element={guard(Automation)} />
               <Route path="/flight-deck"    element={guard(FlightDeck)} />
+              <Route path="/pixel-office"   element={guard(PixelOffice)} />
 
               {/* Growth */}
               <Route path="/gtm"            element={guard(GTM)} />
@@ -257,8 +260,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <SentryErrorBoundary>
+      <Router>
+        <AppContent />
+      </Router>
+    </SentryErrorBoundary>
   )
 }

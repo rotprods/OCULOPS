@@ -73,13 +73,54 @@ async function recordPayment(
   });
 }
 
+async function verifyStripeSignature(
+  body: string,
+  signature: string,
+  secret: string,
+): Promise<boolean> {
+  // Stripe signature format: t=<timestamp>,v1=<hmac_hex>[,v0=...]
+  const parts = signature.split(",");
+  const tPart = parts.find((p) => p.startsWith("t="));
+  const v1Part = parts.find((p) => p.startsWith("v1="));
+  if (!tPart || !v1Part) return false;
+
+  const timestamp = tPart.slice(2);
+  const expectedSig = v1Part.slice(3);
+
+  // Reject if timestamp is > 5 minutes old
+  const tolerance = 300;
+  if (Math.abs(Date.now() / 1000 - parseInt(timestamp, 10)) > tolerance) {
+    return false;
+  }
+
+  const payload = `${timestamp}.${body}`;
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sigBytes = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    new TextEncoder().encode(payload),
+  );
+  const computed = Array.from(new Uint8Array(sigBytes))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
+  return computed === expectedSig;
+}
+
 // Plan mapping: Stripe price_id → OCULOPS plan name
-const PLAN_MAP: Record<string, string> = {
-  // These will be set once Stripe products are created
-  // price_starter_monthly: 'starter',
-  // price_pro_monthly: 'pro',
-  // price_enterprise_monthly: 'enterprise',
-};
+const PLAN_MAP: Record<string, string> = Object.fromEntries(
+  [
+    [Deno.env.get("STRIPE_PRICE_STARTER"), "starter"],
+    [Deno.env.get("STRIPE_PRICE_PRO"), "pro"],
+    [Deno.env.get("STRIPE_PRICE_ENTERPRISE"), "enterprise"],
+  ].filter(([k]) => k) as [string, string][],
+);
 
 function resolvePlan(priceId: string): string {
   return PLAN_MAP[priceId] || "starter";
@@ -96,14 +137,16 @@ Deno.serve(async (req: Request) => {
   try {
     const body = await req.text();
 
-    // Verify webhook signature if secret is configured
+    // Verify webhook signature
     if (STRIPE_WEBHOOK_SECRET) {
       const signature = req.headers.get("stripe-signature");
       if (!signature) {
         return errorResponse("Missing stripe-signature header", 400);
       }
-      // Note: Full signature verification requires the stripe SDK.
-      // For now, we verify the event by fetching it from Stripe API.
+      const valid = await verifyStripeSignature(body, signature, STRIPE_WEBHOOK_SECRET);
+      if (!valid) {
+        return errorResponse("Invalid stripe-signature", 400);
+      }
     }
 
     const event = JSON.parse(body);

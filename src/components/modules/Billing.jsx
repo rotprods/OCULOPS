@@ -3,10 +3,11 @@
 // Recurring revenue, invoices & subscription plans
 // ═══════════════════════════════════════════════════
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useDeals } from '../../hooks/useDeals'
 import { useFinance } from '../../hooks/useFinance'
 import { useAppStore } from '../../stores/useAppStore'
+import { useOrg } from '../../hooks/useOrg'
 import { supabase } from '../../lib/supabase'
 import { PlusIcon } from '@heroicons/react/24/outline'
 import ModulePage from '../ui/ModulePage'
@@ -24,21 +25,32 @@ function Billing() {
   const { pipelineView, loading: dealsLoading } = useDeals()
   const { entries, mrr, totalRevenue, totalExpenses, addEntry, loading: financeLoading } = useFinance()
   const { toast } = useAppStore()
+  const { currentOrg, fetchOrganizations } = useOrg()
   const [showForm, setShowForm] = useState(false)
   const [form, setForm] = useState({ description: '', amount: '', date: new Date().toISOString().split('T')[0], status: 'pending', client: '' })
   const [saving, setSaving] = useState(false)
   const [upgrading, setUpgrading] = useState(null)
 
+  // Handle Stripe redirect back: /billing?status=success&session_id=X
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('status') === 'success' && params.get('session_id')) {
+      toast('Plan activado correctamente', 'success')
+      window.history.replaceState({}, '', window.location.pathname)
+      fetchOrganizations()
+    }
+  }, [toast, fetchOrganizations])
+
   const handleUpgrade = useCallback(async (planId) => {
     setUpgrading(planId)
     try {
-      const { data, error } = await supabase.functions.invoke('stripe-checkout', { body: { plan: planId, org_id: 'default' } })
+      const { data, error } = await supabase.functions.invoke('stripe-checkout', { body: { plan: planId, org_id: currentOrg?.id } })
       if (error) throw new Error(error.message)
-      if (data?.url) { window.open(data.url, '_blank'); toast('Redirecting to Stripe checkout...', 'success') }
+      if (data?.url) { window.location.href = data.url }
       else toast('Stripe not configured. Set STRIPE_SECRET_KEY in Supabase secrets.', 'warning')
     } catch (err) { toast(err.message || 'Checkout failed', 'warning') }
     setUpgrading(null)
-  }, [toast])
+  }, [toast, currentOrg])
 
   const loading = dealsLoading || financeLoading
   const wonDeals = pipelineView['closed_won'] || []
@@ -73,7 +85,8 @@ function Billing() {
         {/* Plans */}
         <div className="billing-plans">
           {PLANS.map(plan => {
-            const isCurrent = plan.id === 'free'
+            const activePlan = currentOrg?.plan || 'free'
+            const isCurrent = plan.id === activePlan
             return (
               <div key={plan.id} className={`billing-plan-card ${isCurrent ? 'current' : ''}`}>
                 <div>
@@ -84,7 +97,7 @@ function Billing() {
                   {plan.features.map(f => <div key={f} className="mono text-xs text-secondary">+ {f}</div>)}
                 </div>
                 {isCurrent ? (
-                  <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', textAlign: 'center', padding: 'var(--space-2)' }}>Current plan</div>
+                  <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', textAlign: 'center', padding: 'var(--space-2)' }}>ACTIVO</div>
                 ) : (
                   <button className={`btn ${plan.id === 'pro' ? 'btn-primary' : 'btn-ghost'}`} onClick={() => handleUpgrade(plan.id)} disabled={upgrading === plan.id}>
                     {upgrading === plan.id ? 'Processing...' : 'Upgrade'}

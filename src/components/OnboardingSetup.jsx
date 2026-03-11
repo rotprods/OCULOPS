@@ -104,6 +104,7 @@ export default function OnboardingSetup({ onComplete }) {
 
   // Agent selection — pre-select recommended on industry change
   const [selectedAgents, setSelectedAgents] = useState(new Set())
+  const [checkingOut, setCheckingOut] = useState(false)
 
   useEffect(() => {
     const recs = INDUSTRY_RECS[industry] || INDUSTRY_RECS.Other
@@ -206,14 +207,22 @@ export default function OnboardingSetup({ onComplete }) {
     })
   }
 
-  // Auto-transition from step 3 → main app
-  useEffect(() => {
-    if (step !== 3) return
-    const timer = setTimeout(() => {
+  const handleStripeCheckout = useCallback(async (planId) => {
+    setCheckingOut(true)
+    try {
+      const { data, error } = await supabase.functions.invoke('stripe-checkout', {
+        body: { plan: planId, org_id: newOrgId },
+      })
+      if (error) throw new Error(error.message)
+      if (data?.url) { window.location.href = data.url }
+      else { if (onComplete) onComplete() }
+    } catch (err) {
+      console.error('[Onboarding] Stripe checkout error:', err)
       if (onComplete) onComplete()
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [step, onComplete])
+    } finally {
+      setCheckingOut(false)
+    }
+  }, [newOrgId, onComplete])
 
   return (
     <div style={{
@@ -485,7 +494,7 @@ export default function OnboardingSetup({ onComplete }) {
           </>
         )}
 
-        {/* Step 3: Ready */}
+        {/* Step 3: Ready — plan selection */}
         {step === 3 && (
           <div style={{ textAlign: 'center', padding: '20px 0' }}>
             <div style={{
@@ -493,7 +502,6 @@ export default function OnboardingSetup({ onComplete }) {
               background: 'var(--accent-primary)', margin: '0 auto 20px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 20, color: '#000', fontWeight: 700,
-              boxShadow: '0 0 24px rgba(123,140,255,0.3)',
             }}>
               OC
             </div>
@@ -504,17 +512,32 @@ export default function OnboardingSetup({ onComplete }) {
               Sistema operativo listo
             </h1>
             <p style={{
-              fontSize: 13, color: 'var(--text-tertiary)', margin: '0 0 4px',
+              fontSize: 13, color: 'var(--text-tertiary)', margin: '0 0 28px', lineHeight: 1.5,
             }}>
-              Entrando al centro de mando...
+              ¿Quieres empezar gratis o activar un plan ahora?
             </p>
-            <div style={{
-              width: 24, height: 24, borderRadius: '50%',
-              border: '2px solid var(--border-default)',
-              borderTopColor: 'var(--accent-primary)',
-              animation: 'spin 1s linear infinite',
-              margin: '20px auto 0',
-            }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <button
+                onClick={() => handleStripeCheckout('starter')}
+                disabled={checkingOut}
+                style={btnStyle(checkingOut)}
+              >
+                {checkingOut ? 'REDIRIGIENDO...' : 'ACTIVAR PLAN STARTER — €49/mes'}
+              </button>
+              <button
+                onClick={() => { if (onComplete) onComplete() }}
+                disabled={checkingOut}
+                style={{
+                  ...btnStyle(false),
+                  marginTop: 0,
+                  background: 'none',
+                  border: '1px solid var(--border-default)',
+                  color: 'var(--text-tertiary)',
+                }}
+              >
+                EMPEZAR GRATIS
+              </button>
+            </div>
           </div>
         )}
       </div>

@@ -20,6 +20,7 @@ dist-ssr
 ANTIGRAVITY_OS_MASTER_SNAPSHOT*.md
 release/
 .gitnexus/
+tests/e2e/.auth/
 
 # Editor directories and files
 .vscode/*

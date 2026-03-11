@@ -228,3 +228,55 @@ All 10 phases deployed to Supabase remote. ~15 ALTER operations across 8 existin
 - Supabase DB: ✅ migrations aplicadas (última: 20260322100000)
 - Supabase Functions: ✅ 54/54 ACTIVE
 - Vercel: ✅ sin cambios frontend (no rebuild necesario)
+
+---
+
+## 2026-03-11 — Session: audit/2026-02-23 (Tests + CI/CD + Onboarding)
+
+**Terminal**: Claude Code (branch: audit/2026-02-23 → main)
+
+### Trabajo realizado
+
+#### 1. Tests — 108 fallos → 0 fallos (143/143 passing)
+- Añadido `subscribeDebouncedToTable` a todos los mocks de supabase (causa raíz principal)
+- UI text assertions reescritas en CRM.test, ControlTower.test, Pipeline.test para coincidir con componentes actuales
+- `useAgentVault.test` completamente reescrito (API del hook había cambiado)
+- `useAgentVault.test` fix: `vi.hoisted()` + `createQueryBuilder` movido al scope correcto
+- Vitest config: `include: src/test/**`, `exclude: oculops-chain + tests/e2e`
+
+#### 2. CI/CD — Workflows actualizados
+- Badges `yourusername` → `rotprods` en `ci.yml` + `supabase-deploy.yml`
+- Build step: añadidos `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` desde GitHub secrets
+- `supabase-deploy.yml`: dividido en dos jobs independientes — `deploy-migrations` (auto en push a main cuando cambian migrations/**) y `deploy-functions` (auto cuando cambian functions/**)
+
+#### 3. Playwright e2e — Setup completo
+- `@playwright/test ^1.50.0` añadido a devDependencies + script `test:e2e`
+- `playwright.config.js`: baseURL localhost:4173, chromium, artifacts on failure
+- `tests/e2e/`: auth.spec.js + onboarding.spec.js + navigation.spec.js (smoke tests)
+- `.github/workflows/e2e.yml`: build + install chromium + run + upload artifact on failure
+
+#### 4. Onboarding — Flujo mejorado
+- `Onboarding.jsx` eliminado (595 líneas de código muerto, no se usaba)
+- `OnboardingSetup.jsx`: industria (dropdown) + team size (toggle buttons) en Step 1
+- Paso nuevo Step 2: selección de vault agents con recomendaciones automáticas por industria → importa directamente a `agent_definitions`
+- `useOrg.createOrganization`: acepta `settings` (industry, team_size)
+
+### Agentes vault usados
+- `testing/test-engineer` (background) — fix de los 108 tests
+- `infra/github-actions-expert` (background) — auditoría CI/CD
+- `testing/playwright-tester` (background) — setup e2e
+
+### Archivos modificados
+- `.github/workflows/ci.yml`, `supabase-deploy.yml`, `e2e.yml` (nuevo)
+- `playwright.config.js` (nuevo), `tests/e2e/*.spec.js` (nuevo)
+- `vite.config.js` — include/exclude en test config
+- `src/test/*.test.{js,jsx}` — todos los archivos de test actualizados
+- `src/components/OnboardingSetup.jsx` — industria + team size + step agentes
+- `src/components/Onboarding.jsx` — ELIMINADO
+- `src/hooks/useOrg.js` — createOrganization acepta settings
+
+### Deploy status
+- Git: ✅ pushed (main @ cc012b6)
+- Tests: ✅ 143/143 passing, 0 fallos
+- Supabase: ✅ sin cambios (no migrations nuevas)
+- Vercel: ✅ auto-deploy en curso desde GitHub push

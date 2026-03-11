@@ -5,7 +5,7 @@ import { admin } from "../_shared/supabase.ts";
 
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const SERVICE_KEY = (Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || Deno.env.get("SERVICE_ROLE_KEY") || "");
 
 // ─── Tool Definitions ────────────────────────────────────────────────────────
 // Each tool maps to an existing edge function — zero new code needed
@@ -660,8 +660,7 @@ async function executeTool(
     oracle_analyze: {
       fn: "agent-oracle",
       payload: () => ({
-        action: "analyze",
-        user_id: userId,
+        action: "daily_report",
         skip_telegram: true,
       }),
     },
@@ -757,7 +756,7 @@ async function executeTool(
       body: JSON.stringify(payload()),
     });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) return { _debug_error: true, status: res.status, body: data, key_defined: !!SERVICE_KEY, key_len: SERVICE_KEY?.length ?? 0 };
+    if (!res.ok) return { error: `Agent call failed: HTTP ${res.status}`, agent: fn, status: res.status };
     return data;
   }
 

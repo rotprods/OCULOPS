@@ -17,9 +17,26 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
   projects: [
+    // Auth setup — runs before authenticated tests
+    {
+      name: 'setup',
+      testMatch: /auth\.setup\.js/,
+    },
+    // Unauthenticated smoke tests
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      testIgnore: /dashboard\.spec\.js/,
+    },
+    // Authenticated tests — depend on setup
+    {
+      name: 'authenticated',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'tests/e2e/.auth/user.json',
+      },
+      testMatch: /dashboard\.spec\.js/,
+      dependencies: ['setup'],
     },
   ],
   webServer: {

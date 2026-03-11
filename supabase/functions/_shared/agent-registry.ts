@@ -81,6 +81,12 @@ export const SKILL_RISK_LEVELS: Record<string, number> = {
 
   // Level 4 — critical (blocked by default)
   rollback_action: 4,
+
+  // EVOLVER-specific skills
+  prompt_mutation: 1,      // generates prompt variants (internal, no external writes)
+  eval_run: 0,             // reads reasoning_traces + scores (read-only)
+  experiment_log: 1,       // writes to agent_experiments table
+  agent_def_update: 4,     // overwrites a live agent's system_prompt — critical
 };
 
 // ─── Agent Registry ───────────────────────────────────────────────────────────
@@ -419,6 +425,46 @@ export const AGENT_REGISTRY: Record<string, AgentRegistryEntry> = {
     kpis: ["orchestrations_completed", "agent_coordination_success", "pipeline_throughput"],
   },
 };
+
+  evolver: {
+    code_name: "evolver",
+    display_name: "EVOLVER Self-Improvement",
+    type: "safety",
+    hierarchy_level: 1,
+    domain: "meta",
+    goal_template: "Autonomously improve agent system_prompts by running experiments overnight. Keep improvements, discard regressions. NEVER stop until all agents evaluated.",
+    allowed_skills: [
+      "prompt_mutation", "eval_run", "experiment_log",
+      "recall_memory", "store_memory", "metrics_query",
+      "audit_log_write", "reasoning_trace_store",
+      "create_alert", "send_notification",
+    ],
+    restricted_skills: [
+      "crm_write_contact", "crm_write_deal", "crm_write_task",
+      "web_search", "fetch_url", "fetch_external_data", "call_agent",
+      "rollback_action",
+    ],
+    requires_approval_for: ["agent_def_update"],  // human must approve live prompt updates
+    policy_set: {
+      can_write_crm: false,
+      can_send_external: true,   // Telegram summary after each nightly run
+      can_call_agents: [],
+      can_delete: false,
+      max_spend_per_run_usd: 3.00,  // multiple Claude inference calls per run
+      confidence_threshold: 0.75,
+      safe_mode: false,
+    },
+    memory_scope: {
+      can_write: ["procedural", "episodic"],
+      can_read: ["procedural", "episodic", "knowledge"],
+      ttl_days: { procedural: 0, episodic: 365 },  // keep experiment history permanent
+    },
+    escalation_path: "nexus",
+    retry_limit: 1,
+    timeout_ms: 300000,  // 5 min per agent eval cycle
+    max_rounds: 10,
+    kpis: ["experiments_run", "improvements_kept", "avg_delta_score", "agents_optimized"],
+  },
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
