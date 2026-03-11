@@ -44,6 +44,7 @@ CREATE INDEX IF NOT EXISTS idx_pipeline_stages_position ON pipeline_stages(pipel
 -- ── 3. Pipeline Transitions ──
 CREATE TABLE IF NOT EXISTS pipeline_transitions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  org_id UUID NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
   pipeline_id UUID NOT NULL REFERENCES pipeline_definitions(id) ON DELETE CASCADE,
   from_stage_id UUID NOT NULL REFERENCES pipeline_stages(id) ON DELETE CASCADE,
   to_stage_id UUID NOT NULL REFERENCES pipeline_stages(id) ON DELETE CASCADE,
