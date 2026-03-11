@@ -116,10 +116,8 @@ function Sidebar() {
     if (!currentOrg?.id) return
     let isMounted = true
     
-    // Initial fetch
-    supabase.from('credit_balances')
-      .select('available_credits')
-      .eq('org_id', currentOrg.id)
+    // Initial fetch — use RPC to auto-create row if missing (avoids 404)
+    supabase.rpc('get_or_create_credit_balance', { p_org_id: currentOrg.id })
       .single()
       .then(({ data }) => {
         if (isMounted && data) setCredits(data.available_credits)

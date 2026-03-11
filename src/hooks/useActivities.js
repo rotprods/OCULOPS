@@ -26,9 +26,9 @@ export function useActivities(filters = {}) {
                 .from('crm_activities')
                 .select(`
                     *,
-                    contact:contacts(id, name, email, phone),
-                    company:companies(id, name, website),
-                    deal:deals(id, title, stage)
+                    contact:contacts!contact_id(id, name, email, phone),
+                    company:companies!company_id(id, name, website),
+                    deal:deals!deal_id(id, title, stage)
                 `)
                 .order('created_at', { ascending: false })
 

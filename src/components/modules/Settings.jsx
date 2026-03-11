@@ -60,7 +60,7 @@ function Settings() {
     async function loadBilling() {
       if (!currentOrg?.id) return
       
-      const { data: bal } = await supabase.from('credit_balances').select('available_credits, billing_mode').eq('org_id', currentOrg.id).single()
+      const { data: bal } = await supabase.from('credit_balances').select('available_credits, billing_mode').eq('org_id', currentOrg.id).maybeSingle()
       if (bal) {
         setCredits(bal.available_credits)
         setBillingMode(bal.billing_mode)
