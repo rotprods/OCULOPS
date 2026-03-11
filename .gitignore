@@ -33,3 +33,7 @@ release/
 *.sw?
 .vercel
 credentials.json
+# Local agent/tooling artifacts
+.claude/
+docker_logs.txt
+design/

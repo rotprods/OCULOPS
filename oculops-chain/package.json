@@ -1,0 +1,24 @@
+{
+  "name": "oculops-chain",
+  "version": "0.1.0",
+  "description": "OCULOPS Blockchain Layer — Smart contracts for token, settlement, treasury and rewards on Base L2",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:gas": "REPORT_GAS=true hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network xrplEvmTestnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network xrplEvmMainnet",
+    "verify": "hardhat run scripts/verify.js --network xrplEvmTestnet",
+    "clean": "hardhat clean",
+    "coverage": "hardhat coverage",
+    "slither": "slither contracts/ --hardhat-ignore-compile"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.1.0",
+    "@openzeppelin/merkle-tree": "^1.0.8",
+    "dotenv": "^16.4.7",
+    "hardhat": "^2.22.0"
+  }
+}
