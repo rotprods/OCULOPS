@@ -4,19 +4,43 @@
 // ═══════════════════════════════════════════════════
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "jsr:@supabase/supabase-js@2";
 
 const TIKTOK_API_KEY = Deno.env.get("TIKTOK_API_KEY");
 const TIKTOK_API_SECRET = Deno.env.get("TIKTOK_API_SECRET");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY");
+const CRON_SECRET = Deno.env.get("CRON_SECRET");
 
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+async function verifyCaller(req: Request) {
+    const authHeader = req.headers.get("Authorization");
+    if (CRON_SECRET && authHeader === `Bearer ${CRON_SECRET}`) return { type: "cron" as const };
+    if (!authHeader || !SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
+    const authClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        global: { headers: { Authorization: authHeader } },
+    });
+    const { data: { user }, error } = await authClient.auth.getUser();
+    if (error || !user) return null;
+    return { type: "user" as const, userId: user.id };
+}
+
 Deno.serve(async (req: Request) => {
     if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
     try {
+        const caller = await verifyCaller(req);
+        if (!caller) {
+            return new Response(
+                JSON.stringify({ error: "Unauthorized" }),
+                { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+            );
+        }
+
         const { keywords, category, location, limit } = await req.json();
 
         if (!TIKTOK_API_KEY) {
