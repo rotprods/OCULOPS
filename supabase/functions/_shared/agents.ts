@@ -1,4 +1,5 @@
 import { compact } from "./http.ts";
+import { emitSystemEvent, recordMemoryEntry } from "./orchestration.ts";
 import { admin } from "./supabase.ts";
 import { formatAgentStudyTelegramMessage, resolveFallbackTelegramTarget, sendTelegramMessage } from "./telegram.ts";
 
@@ -323,6 +324,11 @@ export async function runAgentTask<T>({
 }) {
   const agent = await ensureAgent(codeName);
   const startedAt = new Date().toISOString();
+  const userId = normalizeText((payload as Record<string, unknown>).user_id || null) || null;
+  const orgId = normalizeText((payload as Record<string, unknown>).org_id || null) || null;
+  const pipelineRunId = normalizeText((payload as Record<string, unknown>).pipeline_run_id || null) || null;
+  const stepRunId = normalizeText((payload as Record<string, unknown>).step_run_id || null) || null;
+  const correlationId = normalizeText((payload as Record<string, unknown>).correlation_id || null) || null;
 
   const { data: task, error: taskError } = await admin
     .from("agent_tasks")
@@ -346,12 +352,31 @@ export async function runAgentTask<T>({
     .update({ status: "running" })
     .eq("id", agent.id);
 
+  try {
+    await emitSystemEvent({
+      eventType: "agent.started",
+      payload: {
+        task_id: task.id,
+        action,
+        title,
+      },
+      userId,
+      orgId,
+      sourceAgent: codeName,
+      pipelineRunId,
+      stepRunId,
+      correlationId,
+      status: "processing",
+    });
+  } catch (eventError) {
+    console.error(`Failed to emit agent.started for ${codeName}:`, eventError);
+  }
+
   const startMs = Date.now();
 
   try {
     const output = await handler({ taskId: task.id, agent });
     const durationMs = Date.now() - startMs;
-    const userId = normalizeText((payload as Record<string, unknown>).user_id || null) || null;
 
     await admin.from("agent_logs").insert({
       agent_id: agent.id,
@@ -390,6 +415,26 @@ export async function runAgentTask<T>({
 
     try {
       const studyContent = buildStudyContent(output);
+      try {
+        await recordMemoryEntry({
+          orgId,
+          userId,
+          agentCodeName: codeName,
+          scope: pipelineRunId ? "shared_ops" : "task",
+          namespace: pipelineRunId ? `pipeline:${codeName}` : `agent:${codeName}`,
+          entityType: pipelineRunId ? "pipeline_run" : "agent_task",
+          entityId: pipelineRunId || task.id,
+          pipelineRunId,
+          stepRunId,
+          correlationId,
+          summary: studyContent.summary,
+          content: studyContent.contentJson,
+          importance: 65,
+        });
+      } catch (memoryError) {
+        console.error(`Failed to record memory for ${codeName}:`, memoryError);
+      }
+
       const study = await createAgentStudy({
         userId,
         agentCodeName: codeName,
@@ -418,6 +463,27 @@ export async function runAgentTask<T>({
       }
     } catch (studyError) {
       console.error(`Failed to publish study for ${codeName}:`, studyError);
+    }
+
+    try {
+      await emitSystemEvent({
+        eventType: "agent.completed",
+        payload: {
+          task_id: task.id,
+          action,
+          duration_ms: durationMs,
+          summary: pickSummaryLikeOutput(output),
+        },
+        userId,
+        orgId,
+        sourceAgent: codeName,
+        pipelineRunId,
+        stepRunId,
+        correlationId,
+        status: "delivered",
+      });
+    } catch (eventError) {
+      console.error(`Failed to emit agent.completed for ${codeName}:`, eventError);
     }
 
     return {
@@ -457,6 +523,26 @@ export async function runAgentTask<T>({
       })
       .eq("id", agent.id);
 
+    try {
+      await emitSystemEvent({
+        eventType: "agent.error",
+        payload: {
+          task_id: task.id,
+          action,
+          error: message,
+        },
+        userId,
+        orgId,
+        sourceAgent: codeName,
+        pipelineRunId,
+        stepRunId,
+        correlationId,
+        status: "failed",
+      });
+    } catch (eventError) {
+      console.error(`Failed to emit agent.error for ${codeName}:`, eventError);
+    }
+
     throw error;
   }
 }
@@ -473,6 +559,20 @@ export async function sendAgentMessage(fromAgent: string, toAgent: string, subje
       status: "processed",
       processed_at: new Date().toISOString(),
     });
+}
+
+function pickSummaryLikeOutput(value: unknown) {
+  if (typeof value === "string") return truncate(value, 180);
+  if (value && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    return (
+      normalizeText(record.summary) ||
+      normalizeText(record.message) ||
+      normalizeText(record.description) ||
+      truncate(JSON.stringify(record).slice(0, 180), 180)
+    );
+  }
+  return "Agent completed";
 }
 
 /**

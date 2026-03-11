@@ -8,7 +8,7 @@ const STEPS = [
   { id: 'ready',   label: 'LAUNCH',           num: '03' },
 ]
 
-export default function OnboardingSetup() {
+export default function OnboardingSetup({ onComplete }) {
   const { createOrganization, loading: orgLoading } = useOrg()
   const [step, setStep] = useState(0)
   const [error, setError] = useState(null)
@@ -26,7 +26,11 @@ export default function OnboardingSetup() {
   // Pre-fill from auth metadata
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user?.user_metadata?.full_name) setFullName(user.user_metadata.full_name)
+      if (!user?.user_metadata) return
+      if (user.user_metadata.full_name) setFullName(user.user_metadata.full_name)
+      if (user.user_metadata.phone) setPhone(user.user_metadata.phone)
+      if (user.user_metadata.company) setCompany(user.user_metadata.company)
+      if (user.user_metadata.role_title) setRoleTitle(user.user_metadata.role_title)
     })
   }, [])
 
@@ -35,15 +39,14 @@ export default function OnboardingSetup() {
     setSaving(true)
     setError(null)
 
-    const { error: err } = await supabase
-      .from('profiles')
-      .update({
+    const { error: err } = await supabase.auth.updateUser({
+      data: {
         full_name: fullName.trim(),
         phone: phone.trim() || null,
         company: company.trim() || null,
         role_title: roleTitle.trim() || null,
-      })
-      .eq('id', (await supabase.auth.getUser()).data.user.id)
+      },
+    })
 
     if (err) {
       setError('Error guardando perfil')
@@ -57,26 +60,38 @@ export default function OnboardingSetup() {
   const handleOrgCreate = async () => {
     if (!orgName.trim()) return setError('Nombre de organización requerido')
     setError(null)
+    setSaving(true)
 
     try {
-      await createOrganization(orgName.trim())
-      // Mark onboarding complete
-      await supabase.rpc('complete_onboarding', {
+      const newOrg = await createOrganization(orgName.trim())
+      
+      // Show success immediately — don't block on RPC
+      setStep(2)
+
+      // Fire-and-forget: complete onboarding metadata in background
+      supabase.rpc('complete_onboarding', {
+        p_full_name: fullName.trim(),
         p_phone: phone.trim() || null,
         p_company: company.trim() || null,
         p_role_title: roleTitle.trim() || null,
-      })
-      setStep(2)
-      // Auto-redirect after brief confirmation
-      setTimeout(() => {
-        window.location.reload()
-      }, 2000)
-    } catch (err) {
+        p_default_org_id: newOrg.id,
+      }).catch(err => console.warn('[Onboarding] complete_onboarding RPC warning:', err))
+
+    } catch {
       setError('Error creando organización')
+    } finally {
+      setSaving(false)
     }
   }
 
-  const currentStep = STEPS[step]
+  // Auto-transition from step 2 → main app
+  useEffect(() => {
+    if (step !== 2) return
+    const timer = setTimeout(() => {
+      if (onComplete) onComplete()
+    }, 2000)
+    return () => clearTimeout(timer)
+  }, [step, onComplete])
 
   return (
     <div style={{
@@ -186,9 +201,9 @@ export default function OnboardingSetup() {
                 ATRÁS
               </button>
               <button onClick={handleOrgCreate}
-                disabled={orgLoading || !orgName.trim()}
-                style={{ ...btnStyle(orgLoading || !orgName.trim()), flex: 1 }}>
-                {orgLoading ? 'CREANDO...' : 'ESTABLECER HQ'}
+                disabled={saving || orgLoading || !orgName.trim()}
+                style={{ ...btnStyle(saving || orgLoading || !orgName.trim()), flex: 1 }}>
+                {saving || orgLoading ? 'CREANDO...' : 'ESTABLECER HQ'}
               </button>
             </div>
           </>
@@ -215,7 +230,7 @@ export default function OnboardingSetup() {
             <p style={{
               fontSize: 13, color: 'var(--text-tertiary)', margin: '0 0 4px',
             }}>
-              Redirigiendo al centro de mando...
+              Entrando al centro de mando...
             </p>
             <div style={{
               width: 24, height: 24, borderRadius: '50%',

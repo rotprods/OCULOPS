@@ -262,18 +262,32 @@ export async function signInWithEmail(email, password) {
     return supabase.auth.signInWithPassword({ email, password });
 }
 
+function getAuthRedirectUrl() {
+    if (typeof window === 'undefined') return undefined;
+    return window.location.origin;
+}
+
 export async function signUpWithEmail(email, password, fullName) {
     if (!supabase) return { error: { message: 'Supabase not configured' } };
     return supabase.auth.signUp({
         email,
         password,
-        options: { data: { full_name: fullName } },
+        options: {
+            data: { full_name: fullName },
+            emailRedirectTo: getAuthRedirectUrl(),
+        },
     });
 }
 
 export async function signInWithMagicLink(email) {
     if (!supabase) return { error: { message: 'Supabase not configured' } };
-    return supabase.auth.signInWithOtp({ email });
+    return supabase.auth.signInWithOtp({
+        email,
+        options: {
+            emailRedirectTo: getAuthRedirectUrl(),
+            shouldCreateUser: false,
+        },
+    });
 }
 
 export async function signOut() {

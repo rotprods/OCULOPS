@@ -1,8 +1,7 @@
-// /////////////////////////////////////////////////////////////////////////////
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
-// OCULOPS — Messaging Hub
-// Unified inbox backed by conversations/messages in Supabase
-// /////////////////////////////////////////////////////////////////////////////
+// ═══════════════════════════════════════════════════
+// OCULOPS — Messaging v11.0
+// Unified inbox — Gmail, WhatsApp, social drafts
+// ═══════════════════════════════════════════════════
 
 import { useMemo, useState } from 'react'
 import { useConversations } from '../../hooks/useConversations'
@@ -10,37 +9,34 @@ import { useMessagingChannels } from '../../hooks/useMessagingChannels'
 import { useCompanies } from '../../hooks/useCompanies'
 import { useAppStore } from '../../stores/useAppStore'
 import { buildLaunchUrl, getChannelLabel } from '../../lib/outreach'
+import { EnvelopeIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
+import ModulePage from '../ui/ModulePage'
+import './Messaging.css'
 
 const CHANNELS = [
-    { key: 'whatsapp', icon: '[ WA ]', label: 'WHATSAPP', color: '#25D366' },
-    { key: 'instagram', icon: '[ IG ]', label: 'INSTAGRAM', color: '#E4405F' },
-    { key: 'email', icon: '[ MAIL ]', label: 'EMAIL', color: 'var(--color-info)' },
-    { key: 'linkedin', icon: '[ IN ]', label: 'LINKEDIN', color: '#0077B5' },
+    { key: 'whatsapp', label: 'WhatsApp', color: '#25D366' },
+    { key: 'instagram', label: 'Instagram', color: '#E4405F' },
+    { key: 'email', label: 'Email', color: 'var(--color-info)' },
+    { key: 'linkedin', label: 'LinkedIn', color: '#0077B5' },
 ]
 
 const TEMPLATES = [
-    { name: 'INTRO', content: 'Hola, he estado analizando vuestra captación y veo dos automatizaciones claras que os podrían ahorrar mucho trabajo comercial.' },
-    { name: 'FOLLOW-UP', content: 'Te escribo por si te cuadra que te comparta 2 ideas concretas para automatizar captación y seguimiento.' },
-    { name: 'DEMO', content: 'Si te encaja, te enseño en 10 minutos cómo dejar montado el flujo de captación, respuesta y CRM.' },
-    { name: 'CLOSING', content: 'Si lo ves alineado, esta semana puedo preparar el setup inicial y dejarlo operativo.' },
+    { name: 'Intro', content: 'Hola, he estado analizando vuestra captación y veo dos automatizaciones claras que os podrían ahorrar mucho trabajo comercial.' },
+    { name: 'Follow-up', content: 'Te escribo por si te cuadra que te comparta 2 ideas concretas para automatizar captación y seguimiento.' },
+    { name: 'Demo', content: 'Si te encaja, te enseño en 10 minutos cómo dejar montado el flujo de captación, respuesta y CRM.' },
+    { name: 'Closing', content: 'Si lo ves alineado, esta semana puedo preparar el setup inicial y dejarlo operativo.' },
 ]
 
 function inferChannel(conversation, messages = []) {
     if (conversation?.channel?.type) return conversation.channel.type
     if (conversation?.external_id?.includes(':')) return conversation.external_id.split(':')[0]
-
-    const latestWithMetadata = [...messages].reverse().find(message => message.metadata?.channel)
-    return latestWithMetadata?.metadata?.channel || 'email'
+    const latestWithMeta = [...messages].reverse().find(m => m.metadata?.channel)
+    return latestWithMeta?.metadata?.channel || 'email'
 }
 
-function formatMessageTime(value) {
+function formatTime(value) {
     if (!value) return ''
-    return new Date(value).toLocaleString('es-ES', {
-        day: '2-digit',
-        month: 'short',
-        hour: '2-digit',
-        minute: '2-digit',
-    }).toUpperCase()
+    return new Date(value).toLocaleString('en-US', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
 }
 
 function Messaging() {
@@ -52,405 +48,197 @@ function Messaging() {
     const [messageInput, setMessageInput] = useState('')
     const [showTemplates, setShowTemplates] = useState(false)
 
-    const companyMap = useMemo(
-        () => (companies || []).reduce((acc, company) => ({ ...acc, [company.id]: company }), {}),
-        [companies]
-    )
-
-    const selectedConversation = useMemo(
-        () => conversations.find(conversation => conversation.id === activeConvo) || null,
-        [activeConvo, conversations]
-    )
-
-    const selectedChannel = useMemo(
-        () => inferChannel(selectedConversation, messages),
-        [messages, selectedConversation]
-    )
-
-    const selectedCompany = selectedConversation?.contact?.company_id
-        ? companyMap[selectedConversation.contact.company_id]
-        : null
-
-    const filteredConversations = useMemo(() => {
-        if (activeChannel === 'all') return conversations
-        return conversations.filter(conversation => inferChannel(conversation) === activeChannel)
-    }, [activeChannel, conversations])
-
-    const draftMessage = useMemo(
-        () => [...messages].reverse().find(message => message.metadata?.launch_url),
-        [messages]
-    )
-
-    const activeTransport = selectedChannel === 'email'
-        ? channelsByType.email
-        : selectedChannel === 'whatsapp'
-            ? channelsByType.whatsapp
-            : null
-
+    const companyMap = useMemo(() => (companies || []).reduce((acc, c) => ({ ...acc, [c.id]: c }), {}), [companies])
+    const selectedConversation = useMemo(() => conversations.find(c => c.id === activeConvo) || null, [activeConvo, conversations])
+    const selectedChannel = useMemo(() => inferChannel(selectedConversation, messages), [messages, selectedConversation])
+    const selectedCompany = selectedConversation?.contact?.company_id ? companyMap[selectedConversation.contact.company_id] : null
+    const filteredConversations = useMemo(() => activeChannel === 'all' ? conversations : conversations.filter(c => inferChannel(c) === activeChannel), [activeChannel, conversations])
+    const draftMessage = useMemo(() => [...messages].reverse().find(m => m.metadata?.launch_url), [messages])
+    const activeTransport = selectedChannel === 'email' ? channelsByType.email : selectedChannel === 'whatsapp' ? channelsByType.whatsapp : null
     const canSendRealtime = Boolean(activeTransport && activeTransport.status === 'active')
 
-    const selectConvo = async (conversation) => {
-        await selectConversation(conversation.id)
-        setMessageInput('')
-    }
+    const selectConvo = async (c) => { await selectConversation(c.id); setMessageInput('') }
 
-    const openDraft = (message = draftMessage) => {
-        const launchUrl = message?.metadata?.launch_url
-        if (!launchUrl) return toast('[ NO LAUNCH URL DETECTED ]', 'warning')
-        window.open(launchUrl, '_blank', 'noopener,noreferrer')
+    const openDraft = (m = draftMessage) => {
+        if (!m?.metadata?.launch_url) return toast('No launch URL detected', 'warning')
+        window.open(m.metadata.launch_url, '_blank', 'noopener,noreferrer')
     }
 
     const saveDraft = async ({ openFallback = false } = {}) => {
         if (!messageInput.trim() || !selectedConversation) return
-
-        const launchUrl = buildLaunchUrl(selectedChannel, {
-            contact: selectedConversation.contact,
-            company: selectedCompany,
-            subject: `SEGUIMIENTO · ${selectedCompany?.name || selectedConversation.contact?.name || 'TARGET'}`,
-            body: messageInput,
+        const subject = `Follow-up · ${selectedCompany?.name || selectedConversation.contact?.name || 'Contact'}`
+        const launchUrl = buildLaunchUrl(selectedChannel, { contact: selectedConversation.contact, company: selectedCompany, subject, body: messageInput })
+        const msg = await sendMessage(selectedConversation.id, messageInput, {
+            status: 'draft', metadata: { channel: selectedChannel, launch_url: launchUrl, subject, contact_id: selectedConversation.contact?.id || null, company_id: selectedCompany?.id || null, company_name: selectedCompany?.name || null },
         })
-
-        const message = await sendMessage(selectedConversation.id, messageInput, {
-            status: 'draft',
-            metadata: {
-                channel: selectedChannel,
-                launch_url: launchUrl,
-                subject: `SEGUIMIENTO · ${selectedCompany?.name || selectedConversation.contact?.name || 'TARGET'}`,
-                contact_id: selectedConversation.contact?.id || null,
-                company_id: selectedCompany?.id || null,
-                company_name: selectedCompany?.name || null,
-            },
-        })
-
-        if (!message) {
-            return toast('[ FAILED TO SECURE DRAFT ]', 'warning')
-        }
-
+        if (!msg) return toast('Failed to save draft', 'warning')
         if (openFallback && launchUrl) window.open(launchUrl, '_blank', 'noopener,noreferrer')
-
         setMessageInput('')
-        toast(`[ DRAFT SECURED FOR ${getChannelLabel(selectedChannel).toUpperCase()} ]`, 'success')
-        return message
+        toast(`Draft saved for ${getChannelLabel(selectedChannel)}`, 'success')
+        return msg
     }
 
     const sendRealtime = async () => {
         if (!messageInput.trim() || !selectedConversation) return
-        if (!canSendRealtime) return toast(`[ API OFFLINE: ${getChannelLabel(selectedChannel).toUpperCase()} ]`, 'warning')
-
-        const subject = `SEGUIMIENTO · ${selectedCompany?.name || selectedConversation.contact?.name || 'TARGET'}`
-        const launchUrl = buildLaunchUrl(selectedChannel, {
-            contact: selectedConversation.contact,
-            company: selectedCompany,
-            subject,
-            body: messageInput,
-        })
-
+        if (!canSendRealtime) return toast(`${getChannelLabel(selectedChannel)} API offline`, 'warning')
+        const subject = `Follow-up · ${selectedCompany?.name || selectedConversation.contact?.name || 'Contact'}`
+        const launchUrl = buildLaunchUrl(selectedChannel, { contact: selectedConversation.contact, company: selectedCompany, subject, body: messageInput })
         const draft = await sendMessage(selectedConversation.id, messageInput, {
-            status: 'draft',
-            metadata: {
-                channel: selectedChannel,
-                launch_url: launchUrl,
-                subject,
-                contact_id: selectedConversation.contact?.id || null,
-                company_id: selectedCompany?.id || null,
-                company_name: selectedCompany?.name || null,
-                email: selectedConversation.contact?.email || null,
-                phone: selectedConversation.contact?.phone || null,
-            },
+            status: 'draft', metadata: { channel: selectedChannel, launch_url: launchUrl, subject, contact_id: selectedConversation.contact?.id || null, company_id: selectedCompany?.id || null, company_name: selectedCompany?.name || null, email: selectedConversation.contact?.email || null, phone: selectedConversation.contact?.phone || null },
         })
-
-        if (!draft) return toast('[ FAILED TO STAGE PAYLOAD ]', 'warning')
-
-        const response = await dispatchMessage({
-            messageId: draft.id,
-            conversationId: selectedConversation.id,
-            channel: selectedChannel,
-            subject,
-            body: messageInput,
-            metadata: {
-                launch_url: launchUrl,
-            },
-        })
-
-        if (response?.error) {
-            return toast(`[ TRANSMISSION FAILED: ${response.error} ]`, 'warning')
-        }
-
+        if (!draft) return toast('Failed to stage message', 'warning')
+        const result = await dispatchMessage({ messageId: draft.id, conversationId: selectedConversation.id, channel: selectedChannel, subject, body: messageInput, metadata: { launch_url: launchUrl } })
+        if (result?.error) return toast(`Send failed: ${result.error}`, 'warning')
         setMessageInput('')
-        toast(`[ ${getChannelLabel(selectedChannel).toUpperCase()} TRANSMITTED ]`, 'success')
+        toast(`${getChannelLabel(selectedChannel)} message sent`, 'success')
     }
 
-    return (
-        <div className="fade-in" style={{ padding: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border-default)', paddingBottom: '24px', marginBottom: '24px' }}>
-                <div style={{ flex: 1 }}>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--text-primary)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>MESSAGING HUB</h1>
-                    <p className="mono font-bold" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '8px', letterSpacing: '0.1em' }}>
-                        /// UNIFIED INBOX PROTOCOL: GMAIL API, WHATSAPP API, AND LOCAL DRAFTS
-                    </p>
+    const ChannelCard = ({ type, label, channel, connectFn, disconnectFn, syncFn }) => (
+        <div className="msg-channel-card">
+            <div className="msg-channel-card-header">
+                <div>
+                    <div className="mono text-xs font-bold" style={{ marginBottom: 6 }}>{label}</div>
+                    <div className="mono text-xs text-tertiary">{channel?.status === 'active' ? (channel.email_address || channel.phone_number || 'API connected') : 'Not connected'}</div>
                 </div>
+                <span className={`badge ${channel?.status === 'active' ? 'badge-success' : ''}`}>{channel?.status === 'active' ? 'Active' : 'Offline'}</span>
             </div>
+            <div className="msg-channel-card-actions">
+                <button className="btn btn-sm btn-ghost" onClick={connectFn} disabled={channelBusy === type}>
+                    {channelBusy === type ? 'Connecting...' : channel?.status === 'active' ? 'Reconnect' : 'Connect'}
+                </button>
+                {channel?.status === 'active' && syncFn && (
+                    <button className="btn btn-sm btn-ghost" onClick={() => syncFn(channel.id)} disabled={channelBusy === `sync:${channel.id}`}>
+                        {channelBusy === `sync:${channel.id}` ? 'Syncing...' : 'Sync'}
+                    </button>
+                )}
+                {channel?.status === 'active' && (
+                    <button className="btn btn-sm btn-ghost" style={{ color: 'var(--color-danger)' }} onClick={() => disconnectFn(channel.id)} disabled={channelBusy === channel.id}>Disconnect</button>
+                )}
+            </div>
+        </div>
+    )
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '32px' }}>
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                        <div>
-                            <div className="mono font-bold" style={{ fontSize: '12px', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>[ MAIL ] PROTOCOL</div>
-                            <div className="mono font-bold" style={{ fontSize: '10px', color: 'var(--text-tertiary)' }}>
-                                {channelsByType.email?.status === 'active'
-                                    ? channelsByType.email.email_address || 'API CONNECTED'
-                                    : 'AWAITING OAUTH HANDSHAKE'}
-                            </div>
-                        </div>
-                        <div className="mono font-bold" style={{ fontSize: '9px', padding: '4px 8px', letterSpacing: '0.1em', background: channelsByType.email?.status === 'active' ? 'var(--color-success)' : 'transparent', color: channelsByType.email?.status === 'active' ? '#000' : 'var(--text-tertiary)', border: channelsByType.email?.status === 'active' ? 'none' : '1px solid var(--border-subtle)' }}>
-                            {channelsByType.email?.status === 'active' ? 'SECURE' : 'OFFLINE'}
+    return (
+        <ModulePage title="Messaging" subtitle={`Unified inbox · Gmail, WhatsApp & social drafts · ${totalUnread} unread`}>
+            <div className="lab-content">
+                {/* Channel cards */}
+                <div className="msg-channel-grid">
+                    <ChannelCard type="gmail" label="Email" channel={channelsByType.email} connectFn={connectGmail} disconnectFn={disconnectChannel} syncFn={syncGmail} />
+                    <ChannelCard type="whatsapp" label="WhatsApp" channel={channelsByType.whatsapp} connectFn={connectWhatsApp} disconnectFn={disconnectChannel} />
+                    <div className="msg-channel-card">
+                        <div className="mono text-xs font-bold" style={{ marginBottom: 'var(--space-2)' }}>Social channels</div>
+                        <div className="mono text-xs text-tertiary">LinkedIn and Instagram operate as local drafts injected into the inbox.</div>
+                    </div>
+                </div>
+
+                {channelsError && <div className="mono text-xs" style={{ padding: 'var(--space-4)', border: '1px solid var(--color-danger)', borderRadius: 'var(--radius-sm)', color: 'var(--color-danger)', marginBottom: 'var(--space-4)' }}>Connection error: {channelsError}</div>}
+
+                {/* Channel filter */}
+                <div className="msg-filter-tabs">
+                    <button className={`lab-tab-btn ${activeChannel === 'all' ? 'active' : ''}`} onClick={() => setActiveChannel('all')}>
+                        All {totalUnread > 0 && <span style={{ marginLeft: 6, color: activeChannel === 'all' ? 'var(--surface-base)' : 'var(--color-danger)' }}>({totalUnread})</span>}
+                    </button>
+                    {CHANNELS.map(ch => {
+                        const unread = conversations.filter(c => inferChannel(c) === ch.key && c.unread_count > 0).length
+                        return <button key={ch.key} className={`lab-tab-btn ${activeChannel === ch.key ? 'active' : ''}`} onClick={() => setActiveChannel(ch.key)}>{ch.label}{unread > 0 && <span style={{ marginLeft: 6 }}> ({unread})</span>}</button>
+                    })}
+                </div>
+
+                {/* Inbox */}
+                <div className="msg-inbox-layout">
+                    <div className="msg-convo-list">
+                        <div className="lab-panel-header">Conversations ({filteredConversations.length})</div>
+                        <div style={{ overflow: 'auto', flex: 1 }}>
+                            {loading ? <div className="lab-panel-empty">Loading conversations...</div> :
+                                filteredConversations.length === 0 ? <div className="lab-panel-empty">No conversations</div> :
+                                filteredConversations.map(convo => {
+                                    const ch = inferChannel(convo)
+                                    const chMeta = CHANNELS.find(c => c.key === ch) || CHANNELS[0]
+                                    const company = convo.contact?.company_id ? companyMap[convo.contact.company_id] : null
+                                    return (
+                                        <div key={convo.id} className={`msg-convo-item ${selectedConversation?.id === convo.id ? 'active' : ''}`} onClick={() => selectConvo(convo)}>
+                                            <div className="msg-convo-header">
+                                                <div className="msg-convo-left">
+                                                    <span className="mono text-xs text-tertiary font-bold">{chMeta.label.slice(0, 2)}</span>
+                                                    <div>
+                                                        <div className="mono text-xs font-bold">{convo.contact?.name || 'Unknown'}</div>
+                                                        <div className="mono text-xs text-tertiary" style={{ marginTop: 4 }}>{company?.name || getChannelLabel(ch)}</div>
+                                                    </div>
+                                                </div>
+                                                <div className="msg-convo-right">
+                                                    <span className="mono text-xs text-tertiary">{formatTime(convo.last_message_at || convo.created_at)}</span>
+                                                    {convo.unread_count > 0 && <span className="msg-unread-badge">{convo.unread_count}</span>}
+                                                </div>
+                                            </div>
+                                            <div className="mono text-xs text-secondary" style={{ marginTop: 'var(--space-3)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                                {convo.status === 'pending' ? 'Draft saved' : convo.status}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
                         </div>
                     </div>
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                        <button className="mono font-bold" style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', fontSize: '9px', padding: '8px 12px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={connectGmail} disabled={channelBusy === 'gmail'}>
-                            {channelBusy === 'gmail' ? '[ ESTABLISHING LINK... ]' : channelsByType.email?.status === 'active' ? '[ RECYCLE LINK ]' : '[ CONNECT API ]'}
-                        </button>
-                        {channelsByType.email?.status === 'active' && (
+
+                    <div className="msg-chat-panel">
+                        {!selectedConversation ? (
+                            <div className="lab-panel-empty" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Select a conversation</div>
+                        ) : (
                             <>
-                                <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)', fontSize: '9px', padding: '8px 12px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={() => syncGmail(channelsByType.email.id)} disabled={channelBusy === `sync:${channelsByType.email.id}`}>
-                                    {channelBusy === `sync:${channelsByType.email.id}` ? '[ SYNCING... ]' : '[ FORCE SYNC ]'}
-                                </button>
-                                <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--color-danger)', color: 'var(--color-danger)', fontSize: '9px', padding: '8px 12px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={() => disconnectChannel(channelsByType.email.id)} disabled={channelBusy === channelsByType.email.id}>
-                                    [ SEVER ]
-                                </button>
+                                <div className="msg-chat-header">
+                                    <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
+                                        <div className="msg-chat-avatar">{CHANNELS.find(c => c.key === selectedChannel)?.label?.slice(0, 2) || '?'}</div>
+                                        <div>
+                                            <div className="mono text-sm font-bold" style={{ color: 'var(--accent-primary)' }}>{selectedConversation.contact?.name || 'Unknown'}</div>
+                                            <div className="mono text-xs text-tertiary" style={{ marginTop: 4 }}>
+                                                {selectedCompany?.name || ''} · {getChannelLabel(selectedChannel)}
+                                                {selectedConversation.contact?.email && ` · ${selectedConversation.contact.email}`}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', alignItems: 'center' }}>
+                                        {['email', 'whatsapp'].includes(selectedChannel) && (
+                                            <span className={`mono text-xs ${canSendRealtime ? 'text-success' : 'text-tertiary'}`}>{canSendRealtime ? 'Connected' : 'Offline'}</span>
+                                        )}
+                                        {draftMessage?.metadata?.launch_url && <button className="btn btn-sm btn-primary" onClick={() => openDraft(draftMessage)}>Open link</button>}
+                                        <button className="btn btn-sm btn-ghost" onClick={() => setShowTemplates(!showTemplates)}>Templates</button>
+                                    </div>
+                                </div>
+
+                                {showTemplates && (
+                                    <div className="msg-templates-bar">
+                                        {TEMPLATES.map(t => <button key={t.name} className="btn btn-sm btn-ghost" onClick={() => setMessageInput(t.content)}>{t.name}</button>)}
+                                    </div>
+                                )}
+
+                                <div className="msg-messages-area">
+                                    {messages.length === 0 ? <div className="lab-panel-empty">Channel open. Start the conversation.</div> :
+                                        messages.map(msg => (
+                                            <div key={msg.id} style={{ display: 'flex', justifyContent: msg.direction === 'outbound' ? 'flex-end' : 'flex-start' }}>
+                                                <div className={`msg-bubble ${msg.direction === 'outbound' ? 'msg-bubble--outbound' : 'msg-bubble--inbound'}`}>
+                                                    {msg.metadata?.subject && <div className="mono text-xs text-tertiary" style={{ marginBottom: 'var(--space-2)' }}>Subject: {msg.metadata.subject}</div>}
+                                                    <div style={{ fontSize: 11, whiteSpace: 'pre-wrap', lineHeight: 1.6 }}>{msg.content}</div>
+                                                    <div className="msg-bubble-footer">
+                                                        <span>{formatTime(msg.created_at)}</span>
+                                                        <span style={{ color: msg.status === 'draft' ? 'var(--color-warning)' : 'inherit' }}>{msg.status || 'sent'}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                </div>
+
+                                <div className="msg-compose">
+                                    <input className="msg-compose-input" placeholder={`Message via ${getChannelLabel(selectedChannel)}...`} value={messageInput} onChange={e => setMessageInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); canSendRealtime ? sendRealtime() : saveDraft() } }} />
+                                    {['email', 'whatsapp'].includes(selectedChannel) && (
+                                        <button className="btn btn-primary" onClick={sendRealtime} disabled={!canSendRealtime}>Send</button>
+                                    )}
+                                    <button className="btn btn-ghost" onClick={() => saveDraft({ openFallback: !canSendRealtime && ['linkedin', 'instagram'].includes(selectedChannel) })}>Save draft</button>
+                                </div>
                             </>
                         )}
                     </div>
                 </div>
-
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                        <div>
-                            <div className="mono font-bold" style={{ fontSize: '12px', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>[ WA ] PROTOCOL</div>
-                            <div className="mono font-bold" style={{ fontSize: '10px', color: 'var(--text-tertiary)' }}>
-                                {channelsByType.whatsapp?.status === 'active'
-                                    ? channelsByType.whatsapp.phone_number || 'CLOUD API CONNECTED'
-                                    : 'AWAITING CLOUD API CREDENTIALS'}
-                            </div>
-                        </div>
-                        <div className="mono font-bold" style={{ fontSize: '9px', padding: '4px 8px', letterSpacing: '0.1em', background: channelsByType.whatsapp?.status === 'active' ? 'var(--color-success)' : 'transparent', color: channelsByType.whatsapp?.status === 'active' ? '#000' : 'var(--text-tertiary)', border: channelsByType.whatsapp?.status === 'active' ? 'none' : '1px solid var(--border-subtle)' }}>
-                            {channelsByType.whatsapp?.status === 'active' ? 'SECURE' : 'OFFLINE'}
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                        <button className="mono font-bold" style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', fontSize: '9px', padding: '8px 12px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={connectWhatsApp} disabled={channelBusy === 'whatsapp'}>
-                            {channelBusy === 'whatsapp' ? '[ ESTABLISHING LINK... ]' : channelsByType.whatsapp?.status === 'active' ? '[ DIAGNOSE LINK ]' : '[ CONNECT API ]'}
-                        </button>
-                        {channelsByType.whatsapp?.status === 'active' && (
-                            <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--color-danger)', color: 'var(--color-danger)', fontSize: '9px', padding: '8px 12px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={() => disconnectChannel(channelsByType.whatsapp.id)} disabled={channelBusy === channelsByType.whatsapp.id}>
-                                [ SEVER ]
-                            </button>
-                        )}
-                    </div>
-                </div>
-
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
-                    <div className="mono font-bold" style={{ fontSize: '12px', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '10px' }}>[ SOCIAL ] PROTOCOLS</div>
-                    <div className="mono" style={{ fontSize: '10px', color: 'var(--text-tertiary)', lineHeight: 1.5 }}>
-                        LINKEDIN AND INSTAGRAM OPERATE AS LOCAL DRAFTS INJECTED DIRECTLY INTO THE INBOX PIPELINE.
-                    </div>
-                </div>
             </div>
-
-            {channelsError && (
-                <div className="mono font-bold" style={{ padding: '16px', border: '1px solid var(--color-danger)', background: 'rgba(255, 0, 0, 0.05)', color: 'var(--color-danger)', fontSize: '10px', letterSpacing: '0.1em', marginBottom: '24px' }}>
-                    [ LINK FAILURE: {channelsError} ]
-                </div>
-            )}
-
-            <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
-                <button
-                    className="mono font-bold"
-                    style={{ background: activeChannel === 'all' ? 'var(--text-primary)' : 'transparent', color: activeChannel === 'all' ? '#000' : 'var(--text-tertiary)', border: '1px solid ' + (activeChannel === 'all' ? 'var(--text-primary)' : 'var(--border-subtle)'), padding: '8px 16px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
-                    onClick={() => setActiveChannel('all')}
-                >
-                    [ OVERVIEW ] {totalUnread > 0 && <span style={{ marginLeft: '6px', color: activeChannel === 'all' ? '#000' : 'var(--color-danger)' }}>({totalUnread})</span>}
-                </button>
-                {CHANNELS.map(channel => {
-                    const unreadCount = conversations.filter(c => inferChannel(c) === channel.key && c.unread_count > 0).length
-                    return (
-                        <button
-                            key={channel.key}
-                            className="mono font-bold"
-                            style={{ background: activeChannel === channel.key ? 'var(--text-primary)' : 'transparent', color: activeChannel === channel.key ? '#000' : 'var(--text-tertiary)', border: '1px solid ' + (activeChannel === channel.key ? 'var(--text-primary)' : 'var(--border-subtle)'), padding: '8px 16px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
-                            onClick={() => setActiveChannel(channel.key)}
-                        >
-                            {channel.icon} {channel.label}
-                            {unreadCount > 0 && <span style={{ marginLeft: '6px', color: activeChannel === channel.key ? '#000' : 'var(--color-danger)' }}>({unreadCount})</span>}
-                        </button>
-                    )
-                })}
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(320px, 1fr) 2.5fr', gap: '16px', height: '600px' }}>
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                    <div className="mono font-bold text-tertiary" style={{ padding: '16px', borderBottom: '1px solid var(--border-default)', fontSize: '10px', letterSpacing: '0.1em' }}>
-                        /// SECURE COMMS ({filteredConversations.length})
-                    </div>
-                    <div style={{ overflow: 'auto', flex: 1 }}>
-                        {loading ? (
-                            <div className="mono" style={{ textAlign: 'center', padding: '40px', color: 'var(--accent-primary)', fontSize: '10px', letterSpacing: '0.1em' }}>[ SCANNING CHANNELS... ]</div>
-                        ) : filteredConversations.length === 0 ? (
-                            <div className="mono" style={{ textAlign: 'center', padding: '40px', color: 'var(--text-tertiary)', fontSize: '10px', letterSpacing: '0.1em' }}>
-                                [ COMMS SILENT ]
-                            </div>
-                        ) : filteredConversations.map(conversation => {
-                            const channel = inferChannel(conversation)
-                            const channelMeta = CHANNELS.find(item => item.key === channel) || CHANNELS[0]
-                            const company = conversation.contact?.company_id ? companyMap[conversation.contact.company_id] : null
-
-                            return (
-                                <div
-                                    key={conversation.id}
-                                    onClick={() => selectConvo(conversation)}
-                                    className="mono"
-                                    style={{
-                                        padding: '16px',
-                                        cursor: 'pointer',
-                                        borderBottom: '1px solid var(--border-subtle)',
-                                        background: selectedConversation?.id === conversation.id ? 'var(--border-subtle)' : 'transparent',
-                                        transition: 'background 0.2s',
-                                    }}
-                                >
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                                            <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--text-tertiary)' }}>{channelMeta.icon}</span>
-                                            <div>
-                                                <div style={{ fontWeight: 'bold', fontSize: '11px', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{conversation.contact?.name || '[ UNKNOWN OP ]'}</div>
-                                                <div style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: '4px' }}>{company?.name || getChannelLabel(channel)}</div>
-                                            </div>
-                                        </div>
-                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
-                                            <span style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>{formatMessageTime(conversation.last_message_at || conversation.created_at)}</span>
-                                            {conversation.unread_count > 0 && <span style={{ fontSize: '9px', background: 'var(--color-danger)', color: '#000', padding: '2px 6px', fontWeight: 'bold' }}>{conversation.unread_count}</span>}
-                                        </div>
-                                    </div>
-                                    <div style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                        {conversation.status === 'pending' ? '>>> DRAFT SECURED' : `STATUS: ${conversation.status.toUpperCase()}`}
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div style={{ border: '1px solid var(--border-default)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                    {!selectedConversation ? (
-                        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <div className="mono font-bold" style={{ textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '11px', letterSpacing: '0.1em' }}>
-                                [ AWAITING FREQUENCY LOCK ]
-                            </div>
-                        </div>
-                    ) : (
-                        <>
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', padding: '16px', borderBottom: '1px solid var(--border-subtle)', flexWrap: 'wrap' }}>
-                                <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                                    <div style={{ width: 32, height: 32, border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 'bold', color: 'var(--text-tertiary)' }}>
-                                        {CHANNELS.find(item => item.key === selectedChannel)?.icon || '[ UNK ]'}
-                                    </div>
-                                    <div>
-                                        <div style={{ fontWeight: 'bold', fontSize: '12px', color: 'var(--accent-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{selectedConversation.contact?.name || '[ UNKNOWN OP ]'}</div>
-                                        <div style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: '4px' }}>
-                                            {selectedCompany?.name || 'UNAFFILIATED'} /// ENCRYPTION: {getChannelLabel(selectedChannel)}
-                                            {selectedConversation.contact?.email && ` /// ${selectedConversation.contact.email}`}
-                                            {selectedConversation.contact?.phone && ` /// ${selectedConversation.contact.phone}`}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                                    {['email', 'whatsapp'].includes(selectedChannel) && (
-                                        <span className="mono font-bold" style={{ alignSelf: 'center', color: canSendRealtime ? 'var(--color-success)' : 'var(--text-tertiary)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', marginRight: '8px' }}>
-                                            {canSendRealtime ? '[ LINK ESTABLISHED ]' : '[ OFFLINE ]'}
-                                        </span>
-                                    )}
-                                    {draftMessage?.metadata?.launch_url && (
-                                        <button className="mono font-bold" style={{ background: 'var(--accent-primary)', color: '#000', border: 'none', padding: '8px 12px', fontSize: '9px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={() => openDraft(draftMessage)}>[ OPEN LINK ]</button>
-                                    )}
-                                    <button className="mono font-bold" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)', padding: '8px 12px', fontSize: '9px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={() => setShowTemplates(!showTemplates)}>[ TEMPLATES ]</button>
-                                </div>
-                            </div>
-
-                            {showTemplates && (
-                                <div style={{ padding: '16px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: '8px', flexWrap: 'wrap', background: 'var(--surface-raised)' }}>
-                                    {TEMPLATES.map(template => (
-                                        <button key={template.name} className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--border-default)', color: 'var(--text-secondary)', padding: '6px 10px', fontSize: '9px', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }} onClick={() => setMessageInput(template.content)}>
-                                            {template.name}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-
-                            <div style={{ flex: 1, padding: '24px', overflow: 'auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                                {messages.length === 0 ? (
-                                    <div className="mono font-bold" style={{ color: 'var(--text-tertiary)', fontSize: '10px', letterSpacing: '0.1em', textAlign: 'center', marginTop: '20px' }}>[ SECURE CHANNEL OPENED. AWAITING TRANSMISSION. ]</div>
-                                ) : messages.map(message => (
-                                    <div key={message.id} className="mono" style={{ display: 'flex', justifyContent: message.direction === 'outbound' ? 'flex-end' : 'flex-start' }}>
-                                        <div style={{
-                                            maxWidth: '75%',
-                                            padding: '16px',
-                                            background: message.direction === 'outbound' ? 'var(--surface-raised)' : '#000',
-                                            color: message.direction === 'outbound' ? 'var(--accent-primary)' : 'var(--text-primary)',
-                                            border: message.direction === 'outbound' ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
-                                            borderLeft: message.direction === 'outbound' ? '1px solid var(--accent-primary)' : '3px solid var(--border-subtle)'
-                                        }}>
-                                            {message.metadata?.subject && (
-                                                <div style={{ fontSize: '9px', color: 'var(--text-tertiary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                                                    /// SUBJECT: {message.metadata.subject}
-                                                </div>
-                                            )}
-                                            <div style={{ fontSize: '11px', whiteSpace: 'pre-wrap', lineHeight: 1.6 }}>{message.content}</div>
-                                            <div style={{ fontSize: '9px', color: 'var(--text-tertiary)', marginTop: '12px', display: 'flex', justifyContent: 'space-between', gap: '16px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                                                <span>{formatMessageTime(message.created_at)}</span>
-                                                <span style={{ color: message.status === 'draft' ? 'var(--color-warning)' : 'inherit' }}>{message.status || 'SENT'}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div style={{ display: 'flex', gap: '8px', padding: '16px', borderTop: '1px solid var(--border-subtle)', background: 'var(--surface-raised)' }}>
-                                <input
-                                    style={{ flex: 1, background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)', fontSize: '11px', padding: '12px', outline: 'none', letterSpacing: '0.05em' }}
-                                    placeholder={`TRANSMIT VIA ${getChannelLabel(selectedChannel).toUpperCase()}...`}
-                                    value={messageInput}
-                                    onChange={event => setMessageInput(event.target.value)}
-                                    onKeyDown={event => {
-                                        if (event.key === 'Enter' && !event.shiftKey) {
-                                            event.preventDefault()
-                                            if (canSendRealtime) sendRealtime()
-                                            else saveDraft()
-                                        }
-                                    }}
-                                />
-                                {['email', 'whatsapp'].includes(selectedChannel) && (
-                                    <button
-                                        className="mono font-bold"
-                                        style={{ background: canSendRealtime ? 'var(--accent-primary)' : 'var(--surface-elevated)', color: canSendRealtime ? '#000' : 'var(--text-tertiary)', border: 'none', padding: '0 20px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: canSendRealtime ? 'pointer' : 'not-allowed' }}
-                                        onClick={sendRealtime}
-                                        disabled={!canSendRealtime}
-                                    >
-                                        [ DISPATCH ]
-                                    </button>
-                                )}
-                                <button
-                                    className="mono font-bold"
-                                    style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)', padding: '0 20px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
-                                    onClick={() => saveDraft({ openFallback: !canSendRealtime && ['linkedin', 'instagram'].includes(selectedChannel) })}
-                                >
-                                    [ STAGE PENDING ]
-                                </button>
-                            </div>
-                        </>
-                    )}
-                </div>
-            </div>
-        </div>
+        </ModulePage>
     )
 }
 

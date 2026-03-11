@@ -1,6 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 import { handleCors, jsonResponse, errorResponse, readJson } from "../_shared/http.ts";
+import { deliverEventToSubscriptions } from "../_shared/orchestration.ts";
 import { executeTriggeredWorkflows } from "../_shared/automation.ts";
 
 /**
@@ -131,6 +132,7 @@ Deno.serve(async (req: Request) => {
       dispatched: boolean;
       status: number;
     }> = [];
+    const subscriptionDeliveries: Array<Record<string, unknown>> = [];
 
     for (const event of events) {
       const webhookUrl = resolveWebhookUrl(event.event_type);
@@ -168,6 +170,13 @@ Deno.serve(async (req: Request) => {
       } catch (err) {
         console.error(`Automation trigger failed for ${event.event_type}:`, err);
       }
+
+      try {
+        const deliveries = await deliverEventToSubscriptions(event as Record<string, unknown>);
+        subscriptionDeliveries.push(...deliveries);
+      } catch (err) {
+        console.error(`Subscription delivery failed for ${event.event_type}:`, err);
+      }
     }
 
     const dispatched = results.filter((r) => r.dispatched).length;
@@ -181,6 +190,7 @@ Deno.serve(async (req: Request) => {
       skipped,
       failed,
       results,
+      subscription_deliveries: subscriptionDeliveries,
       automations: automationResult || null,
     });
   } catch (error) {

@@ -1,19 +1,15 @@
 // ═══════════════════════════════════════════════════
-// OCULOPS — Settings Module
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// OCULOPS — Settings v11.0
+// Account, agency, integrations & system
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
 import { supabase, getCurrentUserId } from '../../lib/supabase'
+import { Cog6ToothIcon } from '@heroicons/react/24/outline'
+import ModulePage from '../ui/ModulePage'
+import './Settings.css'
 
-const AGENCY_DEFAULTS = {
-  name: 'OCULOPS AGENCY',
-  website: '',
-  email: '',
-  phone: '',
-  icp: 'SMB 10-200 EMPLOYEES — E-COMMERCE, CLINICS, REAL ESTATE, B2B SAAS',
-  services: 'AI CHATBOTS, AUTOMATION, META ADS, AUTO-PROSPECTING',
-}
+const AGENCY_DEFAULTS = { name: 'Oculops Agency', website: '', email: '', phone: '', icp: 'SMB 10-200 employees — e-commerce, clinics, real estate, B2B SaaS', services: 'AI chatbots, automation, Meta ads, auto-prospecting' }
 
 function maskKey(key) {
   if (!key || key.length < 8) return '••••••••'
@@ -21,14 +17,8 @@ function maskKey(key) {
 }
 
 function formatPublicValue(key, value) {
-  if (!value) return 'UNCONFIGURED [SYS_WARN]'
-  if (key === 'VITE_SUPABASE_URL') {
-    try {
-      return new URL(value).origin
-    } catch {
-      return value
-    }
-  }
+  if (!value) return 'Not configured'
+  if (key === 'VITE_SUPABASE_URL') { try { return new URL(value).origin } catch { return value } }
   return maskKey(value)
 }
 
@@ -37,14 +27,11 @@ function Settings() {
   const [saved, setSaved] = useState(false)
   const [activeTab, setActiveTab] = useState('account')
   const [loadingProfile, setLoadingProfile] = useState(true)
-
-  // Account profile state
   const [profile, setProfile] = useState({ full_name: '', email: '', phone: '', company: '', role_title: '' })
   const [profileSaved, setProfileSaved] = useState(false)
   const [passwordFields, setPasswordFields] = useState({ current: '', new: '', confirm: '' })
   const [passwordMsg, setPasswordMsg] = useState(null)
 
-  // Load profile + agency settings
   useEffect(() => {
     async function loadSettings() {
       if (!supabase) { setLoadingProfile(false); return }
@@ -52,16 +39,8 @@ function Settings() {
       if (!userId) { setLoadingProfile(false); return }
       const { data } = await supabase.from('profiles').select('*').eq('id', userId).single()
       if (data) {
-        setProfile({
-          full_name: data.full_name || '',
-          email: data.email || '',
-          phone: data.phone || '',
-          company: data.company || '',
-          role_title: data.role_title || '',
-        })
-        if (data.settings?.agency) {
-          setAgency(prev => ({ ...prev, ...data.settings.agency }))
-        }
+        setProfile({ full_name: data.full_name || '', email: data.email || '', phone: data.phone || '', company: data.company || '', role_title: data.role_title || '' })
+        if (data.settings?.agency) setAgency(prev => ({ ...prev, ...data.settings.agency }))
       }
       setLoadingProfile(false)
     }
@@ -69,155 +48,98 @@ function Settings() {
   }, [])
 
   const publicEnvKeys = [
-    { label: 'SUPABASE URL', key: 'VITE_SUPABASE_URL' },
-    { label: 'SUPABASE ANON KEY', key: 'VITE_SUPABASE_ANON_KEY' },
+    { label: 'Supabase URL', key: 'VITE_SUPABASE_URL' },
+    { label: 'Supabase anon key', key: 'VITE_SUPABASE_ANON_KEY' },
   ]
 
   const protectedIntegrations = [
-    { label: 'OPENAI INGRESS', location: 'SUPABASE EDGE FUNCTIONS / PRIVATE ENV' },
-    { label: 'ANTHROPIC CLAUDE', location: 'SUPABASE EDGE FUNCTIONS / PRIVATE ENV' },
-    { label: 'META GRAPH API', location: 'SUPABASE SECRETS / PRIVATE BACKEND' },
-    { label: 'META WHATSAPP', location: 'PRIVATE WEBHOOKS / SECRETS' },
+    { label: 'OpenAI', location: 'Supabase Edge Functions / private env' },
+    { label: 'Anthropic Claude', location: 'Supabase Edge Functions / private env' },
+    { label: 'Meta Graph API', location: 'Supabase Secrets / private backend' },
+    { label: 'Meta WhatsApp', location: 'Private webhooks / secrets' },
   ]
 
   const saveAgency = useCallback(async () => {
-    // Save to Supabase profiles.settings
     if (supabase) {
       const userId = await getCurrentUserId()
       if (userId) {
-        const { data: profile } = await supabase.from('profiles').select('settings').eq('id', userId).single()
-        const existingSettings = profile?.settings || {}
-        await supabase.from('profiles').update({
-          settings: { ...existingSettings, agency },
-          updated_at: new Date().toISOString(),
-        }).eq('id', userId)
+        const { data: p } = await supabase.from('profiles').select('settings').eq('id', userId).single()
+        await supabase.from('profiles').update({ settings: { ...(p?.settings || {}), agency }, updated_at: new Date().toISOString() }).eq('id', userId)
       }
     }
-    // Also keep localStorage as fallback
     localStorage.setItem('ag_agency', JSON.stringify(agency))
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    setSaved(true); setTimeout(() => setSaved(false), 2000)
   }, [agency])
 
   const clearCache = () => {
-    const keys = Object.keys(localStorage).filter(k => k.startsWith('ag_') || k.startsWith('oculops'))
-    keys.forEach(k => localStorage.removeItem(k))
+    Object.keys(localStorage).filter(k => k.startsWith('ag_') || k.startsWith('oculops')).forEach(k => localStorage.removeItem(k))
     window.location.reload()
   }
 
   const saveProfile = useCallback(async () => {
     const userId = await getCurrentUserId()
     if (!userId) return
-    await supabase.from('profiles').update({
-      full_name: profile.full_name,
-      phone: profile.phone || null,
-      company: profile.company || null,
-      role_title: profile.role_title || null,
-      updated_at: new Date().toISOString(),
-    }).eq('id', userId)
-    setProfileSaved(true)
-    setTimeout(() => setProfileSaved(false), 2000)
+    await supabase.from('profiles').update({ full_name: profile.full_name, phone: profile.phone || null, company: profile.company || null, role_title: profile.role_title || null, updated_at: new Date().toISOString() }).eq('id', userId)
+    setProfileSaved(true); setTimeout(() => setProfileSaved(false), 2000)
   }, [profile])
 
   const changePassword = useCallback(async () => {
     setPasswordMsg(null)
-    if (passwordFields.new.length < 6) return setPasswordMsg({ type: 'error', text: 'Mínimo 6 caracteres' })
-    if (passwordFields.new !== passwordFields.confirm) return setPasswordMsg({ type: 'error', text: 'Las contraseñas no coinciden' })
+    if (passwordFields.new.length < 6) return setPasswordMsg({ type: 'error', text: 'Minimum 6 characters' })
+    if (passwordFields.new !== passwordFields.confirm) return setPasswordMsg({ type: 'error', text: 'Passwords do not match' })
     const { error } = await supabase.auth.updateUser({ password: passwordFields.new })
     if (error) return setPasswordMsg({ type: 'error', text: error.message })
-    setPasswordMsg({ type: 'success', text: 'Contraseña actualizada' })
+    setPasswordMsg({ type: 'success', text: 'Password updated' })
     setPasswordFields({ current: '', new: '', confirm: '' })
     setTimeout(() => setPasswordMsg(null), 3000)
   }, [passwordFields])
 
   const tabs = [
-    { id: 'account', label: '00. ACCOUNT' },
-    { id: 'agency', label: '01. DIRECTIVE PROFILE' },
-    { id: 'integrations', label: '02. INTEGRATION MATRIX' },
-    { id: 'system', label: '03. SYSTEM CORE' },
+    { id: 'account', label: 'Account' },
+    { id: 'agency', label: 'Agency profile' },
+    { id: 'integrations', label: 'Integrations' },
+    { id: 'system', label: 'System' },
   ]
 
   return (
-    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
-        <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>SYSTEM CONFIGURATION</h1>
-          <span className="mono text-xs text-tertiary">AGENCY PROFILE, INTEGRATION SECRETS & SYSTEM CORE SETTINGS</span>
+    <ModulePage
+      title="Settings"
+      subtitle="Account, agency, integrations & system"
+      actions={
+        <div className="lab-tabs">
+          {tabs.map(t => <button key={t.id} className={`lab-tab-btn ${activeTab === t.id ? 'active' : ''}`} onClick={() => setActiveTab(t.id)}>{t.label}</button>)}
         </div>
-        <div style={{ display: 'flex', gap: '2px' }}>
-          {tabs.map(t => (
-            <button
-              key={t.id}
-              className="mono"
-              style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t.id ? 'var(--accent-primary)' : 'transparent', color: activeTab === t.id ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
-              onClick={() => setActiveTab(t.id)}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div style={{ flex: 1, overflowY: 'auto' }}>
+      }
+    >
+      <div className="lab-content">
         {activeTab === 'account' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-            {/* Profile */}
-            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// OPERATOR PROFILE</div>
-              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div className="input-group">
-                  <label className="mono text-xs">NOMBRE COMPLETO</label>
-                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.full_name} onChange={e => setProfile(p => ({ ...p, full_name: e.target.value }))} />
+          <div className="settings-grid-2">
+            <div className="lab-panel">
+              <div className="lab-panel-header">Profile</div>
+              <div className="ct-section-body">
+                <div className="form-grid">
+                  <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Full name</label><input className="form-input" value={profile.full_name} onChange={e => setProfile(p => ({ ...p, full_name: e.target.value }))} /></div>
+                  <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Email</label><input className="form-input" value={profile.email} disabled style={{ opacity: 0.5 }} /><span className="mono text-xs text-tertiary">Managed by Supabase Auth</span></div>
+                  <div className="form-field"><label className="form-label">Phone</label><input className="form-input" value={profile.phone} onChange={e => setProfile(p => ({ ...p, phone: e.target.value }))} placeholder="+34 600 000 000" /></div>
+                  <div className="form-field"><label className="form-label">Role</label><input className="form-input" value={profile.role_title} onChange={e => setProfile(p => ({ ...p, role_title: e.target.value }))} placeholder="CEO, CTO..." /></div>
+                  <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Company</label><input className="form-input" value={profile.company} onChange={e => setProfile(p => ({ ...p, company: e.target.value }))} /></div>
                 </div>
-                <div className="input-group">
-                  <label className="mono text-xs">EMAIL</label>
-                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', opacity: 0.5 }} value={profile.email} disabled />
-                  <span className="mono" style={{ fontSize: 9, color: 'var(--text-tertiary)' }}>Gestionado por Supabase Auth</span>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div className="input-group">
-                    <label className="mono text-xs">TELÉFONO</label>
-                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.phone} onChange={e => setProfile(p => ({ ...p, phone: e.target.value }))} placeholder="+34 600 000 000" />
-                  </div>
-                  <div className="input-group">
-                    <label className="mono text-xs">CARGO</label>
-                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.role_title} onChange={e => setProfile(p => ({ ...p, role_title: e.target.value }))} placeholder="CEO, CTO..." />
-                  </div>
-                </div>
-                <div className="input-group">
-                  <label className="mono text-xs">EMPRESA</label>
-                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.company} onChange={e => setProfile(p => ({ ...p, company: e.target.value }))} placeholder="Tu empresa" />
-                </div>
-                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
-                  <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: profileSaved ? 'var(--accent-primary)' : '#000', color: profileSaved ? '#000' : 'var(--accent-primary)', borderRadius: 0, padding: '12px 24px' }} onClick={saveProfile}>
-                    {profileSaved ? 'PERFIL GUARDADO' : 'GUARDAR PERFIL'}
-                  </button>
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-4)' }}>
+                  <button className={`btn ${profileSaved ? 'btn-primary' : 'btn-ghost'}`} onClick={saveProfile}>{profileSaved ? 'Saved!' : 'Save profile'}</button>
                 </div>
               </div>
             </div>
 
-            {/* Password */}
-            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)' }}>/// CAMBIAR CONTRASEÑA</div>
-              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div className="input-group">
-                  <label className="mono text-xs">NUEVA CONTRASEÑA</label>
-                  <input className="input mono text-xs" type="password" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={passwordFields.new} onChange={e => setPasswordFields(p => ({ ...p, new: e.target.value }))} placeholder="Mínimo 6 caracteres" />
+            <div className="lab-panel">
+              <div className="lab-panel-header" style={{ color: 'var(--color-warning)' }}>Change password</div>
+              <div className="ct-section-body">
+                <div className="form-grid">
+                  <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">New password</label><input className="form-input" type="password" value={passwordFields.new} onChange={e => setPasswordFields(p => ({ ...p, new: e.target.value }))} placeholder="Minimum 6 characters" /></div>
+                  <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Confirm password</label><input className="form-input" type="password" value={passwordFields.confirm} onChange={e => setPasswordFields(p => ({ ...p, confirm: e.target.value }))} /></div>
                 </div>
-                <div className="input-group">
-                  <label className="mono text-xs">CONFIRMAR CONTRASEÑA</label>
-                  <input className="input mono text-xs" type="password" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={passwordFields.confirm} onChange={e => setPasswordFields(p => ({ ...p, confirm: e.target.value }))} placeholder="Repetir contraseña" />
-                </div>
-                {passwordMsg && (
-                  <div className="mono text-xs" style={{ padding: '8px 12px', border: `1px solid ${passwordMsg.type === 'error' ? 'rgba(255,51,51,0.2)' : 'rgba(255,212,0,0.2)'}`, color: passwordMsg.type === 'error' ? 'var(--color-danger)' : 'var(--accent-primary)' }}>
-                    {passwordMsg.text}
-                  </div>
-                )}
-                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
-                  <button className="btn mono" style={{ border: '1px solid var(--color-warning)', background: '#000', color: 'var(--color-warning)', borderRadius: 0, padding: '12px 24px' }} onClick={changePassword} disabled={!passwordFields.new}>
-                    ACTUALIZAR CONTRASEÑA
-                  </button>
+                {passwordMsg && <div className={`settings-msg ${passwordMsg.type === 'error' ? 'settings-msg--error' : 'settings-msg--success'}`}>{passwordMsg.text}</div>}
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-4)' }}>
+                  <button className="btn btn-ghost" style={{ color: 'var(--color-warning)', borderColor: 'var(--color-warning)' }} onClick={changePassword} disabled={!passwordFields.new}>Update password</button>
                 </div>
               </div>
             </div>
@@ -225,71 +147,38 @@ function Settings() {
         )}
 
         {activeTab === 'agency' && (
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CORE AGENCY PARAMETERS</div>
-            <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) minmax(250px, 1fr)', gap: '16px' }}>
-                <div className="input-group">
-                  <label className="mono text-xs">AGENCY DESIGNATION</label>
-                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.name} onChange={e => setAgency(a => ({ ...a, name: e.target.value }))} placeholder="AGENCY OR ORG NAME" />
-                </div>
-                <div className="input-group">
-                  <label className="mono text-xs">EXTERNAL DOMAIN / WEBSITE</label>
-                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.website} onChange={e => setAgency(a => ({ ...a, website: e.target.value }))} placeholder="HTTPS://DOMAIN.COM" />
-                </div>
-                <div className="input-group">
-                  <label className="mono text-xs">PRIMARY COMMS (EMAIL)</label>
-                  <input className="input mono text-xs" type="email" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.email} onChange={e => setAgency(a => ({ ...a, email: e.target.value }))} placeholder="COMM@DOMAIN.COM" />
-                </div>
-                <div className="input-group">
-                  <label className="mono text-xs">PRIMARY CONTACT (PHONE)</label>
-                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.phone} onChange={e => setAgency(a => ({ ...a, phone: e.target.value }))} placeholder="+1 555-000-0000" />
-                </div>
+          <div className="lab-panel">
+            <div className="lab-panel-header">Agency settings</div>
+            <div className="ct-section-body">
+              <div className="form-grid">
+                <div className="form-field"><label className="form-label">Agency name</label><input className="form-input" value={agency.name} onChange={e => setAgency(a => ({ ...a, name: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Website</label><input className="form-input" value={agency.website} onChange={e => setAgency(a => ({ ...a, website: e.target.value }))} placeholder="https://domain.com" /></div>
+                <div className="form-field"><label className="form-label">Email</label><input className="form-input" type="email" value={agency.email} onChange={e => setAgency(a => ({ ...a, email: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Phone</label><input className="form-input" value={agency.phone} onChange={e => setAgency(a => ({ ...a, phone: e.target.value }))} /></div>
+                <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Ideal customer profile</label><textarea className="form-input" rows={2} value={agency.icp} onChange={e => setAgency(a => ({ ...a, icp: e.target.value }))} /></div>
+                <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Services offered</label><textarea className="form-input" rows={2} value={agency.services} onChange={e => setAgency(a => ({ ...a, services: e.target.value }))} /></div>
               </div>
-
-              <div className="input-group">
-                <label className="mono text-xs">ICP (IDEAL CUSTOMER PROFILE) MATRIX</label>
-                <textarea className="input mono text-xs" rows={2} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.icp} onChange={e => setAgency(a => ({ ...a, icp: e.target.value }))} />
-              </div>
-
-              <div className="input-group">
-                <label className="mono text-xs">PRIMARY DEPLOYMENT SERVICES</label>
-                <textarea className="input mono text-xs" rows={2} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={agency.services} onChange={e => setAgency(a => ({ ...a, services: e.target.value }))} />
-              </div>
-
-              <div style={{ marginTop: '16px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
-                <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: saved ? 'var(--accent-primary)' : '#000', color: saved ? '#000' : 'var(--accent-primary)', borderRadius: 0, padding: '12px 24px' }} onClick={saveAgency}>
-                  {saved ? 'PARAMETERS SECURED' : 'SECURE NEW PARAMETERS'}
-                </button>
+              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-4)' }}>
+                <button className={`btn ${saved ? 'btn-primary' : 'btn-ghost'}`} onClick={saveAgency}>{saved ? 'Saved!' : 'Save settings'}</button>
               </div>
             </div>
           </div>
         )}
 
         {activeTab === 'integrations' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '32px' }}>
-            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', gap: '16px' }}>
-                <span>/// PUBLIC RUNTIME MATRIX</span>
-                <span style={{ color: 'var(--color-info)' }}>[READ ONLY]</span>
-              </div>
-              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <p className="mono text-xs" style={{ color: 'var(--text-tertiary)', lineHeight: '1.4' }}>
-                  DISPLAYING CLIENT-SAFE VARIABLES ONLY. VENDOR SECRETS MUST NOT BE EXPOSED VIA `VITE_*`.
-                </p>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
+          <div className="lab-col-layout">
+            <div className="lab-panel">
+              <div className="lab-panel-header"><span>Public runtime variables</span><span className="mono text-xs" style={{ color: 'var(--color-info)', fontWeight: 'normal' }}>Read only</span></div>
+              <div className="ct-section-body">
+                <p className="mono text-xs text-tertiary" style={{ lineHeight: 1.4, marginBottom: 'var(--space-4)' }}>Client-safe variables only. Vendor secrets must not be exposed via VITE_*.</p>
+                <table className="lab-table">
                   <tbody>
                     {publicEnvKeys.map(({ label, key }) => {
                       const val = import.meta.env[key]
                       return (
-                        <tr key={key} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                          <td style={{ padding: '12px 0' }}>
-                            <div style={{ fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '4px' }}>{label}</div>
-                            <div style={{ color: 'var(--text-tertiary)' }}>{key}</div>
-                          </td>
-                          <td style={{ padding: '12px 0', textAlign: 'right', color: val ? 'var(--color-success)' : 'var(--color-danger)' }}>
-                            {formatPublicValue(key, val)}
-                          </td>
+                        <tr key={key}>
+                          <td><div className="font-bold">{label}</div><div className="text-tertiary">{key}</div></td>
+                          <td style={{ textAlign: 'right', color: val ? 'var(--color-success)' : 'var(--color-danger)' }}>{formatPublicValue(key, val)}</td>
                         </tr>
                       )
                     })}
@@ -298,26 +187,16 @@ function Settings() {
               </div>
             </div>
 
-            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)', display: 'flex', gap: '16px' }}>
-                <span>/// PROTECTED ASSETS</span>
-                <span style={{ color: 'var(--color-danger)' }}>[BACKEND DEPLOYMENT ONLY]</span>
-              </div>
-              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <p className="mono text-xs" style={{ color: 'var(--text-tertiary)', lineHeight: '1.4' }}>
-                  CREDENTIALS SECURED IN SUPABASE SECRETS, PRIVATE WEBHOOKS, OR SERVER-SIDE ENV VARIABLES. UNREADABLE FROM CLOUD CLIENT.
-                </p>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
+            <div className="lab-panel">
+              <div className="lab-panel-header" style={{ color: 'var(--color-warning)' }}><span>Protected integrations</span><span className="mono text-xs" style={{ color: 'var(--color-danger)', fontWeight: 'normal' }}>Backend only</span></div>
+              <div className="ct-section-body">
+                <p className="mono text-xs text-tertiary" style={{ lineHeight: 1.4, marginBottom: 'var(--space-4)' }}>Credentials secured in Supabase Secrets or server-side env.</p>
+                <table className="lab-table">
                   <tbody>
                     {protectedIntegrations.map(({ label, location }) => (
-                      <tr key={label} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                        <td style={{ padding: '12px 0' }}>
-                          <div style={{ fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '4px' }}>{label}</div>
-                          <div style={{ color: 'var(--text-secondary)' }}>{location}</div>
-                        </td>
-                        <td style={{ padding: '12px 0', textAlign: 'right', color: 'var(--text-tertiary)' }}>
-                          NON_VISIBLE_CLIENT
-                        </td>
+                      <tr key={label}>
+                        <td><div className="font-bold">{label}</div><div className="text-secondary">{location}</div></td>
+                        <td className="text-tertiary" style={{ textAlign: 'right' }}>Not visible</td>
                       </tr>
                     ))}
                   </tbody>
@@ -328,44 +207,37 @@ function Settings() {
         )}
 
         {activeTab === 'system' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
-            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CORE OVERVIEW</div>
-              <div style={{ padding: '24px' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-                  <tbody>
-                    {[
-                      { label: 'OS VERSION', value: 'V10.3 (ALPHA)' },
-                      { label: 'RUNTIME STACK', value: 'REACT 19 + VITE 7 + ELECTRON 35' },
-                      { label: 'DB LAYER', value: 'SUPABASE POSTGRESQL // EDGE' },
-                      { label: 'CURRENT MODE', value: import.meta.env.MODE === 'production' ? 'PRODUCTION' : 'DEVELOPMENT' },
-                      { label: 'NODE ENVIRONMENT', value: import.meta.env.MODE.toUpperCase() },
-                    ].map(({ label, value }) => (
-                      <tr key={label} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                        <td style={{ padding: '12px 0', color: 'var(--text-secondary)' }}>{label}</td>
-                        <td style={{ padding: '12px 0', textAlign: 'right', color: 'var(--accent-primary)', fontWeight: 'bold' }}>{value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+          <div className="settings-grid-asym">
+            <div className="lab-panel">
+              <div className="lab-panel-header">System overview</div>
+              <table className="lab-table">
+                <tbody>
+                  {[
+                    { label: 'OS version', value: 'v11.0 (Alpha)' },
+                    { label: 'Runtime', value: 'React 19 + Vite 7' },
+                    { label: 'Database', value: 'Supabase PostgreSQL / Edge' },
+                    { label: 'Mode', value: import.meta.env.MODE },
+                  ].map(({ label, value }) => (
+                    <tr key={label}>
+                      <td className="text-secondary">{label}</td>
+                      <td style={{ textAlign: 'right', color: 'var(--accent-primary)', fontWeight: 'bold' }}>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)' }}>/// MEMORY CONTROL</div>
-              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <p className="mono text-xs" style={{ color: 'var(--text-tertiary)', lineHeight: '1.4' }}>
-                  WIPE LOCAL BROWSER CACHE (LOCALSTORAGE). ACTIVE SUPABASE DB LAYER IS UNAFFECTED.
-                </p>
-                <button className="btn mono" style={{ border: '1px solid var(--color-danger)', background: 'transparent', color: 'var(--color-danger)', borderRadius: 0, padding: '12px' }} onClick={clearCache}>
-                  PURGE LOCAL MEMORY
-                </button>
+            <div className="lab-panel">
+              <div className="lab-panel-header" style={{ color: 'var(--color-warning)' }}>Local storage</div>
+              <div className="ct-section-body">
+                <p className="mono text-xs text-tertiary" style={{ lineHeight: 1.4, marginBottom: 'var(--space-4)' }}>Wipe local browser cache. Active database layer is unaffected.</p>
+                <button className="btn btn-danger" onClick={clearCache}>Clear local cache</button>
               </div>
             </div>
           </div>
         )}
       </div>
-    </div>
+    </ModulePage>
   )
 }
 

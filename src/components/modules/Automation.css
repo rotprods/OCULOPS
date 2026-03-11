@@ -1,0 +1,173 @@
+/* ═══════════════════════════════════════════════════
+   OCULOPS — Automation v11.0
+   ═══════════════════════════════════════════════════ */
+
+.auto-form-panel {
+    background: var(--surface-raised);
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.auto-action-pills {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.auto-action-pill {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    padding: 6px 12px;
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-base);
+    color: var(--text-tertiary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.auto-action-pill.active {
+    border-color: var(--accent-primary);
+    background: var(--accent-primary);
+    color: var(--surface-base);
+}
+
+.auto-sequence-preview {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+}
+
+.auto-sequence-flow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+/* ── Templates & Packs Grid ── */
+.auto-split {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 2fr;
+    gap: var(--space-4);
+}
+
+.auto-template-card {
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-base);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+}
+
+.auto-template-card:hover {
+    border-color: var(--accent-primary);
+}
+
+.auto-pack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-3);
+    padding: var(--space-4);
+    align-content: start;
+}
+
+.auto-pack-card {
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-base);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+}
+
+.auto-pack-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-3);
+}
+
+/* ── Workflows List ── */
+.auto-wf-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: var(--space-4);
+}
+
+.auto-wf-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.auto-wf-item:hover { background: var(--surface-elevated); }
+.auto-wf-item.selected { background: var(--surface-elevated); }
+
+.auto-wf-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.auto-wf-dot--active { background: var(--color-success); }
+.auto-wf-dot--inactive { background: var(--text-tertiary); }
+
+.auto-wf-tags {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.auto-wf-actions {
+    display: flex;
+    gap: 4px;
+    align-self: flex-start;
+}
+
+/* ── Detail Panel ── */
+.auto-detail-panel {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-base);
+}
+
+.auto-step-card {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.auto-run-card {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2);
+}
+
+.auto-run-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .auto-split, .auto-wf-layout { grid-template-columns: 1fr; }
+}

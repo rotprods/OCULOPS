@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
-// OCULOPS — Automation Zone
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// OCULOPS — Automation v11.0
+// Event-driven workflows & n8n orchestration
 // ═══════════════════════════════════════════════════
 
 import { useMemo, useState } from 'react'
@@ -10,57 +10,45 @@ import { useAutomation } from '../../hooks/useAutomation'
 import { useAgentVault } from '../../hooks/useAgentVault'
 import { AGENT_AUTOMATION_PACKS } from '../../data/agentAutomationPacks'
 import { CORE_MINI_APPS } from '../miniapps/MiniAppRegistry'
+import { BoltIcon, PlusIcon } from '@heroicons/react/24/outline'
+import ModulePage from '../ui/ModulePage'
 import ModuleSkeleton from '../ui/ModuleSkeleton'
+import './Automation.css'
 
 const VAULT_AUTOMATION_CAPS = ['orchestration', 'ml-ai', 'api-design']
 
 const TRIGGERS = [
-    { key: 'atlas_import', icon: '✈️', label: 'ATLAS LEAD IMPORT', type: 'event' },
-    { key: 'manual', icon: '🖱️', label: 'MANUAL OVERRIDE', type: 'manual' },
-    { key: 'message_in', icon: '💬', label: 'INBOUND COMMS', type: 'event' },
-    { key: 'schedule', icon: '⏰', label: 'SYSTEM CRON', type: 'time' },
-    { key: 'webhook', icon: '🔗', label: 'EXTERNAL WEBHOOK', type: 'webhook' },
+    { key: 'atlas_import', label: 'Atlas lead import', type: 'event' },
+    { key: 'manual', label: 'Manual trigger', type: 'manual' },
+    { key: 'message_in', label: 'Inbound message', type: 'event' },
+    { key: 'schedule', label: 'Scheduled cron', type: 'time' },
+    { key: 'webhook', label: 'External webhook', type: 'webhook' },
 ]
 
 const ACTIONS = [
-    { key: 'compose_message', icon: '📤', label: 'DRAFT TRANSMISSION' },
-    { key: 'create_deal', icon: '💎', label: 'INITIALIZE DEAL' },
-    { key: 'update_contact', icon: '✏️', label: 'MODIFY ENTITY' },
-    { key: 'notify', icon: '🔔', label: 'SYSTEM ALERT' },
-    { key: 'run_connector', icon: '🕸️', label: 'ENGAGE CONNECTOR' },
-    { key: 'run_api', icon: '⚡', label: 'EXECUTE LIVE API' },
-    { key: 'run_agent', icon: '🤖', label: 'DISPATCH AI AGENT' },
-    { key: 'launch_n8n', icon: '🔁', label: 'TRIGGER N8N RELAY' },
-    { key: 'crm_activity', icon: '📋', label: 'LOG ACTIVITY' },
+    { key: 'compose_message', label: 'Draft message' },
+    { key: 'create_deal', label: 'Create deal' },
+    { key: 'update_contact', label: 'Update contact' },
+    { key: 'notify', label: 'Send notification' },
+    { key: 'run_connector', label: 'Run connector' },
+    { key: 'run_api', label: 'Execute API' },
+    { key: 'run_agent', label: 'Dispatch AI agent' },
+    { key: 'launch_n8n', label: 'Trigger n8n' },
+    { key: 'crm_activity', label: 'Log activity' },
 ]
 
 const TEMPLATES = [
-    {
-        name: 'ATLAS GMAIL OUTREACH',
-        trigger: 'atlas_import',
-        actions: ['compose_message', 'crm_activity'],
-        desc: 'UPON ATLAS IMPORT, PREPARES DRAFT AND LOGS CRM ACTIVITY.',
-    },
-    {
-        name: 'SOCIAL FOLLOW-UP',
-        trigger: 'manual',
-        actions: ['compose_message', 'notify'],
-        desc: 'MANUAL TRIGGER FOR LINKEDIN/IG FOLLOW-UP SEQUENCES.',
-    },
-    {
-        name: 'LEAD TO DEAL CONVERSION',
-        trigger: 'atlas_import',
-        actions: ['create_deal', 'update_contact', 'crm_activity'],
-        desc: 'CONVERTS IMPORTED ATLAS LEAD INTO ACTIVE DEAL AND UPDATES ENTITY.',
-    },
+    { name: 'Atlas Gmail outreach', trigger: 'atlas_import', actions: ['compose_message', 'crm_activity'], desc: 'On Atlas import, prepares draft and logs CRM activity.' },
+    { name: 'Social follow-up', trigger: 'manual', actions: ['compose_message', 'notify'], desc: 'Manual trigger for LinkedIn/IG follow-up sequences.' },
+    { name: 'Lead to deal conversion', trigger: 'atlas_import', actions: ['create_deal', 'update_contact', 'crm_activity'], desc: 'Converts imported Atlas lead into active deal.' },
 ]
 
-function getTriggerMeta(key) { return TRIGGERS.find(trigger => trigger.key === key) || TRIGGERS[0] }
-function getActionMeta(key) { return ACTIONS.find(action => action.key === key) || ACTIONS[0] }
+function getTriggerMeta(key) { return TRIGGERS.find(t => t.key === key) || TRIGGERS[0] }
+function getActionMeta(key) { return ACTIONS.find(a => a.key === key) || ACTIONS[0] }
 
-function formatWorkflowRunDate(value) {
-    if (!value) return 'NO RUNS ON RECORD'
-    return new Date(value).toLocaleString('en-US', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).toUpperCase()
+function formatRunDate(value) {
+    if (!value) return 'No runs yet'
+    return new Date(value).toLocaleString('en-US', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
 }
 
 function unique(values) { return [...new Set(values)] }
@@ -70,8 +58,8 @@ function uniqueBy(items, keySelector) {
     return [...map.values()]
 }
 
-function workflowSupportsLiveSend(workflow) {
-    return (workflow.steps || []).some(step => step?.type === 'compose_message' && ['email', 'whatsapp'].includes(step?.config?.channel))
+function workflowSupportsLiveSend(wf) {
+    return (wf.steps || []).some(s => s?.type === 'compose_message' && ['email', 'whatsapp'].includes(s?.config?.channel))
 }
 
 function Automation() {
@@ -81,252 +69,164 @@ function Automation() {
     const { agents: vaultAgents, loading: vaultLoading } = useAgentVault()
     const liveConnectorApps = installedApps.filter(app => app.runMode === 'connector_proxy' && app.connectorStatus === 'live')
     const liveApiApps = useMemo(() => CORE_MINI_APPS.filter(app => app.runMode === 'edge_function' && app.status !== 'planned'), [])
-    const agentOptions = useMemo(() => unique([...liveApiApps.flatMap(app => app.agentTargets || []), ...AGENT_AUTOMATION_PACKS.map(pack => pack.agentCodeName)]), [liveApiApps])
+    const agentOptions = useMemo(() => unique([...liveApiApps.flatMap(app => app.agentTargets || []), ...AGENT_AUTOMATION_PACKS.map(p => p.agentCodeName)]), [liveApiApps])
 
     const n8nOptions = useMemo(() => uniqueBy([
-        ...liveApiApps.flatMap(app => (app.n8nTemplates || []).map(template => ({ value: template, label: template, pageUrl: null, downloadUrl: null, source: 'product_registry' }))),
-        ...AGENT_AUTOMATION_PACKS.flatMap(pack => pack.templates.map(template => ({ value: String(template.id), label: `#${template.id} · ${template.name}`, pageUrl: template.pageUrl, downloadUrl: template.downloadUrl, source: pack.agentCodeName }))),
+        ...liveApiApps.flatMap(app => (app.n8nTemplates || []).map(t => ({ value: t, label: t, pageUrl: null, downloadUrl: null, source: 'product_registry' }))),
+        ...AGENT_AUTOMATION_PACKS.flatMap(pack => pack.templates.map(t => ({ value: String(t.id), label: `#${t.id} · ${t.name}`, pageUrl: t.pageUrl, downloadUrl: t.downloadUrl, source: pack.agentCodeName }))),
     ], item => item.value), [liveApiApps])
 
-    const templateLookup = useMemo(() => Object.fromEntries(n8nOptions.map(option => [option.value, option])), [n8nOptions])
+    const templateLookup = useMemo(() => Object.fromEntries(n8nOptions.map(o => [o.value, o])), [n8nOptions])
     const defaultForm = { name: '', description: '', trigger: 'atlas_import', actions: [], connectorId: '', apiId: '', agentCodeName: '', workflowTemplate: '' }
 
     const [showForm, setShowForm] = useState(false)
     const [selectedWorkflowId, setSelectedWorkflowId] = useState(null)
     const [form, setForm] = useState(defaultForm)
 
-    const selectedWorkflow = useMemo(() => workflows.find(workflow => workflow.id === selectedWorkflowId) || null, [selectedWorkflowId, workflows])
-
-    // Vault agents filtered by automation-compatible capabilities
-    const automationVaultAgents = useMemo(() => {
-        return vaultAgents
-            .filter(a => (a.capabilities || []).some(c => VAULT_AUTOMATION_CAPS.includes(c)))
-            .slice(0, 20)
-    }, [vaultAgents])
+    const selectedWorkflow = useMemo(() => workflows.find(w => w.id === selectedWorkflowId) || null, [selectedWorkflowId, workflows])
+    const automationVaultAgents = useMemo(() => vaultAgents.filter(a => (a.capabilities || []).some(c => VAULT_AUTOMATION_CAPS.includes(c))).slice(0, 20), [vaultAgents])
 
     const toggleAction = (key) => {
-        setForm(current => {
-            const actions = current.actions.includes(key) ? current.actions.filter(action => action !== key) : [...current.actions, key]
-            return {
-                ...current, actions,
-                connectorId: actions.includes('run_connector') ? current.connectorId : '',
-                apiId: actions.includes('run_api') ? current.apiId : '',
-                agentCodeName: actions.includes('run_agent') ? current.agentCodeName : '',
-                workflowTemplate: actions.includes('launch_n8n') ? current.workflowTemplate : '',
-            }
+        setForm(cur => {
+            const actions = cur.actions.includes(key) ? cur.actions.filter(a => a !== key) : [...cur.actions, key]
+            return { ...cur, actions, connectorId: actions.includes('run_connector') ? cur.connectorId : '', apiId: actions.includes('run_api') ? cur.apiId : '', agentCodeName: actions.includes('run_agent') ? cur.agentCodeName : '', workflowTemplate: actions.includes('launch_n8n') ? cur.workflowTemplate : '' }
         })
     }
 
     const addNewWorkflow = async () => {
-        if (!form.name.trim()) return toast('NAME REQUIRED', 'warning')
-        if (form.actions.length === 0) return toast('AT LEAST ONE ACTION REQUIRED', 'warning')
-        if (form.actions.includes('run_connector') && !form.connectorId) return toast('SELECT LIVE CONNECTOR', 'warning')
-        if (form.actions.includes('run_api') && !form.apiId) return toast('SELECT LIVE API', 'warning')
-        if (form.actions.includes('run_agent') && !form.agentCodeName) return toast('SELECT AI AGENT', 'warning')
-        if (form.actions.includes('launch_n8n') && !form.workflowTemplate) return toast('SELECT N8N RELAY', 'warning')
+        if (!form.name.trim()) return toast('Name required', 'warning')
+        if (form.actions.length === 0) return toast('At least one action required', 'warning')
+        if (form.actions.includes('run_connector') && !form.connectorId) return toast('Select a connector', 'warning')
+        if (form.actions.includes('run_api') && !form.apiId) return toast('Select an API', 'warning')
+        if (form.actions.includes('run_agent') && !form.agentCodeName) return toast('Select an agent', 'warning')
+        if (form.actions.includes('launch_n8n') && !form.workflowTemplate) return toast('Select n8n template', 'warning')
 
         const selectedApi = liveApiApps.find(app => app.id === form.apiId) || null
         const selectedTemplate = templateLookup[form.workflowTemplate] || null
         const trigger = getTriggerMeta(form.trigger)
 
-        const workflow = await addWorkflow({
+        const wf = await addWorkflow({
             name: form.name.trim(), description: form.description || null, trigger_type: trigger.type,
             trigger_config: { key: trigger.key, label: trigger.label, connectorId: form.connectorId || null },
             metadata: { agent_code_name: form.agentCodeName || null, n8n_template_id: form.workflowTemplate || null },
-            steps: form.actions.map((action, index) => ({
-                id: `step-${index + 1}`, type: action,
+            steps: form.actions.map((action, i) => ({
+                id: `step-${i + 1}`, type: action,
                 config: action === 'run_connector' ? { connectorId: form.connectorId }
                     : action === 'run_api' ? { apiId: form.apiId, endpoint: selectedApi?.endpoint || null, label: selectedApi?.name || null, payload: selectedApi?.healthcheckPayload || {} }
-                        : action === 'run_agent' ? { agentCodeName: form.agentCodeName, action: 'cycle' }
-                            : action === 'launch_n8n' ? { agentCodeName: form.agentCodeName || null, workflowTemplate: form.workflowTemplate, workflowTemplateLabel: selectedTemplate?.label || form.workflowTemplate, workflowTemplateUrl: selectedTemplate?.pageUrl || null, workflowTemplateDownloadUrl: selectedTemplate?.downloadUrl || null, workflowTemplateSource: selectedTemplate?.source || null }
-                                : {},
+                    : action === 'run_agent' ? { agentCodeName: form.agentCodeName, action: 'cycle' }
+                    : action === 'launch_n8n' ? { agentCodeName: form.agentCodeName || null, workflowTemplate: form.workflowTemplate, workflowTemplateLabel: selectedTemplate?.label || form.workflowTemplate, workflowTemplateUrl: selectedTemplate?.pageUrl || null, workflowTemplateDownloadUrl: selectedTemplate?.downloadUrl || null, workflowTemplateSource: selectedTemplate?.source || null }
+                    : {},
             })),
             is_active: false,
         })
-
-        if (!workflow) return toast('WORKFLOW CREATION FAILED', 'warning')
-        setForm(defaultForm)
-        setShowForm(false)
-        toast('WORKFLOW CREATED', 'success')
+        if (!wf) return toast('Workflow creation failed', 'warning')
+        setForm(defaultForm); setShowForm(false); toast('Workflow created', 'success')
     }
 
-    const selectWorkflow = async (workflow) => { setSelectedWorkflowId(workflow.id); await loadRuns(workflow.id) }
+    const selectWorkflow = async (wf) => { setSelectedWorkflowId(wf.id); await loadRuns(wf.id) }
 
-    const openWorkflowDraft = (workflow) => {
-        const draftStep = (workflow.steps || []).find(step => step?.config?.launch_url)
-        if (!draftStep?.config?.launch_url) return toast('NO DRAFT CHANNEL LINKED', 'warning')
-        window.open(draftStep.config.launch_url, '_blank', 'noopener,noreferrer')
-    }
-
-    const executeWorkflow = async (workflow, { sendLive = false } = {}) => {
-        if (!workflow?.id) return
-        const result = await runWorkflow(workflow.id, { sendLive, context: { workflow_name: workflow.name } })
+    const executeWorkflow = async (wf, { sendLive = false } = {}) => {
+        if (!wf?.id) return
+        const result = await runWorkflow(wf.id, { sendLive, context: { workflow_name: wf.name } })
         if (result?.error) return toast(result.error, 'warning')
-        await loadRuns(workflow.id)
-        toast(sendLive ? `WORKFLOW EXECUTED (LIVE TX): ${workflow.name}` : `WORKFLOW EXECUTED: ${workflow.name}`, 'success')
+        await loadRuns(wf.id)
+        toast(`Workflow executed: ${wf.name}`, 'success')
     }
 
     const seedAgentPack = (pack) => {
-        setForm({
-            ...defaultForm, name: `${pack.label.toUpperCase()} LOOP`, description: pack.objective.toUpperCase(),
-            trigger: pack.defaultTrigger, actions: pack.defaultActions, agentCodeName: pack.agentCodeName,
-            workflowTemplate: pack.templates[0] ? String(pack.templates[0].id) : '',
-        })
+        setForm({ ...defaultForm, name: `${pack.label} loop`, description: pack.objective, trigger: pack.defaultTrigger, actions: pack.defaultActions, agentCodeName: pack.agentCodeName, workflowTemplate: pack.templates[0] ? String(pack.templates[0].id) : '' })
         setShowForm(true)
     }
 
+    const statusColor = (status) => status === 'completed' ? 'var(--color-success)' : status === 'failed' ? 'var(--color-danger)' : 'var(--color-warning)'
+
     return (
-        <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            {/* ── HEADER ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
-                <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>AUTOMATION MATRICES</h1>
-                    <span className="mono text-xs text-tertiary">EVENT-DRIVEN DIRECTIVES & N8N ORCHESTRATION</span>
-                </div>
-                <button className="btn btn-primary mono" style={{ borderRadius: 0, padding: '8px 16px' }} onClick={() => setShowForm(!showForm)}>
-                    {showForm ? 'CLOSE MATRIC BUILDER' : 'INITIALIZE NEW MATRIC'}
+        <ModulePage
+            title="Automation"
+            subtitle="Event-driven workflows & n8n orchestration"
+            actions={
+                <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
+                    <PlusIcon style={{ width: 16, height: 16 }} />
+                    {showForm ? 'Close' : 'New workflow'}
                 </button>
-            </div>
-
-            <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-
-                {/* ── KPI STRIP ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
-                    <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-                        <span className="mono text-xs text-tertiary">ACTIVE MATRICES</span>
-                        <span className="mono text-lg font-bold text-success">{activeCount}</span>
-                    </div>
-                    <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-                        <span className="mono text-xs text-tertiary">TOTAL CYCLES</span>
-                        <span className="mono text-lg font-bold text-info">{totalRuns}</span>
-                    </div>
-                    <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-                        <span className="mono text-xs text-tertiary">TOTAL STORED</span>
-                        <span className="mono text-lg font-bold text-warning">{workflows.length}</span>
-                    </div>
+            }
+        >
+            <div className="lab-content">
+                {/* KPIs */}
+                <div className="kpi-strip kpi-strip-3">
+                    <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Active workflows</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>{activeCount}</span></div>
+                    <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Total runs</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-info)' }}>{totalRuns}</span></div>
+                    <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Total stored</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{workflows.length}</span></div>
                 </div>
 
+                {/* Builder */}
                 {showForm && (
-                    <div style={{ border: '1px solid var(--accent-primary)', background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                        <div className="mono text-xs font-bold" style={{ color: '#000', background: 'var(--accent-primary)', padding: '4px 8px', alignSelf: 'flex-start' }}>/// NEW AUTOMATION MATRIC</div>
-
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                            <div className="input-group">
-                                <label className="mono text-xs">DESIGNATION TITLE</label>
-                                <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-                            </div>
-                            <div className="input-group">
-                                <label className="mono text-xs">PRIMARY TRIGGER</label>
-                                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={form.trigger} onChange={e => setForm({ ...form, trigger: e.target.value })}>
+                    <div className="auto-form-panel">
+                        <div className="form-grid">
+                            <div className="form-field"><label className="form-label">Workflow name</label><input className="form-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /></div>
+                            <div className="form-field"><label className="form-label">Trigger</label>
+                                <select className="form-input" value={form.trigger} onChange={e => setForm({ ...form, trigger: e.target.value })}>
                                     {TRIGGERS.map(t => <option key={t.key} value={t.key}>{t.label}</option>)}
                                 </select>
                             </div>
+                            <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Description</label><textarea className="form-input" rows={2} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} /></div>
                         </div>
 
-                        <div className="input-group">
-                            <label className="mono text-xs">EXECUTIVE DIRECTIVE</label>
-                            <textarea className="input mono text-xs" rows={2} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} />
-                        </div>
-
-                        <div>
-                            <label className="mono text-xs" style={{ display: 'block', marginBottom: '8px' }}>EXECUTION SEQUENCE</label>
-                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                                {ACTIONS.map(action => (
-                                    <button key={action.key} className="mono" style={{ fontSize: '10px', padding: '6px 12px', border: form.actions.includes(action.key) ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)', background: form.actions.includes(action.key) ? 'var(--accent-primary)' : '#000', color: form.actions.includes(action.key) ? '#000' : 'var(--text-tertiary)', cursor: 'pointer' }} onClick={() => toggleAction(action.key)}>
-                                        {action.icon} {action.label}
-                                    </button>
-                                ))}
+                        <div><label className="form-label" style={{ marginBottom: 'var(--space-2)', display: 'block' }}>Actions</label>
+                            <div className="auto-action-pills">
+                                {ACTIONS.map(a => <button key={a.key} className={`auto-action-pill ${form.actions.includes(a.key) ? 'active' : ''}`} onClick={() => toggleAction(a.key)}>{a.label}</button>)}
                             </div>
                         </div>
 
-                        {form.actions.includes('run_connector') && (
-                            <div className="input-group">
-                                <label className="mono text-xs">LIVE CONNECTOR PORT</label>
-                                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={form.connectorId} onChange={e => setForm({ ...form, connectorId: e.target.value })}>
-                                    <option value="">SELECT CONNECTOR...</option>
-                                    {liveConnectorApps.map(app => <option key={app.connectorId} value={app.connectorId}>{app.name.toUpperCase()}</option>)}
-                                </select>
-                            </div>
-                        )}
-
-                        {form.actions.includes('run_api') && (
-                            <div className="input-group">
-                                <label className="mono text-xs">LIVE API PORT</label>
-                                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={form.apiId} onChange={e => setForm({ ...form, apiId: e.target.value })}>
-                                    <option value="">SELECT API...</option>
-                                    {liveApiApps.map(app => <option key={app.id} value={app.id}>{app.name.toUpperCase()}</option>)}
-                                </select>
-                            </div>
-                        )}
-
-                        {form.actions.includes('run_agent') && (
-                            <div className="input-group">
-                                <label className="mono text-xs">AI OPERATIVE</label>
-                                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={form.agentCodeName} onChange={e => setForm({ ...form, agentCodeName: e.target.value })}>
-                                    <option value="">SELECT OPERATIVE...</option>
-                                    {agentOptions.map(agent => <option key={agent} value={agent}>{agent.toUpperCase()}</option>)}
-                                </select>
-                            </div>
-                        )}
-
-                        {form.actions.includes('launch_n8n') && (
-                            <div className="input-group">
-                                <label className="mono text-xs">N8N RELAY TEMPLATE</label>
-                                <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={form.workflowTemplate} onChange={e => setForm({ ...form, workflowTemplate: e.target.value })}>
-                                    <option value="">SELECT RELAY...</option>
-                                    {n8nOptions.map(t => <option key={t.value} value={t.value}>{t.label.toUpperCase()}</option>)}
-                                </select>
-                            </div>
-                        )}
+                        {form.actions.includes('run_connector') && <div className="form-field"><label className="form-label">Connector</label><select className="form-input" value={form.connectorId} onChange={e => setForm({ ...form, connectorId: e.target.value })}><option value="">Select connector...</option>{liveConnectorApps.map(app => <option key={app.connectorId} value={app.connectorId}>{app.name}</option>)}</select></div>}
+                        {form.actions.includes('run_api') && <div className="form-field"><label className="form-label">API</label><select className="form-input" value={form.apiId} onChange={e => setForm({ ...form, apiId: e.target.value })}><option value="">Select API...</option>{liveApiApps.map(app => <option key={app.id} value={app.id}>{app.name}</option>)}</select></div>}
+                        {form.actions.includes('run_agent') && <div className="form-field"><label className="form-label">AI agent</label><select className="form-input" value={form.agentCodeName} onChange={e => setForm({ ...form, agentCodeName: e.target.value })}><option value="">Select agent...</option>{agentOptions.map(a => <option key={a} value={a}>{a}</option>)}</select></div>}
+                        {form.actions.includes('launch_n8n') && <div className="form-field"><label className="form-label">n8n template</label><select className="form-input" value={form.workflowTemplate} onChange={e => setForm({ ...form, workflowTemplate: e.target.value })}><option value="">Select template...</option>{n8nOptions.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}</select></div>}
 
                         {form.trigger && form.actions.length > 0 && (
-                            <div style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-subtle)', padding: '16px' }}>
-                                <div className="mono text-xs text-tertiary" style={{ marginBottom: '8px' }}>SEQUENCE VERIFICATION:</div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                                    <span className="mono text-xs" style={{ border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)', padding: '2px 8px' }}>{getTriggerMeta(form.trigger).label}</span>
-                                    {form.actions.map(action => (
-                                        <span key={action} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span className="text-tertiary mono">→</span><span className="mono text-xs" style={{ border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)', padding: '2px 8px' }}>{getActionMeta(action).label}</span></span>
-                                    ))}
+                            <div className="auto-sequence-preview">
+                                <div className="mono text-xs text-tertiary" style={{ marginBottom: 'var(--space-2)' }}>Sequence preview:</div>
+                                <div className="auto-sequence-flow">
+                                    <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{getTriggerMeta(form.trigger).label}</span>
+                                    {form.actions.map(a => <><span key={`arrow-${a}`} className="text-tertiary">→</span><span key={a} className="badge">{getActionMeta(a).label}</span></>)}
                                 </div>
                             </div>
                         )}
-                        <button className="btn btn-primary mono" style={{ borderRadius: 0, padding: '12px' }} onClick={addNewWorkflow}>INITIALIZE WORKFLOW</button>
+                        <button className="btn btn-primary" onClick={addNewWorkflow}>Create workflow</button>
                     </div>
                 )}
 
-                {/* ── AGENT AUTOMATION PACKAGES & TEMPLATES ── */}
+                {/* Templates + Agent Packs */}
                 {!showForm && (
-                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2fr', gap: '16px' }}>
-                        <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// RAPID DEPLOYMENT PROTOCOLS</div>
-                            <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', gap: '8px', background: 'var(--surface-raised)', flex: 1 }}>
+                    <div className="auto-split">
+                        <div className="lab-panel">
+                            <div className="lab-panel-header">Quick templates</div>
+                            <div className="ct-section-body lab-col-layout">
                                 {TEMPLATES.map(t => (
-                                    <div key={t.name} style={{ border: '1px solid var(--border-subtle)', background: '#000', padding: '12px', cursor: 'pointer' }} onClick={() => { setForm({ name: t.name, description: t.desc, trigger: t.trigger, actions: t.actions, connectorId: '', apiId: '', agentCodeName: '', workflowTemplate: '' }); setShowForm(true) }}>
-                                        <div className="mono text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{t.name}</div>
-                                        <div className="mono" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '4px', marginBottom: '8px' }}>{t.desc}</div>
-                                        <div style={{ display: 'flex', gap: '4px' }}>
-                                            <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }} className="mono">{getTriggerMeta(t.trigger).label}</span>
-                                            <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }} className="mono">{t.actions.length} ACTIONS</span>
+                                    <div key={t.name} className="auto-template-card" onClick={() => { setForm({ name: t.name, description: t.desc, trigger: t.trigger, actions: t.actions, connectorId: '', apiId: '', agentCodeName: '', workflowTemplate: '' }); setShowForm(true) }}>
+                                        <div className="mono text-xs font-bold">{t.name}</div>
+                                        <div className="mono text-xs text-tertiary" style={{ margin: '4px 0 8px' }}>{t.desc}</div>
+                                        <div style={{ display: 'flex', gap: 4 }}>
+                                            <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{getTriggerMeta(t.trigger).label}</span>
+                                            <span className="badge">{t.actions.length} actions</span>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// AGENTIC OPERATIONAL MATRICES</div>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '12px', padding: '16px', background: 'var(--surface-raised)', flex: 1, alignContent: 'start' }}>
+                        <div className="lab-panel">
+                            <div className="lab-panel-header">Agent automation packs</div>
+                            <div className="auto-pack-grid">
                                 {AGENT_AUTOMATION_PACKS.map(pack => (
-                                    <div key={pack.agentCodeName} style={{ border: '1px solid var(--border-subtle)', background: '#000', padding: '12px', display: 'flex', flexDirection: 'column' }}>
-                                        <div className="mono text-xs font-bold" style={{ color: 'var(--color-info)' }}>{pack.label.toUpperCase()}</div>
-                                        <div className="mono" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '4px', marginBottom: '12px', flex: 1 }}>{pack.objective.toUpperCase()}</div>
-
-                                        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginBottom: '12px' }}>
-                                            <span style={{ fontSize: '9px', padding: '2px 4px', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }} className="mono">TRG: {pack.defaultTrigger.toUpperCase()}</span>
-                                            {pack.defaultActions.map(a => <span key={a} style={{ fontSize: '9px', padding: '2px 4px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }} className="mono">ACT: {a.toUpperCase()}</span>)}
+                                    <div key={pack.agentCodeName} className="auto-pack-card">
+                                        <div className="mono text-xs font-bold" style={{ color: 'var(--color-info)' }}>{pack.label}</div>
+                                        <div className="mono text-xs text-tertiary" style={{ margin: '4px 0 12px', flex: 1 }}>{pack.objective}</div>
+                                        <div className="auto-pack-tags">
+                                            <span className="badge" style={{ color: 'var(--accent-primary)' }}>Trigger: {pack.defaultTrigger}</span>
+                                            {pack.defaultActions.map(a => <span key={a} className="badge">{a}</span>)}
                                         </div>
-
-                                        <button className="btn mono btn-sm" style={{ border: '1px solid var(--accent-primary)', background: 'transparent', color: 'var(--accent-primary)' }} onClick={() => seedAgentPack(pack)}>DEPLOY MATRIC</button>
+                                        <button className="btn btn-sm btn-ghost" onClick={() => seedAgentPack(pack)}>Use template</button>
                                     </div>
                                 ))}
                             </div>
@@ -334,134 +234,110 @@ function Automation() {
                     </div>
                 )}
 
-                {/* ── VAULT AGENT ARSENAL — AUTOMATION COMPATIBLE ── */}
+                {/* Vault agents */}
                 {!showForm && (
-                    <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span>/// VAULT AGENT ARSENAL — AUTOMATION COMPATIBLE</span>
-                            <span className="mono text-xs" style={{ color: 'var(--text-tertiary)', fontWeight: 'normal' }}>{automationVaultAgents.length} AGENTS</span>
+                    <div className="lab-panel">
+                        <div className="lab-panel-header">
+                            <span>Vault agents — automation compatible</span>
+                            <span className="mono text-xs text-tertiary">{automationVaultAgents.length} agents</span>
                         </div>
-                        <div style={{ background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-                            {vaultLoading ? (
-                                <ModuleSkeleton variant="table" rows={3} />
-                            ) : automationVaultAgents.length === 0 ? (
-                                <div className="mono text-xs text-tertiary" style={{ padding: '24px', textAlign: 'center' }}>NO AUTOMATION-COMPATIBLE AGENTS IN VAULT</div>
-                            ) : (
-                                automationVaultAgents.map((agent, i) => (
-                                    <div key={agent.name || i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '8px 16px', borderBottom: '1px solid var(--border-subtle)' }}>
-                                        <span className="mono text-xs font-bold" style={{ color: 'var(--text-primary)', minWidth: '180px' }}>{(agent.name || '').toUpperCase()}</span>
-                                        <span className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)', flexShrink: 0 }}>{(agent.namespace || '').toUpperCase()}</span>
-                                        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', flex: 1 }}>
-                                            {(agent.capabilities || []).map(cap => (
-                                                <span key={cap} className="mono" style={{ fontSize: '9px', padding: '1px 4px', border: '1px solid var(--border-subtle)', color: VAULT_AUTOMATION_CAPS.includes(cap) ? 'var(--color-info)' : 'var(--text-tertiary)' }}>{cap.toUpperCase()}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                ))
-                            )}
-                        </div>
-                    </div>
-                )}
-
-                {/* ── WORKFLOWS & EXECUTION ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 400px', gap: '16px' }}>
-                    <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// STORED DIRECTIVES</div>
-                        <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--surface-raised)', flex: 1 }}>
-                            {loading ? <ModuleSkeleton variant="table" rows={4} /> :
-                                workflows.length === 0 ? <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO DIRECTIVES STORED.</div> :
-                                    workflows.map(wf => {
-                                        const trigger = getTriggerMeta(wf.trigger_config?.key || wf.trigger_type)
-                                        const steps = Array.isArray(wf.steps) ? wf.steps : []
-                                        const hasLaunch = steps.some(s => s?.config?.launch_url)
-                                        const isSelected = selectedWorkflow?.id === wf.id
-
-                                        return (
-                                            <div key={wf.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)', background: isSelected ? 'var(--surface-elevated)' : 'transparent', cursor: 'pointer' }} onClick={() => selectWorkflow(wf)}>
-                                                <div style={{ width: 8, height: 8, background: wf.is_active ? 'var(--color-success)' : 'var(--text-tertiary)' }} />
-                                                <div style={{ flex: 1 }}>
-                                                    <div className="mono text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{wf.name.toUpperCase()}</div>
-                                                    {wf.description && <div className="mono text-xs text-tertiary" style={{ marginTop: '2px' }}>{wf.description.toUpperCase()}</div>}
-                                                    <div style={{ display: 'flex', gap: '4px', marginTop: '6px', flexWrap: 'wrap' }}>
-                                                        <span className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }}>{trigger.label}</span>
-                                                        {steps.map(s => <span key={s.id || s.type} className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>{getActionMeta(s.type).label}</span>)}
-                                                        {hasLaunch && <span className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--color-info)', color: 'var(--color-info)' }}>LINKED CHANNEL</span>}
-                                                    </div>
-                                                </div>
-                                                <div className="mono text-xs text-tertiary" style={{ alignSelf: 'flex-start' }}>{wf.run_count || 0} CYCLES</div>
-                                                <div style={{ display: 'flex', gap: '4px', alignSelf: 'flex-start' }}>
-                                                    <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '4px 8px', border: '1px solid var(--border-subtle)' }} onClick={e => { e.stopPropagation(); executeWorkflow(wf) }} disabled={runningWorkflowId === wf.id}>{runningWorkflowId === wf.id ? 'EXE...' : 'ENGAGE'}</button>
-                                                    <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '4px 8px', border: '1px solid var(--border-subtle)', color: wf.is_active ? 'var(--color-warning)' : 'var(--color-success)' }} onClick={e => { e.stopPropagation(); toggleWorkflow(wf.id) }}>{wf.is_active ? 'HALT' : 'ACTIVATE'}</button>
-                                                    <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '4px 8px', border: '1px solid var(--color-danger)', color: 'var(--color-danger)' }} onClick={e => { e.stopPropagation(); removeWorkflow(wf.id) }}>DEL</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                            }
-                        </div>
-                    </div>
-
-                    <div style={{ border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', background: '#000' }}>
-                        {!selectedWorkflow ? (
-                            <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>SELECT DIRECTIVE FOR TELEMETRY</div>
-                        ) : (
-                            <>
-                                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--surface-raised)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between' }}>
-                                    <span>/// ORBITAL TELEMETRY</span>
-                                    <div style={{ display: 'flex', gap: '4px' }}>
-                                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }} onClick={() => executeWorkflow(selectedWorkflow)} disabled={runningWorkflowId === selectedWorkflow.id}>FORCE CYCLE</button>
-                                        {workflowSupportsLiveSend(selectedWorkflow) && <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => executeWorkflow(selectedWorkflow, { sendLive: true })} disabled={runningWorkflowId === selectedWorkflow.id}>HOT TX CYCLE</button>}
-                                        {selectedWorkflow.steps?.some(s => s?.config?.launch_url) && <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--border-subtle)' }} onClick={() => openWorkflowDraft(selectedWorkflow)}>OPEN COMMS</button>}
+                        {vaultLoading ? <ModuleSkeleton variant="table" rows={3} /> :
+                            automationVaultAgents.length === 0 ? <div className="lab-panel-empty">No automation-compatible agents in vault</div> :
+                            <div>{automationVaultAgents.map((agent, i) => (
+                                <div key={agent.name || i} className="lab-log-row">
+                                    <span className="mono text-xs font-bold" style={{ minWidth: 180 }}>{agent.name || ''}</span>
+                                    <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{agent.namespace || ''}</span>
+                                    <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', flex: 1 }}>
+                                        {(agent.capabilities || []).map(cap => <span key={cap} className="badge" style={{ color: VAULT_AUTOMATION_CAPS.includes(cap) ? 'var(--color-info)' : 'var(--text-tertiary)' }}>{cap}</span>)}
                                     </div>
                                 </div>
-                                <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                            ))}</div>
+                        }
+                    </div>
+                )}
+
+                {/* Workflows & Detail */}
+                <div className="auto-wf-layout">
+                    <div className="lab-panel">
+                        <div className="lab-panel-header">Workflows</div>
+                        {loading ? <ModuleSkeleton variant="table" rows={4} /> :
+                            workflows.length === 0 ? <div className="lab-panel-empty">No workflows stored</div> :
+                            <div>{workflows.map(wf => {
+                                const trigger = getTriggerMeta(wf.trigger_config?.key || wf.trigger_type)
+                                const steps = Array.isArray(wf.steps) ? wf.steps : []
+                                return (
+                                    <div key={wf.id} className={`auto-wf-item ${selectedWorkflow?.id === wf.id ? 'selected' : ''}`} onClick={() => selectWorkflow(wf)}>
+                                        <div className={`auto-wf-dot ${wf.is_active ? 'auto-wf-dot--active' : 'auto-wf-dot--inactive'}`} />
+                                        <div style={{ flex: 1 }}>
+                                            <div className="mono text-sm font-bold">{wf.name}</div>
+                                            {wf.description && <div className="mono text-xs text-tertiary" style={{ marginTop: 2 }}>{wf.description}</div>}
+                                            <div className="auto-wf-tags">
+                                                <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{trigger.label}</span>
+                                                {steps.map(s => <span key={s.id || s.type} className="badge">{getActionMeta(s.type).label}</span>)}
+                                            </div>
+                                        </div>
+                                        <div className="mono text-xs text-tertiary" style={{ alignSelf: 'flex-start' }}>{wf.run_count || 0} runs</div>
+                                        <div className="auto-wf-actions">
+                                            <button className="btn btn-sm btn-ghost" onClick={e => { e.stopPropagation(); executeWorkflow(wf) }} disabled={runningWorkflowId === wf.id}>{runningWorkflowId === wf.id ? 'Running...' : 'Run'}</button>
+                                            <button className="btn btn-sm btn-ghost" style={{ color: wf.is_active ? 'var(--color-warning)' : 'var(--color-success)' }} onClick={e => { e.stopPropagation(); toggleWorkflow(wf.id) }}>{wf.is_active ? 'Pause' : 'Enable'}</button>
+                                            <button className="btn btn-sm btn-ghost" style={{ color: 'var(--color-danger)' }} onClick={e => { e.stopPropagation(); removeWorkflow(wf.id) }}>Del</button>
+                                        </div>
+                                    </div>
+                                )
+                            })}</div>
+                        }
+                    </div>
+
+                    <div className="auto-detail-panel">
+                        {!selectedWorkflow ? (
+                            <div className="lab-panel-empty">Select a workflow to view details</div>
+                        ) : (
+                            <>
+                                <div className="lab-panel-header">
+                                    <span>Workflow details</span>
+                                    <div style={{ display: 'flex', gap: 4 }}>
+                                        <button className="btn btn-sm btn-ghost" onClick={() => executeWorkflow(selectedWorkflow)} disabled={runningWorkflowId === selectedWorkflow.id}>Run</button>
+                                        {workflowSupportsLiveSend(selectedWorkflow) && <button className="btn btn-sm btn-ghost" style={{ color: 'var(--color-danger)' }} onClick={() => executeWorkflow(selectedWorkflow, { sendLive: true })} disabled={runningWorkflowId === selectedWorkflow.id}>Send live</button>}
+                                    </div>
+                                </div>
+                                <div className="ct-section-body lab-col-layout">
                                     <div>
-                                        <div className="mono font-bold" style={{ fontSize: '14px', color: 'var(--text-primary)' }}>{selectedWorkflow.name.toUpperCase()}</div>
-                                        <div className="mono text-xs text-tertiary" style={{ marginTop: '4px' }}>L.C.: {formatWorkflowRunDate(selectedWorkflow.last_run_at)}</div>
-                                        {selectedWorkflow.description && <div className="mono text-xs text-secondary" style={{ marginTop: '8px' }}>{selectedWorkflow.description.toUpperCase()}</div>}
+                                        <div className="mono font-bold text-sm">{selectedWorkflow.name}</div>
+                                        <div className="mono text-xs text-tertiary" style={{ marginTop: 4 }}>Last run: {formatRunDate(selectedWorkflow.last_run_at)}</div>
+                                        {selectedWorkflow.description && <div className="mono text-xs text-secondary" style={{ marginTop: 'var(--space-2)' }}>{selectedWorkflow.description}</div>}
                                     </div>
 
                                     <div>
-                                        <div className="mono text-xs" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '4px', marginBottom: '8px' }}>EXECUTION CHAIN</div>
-                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <div className="mono text-xs text-tertiary" style={{ borderBottom: '1px solid var(--border-subtle)', paddingBottom: 4, marginBottom: 'var(--space-2)' }}>Execution steps</div>
+                                        <div className="lab-col-layout">
                                             {(selectedWorkflow.steps || []).map(step => (
-                                                <div key={step.id || step.type} style={{ border: '1px solid var(--border-subtle)', padding: '8px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                                    <div className="mono text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{getActionMeta(step.type).label}</div>
-                                                    {step.config?.launch_url && <div className="mono" style={{ fontSize: '9px', color: 'var(--color-info)' }}>LINK: SECURE OPEN</div>}
-                                                    {step.config?.connectorId && <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>PORT: {step.config.connectorId}</div>}
-                                                    {step.config?.endpoint && <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>API: {step.config.label || step.config.endpoint}</div>}
-                                                    {step.config?.agentCodeName && <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>AGENT: {step.config.agentCodeName}</div>}
-                                                    {step.config?.workflowTemplate && (
-                                                        <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>
-                                                            RELAY: {step.config.workflowTemplateLabel || step.config.workflowTemplate}
-                                                            {step.config?.workflowTemplateUrl && <a href={step.config.workflowTemplateUrl} target="_blank" rel="noreferrer" style={{ marginLeft: '8px', color: 'var(--accent-primary)' }}>[DOCS]</a>}
-                                                        </div>
-                                                    )}
+                                                <div key={step.id || step.type} className="auto-step-card">
+                                                    <div className="mono text-xs font-bold">{getActionMeta(step.type).label}</div>
+                                                    {step.config?.connectorId && <div className="mono text-xs text-tertiary">Connector: {step.config.connectorId}</div>}
+                                                    {step.config?.endpoint && <div className="mono text-xs text-tertiary">API: {step.config.label || step.config.endpoint}</div>}
+                                                    {step.config?.agentCodeName && <div className="mono text-xs text-tertiary">Agent: {step.config.agentCodeName}</div>}
+                                                    {step.config?.workflowTemplate && <div className="mono text-xs text-tertiary">Template: {step.config.workflowTemplateLabel || step.config.workflowTemplate}{step.config?.workflowTemplateUrl && <a href={step.config.workflowTemplateUrl} target="_blank" rel="noreferrer" style={{ marginLeft: 8, color: 'var(--accent-primary)' }}>Docs</a>}</div>}
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
 
                                     <div>
-                                        <div className="mono text-xs" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '4px', marginBottom: '8px' }}>SYS LOGGING</div>
-                                        {runs.length === 0 ? <div className="mono text-xs text-tertiary">NO LOGS AVAILABLE</div> : (
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '400px', overflowY: 'auto' }}>
+                                        <div className="mono text-xs text-tertiary" style={{ borderBottom: '1px solid var(--border-subtle)', paddingBottom: 4, marginBottom: 'var(--space-2)' }}>Run history</div>
+                                        {runs.length === 0 ? <div className="mono text-xs text-tertiary">No runs yet</div> : (
+                                            <div className="lab-col-layout" style={{ maxHeight: 400, overflowY: 'auto' }}>
                                                 {runs.map(run => (
-                                                    <div key={run.id} style={{ border: '1px solid var(--border-subtle)', padding: '8px' }}>
-                                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                                                            <span className="mono" style={{ fontSize: '9px', padding: '2px 4px', border: `1px solid var(--color-${run.status === 'completed' ? 'success' : run.status === 'failed' ? 'danger' : 'warning'})`, color: `var(--color-${run.status === 'completed' ? 'success' : run.status === 'failed' ? 'danger' : 'warning'})` }}>{run.status.toUpperCase()}</span>
-                                                            <span className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>{formatWorkflowRunDate(run.started_at)}</span>
+                                                    <div key={run.id} className="auto-run-card">
+                                                        <div className="auto-run-header">
+                                                            <span className="badge" style={{ color: statusColor(run.status), borderColor: statusColor(run.status) }}>{run.status}</span>
+                                                            <span className="mono text-xs text-tertiary">{formatRunDate(run.started_at)}</span>
                                                         </div>
                                                         {Array.isArray(run.result?.steps) && run.result.steps.length > 0 && (
-                                                            <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '4px' }}>
-                                                                {run.result.steps.map(step => (
-                                                                    <span key={step.id || step.type} className="mono" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>
-                                                                        [{step.type.toUpperCase()}: {step.status ? step.status.toUpperCase() : 'OK'}]
-                                                                    </span>
-                                                                ))}
+                                                            <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginTop: 4 }}>
+                                                                {run.result.steps.map(s => <span key={s.id || s.type} className="mono text-xs text-secondary">[{s.type}: {s.status || 'ok'}]</span>)}
                                                             </div>
                                                         )}
-                                                        {run.error && <div className="mono text-xs" style={{ color: 'var(--color-danger)', borderTop: '1px solid var(--border-subtle)', paddingTop: '4px', marginTop: '4px' }}>FATAL: {run.error.toUpperCase()}</div>}
+                                                        {run.error && <div className="mono text-xs" style={{ color: 'var(--color-danger)', borderTop: '1px solid var(--border-subtle)', paddingTop: 4, marginTop: 4 }}>Error: {run.error}</div>}
                                                     </div>
                                                 ))}
                                             </div>
@@ -472,9 +348,8 @@ function Automation() {
                         )}
                     </div>
                 </div>
-
             </div>
-        </div>
+        </ModulePage>
     )
 }
 

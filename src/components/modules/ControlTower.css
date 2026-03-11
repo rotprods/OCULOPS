@@ -76,11 +76,16 @@
     border: 1px solid var(--border-default);
     border-radius: var(--radius-md);
     padding: var(--space-5);
-    transition: border-color var(--transition-fast);
+    transition: 
+        border-color var(--duration-fast) var(--ease-default),
+        box-shadow var(--duration-base) var(--ease-default),
+        transform var(--duration-base) var(--ease-default);
 }
 
 .ct-kpi:hover {
     border-color: var(--border-strong);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
 
 .ct-kpi-header {
@@ -188,37 +193,8 @@
 }
 
 /* ── Section Card ── */
-.ct-section {
-    background: var(--surface-raised);
-    border: 1px solid var(--border-default);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-}
+/* Section card classes now in global.css */
 
-.ct-section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-3) var(--space-5);
-    border-bottom: 1px solid var(--border-default);
-}
-
-.ct-section-title {
-    font-size: var(--text-xs);
-    font-weight: var(--weight-semibold);
-    color: var(--text-secondary);
-}
-
-.ct-section-meta {
-    display: flex;
-    gap: var(--space-4);
-    font-size: var(--text-xs);
-    font-weight: var(--weight-medium);
-}
-
-.ct-section-body {
-    padding: var(--space-4) var(--space-5);
-}
 
 /* ── Agent Network Bar ── */
 .ct-agents-bar {
@@ -253,6 +229,13 @@
     font-weight: var(--weight-medium);
     color: var(--text-secondary);
     flex-shrink: 0;
+    transition: border-color var(--duration-fast) var(--ease-default),
+                transform var(--duration-fast) var(--ease-default);
+}
+
+.ct-agent-chip:hover {
+    border-color: var(--border-strong);
+    transform: scale(1.04);
 }
 
 .ct-agent-chip-dot {
@@ -296,6 +279,13 @@
 .ct-signal-bar {
     border-left: 2px solid var(--accent-primary);
     padding-left: var(--space-3);
+    transition: border-color var(--duration-fast) var(--ease-default),
+                background var(--duration-fast) var(--ease-default);
+}
+
+.ct-signal-bar:hover {
+    background: var(--accent-primary-muted);
+    border-left-color: var(--accent-primary-hover);
 }
 
 /* ── Agent List Item ── */

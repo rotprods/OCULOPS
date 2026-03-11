@@ -1,5 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { runBrain } from "../_shared/agent-brain-v2.ts";
 import { autoConnectApiBatch } from "../_shared/auto-api-connector.ts";
 
 const corsHeaders = {
@@ -12,6 +13,10 @@ const AGENT_CODE = "oracle";
 // ═══════════════════════════════════════════════════════════════════════════════
 // ORACLE — Unified Analytics Engine (merged: Oracle + Scribe)
 // Actions: analyze (AI insights) | daily_report (snapshot only) | cycle (alias)
+//
+// v2: Uses agent-brain-v2 for autonomous reasoning + skill execution.
+//     Brain can create signals, store memory, query metrics, and alert
+//     with full policy enforcement + audit trail.
 // ═══════════════════════════════════════════════════════════════════════════════
 
 Deno.serve(async (req: Request) => {
@@ -47,7 +52,7 @@ Deno.serve(async (req: Request) => {
     const today = new Date().toISOString().split("T")[0];
 
     if (action === "analyze" || action === "cycle" || action === "daily_report") {
-      // ── Cross-table data collection (merged Oracle + Scribe) ──
+      // ── 1. Cross-table data collection (deterministic, no AI) ──
       const [
         contactsRes, dealsRes, campaignsRes, signalsRes,
         financeRes, tasksRes, alertsRes, logsRes,
@@ -71,7 +76,7 @@ Deno.serve(async (req: Request) => {
       const alerts = alertsRes.data || [];
       const agentLogs = logsRes.data || [];
 
-      // ── Computed metrics ──
+      // ── 2. Computed metrics (deterministic) ──
       const contactsByStatus: Record<string, number> = {};
       for (const c of contacts) {
         contactsByStatus[c.status] = (contactsByStatus[c.status] || 0) + 1;
@@ -107,7 +112,7 @@ Deno.serve(async (req: Request) => {
         },
       };
 
-      // ── External data enrichment (auto-connects to catalog APIs) ──
+      // ── 3. External data enrichment ──
       const externalResults = await autoConnectApiBatch([
         "stock market indices S&P NASDAQ price today",
         "latest business tech news headlines",
@@ -118,41 +123,51 @@ Deno.serve(async (req: Request) => {
         .filter((r) => r.ok)
         .map((r) => ({ intent: r.intent, api: r.api_used, data: r.data }));
 
-      // ── AI Insights (skip for daily_report to save tokens) ──
-      const openaiKey = Deno.env.get("OPENAI_API_KEY");
+      // ── 4. Deterministic health score (always available, even without AI) ──
+      const healthScore = Math.min(100, Math.max(0,
+        100 - activeAlerts * 10 - tasksPending * 2));
+
+      // ── 5. Brain-v2: autonomous reasoning + actions ──
+      // For daily_report action, skip brain to save tokens — snapshot only.
+      let brainResult = null;
+
+      if (action !== "daily_report") {
+        brainResult = await runBrain({
+          agent: "oracle",
+          goal: `Analyze the OCULOPS system snapshot and external market data. Your tasks:
+1. Identify the top 3 actionable insights from the data (pipeline health, contact flow, agent efficiency, market signals).
+2. Detect bottlenecks: stale deals, low conversion, high alert count, underperforming agents.
+3. If you find a significant market signal in the external data, create_signal for it.
+4. Store your executive analysis in memory (store_memory) so other agents can recall it.
+5. If anything is critical (health score <40, pipeline <5000, >5 active alerts), create an alert.
+6. Provide a clear executive summary with health_score, key_insights, bottlenecks, and recommendations.`,
+          context: {
+            snapshot,
+            external_data: externalData,
+            health_score_deterministic: healthScore,
+            date: today,
+          },
+          systemPromptExtra: `You are ORACLE: the analytical brain of OCULOPS. You see patterns others miss.
+Be specific with numbers. Reference actual data from the snapshot.
+Your executive summary should be in Spanish (the team operates in Spain).
+Format your final answer as JSON: {"health_score": N, "key_insights": [...], "bottlenecks": [...], "recommendations": [...], "mrr_estimate": N, "market_context": "..."}`,
+          maxRounds: 4,
+        }).catch((e) => ({ ok: false, answer: `Brain error: ${e.message}`, skills_used: [], rounds: 0, trace_id: undefined }));
+      }
+
+      // ── 6. Parse brain insights or use fallback ──
       let aiInsights = null;
-
-      if (openaiKey && action !== "daily_report") {
-        const aiRes = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: { Authorization: `Bearer ${openaiKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            model: "gpt-4o-mini",
-            messages: [{
-              role: "user",
-              content: `Eres ORACLE, motor analítico de una agencia de IA en Murcia.\n\nDatos del sistema:\n${JSON.stringify(snapshot, null, 2)}\n\nDatos externos (mercados, noticias):\n${JSON.stringify(externalData, null, 2)}\n\nGenera un análisis ejecutivo JSON con:\n1. "health_score": 0-100\n2. "key_insights": 3 insights de los datos\n3. "bottlenecks": 2 cuellos de botella detectados\n4. "recommendations": 2 acciones prioritarias\n5. "mrr_estimate": estimación MRR basada en deals\n6. "market_context": 1 frase sobre el contexto de mercado externo\n\nJSON válido solamente.`,
-            }],
-            temperature: 0.4,
-            max_tokens: 800,
-          }),
-        });
-
-        if (aiRes.ok) {
-          const d = await aiRes.json();
-          const c = d.choices?.[0]?.message?.content || "";
-          try {
-            aiInsights = JSON.parse(c.replace(/```json\n?|```/g, ""));
-          } catch {
-            aiInsights = { raw: c };
-          }
+      if (brainResult?.answer) {
+        try {
+          aiInsights = JSON.parse(brainResult.answer.replace(/```json\n?|```/g, ""));
+        } catch {
+          aiInsights = { raw: brainResult.answer };
         }
       }
 
-      // ── Health score (deterministic fallback) ──
-      const healthScore = aiInsights?.health_score ||
-        Math.min(100, Math.max(0, 100 - activeAlerts * 10 - tasksPending * 2));
+      const finalHealthScore = aiInsights?.health_score || healthScore;
 
-      // ── Upsert daily snapshot (merged from Scribe) ──
+      // ── 7. Upsert daily snapshot ──
       const snapshotRow = {
         date: today,
         mrr: income,
@@ -161,7 +176,7 @@ Deno.serve(async (req: Request) => {
         tasks_completed: tasksCompleted,
         leads_generated: contactsByStatus["raw"] || 0,
         alerts_active: activeAlerts,
-        health_score: healthScore,
+        health_score: finalHealthScore,
         data: { snapshot, ai_analysis: aiInsights },
       };
 
@@ -177,7 +192,7 @@ Deno.serve(async (req: Request) => {
         await supabase.from("daily_snapshots").insert(snapshotRow);
       }
 
-      // ── Knowledge entry ──
+      // ── 8. Knowledge entry (persists analysis for recall_memory) ──
       await supabase.from("knowledge_entries").insert({
         title: `ORACLE Analysis — ${today}`,
         content: JSON.stringify({ snapshot, ai_analysis: aiInsights }, null, 2),
@@ -187,7 +202,18 @@ Deno.serve(async (req: Request) => {
         tags: ["analytics", "insights", "auto"],
       });
 
-      result = { snapshot, ai_analysis: aiInsights, health_score: healthScore, external_data: externalData };
+      result = {
+        snapshot,
+        ai_analysis: aiInsights,
+        health_score: finalHealthScore,
+        external_data: externalData,
+        brain: brainResult ? {
+          skills_used: brainResult.skills_used?.length || 0,
+          rounds: brainResult.rounds || 0,
+          trace_id: brainResult.trace_id,
+          status: brainResult.status || (brainResult.ok ? "completed" : "failed"),
+        } : null,
+      };
     }
 
     const duration = Date.now() - startTime;

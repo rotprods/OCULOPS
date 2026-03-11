@@ -6,7 +6,7 @@ import Sidebar from './components/Sidebar'
 import OnboardingSetup from './components/OnboardingSetup'
 import Auth from './components/Auth'
 import { ErrorBoundary } from './components/ui/ErrorBoundary'
-import ModuleSkeleton from './components/ui/ModuleSkeleton'
+import ModuleSkeleton, { RouteAwareSkeleton } from './components/ui/ModuleSkeleton'
 import { Toaster } from 'react-hot-toast'
 
 // Full ParticleField (with data hooks) — only loaded when authenticated
@@ -87,6 +87,7 @@ function LoadingOS() {
 function AppContent() {
   const [session, setSession] = useState(null)
   const [authLoading, setAuthLoading] = useState(true)
+  const [onboardingDone, setOnboardingDone] = useState(false)
   const { currentOrg, loading: orgLoading } = useOrg()
 
   useEffect(() => {
@@ -101,10 +102,13 @@ function AppContent() {
     return () => subscription.unsubscribe()
   }, [])
 
+  // If user already has an org on first load, skip onboarding
+  const needsOnboarding = session && !orgLoading && !currentOrg && !onboardingDone
+
   const content = (() => {
     if (authLoading || (session && orgLoading)) return <LoadingOS />
-    if (!session)    return <Auth />
-    if (!currentOrg) return <OnboardingSetup />
+    if (!session)        return <Auth />
+    if (needsOnboarding) return <OnboardingSetup onComplete={() => setOnboardingDone(true)} />
     return null
   })()
 
@@ -149,7 +153,7 @@ function AppContent() {
         display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 2,
       }}>
         <div style={{ flex: 1, overflowY: 'auto' }}>
-          <Suspense fallback={<ModuleSkeleton variant="kpi" rows={6} />}>
+          <Suspense fallback={<RouteAwareSkeleton />}>
             <Routes>
               <Route path="/" element={<Navigate to="/control-tower" replace />} />
 

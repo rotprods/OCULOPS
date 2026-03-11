@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
-// OCULOPS — Data Hub (CRM)
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// OCULOPS — CRM v11.0
+// Contacts, Companies, Deals, Activities
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
@@ -11,12 +11,24 @@ import { useActivities } from '../../hooks/useActivities'
 import { useAtlasCRM } from '../../hooks/useAtlasCRM'
 import { useAppStore } from '../../stores/useAppStore'
 import { isSupabaseConfigured } from '../../lib/supabase'
+import Modal from '../ui/Modal'
+import {
+    UserGroupIcon,
+    BuildingOfficeIcon,
+    CurrencyEuroIcon,
+    ClockIcon,
+    PlusIcon,
+    TrashIcon,
+    ArrowPathIcon,
+    MagnifyingGlassIcon,
+} from '@heroicons/react/24/outline'
+import './CRM.css'
 
 const TABS = [
-    { id: 'contacts', label: '01. PERSONNEL' },
-    { id: 'companies', label: '02. COMPANIES' },
-    { id: 'deals', label: '03. DEAL FLOW' },
-    { id: 'activities', label: '04. ACTIVITY LOG' },
+    { id: 'contacts', label: 'Contacts', icon: UserGroupIcon },
+    { id: 'companies', label: 'Companies', icon: BuildingOfficeIcon },
+    { id: 'deals', label: 'Deals', icon: CurrencyEuroIcon },
+    { id: 'activities', label: 'Activities', icon: ClockIcon },
 ]
 
 const CONTACT_STATUSES = ['raw', 'contacted', 'qualified', 'nurturing', 'converted', 'lost']
@@ -24,99 +36,24 @@ const COMPANY_STATUSES = ['prospected', 'contacted', 'active', 'churned']
 const DEAL_STAGES = ['lead', 'discovery', 'proposal', 'negotiation', 'closed_won', 'closed_lost']
 
 function formatCurrency(value) {
-    const amount = Number(value) || 0
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0,
-    }).format(amount)
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Number(value) || 0)
 }
 
 function formatDateTime(value) {
     if (!value) return '—'
-    return new Date(value).toLocaleString().toUpperCase()
+    return new Date(value).toLocaleString()
 }
 
-function emptyRow(columns, label) {
-    return (
-        <tr>
-            <td colSpan={columns} style={{ padding: '32px', textAlign: 'center', color: 'var(--text-tertiary)' }}>
-                {label}
-            </td>
-        </tr>
-    )
-}
-
-function tabButton(activeTab, tabId) {
-    return {
-        fontSize: '9px',
-        padding: '6px 12px',
-        background: activeTab === tabId ? 'var(--accent-primary)' : 'transparent',
-        color: activeTab === tabId ? '#000' : 'var(--text-primary)',
-        border: activeTab === tabId ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
-        cursor: 'pointer',
-    }
-}
-
-function deleteButtonStyle() {
-    return {
-        fontSize: '9px',
-        padding: '2px 8px',
-        borderColor: 'var(--color-danger)',
-        color: 'var(--color-danger)',
-    }
-}
-
-function rowStyle(index, total, isHovered) {
-    return {
-        borderBottom: index < total - 1 ? '1px solid var(--border-subtle)' : 'none',
-        background: isHovered ? 'rgba(255,212,0,0.05)' : (index % 2 === 0 ? 'transparent' : '#000'),
-        cursor: 'pointer',
-        transition: 'background 150ms',
-    }
-}
-
-// ── Shared modal styles ──
-const overlayStyle = {
-    position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)',
-    display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
-}
-const panelStyle = {
-    background: '#000', border: '1px solid var(--accent-primary)',
-    padding: '24px', width: '560px', maxHeight: '80vh', overflowY: 'auto',
-    boxShadow: '0 0 30px rgba(255,212,0,0.1)'
-}
-const inputStyle = {
-    width: '100%', background: '#000', border: '1px solid var(--border-default)',
-    color: 'var(--text-primary)', padding: '8px 10px', fontSize: '12px',
-    fontFamily: 'var(--font-mono)', outline: 'none',
-}
-const labelStyle = {
-    fontSize: '9px', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)',
-    marginBottom: '4px', display: 'block', letterSpacing: '0.06em',
-}
-const footerStyle = {
-    display: 'flex', justifyContent: 'space-between', marginTop: '20px',
-    paddingTop: '16px', borderTop: '1px solid var(--border-default)',
-}
-
-// ── Search bar component ──
+// ── Search bar ──
 function SearchBar({ value, onChange, placeholder, onAdd }) {
     return (
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-            <input
-                className="mono"
-                style={{ ...inputStyle, flex: 1 }}
-                placeholder={placeholder}
-                value={value}
-                onChange={e => onChange(e.target.value)}
-            />
-            <button
-                className="btn btn-ghost mono"
-                style={{ fontSize: '9px', padding: '6px 16px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)', whiteSpace: 'nowrap' }}
-                onClick={onAdd}
-            >
-                + NEW
+        <div className="crm-search">
+            <div className="crm-search-field">
+                <MagnifyingGlassIcon width={16} height={16} />
+                <input className="crm-search-input" placeholder={placeholder} value={value} onChange={e => onChange(e.target.value)} />
+            </div>
+            <button className="btn btn-primary btn-sm" onClick={onAdd}>
+                <PlusIcon width={14} height={14} /> New
             </button>
         </div>
     )
@@ -126,84 +63,46 @@ function SearchBar({ value, onChange, placeholder, onAdd }) {
 function ContactModal({ contact, companies, onSave, onDelete, onClose }) {
     const isNew = !contact.id
     const [form, setForm] = useState({
-        name: contact.name || '',
-        email: contact.email || '',
-        phone: contact.phone || '',
-        company_id: contact.company_id || '',
-        status: contact.status || 'raw',
-        position: contact.position || '',
-        notes: contact.notes || '',
+        name: contact.name || '', email: contact.email || '', phone: contact.phone || '',
+        company_id: contact.company_id || '', status: contact.status || 'raw',
+        position: contact.position || '', notes: contact.notes || '',
     })
-
-    useEffect(() => {
-        const handler = e => { if (e.key === 'Escape') onClose() }
-        window.addEventListener('keydown', handler)
-        return () => window.removeEventListener('keydown', handler)
-    }, [onClose])
-
-    const handleSave = () => {
-        if (!form.name.trim()) return
-        onSave(form)
-    }
+    const handleSave = () => { if (form.name.trim()) onSave(form) }
 
     return (
-        <div style={overlayStyle} onClick={onClose}>
-            <div style={panelStyle} onClick={e => e.stopPropagation()}>
-                <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>
-                    {isNew ? '/// NEW PERSONNEL RECORD' : `/// EDIT PERSONNEL — ${contact.id?.slice(0, 8).toUpperCase()}`}
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                    <div>
-                        <label style={labelStyle}>NAME *</label>
-                        <input style={inputStyle} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>EMAIL</label>
-                        <input style={inputStyle} value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>PHONE</label>
-                        <input style={inputStyle} value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>POSITION</label>
-                        <input style={inputStyle} value={form.position} onChange={e => setForm(f => ({ ...f, position: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>COMPANY</label>
-                        <select style={inputStyle} value={form.company_id} onChange={e => setForm(f => ({ ...f, company_id: e.target.value }))}>
-                            <option value="">— NONE —</option>
-                            {companies.map(c => <option key={c.id} value={c.id}>{c.name.toUpperCase()}</option>)}
-                        </select>
-                    </div>
-                    <div>
-                        <label style={labelStyle}>STATUS</label>
-                        <select style={inputStyle} value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
-                            {CONTACT_STATUSES.map(s => <option key={s} value={s}>{s.toUpperCase()}</option>)}
-                        </select>
-                    </div>
-                    <div style={{ gridColumn: '1 / -1' }}>
-                        <label style={labelStyle}>NOTES</label>
-                        <textarea style={{ ...inputStyle, height: '60px', resize: 'vertical' }} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
-                    </div>
-                </div>
-                <div style={footerStyle}>
-                    <div>
-                        {!isNew && (
-                            <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px', color: 'var(--color-danger)', borderColor: 'var(--color-danger)' }} onClick={() => onDelete(contact.id)}>
-                                PURGE
-                            </button>
-                        )}
-                    </div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px' }} onClick={onClose}>ABORT</button>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--accent-primary)', color: '#000', border: '1px solid var(--accent-primary)' }} onClick={handleSave}>
-                            COMMIT
-                        </button>
-                    </div>
+        <Modal open title={isNew ? 'New contact' : 'Edit contact'} onClose={onClose} size="md" footer={
+            <div className="modal-actions">
+                <div>{!isNew && <button className="btn btn-ghost btn-sm" style={{ color: 'var(--color-danger)' }} onClick={() => onDelete(contact.id)}><TrashIcon width={14} height={14} /> Delete</button>}</div>
+                <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+                    <button className="btn btn-ghost btn-sm" onClick={onClose}>Cancel</button>
+                    <button className="btn btn-primary btn-sm" onClick={handleSave}>Save</button>
                 </div>
             </div>
-        </div>
+        }>
+            <div className="form-grid">
+                <div className="form-field"><label className="form-label">Name *</label><input className="form-input" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Email</label><input className="form-input" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Phone</label><input className="form-input" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Position</label><input className="form-input" value={form.position} onChange={e => setForm(f => ({ ...f, position: e.target.value }))} /></div>
+                <div className="form-field">
+                    <label className="form-label">Company</label>
+                    <select className="form-input" value={form.company_id} onChange={e => setForm(f => ({ ...f, company_id: e.target.value }))}>
+                        <option value="">None</option>
+                        {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    </select>
+                </div>
+                <div className="form-field">
+                    <label className="form-label">Status</label>
+                    <select className="form-input" value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
+                        {CONTACT_STATUSES.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
+                    </select>
+                </div>
+                <div className="form-field" style={{ gridColumn: '1 / -1' }}>
+                    <label className="form-label">Notes</label>
+                    <textarea className="form-input" style={{ height: 60, resize: 'vertical' }} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
+                </div>
+            </div>
+        </Modal>
     )
 }
 
@@ -211,76 +110,38 @@ function ContactModal({ contact, companies, onSave, onDelete, onClose }) {
 function CompanyModal({ company, onSave, onDelete, onClose }) {
     const isNew = !company.id
     const [form, setForm] = useState({
-        name: company.name || '',
-        website: company.website || '',
-        industry: company.industry || '',
-        location: company.location || '',
-        status: company.status || 'prospected',
-        notes: company.notes || '',
+        name: company.name || '', website: company.website || '', industry: company.industry || '',
+        location: company.location || '', status: company.status || 'prospected', notes: company.notes || '',
     })
-
-    useEffect(() => {
-        const handler = e => { if (e.key === 'Escape') onClose() }
-        window.addEventListener('keydown', handler)
-        return () => window.removeEventListener('keydown', handler)
-    }, [onClose])
-
-    const handleSave = () => {
-        if (!form.name.trim()) return
-        onSave(form)
-    }
+    const handleSave = () => { if (form.name.trim()) onSave(form) }
 
     return (
-        <div style={overlayStyle} onClick={onClose}>
-            <div style={panelStyle} onClick={e => e.stopPropagation()}>
-                <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>
-                    {isNew ? '/// NEW CORPORATE ENTITY' : `/// EDIT ENTITY — ${company.id?.slice(0, 8).toUpperCase()}`}
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                    <div>
-                        <label style={labelStyle}>NAME *</label>
-                        <input style={inputStyle} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>WEBSITE</label>
-                        <input style={inputStyle} value={form.website} onChange={e => setForm(f => ({ ...f, website: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>INDUSTRY</label>
-                        <input style={inputStyle} value={form.industry} onChange={e => setForm(f => ({ ...f, industry: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>LOCATION</label>
-                        <input style={inputStyle} value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>STATUS</label>
-                        <select style={inputStyle} value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
-                            {COMPANY_STATUSES.map(s => <option key={s} value={s}>{s.toUpperCase()}</option>)}
-                        </select>
-                    </div>
-                    <div style={{ gridColumn: '1 / -1' }}>
-                        <label style={labelStyle}>NOTES</label>
-                        <textarea style={{ ...inputStyle, height: '60px', resize: 'vertical' }} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
-                    </div>
-                </div>
-                <div style={footerStyle}>
-                    <div>
-                        {!isNew && (
-                            <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px', color: 'var(--color-danger)', borderColor: 'var(--color-danger)' }} onClick={() => onDelete(company.id)}>
-                                PURGE
-                            </button>
-                        )}
-                    </div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px' }} onClick={onClose}>ABORT</button>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--accent-primary)', color: '#000', border: '1px solid var(--accent-primary)' }} onClick={handleSave}>
-                            COMMIT
-                        </button>
-                    </div>
+        <Modal open title={isNew ? 'New company' : 'Edit company'} onClose={onClose} size="md" footer={
+            <div className="modal-actions">
+                <div>{!isNew && <button className="btn btn-ghost btn-sm" style={{ color: 'var(--color-danger)' }} onClick={() => onDelete(company.id)}><TrashIcon width={14} height={14} /> Delete</button>}</div>
+                <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+                    <button className="btn btn-ghost btn-sm" onClick={onClose}>Cancel</button>
+                    <button className="btn btn-primary btn-sm" onClick={handleSave}>Save</button>
                 </div>
             </div>
-        </div>
+        }>
+            <div className="form-grid">
+                <div className="form-field"><label className="form-label">Name *</label><input className="form-input" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Website</label><input className="form-input" value={form.website} onChange={e => setForm(f => ({ ...f, website: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Industry</label><input className="form-input" value={form.industry} onChange={e => setForm(f => ({ ...f, industry: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Location</label><input className="form-input" value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} /></div>
+                <div className="form-field">
+                    <label className="form-label">Status</label>
+                    <select className="form-input" value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
+                        {COMPANY_STATUSES.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
+                    </select>
+                </div>
+                <div className="form-field" style={{ gridColumn: '1 / -1' }}>
+                    <label className="form-label">Notes</label>
+                    <textarea className="form-input" style={{ height: 60, resize: 'vertical' }} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
+                </div>
+            </div>
+        </Modal>
     )
 }
 
@@ -288,294 +149,151 @@ function CompanyModal({ company, onSave, onDelete, onClose }) {
 function DealModal({ deal, companies, onSave, onDelete, onClose }) {
     const isNew = !deal.id
     const [form, setForm] = useState({
-        title: deal.title || '',
-        company_id: deal.company_id || '',
-        value: deal.value || 0,
-        stage: deal.stage || 'lead',
-        probability: deal.probability || 0,
-        expected_close_date: deal.expected_close_date || '',
-        notes: deal.notes || '',
+        title: deal.title || '', company_id: deal.company_id || '', value: deal.value || 0,
+        stage: deal.stage || 'lead', probability: deal.probability || 0,
+        expected_close_date: deal.expected_close_date || '', notes: deal.notes || '',
     })
-
-    useEffect(() => {
-        const handler = e => { if (e.key === 'Escape') onClose() }
-        window.addEventListener('keydown', handler)
-        return () => window.removeEventListener('keydown', handler)
-    }, [onClose])
-
-    const handleSave = () => {
-        if (!form.title.trim()) return
-        onSave({ ...form, value: Number(form.value) || 0, probability: Number(form.probability) || 0 })
-    }
+    const handleSave = () => { if (form.title.trim()) onSave({ ...form, value: Number(form.value) || 0, probability: Number(form.probability) || 0 }) }
 
     return (
-        <div style={overlayStyle} onClick={onClose}>
-            <div style={panelStyle} onClick={e => e.stopPropagation()}>
-                <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>
-                    {isNew ? '/// NEW OPERATION' : `/// EDIT OPERATION — ${deal.id?.slice(0, 8).toUpperCase()}`}
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                    <div style={{ gridColumn: '1 / -1' }}>
-                        <label style={labelStyle}>TITLE *</label>
-                        <input style={inputStyle} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>COMPANY</label>
-                        <select style={inputStyle} value={form.company_id} onChange={e => setForm(f => ({ ...f, company_id: e.target.value }))}>
-                            <option value="">— NONE —</option>
-                            {companies.map(c => <option key={c.id} value={c.id}>{c.name.toUpperCase()}</option>)}
-                        </select>
-                    </div>
-                    <div>
-                        <label style={labelStyle}>VALUE ($)</label>
-                        <input style={inputStyle} type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>STAGE</label>
-                        <select style={inputStyle} value={form.stage} onChange={e => setForm(f => ({ ...f, stage: e.target.value }))}>
-                            {DEAL_STAGES.map(s => <option key={s} value={s}>{s.toUpperCase().replace('_', ' ')}</option>)}
-                        </select>
-                    </div>
-                    <div>
-                        <label style={labelStyle}>PROBABILITY %</label>
-                        <input style={inputStyle} type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label style={labelStyle}>EXPECTED CLOSE</label>
-                        <input style={inputStyle} type="date" value={form.expected_close_date} onChange={e => setForm(f => ({ ...f, expected_close_date: e.target.value }))} />
-                    </div>
-                    <div style={{ gridColumn: '1 / -1' }}>
-                        <label style={labelStyle}>NOTES</label>
-                        <textarea style={{ ...inputStyle, height: '60px', resize: 'vertical' }} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
-                    </div>
-                </div>
-                <div style={footerStyle}>
-                    <div>
-                        {!isNew && (
-                            <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px', color: 'var(--color-danger)', borderColor: 'var(--color-danger)' }} onClick={() => onDelete(deal.id)}>
-                                PURGE
-                            </button>
-                        )}
-                    </div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px' }} onClick={onClose}>ABORT</button>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--accent-primary)', color: '#000', border: '1px solid var(--accent-primary)' }} onClick={handleSave}>
-                            COMMIT
-                        </button>
-                    </div>
+        <Modal open title={isNew ? 'New deal' : 'Edit deal'} onClose={onClose} size="md" footer={
+            <div className="modal-actions">
+                <div>{!isNew && <button className="btn btn-ghost btn-sm" style={{ color: 'var(--color-danger)' }} onClick={() => onDelete(deal.id)}><TrashIcon width={14} height={14} /> Delete</button>}</div>
+                <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+                    <button className="btn btn-ghost btn-sm" onClick={onClose}>Cancel</button>
+                    <button className="btn btn-primary btn-sm" onClick={handleSave}>Save</button>
                 </div>
             </div>
-        </div>
-    )
-}
-
-// ── Hover Row wrapper ──
-function HoverRow({ children, index, total, onClick }) {
-    const [hovered, setHovered] = useState(false)
-    return (
-        <tr
-            style={rowStyle(index, total, hovered)}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            onClick={onClick}
-        >
-            {children}
-        </tr>
+        }>
+            <div className="form-grid">
+                <div className="form-field" style={{ gridColumn: '1 / -1' }}><label className="form-label">Title *</label><input className="form-input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} /></div>
+                <div className="form-field">
+                    <label className="form-label">Company</label>
+                    <select className="form-input" value={form.company_id} onChange={e => setForm(f => ({ ...f, company_id: e.target.value }))}>
+                        <option value="">None</option>
+                        {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    </select>
+                </div>
+                <div className="form-field"><label className="form-label">Value ($)</label><input className="form-input" type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} /></div>
+                <div className="form-field">
+                    <label className="form-label">Stage</label>
+                    <select className="form-input" value={form.stage} onChange={e => setForm(f => ({ ...f, stage: e.target.value }))}>
+                        {DEAL_STAGES.map(s => <option key={s} value={s}>{s.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}</option>)}
+                    </select>
+                </div>
+                <div className="form-field"><label className="form-label">Probability %</label><input className="form-input" type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} /></div>
+                <div className="form-field"><label className="form-label">Expected close</label><input className="form-input" type="date" value={form.expected_close_date} onChange={e => setForm(f => ({ ...f, expected_close_date: e.target.value }))} /></div>
+                <div className="form-field" style={{ gridColumn: '1 / -1' }}>
+                    <label className="form-label">Notes</label>
+                    <textarea className="form-input" style={{ height: 60, resize: 'vertical' }} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} />
+                </div>
+            </div>
+        </Modal>
     )
 }
 
 function CRM() {
     const [activeTab, setActiveTab] = useState('contacts')
     const [search, setSearch] = useState('')
-    const [modal, setModal] = useState(null) // { type: 'contact'|'company'|'deal', data: {} }
+    const [modal, setModal] = useState(null)
     const toast = useAppStore(s => s.toast)
 
-    const {
-        contacts,
-        loading: contactsLoading,
-        addContact,
-        updateContact,
-        removeContact,
-        reload: reloadContacts,
-    } = useContacts()
-    const {
-        companies,
-        loading: companiesLoading,
-        addCompany,
-        updateCompany,
-        removeCompany,
-        reload: reloadCompanies,
-    } = useCompanies()
-    const {
-        deals,
-        loading: dealsLoading,
-        addDeal,
-        updateDeal,
-        removeDeal,
-        reload: reloadDeals,
-    } = useDeals()
-    const {
-        activities,
-        loading: activitiesLoading,
-        removeActivity,
-        reload: reloadActivities,
-    } = useActivities()
-    const {
-        importingLeadId,
-        bulkImporting,
-        stagingKey,
-        error: atlasError,
-    } = useAtlasCRM()
+    const { contacts, loading: contactsLoading, addContact, updateContact, removeContact, reload: reloadContacts } = useContacts()
+    const { companies, loading: companiesLoading, addCompany, updateCompany, removeCompany, reload: reloadCompanies } = useCompanies()
+    const { deals, loading: dealsLoading, addDeal, updateDeal, removeDeal, reload: reloadDeals } = useDeals()
+    const { activities, loading: activitiesLoading, removeActivity, reload: reloadActivities } = useActivities()
+    const { importingLeadId, bulkImporting, stagingKey, error: atlasError } = useAtlasCRM()
 
     const loading = contactsLoading || companiesLoading || dealsLoading || activitiesLoading
     const syncBusy = bulkImporting || Boolean(importingLeadId) || Boolean(stagingKey)
-    const atlasOnline = isSupabaseConfigured
     const systemHealthy = isSupabaseConfigured && !atlasError
 
-    // Filtered data
     const q = search.toLowerCase()
-    const filteredContacts = useMemo(() =>
-        contacts.filter(c => !q || (c.name || '').toLowerCase().includes(q) || (c.email || '').toLowerCase().includes(q) || (c.company?.name || '').toLowerCase().includes(q)),
-        [contacts, q]
-    )
-    const filteredCompanies = useMemo(() =>
-        companies.filter(c => !q || c.name.toLowerCase().includes(q) || (c.industry || '').toLowerCase().includes(q) || (c.location || '').toLowerCase().includes(q)),
-        [companies, q]
-    )
-    const filteredDeals = useMemo(() =>
-        deals.filter(d => !q || (d.title || '').toLowerCase().includes(q) || (d.company?.name || '').toLowerCase().includes(q) || (d.stage || '').toLowerCase().includes(q)),
-        [deals, q]
-    )
-    const filteredActivities = useMemo(() =>
-        activities.filter(a => !q || (a.subject || a.description || '').toLowerCase().includes(q) || (a.type || '').toLowerCase().includes(q)),
-        [activities, q]
-    )
+    const filteredContacts = useMemo(() => contacts.filter(c => !q || (c.name || '').toLowerCase().includes(q) || (c.email || '').toLowerCase().includes(q) || (c.company?.name || '').toLowerCase().includes(q)), [contacts, q])
+    const filteredCompanies = useMemo(() => companies.filter(c => !q || c.name.toLowerCase().includes(q) || (c.industry || '').toLowerCase().includes(q) || (c.location || '').toLowerCase().includes(q)), [companies, q])
+    const filteredDeals = useMemo(() => deals.filter(d => !q || (d.title || '').toLowerCase().includes(q) || (d.company?.name || '').toLowerCase().includes(q) || (d.stage || '').toLowerCase().includes(q)), [deals, q])
+    const filteredActivities = useMemo(() => activities.filter(a => !q || (a.subject || a.description || '').toLowerCase().includes(q) || (a.type || '').toLowerCase().includes(q)), [activities, q])
 
     const handleSyncAtlas = useCallback(async () => {
         await Promise.all([reloadContacts(), reloadCompanies(), reloadDeals(), reloadActivities()])
     }, [reloadContacts, reloadCompanies, reloadDeals, reloadActivities])
 
-    // Modal handlers
     const openNew = useCallback((type) => setModal({ type, data: {} }), [])
     const closeModal = useCallback(() => setModal(null), [])
 
     const handleContactSave = useCallback(async (form) => {
-        if (modal.data.id) {
-            await updateContact(modal.data.id, form)
-            toast('PERSONNEL UPDATED', 'info')
-        } else {
-            await addContact(form)
-            toast('PERSONNEL CREATED', 'info')
-        }
+        if (modal.data.id) { await updateContact(modal.data.id, form); toast('Contact updated', 'success') }
+        else { await addContact(form); toast('Contact created', 'success') }
         setModal(null)
     }, [modal, updateContact, addContact, toast])
 
-    const handleContactDelete = useCallback(async (id) => {
-        await removeContact(id)
-        toast('PERSONNEL PURGED', 'info')
-        setModal(null)
-    }, [removeContact, toast])
+    const handleContactDelete = useCallback(async (id) => { await removeContact(id); toast('Contact removed', 'success'); setModal(null) }, [removeContact, toast])
 
     const handleCompanySave = useCallback(async (form) => {
-        if (modal.data.id) {
-            await updateCompany(modal.data.id, form)
-            toast('ENTITY UPDATED', 'info')
-        } else {
-            await addCompany(form)
-            toast('ENTITY CREATED', 'info')
-        }
+        if (modal.data.id) { await updateCompany(modal.data.id, form); toast('Company updated', 'success') }
+        else { await addCompany(form); toast('Company created', 'success') }
         setModal(null)
     }, [modal, updateCompany, addCompany, toast])
 
-    const handleCompanyDelete = useCallback(async (id) => {
-        await removeCompany(id)
-        toast('ENTITY PURGED', 'info')
-        setModal(null)
-    }, [removeCompany, toast])
+    const handleCompanyDelete = useCallback(async (id) => { await removeCompany(id); toast('Company removed', 'success'); setModal(null) }, [removeCompany, toast])
 
     const handleDealSave = useCallback(async (form) => {
-        if (modal.data.id) {
-            await updateDeal(modal.data.id, form)
-            toast('OPERATION UPDATED', 'info')
-        } else {
-            await addDeal(form)
-            toast('OPERATION CREATED', 'info')
-        }
+        if (modal.data.id) { await updateDeal(modal.data.id, form); toast('Deal updated', 'success') }
+        else { await addDeal(form); toast('Deal created', 'success') }
         setModal(null)
     }, [modal, updateDeal, addDeal, toast])
 
-    const handleDealDelete = useCallback(async (id) => {
-        await removeDeal(id)
-        toast('OPERATION PURGED', 'info')
-        setModal(null)
-    }, [removeDeal, toast])
+    const handleDealDelete = useCallback(async (id) => { await removeDeal(id); toast('Deal removed', 'success'); setModal(null) }, [removeDeal, toast])
 
-    // Clear search when switching tabs
     useEffect(() => { setSearch('') }, [activeTab])
 
-    const searchPlaceholder = {
-        contacts: 'SEARCH PERSONNEL BY NAME, EMAIL, COMPANY...',
-        companies: 'SEARCH ENTITIES BY NAME, INDUSTRY, LOCATION...',
-        deals: 'SEARCH OPERATIONS BY TITLE, COMPANY, STAGE...',
-        activities: 'SEARCH ACTIVITY BY SUBJECT, TYPE...',
+    const searchPlaceholders = {
+        contacts: 'Search by name, email, company...',
+        companies: 'Search by name, industry, location...',
+        deals: 'Search by title, company, stage...',
+        activities: 'Search by subject, type...',
     }
 
+    const tabCounts = { contacts: contacts.length, companies: companies.length, deals: deals.length, activities: activities.length }
+
     return (
-        <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div className="module-page crm fade-in">
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
+            <div className="module-page-header">
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>CORTEX CRM VAULT</h1>
-                    <span className="mono text-xs text-tertiary">LIVE CONTACTS, COMPANIES, DEALS AND ACTIVITIES</span>
+                    <h1 className="module-page-title">CRM</h1>
+                    <p className="module-page-subtitle">Contacts, companies, deals, and activity</p>
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                    {TABS.map(tab => (
-                        <button
-                            key={tab.id}
-                            className="mono"
-                            style={tabButton(activeTab, tab.id)}
-                            onClick={() => setActiveTab(tab.id)}
-                        >
-                            {tab.label}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                    <div className="crm-status">
+                        <div className={`crm-status-dot ${systemHealthy ? 'online' : 'error'}`} />
+                        <span>{systemHealthy ? 'Connected' : 'Degraded'}</span>
+                    </div>
+                    <button className="btn btn-ghost btn-sm" onClick={handleSyncAtlas} disabled={syncBusy}>
+                        <ArrowPathIcon width={14} height={14} className={syncBusy ? 'spin' : ''} /> {syncBusy ? 'Syncing...' : 'Sync'}
+                    </button>
+                </div>
+            </div>
+
+            {/* Tabs */}
+            <div className="crm-tabs">
+                {TABS.map(tab => {
+                    const Icon = tab.icon
+                    return (
+                        <button key={tab.id} className={`crm-tab${activeTab === tab.id ? ' crm-tab-active' : ''}`} onClick={() => setActiveTab(tab.id)}>
+                            <Icon width={16} height={16} />
+                            <span>{tab.label}</span>
+                            <span className="crm-tab-count">{tabCounts[tab.id]}</span>
                         </button>
-                    ))}
-                </div>
+                    )
+                })}
             </div>
 
-            {/* Status bar */}
-            <div style={{ border: '1px solid var(--border-subtle)', background: '#000', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <div className="mono text-xs font-bold" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ color: systemHealthy ? 'var(--color-success)' : 'var(--color-danger)' }}>
-                            SYSTEM LINK: {systemHealthy ? 'SECURE' : 'DEGRADED'}
-                        </span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderLeft: '1px solid var(--border-subtle)', paddingLeft: '16px' }}>
-                        <span style={{ color: atlasOnline ? 'var(--accent-primary)' : 'var(--text-tertiary)' }}>
-                            ATLAS DB: {atlasOnline ? 'CONNECTED' : 'OFFLINE'}
-                        </span>
-                    </div>
-                    {atlasError && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderLeft: '1px solid var(--border-subtle)', paddingLeft: '16px', color: 'var(--color-danger)' }}>
-                            {atlasError.toUpperCase()}
-                        </div>
-                    )}
-                </div>
-                <button
-                    className="btn btn-ghost btn-sm mono"
-                    style={{ fontSize: '9px', padding: '4px 12px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }}
-                    onClick={handleSyncAtlas}
-                    disabled={syncBusy}
-                >
-                    {syncBusy ? 'SYNC BUSY' : 'FORCE DB SYNC'}
-                </button>
-            </div>
-
-            {/* Search bar */}
+            {/* Search */}
             <SearchBar
                 value={search}
                 onChange={setSearch}
-                placeholder={searchPlaceholder[activeTab]}
+                placeholder={searchPlaceholders[activeTab]}
                 onAdd={() => {
                     if (activeTab === 'contacts') openNew('contact')
                     else if (activeTab === 'companies') openNew('company')
@@ -583,190 +301,109 @@ function CRM() {
                 }}
             />
 
-            {/* Content */}
-            <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', paddingBottom: '32px' }}>
-                {loading && (
-                    <div className="mono text-xs text-tertiary" style={{ padding: '16px 0' }}>
-                        SYNCHRONIZING LIVE CRM DATA...
-                    </div>
-                )}
+            {/* Loading */}
+            {loading && <div className="crm-loading">Loading data...</div>}
 
-                {activeTab === 'contacts' && (
-                    <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
-                            /// IDENTIFIED PERSONNEL [{filteredContacts.length}]
-                        </div>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-                            <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
+            {/* Table */}
+            <div className="crm-table-wrap">
+                <table className="crm-table">
+                    {activeTab === 'contacts' && (
+                        <>
+                            <thead>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>NAME</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>COMPANY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>EMAIL</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>PHONE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STATUS</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
+                                    <th>Name</th><th>Company</th><th>Email</th><th>Phone</th><th>Status</th><th className="crm-col-action"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredContacts.map((contact, index) => (
-                                    <HoverRow key={contact.id} index={index} total={filteredContacts.length} onClick={() => setModal({ type: 'contact', data: contact })}>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{contact.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{(contact.name || 'UNKNOWN').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{contact.company?.name ? contact.company.name.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{contact.email ? contact.email.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>{contact.phone || '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{(contact.status || 'raw').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                                            <button className="btn btn-ghost mono" style={deleteButtonStyle()} onClick={e => { e.stopPropagation(); removeContact(contact.id) }}>DEL</button>
-                                        </td>
-                                    </HoverRow>
+                                {filteredContacts.map(c => (
+                                    <tr key={c.id} onClick={() => setModal({ type: 'contact', data: c })}>
+                                        <td className="crm-cell-name">{c.name || '—'}</td>
+                                        <td>{c.company?.name || '—'}</td>
+                                        <td className="crm-cell-email">{c.email || '—'}</td>
+                                        <td>{c.phone || '—'}</td>
+                                        <td><span className={`badge badge-${c.status === 'converted' ? 'success' : c.status === 'lost' ? 'danger' : 'default'}`}>{c.status || 'raw'}</span></td>
+                                        <td className="crm-col-action"><button className="btn btn-ghost btn-xs" onClick={e => { e.stopPropagation(); removeContact(c.id) }}><TrashIcon width={14} height={14} /></button></td>
+                                    </tr>
                                 ))}
-                                {filteredContacts.length === 0 && emptyRow(7, 'NO PERSONNEL RECORDED')}
+                                {filteredContacts.length === 0 && <tr><td colSpan={6} className="crm-table-empty">No contacts found</td></tr>}
                             </tbody>
-                        </table>
-                    </div>
-                )}
+                        </>
+                    )}
 
-                {activeTab === 'companies' && (
-                    <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
-                            /// CORPORATE ENTITIES [{filteredCompanies.length}]
-                        </div>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-                            <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
+                    {activeTab === 'companies' && (
+                        <>
+                            <thead>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>NAME</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>WEBSITE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>INDUSTRY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>LOCATION</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STATUS</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
+                                    <th>Name</th><th>Website</th><th>Industry</th><th>Location</th><th>Status</th><th className="crm-col-action"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredCompanies.map((company, index) => (
-                                    <HoverRow key={company.id} index={index} total={filteredCompanies.length} onClick={() => setModal({ type: 'company', data: company })}>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{company.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{company.name.toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{company.website ? company.website.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{company.industry ? company.industry.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{company.location ? company.location.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{(company.status || 'prospected').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                                            <button className="btn btn-ghost mono" style={deleteButtonStyle()} onClick={e => { e.stopPropagation(); removeCompany(company.id) }}>DEL</button>
-                                        </td>
-                                    </HoverRow>
+                                {filteredCompanies.map(c => (
+                                    <tr key={c.id} onClick={() => setModal({ type: 'company', data: c })}>
+                                        <td className="crm-cell-name">{c.name}</td>
+                                        <td className="crm-cell-email">{c.website || '—'}</td>
+                                        <td>{c.industry || '—'}</td>
+                                        <td>{c.location || '—'}</td>
+                                        <td><span className={`badge badge-${c.status === 'active' ? 'success' : c.status === 'churned' ? 'danger' : 'default'}`}>{c.status || 'prospected'}</span></td>
+                                        <td className="crm-col-action"><button className="btn btn-ghost btn-xs" onClick={e => { e.stopPropagation(); removeCompany(c.id) }}><TrashIcon width={14} height={14} /></button></td>
+                                    </tr>
                                 ))}
-                                {filteredCompanies.length === 0 && emptyRow(7, 'NO ENTITIES RECORDED')}
+                                {filteredCompanies.length === 0 && <tr><td colSpan={6} className="crm-table-empty">No companies found</td></tr>}
                             </tbody>
-                        </table>
-                    </div>
-                )}
+                        </>
+                    )}
 
-                {activeTab === 'deals' && (
-                    <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
-                            /// ONGOING OPERATIONS [{filteredDeals.length}]
-                        </div>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-                            <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
+                    {activeTab === 'deals' && (
+                        <>
+                            <thead>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>TITLE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>COMPANY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>VALUE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STAGE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>PROB</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
+                                    <th>Title</th><th>Company</th><th>Value</th><th>Stage</th><th>Probability</th><th className="crm-col-action"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredDeals.map((deal, index) => (
-                                    <HoverRow key={deal.id} index={index} total={filteredDeals.length} onClick={() => setModal({ type: 'deal', data: deal })}>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{deal.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{(deal.title || 'UNTITLED').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{deal.company?.name ? deal.company.name.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-success)', fontWeight: 'bold' }}>{formatCurrency(deal.value)}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-warning)' }}>{(deal.stage || 'lead').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{deal.probability || 0}%</td>
-                                        <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                                            <button className="btn btn-ghost mono" style={deleteButtonStyle()} onClick={e => { e.stopPropagation(); removeDeal(deal.id) }}>DEL</button>
-                                        </td>
-                                    </HoverRow>
+                                {filteredDeals.map(d => (
+                                    <tr key={d.id} onClick={() => setModal({ type: 'deal', data: d })}>
+                                        <td className="crm-cell-name">{d.title || 'Untitled'}</td>
+                                        <td>{d.company?.name || '—'}</td>
+                                        <td className="crm-cell-value">{formatCurrency(d.value)}</td>
+                                        <td><span className={`badge badge-${d.stage === 'closed_won' ? 'success' : d.stage === 'closed_lost' ? 'danger' : 'default'}`}>{(d.stage || 'lead').replace('_', ' ')}</span></td>
+                                        <td>{d.probability || 0}%</td>
+                                        <td className="crm-col-action"><button className="btn btn-ghost btn-xs" onClick={e => { e.stopPropagation(); removeDeal(d.id) }}><TrashIcon width={14} height={14} /></button></td>
+                                    </tr>
                                 ))}
-                                {filteredDeals.length === 0 && emptyRow(7, 'NO OPERATIONS RECORDED')}
+                                {filteredDeals.length === 0 && <tr><td colSpan={6} className="crm-table-empty">No deals found</td></tr>}
                             </tbody>
-                        </table>
-                    </div>
-                )}
+                        </>
+                    )}
 
-                {activeTab === 'activities' && (
-                    <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
-                            /// ACTIVITY LOG ENTRY [{filteredActivities.length}]
-                        </div>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-                            <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
+                    {activeTab === 'activities' && (
+                        <>
+                            <thead>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>TYPE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>SUBJECT</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>LINKED ENTITY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>CREATED</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
+                                    <th>Type</th><th>Subject</th><th>Linked to</th><th>Created</th><th className="crm-col-action"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredActivities.map((activity, index) => (
-                                    <HoverRow key={activity.id} index={index} total={filteredActivities.length} onClick={() => { }}>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{activity.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{(activity.type || 'note').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{(activity.subject || activity.description || 'UNTITLED').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>
-                                            {(activity.company?.name || activity.contact?.name || activity.deal?.title || '—').toUpperCase()}
-                                        </td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{formatDateTime(activity.created_at)}</td>
-                                        <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                                            <button className="btn btn-ghost mono" style={deleteButtonStyle()} onClick={e => { e.stopPropagation(); removeActivity(activity.id) }}>DEL</button>
-                                        </td>
-                                    </HoverRow>
+                                {filteredActivities.map(a => (
+                                    <tr key={a.id}>
+                                        <td><span className="badge badge-primary">{a.type || 'note'}</span></td>
+                                        <td className="crm-cell-name">{a.subject || a.description || 'Untitled'}</td>
+                                        <td>{a.company?.name || a.contact?.name || a.deal?.title || '—'}</td>
+                                        <td className="crm-cell-date">{formatDateTime(a.created_at)}</td>
+                                        <td className="crm-col-action"><button className="btn btn-ghost btn-xs" onClick={() => removeActivity(a.id)}><TrashIcon width={14} height={14} /></button></td>
+                                    </tr>
                                 ))}
-                                {filteredActivities.length === 0 && emptyRow(6, 'NO ACTIVITY RECORDED')}
+                                {filteredActivities.length === 0 && <tr><td colSpan={5} className="crm-table-empty">No activities found</td></tr>}
                             </tbody>
-                        </table>
-                    </div>
-                )}
+                        </>
+                    )}
+                </table>
             </div>
 
             {/* Modals */}
-            {modal?.type === 'contact' && (
-                <ContactModal
-                    contact={modal.data}
-                    companies={companies}
-                    onSave={handleContactSave}
-                    onDelete={handleContactDelete}
-                    onClose={closeModal}
-                />
-            )}
-            {modal?.type === 'company' && (
-                <CompanyModal
-                    company={modal.data}
-                    onSave={handleCompanySave}
-                    onDelete={handleCompanyDelete}
-                    onClose={closeModal}
-                />
-            )}
-            {modal?.type === 'deal' && (
-                <DealModal
-                    deal={modal.data}
-                    companies={companies}
-                    onSave={handleDealSave}
-                    onDelete={handleDealDelete}
-                    onClose={closeModal}
-                />
-            )}
+            {modal?.type === 'contact' && <ContactModal contact={modal.data} companies={companies} onSave={handleContactSave} onDelete={handleContactDelete} onClose={closeModal} />}
+            {modal?.type === 'company' && <CompanyModal company={modal.data} onSave={handleCompanySave} onDelete={handleCompanyDelete} onClose={closeModal} />}
+            {modal?.type === 'deal' && <DealModal deal={modal.data} companies={companies} onSave={handleDealSave} onDelete={handleDealDelete} onClose={closeModal} />}
         </div>
     )
 }

@@ -2,47 +2,102 @@ import { useEffect, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
 import { useOrgStore } from '../stores/useOrgStore'
 
+let orgBootstrapStarted = false
+let orgBootstrapComplete = false
+let orgFetchPromise = null
+
+async function fetchOrganizationsInternal({ blocking = false } = {}) {
+    const store = useOrgStore.getState()
+
+    if (orgFetchPromise) return orgFetchPromise
+    if (blocking) store.setLoading(true)
+
+    orgFetchPromise = (async () => {
+        try {
+            const { data: orgs, error } = await supabase.from('organizations').select('*')
+
+            if (error) {
+                console.error('Error fetching organizations:', error)
+                return []
+            }
+
+            const nextOrgs = orgs || []
+            const latestStore = useOrgStore.getState()
+            latestStore.setOrganizations(nextOrgs)
+
+            if (nextOrgs.length === 0) {
+                latestStore.setCurrentOrg(null)
+            } else if (!latestStore.currentOrg || !nextOrgs.some(o => o.id === latestStore.currentOrg.id)) {
+                latestStore.setCurrentOrg(nextOrgs[0])
+            }
+
+            return nextOrgs
+        } catch (err) {
+            console.error('Critical org fetch error:', err)
+            return []
+        } finally {
+            orgBootstrapComplete = true
+            useOrgStore.getState().setLoading(false)
+            orgFetchPromise = null
+        }
+    })()
+
+    return orgFetchPromise
+}
+
+function ensureOrgBootstrap() {
+    if (orgBootstrapStarted) return
+    orgBootstrapStarted = true
+
+    const store = useOrgStore.getState()
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+        const latestStore = useOrgStore.getState()
+
+        if (event === 'SIGNED_IN') {
+            const needsFreshOrgResolution = !latestStore.currentOrg && latestStore.organizations.length === 0
+            fetchOrganizationsInternal({ blocking: !orgBootstrapComplete || needsFreshOrgResolution })
+        } else if (event === 'SIGNED_OUT') {
+            latestStore.setOrganizations([])
+            latestStore.setCurrentOrg(null)
+            latestStore.setMembers([])
+            latestStore.setPendingInvites([])
+            latestStore.setLoading(false)
+            orgBootstrapComplete = false
+            orgBootstrapStarted = false
+        }
+        // Ignore TOKEN_REFRESHED, USER_UPDATED — they don't change org state
+    })
+
+    supabase.auth.getUser().then(({ data: { user } }) => {
+        if (user) fetchOrganizationsInternal({ blocking: true })
+        else {
+            store.setLoading(false)
+            orgBootstrapComplete = true
+        }
+    }).catch(() => {
+        store.setLoading(false)
+        orgBootstrapComplete = true
+    })
+
+    setTimeout(() => {
+        const latestStore = useOrgStore.getState()
+        if (latestStore.loading) {
+            console.warn('[useOrg] loading timeout — forcing loading=false')
+            latestStore.setLoading(false)
+            orgBootstrapComplete = true
+        }
+    }, 8000)
+
+    void authListener
+}
+
 export function useOrg() {
     const store = useOrgStore()
     const { organizations, currentOrg } = store
 
-    // Initial fetch for organizations on auth change
     useEffect(() => {
-        let mounted = true
-        const { data: authListener } = supabase.auth.onAuthStateChange(
-            (event, session) => {
-                if (!mounted) return
-                if (event === 'SIGNED_IN') {
-                    fetchOrganizations()
-                } else if (event === 'SIGNED_OUT') {
-                    store.setOrganizations([])
-                    store.setCurrentOrg(null)
-                    store.setLoading(false)
-                }
-            }
-        )
-        // Initial fetch if user is already logged in
-        supabase.auth.getUser().then(({ data: { user } }) => {
-            if (!mounted) return
-            if (user) fetchOrganizations()
-            else store.setLoading(false)
-        }).catch(() => {
-            if (mounted) store.setLoading(false)
-        })
-
-        // Safety timeout: never be stuck loading for more than 8 seconds
-        const timeout = setTimeout(() => {
-            if (mounted && store.loading) {
-                console.warn('[useOrg] loading timeout — forcing loading=false')
-                store.setLoading(false)
-            }
-        }, 8000)
-
-        return () => {
-            mounted = false
-            clearTimeout(timeout)
-            authListener.subscription.unsubscribe()
-        }
+        ensureOrgBootstrap()
     }, [])
 
     // Re-hydrate currentOrg and fetch members when org changes
@@ -62,24 +117,7 @@ export function useOrg() {
 
 
     const fetchOrganizations = useCallback(async () => {
-        store.setLoading(true)
-        try {
-            const { data: orgs, error } = await supabase.from('organizations').select('*')
-
-            if (error) {
-                console.error('Error fetching organizations:', error)
-                store.setOrganizations([])
-            } else {
-                store.setOrganizations(orgs || [])
-                if ((orgs || []).length > 0 && (!store.currentOrg || !orgs.some(o => o.id === store.currentOrg.id))) {
-                    store.setCurrentOrg(orgs[0])
-                }
-            }
-        } catch (err) {
-            console.error('Critical org fetch error:', err)
-            store.setOrganizations([])
-        }
-        store.setLoading(false)
+        return fetchOrganizationsInternal({ blocking: true })
     }, [])
 
     const fetchMembers = useCallback(async (orgId) => {
@@ -116,19 +154,55 @@ export function useOrg() {
 
     const createOrganization = useCallback(async (name) => {
         store.setLoading(true)
-        const { data: newOrg, error } = await supabase.rpc('create_new_organization', { org_name: name })
+        try {
+            // Try RPC first
+            const { data: newOrg, error } = await supabase.rpc('create_new_organization', { org_name: name })
 
-        if (error) {
-            console.error('Error creating organization:', error)
+            if (!error && newOrg) {
+                if (!store.organizations.some(org => org.id === newOrg.id)) {
+                    store.addOrganization(newOrg)
+                }
+                store.setCurrentOrg(newOrg)
+                store.setLoading(false)
+                return newOrg
+            }
+
+            // Fallback: direct insert with client-generated slug
+            console.warn('[useOrg] RPC failed, falling back to direct insert:', error?.message)
+            const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || `org-${Date.now()}`
+
+            const { data: inserted, error: insertErr } = await supabase
+                .from('organizations')
+                .insert({ name, slug })
+                .select()
+                .single()
+
+            if (insertErr) {
+                console.error('Error creating organization:', insertErr)
+                store.setLoading(false)
+                throw insertErr
+            }
+
+            // Add creator as owner
+            const { data: { user } } = await supabase.auth.getUser()
+            if (user && inserted) {
+                const { data: ownerRole } = await supabase.from('roles').select('id').eq('name', 'owner').single()
+                if (ownerRole) {
+                    await supabase.from('organization_members').insert({ org_id: inserted.id, user_id: user.id, role_id: ownerRole.id })
+                }
+            }
+
+            if (!store.organizations.some(org => org.id === inserted.id)) {
+                store.addOrganization(inserted)
+            }
+            store.setCurrentOrg(inserted)
             store.setLoading(false)
-            throw error
+            return inserted
+        } catch (err) {
+            store.setLoading(false)
+            throw err
         }
-
-        store.addOrganization(newOrg)
-        store.setCurrentOrg(newOrg)
-        store.setLoading(false)
-        return newOrg
-    }, [])
+    }, [store])
 
     const switchOrganization = useCallback((org) => store.setCurrentOrg(org), [])
 

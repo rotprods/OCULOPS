@@ -138,7 +138,7 @@ function ControlTower() {
             </div>
 
             {/* ── KPI Grid ── */}
-            <div className="ct-kpi-grid">
+            <div className="ct-kpi-grid stagger-children">
                 {kpis.map((kpi, i) => {
                     const Icon = kpi.icon
                     return (
@@ -211,7 +211,8 @@ function ControlTower() {
                             No agents registered
                         </div>
                     ) : (
-                        agents.map(agent => {
+                        <div className="stagger-children">
+                        {agents.map(agent => {
                             const StatusIcon = agent.status === 'error' ? ExclamationTriangleIcon
                                 : agent.status === 'online' ? CheckCircleIcon
                                 : CpuChipIcon
@@ -233,7 +234,8 @@ function ControlTower() {
                                     </div>
                                 </div>
                             )
-                        })
+                        })}
+                        </div>
                     )}
                 </div>
             </div>

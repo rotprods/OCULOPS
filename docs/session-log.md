@@ -110,4 +110,78 @@ CREATED:
 - [ ] Redeploy the cleaned build to Vercel once `api.vercel.com` is accessible (or from another network).  
 - [ ] Supply `APIFY_TOKEN`/valid Reddit credentials so `social-signals` can stop falling back to blocked endpoints.  
 - [ ] Set `TELEGRAM_CHAT_ID` (and optionally thread) so Herald/Scribe reports have a default destination.  
-- [ ] Capture the new API catalog info into n8n or agents (scripts/workflows need to learn the new access-theme grouping).  
+- [ ] Capture the new API catalog info into n8n or agents (scripts/workflows need to learn the new access-theme grouping).
+
+---
+
+## 2026-03-11 | Terminal: Claude Opus 4.6 (schema evolution + onboarding)
+
+### DB Schema Evolution — v2 HARDCORE (10 phases, 57 new tables)
+Evolved OCULOPS from ~62 to ~119 tables based on 20-section enterprise spec.
+
+| Phase | File | Tables | Domain |
+|-------|------|--------|--------|
+| 1 | `20260315100000_phase1_foundation.sql` | 8 | workspaces, teams, permissions, tools, integrations, connectors, sync_logs |
+| 2 | `20260315120000_phase2_process_pipeline.sql` | 8 | pipeline_definitions, stages, transitions, processes, SOPs, playbooks, checklists, templates |
+| 3 | `20260315140000_phase3_intelligence.sql` | 4 | insights, hypotheses, recommendations, actions_log |
+| 4 | `20260315160000_phase4_marketplace.sql` | 6 | seller/buyer profiles, listings, orders, reviews, disputes |
+| 5 | `20260315180000_phase5_financial.sql` | 5 | invoices, payments, subscription_plans, revenue_shares, pricing_rules |
+| 6 | `20260315200000_phase6_governance.sql` | 8 | policies, risk_cases, guardrails, kill_switches, escalation, consent, retention, compliance |
+| 7 | `20260315220000_phase7_observability.sql` | 4 | metric_definitions, metric_values, alert_rules, dashboards_config |
+| 8 | `20260316100500_phase8_knowledge.sql` | 3 | knowledge_categories, learning_records, playbook_entries |
+| 9 | `20260316120000_phase9_blockchain_additions.sql` | 4 | token_emissions, staking_positions, governance_votes, reward_epochs |
+| 10 | `20260316140000_phase10_gtm_meta.sql` | 7 | icp_definitions, channel_configs, partner_programs, user_preferences, saved_views, command_history, maturity_assessments |
+
+All 10 phases deployed to Supabase remote. ~15 ALTER operations across 8 existing tables (deals, contacts, signals, experiments, alerts).
+
+### Migration Fixes
+- Phase 2: added missing `org_id` column to `pipeline_transitions`
+- Phase 8: renamed from `20260316100000` to `20260316100500` (timestamp collision with `fix_rls_and_leads`)
+- `fix_rls_and_leads.sql`: marked as applied via `migration repair` (policies already existed on remote)
+- 7 remote-only ghost migrations repaired as `reverted`
+
+### Onboarding & Account Management
+- **OnboardingSetup.jsx** rewritten: 3-step flow (Perfil → Organización → Launch)
+  - Step 1: full_name, phone, company, role_title → saves to profiles table
+  - Step 2: create org via `create_new_organization` RPC
+  - Step 3: confirmation + auto-redirect
+  - Marks `onboarding_completed = true` via `complete_onboarding()` RPC
+- **Settings.jsx**: added "00. ACCOUNT" tab with profile edit + password change
+- **DB trigger**: `trigger_welcome_email` fires `welcome-email` edge function on `auth.users` INSERT
+- Removed Tailwind/cyan/purple from OnboardingSetup → inline OCULOPS tokens
+
+### UI Fixes
+- OrgSelector.jsx: replaced Tailwind + `@heroicons/react` with inline OCULOPS tokens
+- UserMenu.jsx: removed blue/cyan avatar, gold circle with `--color-primary`
+- ParticleField.jsx: `zIndex: 1` → `0` (behind content)
+- Sidebar.jsx: `zIndex: 30` → `10` (above particles, below modals)
+- App.jsx: removed duplicate ParticleField, lazy-loaded, AmbientBackground for auth
+
+### Design System Refresh (linter-driven)
+- Token rename across ~90 files
+- Consistent `--accent-primary`, `--surface-*`, `--text-*`, `--border-*`
+- tokens.css, global.css, ControlTower.css refreshed
+- New UI primitives: Icon.jsx, ModulePage.jsx
+
+### Infra
+- New edge function: `health/index.ts`
+- New shared module: `agent-skills.ts`
+- `agent-brain-v2.ts` streamlined
+- Migration: `20260316200000_phase4_security_hardening.sql`
+
+### Deploy
+- Vercel production: 2 deploys, build clean (5-6s)
+- GitHub: 4 commits pushed to main
+- Commits: `59aeaf2`, `536d086`, `41ad2b8`, `7243fbf`
+
+### Files Changed
+- 102 files changed, +4757 / -3546 lines
+- 10 new migration files
+- 6 new source files (Icon.jsx, ModulePage.jsx, CSS extractions, agent-skills.ts, health endpoint)
+
+### Pending
+- [ ] `RESEND_API_KEY` — set in Supabase secrets for welcome email (logged in `docs/missings.md`)
+- [ ] Wire n8n webhooks as event bus consumers (Phase 3.2)
+- [ ] Phase 4: Bridge Agent-OS ↔ OCULOPS
+- [ ] Phase 5: SaaS + Production (Stripe, testing, CI/CD)
+- [ ] Set WhatsApp/Meta/TikTok/ManyChat secrets when activating channels

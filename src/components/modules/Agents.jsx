@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
-// OCULOPS — AI Agents Hub (CORTEX Network)
-// Multi-Agent Orchestration Dashboard - 100-Year UX
+// OCULOPS — Agents Hub v11.0
+// Multi-Agent Orchestration Dashboard
 // ═══════════════════════════════════════════════════
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -9,20 +9,50 @@ import { useAgents } from '../../hooks/useAgents'
 import { useAgentStudies } from '../../hooks/useAgentStudies'
 import { useAgentVault, ROLE_CAPABILITY_MAP } from '../../hooks/useAgentVault'
 import { AGENT_AUTOMATION_PACKS } from '../../data/agentAutomationPacks'
+import {
+  CpuChipIcon,
+  PlayIcon,
+  QueueListIcon,
+  DocumentTextIcon,
+  BookOpenIcon,
+  CogIcon,
+  ArchiveBoxIcon,
+  PaperAirplaneIcon,
+  ArrowPathIcon,
+  MagnifyingGlassIcon,
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  ClockIcon,
+} from '@heroicons/react/24/outline'
+import './Agents.css'
 
-const AGENT_ICONS = { cortex: '🧠', atlas: '🌍', hunter: '🎯', oracle: '📊', sentinel: '🛡️', forge: '✍️', strategist: '⚖️', scribe: '📝', herald: '📱' }
-const AGENT_COLORS = { cortex: '#00d2d3', atlas: '#6366f1', hunter: '#f59e0b', oracle: '#8b5cf6', sentinel: '#ef4444', forge: '#10b981', strategist: '#3b82f6', scribe: '#ec4899', herald: '#facc15' }
+const AGENT_COLORS = { cortex: '#6366f1', atlas: '#6366f1', hunter: '#f59e0b', oracle: '#8b5cf6', sentinel: '#ef4444', forge: '#10b981', strategist: '#3b82f6', scribe: '#ec4899', herald: '#facc15' }
 const INITIAL_STUDY_FORM = { agentCodeName: 'cortex', title: '', summary: '', contentMarkdown: '', sendTelegram: true }
 const INITIAL_TELEGRAM_FORM = { label: 'Primary Telegram', chat_id: '', thread_id: '', notify_manual: true, notify_automated: true }
 
+const TAB_CONFIG = [
+  { id: 'network', label: 'Network', icon: CpuChipIcon },
+  { id: 'queue', label: 'Queue', icon: QueueListIcon },
+  { id: 'logs', label: 'Logs', icon: DocumentTextIcon },
+  { id: 'studies', label: 'Studies', icon: BookOpenIcon },
+  { id: 'automation', label: 'Automation', icon: CogIcon },
+  { id: 'vault', label: 'Vault', icon: ArchiveBoxIcon },
+]
+
 function formatTime(iso) {
   if (!iso) return '—'
-  return new Date(iso).toLocaleString('en-US', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).toUpperCase()
+  return new Date(iso).toLocaleString('en-US', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
 }
 
 function formatDuration(ms) {
   if (!ms) return '—'
   return ms < 1000 ? `${ms}ms` : `${(ms / 1000).toFixed(1)}s`
+}
+
+function statusColor(status) {
+  if (status === 'online') return 'var(--color-success)'
+  if (status === 'running') return 'var(--color-warning)'
+  return 'var(--color-danger)'
 }
 
 function Agents() {
@@ -50,7 +80,7 @@ function Agents() {
     const result = await triggerAgent(codeName, action)
     setTriggering(null)
     if (result?.error) toast(result.error, 'warning')
-    else toast(`${codeName.toUpperCase()} triggered`, 'success')
+    else toast(`${codeName} triggered`, 'success')
   }, [toast, triggerAgent])
 
   const handleCortexCycle = useCallback(async () => {
@@ -58,37 +88,25 @@ function Agents() {
     const result = await runCortexCycle()
     setTriggering(null)
     if (result?.error) toast(result.error, 'warning')
-    else toast('CORTEX orchestration started', 'success')
+    else toast('Cortex orchestration started', 'success')
   }, [runCortexCycle, toast])
 
   const handlePostStudy = useCallback(async () => {
     if (!studyForm.title.trim()) { toast('Study title is required', 'warning'); return }
     const summary = studyForm.summary.trim() || studyForm.contentMarkdown.trim()
     if (!summary) { toast('Add a summary or body before posting', 'warning'); return }
-
     const highlights = summary.split(/\n|\./).map(i => i.trim()).filter(Boolean).slice(0, 4)
     try {
-      const result = await postStudy({
-        agent_code_name: studyForm.agentCodeName,
-        title: studyForm.title.trim(),
-        summary, content_markdown: studyForm.contentMarkdown.trim() || summary,
-        highlights, study_type: 'manual', send_telegram: studyForm.sendTelegram,
-      })
+      const result = await postStudy({ agent_code_name: studyForm.agentCodeName, title: studyForm.title.trim(), summary, content_markdown: studyForm.contentMarkdown.trim() || summary, highlights, study_type: 'manual', send_telegram: studyForm.sendTelegram })
       setStudyForm(cur => ({ ...INITIAL_STUDY_FORM, agentCodeName: cur.agentCodeName }))
-      toast(result?.delivery?.delivered ? 'Study posted and routed to Telegram' : 'Study generated', 'success')
-    } catch (e) {
-      toast(e.message, 'warning')
-    }
+      toast(result?.delivery?.delivered ? 'Study posted and sent to Telegram' : 'Study created', 'success')
+    } catch (e) { toast(e.message, 'warning') }
   }, [postStudy, studyForm, toast])
 
   const handleSaveTelegram = useCallback(async () => {
     if (!telegramForm.chat_id.trim()) { toast('Telegram chat_id is required', 'warning'); return }
-    await saveTelegramTarget({
-      label: telegramForm.label.trim() || 'Primary Telegram', chat_id: telegramForm.chat_id.trim(),
-      thread_id: telegramForm.thread_id.trim() || null, notify_manual: telegramForm.notify_manual,
-      notify_automated: telegramForm.notify_automated, is_active: true, type: 'telegram',
-    })
-    toast('Telegram link established', 'success')
+    await saveTelegramTarget({ label: telegramForm.label.trim() || 'Primary Telegram', chat_id: telegramForm.chat_id.trim(), thread_id: telegramForm.thread_id.trim() || null, notify_manual: telegramForm.notify_manual, notify_automated: telegramForm.notify_automated, is_active: true, type: 'telegram' })
+    toast('Telegram link saved', 'success')
   }, [saveTelegramTarget, telegramForm, toast])
 
   const handleResendStudy = useCallback(async (studyId) => {
@@ -98,12 +116,12 @@ function Agents() {
     } catch (e) { toast(e.message, 'warning') }
   }, [resendStudy, toast])
 
-  const cortex = agents.find(agent => agent.code_name === 'cortex')
-  const subAgents = agents.filter(agent => agent.code_name !== 'cortex').sort((a, b) => a.code_name.localeCompare(b.code_name))
+  const cortex = agents.find(a => a.code_name === 'cortex')
+  const subAgents = agents.filter(a => a.code_name !== 'cortex').sort((a, b) => a.code_name.localeCompare(b.code_name))
   const agentOptions = useMemo(() => {
     const m = new Map()
-    AGENT_AUTOMATION_PACKS.forEach(p => m.set(p.agentCodeName, { value: p.agentCodeName, label: p.label.toUpperCase() }))
-    agents.forEach(a => { if (!m.has(a.code_name)) m.set(a.code_name, { value: a.code_name, label: a.name.toUpperCase() }) })
+    AGENT_AUTOMATION_PACKS.forEach(p => m.set(p.agentCodeName, { value: p.agentCodeName, label: p.label }))
+    agents.forEach(a => { if (!m.has(a.code_name)) m.set(a.code_name, { value: a.code_name, label: a.name }) })
     return [...m.values()]
   }, [agents])
 
@@ -111,105 +129,84 @@ function Agents() {
   const deliveryStats = useMemo(() => ({ total: studies.length, sent: studies.filter(s => s.delivery_status === 'sent').length, failed: studies.filter(s => s.delivery_status === 'failed').length }), [studies])
 
   return (
-    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ width: '48px', height: '48px', background: '#000', border: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
-            <span style={{ fontSize: '24px' }}>🧠</span>
-          </div>
-          <div>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontSize: '28px', color: 'var(--accent-primary)', letterSpacing: '0.05em', lineHeight: '1' }}>CORTEX NETWORK HUB</h1>
-            <span className="mono text-xs text-tertiary">MULTI-AGENT ORCHESTRATION DIRECTIVE // {stats.online} ONLINE</span>
-          </div>
+    <div className="module-page ag fade-in">
+      {/* Header */}
+      <div className="module-page-header">
+        <div>
+          <h1 className="module-page-title">Agents</h1>
+          <p className="module-page-subtitle">Multi-agent orchestration · {stats.online} online</p>
         </div>
-
-        <div style={{ display: 'flex', gap: '2px' }}>
-          {['network', 'queue', 'logs', 'studies', 'automation', 'vault'].map(t => (
-            <button key={t} className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t ? 'var(--accent-primary)' : 'transparent', color: activeTab === t ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveTab(t)}>{t.toUpperCase()}</button>
-          ))}
-        </div>
+        <button className="btn btn-primary btn-sm" onClick={handleCortexCycle} disabled={triggering === 'cortex'}>
+          <PlayIcon width={14} height={14} /> {triggering === 'cortex' ? 'Running...' : 'Run Cortex cycle'}
+        </button>
       </div>
 
-      {/* ── NETWORK STATUS STRIP ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)', marginBottom: '16px' }}>
-        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-          <span className="mono text-xs text-tertiary">ASSETS</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--accent-primary)' }}>{stats.total}</span>
-        </div>
-        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-          <span className="mono text-xs text-tertiary">RUNNING</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{stats.running}</span>
-        </div>
-        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-          <span className="mono text-xs text-tertiary">QUEUED TASKS</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{stats.queuedTasks}</span>
-        </div>
-        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-          <span className="mono text-xs text-tertiary">SYSTEM CYCLES</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>{stats.totalRuns}</span>
-        </div>
-        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-          <span className="mono text-xs text-tertiary">DELIVERED INTEL</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>{deliveryStats.sent}</span>
-        </div>
-        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
-          <span className="mono text-xs text-tertiary">SECURE COMMS</span>
-          <span className="mono text-lg font-bold" style={{ color: telegramTarget ? 'var(--color-success)' : 'var(--color-danger)' }}>{telegramTarget ? 'ONLINE' : 'OFFLINE'}</span>
-        </div>
+      {/* Tabs */}
+      <div className="crm-tabs">
+        {TAB_CONFIG.map(t => {
+          const Icon = t.icon
+          return (
+            <button key={t.id} className={`crm-tab${activeTab === t.id ? ' crm-tab-active' : ''}`} onClick={() => setActiveTab(t.id)}>
+              <Icon width={16} height={16} />
+              <span>{t.label}</span>
+            </button>
+          )
+        })}
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      {/* KPI Strip */}
+      <div className="kpi-strip kpi-strip-4" style={{ marginBottom: 'var(--space-4)' }}>
+        <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Agents</span></div><div className="kpi-value">{stats.total}</div></div>
+        <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Running</span></div><div className="kpi-value" style={{ color: 'var(--color-warning)' }}>{stats.running}</div></div>
+        <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Total cycles</span></div><div className="kpi-value">{stats.totalRuns}</div></div>
+        <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Studies sent</span></div><div className="kpi-value" style={{ color: 'var(--color-success)' }}>{deliveryStats.sent}</div></div>
+      </div>
+
+      {/* Tab Content */}
+      <div className="ag-content">
         {activeTab === 'network' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {/* MASTER CORTEX */}
+          <div className="ag-network">
+            {/* Cortex Master */}
             {cortex && (
-              <div style={{ border: '1px solid var(--accent-primary)', background: '#000', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                  <div className="mono text-xs font-bold" style={{ color: '#000', background: 'var(--accent-primary)', padding: '4px 8px' }}>MASTER NODE</div>
+              <div className="ag-cortex-card">
+                <div className="ag-cortex-info">
+                  <CpuChipIcon width={24} height={24} style={{ color: 'var(--accent-primary)' }} />
                   <div>
-                    <div className="mono font-bold" style={{ fontSize: '18px', color: 'var(--accent-primary)' }}>{cortex.name.toUpperCase()}</div>
-                    <div className="mono text-xs text-tertiary">{cortex.description.toUpperCase()}</div>
+                    <div className="ag-cortex-name">{cortex.name}</div>
+                    <div className="ag-cortex-desc">{cortex.description}</div>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                  <div className="mono text-xs" style={{ borderLeft: '1px solid var(--border-subtle)', paddingLeft: '16px' }}><span className="text-tertiary">RUNS:</span> <strong className="text-primary">{cortex.total_runs || 0}</strong></div>
-                  <div className="mono text-xs" style={{ borderLeft: '1px solid var(--border-subtle)', paddingLeft: '16px' }}><span className="text-tertiary">LAST:</span> <strong className="text-primary">{formatTime(cortex.last_run_at)}</strong></div>
-                  <button className="btn mono btn-primary btn-sm" style={{ padding: '8px 16px', letterSpacing: '0.1em' }} onClick={handleCortexCycle} disabled={triggering === 'cortex'}>
-                    {triggering === 'cortex' ? 'EXECUTING...' : 'INITIATE CORTEX'}
-                  </button>
+                <div className="ag-cortex-stats">
+                  <span>{cortex.total_runs || 0} runs</span>
+                  <span>Last: {formatTime(cortex.last_run_at)}</span>
                 </div>
               </div>
             )}
 
-            {/* SUB-AGENTS GRID */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px', marginBottom: '32px' }}>
+            {/* Agent Grid */}
+            <div className="ag-grid">
               {subAgents.map(ag => (
-                <div key={ag.id} style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <div style={{ width: 8, height: 8, background: ag.status === 'online' ? 'var(--color-success)' : ag.status === 'running' ? 'var(--color-warning)' : 'var(--color-danger)' }} />
-                      <span className="mono text-xs font-bold" style={{ color: AGENT_COLORS[ag.code_name] || 'var(--accent-primary)' }}>{ag.code_name.toUpperCase()}</span>
+                <div key={ag.id} className="ag-card">
+                  <div className="ag-card-header">
+                    <div className="ag-card-identity">
+                      <div className="ag-card-dot" style={{ background: statusColor(ag.status) }} />
+                      <span className="ag-card-codename" style={{ color: AGENT_COLORS[ag.code_name] || 'var(--accent-primary)' }}>{ag.code_name}</span>
                     </div>
-                    <button className="btn btn-ghost mono btn-sm" style={{ fontSize: '9px', padding: '2px 8px', borderColor: AGENT_COLORS[ag.code_name] || 'var(--border-subtle)' }} onClick={() => handleTrigger(ag.code_name, 'cycle')} disabled={triggering === ag.code_name}>
-                      {triggering === ag.code_name ? 'EXE...' : 'TRIGGER'}
+                    <button className="btn btn-ghost btn-xs" onClick={() => handleTrigger(ag.code_name, 'cycle')} disabled={triggering === ag.code_name}>
+                      {triggering === ag.code_name ? 'Running...' : 'Trigger'}
                     </button>
                   </div>
-                  <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
-                    <div className="mono text-sm font-bold">{ag.name.toUpperCase()}</div>
-                    <div className="mono text-xs text-tertiary" style={{ minHeight: '40px' }}>{ag.description.toUpperCase()}</div>
-
-                    <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: 'auto' }}>
+                  <div className="ag-card-body">
+                    <div className="ag-card-name">{ag.name}</div>
+                    <div className="ag-card-desc">{ag.description}</div>
+                    <div className="ag-card-caps">
                       {(ag.capabilities || []).slice(0, 3).map(cap => (
-                        <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--text-secondary)', padding: '2px 6px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
-                          {cap.replace(/_/g, ' ').toUpperCase()}
-                        </span>
+                        <span key={cap} className="badge badge-default">{cap.replace(/_/g, ' ')}</span>
                       ))}
                     </div>
-
-                    <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '12px', marginTop: '8px', display: 'flex', justifyContent: 'space-between' }} className="mono text-xs">
-                      <span className="text-tertiary">CYCLES: <strong className="text-primary">{ag.total_runs || 0}</strong></span>
-                      <span className="text-tertiary">L.A.: <strong className="text-secondary">{formatTime(ag.last_run_at)}</strong></span>
+                    <div className="ag-card-footer">
+                      <span>{ag.total_runs || 0} cycles</span>
+                      <span>Last: {formatTime(ag.last_run_at)}</span>
                     </div>
                   </div>
                 </div>
@@ -219,31 +216,31 @@ function Agents() {
         )}
 
         {activeTab === 'queue' && (
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// TASK QUEUE</div>
-            <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="ct-section">
+            <div className="ct-section-header"><span className="ct-section-title">Task queue</span><span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>{tasks.length} tasks</span></div>
+            <div className="ct-section-body">
               {tasks.slice(0, 50).map(t => (
-                <div key={t.id} className="mono text-xs" style={{ display: 'flex', gap: '16px', padding: '8px', borderBottom: '1px solid var(--border-subtle)' }}>
-                  <span style={{ color: AGENT_COLORS[t.agent_code_name] || 'var(--accent-primary)', width: '100px', fontWeight: 'bold' }}>{t.agent_code_name.toUpperCase()}</span>
-                  <span style={{ color: 'var(--text-primary)', flex: 1 }}>{t.title || t.type.toUpperCase()}</span>
-                  <span style={{ color: t.status === 'completed' ? 'var(--color-success)' : t.status === 'failed' ? 'var(--color-danger)' : 'var(--color-warning)' }}>[{t.status.toUpperCase()}]</span>
+                <div key={t.id} className="ag-log-row">
+                  <span className="ag-log-agent" style={{ color: AGENT_COLORS[t.agent_code_name] || 'var(--accent-primary)' }}>{t.agent_code_name}</span>
+                  <span className="ag-log-text">{t.title || t.type}</span>
+                  <span className={`badge badge-${t.status === 'completed' ? 'success' : t.status === 'failed' ? 'danger' : 'warning'}`}>{t.status}</span>
                 </div>
               ))}
-              {tasks.length === 0 && <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '32px' }}>QUEUE EMPTY</div>}
+              {tasks.length === 0 && <div className="crm-table-empty">No tasks in queue</div>}
             </div>
           </div>
         )}
 
         {activeTab === 'logs' && (
-          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// NETWORK LOGS</div>
-            <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="ct-section">
+            <div className="ct-section-header"><span className="ct-section-title">Activity logs</span></div>
+            <div className="ct-section-body">
               {logs.slice(0, 50).map(log => (
-                <div key={log.id} className="mono text-xs" style={{ display: 'flex', gap: '16px', padding: '8px', borderBottom: '1px solid var(--border-subtle)' }}>
-                  <span style={{ color: 'var(--text-tertiary)', width: '120px' }}>{formatTime(log.created_at)}</span>
-                  <span style={{ color: AGENT_COLORS[log.agent_code_name] || 'var(--accent-primary)', width: '100px', fontWeight: 'bold' }}>{log.agent_code_name.toUpperCase()}</span>
-                  <span style={{ color: log.error ? 'var(--color-danger)' : 'var(--text-primary)', flex: 1 }}>{log.action.toUpperCase()} {log.error ? ` [FATAL: ${log.error}]` : ''}</span>
-                  <span style={{ color: 'var(--text-tertiary)' }}>{formatDuration(log.duration_ms)}</span>
+                <div key={log.id} className="ag-log-row">
+                  <span className="ag-log-time">{formatTime(log.created_at)}</span>
+                  <span className="ag-log-agent" style={{ color: AGENT_COLORS[log.agent_code_name] || 'var(--accent-primary)' }}>{log.agent_code_name}</span>
+                  <span className={`ag-log-text${log.error ? ' ag-log-error' : ''}`}>{log.action}{log.error ? ` — ${log.error}` : ''}</span>
+                  <span className="ag-log-duration">{formatDuration(log.duration_ms)}</span>
                 </div>
               ))}
             </div>
@@ -251,111 +248,87 @@ function Agents() {
         )}
 
         {activeTab === 'studies' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 1fr) 2fr', gap: '16px', paddingBottom: '32px' }}>
-            {/* LEFT COLUMN: COMPILE STUDY & SETTINGS */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// COMPILE STUDY BRIEF</div>
-                <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <div className="input-group">
-                    <label className="mono text-xs">EXECUTING AGENT</label>
-                    <select className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={studyForm.agentCodeName} onChange={e => setStudyForm({ ...studyForm, agentCodeName: e.target.value })}>
-                      {agentOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
-                    </select>
+          <div className="ag-studies-layout">
+            {/* Left: Compose */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+              <div className="ct-section">
+                <div className="ct-section-header"><span className="ct-section-title">Compose study</span></div>
+                <div className="ct-section-body">
+                  <div className="form-grid" style={{ gridTemplateColumns: '1fr' }}>
+                    <div className="form-field">
+                      <label className="form-label">Agent</label>
+                      <select className="form-input" value={studyForm.agentCodeName} onChange={e => setStudyForm({ ...studyForm, agentCodeName: e.target.value })}>
+                        {agentOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+                      </select>
+                    </div>
+                    <div className="form-field">
+                      <label className="form-label">Title</label>
+                      <input className="form-input" value={studyForm.title} onChange={e => setStudyForm({ ...studyForm, title: e.target.value })} placeholder="Study title..." />
+                    </div>
+                    <div className="form-field">
+                      <label className="form-label">Summary</label>
+                      <textarea className="form-input" rows={2} value={studyForm.summary} onChange={e => setStudyForm({ ...studyForm, summary: e.target.value })} />
+                    </div>
+                    <div className="form-field">
+                      <label className="form-label">Content (markdown)</label>
+                      <textarea className="form-input" rows={4} value={studyForm.contentMarkdown} onChange={e => setStudyForm({ ...studyForm, contentMarkdown: e.target.value })} />
+                    </div>
+                    <label className="ag-checkbox">
+                      <input type="checkbox" checked={studyForm.sendTelegram} onChange={e => setStudyForm({ ...studyForm, sendTelegram: e.target.checked })} />
+                      Send to Telegram
+                    </label>
+                    <button className="btn btn-primary btn-sm" onClick={handlePostStudy} disabled={studiesBusy === 'study'}>
+                      <PaperAirplaneIcon width={14} height={14} /> {studiesBusy === 'study' ? 'Sending...' : 'Post study'}
+                    </button>
                   </div>
-                  <div className="input-group">
-                    <label className="mono text-xs">DESIGNATION / TITLE</label>
-                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={studyForm.title} onChange={e => setStudyForm({ ...studyForm, title: e.target.value })} placeholder="STUDY_REF..." />
-                  </div>
-                  <div className="input-group">
-                    <label className="mono text-xs">EXECUTIVE ABSTRACT</label>
-                    <textarea className="input mono text-xs" rows={2} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={studyForm.summary} onChange={e => setStudyForm({ ...studyForm, summary: e.target.value })} />
-                  </div>
-                  <div className="input-group">
-                    <label className="mono text-xs">RAW INTELLIGENCE</label>
-                    <textarea className="input mono text-xs" rows={4} style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={studyForm.contentMarkdown} onChange={e => setStudyForm({ ...studyForm, contentMarkdown: e.target.value })} />
-                  </div>
-
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', marginTop: '8px' }} className="mono text-xs">
-                    <input type="checkbox" checked={studyForm.sendTelegram} onChange={e => setStudyForm({ ...studyForm, sendTelegram: e.target.checked })} style={{ appearance: 'auto' }} />
-                    ROUTE TO TELEGRAM IMMEDIATELY
-                  </label>
-
-                  <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: '#000', color: 'var(--accent-primary)', borderRadius: 0, padding: '10px', marginTop: '8px' }} onClick={handlePostStudy} disabled={studiesBusy === 'study'}>
-                    {studiesBusy === 'study' ? 'PROCESSING...' : 'DISPATCH STUDY'}
-                  </button>
                 </div>
               </div>
 
-              <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// OUTBOUND RELAY (TELEGRAM)</div>
-                <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <div className="input-group">
-                    <label className="mono text-xs">LINK REFERENCE</label>
-                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={telegramForm.label} onChange={e => setTelegramForm({ ...telegramForm, label: e.target.value })} />
+              <div className="ct-section">
+                <div className="ct-section-header"><span className="ct-section-title">Telegram relay</span></div>
+                <div className="ct-section-body">
+                  <div className="form-grid" style={{ gridTemplateColumns: '1fr' }}>
+                    <div className="form-field"><label className="form-label">Label</label><input className="form-input" value={telegramForm.label} onChange={e => setTelegramForm({ ...telegramForm, label: e.target.value })} /></div>
+                    <div className="form-field"><label className="form-label">Chat ID</label><input className="form-input" value={telegramForm.chat_id} onChange={e => setTelegramForm({ ...telegramForm, chat_id: e.target.value })} /></div>
+                    <div className="form-field"><label className="form-label">Thread ID (optional)</label><input className="form-input" value={telegramForm.thread_id} onChange={e => setTelegramForm({ ...telegramForm, thread_id: e.target.value })} /></div>
+                    <label className="ag-checkbox"><input type="checkbox" checked={telegramForm.notify_manual} onChange={e => setTelegramForm({ ...telegramForm, notify_manual: e.target.checked })} /> Manual notifications</label>
+                    <label className="ag-checkbox"><input type="checkbox" checked={telegramForm.notify_automated} onChange={e => setTelegramForm({ ...telegramForm, notify_automated: e.target.checked })} /> Automated notifications</label>
+                    <button className="btn btn-primary btn-sm" onClick={handleSaveTelegram} disabled={studiesBusy === 'target'}>{studiesBusy === 'target' ? 'Saving...' : 'Save relay'}</button>
                   </div>
-                  <div className="input-group">
-                    <label className="mono text-xs">CHAT IDENTIFIER</label>
-                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={telegramForm.chat_id} onChange={e => setTelegramForm({ ...telegramForm, chat_id: e.target.value })} />
-                  </div>
-                  <div className="input-group">
-                    <label className="mono text-xs">THREAD OVERRIDE</label>
-                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px' }} value={telegramForm.thread_id} onChange={e => setTelegramForm({ ...telegramForm, thread_id: e.target.value })} placeholder="OPTIONAL" />
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '8px' }}>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} className="mono text-xs">
-                      <input type="checkbox" checked={telegramForm.notify_manual} onChange={e => setTelegramForm({ ...telegramForm, notify_manual: e.target.checked })} style={{ appearance: 'auto' }} />
-                      ALLOW MANUAL TRANSMISSIONS
-                    </label>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} className="mono text-xs">
-                      <input type="checkbox" checked={telegramForm.notify_automated} onChange={e => setTelegramForm({ ...telegramForm, notify_automated: e.target.checked })} style={{ appearance: 'auto' }} />
-                      ALLOW AUTOMATED TRANSMISSIONS
-                    </label>
-                  </div>
-
-                  <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: '#000', color: 'var(--accent-primary)', borderRadius: 0, padding: '10px', marginTop: '8px' }} onClick={handleSaveTelegram} disabled={studiesBusy === 'target'}>
-                    {studiesBusy === 'target' ? 'LOCKING...' : 'SECURE RELAY RECORD'}
-                  </button>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT COLUMN: RECENT STUDIES */}
-            <div style={{ border: '1px solid var(--border-default)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// INTERCEPT LOG ({recentStudies.length} ARCHIVED)</div>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', gap: '16px', overflowY: 'auto' }}>
-                {studiesLoading ? <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '16px' }}>ACCESSING ARCHIVE...</div> :
-                  recentStudies.length === 0 ? <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '16px' }}>NO RECORDS ON FILE.</div> :
-                    recentStudies.map(study => (
-                      <div key={study.id} style={{ border: '1px solid var(--border-subtle)', background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+            {/* Right: Recent Studies */}
+            <div className="ct-section" style={{ minHeight: 0 }}>
+              <div className="ct-section-header"><span className="ct-section-title">Recent studies</span><span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>{recentStudies.length} archived</span></div>
+              <div className="ag-studies-list">
+                {studiesLoading ? <div className="crm-table-empty">Loading...</div> :
+                  recentStudies.length === 0 ? <div className="crm-table-empty">No studies yet</div> :
+                    recentStudies.map(s => (
+                      <div key={s.id} className="ag-study-card">
+                        <div className="ag-study-header">
                           <div>
-                            <div className="mono font-bold" style={{ color: 'var(--text-primary)', marginBottom: '4px' }}>
-                              <span style={{ color: AGENT_COLORS[study.agent_code_name] || 'var(--accent-primary)', marginRight: '8px' }}>[{study.agent_code_name.toUpperCase()}]</span>
-                              {study.title.toUpperCase()}
+                            <div className="ag-study-title">
+                              <span style={{ color: AGENT_COLORS[s.agent_code_name] || 'var(--accent-primary)' }}>[{s.agent_code_name}]</span> {s.title}
                             </div>
-                            <div className="mono text-xs text-tertiary">{study.source.toUpperCase()} // SYS_TIME: {formatTime(study.created_at)}</div>
+                            <div className="ag-study-meta">{s.source} · {formatTime(s.created_at)}</div>
                           </div>
-                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
-                            <span className="mono text-xs" style={{ color: study.delivery_status === 'sent' ? 'var(--color-success)' : study.delivery_status === 'failed' ? 'var(--color-danger)' : 'var(--text-tertiary)' }}>
-                              {study.delivery_status === 'sent' ? 'TX : SUCCESS' : study.delivery_status === 'failed' ? 'TX : FAILED' : 'TX : PENDING'}
-                            </span>
-                            {study.delivery_status !== 'sent' && (
-                              <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }} onClick={() => handleResendStudy(study.id)} disabled={studiesBusy === `resend:${study.id}`}>
-                                {studiesBusy === `resend:${study.id}` ? 'TX_ONGOING...' : 'FORCE TX'}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                            {s.delivery_status === 'sent' ? <CheckCircleIcon width={16} height={16} style={{ color: 'var(--color-success)' }} /> :
+                              s.delivery_status === 'failed' ? <ExclamationTriangleIcon width={16} height={16} style={{ color: 'var(--color-danger)' }} /> :
+                                <ClockIcon width={16} height={16} style={{ color: 'var(--text-tertiary)' }} />}
+                            {s.delivery_status !== 'sent' && (
+                              <button className="btn btn-ghost btn-xs" onClick={() => handleResendStudy(s.id)} disabled={studiesBusy === `resend:${s.id}`}>
+                                <ArrowPathIcon width={12} height={12} /> Resend
                               </button>
                             )}
                           </div>
                         </div>
-                        <div className="mono text-xs" style={{ color: 'var(--text-secondary)', lineHeight: '1.4' }}>{study.summary.toUpperCase()}</div>
-                        {Array.isArray(study.highlights) && study.highlights.length > 0 && (
-                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', borderTop: '1px solid var(--border-subtle)', paddingTop: '8px' }}>
-                            {study.highlights.slice(0, 3).map(h => (
-                              <span key={h} className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)', fontSize: '9px', padding: '2px 6px' }}>
-                                {h.slice(0, 40).toUpperCase()}
-                              </span>
-                            ))}
+                        <div className="ag-study-summary">{s.summary}</div>
+                        {Array.isArray(s.highlights) && s.highlights.length > 0 && (
+                          <div className="ag-study-highlights">
+                            {s.highlights.slice(0, 3).map(h => <span key={h} className="badge badge-default">{h.slice(0, 40)}</span>)}
                           </div>
                         )}
                       </div>
@@ -366,33 +339,28 @@ function Agents() {
         )}
 
         {activeTab === 'automation' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px', paddingBottom: '32px' }}>
+          <div className="ag-grid">
             {AGENT_AUTOMATION_PACKS.map(pack => (
-              <div key={pack.agentCodeName} style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span className="mono text-xs font-bold" style={{ color: AGENT_COLORS[pack.agentCodeName] || 'var(--accent-primary)' }}>{pack.label.toUpperCase()} PROTOCOLS</span>
-                  <span className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>[{pack.templates.length} TEMPLATES]</span>
+              <div key={pack.agentCodeName} className="ag-card">
+                <div className="ag-card-header">
+                  <span className="ag-card-codename" style={{ color: AGENT_COLORS[pack.agentCodeName] || 'var(--accent-primary)' }}>{pack.label}</span>
+                  <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>{pack.templates.length} templates</span>
                 </div>
-                <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
-                  <div className="mono text-xs text-secondary">{pack.objective.toUpperCase()}</div>
-
-                  <div style={{ borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', padding: '12px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div className="ag-card-body">
+                  <div className="ag-card-desc">{pack.objective}</div>
+                  <div className="ag-automation-templates">
                     {pack.templates.map(tmp => (
-                      <div key={tmp.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div>
-                          <div className="mono text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{tmp.name.toUpperCase()}</div>
-                          <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>ID: {tmp.id}</div>
-                        </div>
-                        <div style={{ display: 'flex', gap: '4px' }}>
-                          <a href={tmp.pageUrl} target="_blank" rel="noreferrer" className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--border-subtle)' }}>DOCS</a>
-                          <a href={tmp.downloadUrl} target="_blank" rel="noreferrer" className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }}>JSON</a>
+                      <div key={tmp.id} className="ag-template-row">
+                        <div><div style={{ fontWeight: 'var(--weight-semibold)', fontSize: 'var(--text-xs)' }}>{tmp.name}</div></div>
+                        <div style={{ display: 'flex', gap: 'var(--space-1)' }}>
+                          <a href={tmp.pageUrl} target="_blank" rel="noreferrer" className="btn btn-ghost btn-xs">Docs</a>
+                          <a href={tmp.downloadUrl} target="_blank" rel="noreferrer" className="btn btn-ghost btn-xs" style={{ color: 'var(--accent-primary)' }}>JSON</a>
                         </div>
                       </div>
                     ))}
                   </div>
-
-                  <button className="btn mono" style={{ marginTop: 'auto', border: '1px solid var(--accent-primary)', background: '#000', color: 'var(--accent-primary)', padding: '10px' }} onClick={() => handleTrigger(pack.agentCodeName, 'cycle')} disabled={triggering === pack.agentCodeName}>
-                    {triggering === pack.agentCodeName ? 'ENGAGED...' : `FORCE OVERRIDE [${pack.agentCodeName.toUpperCase()}]`}
+                  <button className="btn btn-primary btn-sm" style={{ marginTop: 'var(--space-3)' }} onClick={() => handleTrigger(pack.agentCodeName, 'cycle')} disabled={triggering === pack.agentCodeName}>
+                    {triggering === pack.agentCodeName ? 'Running...' : `Run ${pack.agentCodeName}`}
                   </button>
                 </div>
               </div>
@@ -401,125 +369,64 @@ function Agents() {
         )}
 
         {activeTab === 'vault' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
-            {/* VAULT STATS BAR */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
-              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
-                <span className="mono text-xs text-tertiary">TOTAL AGENTS</span>
-                <div className="mono text-lg font-bold" style={{ color: 'var(--accent-primary)' }}>{vaultTotal}</div>
-              </div>
-              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
-                <span className="mono text-xs text-tertiary">CANONICAL</span>
-                <div className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{vaultCanonical}</div>
-              </div>
-              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
-                <span className="mono text-xs text-tertiary">NAMESPACES</span>
-                <div className="mono text-lg font-bold" style={{ color: 'var(--color-info)' }}>{vaultNamespaces.length}</div>
-              </div>
-              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
-                <span className="mono text-xs text-tertiary">FILTERED</span>
-                <div className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{vaultAgents.length}</div>
-              </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+            {/* Vault KPIs */}
+            <div className="kpi-strip kpi-strip-4">
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Total agents</span></div><div className="kpi-value">{vaultTotal}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Canonical</span></div><div className="kpi-value">{vaultCanonical}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Namespaces</span></div><div className="kpi-value">{vaultNamespaces.length}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Filtered</span></div><div className="kpi-value">{vaultAgents.length}</div></div>
             </div>
 
-            {/* FILTERS */}
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-              <input
-                className="input mono text-xs"
-                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px 12px', width: '240px', background: '#000' }}
-                placeholder="SEARCH AGENTS..."
-                value={vaultFilters.search}
-                onChange={e => setVaultSearch(e.target.value)}
-              />
-              <select
-                className="input mono text-xs"
-                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--text-primary)' }}
-                value={vaultFilters.namespace}
-                onChange={e => setVaultNamespace(e.target.value)}
-              >
-                <option value="all">ALL NAMESPACES</option>
-                {vaultNamespaces.map(ns => (
-                  <option key={ns} value={ns}>{ns.toUpperCase()}</option>
-                ))}
+            {/* Vault Filters */}
+            <div className="ag-vault-filters">
+              <div className="crm-search-field" style={{ maxWidth: 240 }}>
+                <MagnifyingGlassIcon width={16} height={16} />
+                <input className="crm-search-input" placeholder="Search agents..." value={vaultFilters.search} onChange={e => setVaultSearch(e.target.value)} />
+              </div>
+              <select className="form-input" style={{ width: 'auto' }} value={vaultFilters.namespace} onChange={e => setVaultNamespace(e.target.value)}>
+                <option value="all">All namespaces</option>
+                {vaultNamespaces.map(ns => <option key={ns} value={ns}>{ns}</option>)}
               </select>
-              <select
-                className="input mono text-xs"
-                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--text-primary)' }}
-                value={vaultFilters.role}
-                onChange={e => setVaultRole(e.target.value)}
-              >
-                <option value="all">ALL ROLES</option>
-                {Object.keys(ROLE_CAPABILITY_MAP).map(r => (
-                  <option key={r} value={r}>{r.toUpperCase()}</option>
-                ))}
+              <select className="form-input" style={{ width: 'auto' }} value={vaultFilters.role} onChange={e => setVaultRole(e.target.value)}>
+                <option value="all">All roles</option>
+                {Object.keys(ROLE_CAPABILITY_MAP).map(r => <option key={r} value={r}>{r}</option>)}
               </select>
             </div>
 
-            {/* NAMESPACE QUICK FILTERS */}
-            <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-              <button
-                className="mono"
-                style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === 'all' ? 'var(--accent-primary)' : '#000', color: vaultFilters.namespace === 'all' ? '#000' : 'var(--text-secondary)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
-                onClick={() => setVaultNamespace('all')}
-              >ALL</button>
-              {vaultNamespaces.map(ns => (
-                <button
-                  key={ns}
-                  className="mono"
-                  style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === ns ? 'var(--accent-primary)' : '#000', color: vaultFilters.namespace === ns ? '#000' : 'var(--text-secondary)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
-                  onClick={() => setVaultNamespace(ns)}
-                >{ns.toUpperCase()}</button>
-              ))}
-            </div>
-
-            {/* VAULT CONTENT */}
-            {vaultLoading ? (
-              <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '48px' }}>LOADING AGENT-OS MANIFEST...</div>
-            ) : vaultError ? (
-              <div style={{ border: '1px solid var(--color-danger)', background: 'var(--surface-raised)', padding: '24px', textAlign: 'center' }}>
-                <div className="mono text-xs" style={{ color: 'var(--color-danger)' }}>{vaultError}</div>
-              </div>
-            ) : (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
-                {vaultAgents.map(va => {
-                  const role = suggestRole(va)
-                  return (
-                    <div key={va.name} style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-                      <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <div style={{ width: 6, height: 6, background: role ? (AGENT_COLORS[role] || 'var(--accent-primary)') : 'var(--text-tertiary)' }} />
-                          <span className="mono text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{va.name.toUpperCase()}</span>
-                        </div>
-                        <span className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', background: '#000', border: '1px solid var(--border-subtle)', padding: '2px 6px' }}>
-                          {va.namespace.toUpperCase()}
-                        </span>
-                      </div>
-                      <div style={{ padding: '12px 14px', display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
-                        {va.description && (
-                          <div className="mono text-xs text-tertiary" style={{ lineHeight: '1.4' }}>
-                            {va.description.length > 100 ? va.description.slice(0, 100).toUpperCase() + '...' : va.description.toUpperCase()}
+            {/* Vault Grid */}
+            {vaultLoading ? <div className="crm-table-empty">Loading agent vault...</div> :
+              vaultError ? <div className="ag-vault-error">{vaultError}</div> :
+                <div className="ag-grid">
+                  {vaultAgents.map(va => {
+                    const role = suggestRole(va)
+                    return (
+                      <div key={va.name} className="ag-card">
+                        <div className="ag-card-header">
+                          <div className="ag-card-identity">
+                            <div className="ag-card-dot" style={{ background: role ? (AGENT_COLORS[role] || 'var(--accent-primary)') : 'var(--text-tertiary)' }} />
+                            <span className="ag-card-codename">{va.name}</span>
                           </div>
-                        )}
-                        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: 'auto' }}>
-                          {(va.capabilities || []).slice(0, 4).map(cap => (
-                            <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--text-secondary)', padding: '1px 5px', fontSize: '8px', fontFamily: 'var(--font-mono)' }}>
-                              {cap.toUpperCase()}
-                            </span>
-                          ))}
+                          <span className="badge badge-default">{va.namespace}</span>
                         </div>
-                        {role && (
-                          <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '8px', marginTop: '4px' }}>
-                            <span className="mono" style={{ fontSize: '9px', color: AGENT_COLORS[role] || 'var(--accent-primary)', fontWeight: 'bold' }}>
-                              {AGENT_ICONS[role] || '●'} {role.toUpperCase()} COMPATIBLE
-                            </span>
+                        <div className="ag-card-body">
+                          {va.description && <div className="ag-card-desc">{va.description.length > 100 ? va.description.slice(0, 100) + '...' : va.description}</div>}
+                          <div className="ag-card-caps">
+                            {(va.capabilities || []).slice(0, 4).map(cap => <span key={cap} className="badge badge-default">{cap}</span>)}
                           </div>
-                        )}
+                          {role && (
+                            <div className="ag-card-footer">
+                              <span style={{ color: AGENT_COLORS[role] || 'var(--accent-primary)', fontWeight: 'var(--weight-semibold)' }}>
+                                {role} compatible
+                              </span>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
+                    )
+                  })}
+                </div>
+            }
           </div>
         )}
       </div>

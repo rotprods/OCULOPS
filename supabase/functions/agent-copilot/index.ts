@@ -92,6 +92,59 @@ const TOOLS: Array<{
   {
     type: "function",
     function: {
+      name: "pipeline_launch",
+      description:
+        "Launch a reusable multi-agent pipeline run through the orchestration engine. Use this when the user asks for a complete business workflow, not a single isolated task.",
+      parameters: {
+        type: "object",
+        properties: {
+          template_code_name: {
+            type: "string",
+            enum: ["lead_discovery", "sales_outreach", "marketing_intelligence"],
+            description: "Which orchestration template to run",
+          },
+          goal: {
+            type: "string",
+            description: "Short business goal for the pipeline run",
+          },
+          query: {
+            type: "string",
+            description: "Business query or market segment for discovery pipelines",
+          },
+          location: {
+            type: "string",
+            description: "City or territory for geo-based pipelines",
+          },
+          limit: {
+            type: "number",
+            description: "Optional per-step item limit",
+          },
+        },
+        required: ["template_code_name"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "pipeline_status",
+      description:
+        "Fetch the detailed state of a pipeline run including step runs and runtime status.",
+      parameters: {
+        type: "object",
+        properties: {
+          pipeline_run_id: {
+            type: "string",
+            description: "ID of the pipeline run to inspect",
+          },
+        },
+        required: ["pipeline_run_id"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
       name: "oracle_analyze",
       description:
         "Generate a comprehensive analytics snapshot: pipeline health, MRR, contacts by status, weighted pipeline value, AI-generated insights and recommendations.",
@@ -426,6 +479,9 @@ const TOOLS: Array<{
               "agent_logs",
               "daily_snapshots",
               "prospector_leads",
+              "pipeline_runs",
+              "event_deliveries",
+              "memory_entries",
             ],
             description: "Which data entity to query",
           },
@@ -541,11 +597,13 @@ You are NOT a simple chatbot. You are an ORCHESTRATOR with tools that let you:
 5. MANAGE pipeline (create/move deals, contacts, tasks)
 6. SEND outreach (stage, approve, send cold emails)
 7. MONITOR health (Sentinel checks anomalies)
-8. NAVIGATE the app (direct user to any module)
+8. LAUNCH orchestrated multi-agent pipelines
+9. NAVIGATE the app (direct user to any module)
 
 RULES:
 - Use tools proactively. If user says "find restaurants in Madrid", call atlas_scan immediately — don't ask for confirmation.
 - Chain tools when logical: atlas_scan → hunter_qualify → outreach_stage
+- Prefer pipeline_launch when the goal is multi-step and autonomous, especially for discovery + qualification + outreach or market-intelligence flows.
 - For data questions, use query_data to get real numbers before answering
 - Always respond in the same language the user writes (Spanish or English)
 - Keep responses concise, tactical, in OCULOPS command style
@@ -699,6 +757,49 @@ async function executeTool(
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || `${fn} failed: ${res.status}`);
+    return data;
+  }
+
+  if (name === "pipeline_launch") {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/orchestration-engine`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${SERVICE_KEY}`,
+      },
+      body: JSON.stringify({
+        action: "create_run",
+        template_code_name: args.template_code_name,
+        goal: args.goal || null,
+        context: {
+          query: args.query,
+          location: args.location,
+          limit: args.limit,
+        },
+        user_id: userId,
+        source: "copilot",
+        auto_execute: true,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `orchestration-engine failed: ${res.status}`);
+    return data;
+  }
+
+  if (name === "pipeline_status") {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/orchestration-engine`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${SERVICE_KEY}`,
+      },
+      body: JSON.stringify({
+        action: "get_run",
+        pipeline_run_id: args.pipeline_run_id,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `orchestration-engine failed: ${res.status}`);
     return data;
   }
 

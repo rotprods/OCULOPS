@@ -92,7 +92,11 @@
     font-size: var(--text-sm);
     font-family: var(--font-sans);
     font-weight: var(--weight-regular);
-    transition: color var(--transition-fast), background var(--transition-fast);
+    transition: 
+        color var(--duration-fast) var(--ease-default),
+        background var(--duration-fast) var(--ease-default),
+        border-color var(--duration-fast) var(--ease-default),
+        padding-left var(--duration-fast) var(--ease-default);
     text-align: left;
     white-space: nowrap;
     line-height: 1.3;
@@ -101,6 +105,7 @@
 .os-sidebar-item:hover {
     color: var(--text-primary);
     background: var(--accent-primary-muted);
+    padding-left: calc(var(--space-4) + 2px);
 }
 
 .os-sidebar-item.active {
@@ -115,6 +120,13 @@
     height: 16px;
     flex-shrink: 0;
     opacity: 0.7;
+    transition: opacity var(--duration-fast) var(--ease-default),
+                transform var(--duration-fast) var(--ease-default);
+}
+
+.os-sidebar-item:hover .os-sidebar-item-icon {
+    opacity: 1;
+    transform: scale(1.08);
 }
 
 .os-sidebar-item.active .os-sidebar-item-icon {
