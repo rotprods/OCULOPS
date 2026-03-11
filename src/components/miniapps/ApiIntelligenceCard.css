@@ -8,7 +8,7 @@
   overflow: hidden;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-    var(--color-bg-3);
+    var(--surface-elevated);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
   transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
@@ -18,13 +18,13 @@
 }
 
 .api-intel-card[role='button']:focus-visible {
-  outline: 2px solid var(--api-card-accent, var(--color-primary));
+  outline: 2px solid var(--api-card-accent, var(--accent-primary));
   outline-offset: 2px;
 }
 
 .api-intel-card:hover {
   transform: translateY(-3px);
-  border-color: var(--api-card-accent, var(--color-primary));
+  border-color: var(--api-card-accent, var(--accent-primary));
   box-shadow:
     0 28px 56px rgba(0, 0, 0, 0.34),
     0 0 0 1px var(--api-card-accent-soft, rgba(255, 255, 255, 0.08));
@@ -142,7 +142,7 @@
   font-size: var(--text-lg);
   line-height: 1.05;
   letter-spacing: var(--tracking-tight);
-  color: var(--color-text);
+  color: var(--text-primary);
 }
 
 .api-intel-card__auth,
@@ -188,7 +188,7 @@
 
 .api-intel-card__heading p {
   margin-top: 8px;
-  color: var(--color-text-2);
+  color: var(--text-secondary);
   font-size: var(--text-sm);
   line-height: 1.55;
   display: -webkit-box;
@@ -214,7 +214,7 @@
 }
 
 .api-intel-card__score strong {
-  color: var(--api-card-accent, var(--color-primary));
+  color: var(--api-card-accent, var(--accent-primary));
   font-family: var(--font-mono);
   font-size: var(--text-xl);
   line-height: 1;
@@ -252,7 +252,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--color-text);
+  color: var(--text-primary);
   font-size: var(--text-sm);
 }
 

@@ -15,7 +15,7 @@
 }
 
 .copilot-avatar-column {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-default);
   background: radial-gradient(circle at top, rgba(86, 204, 242, 0.15), transparent 65%);
   padding: 20px;
   display: flex;
@@ -25,8 +25,8 @@
 }
 
 .copilot-chat-column {
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  border: 1px solid var(--border-default);
+  background: var(--surface-base);
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -37,7 +37,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border-default);
 }
 
 .copilot-quick-actions {
@@ -70,7 +70,7 @@
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-2);
+  color: var(--text-secondary);
   cursor: pointer;
 }
 
@@ -93,11 +93,11 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   background: rgba(4, 4, 10, 0.8);
-  color: var(--color-text-2);
+  color: var(--text-secondary);
 }
 
 .copilot-nav-intent strong {
-  color: var(--color-primary);
+  color: var(--accent-primary);
   font-size: 11px;
 }
 
@@ -122,16 +122,16 @@
 
 .copilot-message--user {
   align-self: flex-end;
-  background: var(--color-primary);
+  background: var(--accent-primary);
   color: #000;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--accent-primary);
 }
 
 .copilot-message--ai {
   align-self: flex-start;
-  background: var(--color-bg-2);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
 }
 
 .copilot-message--system {
@@ -153,8 +153,8 @@
 
 .copilot-action-btn {
   background: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
   font-family: var(--font-mono);
   font-size: 9px;
   padding: 4px 10px;
@@ -164,7 +164,7 @@
 }
 
 .copilot-action-btn:hover {
-  background: var(--color-primary);
+  background: var(--accent-primary);
   color: #000;
 }
 
@@ -172,8 +172,8 @@
   display: flex;
   gap: 0;
   padding: 12px 16px;
-  border-top: 1px solid var(--color-border);
-  background: var(--color-bg);
+  border-top: 1px solid var(--border-default);
+  background: var(--surface-base);
 }
 
 .copilot-input {
@@ -181,7 +181,7 @@
   background: #000;
   border: 1px solid var(--border-subtle);
   border-right: none;
-  color: var(--color-text);
+  color: var(--text-primary);
   font-family: var(--font-mono);
   font-size: 12px;
   padding: 12px 16px;
@@ -193,13 +193,13 @@
 }
 
 .copilot-input:focus {
-  border-color: var(--color-primary);
+  border-color: var(--accent-primary);
 }
 
 .copilot-send {
-  background: var(--color-primary);
+  background: var(--accent-primary);
   color: #000;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--accent-primary);
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: bold;
@@ -258,7 +258,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), var(--color-primary));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), var(--accent-primary));
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
@@ -277,8 +277,8 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--color-primary);
-  box-shadow: 0 0 15px var(--color-primary);
+  background: var(--accent-primary);
+  box-shadow: 0 0 15px var(--accent-primary);
 }
 
 .copilot-figure-limb {
@@ -357,7 +357,7 @@
   font-size: 10px;
   text-transform: uppercase;
   line-height: 1.2;
-  color: var(--color-text);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -367,7 +367,7 @@
   font-weight: bold;
   font-size: 11px;
   text-transform: none;
-  color: var(--color-primary);
+  color: var(--accent-primary);
 }
 
 .copilot-skill-card .mode {
@@ -382,7 +382,7 @@
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text);
+  color: var(--text-primary);
   background: rgba(4, 4, 10, 0.8);
   display: flex;
   flex-direction: column;

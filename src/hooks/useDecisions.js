@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useDecisions(filters = {}) {
     const [decisions, setDecisions] = useState([])
@@ -25,7 +25,7 @@ export function useDecisions(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('decisions', (payload) => {
+        const channel = subscribeDebouncedToTable('decisions', (payload) => {
             if (payload.eventType === 'INSERT') setDecisions(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setDecisions(prev => prev.map(d => d.id === payload.new.id ? payload.new : d))
             else if (payload.eventType === 'DELETE') setDecisions(prev => prev.filter(d => d.id !== payload.old.id))

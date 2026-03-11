@@ -11,7 +11,7 @@ import ModuleSkeleton from '../ui/ModuleSkeleton'
 const STATUSES = [
     { value: 'identified', label: 'IDENTIFIED', color: 'var(--color-info)', symbol: '[?]' },
     { value: 'evaluating', label: 'EVALUATING', color: 'var(--color-warning)', symbol: '[~]' },
-    { value: 'pursuing', label: 'PURSUING', color: 'var(--color-primary)', symbol: '[>]' },
+    { value: 'pursuing', label: 'PURSUING', color: 'var(--accent-primary)', symbol: '[>]' },
     { value: 'won', label: 'WON', color: 'var(--color-success)', symbol: '[+]' },
     { value: 'passed', label: 'PASSED', color: 'var(--text-tertiary)', symbol: '[-]' },
 ]
@@ -49,7 +49,7 @@ function Opportunities() {
             {/* ── HEADER ── */}
             <div className="module-header-bar">
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>OPPORTUNITY MATRIX</h1>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>OPPORTUNITY MATRIX</h1>
                     <span className="mono text-xs text-tertiary">SIGNAL EVALUATION & PURSUIT LOG</span>
                 </div>
             </div>
@@ -81,11 +81,11 @@ function Opportunities() {
                         <table className="data-table">
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>DESIGNATION / DETAILS</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>SOURCE</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>PROJECTED VAL</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>STATUS</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>ID</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>DESIGNATION / DETAILS</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SOURCE</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>PROJECTED VAL</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>STATUS</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -96,10 +96,10 @@ function Opportunities() {
                                         <tr key={opp.id} style={{ borderBottom: idx < opportunities.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000' }}>
                                             <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{String(opp.id).slice(0, 6).toUpperCase()}</td>
                                             <td style={{ padding: '12px 16px' }}>
-                                                <div style={{ fontWeight: 'bold', color: 'var(--color-text)' }}>{opp.title.toUpperCase()}</div>
+                                                <div style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>{opp.title.toUpperCase()}</div>
                                                 {opp.description && <div style={{ color: 'var(--text-tertiary)', fontSize: '9px', marginTop: '4px' }}>{opp.description.toUpperCase()}</div>}
                                             </td>
-                                            <td style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>{opp.source ? opp.source.toUpperCase() : 'UNKNOWN'}</td>
+                                            <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{opp.source ? opp.source.toUpperCase() : 'UNKNOWN'}</td>
                                             <td style={{ padding: '12px 16px', color: 'var(--color-success)', fontWeight: 'bold' }}>{opp.potential_value > 0 ? formatCurrency(opp.potential_value) : '—'}</td>
                                             <td style={{ padding: '12px 16px' }}>
                                                 <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '4px 8px', border: `1px solid ${statusObj.color}`, color: statusObj.color, background: 'transparent' }} onClick={() => advanceStatus(opp)}>
@@ -135,7 +135,7 @@ function Opportunities() {
                             </div>
                             <div className="input-group">
                                 <label className="mono text-2xs text-tertiary">INTEL SOURCE</label>
-                                <input className="input-terminal" style={{ color: 'var(--color-primary)' }} value={form.source} onChange={e => setForm(f => ({ ...f, source: e.target.value }))} placeholder="REFERRAL, SOCIAL..." />
+                                <input className="input-terminal" style={{ color: 'var(--accent-primary)' }} value={form.source} onChange={e => setForm(f => ({ ...f, source: e.target.value }))} placeholder="REFERRAL, SOCIAL..." />
                             </div>
                             <div className="input-group">
                                 <label className="mono text-2xs text-tertiary">URGENCY</label>

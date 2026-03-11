@@ -252,7 +252,7 @@ export default function MiniApp({
 
   return (
     <div className="fade-in" style={{
-      background: 'var(--color-bg-3)',
+      background: 'var(--surface-elevated)',
       border: '1px solid var(--border-subtle)',
       borderRadius: 'var(--radius-2xl)',
       overflow: 'hidden',
@@ -323,7 +323,7 @@ export default function MiniApp({
       <div style={{
         padding: '12px 20px',
         fontSize: '12px',
-        color: 'var(--color-text-2)',
+        color: 'var(--text-secondary)',
         lineHeight: 1.5,
         borderBottom: '1px solid var(--border-subtle)',
       }}>
@@ -368,7 +368,7 @@ export default function MiniApp({
           gap: '10px',
           padding: '14px 20px',
           borderBottom: '1px solid var(--border-subtle)',
-          background: 'var(--color-bg-2)',
+          background: 'var(--surface-raised)',
         }}>
           {app.agentTargets?.length > 0 && (
             <div>
@@ -432,7 +432,7 @@ export default function MiniApp({
             <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--text-tertiary)', marginBottom: '6px', letterSpacing: '0.05em' }}>
               CONNECTOR CREDENTIALS
             </div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-2)', lineHeight: 1.5 }}>
+            <div style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
               Stored secrets are masked in the UI. Enter a new value to replace the existing credential.
             </div>
             <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '6px' }}>
@@ -583,7 +583,7 @@ export default function MiniApp({
                 color: 'var(--text-tertiary)',
                 padding: '2px 6px',
                 borderRadius: 'var(--radius-xs)',
-                background: showHistory ? 'var(--color-bg-2)' : 'transparent',
+                background: showHistory ? 'var(--surface-raised)' : 'transparent',
               }}
             >
               History ({history.length})
@@ -601,10 +601,10 @@ export default function MiniApp({
           ) : (
             <pre style={{
               padding: '10px',
-              background: 'var(--color-bg-2)',
+              background: 'var(--surface-raised)',
               borderRadius: 'var(--radius-md)',
               fontSize: '11px',
-              color: 'var(--color-text-2)',
+              color: 'var(--text-secondary)',
               fontFamily: 'var(--font-mono)',
               overflow: 'auto',
               maxHeight: '240px',

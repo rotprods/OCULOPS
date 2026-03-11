@@ -39,13 +39,13 @@ function ToolBadge({ tool, success, error }) {
     <span
       className="copilot-tool-badge"
       style={{
-        borderColor: error ? 'var(--color-danger)' : success ? 'var(--color-primary)' : 'var(--border-subtle)',
-        color: error ? 'var(--color-danger)' : 'var(--color-text-2)',
+        borderColor: error ? 'var(--color-danger)' : success ? 'var(--accent-primary)' : 'var(--border-subtle)',
+        color: error ? 'var(--color-danger)' : 'var(--text-secondary)',
       }}
       title={error || 'Executed successfully'}
     >
       {info.icon} {info.label}
-      {success && <span style={{ color: 'var(--color-primary)', marginLeft: '4px' }}>OK</span>}
+      {success && <span style={{ color: 'var(--accent-primary)', marginLeft: '4px' }}>OK</span>}
       {error && <span style={{ color: 'var(--color-danger)', marginLeft: '4px' }}>ERR</span>}
     </span>
   )
@@ -273,7 +273,7 @@ function CopilotChat() {
         <div>
           <h1 style={{
             fontFamily: 'var(--font-editorial)',
-            color: 'var(--color-primary)',
+            color: 'var(--accent-primary)',
             letterSpacing: '0.05em',
             margin: 0,
             fontSize: '24px',

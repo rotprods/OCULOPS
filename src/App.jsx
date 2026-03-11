@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar'
 import OnboardingSetup from './components/OnboardingSetup'
 import Auth from './components/Auth'
 import { ErrorBoundary } from './components/ui/ErrorBoundary'
+import ModuleSkeleton from './components/ui/ModuleSkeleton'
 import { Toaster } from 'react-hot-toast'
 
 // Full ParticleField (with data hooks) — only loaded when authenticated
@@ -16,7 +17,7 @@ function AmbientBackground() {
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
-      background: 'radial-gradient(ellipse at 50% 50%, rgba(255,212,0,0.03) 0%, transparent 70%)',
+      background: 'radial-gradient(ellipse at 30% 20%, rgba(123,140,255,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(80,227,194,0.02) 0%, transparent 50%)',
     }} />
   )
 }
@@ -66,17 +67,17 @@ const CommandCenter  = lazy(() => import('./components/modules/CommandCenter'))
 function LoadingOS() {
   return (
     <div style={{
-      height: '100vh', width: '100vw', background: 'var(--color-bg)',
+      height: '100vh', width: '100vw', background: 'var(--surface-base)',
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
       fontFamily: 'var(--font-mono)', position: 'relative', zIndex: 2,
     }}>
       <div style={{
         width: 40, height: 40, borderRadius: '50%',
-        border: '3px solid var(--color-border)', borderTopColor: 'var(--color-primary)',
+        border: '3px solid var(--border-default)', borderTopColor: 'var(--accent-primary)',
         animation: 'spin 1s linear infinite', marginBottom: 16,
       }} />
       <div style={{
-        fontSize: 11, letterSpacing: '0.2em', color: 'var(--color-primary)', opacity: 0.8,
+        fontSize: 11, letterSpacing: '0.2em', color: 'var(--accent-primary)', opacity: 0.8,
       }}>INITIALIZING OCULOPS v2...</div>
     </div>
   )
@@ -118,21 +119,22 @@ function AppContent() {
 
   return (
     <div style={{
-      display: 'flex', height: '100vh', background: 'var(--color-bg)',
-      color: 'var(--color-text)', overflow: 'hidden', fontFamily: 'var(--font-sans)',
+      display: 'flex', height: '100vh', background: 'var(--surface-base)',
+      color: 'var(--text-primary)', overflow: 'hidden', fontFamily: 'var(--font-sans)',
       position: 'relative',
     }}>
       <Toaster
         position="top-right"
         toastOptions={{
           style: {
-            background: 'var(--color-bg-2)',
-            border: '1px solid var(--color-border)',
-            color: 'var(--color-text)',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '12px',
+            background: 'var(--surface-elevated)',
+            border: '1px solid var(--border-default)',
+            color: 'var(--text-primary)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: '13px',
+            borderRadius: '8px',
           },
-          success: { iconTheme: { primary: 'var(--color-primary)', secondary: '#000' } },
+          success: { iconTheme: { primary: 'var(--accent-primary)', secondary: 'var(--surface-base)' } },
         }}
       />
 
@@ -143,19 +145,11 @@ function AppContent() {
       <Sidebar />
 
       <main style={{
-        flex: 1, marginLeft: 220, height: '100%', overflow: 'hidden',
+        flex: 1, marginLeft: 240, height: '100%', overflow: 'hidden',
         display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 2,
       }}>
         <div style={{ flex: 1, overflowY: 'auto' }}>
-          <Suspense fallback={
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              height: '100%', color: 'var(--color-text-3)',
-              fontFamily: 'var(--font-mono)', fontSize: 11,
-            }}>
-              LOADING MODULE...
-            </div>
-          }>
+          <Suspense fallback={<ModuleSkeleton variant="kpi" rows={6} />}>
             <Routes>
               <Route path="/" element={<Navigate to="/control-tower" replace />} />
 
@@ -206,7 +200,7 @@ function AppContent() {
               <Route path="*" element={
                 <div style={{
                   display: 'flex', flexDirection: 'column', alignItems: 'center',
-                  justifyContent: 'center', height: '100%', color: 'var(--color-text-3)',
+                  justifyContent: 'center', height: '100%', color: 'var(--text-tertiary)',
                 }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>MODULE NOT FOUND</div>
                 </div>

@@ -51,9 +51,9 @@ function tabButton(activeTab, tabId) {
     return {
         fontSize: '9px',
         padding: '6px 12px',
-        background: activeTab === tabId ? 'var(--color-primary)' : 'transparent',
-        color: activeTab === tabId ? '#000' : 'var(--color-text)',
-        border: activeTab === tabId ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)',
+        background: activeTab === tabId ? 'var(--accent-primary)' : 'transparent',
+        color: activeTab === tabId ? '#000' : 'var(--text-primary)',
+        border: activeTab === tabId ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
         cursor: 'pointer',
     }
 }
@@ -82,22 +82,22 @@ const overlayStyle = {
     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
 }
 const panelStyle = {
-    background: '#000', border: '1px solid var(--color-primary)',
+    background: '#000', border: '1px solid var(--accent-primary)',
     padding: '24px', width: '560px', maxHeight: '80vh', overflowY: 'auto',
     boxShadow: '0 0 30px rgba(255,212,0,0.1)'
 }
 const inputStyle = {
-    width: '100%', background: '#000', border: '1px solid var(--color-border)',
-    color: 'var(--color-text)', padding: '8px 10px', fontSize: '12px',
+    width: '100%', background: '#000', border: '1px solid var(--border-default)',
+    color: 'var(--text-primary)', padding: '8px 10px', fontSize: '12px',
     fontFamily: 'var(--font-mono)', outline: 'none',
 }
 const labelStyle = {
-    fontSize: '9px', color: 'var(--color-text-3)', fontFamily: 'var(--font-mono)',
+    fontSize: '9px', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)',
     marginBottom: '4px', display: 'block', letterSpacing: '0.06em',
 }
 const footerStyle = {
     display: 'flex', justifyContent: 'space-between', marginTop: '20px',
-    paddingTop: '16px', borderTop: '1px solid var(--color-border)',
+    paddingTop: '16px', borderTop: '1px solid var(--border-default)',
 }
 
 // ── Search bar component ──
@@ -113,7 +113,7 @@ function SearchBar({ value, onChange, placeholder, onAdd }) {
             />
             <button
                 className="btn btn-ghost mono"
-                style={{ fontSize: '9px', padding: '6px 16px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)', whiteSpace: 'nowrap' }}
+                style={{ fontSize: '9px', padding: '6px 16px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)', whiteSpace: 'nowrap' }}
                 onClick={onAdd}
             >
                 + NEW
@@ -149,7 +149,7 @@ function ContactModal({ contact, companies, onSave, onDelete, onClose }) {
     return (
         <div style={overlayStyle} onClick={onClose}>
             <div style={panelStyle} onClick={e => e.stopPropagation()}>
-                <div className="mono text-xs font-bold" style={{ color: 'var(--color-primary)', marginBottom: '16px' }}>
+                <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>
                     {isNew ? '/// NEW PERSONNEL RECORD' : `/// EDIT PERSONNEL — ${contact.id?.slice(0, 8).toUpperCase()}`}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -197,7 +197,7 @@ function ContactModal({ contact, companies, onSave, onDelete, onClose }) {
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
                         <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px' }} onClick={onClose}>ABORT</button>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--color-primary)', color: '#000', border: '1px solid var(--color-primary)' }} onClick={handleSave}>
+                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--accent-primary)', color: '#000', border: '1px solid var(--accent-primary)' }} onClick={handleSave}>
                             COMMIT
                         </button>
                     </div>
@@ -233,7 +233,7 @@ function CompanyModal({ company, onSave, onDelete, onClose }) {
     return (
         <div style={overlayStyle} onClick={onClose}>
             <div style={panelStyle} onClick={e => e.stopPropagation()}>
-                <div className="mono text-xs font-bold" style={{ color: 'var(--color-primary)', marginBottom: '16px' }}>
+                <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>
                     {isNew ? '/// NEW CORPORATE ENTITY' : `/// EDIT ENTITY — ${company.id?.slice(0, 8).toUpperCase()}`}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -274,7 +274,7 @@ function CompanyModal({ company, onSave, onDelete, onClose }) {
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
                         <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px' }} onClick={onClose}>ABORT</button>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--color-primary)', color: '#000', border: '1px solid var(--color-primary)' }} onClick={handleSave}>
+                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--accent-primary)', color: '#000', border: '1px solid var(--accent-primary)' }} onClick={handleSave}>
                             COMMIT
                         </button>
                     </div>
@@ -311,7 +311,7 @@ function DealModal({ deal, companies, onSave, onDelete, onClose }) {
     return (
         <div style={overlayStyle} onClick={onClose}>
             <div style={panelStyle} onClick={e => e.stopPropagation()}>
-                <div className="mono text-xs font-bold" style={{ color: 'var(--color-primary)', marginBottom: '16px' }}>
+                <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>
                     {isNew ? '/// NEW OPERATION' : `/// EDIT OPERATION — ${deal.id?.slice(0, 8).toUpperCase()}`}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -359,7 +359,7 @@ function DealModal({ deal, companies, onSave, onDelete, onClose }) {
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
                         <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 12px' }} onClick={onClose}>ABORT</button>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--color-primary)', color: '#000', border: '1px solid var(--color-primary)' }} onClick={handleSave}>
+                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '6px 16px', background: 'var(--accent-primary)', color: '#000', border: '1px solid var(--accent-primary)' }} onClick={handleSave}>
                             COMMIT
                         </button>
                     </div>
@@ -523,9 +523,9 @@ function CRM() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>CORTEX CRM VAULT</h1>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>CORTEX CRM VAULT</h1>
                     <span className="mono text-xs text-tertiary">LIVE CONTACTS, COMPANIES, DEALS AND ACTIVITIES</span>
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
@@ -551,7 +551,7 @@ function CRM() {
                         </span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderLeft: '1px solid var(--border-subtle)', paddingLeft: '16px' }}>
-                        <span style={{ color: atlasOnline ? 'var(--color-primary)' : 'var(--text-tertiary)' }}>
+                        <span style={{ color: atlasOnline ? 'var(--accent-primary)' : 'var(--text-tertiary)' }}>
                             ATLAS DB: {atlasOnline ? 'CONNECTED' : 'OFFLINE'}
                         </span>
                     </div>
@@ -563,7 +563,7 @@ function CRM() {
                 </div>
                 <button
                     className="btn btn-ghost btn-sm mono"
-                    style={{ fontSize: '9px', padding: '4px 12px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }}
+                    style={{ fontSize: '9px', padding: '4px 12px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }}
                     onClick={handleSyncAtlas}
                     disabled={syncBusy}
                 >
@@ -593,18 +593,18 @@ function CRM() {
 
                 {activeTab === 'contacts' && (
                     <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--color-primary)' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
                             /// IDENTIFIED PERSONNEL [{filteredContacts.length}]
                         </div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>NAME</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>COMPANY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>EMAIL</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>PHONE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>STATUS</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>NAME</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>COMPANY</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>EMAIL</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>PHONE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STATUS</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -612,10 +612,10 @@ function CRM() {
                                 {filteredContacts.map((contact, index) => (
                                     <HoverRow key={contact.id} index={index} total={filteredContacts.length} onClick={() => setModal({ type: 'contact', data: contact })}>
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{contact.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-text)', fontWeight: 'bold' }}>{(contact.name || 'UNKNOWN').toUpperCase()}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{(contact.name || 'UNKNOWN').toUpperCase()}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{contact.company?.name ? contact.company.name.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>{contact.email ? contact.email.toUpperCase() : '—'}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-text-2)' }}>{contact.phone || '—'}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{contact.email ? contact.email.toUpperCase() : '—'}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>{contact.phone || '—'}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{(contact.status || 'raw').toUpperCase()}</td>
                                         <td style={{ padding: '12px 16px', textAlign: 'right' }}>
                                             <button className="btn btn-ghost mono" style={deleteButtonStyle()} onClick={e => { e.stopPropagation(); removeContact(contact.id) }}>DEL</button>
@@ -630,18 +630,18 @@ function CRM() {
 
                 {activeTab === 'companies' && (
                     <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--color-primary)' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
                             /// CORPORATE ENTITIES [{filteredCompanies.length}]
                         </div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>NAME</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>WEBSITE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>INDUSTRY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>LOCATION</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>STATUS</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>NAME</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>WEBSITE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>INDUSTRY</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>LOCATION</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STATUS</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -649,8 +649,8 @@ function CRM() {
                                 {filteredCompanies.map((company, index) => (
                                     <HoverRow key={company.id} index={index} total={filteredCompanies.length} onClick={() => setModal({ type: 'company', data: company })}>
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{company.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-text)', fontWeight: 'bold' }}>{company.name.toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>{company.website ? company.website.toUpperCase() : '—'}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{company.name.toUpperCase()}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{company.website ? company.website.toUpperCase() : '—'}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{company.industry ? company.industry.toUpperCase() : '—'}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{company.location ? company.location.toUpperCase() : '—'}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{(company.status || 'prospected').toUpperCase()}</td>
@@ -667,18 +667,18 @@ function CRM() {
 
                 {activeTab === 'deals' && (
                     <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--color-primary)' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
                             /// ONGOING OPERATIONS [{filteredDeals.length}]
                         </div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>TITLE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>COMPANY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>VALUE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>STAGE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>PROB</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>TITLE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>COMPANY</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>VALUE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STAGE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>PROB</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -686,7 +686,7 @@ function CRM() {
                                 {filteredDeals.map((deal, index) => (
                                     <HoverRow key={deal.id} index={index} total={filteredDeals.length} onClick={() => setModal({ type: 'deal', data: deal })}>
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{deal.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-text)', fontWeight: 'bold' }}>{(deal.title || 'UNTITLED').toUpperCase()}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{(deal.title || 'UNTITLED').toUpperCase()}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{deal.company?.name ? deal.company.name.toUpperCase() : '—'}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-success)', fontWeight: 'bold' }}>{formatCurrency(deal.value)}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-warning)' }}>{(deal.stage || 'lead').toUpperCase()}</td>
@@ -704,17 +704,17 @@ function CRM() {
 
                 {activeTab === 'activities' && (
                     <div style={{ border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--color-primary)' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'rgba(255,212,0,0.05)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
                             /// ACTIVITY LOG ENTRY [{filteredActivities.length}]
                         </div>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                             <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>ID</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>TYPE</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>SUBJECT</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>LINKED ENTITY</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>CREATED</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>ID</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>TYPE</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>SUBJECT</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>LINKED ENTITY</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>CREATED</th>
                                     <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
                                 </tr>
                             </thead>
@@ -722,8 +722,8 @@ function CRM() {
                                 {filteredActivities.map((activity, index) => (
                                     <HoverRow key={activity.id} index={index} total={filteredActivities.length} onClick={() => { }}>
                                         <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>{activity.id.slice(0, 8).toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>{(activity.type || 'note').toUpperCase()}</td>
-                                        <td style={{ padding: '12px 16px', color: 'var(--color-text)', fontWeight: 'bold' }}>{(activity.subject || activity.description || 'UNTITLED').toUpperCase()}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{(activity.type || 'note').toUpperCase()}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{(activity.subject || activity.description || 'UNTITLED').toUpperCase()}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>
                                             {(activity.company?.name || activity.contact?.name || activity.deal?.title || '—').toUpperCase()}
                                         </td>

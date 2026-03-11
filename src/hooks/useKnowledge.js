@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, deleteRow, subscribeToTable, supabase } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable, supabase } from '../lib/supabase'
 
 export function useKnowledge(filters = {}) {
     const [entries, setEntries] = useState([])
@@ -27,7 +27,7 @@ export function useKnowledge(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('knowledge_entries', (payload) => {
+        const channel = subscribeDebouncedToTable('knowledge_entries', (payload) => {
             if (payload.eventType === 'INSERT') setEntries(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setEntries(prev => prev.map(e => e.id === payload.new.id ? payload.new : e))
             else if (payload.eventType === 'DELETE') setEntries(prev => prev.filter(e => e.id !== payload.old.id))

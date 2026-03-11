@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useBets(filters = {}) {
     const [bets, setBets] = useState([])
@@ -25,7 +25,7 @@ export function useBets(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('bets', (payload) => {
+        const channel = subscribeDebouncedToTable('bets', (payload) => {
             if (payload.eventType === 'INSERT') setBets(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setBets(prev => prev.map(b => b.id === payload.new.id ? payload.new : b))
             else if (payload.eventType === 'DELETE') setBets(prev => prev.filter(b => b.id !== payload.old.id))

@@ -113,47 +113,47 @@ function Agents() {
   return (
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ width: '48px', height: '48px', background: '#000', border: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)' }}>
+          <div style={{ width: '48px', height: '48px', background: '#000', border: '1px solid var(--border-default)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
             <span style={{ fontSize: '24px' }}>🧠</span>
           </div>
           <div>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontSize: '28px', color: 'var(--color-primary)', letterSpacing: '0.05em', lineHeight: '1' }}>CORTEX NETWORK HUB</h1>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontSize: '28px', color: 'var(--accent-primary)', letterSpacing: '0.05em', lineHeight: '1' }}>CORTEX NETWORK HUB</h1>
             <span className="mono text-xs text-tertiary">MULTI-AGENT ORCHESTRATION DIRECTIVE // {stats.online} ONLINE</span>
           </div>
         </div>
 
         <div style={{ display: 'flex', gap: '2px' }}>
           {['network', 'queue', 'logs', 'studies', 'automation', 'vault'].map(t => (
-            <button key={t} className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t ? 'var(--color-primary)' : 'transparent', color: activeTab === t ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveTab(t)}>{t.toUpperCase()}</button>
+            <button key={t} className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t ? 'var(--accent-primary)' : 'transparent', color: activeTab === t ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveTab(t)}>{t.toUpperCase()}</button>
           ))}
         </div>
       </div>
 
       {/* ── NETWORK STATUS STRIP ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)', marginBottom: '16px' }}>
-        <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)', marginBottom: '16px' }}>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">ASSETS</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{stats.total}</span>
+          <span className="mono text-lg font-bold" style={{ color: 'var(--accent-primary)' }}>{stats.total}</span>
         </div>
-        <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">RUNNING</span>
           <span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{stats.running}</span>
         </div>
-        <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">QUEUED TASKS</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{stats.queuedTasks}</span>
+          <span className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{stats.queuedTasks}</span>
         </div>
-        <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">SYSTEM CYCLES</span>
-          <span className="mono text-lg font-bold" style={{ color: 'var(--color-text-2)' }}>{stats.totalRuns}</span>
+          <span className="mono text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>{stats.totalRuns}</span>
         </div>
-        <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">DELIVERED INTEL</span>
           <span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>{deliveryStats.sent}</span>
         </div>
-        <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           <span className="mono text-xs text-tertiary">SECURE COMMS</span>
           <span className="mono text-lg font-bold" style={{ color: telegramTarget ? 'var(--color-success)' : 'var(--color-danger)' }}>{telegramTarget ? 'ONLINE' : 'OFFLINE'}</span>
         </div>
@@ -164,11 +164,11 @@ function Agents() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {/* MASTER CORTEX */}
             {cortex && (
-              <div style={{ border: '1px solid var(--color-primary)', background: '#000', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ border: '1px solid var(--accent-primary)', background: '#000', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                  <div className="mono text-xs font-bold" style={{ color: '#000', background: 'var(--color-primary)', padding: '4px 8px' }}>MASTER NODE</div>
+                  <div className="mono text-xs font-bold" style={{ color: '#000', background: 'var(--accent-primary)', padding: '4px 8px' }}>MASTER NODE</div>
                   <div>
-                    <div className="mono font-bold" style={{ fontSize: '18px', color: 'var(--color-primary)' }}>{cortex.name.toUpperCase()}</div>
+                    <div className="mono font-bold" style={{ fontSize: '18px', color: 'var(--accent-primary)' }}>{cortex.name.toUpperCase()}</div>
                     <div className="mono text-xs text-tertiary">{cortex.description.toUpperCase()}</div>
                   </div>
                 </div>
@@ -185,11 +185,11 @@ function Agents() {
             {/* SUB-AGENTS GRID */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px', marginBottom: '32px' }}>
               {subAgents.map(ag => (
-                <div key={ag.id} style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                <div key={ag.id} style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: 8, height: 8, background: ag.status === 'online' ? 'var(--color-success)' : ag.status === 'running' ? 'var(--color-warning)' : 'var(--color-danger)' }} />
-                      <span className="mono text-xs font-bold" style={{ color: AGENT_COLORS[ag.code_name] || 'var(--color-primary)' }}>{ag.code_name.toUpperCase()}</span>
+                      <span className="mono text-xs font-bold" style={{ color: AGENT_COLORS[ag.code_name] || 'var(--accent-primary)' }}>{ag.code_name.toUpperCase()}</span>
                     </div>
                     <button className="btn btn-ghost mono btn-sm" style={{ fontSize: '9px', padding: '2px 8px', borderColor: AGENT_COLORS[ag.code_name] || 'var(--border-subtle)' }} onClick={() => handleTrigger(ag.code_name, 'cycle')} disabled={triggering === ag.code_name}>
                       {triggering === ag.code_name ? 'EXE...' : 'TRIGGER'}
@@ -201,7 +201,7 @@ function Agents() {
 
                     <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: 'auto' }}>
                       {(ag.capabilities || []).slice(0, 3).map(cap => (
-                        <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--color-text-2)', padding: '2px 6px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
+                        <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--text-secondary)', padding: '2px 6px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
                           {cap.replace(/_/g, ' ').toUpperCase()}
                         </span>
                       ))}
@@ -219,13 +219,13 @@ function Agents() {
         )}
 
         {activeTab === 'queue' && (
-          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// TASK QUEUE</div>
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// TASK QUEUE</div>
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {tasks.slice(0, 50).map(t => (
                 <div key={t.id} className="mono text-xs" style={{ display: 'flex', gap: '16px', padding: '8px', borderBottom: '1px solid var(--border-subtle)' }}>
-                  <span style={{ color: AGENT_COLORS[t.agent_code_name] || 'var(--color-primary)', width: '100px', fontWeight: 'bold' }}>{t.agent_code_name.toUpperCase()}</span>
-                  <span style={{ color: 'var(--color-text)', flex: 1 }}>{t.title || t.type.toUpperCase()}</span>
+                  <span style={{ color: AGENT_COLORS[t.agent_code_name] || 'var(--accent-primary)', width: '100px', fontWeight: 'bold' }}>{t.agent_code_name.toUpperCase()}</span>
+                  <span style={{ color: 'var(--text-primary)', flex: 1 }}>{t.title || t.type.toUpperCase()}</span>
                   <span style={{ color: t.status === 'completed' ? 'var(--color-success)' : t.status === 'failed' ? 'var(--color-danger)' : 'var(--color-warning)' }}>[{t.status.toUpperCase()}]</span>
                 </div>
               ))}
@@ -235,14 +235,14 @@ function Agents() {
         )}
 
         {activeTab === 'logs' && (
-          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// NETWORK LOGS</div>
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// NETWORK LOGS</div>
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {logs.slice(0, 50).map(log => (
                 <div key={log.id} className="mono text-xs" style={{ display: 'flex', gap: '16px', padding: '8px', borderBottom: '1px solid var(--border-subtle)' }}>
                   <span style={{ color: 'var(--text-tertiary)', width: '120px' }}>{formatTime(log.created_at)}</span>
-                  <span style={{ color: AGENT_COLORS[log.agent_code_name] || 'var(--color-primary)', width: '100px', fontWeight: 'bold' }}>{log.agent_code_name.toUpperCase()}</span>
-                  <span style={{ color: log.error ? 'var(--color-danger)' : 'var(--color-text)', flex: 1 }}>{log.action.toUpperCase()} {log.error ? ` [FATAL: ${log.error}]` : ''}</span>
+                  <span style={{ color: AGENT_COLORS[log.agent_code_name] || 'var(--accent-primary)', width: '100px', fontWeight: 'bold' }}>{log.agent_code_name.toUpperCase()}</span>
+                  <span style={{ color: log.error ? 'var(--color-danger)' : 'var(--text-primary)', flex: 1 }}>{log.action.toUpperCase()} {log.error ? ` [FATAL: ${log.error}]` : ''}</span>
                   <span style={{ color: 'var(--text-tertiary)' }}>{formatDuration(log.duration_ms)}</span>
                 </div>
               ))}
@@ -254,8 +254,8 @@ function Agents() {
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 1fr) 2fr', gap: '16px', paddingBottom: '32px' }}>
             {/* LEFT COLUMN: COMPILE STUDY & SETTINGS */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// COMPILE STUDY BRIEF</div>
+              <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// COMPILE STUDY BRIEF</div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div className="input-group">
                     <label className="mono text-xs">EXECUTING AGENT</label>
@@ -281,14 +281,14 @@ function Agents() {
                     ROUTE TO TELEGRAM IMMEDIATELY
                   </label>
 
-                  <button className="btn mono" style={{ border: '1px solid var(--color-primary)', background: '#000', color: 'var(--color-primary)', borderRadius: 0, padding: '10px', marginTop: '8px' }} onClick={handlePostStudy} disabled={studiesBusy === 'study'}>
+                  <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: '#000', color: 'var(--accent-primary)', borderRadius: 0, padding: '10px', marginTop: '8px' }} onClick={handlePostStudy} disabled={studiesBusy === 'study'}>
                     {studiesBusy === 'study' ? 'PROCESSING...' : 'DISPATCH STUDY'}
                   </button>
                 </div>
               </div>
 
-              <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// OUTBOUND RELAY (TELEGRAM)</div>
+              <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// OUTBOUND RELAY (TELEGRAM)</div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div className="input-group">
                     <label className="mono text-xs">LINK REFERENCE</label>
@@ -314,7 +314,7 @@ function Agents() {
                     </label>
                   </div>
 
-                  <button className="btn mono" style={{ border: '1px solid var(--color-primary)', background: '#000', color: 'var(--color-primary)', borderRadius: 0, padding: '10px', marginTop: '8px' }} onClick={handleSaveTelegram} disabled={studiesBusy === 'target'}>
+                  <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: '#000', color: 'var(--accent-primary)', borderRadius: 0, padding: '10px', marginTop: '8px' }} onClick={handleSaveTelegram} disabled={studiesBusy === 'target'}>
                     {studiesBusy === 'target' ? 'LOCKING...' : 'SECURE RELAY RECORD'}
                   </button>
                 </div>
@@ -322,17 +322,17 @@ function Agents() {
             </div>
 
             {/* RIGHT COLUMN: RECENT STUDIES */}
-            <div style={{ border: '1px solid var(--color-border)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// INTERCEPT LOG ({recentStudies.length} ARCHIVED)</div>
+            <div style={{ border: '1px solid var(--border-default)', background: '#000', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// INTERCEPT LOG ({recentStudies.length} ARCHIVED)</div>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', gap: '16px', overflowY: 'auto' }}>
                 {studiesLoading ? <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '16px' }}>ACCESSING ARCHIVE...</div> :
                   recentStudies.length === 0 ? <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '16px' }}>NO RECORDS ON FILE.</div> :
                     recentStudies.map(study => (
-                      <div key={study.id} style={{ border: '1px solid var(--border-subtle)', background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <div key={study.id} style={{ border: '1px solid var(--border-subtle)', background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
                           <div>
-                            <div className="mono font-bold" style={{ color: 'var(--color-text)', marginBottom: '4px' }}>
-                              <span style={{ color: AGENT_COLORS[study.agent_code_name] || 'var(--color-primary)', marginRight: '8px' }}>[{study.agent_code_name.toUpperCase()}]</span>
+                            <div className="mono font-bold" style={{ color: 'var(--text-primary)', marginBottom: '4px' }}>
+                              <span style={{ color: AGENT_COLORS[study.agent_code_name] || 'var(--accent-primary)', marginRight: '8px' }}>[{study.agent_code_name.toUpperCase()}]</span>
                               {study.title.toUpperCase()}
                             </div>
                             <div className="mono text-xs text-tertiary">{study.source.toUpperCase()} // SYS_TIME: {formatTime(study.created_at)}</div>
@@ -342,17 +342,17 @@ function Agents() {
                               {study.delivery_status === 'sent' ? 'TX : SUCCESS' : study.delivery_status === 'failed' ? 'TX : FAILED' : 'TX : PENDING'}
                             </span>
                             {study.delivery_status !== 'sent' && (
-                              <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }} onClick={() => handleResendStudy(study.id)} disabled={studiesBusy === `resend:${study.id}`}>
+                              <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }} onClick={() => handleResendStudy(study.id)} disabled={studiesBusy === `resend:${study.id}`}>
                                 {studiesBusy === `resend:${study.id}` ? 'TX_ONGOING...' : 'FORCE TX'}
                               </button>
                             )}
                           </div>
                         </div>
-                        <div className="mono text-xs" style={{ color: 'var(--color-text-2)', lineHeight: '1.4' }}>{study.summary.toUpperCase()}</div>
+                        <div className="mono text-xs" style={{ color: 'var(--text-secondary)', lineHeight: '1.4' }}>{study.summary.toUpperCase()}</div>
                         {Array.isArray(study.highlights) && study.highlights.length > 0 && (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', borderTop: '1px solid var(--border-subtle)', paddingTop: '8px' }}>
                             {study.highlights.slice(0, 3).map(h => (
-                              <span key={h} className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-primary)', fontSize: '9px', padding: '2px 6px' }}>
+                              <span key={h} className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)', fontSize: '9px', padding: '2px 6px' }}>
                                 {h.slice(0, 40).toUpperCase()}
                               </span>
                             ))}
@@ -368,9 +368,9 @@ function Agents() {
         {activeTab === 'automation' && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px', paddingBottom: '32px' }}>
             {AGENT_AUTOMATION_PACKS.map(pack => (
-              <div key={pack.agentCodeName} style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+              <div key={pack.agentCodeName} style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span className="mono text-xs font-bold" style={{ color: AGENT_COLORS[pack.agentCodeName] || 'var(--color-primary)' }}>{pack.label.toUpperCase()} PROTOCOLS</span>
+                  <span className="mono text-xs font-bold" style={{ color: AGENT_COLORS[pack.agentCodeName] || 'var(--accent-primary)' }}>{pack.label.toUpperCase()} PROTOCOLS</span>
                   <span className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>[{pack.templates.length} TEMPLATES]</span>
                 </div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
@@ -380,18 +380,18 @@ function Agents() {
                     {pack.templates.map(tmp => (
                       <div key={tmp.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div>
-                          <div className="mono text-xs font-bold" style={{ color: 'var(--color-text)' }}>{tmp.name.toUpperCase()}</div>
+                          <div className="mono text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{tmp.name.toUpperCase()}</div>
                           <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>ID: {tmp.id}</div>
                         </div>
                         <div style={{ display: 'flex', gap: '4px' }}>
                           <a href={tmp.pageUrl} target="_blank" rel="noreferrer" className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--border-subtle)' }}>DOCS</a>
-                          <a href={tmp.downloadUrl} target="_blank" rel="noreferrer" className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--color-primary)', color: 'var(--color-primary)' }}>JSON</a>
+                          <a href={tmp.downloadUrl} target="_blank" rel="noreferrer" className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)' }}>JSON</a>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <button className="btn mono" style={{ marginTop: 'auto', border: '1px solid var(--color-primary)', background: '#000', color: 'var(--color-primary)', padding: '10px' }} onClick={() => handleTrigger(pack.agentCodeName, 'cycle')} disabled={triggering === pack.agentCodeName}>
+                  <button className="btn mono" style={{ marginTop: 'auto', border: '1px solid var(--accent-primary)', background: '#000', color: 'var(--accent-primary)', padding: '10px' }} onClick={() => handleTrigger(pack.agentCodeName, 'cycle')} disabled={triggering === pack.agentCodeName}>
                     {triggering === pack.agentCodeName ? 'ENGAGED...' : `FORCE OVERRIDE [${pack.agentCodeName.toUpperCase()}]`}
                   </button>
                 </div>
@@ -403,20 +403,20 @@ function Agents() {
         {activeTab === 'vault' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
             {/* VAULT STATS BAR */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
-              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
                 <span className="mono text-xs text-tertiary">TOTAL AGENTS</span>
-                <div className="mono text-lg font-bold" style={{ color: 'var(--color-primary)' }}>{vaultTotal}</div>
+                <div className="mono text-lg font-bold" style={{ color: 'var(--accent-primary)' }}>{vaultTotal}</div>
               </div>
-              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
                 <span className="mono text-xs text-tertiary">CANONICAL</span>
-                <div className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{vaultCanonical}</div>
+                <div className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{vaultCanonical}</div>
               </div>
-              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
                 <span className="mono text-xs text-tertiary">NAMESPACES</span>
                 <div className="mono text-lg font-bold" style={{ color: 'var(--color-info)' }}>{vaultNamespaces.length}</div>
               </div>
-              <div style={{ background: 'var(--color-bg-2)', padding: '12px 16px' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '12px 16px' }}>
                 <span className="mono text-xs text-tertiary">FILTERED</span>
                 <div className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{vaultAgents.length}</div>
               </div>
@@ -433,7 +433,7 @@ function Agents() {
               />
               <select
                 className="input mono text-xs"
-                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--color-text)' }}
+                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--text-primary)' }}
                 value={vaultFilters.namespace}
                 onChange={e => setVaultNamespace(e.target.value)}
               >
@@ -444,7 +444,7 @@ function Agents() {
               </select>
               <select
                 className="input mono text-xs"
-                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--color-text)' }}
+                style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '8px', background: '#000', color: 'var(--text-primary)' }}
                 value={vaultFilters.role}
                 onChange={e => setVaultRole(e.target.value)}
               >
@@ -459,14 +459,14 @@ function Agents() {
             <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
               <button
                 className="mono"
-                style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === 'all' ? 'var(--color-primary)' : '#000', color: vaultFilters.namespace === 'all' ? '#000' : 'var(--color-text-2)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
+                style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === 'all' ? 'var(--accent-primary)' : '#000', color: vaultFilters.namespace === 'all' ? '#000' : 'var(--text-secondary)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
                 onClick={() => setVaultNamespace('all')}
               >ALL</button>
               {vaultNamespaces.map(ns => (
                 <button
                   key={ns}
                   className="mono"
-                  style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === ns ? 'var(--color-primary)' : '#000', color: vaultFilters.namespace === ns ? '#000' : 'var(--color-text-2)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
+                  style={{ fontSize: '9px', padding: '4px 10px', background: vaultFilters.namespace === ns ? 'var(--accent-primary)' : '#000', color: vaultFilters.namespace === ns ? '#000' : 'var(--text-secondary)', border: '1px solid var(--border-subtle)', cursor: 'pointer' }}
                   onClick={() => setVaultNamespace(ns)}
                 >{ns.toUpperCase()}</button>
               ))}
@@ -476,7 +476,7 @@ function Agents() {
             {vaultLoading ? (
               <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '48px' }}>LOADING AGENT-OS MANIFEST...</div>
             ) : vaultError ? (
-              <div style={{ border: '1px solid var(--color-danger)', background: 'var(--color-bg-2)', padding: '24px', textAlign: 'center' }}>
+              <div style={{ border: '1px solid var(--color-danger)', background: 'var(--surface-raised)', padding: '24px', textAlign: 'center' }}>
                 <div className="mono text-xs" style={{ color: 'var(--color-danger)' }}>{vaultError}</div>
               </div>
             ) : (
@@ -484,13 +484,13 @@ function Agents() {
                 {vaultAgents.map(va => {
                   const role = suggestRole(va)
                   return (
-                    <div key={va.name} style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
+                    <div key={va.name} style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
                       <div style={{ borderBottom: '1px solid var(--border-subtle)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <div style={{ width: 6, height: 6, background: role ? (AGENT_COLORS[role] || 'var(--color-primary)') : 'var(--color-text-3)' }} />
-                          <span className="mono text-xs font-bold" style={{ color: 'var(--color-text)' }}>{va.name.toUpperCase()}</span>
+                          <div style={{ width: 6, height: 6, background: role ? (AGENT_COLORS[role] || 'var(--accent-primary)') : 'var(--text-tertiary)' }} />
+                          <span className="mono text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{va.name.toUpperCase()}</span>
                         </div>
-                        <span className="mono" style={{ fontSize: '9px', color: 'var(--color-text-3)', background: '#000', border: '1px solid var(--border-subtle)', padding: '2px 6px' }}>
+                        <span className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', background: '#000', border: '1px solid var(--border-subtle)', padding: '2px 6px' }}>
                           {va.namespace.toUpperCase()}
                         </span>
                       </div>
@@ -502,14 +502,14 @@ function Agents() {
                         )}
                         <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: 'auto' }}>
                           {(va.capabilities || []).slice(0, 4).map(cap => (
-                            <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--color-text-2)', padding: '1px 5px', fontSize: '8px', fontFamily: 'var(--font-mono)' }}>
+                            <span key={cap} style={{ border: '1px solid var(--border-subtle)', background: '#000', color: 'var(--text-secondary)', padding: '1px 5px', fontSize: '8px', fontFamily: 'var(--font-mono)' }}>
                               {cap.toUpperCase()}
                             </span>
                           ))}
                         </div>
                         {role && (
                           <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '8px', marginTop: '4px' }}>
-                            <span className="mono" style={{ fontSize: '9px', color: AGENT_COLORS[role] || 'var(--color-primary)', fontWeight: 'bold' }}>
+                            <span className="mono" style={{ fontSize: '9px', color: AGENT_COLORS[role] || 'var(--accent-primary)', fontWeight: 'bold' }}>
                               {AGENT_ICONS[role] || '●'} {role.toUpperCase()} COMPATIBLE
                             </span>
                           </div>

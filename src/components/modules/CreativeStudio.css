@@ -20,13 +20,13 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border-default);
     flex-shrink: 0;
 }
 
 .cs-header-title {
     font-family: var(--font-editorial);
-    color: var(--color-primary);
+    color: var(--accent-primary);
     letter-spacing: 0.05em;
     margin: 0;
     font-size: 28px;
@@ -74,7 +74,7 @@
 }
 
 .cs-view-btn:hover {
-    color: var(--color-text-2);
+    color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.03);
 }
 
@@ -146,7 +146,7 @@
     font-weight: 700;
     font-size: var(--text-sm);
     letter-spacing: -0.01em;
-    color: var(--color-text);
+    color: var(--text-primary);
     background: transparent;
     flex-shrink: 0;
     display: flex;
@@ -203,13 +203,13 @@
 }
 
 .cs-model-btn:hover {
-    border-color: var(--color-text-2);
+    border-color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.04);
 }
 
 .cs-model-btn--active {
-    border-color: var(--color-primary);
-    color: var(--color-text);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
     background: rgba(255, 215, 0, 0.08);
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
 }
@@ -224,7 +224,7 @@
     border: 1px solid var(--border-subtle);
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--color-primary);
+    color: var(--accent-primary);
     padding: var(--space-4);
     resize: none;
     flex: 1;
@@ -234,7 +234,7 @@
 }
 
 .cs-prompt-input:focus {
-    border-color: var(--color-primary);
+    border-color: var(--accent-primary);
     box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1), inset 0 2px 10px rgba(0, 0, 0, 0.5);
     outline: none;
 }
@@ -246,7 +246,7 @@
     font-weight: 700;
     font-size: var(--text-xs);
     margin-top: auto;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--accent-primary);
     transition: all var(--transition-base);
 }
 
@@ -296,7 +296,7 @@
 
 .cs-asset-card {
     border: 1px solid var(--border-subtle);
-    background: var(--color-bg-2);
+    background: var(--surface-raised);
     display: flex;
     flex-direction: column;
     transition: all var(--transition-3d);
@@ -368,9 +368,9 @@
     left: 0;
     height: 100%;
     width: 30%;
-    background: var(--color-primary);
+    background: var(--accent-primary);
     animation: loadingBar 1.5s infinite linear;
-    box-shadow: 0 0 10px var(--color-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
 }
 
 @keyframes loadingBar {
@@ -386,7 +386,7 @@
 .cs-asset-footer {
     padding: var(--space-3);
     font-size: 10px;
-    color: var(--color-text-2);
+    color: var(--text-secondary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -417,9 +417,9 @@
 }
 
 .cs-filter-btn--active {
-    background: var(--color-primary);
+    background: var(--accent-primary);
     color: #000000;
-    border-color: var(--color-primary);
+    border-color: var(--accent-primary);
 }
 
 .cs-briefs-grid {
@@ -432,7 +432,7 @@
 
 .cs-brief-card {
     border: 1px solid var(--border-subtle);
-    background: var(--color-bg-2);
+    background: var(--surface-raised);
     padding: var(--space-4);
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -457,7 +457,7 @@
 }
 
 .cs-brief-card:hover::before {
-    background: var(--color-primary);
+    background: var(--accent-primary);
 }
 
 .cs-brief-card-header {
@@ -470,7 +470,7 @@
 .cs-brief-card-title {
     font-weight: 700;
     font-size: var(--text-sm);
-    color: var(--color-text);
+    color: var(--text-primary);
 }
 
 .cs-brief-tags {
@@ -506,7 +506,7 @@
     overflow: auto;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--accent-primary);
     border-radius: 0;
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
@@ -514,7 +514,7 @@
 .cs-modal-header {
     position: sticky;
     top: 0;
-    background: var(--color-bg-2);
+    background: var(--surface-raised);
     border-bottom: 1px solid var(--border-subtle);
     padding: 16px 24px;
     display: flex;
@@ -526,7 +526,7 @@
 .cs-modal-title {
     font-family: var(--font-editorial);
     font-size: 20px;
-    color: var(--color-primary);
+    color: var(--accent-primary);
     margin-bottom: 6px;
 }
 
@@ -552,12 +552,12 @@
     border: 1px solid var(--border-subtle);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
-    color: var(--color-text);
+    color: var(--text-primary);
     padding: var(--space-3);
     transition: border-color var(--transition-micro);
 }
 
 .cs-modal-textarea:focus {
     outline: none;
-    border-color: var(--color-primary);
+    border-color: var(--accent-primary);
 }

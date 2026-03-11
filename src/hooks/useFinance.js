@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useFinance() {
     const [entries, setEntries] = useState([])
@@ -24,7 +24,7 @@ export function useFinance() {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('finance_entries', (payload) => {
+        const channel = subscribeDebouncedToTable('finance_entries', (payload) => {
             if (payload.eventType === 'INSERT') setEntries(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setEntries(prev => prev.map(e => e.id === payload.new.id ? payload.new : e))
             else if (payload.eventType === 'DELETE') setEntries(prev => prev.filter(e => e.id !== payload.old.id))

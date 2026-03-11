@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { fetchAll, insertRow, subscribeToTable, supabase, updateRow } from '../lib/supabase'
+import { fetchAll, insertRow, subscribeDebouncedToTable, supabase, updateRow } from '../lib/supabase'
 
 const BASE = import.meta.env.VITE_SUPABASE_URL
 const ANON = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -54,8 +54,8 @@ export function useAgentStudies() {
   useEffect(() => {
     load()
     const channels = [
-      subscribeToTable('agent_studies', () => load()),
-      subscribeToTable('agent_delivery_targets', () => load()),
+      subscribeDebouncedToTable('agent_studies', () => load()),
+      subscribeDebouncedToTable('agent_delivery_targets', () => load()),
     ]
 
     return () => {

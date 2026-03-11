@@ -45,7 +45,7 @@ function getStatusMeta(status, app) {
 function StatCard({ label, value, color }) {
   return (
     <div className="kpi-card" style={{ padding: '10px 14px', minWidth: '88px', textAlign: 'center' }}>
-      <div className="kpi-value" style={{ fontSize: '18px', color: color || 'var(--color-text)' }}>{value}</div>
+      <div className="kpi-value" style={{ fontSize: '18px', color: color || 'var(--text-primary)' }}>{value}</div>
       <div className="kpi-label">{label}</div>
     </div>
   )
@@ -61,7 +61,7 @@ function EmptyPanel({ title, description }) {
       color: 'var(--text-tertiary)',
     }}>
       <div style={{ fontSize: '2.25rem', marginBottom: '10px' }}>🕸️</div>
-      <div style={{ fontSize: '14px', fontWeight: 700, marginBottom: '4px', color: 'var(--color-text-2)' }}>{title}</div>
+      <div style={{ fontSize: '14px', fontWeight: 700, marginBottom: '4px', color: 'var(--text-secondary)' }}>{title}</div>
       <div style={{ fontSize: '12px' }}>{description}</div>
     </div>
   )
@@ -399,7 +399,7 @@ export default function MiniAppLauncher() {
                   key={app.id}
                   onClick={() => setSelectedApp(app)}
                   style={{
-                    background: 'var(--color-bg-3)',
+                    background: 'var(--surface-elevated)',
                     border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-xl)',
                     padding: '20px',
@@ -440,7 +440,7 @@ export default function MiniAppLauncher() {
 
                   <div style={{
                     fontSize: '11px',
-                    color: 'var(--color-text-2)',
+                    color: 'var(--text-secondary)',
                     lineHeight: 1.5,
                     flex: 1,
                   }}>

@@ -87,7 +87,7 @@ function HeraldAgent() {
     }
 
     if (loading) return (
-        <div className="fade-in mono text-xs" style={{ padding: '3rem', textAlign: 'center', color: 'var(--color-primary)' }}>
+        <div className="fade-in mono text-xs" style={{ padding: '3rem', textAlign: 'center', color: 'var(--accent-primary)' }}>
             /// ESTABLISHING COMMS WITH HERALD...
         </div>
     )
@@ -100,7 +100,7 @@ function HeraldAgent() {
             </div>
             <div style={{ padding: '32px', border: '1px solid var(--border-danger)', background: 'var(--danger-bg)', marginTop: '24px', textAlign: 'center' }}>
                 <div className="mono text-sm" style={{ color: 'var(--color-danger)', fontWeight: 'bold' }}>[ OFFLINE ]</div>
-                <p className="mono text-xs" style={{ margin: '12px 0 0 0', color: 'var(--color-text-2)' }}>RUNTIME ENVIRONMENT NOT READY FOR DEPLOYMENT.</p>
+                <p className="mono text-xs" style={{ margin: '12px 0 0 0', color: 'var(--text-secondary)' }}>RUNTIME ENVIRONMENT NOT READY FOR DEPLOYMENT.</p>
             </div>
         </div>
     )
@@ -108,9 +108,9 @@ function HeraldAgent() {
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             {/* ── Header ── */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--color-border)', paddingBottom: '16px', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--border-default)', paddingBottom: '16px', marginBottom: '24px' }}>
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>HERALD COMMAND</h1>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>HERALD COMMAND</h1>
                     <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>TELEGRAM ORCHESTRATOR // TRANSMITS DAILY OPERATION BRIEFINGS</p>
                 </div>
                 <button
@@ -133,13 +133,13 @@ function HeraldAgent() {
                 </div>
                 <div style={{ background: '#000', padding: '16px' }}>
                     <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginBottom: '8px' }}>TOTAL RUNS</div>
-                    <div className="mono font-bold" style={{ fontSize: '16px', color: 'var(--color-text)' }}>
+                    <div className="mono font-bold" style={{ fontSize: '16px', color: 'var(--text-primary)' }}>
                         {agent?.total_runs || 0}
                     </div>
                 </div>
                 <div style={{ background: '#000', padding: '16px' }}>
                     <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)', marginBottom: '8px' }}>LAST TRANSMISSION</div>
-                    <div className="mono font-bold" style={{ fontSize: '13px', color: 'var(--color-text)' }}>
+                    <div className="mono font-bold" style={{ fontSize: '13px', color: 'var(--text-primary)' }}>
                         {formatTime(agent?.last_run_at)}
                     </div>
                 </div>
@@ -153,11 +153,11 @@ function HeraldAgent() {
 
             {/* ── Last Send Result ── */}
             {lastResult && (
-                <div style={{ border: `1px solid ${lastResult.success ? 'var(--color-success)' : 'var(--color-danger)'}`, background: 'var(--color-bg-2)', marginBottom: '24px' }}>
+                <div style={{ border: `1px solid ${lastResult.success ? 'var(--color-success)' : 'var(--color-danger)'}`, background: 'var(--surface-raised)', marginBottom: '24px' }}>
                     <div className="mono text-xs font-bold" style={{ padding: '8px 12px', background: lastResult.success ? 'var(--color-success)' : 'var(--color-danger)', color: '#000' }}>
                         {lastResult.success ? '/// TRANSMISSION SUCCESSFUL' : '/// TRANSMISSION FAILURE'}
                     </div>
-                    <div className="mono text-xs" style={{ padding: '12px', color: 'var(--color-text-2)' }}>
+                    <div className="mono text-xs" style={{ padding: '12px', color: 'var(--text-secondary)' }}>
                         {lastResult.success ? (
                             <>
                                 <strong>COMMS:</strong> {String(lastResult.telegram_sent).toUpperCase()} | <strong>PIPE:</strong> ${lastResult.briefing_data?.pipeline_total?.toLocaleString()} | <strong>DEALS:</strong> {lastResult.briefing_data?.deal_count}
@@ -181,9 +181,9 @@ function HeraldAgent() {
                         onClick={() => setActiveTab(tab.key)}
                         className="btn btn-ghost mono"
                         style={{
-                            background: activeTab === tab.key ? 'var(--color-primary)' : 'transparent',
-                            borderColor: activeTab === tab.key ? 'var(--color-primary)' : 'var(--border-subtle)',
-                            color: activeTab === tab.key ? '#000' : 'var(--color-text-2)',
+                            background: activeTab === tab.key ? 'var(--accent-primary)' : 'transparent',
+                            borderColor: activeTab === tab.key ? 'var(--accent-primary)' : 'var(--border-subtle)',
+                            color: activeTab === tab.key ? '#000' : 'var(--text-secondary)',
                             fontSize: '10px', padding: '6px 12px'
                         }}
                     >
@@ -207,7 +207,7 @@ function HeraldAgent() {
                             </div>
                             <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                 <div className="mono text-2xs text-tertiary">ACTIVE DEALS</div>
-                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-primary)' }}>{briefingData.deal_count}</div>
+                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--accent-primary)' }}>{briefingData.deal_count}</div>
                                 <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>
                                     {(briefingData.stale_deals || []).length > 0 ? `[ ERR ] ${(briefingData.stale_deals.length)} STALE` : '[ OK ] ALL NOMINAL'}
                                 </div>
@@ -219,32 +219,32 @@ function HeraldAgent() {
                             </div>
                             <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                 <div className="mono text-2xs text-tertiary">SYSTEM HEALTH</div>
-                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--color-primary)' }}>{briefingData.health_score}/100</div>
-                                <div className="mono text-2xs" style={{ color: 'var(--color-text-2)' }}>[ {briefingData.agents_online}/{briefingData.agents_total} ] AGENTS ONLINE</div>
+                                <div className="mono font-bold" style={{ fontSize: '20px', color: 'var(--accent-primary)' }}>{briefingData.health_score}/100</div>
+                                <div className="mono text-2xs" style={{ color: 'var(--text-secondary)' }}>[ {briefingData.agents_online}/{briefingData.agents_total} ] AGENTS ONLINE</div>
                             </div>
                         </div>
 
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
-                            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
-                                <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// SIGNAL FEEDS</div>
+                            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
+                                <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--accent-primary)' }}>/// SIGNAL FEEDS</div>
                                 <div>
                                     {(briefingData.signals || []).map((s, i) => (
                                         <div key={i} style={{ padding: '12px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <span className="mono text-xs" style={{ color: 'var(--color-text-2)' }}>
+                                            <span className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
                                                 {s.impact >= 9 ? '[CRIT]' : s.impact >= 8 ? '[WARN]' : '[INFO]'} {s.title.toUpperCase()}
                                             </span>
-                                            <span className="mono text-2xs" style={{ color: 'var(--color-primary)' }}>LVL_{s.impact}</span>
+                                            <span className="mono text-2xs" style={{ color: 'var(--accent-primary)' }}>LVL_{s.impact}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
-                                <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// PRIORITY TASKS</div>
+                            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
+                                <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--accent-primary)' }}>/// PRIORITY TASKS</div>
                                 <div>
                                     {(briefingData.top_tasks || []).map((t, i) => (
                                         <div key={i} style={{ padding: '12px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <span className="mono text-xs" style={{ color: 'var(--color-text-2)' }}>
+                                            <span className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
                                                 {t.priority === 'urgent' ? '[PRI_0]' : t.priority === 'high' ? '[PRI_1]' : '[PRI_2]'} {t.title.toUpperCase()}
                                             </span>
                                             <span className="mono text-2xs" style={{ color: t.status === 'done' ? 'var(--color-success)' : 'var(--text-tertiary)' }}>[{t.status.toUpperCase()}]</span>
@@ -258,7 +258,7 @@ function HeraldAgent() {
 
                 {/* ── Preview Tab ── */}
                 {activeTab === 'preview' && briefingData && (
-                    <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '24px' }}>
+                    <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '24px' }}>
                         <pre className="mono text-xs" style={{ color: 'var(--color-success)', whiteSpace: 'pre-wrap', lineHeight: 1.6, margin: 0 }}>
                             {`/// HERALD PAYLOAD
 /// T:${briefingData.date}
@@ -288,8 +288,8 @@ END OF TRANSMISSION.`}
                 {/* ── Config Tab ── */}
                 {activeTab === 'config' && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                        <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// OPERATIONAL SYSTEM RECORD</div>
+                        <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--accent-primary)' }}>/// OPERATIONAL SYSTEM RECORD</div>
                             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(200px, 1fr) 2fr' }}>
                                 {[
                                     { label: 'BOT TARGET', value: '@aiopsinternalbot' },
@@ -309,11 +309,11 @@ END OF TRANSMISSION.`}
                             </div>
                         </div>
 
-                        <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--color-primary)' }}>/// AGENT DIRECTIVES</div>
+                        <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px', background: 'var(--border-subtle)', color: 'var(--accent-primary)' }}>/// AGENT DIRECTIVES</div>
                             <div style={{ padding: '16px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                                 {(agent?.capabilities || []).map(cap => (
-                                    <span key={cap} className="mono text-2xs" style={{ border: '1px solid var(--color-border)', padding: '4px 8px', background: '#000', color: 'var(--color-text-2)' }}>
+                                    <span key={cap} className="mono text-2xs" style={{ border: '1px solid var(--border-default)', padding: '4px 8px', background: '#000', color: 'var(--text-secondary)' }}>
                                         {cap.toUpperCase().replace(/_/g, ' ')}
                                     </span>
                                 ))}

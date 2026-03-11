@@ -141,15 +141,44 @@ const USER_SCOPED_TABLES = new Set([
 
 // ═══ Helper: Generic CRUD operations ═══
 
+// SWR cache — prevents duplicate parallel queries when multiple hooks mount simultaneously
+const _fetchCache = new Map();
+const CACHE_TTL = 5000; // 5 seconds stale-while-revalidate window
+
 export async function fetchAll(table, filters = {}) {
     if (!supabase) return [];
-    let query = supabase.from(table).select('*');
-    Object.entries(filters).forEach(([key, value]) => {
-        query = query.eq(key, value);
-    });
-    const { data, error } = await query.order('created_at', { ascending: false });
-    if (error) { if (import.meta.env.DEV) console.error(`Error fetching ${table}:`, error); return []; }
-    return data;
+
+    const cacheKey = `${table}:${JSON.stringify(filters)}`;
+    const cached = _fetchCache.get(cacheKey);
+    if (cached && Date.now() - cached.ts < CACHE_TTL) {
+        return cached.data;
+    }
+
+    // If there's already an in-flight request for this key, await it instead of duplicating
+    if (cached?.promise) {
+        return cached.promise;
+    }
+
+    const promise = (async () => {
+        let query = supabase.from(table).select('*');
+        Object.entries(filters).forEach(([key, value]) => {
+            query = query.eq(key, value);
+        });
+        const { data, error } = await query.order('created_at', { ascending: false });
+        if (error) { if (import.meta.env.DEV) console.error(`Error fetching ${table}:`, error); return []; }
+        _fetchCache.set(cacheKey, { data: data || [], ts: Date.now(), promise: null });
+        return data || [];
+    })();
+
+    _fetchCache.set(cacheKey, { ...(cached || {}), promise });
+    return promise;
+}
+
+// Bust cache for a table (called after mutations)
+export function invalidateCache(table) {
+    for (const key of _fetchCache.keys()) {
+        if (key.startsWith(`${table}:`)) _fetchCache.delete(key);
+    }
 }
 
 export async function fetchOne(table, id) {
@@ -170,6 +199,7 @@ export async function insertRow(table, row) {
 
     const { data, error } = await supabase.from(table).insert(payload).select().single();
     if (error) { if (import.meta.env.DEV) console.error(`Error inserting into ${table}:`, error); return null; }
+    invalidateCache(table);
     return data;
 }
 
@@ -177,6 +207,7 @@ export async function updateRow(table, id, updates) {
     if (!supabase) return null;
     const { data, error } = await supabase.from(table).update(updates).eq('id', id).select().single();
     if (error) { if (import.meta.env.DEV) console.error(`Error updating ${table}/${id}:`, error); return null; }
+    invalidateCache(table);
     return data;
 }
 
@@ -184,6 +215,7 @@ export async function deleteRow(table, id) {
     if (!supabase) return false;
     const { error } = await supabase.from(table).delete().eq('id', id);
     if (error) { if (import.meta.env.DEV) console.error(`Error deleting from ${table}/${id}:`, error); return false; }
+    invalidateCache(table);
     return true;
 }
 
@@ -199,6 +231,26 @@ export function subscribeToTable(table, callback, filters = {}) {
             table,
             ...filters,
         }, (payload) => callback(payload))
+        .subscribe();
+    return channel;
+}
+
+// Debounced variant — batches rapid-fire events into a single callback
+export function subscribeDebouncedToTable(table, callback, delay = 500) {
+    if (!supabase) return null;
+    let timer = null;
+    let lastPayload = null;
+    const channel = supabase
+        .channel(`${table}_debounced`)
+        .on('postgres_changes', {
+            event: '*',
+            schema: 'public',
+            table,
+        }, (payload) => {
+            lastPayload = payload;
+            clearTimeout(timer);
+            timer = setTimeout(() => callback(lastPayload), delay);
+        })
         .subscribe();
     return channel;
 }

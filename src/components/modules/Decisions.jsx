@@ -30,7 +30,7 @@ function Decisions() {
             {/* ── HEADER ── */}
             <div className="module-header-bar">
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>DECISION LEDGER</h1>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>DECISION LEDGER</h1>
                     <span className="mono text-xs text-tertiary">STRATEGIC ARCHIVES & RATIONALE TRACKING</span>
                 </div>
             </div>
@@ -42,9 +42,9 @@ function Decisions() {
                     <div className="kpi-strip-cell">
                         <div className="kpi-strip-cell-header">
                             <span className="mono text-xs text-tertiary">TOTAL DECISIONS</span>
-                            <span style={{ fontSize: '14px', color: 'var(--color-primary)' }}>⚖️</span>
+                            <span style={{ fontSize: '14px', color: 'var(--accent-primary)' }}>⚖️</span>
                         </div>
-                        <span className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{decisions.length}</span>
+                        <span className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{decisions.length}</span>
                     </div>
                     <div className="kpi-strip-cell">
                         <div className="kpi-strip-cell-header">
@@ -135,9 +135,9 @@ function Decisions() {
                     ) : (
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             {decisions.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0)).map((d, idx) => (
-                                <div key={d.id} style={{ padding: '16px', borderBottom: idx < decisions.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000', borderLeft: `2px solid ${d.status === 'reviewed' ? 'var(--color-success)' : 'var(--color-primary)'}` }}>
+                                <div key={d.id} style={{ padding: '16px', borderBottom: idx < decisions.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000', borderLeft: `2px solid ${d.status === 'reviewed' ? 'var(--color-success)' : 'var(--accent-primary)'}` }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                                        <div className="mono font-bold" style={{ fontSize: '14px', color: 'var(--color-text)' }}>{d.title.toUpperCase()}</div>
+                                        <div className="mono font-bold" style={{ fontSize: '14px', color: 'var(--text-primary)' }}>{d.title.toUpperCase()}</div>
                                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                                             <span className="mono text-xs text-tertiary">{d.decision_date || d.created_at?.split('T')[0]}</span>
                                             <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeDecision(d.id)}>PURGE</button>
@@ -146,13 +146,13 @@ function Decisions() {
 
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                                         {d.context && (
-                                            <div className="mono text-xs" style={{ color: 'var(--color-text-2)' }}>
+                                            <div className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
                                                 <span style={{ color: 'var(--text-tertiary)' }}>CTX:</span> {d.context.toUpperCase()}
                                             </div>
                                         )}
                                         {d.rationale && (
-                                            <div className="mono text-xs" style={{ color: 'var(--color-primary)' }}>
-                                                <span style={{ color: 'var(--color-primary)', opacity: 0.7 }}>LOGIC:</span> {d.rationale.toUpperCase()}
+                                            <div className="mono text-xs" style={{ color: 'var(--accent-primary)' }}>
+                                                <span style={{ color: 'var(--accent-primary)', opacity: 0.7 }}>LOGIC:</span> {d.rationale.toUpperCase()}
                                             </div>
                                         )}
                                         {d.expected_outcome && (

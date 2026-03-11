@@ -82,8 +82,8 @@ function MapEmbed({ leads, selectedId, onSelectLead }) {
             <svg width="100%" height="100%" className="ph-map-grid-svg">
                 {[...Array(11)].map((_, i) => (
                     <g key={i}>
-                        <line x1={`${i * 10}%`} y1="0" x2={`${i * 10}%`} y2="100%" stroke="var(--color-primary)" strokeWidth="0.5" />
-                        <line x1="0" y1={`${i * 10}%`} x2="100%" y2={`${i * 10}%`} stroke="var(--color-primary)" strokeWidth="0.5" />
+                        <line x1={`${i * 10}%`} y1="0" x2={`${i * 10}%`} y2="100%" stroke="var(--accent-primary)" strokeWidth="0.5" />
+                        <line x1="0" y1={`${i * 10}%`} x2="100%" y2={`${i * 10}%`} stroke="var(--accent-primary)" strokeWidth="0.5" />
                     </g>
                 ))}
             </svg>

@@ -14,9 +14,9 @@ export default function ModuleSkeleton({ title, rows = 4, variant = 'table' }) {
         return (
             <div className="fade-in" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {title && <div className="skeleton" style={{ width: '200px', height: '20px' }} />}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
                     {[0, 1, 2, 3].map(i => (
-                        <div key={i} style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <div key={i} style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                             <div className="skeleton" style={{ width: '80px', height: '10px' }} />
                             <div className="skeleton" style={{ width: '50px', height: '22px' }} />
                         </div>
@@ -35,7 +35,7 @@ export default function ModuleSkeleton({ title, rows = 4, variant = 'table' }) {
                 {title && <div className="skeleton" style={{ width: '200px', height: '20px' }} />}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
                     {Array.from({ length: rows }).map((_, i) => (
-                        <div key={i} style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                        <div key={i} style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                             <div className="skeleton" style={{ width: '60%', height: '14px' }} />
                             <div className="skeleton" style={{ width: '100%', height: '10px' }} />
                             <div className="skeleton" style={{ width: '40%', height: '10px' }} />

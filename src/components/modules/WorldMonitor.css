@@ -48,7 +48,7 @@
     justify-content: space-between;
     padding: 12px 16px;
     background: #000;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
 }
 
 .wm-topbar-left {
@@ -60,7 +60,7 @@
 .wm-topbar-title {
     font-family: var(--font-editorial);
     font-size: 20px;
-    color: var(--color-primary);
+    color: var(--accent-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -102,14 +102,14 @@
 }
 
 .wm-time-btn:hover {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
 }
 
 .wm-time-btn.active {
     color: #000;
-    background: var(--color-primary);
-    border-color: var(--color-primary);
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
 }
 
 .wm-topbar-right {
@@ -129,7 +129,7 @@
     font-family: var(--font-mono);
     font-size: 16px;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--text-primary);
 }
 
 .wm-stat-label {
@@ -149,7 +149,7 @@
     z-index: 1000;
     width: 300px;
     background: #000;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     display: flex;
     flex-direction: column;
     transition: width 0.3s;
@@ -171,7 +171,7 @@
     justify-content: center;
     background: transparent;
     border: 1px solid var(--border-subtle);
-    color: var(--color-primary);
+    color: var(--accent-primary);
     font-size: 10px;
     cursor: pointer;
     z-index: 10;
@@ -203,7 +203,7 @@
     text-align: left;
     background: #000;
     border: 1px solid var(--border-subtle);
-    color: var(--color-text-2);
+    color: var(--text-secondary);
     font-family: var(--font-mono);
     font-size: 11px;
     cursor: pointer;
@@ -211,8 +211,8 @@
 }
 
 .wm-layer-btn.active {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
 }
 
 .wm-layer-icon {
@@ -253,7 +253,7 @@
 }
 
 .wm-feed-item:hover {
-    background: var(--color-bg-2);
+    background: var(--surface-raised);
 }
 
 .wm-feed-urgency {
@@ -270,7 +270,7 @@
 .wm-feed-name {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--color-primary);
+    color: var(--accent-primary);
     text-transform: uppercase;
 }
 
@@ -289,7 +289,7 @@
     z-index: 1000;
     width: 340px;
     background: #000;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     padding: 16px;
 }
 
@@ -313,7 +313,7 @@
 .wm-detail-name {
     font-family: var(--font-editorial);
     font-size: 24px;
-    color: var(--color-primary);
+    color: var(--accent-primary);
     line-height: 1.1;
 }
 
@@ -329,7 +329,7 @@
 .wm-detail-body {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--color-text-2);
+    color: var(--text-secondary);
     line-height: 1.5;
     margin-bottom: 16px;
     text-transform: uppercase;
@@ -371,7 +371,7 @@
     gap: 16px;
     padding: 8px 16px;
     background: #000;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
 }
 
 .wm-legend-item {
@@ -392,9 +392,9 @@
 /* Leaflet tooltips */
 .ag-tooltip {
     background: #000;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--accent-primary);
     border-radius: 0;
-    color: var(--color-text);
+    color: var(--text-primary);
     box-shadow: none;
     padding: 8px;
 }

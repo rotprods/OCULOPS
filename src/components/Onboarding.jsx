@@ -45,7 +45,7 @@ const s = {
     justifyContent: 'center',
     background: '#000',
     fontFamily: 'var(--font-sans)',
-    color: 'var(--color-text)',
+    color: 'var(--text-primary)',
   },
   container: {
     width: '100%',
@@ -61,7 +61,7 @@ const s = {
     fontSize: 13,
     letterSpacing: 4,
     textTransform: 'uppercase',
-    color: 'var(--color-primary)',
+    color: 'var(--accent-primary)',
     marginBottom: 8,
   },
   stepIndicator: {
@@ -69,7 +69,7 @@ const s = {
     fontSize: 11,
     letterSpacing: 2,
     textTransform: 'uppercase',
-    color: 'var(--color-text-3)',
+    color: 'var(--text-tertiary)',
   },
   title: {
     fontFamily: 'var(--font-mono)',
@@ -78,7 +78,7 @@ const s = {
     letterSpacing: 1,
     textTransform: 'uppercase',
     marginBottom: 32,
-    color: 'var(--color-text)',
+    color: 'var(--text-primary)',
   },
   label: {
     display: 'block',
@@ -86,7 +86,7 @@ const s = {
     fontSize: 11,
     letterSpacing: 2,
     textTransform: 'uppercase',
-    color: 'var(--color-text-3)',
+    color: 'var(--text-tertiary)',
     marginBottom: 6,
   },
   input: {
@@ -94,7 +94,7 @@ const s = {
     padding: '10px 12px',
     background: '#000',
     border: '1px solid var(--border-subtle)',
-    color: 'var(--color-text)',
+    color: 'var(--text-primary)',
     fontFamily: 'var(--font-sans)',
     fontSize: 14,
     borderRadius: 0,
@@ -106,7 +106,7 @@ const s = {
     padding: '10px 12px',
     background: '#000',
     border: '1px solid var(--border-subtle)',
-    color: 'var(--color-text)',
+    color: 'var(--text-primary)',
     fontFamily: 'var(--font-sans)',
     fontSize: 14,
     borderRadius: 0,
@@ -121,7 +121,7 @@ const s = {
   button: {
     width: '100%',
     padding: '12px 24px',
-    background: 'var(--color-primary)',
+    background: 'var(--accent-primary)',
     color: '#000',
     fontFamily: 'var(--font-mono)',
     fontSize: 12,
@@ -151,7 +151,7 @@ const s = {
   progressDot: (active) => ({
     width: 32,
     height: 3,
-    background: active ? 'var(--color-primary)' : 'var(--color-border)',
+    background: active ? 'var(--accent-primary)' : 'var(--border-default)',
     transition: 'background 0.3s',
   }),
 }
@@ -363,9 +363,9 @@ function StepWorkspace({ user, data, setData, onNext }) {
               style={{
                 flex: 1,
                 padding: '8px 0',
-                background: data.teamSize === size ? 'var(--color-primary)' : '#000',
-                color: data.teamSize === size ? '#000' : 'var(--color-text-3)',
-                border: `1px solid ${data.teamSize === size ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                background: data.teamSize === size ? 'var(--accent-primary)' : '#000',
+                color: data.teamSize === size ? '#000' : 'var(--text-tertiary)',
+                border: `1px solid ${data.teamSize === size ? 'var(--accent-primary)' : 'var(--border-default)'}`,
                 fontFamily: 'var(--font-mono)',
                 fontSize: 11,
                 fontWeight: 600,
@@ -408,7 +408,7 @@ function AnimatedCheckmark({ delay = 0 }) {
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
       <Motion.path
         d="M5 12l5 5L19 7"
-        stroke="var(--color-primary)"
+        stroke="var(--accent-primary)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -457,7 +457,7 @@ function StepActivation({ onComplete }) {
 
       <div style={{
         padding: '16px 20px',
-        border: '1px solid var(--color-primary)',
+        border: '1px solid var(--accent-primary)',
         background: 'rgba(255, 212, 0, 0.03)',
         marginBottom: 32,
         textAlign: 'left',
@@ -467,7 +467,7 @@ function StepActivation({ onComplete }) {
           fontSize: 10,
           letterSpacing: 2,
           textTransform: 'uppercase',
-          color: 'var(--color-primary)',
+          color: 'var(--accent-primary)',
           marginBottom: 8,
         }}>
           COPILOT
@@ -475,7 +475,7 @@ function StepActivation({ onComplete }) {
         <p style={{
           fontFamily: 'var(--font-sans)',
           fontSize: 13,
-          color: 'var(--color-text-2)',
+          color: 'var(--text-secondary)',
           lineHeight: 1.6,
           margin: 0,
           minHeight: 60,
@@ -493,7 +493,7 @@ function StepActivation({ onComplete }) {
               alignItems: 'center',
               gap: 12,
               padding: '12px 16px',
-              border: '1px solid var(--color-border)',
+              border: '1px solid var(--border-default)',
               textAlign: 'left',
             }}
           >
@@ -502,7 +502,7 @@ function StepActivation({ onComplete }) {
               fontFamily: 'var(--font-mono)',
               fontSize: 13,
               letterSpacing: 1,
-              color: 'var(--color-text-2)',
+              color: 'var(--text-secondary)',
             }}>
               {item.label}
             </span>

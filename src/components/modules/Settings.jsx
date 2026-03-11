@@ -35,18 +35,33 @@ function formatPublicValue(key, value) {
 function Settings() {
   const [agency, setAgency] = useState(AGENCY_DEFAULTS)
   const [saved, setSaved] = useState(false)
-  const [activeTab, setActiveTab] = useState('agency')
+  const [activeTab, setActiveTab] = useState('account')
   const [loadingProfile, setLoadingProfile] = useState(true)
 
-  // Load agency settings from Supabase profiles.settings
+  // Account profile state
+  const [profile, setProfile] = useState({ full_name: '', email: '', phone: '', company: '', role_title: '' })
+  const [profileSaved, setProfileSaved] = useState(false)
+  const [passwordFields, setPasswordFields] = useState({ current: '', new: '', confirm: '' })
+  const [passwordMsg, setPasswordMsg] = useState(null)
+
+  // Load profile + agency settings
   useEffect(() => {
     async function loadSettings() {
       if (!supabase) { setLoadingProfile(false); return }
       const userId = await getCurrentUserId()
       if (!userId) { setLoadingProfile(false); return }
-      const { data } = await supabase.from('profiles').select('settings').eq('id', userId).single()
-      if (data?.settings?.agency) {
-        setAgency(prev => ({ ...prev, ...data.settings.agency }))
+      const { data } = await supabase.from('profiles').select('*').eq('id', userId).single()
+      if (data) {
+        setProfile({
+          full_name: data.full_name || '',
+          email: data.email || '',
+          phone: data.phone || '',
+          company: data.company || '',
+          role_title: data.role_title || '',
+        })
+        if (data.settings?.agency) {
+          setAgency(prev => ({ ...prev, ...data.settings.agency }))
+        }
       }
       setLoadingProfile(false)
     }
@@ -90,7 +105,33 @@ function Settings() {
     window.location.reload()
   }
 
+  const saveProfile = useCallback(async () => {
+    const userId = await getCurrentUserId()
+    if (!userId) return
+    await supabase.from('profiles').update({
+      full_name: profile.full_name,
+      phone: profile.phone || null,
+      company: profile.company || null,
+      role_title: profile.role_title || null,
+      updated_at: new Date().toISOString(),
+    }).eq('id', userId)
+    setProfileSaved(true)
+    setTimeout(() => setProfileSaved(false), 2000)
+  }, [profile])
+
+  const changePassword = useCallback(async () => {
+    setPasswordMsg(null)
+    if (passwordFields.new.length < 6) return setPasswordMsg({ type: 'error', text: 'Mínimo 6 caracteres' })
+    if (passwordFields.new !== passwordFields.confirm) return setPasswordMsg({ type: 'error', text: 'Las contraseñas no coinciden' })
+    const { error } = await supabase.auth.updateUser({ password: passwordFields.new })
+    if (error) return setPasswordMsg({ type: 'error', text: error.message })
+    setPasswordMsg({ type: 'success', text: 'Contraseña actualizada' })
+    setPasswordFields({ current: '', new: '', confirm: '' })
+    setTimeout(() => setPasswordMsg(null), 3000)
+  }, [passwordFields])
+
   const tabs = [
+    { id: 'account', label: '00. ACCOUNT' },
     { id: 'agency', label: '01. DIRECTIVE PROFILE' },
     { id: 'integrations', label: '02. INTEGRATION MATRIX' },
     { id: 'system', label: '03. SYSTEM CORE' },
@@ -99,9 +140,9 @@ function Settings() {
   return (
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>SYSTEM CONFIGURATION</h1>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>SYSTEM CONFIGURATION</h1>
           <span className="mono text-xs text-tertiary">AGENCY PROFILE, INTEGRATION SECRETS & SYSTEM CORE SETTINGS</span>
         </div>
         <div style={{ display: 'flex', gap: '2px' }}>
@@ -109,7 +150,7 @@ function Settings() {
             <button
               key={t.id}
               className="mono"
-              style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t.id ? 'var(--color-primary)' : 'transparent', color: activeTab === t.id ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
+              style={{ padding: '8px 16px', fontSize: '10px', background: activeTab === t.id ? 'var(--accent-primary)' : 'transparent', color: activeTab === t.id ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
               onClick={() => setActiveTab(t.id)}
             >
               {t.label}
@@ -119,9 +160,73 @@ function Settings() {
       </div>
 
       <div style={{ flex: 1, overflowY: 'auto' }}>
+        {activeTab === 'account' && (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            {/* Profile */}
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// OPERATOR PROFILE</div>
+              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div className="input-group">
+                  <label className="mono text-xs">NOMBRE COMPLETO</label>
+                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.full_name} onChange={e => setProfile(p => ({ ...p, full_name: e.target.value }))} />
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">EMAIL</label>
+                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px', opacity: 0.5 }} value={profile.email} disabled />
+                  <span className="mono" style={{ fontSize: 9, color: 'var(--text-tertiary)' }}>Gestionado por Supabase Auth</span>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div className="input-group">
+                    <label className="mono text-xs">TELÉFONO</label>
+                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.phone} onChange={e => setProfile(p => ({ ...p, phone: e.target.value }))} placeholder="+34 600 000 000" />
+                  </div>
+                  <div className="input-group">
+                    <label className="mono text-xs">CARGO</label>
+                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.role_title} onChange={e => setProfile(p => ({ ...p, role_title: e.target.value }))} placeholder="CEO, CTO..." />
+                  </div>
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">EMPRESA</label>
+                  <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={profile.company} onChange={e => setProfile(p => ({ ...p, company: e.target.value }))} placeholder="Tu empresa" />
+                </div>
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+                  <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: profileSaved ? 'var(--accent-primary)' : '#000', color: profileSaved ? '#000' : 'var(--accent-primary)', borderRadius: 0, padding: '12px 24px' }} onClick={saveProfile}>
+                    {profileSaved ? 'PERFIL GUARDADO' : 'GUARDAR PERFIL'}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Password */}
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)' }}>/// CAMBIAR CONTRASEÑA</div>
+              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div className="input-group">
+                  <label className="mono text-xs">NUEVA CONTRASEÑA</label>
+                  <input className="input mono text-xs" type="password" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={passwordFields.new} onChange={e => setPasswordFields(p => ({ ...p, new: e.target.value }))} placeholder="Mínimo 6 caracteres" />
+                </div>
+                <div className="input-group">
+                  <label className="mono text-xs">CONFIRMAR CONTRASEÑA</label>
+                  <input className="input mono text-xs" type="password" style={{ border: '1px solid var(--border-subtle)', borderRadius: 0, padding: '10px' }} value={passwordFields.confirm} onChange={e => setPasswordFields(p => ({ ...p, confirm: e.target.value }))} placeholder="Repetir contraseña" />
+                </div>
+                {passwordMsg && (
+                  <div className="mono text-xs" style={{ padding: '8px 12px', border: `1px solid ${passwordMsg.type === 'error' ? 'rgba(255,51,51,0.2)' : 'rgba(255,212,0,0.2)'}`, color: passwordMsg.type === 'error' ? 'var(--color-danger)' : 'var(--accent-primary)' }}>
+                    {passwordMsg.text}
+                  </div>
+                )}
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+                  <button className="btn mono" style={{ border: '1px solid var(--color-warning)', background: '#000', color: 'var(--color-warning)', borderRadius: 0, padding: '12px 24px' }} onClick={changePassword} disabled={!passwordFields.new}>
+                    ACTUALIZAR CONTRASEÑA
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {activeTab === 'agency' && (
-          <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// CORE AGENCY PARAMETERS</div>
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CORE AGENCY PARAMETERS</div>
             <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) minmax(250px, 1fr)', gap: '16px' }}>
                 <div className="input-group">
@@ -153,7 +258,7 @@ function Settings() {
               </div>
 
               <div style={{ marginTop: '16px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
-                <button className="btn mono" style={{ border: '1px solid var(--color-primary)', background: saved ? 'var(--color-primary)' : '#000', color: saved ? '#000' : 'var(--color-primary)', borderRadius: 0, padding: '12px 24px' }} onClick={saveAgency}>
+                <button className="btn mono" style={{ border: '1px solid var(--accent-primary)', background: saved ? 'var(--accent-primary)' : '#000', color: saved ? '#000' : 'var(--accent-primary)', borderRadius: 0, padding: '12px 24px' }} onClick={saveAgency}>
                   {saved ? 'PARAMETERS SECURED' : 'SECURE NEW PARAMETERS'}
                 </button>
               </div>
@@ -163,8 +268,8 @@ function Settings() {
 
         {activeTab === 'integrations' && (
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '32px' }}>
-            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', gap: '16px' }}>
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', gap: '16px' }}>
                 <span>/// PUBLIC RUNTIME MATRIX</span>
                 <span style={{ color: 'var(--color-info)' }}>[READ ONLY]</span>
               </div>
@@ -179,7 +284,7 @@ function Settings() {
                       return (
                         <tr key={key} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
                           <td style={{ padding: '12px 0' }}>
-                            <div style={{ fontWeight: 'bold', color: 'var(--color-text)', marginBottom: '4px' }}>{label}</div>
+                            <div style={{ fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '4px' }}>{label}</div>
                             <div style={{ color: 'var(--text-tertiary)' }}>{key}</div>
                           </td>
                           <td style={{ padding: '12px 0', textAlign: 'right', color: val ? 'var(--color-success)' : 'var(--color-danger)' }}>
@@ -193,8 +298,8 @@ function Settings() {
               </div>
             </div>
 
-            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-warning)', display: 'flex', gap: '16px' }}>
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)', display: 'flex', gap: '16px' }}>
                 <span>/// PROTECTED ASSETS</span>
                 <span style={{ color: 'var(--color-danger)' }}>[BACKEND DEPLOYMENT ONLY]</span>
               </div>
@@ -207,8 +312,8 @@ function Settings() {
                     {protectedIntegrations.map(({ label, location }) => (
                       <tr key={label} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
                         <td style={{ padding: '12px 0' }}>
-                          <div style={{ fontWeight: 'bold', color: 'var(--color-text)', marginBottom: '4px' }}>{label}</div>
-                          <div style={{ color: 'var(--color-text-2)' }}>{location}</div>
+                          <div style={{ fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '4px' }}>{label}</div>
+                          <div style={{ color: 'var(--text-secondary)' }}>{location}</div>
                         </td>
                         <td style={{ padding: '12px 0', textAlign: 'right', color: 'var(--text-tertiary)' }}>
                           NON_VISIBLE_CLIENT
@@ -224,8 +329,8 @@ function Settings() {
 
         {activeTab === 'system' && (
           <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
-            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// CORE OVERVIEW</div>
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CORE OVERVIEW</div>
               <div style={{ padding: '24px' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                   <tbody>
@@ -237,8 +342,8 @@ function Settings() {
                       { label: 'NODE ENVIRONMENT', value: import.meta.env.MODE.toUpperCase() },
                     ].map(({ label, value }) => (
                       <tr key={label} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                        <td style={{ padding: '12px 0', color: 'var(--color-text-2)' }}>{label}</td>
-                        <td style={{ padding: '12px 0', textAlign: 'right', color: 'var(--color-primary)', fontWeight: 'bold' }}>{value}</td>
+                        <td style={{ padding: '12px 0', color: 'var(--text-secondary)' }}>{label}</td>
+                        <td style={{ padding: '12px 0', textAlign: 'right', color: 'var(--accent-primary)', fontWeight: 'bold' }}>{value}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -246,8 +351,8 @@ function Settings() {
               </div>
             </div>
 
-            <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', flexDirection: 'column' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-warning)' }}>/// MEMORY CONTROL</div>
+            <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-warning)' }}>/// MEMORY CONTROL</div>
               <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <p className="mono text-xs" style={{ color: 'var(--text-tertiary)', lineHeight: '1.4' }}>
                   WIPE LOCAL BROWSER CACHE (LOCALSTORAGE). ACTIVE SUPABASE DB LAYER IS UNAFFECTED.

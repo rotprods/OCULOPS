@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, insertRow, updateRow, deleteRow, subscribeToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
+import { supabase, insertRow, updateRow, deleteRow, subscribeDebouncedToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
 
 export function useCompanies(filters = {}) {
     const [companies, setCompanies] = useState([])
@@ -39,7 +39,7 @@ export function useCompanies(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('companies', (payload) => {
+        const channel = subscribeDebouncedToTable('companies', (payload) => {
             if (payload.eventType === 'DELETE') {
                 setCompanies(prev => prev.filter(c => c.id !== payload.old.id))
                 return

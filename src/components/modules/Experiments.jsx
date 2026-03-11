@@ -34,7 +34,7 @@ function Experiments() {
             {/* ── HEADER ── */}
             <div className="module-header-bar">
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>R&D OUTPOST</h1>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>R&D OUTPOST</h1>
                     <span className="mono text-xs text-tertiary">GROWTH EXPERIMENTS & HYPOTHESIS TESTING</span>
                 </div>
             </div>
@@ -48,7 +48,7 @@ function Experiments() {
                             <span className="mono text-xs text-tertiary">ACTIVE EXPERIMENTS</span>
                             <span style={{ fontSize: '14px', color: 'var(--color-info)' }}>🔬</span>
                         </div>
-                        <span className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{active.length}</span>
+                        <span className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{active.length}</span>
                     </div>
                     <div className="kpi-strip-cell">
                         <div className="kpi-strip-cell-header">
@@ -79,10 +79,10 @@ function Experiments() {
                                         <div key={exp.id} style={{ padding: '16px', borderBottom: idx < active.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000', borderLeft: '2px solid var(--color-info)' }}>
                                             <div className="kpi-strip-cell-header">
                                                 <div>
-                                                    <div className="mono font-bold" style={{ color: 'var(--color-text)', fontSize: '14px' }}>{exp.name.toUpperCase()}</div>
+                                                    <div className="mono font-bold" style={{ color: 'var(--text-primary)', fontSize: '14px' }}>{exp.name.toUpperCase()}</div>
                                                     <div className="mono text-xs" style={{ color: 'var(--color-info)', marginTop: '4px' }}>HYP_1: {exp.hypothesis.toUpperCase()}</div>
                                                     <div className="mono" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '8px' }}>
-                                                        METRIC: <span style={{ color: 'var(--color-text)' }}>{(exp.metric || 'N/A').toUpperCase()}</span> <span style={{ margin: '0 8px' }}>|</span>
+                                                        METRIC: <span style={{ color: 'var(--text-primary)' }}>{(exp.metric || 'N/A').toUpperCase()}</span> <span style={{ margin: '0 8px' }}>|</span>
                                                         TARGET: <span style={{ color: 'var(--color-success)' }}>{(exp.target_value || 'N/A').toUpperCase()}</span> <span style={{ margin: '0 8px' }}>|</span>
                                                         BASELINE: <span style={{ color: 'var(--color-warning)' }}>{(exp.baseline || 'N/A').toUpperCase()}</span>
                                                     </div>
@@ -115,7 +115,7 @@ function Experiments() {
                                     <tbody>
                                         {concluded.map((exp, idx) => (
                                             <tr key={exp.id} style={{ borderBottom: idx < concluded.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000' }}>
-                                                <td style={{ color: 'var(--color-text)', fontWeight: 'bold' }}>{exp.name.toUpperCase()}</td>
+                                                <td style={{ color: 'var(--text-primary)', fontWeight: 'bold' }}>{exp.name.toUpperCase()}</td>
                                                 <td>
                                                     <span style={{ fontSize: '9px', padding: '2px 6px', border: `1px solid var(--color-${exp.result === 'success' ? 'success' : 'danger'})`, color: `var(--color-${exp.result === 'success' ? 'success' : 'danger'})` }}>
                                                         {exp.result === 'success' ? 'PROVEN' : 'REJECTED'}

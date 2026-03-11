@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, fetchAll, subscribeToTable } from '../lib/supabase'
+import { supabase, fetchAll, subscribeDebouncedToTable } from '../lib/supabase'
 
 async function getAccessToken() {
     if (!supabase) return import.meta.env.VITE_SUPABASE_ANON_KEY || null
@@ -50,11 +50,11 @@ export function useAgents() {
         // Realtime subscriptions
         const channels = []
         if (supabase) {
-            channels.push(subscribeToTable('agent_registry', () => refresh()))
-            channels.push(subscribeToTable('agent_tasks', () => refresh()))
-            channels.push(subscribeToTable('agent_logs', () => refresh()))
-            channels.push(subscribeToTable('agent_messages', () => refresh()))
-            channels.push(subscribeToTable('agent_api_logs', () => refresh()))
+            channels.push(subscribeDebouncedToTable('agent_registry', () => refresh(), 800))
+            channels.push(subscribeDebouncedToTable('agent_tasks', () => refresh(), 800))
+            channels.push(subscribeDebouncedToTable('agent_logs', () => refresh(), 800))
+            channels.push(subscribeDebouncedToTable('agent_messages', () => refresh(), 800))
+            channels.push(subscribeDebouncedToTable('agent_api_logs', () => refresh(), 800))
         }
 
         return () => {

@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { supabase, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 import { executeAutomationWorkflow, triggerAutomationWorkflows } from '../lib/automation'
 
 export function useAutomation() {
@@ -61,7 +61,7 @@ export function useAutomation() {
     useEffect(() => {
         loadWorkflows()
         const channels = [
-            subscribeToTable('automation_workflows', (payload) => {
+            subscribeDebouncedToTable('automation_workflows', (payload) => {
                 if (payload.eventType === 'DELETE') {
                     setWorkflows(prev => prev.filter(w => w.id !== payload.old.id))
                     return
@@ -69,7 +69,7 @@ export function useAutomation() {
 
                 loadWorkflows()
             }),
-            subscribeToTable('automation_runs', () => {
+            subscribeDebouncedToTable('automation_runs', () => {
                 if (activeWorkflowId) loadRuns(activeWorkflowId)
                 loadWorkflows()
             }),

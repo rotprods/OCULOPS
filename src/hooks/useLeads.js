@@ -9,7 +9,7 @@ import {
     getCurrentUserId,
     insertRow,
     scopeUserQuery,
-    subscribeToTable,
+    subscribeDebouncedToTable,
     supabase,
     updateRow,
 } from '../lib/supabase'
@@ -83,7 +83,7 @@ export function useLeads() {
     useEffect(() => {
         load()
 
-        const channel = subscribeToTable('prospector_leads', () => {
+        const channel = subscribeDebouncedToTable('prospector_leads', () => {
             load()
         })
 

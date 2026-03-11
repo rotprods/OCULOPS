@@ -47,16 +47,16 @@ function Execution() {
       {/* ── HEADER ── */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: '16px', borderBottom: '1px solid var(--border-subtle)', marginBottom: '24px' }}>
         <div>
-          <h1 style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0, fontSize: '24px', textTransform: 'uppercase' }}>&gt; EXEC_MATRIX_V10.3.sh</h1>
+          <h1 style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0, fontSize: '24px', textTransform: 'uppercase' }}>&gt; EXEC_MATRIX_V10.3.sh</h1>
           <p className="mono font-bold" style={{ marginTop: '8px', fontSize: '10px', color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>30-DAY ESCALATION PROTOCOL: 0 TO $20K/MO. SELECT DIRECTIVE TO MUTATE SYS_STATE.</p>
         </div>
       </div>
 
       {/* ── Progress KPIs ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--color-primary)', marginBottom: '24px', boxShadow: 'inset 0 0 10px rgba(255,215,0,0.05)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--accent-primary)', marginBottom: '24px', boxShadow: 'inset 0 0 10px rgba(255,215,0,0.05)' }}>
         <div style={{ background: '#000', padding: '16px' }}>
           <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>CURRENT VECTOR</div>
-          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-primary)', textShadow: '0 0 10px rgba(255,215,0,0.3)' }}>DAY {currentDay}</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--accent-primary)', textShadow: '0 0 10px rgba(255,215,0,0.3)' }}>DAY {currentDay}</div>
         </div>
         <div style={{ background: '#000', padding: '16px' }}>
           <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>COMPLETION TRAJECTORY</div>
@@ -72,9 +72,9 @@ function Execution() {
       <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 
         {/* Toolbar */}
-        <div style={{ padding: '16px', background: 'var(--color-bg-2)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="mono text-xs font-bold" style={{ color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: 'var(--color-primary)' }}>root@oculops:~#</span>
+        <div style={{ padding: '16px', background: 'var(--surface-raised)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="mono text-xs font-bold" style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: 'var(--accent-primary)' }}>root@oculops:~#</span>
             <span>cat ./directives.log | filter --status</span>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
@@ -84,9 +84,9 @@ function Execution() {
                 className="btn btn-ghost mono text-2xs font-bold"
                 style={{
                   padding: '6px 12px',
-                  background: filterStatus === f ? 'var(--color-primary)' : 'transparent',
+                  background: filterStatus === f ? 'var(--accent-primary)' : 'transparent',
                   color: filterStatus === f ? '#000' : 'var(--text-tertiary)',
-                  border: filterStatus === f ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)',
+                  border: filterStatus === f ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
                   borderRadius: 0,
                   textTransform: 'uppercase'
                 }}
@@ -100,7 +100,7 @@ function Execution() {
 
         {/* Progress bar */}
         <div style={{ background: '#000', height: '1px', width: '100%' }}>
-          <div style={{ width: `${completionRate}%`, height: '1px', background: 'var(--color-primary)', boxShadow: '0 0 5px var(--color-primary)' }} />
+          <div style={{ width: `${completionRate}%`, height: '1px', background: 'var(--accent-primary)', boxShadow: '0 0 5px var(--accent-primary)' }} />
         </div>
 
         {/* List */}
@@ -108,9 +108,9 @@ function Execution() {
           {tasks.length === 0 && !loading ? (
             <div style={{ height: '100%', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', color: 'var(--text-tertiary)', textAlign: 'center', padding: '40px' }}>
               <div className="mono font-bold" style={{ fontSize: '24px', marginBottom: '16px', color: 'var(--color-danger)' }}>ERR: [ NULL POINTER EXCEPTION ]</div>
-              <h3 className="mono font-bold" style={{ fontSize: '12px', color: 'var(--color-text)', marginBottom: '8px', letterSpacing: '0.1em' }}>EXECUTION MATRIX UNINITIALIZED</h3>
+              <h3 className="mono font-bold" style={{ fontSize: '12px', color: 'var(--text-primary)', marginBottom: '8px', letterSpacing: '0.1em' }}>EXECUTION MATRIX UNINITIALIZED</h3>
               <p className="mono font-bold" style={{ fontSize: '10px', marginBottom: '32px' }}>AWAITING ROOT PROTOCOL INJECTION (0 TO 20K PLAN).</p>
-              <button className="btn btn-ghost mono font-bold" style={{ border: '1px solid var(--color-primary)', background: 'var(--color-primary)', color: '#000', padding: '12px 24px', borderRadius: 0, letterSpacing: '0.1em' }} onClick={seedDefaultPlan} disabled={seeding}>
+              <button className="btn btn-ghost mono font-bold" style={{ border: '1px solid var(--accent-primary)', background: 'var(--accent-primary)', color: '#000', padding: '12px 24px', borderRadius: 0, letterSpacing: '0.1em' }} onClick={seedDefaultPlan} disabled={seeding}>
                 {seeding ? './inject --force ...' : 'sudo ./initialize_protocol.sh'}
               </button>
             </div>
@@ -138,12 +138,12 @@ function Execution() {
                 >
                   <span style={{ fontSize: '10px', color: 'var(--text-tertiary)', width: '24px', textAlign: 'right' }}>{(index + 1).toString().padStart(3, '0')}</span>
                   <span style={{ fontSize: '11px', color: sm.color, width: '32px', flexShrink: 0, fontWeight: 'bold' }}>{sm.icon}</span>
-                  <span style={{ fontSize: '11px', color: 'var(--color-primary)', width: '32px', flexShrink: 0, fontWeight: 'bold' }}>D{String(task.day).padStart(2, '0')}</span>
-                  <span style={{ flex: 1, color: isDone ? 'var(--text-tertiary)' : 'var(--color-text)', textDecoration: isDone ? 'line-through' : 'none', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--accent-primary)', width: '32px', flexShrink: 0, fontWeight: 'bold' }}>D{String(task.day).padStart(2, '0')}</span>
+                  <span style={{ flex: 1, color: isDone ? 'var(--text-tertiary)' : 'var(--text-primary)', textDecoration: isDone ? 'line-through' : 'none', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     {task.task || task.title}
                   </span>
                   {task.gate && (
-                    <span style={{ fontSize: '9px', padding: '2px 6px', background: 'var(--color-bg-2)', border: '1px solid var(--color-warning)', color: 'var(--color-warning)', textTransform: 'uppercase', fontWeight: 'bold' }}>GATE: {task.gate}</span>
+                    <span style={{ fontSize: '9px', padding: '2px 6px', background: 'var(--surface-raised)', border: '1px solid var(--color-warning)', color: 'var(--color-warning)', textTransform: 'uppercase', fontWeight: 'bold' }}>GATE: {task.gate}</span>
                   )}
                 </div>
               )

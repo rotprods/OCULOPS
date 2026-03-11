@@ -20,7 +20,7 @@
     align-items: center;
     gap: var(--space-3);
     padding: 14px var(--space-4);
-    background: var(--color-bg-3);
+    background: var(--surface-elevated);
     background-image: var(--gradient-surface);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
@@ -30,7 +30,7 @@
     pointer-events: all;
     animation: toastIn 0.35s cubic-bezier(0.23, 1, 0.32, 1);
     font-size: var(--text-sm);
-    color: var(--color-text);
+    color: var(--text-primary);
     position: relative;
     overflow: hidden;
 }
@@ -89,7 +89,7 @@
 }
 
 .toast-close:hover {
-    color: var(--color-text);
+    color: var(--text-primary);
     background: rgba(255, 255, 255, 0.06);
 }
 

@@ -41,7 +41,7 @@ function Finance() {
       {/* ── HEADER ── */}
       <div className="module-header-bar">
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>CASHFLOW MATRICES</h1>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>CASHFLOW MATRICES</h1>
           <span className="mono text-xs text-tertiary">REVENUE VELOCITY, NET BURN & MARGIN LEDGERS</span>
         </div>
       </div>
@@ -74,9 +74,9 @@ function Finance() {
           <div className="kpi-strip-cell">
             <div className="kpi-strip-cell-header">
               <span className="mono text-xs text-tertiary">PROFIT MARGIN</span>
-              <span style={{ fontSize: '14px', color: 'var(--color-primary)' }}>📈</span>
+              <span style={{ fontSize: '14px', color: 'var(--accent-primary)' }}>📈</span>
             </div>
-            <span className="mono text-lg font-bold" style={{ color: 'var(--color-text)' }}>{margin}%</span>
+            <span className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{margin}%</span>
           </div>
         </div>
 
@@ -86,7 +86,7 @@ function Finance() {
               <span>/// FISCAL LOG [{filtered.length}]</span>
               <div style={{ display: 'flex', gap: '8px' }}>
                 {['all', 'revenue', 'expense'].map(f => (
-                  <button key={f} className="mono" style={{ fontSize: '9px', padding: '4px 8px', background: filter === f ? 'var(--color-primary)' : 'transparent', color: filter === f ? '#000' : 'var(--color-text)', border: filter === f ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)', cursor: 'pointer' }} onClick={() => setFilter(f)}>
+                  <button key={f} className="mono" style={{ fontSize: '9px', padding: '4px 8px', background: filter === f ? 'var(--accent-primary)' : 'transparent', color: filter === f ? '#000' : 'var(--text-primary)', border: filter === f ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)', cursor: 'pointer' }} onClick={() => setFilter(f)}>
                     {f === 'all' ? 'FULL LOG' : f === 'revenue' ? 'INFLOW' : 'BURN'}
                   </button>
                 ))}
@@ -112,7 +112,7 @@ function Finance() {
                       <td style={{ color: 'var(--text-tertiary)' }}>{e.date}</td>
                       <td style={{ fontWeight: 'bold' }}>{(e.description || '').toUpperCase()}</td>
                       <td>
-                        <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)' }}>{(e.category || '').toUpperCase()}</span>
+                        <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>{(e.category || '').toUpperCase()}</span>
                       </td>
                       <td>
                         <span style={{ fontSize: '9px', padding: '2px 6px', border: `1px solid var(--color-${e.type === 'revenue' ? 'success' : 'danger'})`, color: `var(--color-${e.type === 'revenue' ? 'success' : 'danger'})` }}>

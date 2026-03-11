@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useAlerts() {
     const [alerts, setAlerts] = useState([])
@@ -24,7 +24,7 @@ export function useAlerts() {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('alerts', (payload) => {
+        const channel = subscribeDebouncedToTable('alerts', (payload) => {
             if (payload.eventType === 'INSERT') setAlerts(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setAlerts(prev => prev.map(a => a.id === payload.new.id ? payload.new : a))
         })

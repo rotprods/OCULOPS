@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 import { computeNicheScore } from '../lib/ceoScore'
 
 export function useNiches(filters = {}) {
@@ -26,7 +26,7 @@ export function useNiches(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('niches', (payload) => {
+        const channel = subscribeDebouncedToTable('niches', (payload) => {
             if (payload.eventType === 'INSERT') setNiches(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setNiches(prev => prev.map(n => n.id === payload.new.id ? payload.new : n))
             else if (payload.eventType === 'DELETE') setNiches(prev => prev.filter(n => n.id !== payload.old.id))

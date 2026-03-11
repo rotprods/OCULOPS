@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useSignals(filters = {}) {
     const [signals, setSignals] = useState([])
@@ -25,7 +25,7 @@ export function useSignals(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('signals', (payload) => {
+        const channel = subscribeDebouncedToTable('signals', (payload) => {
             if (payload.eventType === 'INSERT') setSignals(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setSignals(prev => prev.map(s => s.id === payload.new.id ? payload.new : s))
             else if (payload.eventType === 'DELETE') setSignals(prev => prev.filter(s => s.id !== payload.old.id))

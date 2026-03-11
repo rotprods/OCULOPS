@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { subscribeToTable, supabase } from '../lib/supabase'
+import { subscribeDebouncedToTable, supabase } from '../lib/supabase'
 
 const BASE = import.meta.env.VITE_SUPABASE_URL
 const ANON = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -50,7 +50,7 @@ export function useMessagingChannels() {
 
     useEffect(() => {
         loadChannels()
-        const channel = subscribeToTable('messaging_channels', () => loadChannels())
+        const channel = subscribeDebouncedToTable('messaging_channels', () => loadChannels())
         return () => channel?.unsubscribe()
     }, [loadChannels])
 

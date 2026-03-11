@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, fetchAll, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { supabase, fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useCampaigns() {
     const [campaigns, setCampaigns] = useState([])
@@ -38,7 +38,7 @@ export function useCampaigns() {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('campaigns', (payload) => {
+        const channel = subscribeDebouncedToTable('campaigns', (payload) => {
             if (payload.eventType === 'INSERT') setCampaigns(prev => [...prev, payload.new])
             else if (payload.eventType === 'UPDATE') setCampaigns(prev => prev.map(c => c.id === payload.new.id ? payload.new : c))
             else if (payload.eventType === 'DELETE') setCampaigns(prev => prev.filter(c => c.id !== payload.old.id))

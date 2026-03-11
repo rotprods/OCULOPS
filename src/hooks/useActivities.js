@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, insertRow, deleteRow, subscribeToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
+import { supabase, insertRow, deleteRow, subscribeDebouncedToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
 
 export function useActivities(filters = {}) {
     const [activities, setActivities] = useState([])
@@ -49,7 +49,7 @@ export function useActivities(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('crm_activities', (payload) => {
+        const channel = subscribeDebouncedToTable('crm_activities', (payload) => {
             if (payload.eventType === 'DELETE') {
                 setActivities(prev => prev.filter(activity => activity.id !== payload.old.id))
                 return

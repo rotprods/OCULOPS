@@ -1,69 +1,289 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useOrg } from '../hooks/useOrg'
-import { RocketLaunchIcon } from '@heroicons/react/24/solid'
+import { supabase } from '../lib/supabase'
+
+const STEPS = [
+  { id: 'profile', label: 'OPERATOR PROFILE', num: '01' },
+  { id: 'org',     label: 'ORGANIZATION',     num: '02' },
+  { id: 'ready',   label: 'LAUNCH',           num: '03' },
+]
 
 export default function OnboardingSetup() {
-    const { createOrganization, loading } = useOrg()
-    const [orgName, setOrgName] = useState('')
-    const [error, setError] = useState(null)
+  const { createOrganization, loading: orgLoading } = useOrg()
+  const [step, setStep] = useState(0)
+  const [error, setError] = useState(null)
+  const [saving, setSaving] = useState(false)
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (!orgName.trim()) return
-        setError(null)
+  // Profile fields
+  const [fullName, setFullName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [company, setCompany] = useState('')
+  const [roleTitle, setRoleTitle] = useState('')
 
-        try {
-            await createOrganization(orgName)
-            // The useOrg hook automatically sets this new org as current, 
-            // effectively redirecting the user to the dashboard via App.jsx logic
-        } catch (err) {
-            setError('Failed to create organization. Please try again.')
-        }
+  // Org field
+  const [orgName, setOrgName] = useState('')
+
+  // Pre-fill from auth metadata
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user?.user_metadata?.full_name) setFullName(user.user_metadata.full_name)
+    })
+  }, [])
+
+  const handleProfileNext = async () => {
+    if (!fullName.trim()) return setError('Nombre requerido')
+    setSaving(true)
+    setError(null)
+
+    const { error: err } = await supabase
+      .from('profiles')
+      .update({
+        full_name: fullName.trim(),
+        phone: phone.trim() || null,
+        company: company.trim() || null,
+        role_title: roleTitle.trim() || null,
+      })
+      .eq('id', (await supabase.auth.getUser()).data.user.id)
+
+    if (err) {
+      setError('Error guardando perfil')
+      setSaving(false)
+      return
     }
+    setSaving(false)
+    setStep(1)
+  }
 
-    return (
-        <div className="min-h-screen bg-[#050505] text-white flex items-center justify-center p-4 font-mono">
-            <div className="max-w-md w-full bg-[#0A0A0A] border border-slate-800 p-8 rounded-lg shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-600"></div>
+  const handleOrgCreate = async () => {
+    if (!orgName.trim()) return setError('Nombre de organización requerido')
+    setError(null)
 
-                <div className="flex justify-center mb-6">
-                    <div className="bg-slate-900 p-3 rounded-full border border-slate-700">
-                        <RocketLaunchIcon className="h-8 w-8 text-cyan-400" />
-                    </div>
-                </div>
+    try {
+      await createOrganization(orgName.trim())
+      // Mark onboarding complete
+      await supabase.rpc('complete_onboarding', {
+        p_phone: phone.trim() || null,
+        p_company: company.trim() || null,
+        p_role_title: roleTitle.trim() || null,
+      })
+      setStep(2)
+      // Auto-redirect after brief confirmation
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000)
+    } catch (err) {
+      setError('Error creando organización')
+    }
+  }
 
-                <h1 className="text-2xl font-bold text-center mb-2 tracking-tight">Initialize Protocol</h1>
-                <p className="text-slate-400 text-center text-sm mb-8">
-                    Welcome to OCULOPS v2. To begin operations, establish your primary organization entity.
-                </p>
+  const currentStep = STEPS[step]
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label className="block text-xs uppercase text-slate-500 mb-2">Organization Name</label>
-                        <input
-                            type="text"
-                            value={orgName}
-                            onChange={(e) => setOrgName(e.target.value)}
-                            className="w-full bg-[#050505] border border-slate-700 rounded p-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
-                            placeholder="e.g. Acme Corp, Stark Industries"
-                            autoFocus
-                        />
-                    </div>
+  return (
+    <div style={{
+      minHeight: '100vh', background: 'var(--surface-base)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: 'var(--font-sans)', padding: 20,
+    }}>
+      <div style={{
+        width: '100%', maxWidth: 480,
+        background: 'var(--surface-raised)', border: '1px solid var(--border-default)',
+        padding: '40px 32px', position: 'relative',
+      }}>
+        {/* Gold top accent */}
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, height: 2,
+          background: 'var(--accent-primary)',
+        }} />
 
-                    {error && <div className="text-red-500 text-xs bg-red-500/10 p-2 rounded border border-red-500/20">{error}</div>}
-
-                    <button
-                        type="submit"
-                        disabled={loading || !orgName}
-                        className={`w-full py-3 rounded font-bold text-sm tracking-wide transition-all ${loading || !orgName
-                                ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                                : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-[0_0_15px_rgba(8,145,178,0.5)]'
-                            }`}
-                    >
-                        {loading ? 'INITIALIZING...' : 'ESTABLISH HQ'}
-                    </button>
-                </form>
+        {/* Step indicator */}
+        <div style={{
+          display: 'flex', gap: 8, marginBottom: 32,
+        }}>
+          {STEPS.map((s, i) => (
+            <div key={s.id} style={{
+              flex: 1, display: 'flex', flexDirection: 'column', gap: 4,
+            }}>
+              <div style={{
+                height: 2,
+                background: i <= step ? 'var(--accent-primary)' : 'var(--border-default)',
+                transition: 'background 0.3s',
+              }} />
+              <div style={{
+                fontSize: 9, fontFamily: 'var(--font-mono)',
+                color: i <= step ? 'var(--accent-primary)' : 'var(--text-tertiary)',
+                letterSpacing: '0.1em',
+              }}>
+                {s.num} {s.label}
+              </div>
             </div>
+          ))}
         </div>
-    )
+
+        {/* Step 0: Profile */}
+        {step === 0 && (
+          <>
+            <h1 style={{
+              fontSize: 22, fontWeight: 700, color: 'var(--text-primary)',
+              margin: '0 0 6px', letterSpacing: '-0.02em',
+            }}>
+              Configura tu perfil
+            </h1>
+            <p style={{
+              fontSize: 13, color: 'var(--text-tertiary)', margin: '0 0 28px',
+              lineHeight: 1.5,
+            }}>
+              Información del operador principal del sistema.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <Field label="NOMBRE COMPLETO *" value={fullName} onChange={setFullName}
+                placeholder="Roberto Ortega" autoFocus />
+              <Field label="TELÉFONO" value={phone} onChange={setPhone}
+                placeholder="+34 600 000 000" type="tel" />
+              <Field label="EMPRESA" value={company} onChange={setCompany}
+                placeholder="Tu empresa actual" />
+              <Field label="CARGO" value={roleTitle} onChange={setRoleTitle}
+                placeholder="CEO, CTO, Director..." />
+            </div>
+
+            {error && <ErrorMsg>{error}</ErrorMsg>}
+
+            <button onClick={handleProfileNext} disabled={saving || !fullName.trim()}
+              style={btnStyle(saving || !fullName.trim())}>
+              {saving ? 'GUARDANDO...' : 'CONTINUAR'}
+            </button>
+          </>
+        )}
+
+        {/* Step 1: Organization */}
+        {step === 1 && (
+          <>
+            <h1 style={{
+              fontSize: 22, fontWeight: 700, color: 'var(--text-primary)',
+              margin: '0 0 6px', letterSpacing: '-0.02em',
+            }}>
+              Crea tu organización
+            </h1>
+            <p style={{
+              fontSize: 13, color: 'var(--text-tertiary)', margin: '0 0 28px',
+              lineHeight: 1.5,
+            }}>
+              Tu centro de operaciones. Podrás invitar miembros después.
+            </p>
+
+            <Field label="NOMBRE DE LA ORGANIZACIÓN *" value={orgName} onChange={setOrgName}
+              placeholder="Acme Corp, Stark Industries..." autoFocus />
+
+            {error && <ErrorMsg>{error}</ErrorMsg>}
+
+            <div style={{ display: 'flex', gap: 8, marginTop: 24 }}>
+              <button onClick={() => { setStep(0); setError(null) }}
+                style={{
+                  ...btnStyle(false),
+                  background: 'none', border: '1px solid var(--border-default)',
+                  color: 'var(--text-tertiary)', flex: 'none', width: 100,
+                }}>
+                ATRÁS
+              </button>
+              <button onClick={handleOrgCreate}
+                disabled={orgLoading || !orgName.trim()}
+                style={{ ...btnStyle(orgLoading || !orgName.trim()), flex: 1 }}>
+                {orgLoading ? 'CREANDO...' : 'ESTABLECER HQ'}
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* Step 2: Ready */}
+        {step === 2 && (
+          <div style={{ textAlign: 'center', padding: '20px 0' }}>
+            <div style={{
+              width: 48, height: 48, borderRadius: '50%',
+              background: 'var(--accent-primary)', margin: '0 auto 20px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 20, color: '#000', fontWeight: 700,
+              boxShadow: '0 0 24px rgba(255,212,0,0.3)',
+            }}>
+              OC
+            </div>
+            <h1 style={{
+              fontSize: 22, fontWeight: 700, color: 'var(--text-primary)',
+              margin: '0 0 8px',
+            }}>
+              Sistema operativo listo
+            </h1>
+            <p style={{
+              fontSize: 13, color: 'var(--text-tertiary)', margin: '0 0 4px',
+            }}>
+              Redirigiendo al centro de mando...
+            </p>
+            <div style={{
+              width: 24, height: 24, borderRadius: '50%',
+              border: '2px solid var(--border-default)',
+              borderTopColor: 'var(--accent-primary)',
+              animation: 'spin 1s linear infinite',
+              margin: '20px auto 0',
+            }} />
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── Reusable field ──
+function Field({ label, value, onChange, placeholder, type = 'text', autoFocus }) {
+  return (
+    <div>
+      <label style={{
+        display: 'block', fontSize: 9, fontFamily: 'var(--font-mono)',
+        color: 'var(--text-tertiary)', letterSpacing: '0.12em',
+        marginBottom: 6, textTransform: 'uppercase',
+      }}>
+        {label}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        autoFocus={autoFocus}
+        style={{
+          width: '100%', padding: '10px 12px',
+          background: 'var(--surface-base)', border: '1px solid var(--border-default)',
+          color: 'var(--text-primary)', fontSize: 13,
+          fontFamily: 'var(--font-sans)', outline: 'none',
+          transition: 'border-color 0.15s',
+          boxSizing: 'border-box',
+        }}
+        onFocus={(e) => e.target.style.borderColor = 'var(--accent-primary)'}
+        onBlur={(e) => e.target.style.borderColor = 'var(--border-default)'}
+      />
+    </div>
+  )
+}
+
+function ErrorMsg({ children }) {
+  return (
+    <div style={{
+      marginTop: 12, padding: '8px 12px', fontSize: 11,
+      color: 'var(--color-danger)', background: 'rgba(255,51,51,0.08)',
+      border: '1px solid rgba(255,51,51,0.15)',
+      fontFamily: 'var(--font-mono)',
+    }}>
+      {children}
+    </div>
+  )
+}
+
+function btnStyle(disabled) {
+  return {
+    width: '100%', padding: '12px 20px', marginTop: 24,
+    background: disabled ? 'var(--surface-elevated)' : 'var(--accent-primary)',
+    color: disabled ? 'var(--text-tertiary)' : '#000',
+    border: 'none', fontSize: 12, fontWeight: 700,
+    fontFamily: 'var(--font-mono)', letterSpacing: '0.08em',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    transition: 'all 0.15s',
+  }
 }

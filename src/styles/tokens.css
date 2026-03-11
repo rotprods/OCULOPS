@@ -1,149 +1,219 @@
 /* ═══════════════════════════════════════════════════
-   OCULOPS — Design Tokens v10.3
-   War Room · Bloomberg Terminal × Adventure Time
-   SPEC BLOQUEADA — no modificar sin aprobacion
+   OCULOPS — Design Tokens v11.0 (OBSIDIAN)
+   Autonomous Intelligence OS
    ═══════════════════════════════════════════════════ */
 
 :root {
-    /* ── Colors - OCULOPS System ── */
-    --color-primary: #FFD400;
-    --color-primary-hover: #FFC400;
-    --color-primary-active: #FFB800;
+    /* ── Surfaces ── */
+    --surface-base:       #0A0A0F;
+    --surface-raised:     #12121A;
+    --surface-elevated:   #1A1A24;
+    --surface-overlay:    rgba(10, 10, 15, 0.85);
+    --surface-inset:      #06060A;
 
-    --color-bg: #000000;
-    --color-bg-2: #0D0D0D;
-    --color-bg-3: #1A1A1A;
+    /* ── Borders ── */
+    --border-default:     #1E1E28;
+    --border-subtle:      #14141C;
+    --border-strong:      #2A2A3A;
+    --border-active:      rgba(123, 140, 255, 0.4);
+    --border-focus:       rgba(123, 140, 255, 0.6);
 
-    --color-border: #2A2A2A;
-    /* Crisp 1px border */
+    /* ── Text ── */
+    --text-primary:       #F2F2F7;
+    --text-secondary:     #A1A1B5;
+    --text-tertiary:      #5A5A72;
+    --text-quaternary:    #3A3A4A;
+    --text-inverse:       #0A0A0F;
+    --text-accent:        #7B8CFF;
 
-    --color-text: #FFFFFF;
-    --color-text-2: #D1D5DB;
-    --color-text-3: #9CA3AF;
+    /* ── Accent Colors ── */
+    --accent-primary:     #7B8CFF;
+    --accent-primary-hover: #9AA5FF;
+    --accent-primary-muted: rgba(123, 140, 255, 0.12);
+    --accent-primary-rgb:   123, 140, 255;
 
-    --color-danger: #FF3333;
-    --color-success: #FFFFFF;
-    /* White for success in minimal systems */
-    --color-info: #66B2FF;
-    --color-warning: #FFD400;
+    --accent-teal:        #50E3C2;
+    --accent-teal-muted:  rgba(80, 227, 194, 0.12);
 
-    /* ── Primary RGB ── */
-    --color-primary-rgb: 255, 212, 0;
+    --accent-gold:        #FFD700;
+    --accent-gold-muted:  rgba(255, 215, 0, 0.12);
+    --accent-muted:       var(--accent-primary-muted);
+    --accent-tertiary:    var(--accent-teal);
 
-    /* ── Glass effects ── */
-    --glass-bg: rgba(0, 0, 0, 0.65);
-    --glass-bg-light: rgba(255, 255, 255, 0.03);
-    --glass-blur: blur(24px);
+    /* ── Semantic Colors ── */
+    --color-success:      #34C759;
+    --color-success-muted: rgba(52, 199, 89, 0.12);
+    --color-warning:      #FF9F43;
+    --color-warning-muted: rgba(255, 159, 67, 0.12);
+    --color-danger:       #FF6B6B;
+    --color-danger-muted: rgba(255, 107, 107, 0.12);
+    --color-info:         #5AC8FA;
+    --color-info-muted:   rgba(90, 200, 250, 0.12);
 
-    /* ── Semantic border/text aliases (still in use) ── */
-    --border-subtle: rgba(255, 255, 255, 0.05);
-    --text-tertiary: var(--color-text-3);
+    /* ── Chart Palette ── */
+    --chart-1: #7B8CFF;
+    --chart-2: #50E3C2;
+    --chart-3: #FF9F43;
+    --chart-4: #FF6B6B;
+    --chart-5: #A78BFA;
+    --chart-6: #4ECDC4;
 
-    /* ── Typography - OCULOPS ── */
+    /* ── Typography ── */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    --font-editorial: 'Times New Roman Modern', 'Canela', 'Times New Roman', serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     --font-display: var(--font-sans);
+    --font-editorial: var(--font-sans); /* Legacy alias → now maps to sans */
 
     --text-2xs: 0.625rem;
-    --text-xs: 0.6875rem;
-    --text-sm: 0.8125rem;
+    --text-xs:  0.6875rem;
+    --text-sm:  0.8125rem;
     --text-base: 0.875rem;
-    --text-md: 0.9375rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.3125rem;
-    --text-2xl: 1.625rem;
-    --text-3xl: 2.125rem;
-    --text-4xl: 2.75rem;
+    --text-md:  0.9375rem;
+    --text-lg:  1.0625rem;
+    --text-xl:  1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.5rem;
     --text-hero: 3rem;
 
-    --leading-tight: 1.15;
-    --leading-snug: 1.3;
-    --leading-normal: 1.5;
-    --tracking-tight: -0.02em;
-    --tracking-normal: 0;
-    --tracking-wide: 0.06em;
+    --leading-tight:   1.2;
+    --leading-snug:    1.35;
+    --leading-normal:  1.5;
+    --leading-relaxed: 1.65;
 
-    /* ── Spacing ── */
-    --space-1: 4px;
-    --space-2: 8px;
-    --space-3: 12px;
-    --space-4: 16px;
-    --space-5: 24px;
-    --space-6: 32px;
-    --space-8: 48px;
-    --space-10: 64px;
-    --space-12: 80px;
+    --tracking-tighter: -0.03em;
+    --tracking-tight:   -0.015em;
+    --tracking-normal:  0;
+    --tracking-wide:    0.04em;
+    --tracking-wider:   0.08em;
 
-    /* ── Radius - OCULOPS ── */
-    --radius-xs: 4px;
-    --radius-sm: 6px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 20px;
+    --weight-regular:   400;
+    --weight-medium:    500;
+    --weight-semibold:  600;
+    --weight-bold:      700;
+
+    /* ── Spacing (4px base) ── */
+    --space-0:    0;
+    --space-0-5:  2px;
+    --space-1:    4px;
+    --space-1-5:  6px;
+    --space-2:    8px;
+    --space-3:    12px;
+    --space-4:    16px;
+    --space-5:    20px;
+    --space-6:    24px;
+    --space-8:    32px;
+    --space-10:   40px;
+    --space-12:   48px;
+    --space-16:   64px;
+    --space-20:   80px;
+
+    /* ── Radius ── */
+    --radius-xs:   4px;
+    --radius-sm:   6px;
+    --radius-md:   8px;
+    --radius-lg:   12px;
+    --radius-xl:   16px;
+    --radius-2xl:  20px;
     --radius-full: 9999px;
 
     /* ── Shadows ── */
-    --shadow-sm: 0 4px 24px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.6);
-    --shadow-glow: 0 0 32px rgba(var(--color-primary-rgb), 0.2);
+    --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-xl:   0 16px 48px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 24px rgba(var(--accent-primary-rgb), 0.15);
+    --shadow-glow-strong: 0 0 40px rgba(var(--accent-primary-rgb), 0.25);
+    --shadow-inner: inset 0 2px 4px rgba(255, 255, 255, 0.03);
 
-    /* ── Transitions ── */
-    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    /* ── Motion ── */
+    --duration-fast:    120ms;
+    --duration-base:    200ms;
+    --duration-slow:    350ms;
+    --duration-enter:   300ms;
+    --duration-exit:    200ms;
+
+    --ease-default: cubic-bezier(0.2, 0, 0, 1);
+    --ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+    --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+
+    --transition-fast:       var(--duration-fast) var(--ease-default);
+    --transition-base:       var(--duration-base) var(--ease-default);
+    --transition-slow:       var(--duration-slow) var(--ease-default);
     --transition-fluid-fast: 200ms cubic-bezier(0.25, 0.8, 0.25, 1);
     --transition-fluid-base: 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
     --transition-fluid-slow: 700ms cubic-bezier(0.25, 0.8, 0.25, 1);
-    --transition-3d: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-3d:         400ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-spring:     500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     /* ── Layout ── */
-    --sidebar-width: 240px;
-    --sidebar-collapsed: 72px;
-    --header-height: 64px;
-    --content-max-width: 1400px;
-
-    /* ── Gradients ── */
-    --gradient-mesh: radial-gradient(at 0% 0%, rgba(var(--color-primary-rgb), 0.1) 0, transparent 50%),
-        radial-gradient(at 50% 0%, rgba(102, 178, 255, 0.05) 0, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(255, 51, 51, 0.05) 0, transparent 50%);
-
-    --gradient-accent: linear-gradient(135deg, var(--color-primary) 0%, #FFB800 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-
-    /* ── Extra Oculops Tokens ── */
-    --accent-primary-rgb: var(--color-primary-rgb);
-    --accent-muted: rgba(var(--color-primary-rgb), 0.15);
-    --accent-tertiary: var(--color-info);
-
-    --bg-tertiary: #121212;
-    --bg-inset: #050505;
-
-    --text-quaternary: #4B5563;
-    --text-inverse: #000000;
-
-    --radius-2xl: 24px;
-    --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.8);
-    --shadow-inner: inset 0 2px 4px rgba(255, 255, 255, 0.05);
-
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-inner-glow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-
-    --danger-bg: rgba(255, 51, 51, 0.1);
-    --success-bg: rgba(255, 255, 255, 0.05);
-
-    --tracking-tighter: -0.05em;
-    --tracking-wider: 0.1em;
-
-    --transition-spring: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --sidebar-width:       240px;
+    --sidebar-collapsed:   64px;
+    --header-height:       56px;
+    --page-gutter:         32px;
+    --content-max-width:   1400px;
 
     /* ── Z-Index ── */
-    --z-particles: 1;
-    --z-sidebar: 100;
-    --z-header: 200;
-    --z-dropdown: 250;
-    --z-modal-backdrop: 300;
-    --z-modal: 400;
-    --z-toast: 500;
-    --z-notification: 550;
-    --z-command: 600;
+    --z-particles:       1;
+    --z-base:            0;
+    --z-raised:          1;
+    --z-sidebar:         100;
+    --z-header:          200;
+    --z-dropdown:        300;
+    --z-modal-backdrop:  400;
+    --z-overlay:         400;
+    --z-modal:           500;
+    --z-toast:           600;
+    --z-notification:    550;
+    --z-command:         700;
+    --z-tooltip:         800;
+
+    /* ── Gradients ── */
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(var(--accent-primary-rgb), 0.08) 0, transparent 50%),
+        radial-gradient(at 50% 0%, rgba(80, 227, 194, 0.04) 0, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(167, 139, 250, 0.04) 0, transparent 50%);
+
+    --gradient-accent: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-primary-hover) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+
+    /* ── Glass Effects ── */
+    --glass-bg: rgba(10, 10, 15, 0.65);
+    --glass-bg-light: rgba(255, 255, 255, 0.03);
+    --glass-blur: blur(20px);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-inner-glow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+
+    /* ═══════════════════════════════════════════════════
+       BACKWARD COMPATIBILITY — Legacy Token Aliases
+       These map old token names → new values so existing
+       components don't break during migration.
+       Remove these once each component is refactored.
+       ═══════════════════════════════════════════════════ */
+
+    /* Old primary color → now accent-primary */
+    --color-primary:        var(--accent-primary);
+    --color-primary-hover:  var(--accent-primary-hover);
+    --color-primary-active: #6B7CFF;
+    --color-primary-rgb:    var(--accent-primary-rgb);
+
+    /* Old background → new surfaces */
+    --color-bg:    var(--surface-base);
+    --color-bg-2:  var(--surface-raised);
+    --color-bg-3:  var(--surface-elevated);
+    --bg-tertiary: var(--surface-raised);
+    --bg-inset:    var(--surface-inset);
+
+    /* Old text → new text */
+    --color-text:   var(--text-primary);
+    --color-text-2: var(--text-secondary);
+    --color-text-3: var(--text-tertiary);
+
+    /* Old border → new border */
+    --color-border: var(--border-strong);
+
+    /* Old semantic aliases */
+    --danger-bg:  var(--color-danger-muted);
+    --success-bg: var(--color-success-muted);
 }

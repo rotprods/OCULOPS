@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useDetectedLeads(filters = {}) {
     const [leads, setLeads] = useState([])
@@ -36,7 +36,7 @@ export function useDetectedLeads(filters = {}) {
     useEffect(() => {
         loadLeads()
         loadRules()
-        const channel = subscribeToTable('detected_leads', (payload) => {
+        const channel = subscribeDebouncedToTable('detected_leads', (payload) => {
             if (payload.eventType === 'INSERT') setLeads(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setLeads(prev => prev.map(l => l.id === payload.new.id ? payload.new : l))
             else if (payload.eventType === 'DELETE') setLeads(prev => prev.filter(l => l.id !== payload.old.id))

@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, insertRow, updateRow, deleteRow, subscribeToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
+import { supabase, insertRow, updateRow, deleteRow, subscribeDebouncedToTable, getCurrentUserId, scopeUserQuery } from '../lib/supabase'
 
 export function useContacts(filters = {}) {
     const [contacts, setContacts] = useState([])
@@ -44,7 +44,7 @@ export function useContacts(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('contacts', (payload) => {
+        const channel = subscribeDebouncedToTable('contacts', (payload) => {
             if (payload.eventType === 'DELETE') {
                 setContacts(prev => prev.filter(c => c.id !== payload.old.id))
                 return

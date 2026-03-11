@@ -10,11 +10,12 @@ import { useSignals } from '../../hooks/useSignals'
 import { useDeals } from '../../hooks/useDeals'
 
 // ── Constants ──
-const MAX_PARTICLES = 150
-const AMBIENT_COUNT = 70
+const MAX_PARTICLES = 80
+const AMBIENT_COUNT = 40
 const NETWORK_LINE_DIST = 140
-const NETWORK_COMPUTE_INTERVAL = 3
-const SIGNAL_BURST_COUNT = 6
+const NETWORK_COMPUTE_INTERVAL = 5
+const SIGNAL_BURST_COUNT = 4
+const GRID_CELL_SIZE = NETWORK_LINE_DIST  // spatial hash cell = connection distance
 const AGENT_PULSE_SPEED = 0.015
 const PARTICLE_COLORS = {
     ambient: { r: 255, g: 212, b: 0 },
@@ -284,24 +285,50 @@ export default function ParticleField() {
         particlesRef.current = particles
     }, [])
 
-    // Compute network lines (every N frames)
+    // Compute network lines via spatial hash grid (O(n) amortized vs O(n²))
     const computeNetwork = useCallback(() => {
         const particles = particlesRef.current
         const lines = []
-        // Only connect agent + ambient that are close enough
-        const connectable = particles.filter(p => p.alive && (p.type === 'agent' || p.type === 'ambient') && p.alpha > 0.05)
-        const len = connectable.length
+        const grid = new Map()
+        const cell = GRID_CELL_SIZE
 
-        for (let i = 0; i < len; i++) {
-            for (let j = i + 1; j < len; j++) {
-                const dx = connectable[i].x - connectable[j].x
-                const dy = connectable[i].y - connectable[j].y
-                const dist = Math.sqrt(dx * dx + dy * dy)
-                if (dist < NETWORK_LINE_DIST) {
-                    const opacity = (1 - dist / NETWORK_LINE_DIST) * 0.07 *
-                        Math.min(connectable[i].alpha, connectable[j].alpha) * 3
-                    if (opacity > 0.005) {
-                        lines.push({ x1: connectable[i].x, y1: connectable[i].y, x2: connectable[j].x, y2: connectable[j].y, opacity })
+        // Build spatial hash
+        for (const p of particles) {
+            if (!p.alive || (p.type !== 'agent' && p.type !== 'ambient') || p.alpha <= 0.05) continue
+            const cx = Math.floor(p.x / cell)
+            const cy = Math.floor(p.y / cell)
+            const key = `${cx},${cy}`
+            if (!grid.has(key)) grid.set(key, [])
+            grid.get(key).push(p)
+        }
+
+        // Check only neighboring cells (9-cell neighborhood)
+        const checked = new Set()
+        for (const [key, bucket] of grid) {
+            const [cx, cy] = key.split(',').map(Number)
+            for (let dx = -1; dx <= 1; dx++) {
+                for (let dy = -1; dy <= 1; dy++) {
+                    const nKey = `${cx + dx},${cy + dy}`
+                    const pairKey = cx + dx < cx || (cx + dx === cx && cy + dy < cy) ? `${nKey}|${key}` : `${key}|${nKey}`
+                    if (checked.has(pairKey) && dx !== 0 && dy !== 0) continue
+                    checked.add(pairKey)
+                    const neighbor = grid.get(nKey)
+                    if (!neighbor) continue
+                    const isSame = nKey === key
+                    for (let i = 0; i < bucket.length; i++) {
+                        const startJ = isSame ? i + 1 : 0
+                        for (let j = startJ; j < neighbor.length; j++) {
+                            const a = bucket[i], b = neighbor[j]
+                            const ddx = a.x - b.x, ddy = a.y - b.y
+                            const dist = Math.sqrt(ddx * ddx + ddy * ddy)
+                            if (dist < NETWORK_LINE_DIST) {
+                                const opacity = (1 - dist / NETWORK_LINE_DIST) * 0.07 *
+                                    Math.min(a.alpha, b.alpha) * 3
+                                if (opacity > 0.005) {
+                                    lines.push({ x1: a.x, y1: a.y, x2: b.x, y2: b.y, opacity })
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -332,9 +359,14 @@ export default function ParticleField() {
         const handleVisibility = () => { paused = document.hidden }
         document.addEventListener('visibilitychange', handleVisibility)
 
-        const animate = () => {
+        let lastFrameTime = 0
+        const FRAME_INTERVAL = 1000 / 30  // Target 30fps
+
+        const animate = (now) => {
             animRef.current = requestAnimationFrame(animate)
             if (paused) return
+            if (now - lastFrameTime < FRAME_INTERVAL) return
+            lastFrameTime = now
 
             const w = window.innerWidth
             const h = window.innerHeight
@@ -356,22 +388,29 @@ export default function ParticleField() {
                 }
             }
 
+            // Count types in a single pass (avoids 3x .filter() per frame)
+            let ambientCount = 0, pipelineCount = 0, agentCount = 0
+            for (const p of particles) {
+                if (p.type === 'ambient') ambientCount++
+                else if (p.type === 'pipeline') pipelineCount++
+                else if (p.type === 'agent') agentCount++
+            }
+
             // Keep ambient count steady
-            while (particles.filter(p => p.type === 'ambient').length < AMBIENT_COUNT && particles.length < MAX_PARTICLES) {
+            while (ambientCount < AMBIENT_COUNT && particles.length < MAX_PARTICLES) {
                 particles.push(new Particle('ambient', w, h))
+                ambientCount++
             }
 
             // Keep pipeline particles flowing
-            const pipelineCount = particles.filter(p => p.type === 'pipeline').length
-            const targetPipeline = Math.min(12, Math.max(4, Math.floor(data.pipelineValue / 5000)))
+            const targetPipeline = Math.min(8, Math.max(3, Math.floor(data.pipelineValue / 5000)))
             if (pipelineCount < targetPipeline && particles.length < MAX_PARTICLES) {
                 particles.push(new Particle('pipeline', w, h))
             }
 
             // Sync agent node count (lazy — only add, let them drift)
-            const agentParticles = particles.filter(p => p.type === 'agent')
-            const targetAgents = Math.min(data.agentCount || 2, 12)
-            if (agentParticles.length < targetAgents && particles.length < MAX_PARTICLES) {
+            const targetAgents = Math.min(data.agentCount || 2, 8)
+            if (agentCount < targetAgents && particles.length < MAX_PARTICLES) {
                 particles.push(new Particle('agent', w, h))
             }
 

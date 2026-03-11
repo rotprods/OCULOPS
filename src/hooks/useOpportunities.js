@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useOpportunities(filters = {}) {
     const [opportunities, setOpportunities] = useState([])
@@ -25,7 +25,7 @@ export function useOpportunities(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('opportunities', (payload) => {
+        const channel = subscribeDebouncedToTable('opportunities', (payload) => {
             if (payload.eventType === 'INSERT') setOpportunities(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setOpportunities(prev => prev.map(o => o.id === payload.new.id ? payload.new : o))
             else if (payload.eventType === 'DELETE') setOpportunities(prev => prev.filter(o => o.id !== payload.old.id))

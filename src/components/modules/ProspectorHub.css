@@ -18,12 +18,12 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border-default);
 }
 
 .ph-header-title {
     font-family: var(--font-editorial);
-    color: var(--color-primary);
+    color: var(--accent-primary);
     letter-spacing: 0.05em;
     margin: 0;
     font-size: 28px;
@@ -81,7 +81,7 @@
 }
 
 .prospector-tab:hover {
-    color: var(--color-text-2);
+    color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.03);
 }
 
@@ -189,7 +189,7 @@
 }
 
 .map-lead-item.selected::before {
-    background: var(--color-primary);
+    background: var(--accent-primary);
     width: 3px;
 }
 
@@ -244,7 +244,7 @@
     border: 1px solid var(--border-subtle);
     background: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(12px);
-    color: var(--color-primary);
+    color: var(--accent-primary);
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -339,12 +339,12 @@
 }
 
 .ph-marker--primary {
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--accent-primary);
     background: rgba(255, 215, 0, 0.2);
 }
 
 .ph-marker--primary .ph-map-marker-dot {
-    background: var(--color-primary);
+    background: var(--accent-primary);
 }
 
 .ph-map-marker-container--selected .ph-marker--primary {
@@ -361,7 +361,7 @@
 }
 
 .ph-scanner-sidebar {
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     background: #000000;
     display: flex;
     flex-direction: column;
@@ -382,7 +382,7 @@
 
 .ph-scanner-input {
     border-radius: 0;
-    background: var(--color-bg-2);
+    background: var(--surface-raised);
     border: 1px solid var(--border-subtle);
 }
 
@@ -393,7 +393,7 @@
 }
 
 .ph-history-panel {
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     padding: var(--space-6);
     overflow-y: auto;
     background: #000000;
@@ -415,7 +415,7 @@
     justify-content: space-between;
     border: 1px solid var(--border-subtle);
     padding: 12px 16px;
-    background: var(--color-bg-2);
+    background: var(--surface-raised);
 }
 
 /* ── Leads DB ── */
@@ -428,7 +428,7 @@
 }
 
 .ph-leads-table-container {
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -441,14 +441,14 @@
 }
 
 .ph-leads-tr-head {
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border-default);
     background: var(--border-subtle);
 }
 
 .ph-leads-th {
     padding: 12px 16px;
     text-align: left;
-    color: var(--color-primary);
+    color: var(--accent-primary);
     font-size: 10px;
     letter-spacing: 0.1em;
 }
@@ -473,7 +473,7 @@
 }
 
 .ph-lead-detail-panel {
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     background: #000000;
     display: flex;
     flex-direction: column;
@@ -502,12 +502,12 @@
     line-height: 1.8;
     border-left: 2px solid var(--border-subtle);
     padding-left: 12px;
-    background: var(--color-bg-2);
+    background: var(--surface-raised);
     padding: 16px;
 }
 
 .ph-empty-detail {
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     background: #000000;
     display: flex;
     align-items: center;

@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { supabase, insertRow, updateRow, subscribeToTable } from '../lib/supabase'
+import { supabase, insertRow, updateRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 const BASE = import.meta.env.VITE_SUPABASE_URL
 const ANON = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -71,7 +71,7 @@ export function useConversations() {
 
     useEffect(() => {
         loadConversations()
-        const channel = subscribeToTable('conversations', (payload) => {
+        const channel = subscribeDebouncedToTable('conversations', (payload) => {
             if (payload.eventType === 'DELETE') {
                 setConversations(prev => prev.filter(c => c.id !== payload.old.id))
                 return
@@ -86,7 +86,7 @@ export function useConversations() {
     useEffect(() => {
         if (!activeConvo) return
         loadMessages(activeConvo)
-        const channel = subscribeToTable('messages', (payload) => {
+        const channel = subscribeDebouncedToTable('messages', (payload) => {
             if (payload.new?.conversation_id === activeConvo) {
                 if (payload.eventType === 'INSERT') setMessages(prev => [...prev, payload.new])
                 else if (payload.eventType === 'UPDATE') setMessages(prev => prev.map(m => m.id === payload.new.id ? payload.new : m))

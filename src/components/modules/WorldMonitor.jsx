@@ -448,7 +448,7 @@ export default function WorldMonitor() {
                         <span className="wm-stat-label">NODES</span>
                     </div>
                     <div className="wm-stat">
-                        <span className="wm-stat-value" style={{ color: computedStats.alerts > 0 ? 'var(--color-danger)' : 'var(--color-text)' }}>
+                        <span className="wm-stat-value" style={{ color: computedStats.alerts > 0 ? 'var(--color-danger)' : 'var(--text-primary)' }}>
                             {computedStats.alerts}
                         </span>
                         <span className="wm-stat-label">ALERTS</span>
@@ -541,7 +541,7 @@ export default function WorldMonitor() {
                                             padding: '12px',
                                             background: 'var(--border-subtle)',
                                             fontSize: '9px',
-                                            color: connectorFeedError ? 'var(--color-danger)' : 'var(--color-text-2)',
+                                            color: connectorFeedError ? 'var(--color-danger)' : 'var(--text-secondary)',
                                             whiteSpace: 'pre-wrap',
                                             fontFamily: 'var(--font-mono)',
                                             maxHeight: '120px',
@@ -575,7 +575,7 @@ export default function WorldMonitor() {
                     </div>
                     <div className="wm-detail-body">{selectedItem.details || 'UNVERIFIED DATA.'}</div>
 
-                    <div style={{ padding: '12px', background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)' }}>
+                    <div style={{ padding: '12px', background: 'var(--surface-raised)', border: '1px solid var(--border-subtle)' }}>
                         {selectedItem.score != null && (
                             <div className="wm-detail-row">
                                 <span>AI CONFIDENCE</span>
@@ -599,7 +599,7 @@ export default function WorldMonitor() {
                         {selectedItem.value && (
                             <div className="wm-detail-row">
                                 <span>EST. PIPELINE</span>
-                                <span style={{ color: 'var(--color-primary)' }}>{selectedItem.value}</span>
+                                <span style={{ color: 'var(--accent-primary)' }}>{selectedItem.value}</span>
                             </div>
                         )}
                         {selectedItem.threat && (

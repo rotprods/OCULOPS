@@ -85,10 +85,10 @@ function StudyHub() {
                 </div>
 
                 <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>
-                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'docs' ? 'var(--color-primary)' : 'transparent', color: viewMode === 'docs' ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setViewMode('docs')}>
+                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'docs' ? 'var(--accent-primary)' : 'transparent', color: viewMode === 'docs' ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setViewMode('docs')}>
                         01. DOSSIER ARCHIVE
                     </button>
-                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'agent' ? 'var(--color-primary)' : 'transparent', color: viewMode === 'agent' ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => { setViewMode('agent'); reloadAgentStudies() }}>
+                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'agent' ? 'var(--accent-primary)' : 'transparent', color: viewMode === 'agent' ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => { setViewMode('agent'); reloadAgentStudies() }}>
                         02. AGENT INTELLIGENCE ({agentStudies.length})
                     </button>
                 </div>
@@ -100,19 +100,19 @@ function StudyHub() {
                         ) : agentStudies.length === 0 ? (
                             <div className="mono" style={{ padding: '24px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '11px' }}>[ NO AGENT STUDIES YET — RUN AGENTS TO GENERATE ]</div>
                         ) : agentStudies.map(s => (
-                            <div key={s.id} onClick={() => setSelectedAgentStudy(selectedAgentStudy?.id === s.id ? null : s)} style={{ border: '1px solid var(--border-subtle)', padding: '12px 16px', cursor: 'pointer', background: selectedAgentStudy?.id === s.id ? 'var(--color-bg-2)' : '#000' }}>
+                            <div key={s.id} onClick={() => setSelectedAgentStudy(selectedAgentStudy?.id === s.id ? null : s)} style={{ border: '1px solid var(--border-subtle)', padding: '12px 16px', cursor: 'pointer', background: selectedAgentStudy?.id === s.id ? 'var(--surface-raised)' : '#000' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <div className="mono" style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--color-text)', textTransform: 'uppercase' }}>{s.title}</div>
+                                    <div className="mono" style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase' }}>{s.title}</div>
                                     <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>{s.agent_code_name?.toUpperCase()} | {new Date(s.created_at).toLocaleDateString()}</div>
                                 </div>
-                                {s.summary && <div className="mono" style={{ fontSize: '10px', color: 'var(--color-text-2)', marginTop: '6px' }}>{s.summary}</div>}
+                                {s.summary && <div className="mono" style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '6px' }}>{s.summary}</div>}
                                 {s.highlights?.length > 0 && (
                                     <div style={{ display: 'flex', gap: '6px', marginTop: '8px', flexWrap: 'wrap' }}>
                                         {s.highlights.slice(0, 4).map((h, i) => <span key={i} className="mono" style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}>{h}</span>)}
                                     </div>
                                 )}
                                 {selectedAgentStudy?.id === s.id && s.content_markdown && (
-                                    <div className="mono" style={{ fontSize: '11px', color: 'var(--color-text-2)', marginTop: '12px', padding: '12px', border: '1px solid var(--border-subtle)', background: '#000', whiteSpace: 'pre-wrap', maxHeight: '400px', overflow: 'auto' }}>
+                                    <div className="mono" style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '12px', padding: '12px', border: '1px solid var(--border-subtle)', background: '#000', whiteSpace: 'pre-wrap', maxHeight: '400px', overflow: 'auto' }}>
                                         {s.content_markdown}
                                     </div>
                                 )}
@@ -203,7 +203,7 @@ function StudyHub() {
                 <div className="study-breadcrumb">
                     <button onClick={() => setActiveStudy(null)}>ARCHIVE</button>
                     <span>/</span>
-                    <span style={{ color: 'var(--color-primary)' }}>{String(study.id).padStart(2, '0')} — {study.title}</span>
+                    <span style={{ color: 'var(--accent-primary)' }}>{String(study.id).padStart(2, '0')} — {study.title}</span>
                 </div>
 
                 <div className="study-main-header">
@@ -272,13 +272,13 @@ function StudyHub() {
 
                 <div className="study-nav-buttons">
                     {study.id > 0 ? (
-                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)' }} onClick={() => setActiveStudy(study.id - 1)}>
+                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }} onClick={() => setActiveStudy(study.id - 1)}>
                             &lt; PREV: {studies[study.id - 1]?.title.substring(0, 20).toUpperCase()}...
                         </button>
                     ) : <div></div>}
 
                     {study.id < studies.length - 1 && (
-                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--color-primary)', background: 'var(--color-primary)', color: '#000' }} onClick={() => setActiveStudy(study.id + 1)}>
+                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--accent-primary)', background: 'var(--accent-primary)', color: '#000' }} onClick={() => setActiveStudy(study.id + 1)}>
                             NEXT MODULE &gt;
                         </button>
                     )}

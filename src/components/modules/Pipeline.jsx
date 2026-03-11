@@ -23,7 +23,7 @@ import { Charts } from '../../lib/charts'
 const STAGES = [
   { id: 'lead', label: 'LEAD', color: 'var(--text-tertiary)' },
   { id: 'contacted', label: 'CONTACTED', color: 'var(--color-info)' },
-  { id: 'meeting', label: 'MEETING', color: 'var(--color-primary)' },
+  { id: 'meeting', label: 'MEETING', color: 'var(--accent-primary)' },
   { id: 'proposal', label: 'PROPOSAL', color: 'var(--color-warning)' },
   { id: 'closed_won', label: 'CLOSED WON', color: 'var(--color-success)' },
   { id: 'closed_lost', label: 'CLOSED LOST', color: 'var(--color-danger)' },
@@ -69,15 +69,15 @@ function DealDetailModal({ deal, stages, onSave, onDelete, onClose }) {
     setSaving(false)
   }
 
-  const inputStyle = { background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', width: '100%', boxSizing: 'border-box' }
+  const inputStyle = { background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', width: '100%', boxSizing: 'border-box' }
   const labelStyle = { fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-tertiary)', marginBottom: '4px' }
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={onClose}>
-      <div style={{ width: '560px', maxHeight: '85vh', overflowY: 'auto', background: '#000', border: '1px solid var(--color-primary)' }} onClick={e => e.stopPropagation()}>
-        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ width: '560px', maxHeight: '85vh', overflowY: 'auto', background: '#000', border: '1px solid var(--accent-primary)' }} onClick={e => e.stopPropagation()}>
+        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between' }}>
           <span>/// DEAL DOSSIER</span>
-          <span style={{ cursor: 'pointer', color: 'var(--color-text-2)' }} onClick={onClose}>[ ESC ]</span>
+          <span style={{ cursor: 'pointer', color: 'var(--text-secondary)' }} onClick={onClose}>[ ESC ]</span>
         </div>
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -126,13 +126,13 @@ function DealDetailModal({ deal, stages, onSave, onDelete, onClose }) {
             CREATED: {new Date(deal.created_at).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}
           </div>
         </div>
-        <div style={{ padding: '16px 20px', borderTop: '1px solid var(--color-border)', display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ padding: '16px 20px', borderTop: '1px solid var(--border-default)', display: 'flex', justifyContent: 'space-between' }}>
           <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--color-danger)', color: 'var(--color-danger)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer', letterSpacing: '0.1em' }} onClick={() => onDelete(deal.id)}>
             [ PURGE ]
           </button>
           <div style={{ display: 'flex', gap: '8px' }}>
-            <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={onClose}>ABORT</button>
-            <button className="mono font-bold" style={{ background: 'var(--color-primary)', border: '1px solid var(--color-primary)', color: '#000', fontSize: '10px', padding: '8px 16px', cursor: 'pointer', letterSpacing: '0.1em' }} onClick={handleSave} disabled={saving}>
+            <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={onClose}>ABORT</button>
+            <button className="mono font-bold" style={{ background: 'var(--accent-primary)', border: '1px solid var(--accent-primary)', color: '#000', fontSize: '10px', padding: '8px 16px', cursor: 'pointer', letterSpacing: '0.1em' }} onClick={handleSave} disabled={saving}>
               {saving ? 'TRANSMITTING...' : '[ COMMIT ]'}
             </button>
           </div>
@@ -155,8 +155,8 @@ function DealCard({ deal, stage, onRemove, onSelect, isDragging }) {
     touchAction: 'none',
     padding: '12px',
     marginBottom: '8px',
-    border: hovered ? '1px solid var(--color-primary)' : '1px solid var(--border-subtle)',
-    borderLeft: hovered ? `3px solid var(--color-primary)` : `3px solid ${stage?.color || 'var(--color-border)'}`,
+    border: hovered ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
+    borderLeft: hovered ? `3px solid var(--accent-primary)` : `3px solid ${stage?.color || 'var(--border-default)'}`,
     boxShadow: hovered ? '0 0 10px rgba(255,212,0,0.15)' : 'none',
     userSelect: 'none',
     background: hovered ? 'rgba(255,212,0,0.02)' : '#000',
@@ -175,11 +175,11 @@ function DealCard({ deal, stage, onRemove, onSelect, isDragging }) {
       onMouseLeave={() => setHovered(false)}
       onClick={() => onSelect && onSelect(deal)}
     >
-      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--color-text)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         {deal.title || deal.name || '[ UNNAMED ]'}
       </div>
       {deal.company && (
-        <div style={{ fontSize: '10px', color: 'var(--color-text-2)', marginTop: '4px', textTransform: 'uppercase' }}>
+        <div style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '4px', textTransform: 'uppercase' }}>
           {deal.company?.name || deal.company}
         </div>
       )}
@@ -192,8 +192,8 @@ function DealCard({ deal, stage, onRemove, onSelect, isDragging }) {
           <span style={{
             fontSize: '9px',
             padding: '2px 6px',
-            border: `1px solid ${deal.ai_score >= 70 ? 'var(--color-primary)' : 'var(--border-subtle)'}`,
-            color: deal.ai_score >= 70 ? 'var(--color-primary)' : 'var(--text-tertiary)',
+            border: `1px solid ${deal.ai_score >= 70 ? 'var(--accent-primary)' : 'var(--border-subtle)'}`,
+            color: deal.ai_score >= 70 ? 'var(--accent-primary)' : 'var(--text-tertiary)',
             letterSpacing: '0.05em',
           }}>
             AI:{deal.ai_score}
@@ -236,8 +236,8 @@ function DragOverlayCard({ deal }) {
       className="mono"
       style={{
         padding: '12px',
-        border: '1px solid var(--color-primary)',
-        borderLeft: `3px solid ${stage?.color || 'var(--color-primary)'}`,
+        border: '1px solid var(--accent-primary)',
+        borderLeft: `3px solid ${stage?.color || 'var(--accent-primary)'}`,
         width: '200px',
         cursor: 'grabbing',
         background: '#000',
@@ -245,7 +245,7 @@ function DragOverlayCard({ deal }) {
         transform: 'rotate(2deg)',
       }}
     >
-      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--color-text)', textTransform: 'uppercase' }}>{deal.title || '[ DEAL ]'}</div>
+      <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase' }}>{deal.title || '[ DEAL ]'}</div>
       <div style={{ fontSize: '11px', color: 'var(--color-success)', marginTop: '6px' }}>
         EUR {(parseFloat(deal.value) || 0).toLocaleString()}
       </div>
@@ -307,7 +307,7 @@ function KanbanColumn({ stage, deals, onRemove, onSelect, activeId }) {
           />
         ))}
         {deals.length === 0 && (
-          <div className="mono" style={{ textAlign: 'center', fontSize: '9px', color: 'var(--color-text-2)', padding: '24px 8px', letterSpacing: '0.1em' }}>
+          <div className="mono" style={{ textAlign: 'center', fontSize: '9px', color: 'var(--text-secondary)', padding: '24px 8px', letterSpacing: '0.1em' }}>
             [ AWAITING DEPLOYMENT ]
           </div>
         )}
@@ -392,16 +392,16 @@ function Pipeline() {
   const closedWon = (pipelineView['closed_won'] || []).length
 
   if (loading) return (
-    <div className="fade-in mono" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-primary)', fontSize: '12px', letterSpacing: '0.1em' }}>
+    <div className="fade-in mono" style={{ padding: '2rem', textAlign: 'center', color: 'var(--accent-primary)', fontSize: '12px', letterSpacing: '0.1em' }}>
       [ INITIALIZING PIPELINE DATASTREAM... ]
     </div>
   )
 
   return (
     <div className="fade-in" style={{ padding: '24px' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--color-border)', paddingBottom: '24px', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border-default)', paddingBottom: '24px', marginBottom: '24px' }}>
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-text)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>PIPELINE ORCHESTRATION</h1>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--text-primary)', fontSize: '28px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>PIPELINE ORCHESTRATION</h1>
           <p className="mono font-bold" style={{ fontSize: '10px', color: 'var(--text-tertiary)', marginTop: '8px', letterSpacing: '0.1em' }}>
              /// ACTIVE NODES: {deals.length} | YIELD: {closedWon} | VOLUME: EUR {(totalValue || 0).toLocaleString()}
           </p>
@@ -409,14 +409,14 @@ function Pipeline() {
         <div style={{ display: 'flex', gap: '8px' }}>
           <button
             className="mono font-bold"
-            style={{ background: 'var(--color-bg-2)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+            style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
             onClick={toggleClosedLost}
           >
             {showClosedLost ? '[ HIDE LOST ]' : '[ SHOW LOST ]'}
           </button>
           <button
             className="mono font-bold"
-            style={{ background: 'var(--color-primary)', border: '1px solid var(--color-primary)', color: '#000', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+            style={{ background: 'var(--accent-primary)', border: '1px solid var(--accent-primary)', color: '#000', fontSize: '10px', padding: '10px 16px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
             onClick={() => setShowForm(v => !v)}
           >
             {showForm ? '[ ABORT ]' : '[ INTEL CAPTURE ]'}
@@ -425,33 +425,33 @@ function Pipeline() {
       </div>
 
       {showForm && (
-        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '24px', marginBottom: '24px' }}>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '24px', marginBottom: '24px' }}>
           <div className="mono font-bold text-primary mb-6" style={{ fontSize: '12px', letterSpacing: '0.1em' }}>/// NEW DEAL DIRECTIVE</div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Target Designation *</label>
-              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. ALPHA PROJECT" />
+              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. ALPHA PROJECT" />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Entity Affiliation</label>
-              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="e.g. UNIFIED CORP" />
+              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="e.g. UNIFIED CORP" />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Asset Value (EUR)</label>
-              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} placeholder="0.00" />
+              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" value={form.value} onChange={e => setForm(f => ({ ...f, value: e.target.value }))} placeholder="0.00" />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Success Vector (%)</label>
-              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} />
+              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} type="number" min="0" max="100" value={form.probability} onChange={e => setForm(f => ({ ...f, probability: e.target.value }))} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', gridColumn: 'span 2' }}>
               <label className="mono text-tertiary" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Liaison Operative</label>
-              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.contact_person} onChange={e => setForm(f => ({ ...f, contact_person: e.target.value }))} placeholder="e.g. AGENT SMITH" />
+              <input style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none' }} value={form.contact_person} onChange={e => setForm(f => ({ ...f, contact_person: e.target.value }))} placeholder="e.g. AGENT SMITH" />
             </div>
           </div>
           <button
             className="mono font-bold"
-            style={{ marginTop: '24px', background: 'var(--color-primary)', color: '#000', border: 'none', padding: '12px 24px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
+            style={{ marginTop: '24px', background: 'var(--accent-primary)', color: '#000', border: 'none', padding: '12px 24px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', cursor: 'pointer' }}
             onClick={handleAdd}
             disabled={saving}
           >
@@ -462,23 +462,23 @@ function Pipeline() {
 
       {/* KPI bar */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '32px' }}>
-        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
           <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ GLOBAL ENTITIES ]</div>
-          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-primary)' }}>{deals.length}</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--accent-primary)' }}>{deals.length}</div>
         </div>
-        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
           <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ PIPELINE VOLUME ]</div>
-          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-text)' }}>EUR {(totalValue || 0).toLocaleString()}</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--text-primary)' }}>EUR {(totalValue || 0).toLocaleString()}</div>
         </div>
-        <div style={{ border: '1px solid var(--color-border)', background: '#000', padding: '20px' }}>
+        <div style={{ border: '1px solid var(--border-default)', background: '#000', padding: '20px' }}>
           <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>[ WEIGHTED INDEX ]</div>
-          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-text-2)' }}>EUR {Math.round(weightedValue || 0).toLocaleString()}</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--text-secondary)' }}>EUR {Math.round(weightedValue || 0).toLocaleString()}</div>
         </div>
       </div>
 
       {/* Kanban board */}
-      <div style={{ border: '1px solid var(--color-border)', background: '#000', marginBottom: '32px' }}>
-        <div className="mono font-bold text-tertiary" style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
+      <div style={{ border: '1px solid var(--border-default)', background: '#000', marginBottom: '32px' }}>
+        <div className="mono font-bold text-tertiary" style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
           <span>/// KANBAN MATRIX</span>
           <span>[ DRAG TO REASSIGN ]</span>
         </div>
@@ -519,8 +519,8 @@ function Pipeline() {
       )}
 
       {/* Funnel chart */}
-      <div style={{ border: '1px solid var(--color-border)', background: '#000' }}>
-        <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--color-border)', fontSize: '11px', letterSpacing: '0.1em' }}>
+      <div style={{ border: '1px solid var(--border-default)', background: '#000' }}>
+        <div className="mono font-bold text-tertiary" style={{ padding: '16px 20px', borderBottom: '1px solid var(--border-default)', fontSize: '11px', letterSpacing: '0.1em' }}>
             /// CONVERSION FLOW
         </div>
         <div style={{ padding: '24px' }}>

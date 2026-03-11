@@ -14,7 +14,7 @@ function Placeholder({ name, icon }) {
             textAlign: 'center',
             gap: '24px',
             background: '#000',
-            border: '1px solid var(--color-border)',
+            border: '1px solid var(--border-default)',
             padding: '48px',
         }}>
             <div style={{
@@ -28,7 +28,7 @@ function Placeholder({ name, icon }) {
                 <h2 className="mono" style={{
                     fontSize: '24px',
                     fontWeight: 'bold',
-                    color: 'var(--color-primary)',
+                    color: 'var(--accent-primary)',
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     margin: 0
@@ -48,9 +48,9 @@ function Placeholder({ name, icon }) {
             <code className="mono font-bold" style={{
                 marginTop: '16px',
                 padding: '16px 24px',
-                background: 'var(--color-bg-2)',
-                border: '1px solid var(--color-border)',
-                color: 'var(--color-primary)',
+                background: 'var(--surface-raised)',
+                border: '1px solid var(--border-default)',
+                color: 'var(--accent-primary)',
                 fontSize: '11px',
                 letterSpacing: '0.05em'
             }}>

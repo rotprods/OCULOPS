@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { fetchAll, insertRow, updateRow, deleteRow, subscribeToTable } from '../lib/supabase'
+import { fetchAll, insertRow, updateRow, deleteRow, subscribeDebouncedToTable } from '../lib/supabase'
 
 export function useTasks(filters = {}) {
     const [tasks, setTasks] = useState([])
@@ -25,7 +25,7 @@ export function useTasks(filters = {}) {
 
     useEffect(() => {
         load()
-        const channel = subscribeToTable('tasks', (payload) => {
+        const channel = subscribeDebouncedToTable('tasks', (payload) => {
             if (payload.eventType === 'INSERT') setTasks(prev => [payload.new, ...prev])
             else if (payload.eventType === 'UPDATE') setTasks(prev => prev.map(t => t.id === payload.new.id ? payload.new : t))
             else if (payload.eventType === 'DELETE') setTasks(prev => prev.filter(t => t.id !== payload.old.id))

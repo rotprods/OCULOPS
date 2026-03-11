@@ -26,11 +26,11 @@ function SignalRadar({ signals = [], agents = [] }) {
   const cy = size / 2
   const rings = [40, 80, 120]
   const categoryAngles = { macro: 0, mercado: 60, competencia: 120, tecnologia: 180, social: 240, economic: 300 }
-  const categoryColors = { macro: '#5ac8fa', mercado: '#34c759', competencia: '#ff3b30', tecnologia: 'var(--color-primary)', social: '#af52de', economic: '#ff9f0a' }
+  const categoryColors = { macro: '#5ac8fa', mercado: '#34c759', competencia: '#ff3b30', tecnologia: 'var(--accent-primary)', social: '#af52de', economic: '#ff9f0a' }
 
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ background: '#000', border: '1px solid var(--color-border)' }}>
-      <rect x="0" y="0" width="100%" height="100%" fill="none" opacity="0.1" stroke="var(--color-primary)" strokeWidth="0.5" />
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ background: '#000', border: '1px solid var(--border-default)' }}>
+      <rect x="0" y="0" width="100%" height="100%" fill="none" opacity="0.1" stroke="var(--accent-primary)" strokeWidth="0.5" />
       <path d={`M0,0 L${size},${size} M${size},0 L0,${size}`} stroke="rgba(255,215,0,0.05)" strokeWidth="0.5" />
       {rings.map(r => (
         <circle key={r} cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255,215,0,0.15)" strokeWidth="0.5" strokeDasharray="4 4" />
@@ -72,8 +72,8 @@ function SignalRadar({ signals = [], agents = [] }) {
         )
       })}
 
-      <circle cx={cx} cy={cy} r={6} fill="var(--color-primary)" opacity="0.8" />
-      <circle cx={cx} cy={cy} r={12} fill="none" stroke="var(--color-primary)" strokeWidth="1" opacity="0.5">
+      <circle cx={cx} cy={cy} r={6} fill="var(--accent-primary)" opacity="0.8" />
+      <circle cx={cx} cy={cy} r={12} fill="none" stroke="var(--accent-primary)" strokeWidth="1" opacity="0.5">
         <animate attributeName="r" values="12;24;12" dur="2s" repeatCount="indefinite" />
       </circle>
     </svg>
@@ -84,7 +84,7 @@ const CATEGORIES = [
   { value: 'macro', label: 'MACRO', icon: '🌍', color: '#5ac8fa' },
   { value: 'mercado', label: 'MARKET', icon: '📈', color: '#34c759' },
   { value: 'competencia', label: 'COMBAT', icon: '⚔️', color: '#ff3b30' },
-  { value: 'tecnologia', label: 'TECH', icon: '🤖', color: 'var(--color-primary)' },
+  { value: 'tecnologia', label: 'TECH', icon: '🤖', color: 'var(--accent-primary)' },
   { value: 'social', label: 'SOCIAL', icon: '👥', color: '#af52de' },
   { value: 'economic', label: 'ECON', icon: '💰', color: '#ff9f0a' },
 ]
@@ -148,15 +148,15 @@ function SignalEditModal({ signal, onSave, onDelete, onClose }) {
     setSaving(false)
   }
 
-  const inputStyle = { background: 'var(--color-bg-3)', border: '1px solid var(--border-subtle)', color: 'var(--color-text)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', width: '100%', boxSizing: 'border-box' }
+  const inputStyle = { background: 'var(--surface-elevated)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px', fontSize: '12px', fontFamily: 'var(--font-mono)', outline: 'none', width: '100%', boxSizing: 'border-box' }
   const labelStyle = { fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-tertiary)', marginBottom: '4px' }
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={onClose}>
-      <div style={{ width: '500px', maxHeight: '85vh', overflowY: 'auto', background: 'var(--color-bg-2)', border: '1px solid var(--color-border)' }} onClick={e => e.stopPropagation()}>
-        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ width: '500px', maxHeight: '85vh', overflowY: 'auto', background: 'var(--surface-raised)', border: '1px solid var(--border-default)' }} onClick={e => e.stopPropagation()}>
+        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between' }}>
           <span>/// SIGNAL DOSSIER</span>
-          <span style={{ cursor: 'pointer', color: 'var(--color-text-2)' }} onClick={onClose}>[ ESC ]</span>
+          <span style={{ cursor: 'pointer', color: 'var(--text-secondary)' }} onClick={onClose}>[ ESC ]</span>
         </div>
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div className="mono" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -191,11 +191,11 @@ function SignalEditModal({ signal, onSave, onDelete, onClose }) {
             REGISTERED: {new Date(signal.created_at).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}
           </div>
         </div>
-        <div style={{ padding: '16px 20px', borderTop: '1px solid var(--color-border)', display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ padding: '16px 20px', borderTop: '1px solid var(--border-default)', display: 'flex', justifyContent: 'space-between' }}>
           <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--color-danger)', color: 'var(--color-danger)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={() => onDelete(signal.id)}>[ PURGE ]</button>
           <div style={{ display: 'flex', gap: '8px' }}>
-            <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--color-text-2)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={onClose}>ABORT</button>
-            <button className="mono font-bold" style={{ background: 'var(--color-primary)', border: '1px solid var(--color-primary)', color: '#000', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={handleSave} disabled={saving}>{saving ? 'TRANSMITTING...' : '[ COMMIT ]'}</button>
+            <button className="mono font-bold" style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={onClose}>ABORT</button>
+            <button className="mono font-bold" style={{ background: 'var(--accent-primary)', border: '1px solid var(--accent-primary)', color: '#000', fontSize: '10px', padding: '8px 16px', cursor: 'pointer' }} onClick={handleSave} disabled={saving}>{saving ? 'TRANSMITTING...' : '[ COMMIT ]'}</button>
           </div>
         </div>
       </div>
@@ -314,14 +314,14 @@ function Intelligence() {
   return (
     <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* ── HEADER ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>INTELLIGENCE RADAR</h1>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>INTELLIGENCE RADAR</h1>
           <p className="mono text-xs text-tertiary">SIGNAL OVERWATCH & SECURE API ATLAS // {signals.length} ACTIVE SIGNALS</p>
         </div>
         <div style={{ display: 'flex', gap: '2px' }}>
-          <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeView === 'signals' ? 'var(--color-primary)' : 'transparent', color: activeView === 'signals' ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveView('signals')}>01. SIGNAL RADAR</button>
-          <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeView === 'apis' ? 'var(--color-primary)' : 'transparent', color: activeView === 'apis' ? '#000' : 'var(--color-text)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveView('apis')}>02. API ATLAS</button>
+          <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeView === 'signals' ? 'var(--accent-primary)' : 'transparent', color: activeView === 'signals' ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveView('signals')}>01. SIGNAL RADAR</button>
+          <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: activeView === 'apis' ? 'var(--accent-primary)' : 'transparent', color: activeView === 'apis' ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setActiveView('apis')}>02. API ATLAS</button>
         </div>
       </div>
 
@@ -330,13 +330,13 @@ function Intelligence() {
           <div style={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
             {/* TOP GRID */}
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2fr', gap: '16px' }}>
-              <div style={{ border: '1px solid var(--color-border)', background: 'var(--color-bg-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+              <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
                 <SignalRadar signals={signals} agents={agents} />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
                 {CATEGORIES.slice(0, 6).map((cat, i) => (
-                  <div key={i} style={{ background: 'var(--color-bg-2)', padding: '20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <div key={i} style={{ background: 'var(--surface-raised)', padding: '20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span className="mono text-xs text-tertiary font-bold">{cat.label}</span>
                       <span>{cat.icon}</span>
@@ -349,24 +349,24 @@ function Intelligence() {
 
             {/* TWO COLUMNS: SYSTEM SOCIAL + REGISTER */}
             <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
-              <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between' }}>
                   <span>/// SOCIAL OMNINT INTERCEPTS</span>
                   <button className="btn btn-sm btn-ghost mono" style={{ padding: '2px 8px', fontSize: '9px' }} onClick={refreshSocialSignals} disabled={socialRefreshing}>{socialRefreshing ? 'SYNCING...' : 'FORCE SYNC'}</button>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', gap: '12px', background: 'var(--color-bg-3)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', gap: '12px', background: 'var(--surface-elevated)' }}>
                   {socialSignals.slice(0, 5).map(signal => (
                     <div key={signal.id} style={{ border: '1px solid var(--border-subtle)', padding: '12px', background: '#000' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                         <div style={{ display: 'flex', gap: '8px' }}>
                           <span className="badge badge-neutral mono text-xs" style={{ border: '1px solid var(--border-subtle)' }}>{signal.platform.toUpperCase()}</span>
-                          <span className="badge badge-neutral mono text-xs" style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>{signal.topic.toUpperCase()}</span>
+                          <span className="badge badge-neutral mono text-xs" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{signal.topic.toUpperCase()}</span>
                         </div>
                         <button className="btn btn-primary mono btn-sm" style={{ padding: '2px 8px', fontSize: '9px' }} onClick={() => handlePromoteSocialSignal(signal)} disabled={promotingId === signal.id}>
                           {promotingId === signal.id ? 'PROC...' : 'PROMOTE'}
                         </button>
                       </div>
-                      <div className="mono text-sm font-bold" style={{ marginBottom: '8px', color: 'var(--color-text)' }}>{signal.title.toUpperCase()}</div>
+                      <div className="mono text-sm font-bold" style={{ marginBottom: '8px', color: 'var(--text-primary)' }}>{signal.title.toUpperCase()}</div>
                       {signal.bodyExcerpt && <div className="mono text-xs text-secondary" style={{ marginBottom: '8px', opacity: 0.8 }}>{signal.bodyExcerpt.slice(0, 150)}...</div>}
                       <div className="mono text-xs text-tertiary">ENGAGEMENT: {compactNumber(signal.engagement)} | SENTIMENT: {signal.sentimentScore} | OPP: {signal.opportunityScore}</div>
                     </div>
@@ -375,8 +375,8 @@ function Intelligence() {
                 </div>
               </div>
 
-              <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', background: 'var(--color-bg-2)' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// LOG TARGET INTEL</div>
+              <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column', background: 'var(--surface-raised)' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// LOG TARGET INTEL</div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div className="input-group"><label className="mono text-xs">SIGNAL REF</label><input className="input mono text-xs" style={{ padding: '8px', border: '1px solid var(--border-subtle)', borderRadius: 0 }} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} /></div>
                   <div className="input-group"><label className="mono text-xs">CLASS</label>
@@ -396,12 +396,12 @@ function Intelligence() {
             </div>
 
             {/* RAW LEADS DATA TABLE */}
-            <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', marginBottom: '32px' }}>
-              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column', marginBottom: '32px' }}>
+              <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between' }}>
                 <span>/// SECURE SIGNALS DB</span>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {['all', 'leading', 'lagging'].map(value => (
-                    <button key={value} className="mono" style={{ border: '1px solid var(--border-subtle)', background: signalFilter === value ? 'var(--color-primary)' : 'transparent', color: signalFilter === value ? '#000' : 'var(--text-tertiary)', fontSize: '9px', padding: '2px 8px', cursor: 'pointer' }} onClick={() => setSignalFilter(value)}>
+                    <button key={value} className="mono" style={{ border: '1px solid var(--border-subtle)', background: signalFilter === value ? 'var(--accent-primary)' : 'transparent', color: signalFilter === value ? '#000' : 'var(--text-tertiary)', fontSize: '9px', padding: '2px 8px', cursor: 'pointer' }} onClick={() => setSignalFilter(value)}>
                       {value.toUpperCase()}
                     </button>
                   ))}
@@ -409,19 +409,19 @@ function Intelligence() {
               </div>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border-subtle)', background: 'var(--color-bg-2)' }}>
-                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--color-primary)' }}>REF</th>
-                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--color-primary)' }}>CLASS</th>
-                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--color-primary)' }}>IMP</th>
-                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--color-primary)' }}>CNF</th>
-                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--color-primary)' }}>SYS DATE</th>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)', background: 'var(--surface-raised)' }}>
+                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--accent-primary)' }}>REF</th>
+                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--accent-primary)' }}>CLASS</th>
+                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--accent-primary)' }}>IMP</th>
+                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--accent-primary)' }}>CNF</th>
+                    <th style={{ padding: '8px', textAlign: 'left', color: 'var(--accent-primary)' }}>SYS DATE</th>
                     <th style={{ padding: '8px', textAlign: 'right', color: 'var(--color-danger)' }}>ACTION</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredSignals.map(signal => (
-                    <tr key={signal.id} style={{ borderBottom: '1px solid var(--border-subtle)', cursor: 'pointer', transition: 'background 0.15s' }} onClick={() => setSelectedSignal(signal)} onMouseEnter={e => e.currentTarget.style.background = 'var(--color-bg-3)'} onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
-                      <td style={{ padding: '8px', color: 'var(--color-text)', fontWeight: 'bold' }}>{signal.title.toUpperCase()}</td>
+                    <tr key={signal.id} style={{ borderBottom: '1px solid var(--border-subtle)', cursor: 'pointer', transition: 'background 0.15s' }} onClick={() => setSelectedSignal(signal)} onMouseEnter={e => e.currentTarget.style.background = 'var(--surface-elevated)'} onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
+                      <td style={{ padding: '8px', color: 'var(--text-primary)', fontWeight: 'bold' }}>{signal.title.toUpperCase()}</td>
                       <td style={{ padding: '8px' }}><span style={{ border: '1px solid var(--border-subtle)', padding: '2px 6px', color: 'var(--color-info)' }}>{signal.category.toUpperCase()}</span></td>
                       <td style={{ padding: '8px', color: signal.impact >= 70 ? 'var(--color-danger)' : 'var(--color-warning)' }}>{signal.impact}</td>
                       <td style={{ padding: '8px', color: signal.confidence >= 70 ? 'var(--color-success)' : 'var(--color-warning)' }}>{signal.confidence}</td>
@@ -440,20 +440,20 @@ function Intelligence() {
 
         {activeView === 'apis' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '32px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--color-border)', border: '1px solid var(--color-border)' }}>
-              <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: 'var(--border-default)', border: '1px solid var(--border-default)' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                 <span className="mono text-xs text-tertiary">CATALOG APIS</span>
                 <span className="mono text-lg font-bold text-info">{apiStatsSummary.total}</span>
               </div>
-              <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                 <span className="mono text-xs text-tertiary">LIVE CONNECTORS</span>
                 <span className="mono text-lg font-bold text-success">{apiStatsSummary.live}</span>
               </div>
-              <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                 <span className="mono text-xs text-tertiary">INSTALLABLE</span>
                 <span className="mono text-lg font-bold text-warning">{apiStatsSummary.installable}</span>
               </div>
-              <div style={{ background: 'var(--color-bg-2)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ background: 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                 <span className="mono text-xs text-tertiary">ACTIVE SECTIONS</span>
                 <span className="mono text-lg font-bold text-primary">{apiStatsSummary.sections}</span>
               </div>
@@ -480,7 +480,7 @@ function Intelligence() {
             </div>
 
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
-              <button className="mono text-xs font-bold" style={{ border: '1px solid var(--border-subtle)', background: apiSection === 'all' ? 'var(--color-primary)' : '#000', color: apiSection === 'all' ? '#000' : 'var(--text-tertiary)', padding: '4px 12px', cursor: 'pointer' }} onClick={() => setApiSection('all')}>
+              <button className="mono text-xs font-bold" style={{ border: '1px solid var(--border-subtle)', background: apiSection === 'all' ? 'var(--accent-primary)' : '#000', color: apiSection === 'all' ? '#000' : 'var(--text-tertiary)', padding: '4px 12px', cursor: 'pointer' }} onClick={() => setApiSection('all')}>
                 ALL [{searchScopedApiEntries.length}]
               </button>
               {sectionSummary.filter(s => s.count > 0).map(s => (
@@ -493,33 +493,33 @@ function Intelligence() {
             {apiLoading ? (
               <div className="mono text-xs text-tertiary" style={{ textAlign: 'center', padding: '64px', border: '1px solid var(--border-subtle)' }}>ACQUIRING API DIRECTORY...</div>
             ) : (
-              <div style={{ border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column' }}>
-                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--color-border)', color: 'var(--color-primary)' }}>/// API CATALOG DIRECTORY</div>
+              <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
+                <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// API CATALOG DIRECTORY</div>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-                  <thead style={{ background: 'var(--color-bg-2)', borderBottom: '1px solid var(--border-subtle)' }}>
+                  <thead style={{ background: 'var(--surface-raised)', borderBottom: '1px solid var(--border-subtle)' }}>
                     <tr>
-                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-primary)' }}>AUTHORITY</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>MODULE</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>STATUS</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--color-text-2)' }}>SCORE</th>
-                      <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-text)' }}>ACTION</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--accent-primary)' }}>AUTHORITY</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>MODULE</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>STATUS</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'left', color: 'var(--text-secondary)' }}>SCORE</th>
+                      <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-primary)' }}>ACTION</th>
                     </tr>
                   </thead>
                   <tbody>
                     {pagedApiEntries.map(entry => (
                       <tr key={entry.slug} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
                         <td style={{ padding: '12px 16px' }}>
-                          <div style={{ fontWeight: 'bold', color: 'var(--color-text)', marginBottom: '4px' }}>{entry.name.toUpperCase()}</div>
+                          <div style={{ fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '4px' }}>{entry.name.toUpperCase()}</div>
                           <div style={{ color: 'var(--text-tertiary)', fontSize: '10px' }}>{entry.description.slice(0, 60)}...</div>
                         </td>
-                        <td style={{ padding: '12px 16px', color: 'var(--color-primary)' }}>{entry.section_label.toUpperCase()}</td>
+                        <td style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>{entry.section_label.toUpperCase()}</td>
                         <td style={{ padding: '12px 16px' }}>
                           {entry.health_status === 'live' ? <span className="text-success">LIVE LINK</span> : <span className="text-warning">{entry.activation_tier.toUpperCase()}</span>}
                         </td>
                         <td style={{ padding: '12px 16px', color: 'var(--color-info)' }}>{entry.featured_score || 0}</td>
                         <td style={{ padding: '12px 16px', textAlign: 'right' }}>
                           {entry.installable ? (
-                            <button className="btn btn-sm mono" style={{ border: '1px solid var(--color-primary)', color: 'var(--color-primary)', background: 'transparent' }} onClick={() => handleInstallApi(entry)} disabled={installingSlug === entry.slug}>
+                            <button className="btn btn-sm mono" style={{ border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)', background: 'transparent' }} onClick={() => handleInstallApi(entry)} disabled={installingSlug === entry.slug}>
                               {installingSlug === entry.slug ? 'SYNCING...' : 'INSTALL CABLE'}
                             </button>
                           ) : entry.is_installed ? (

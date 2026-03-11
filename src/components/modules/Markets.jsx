@@ -203,11 +203,11 @@ function Markets() {
     <div className="markets fade-in">
       <div className="markets__header">
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', fontSize: '28px', margin: 0 }}>MACRO TELEMETRY</h1>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', fontSize: '28px', margin: 0 }}>MACRO TELEMETRY</h1>
           <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>LEADERSHIP CONTEXT FOR MACRO-SENSITIVE CAMPAIGN DECISIONS.</p>
         </div>
         <div className="markets__actions">
-          <span className="mono text-xs" style={{ padding: '8px 12px', border: '1px solid var(--border-subtle)', color: 'var(--color-primary)' }}>
+          <span className="mono text-xs" style={{ padding: '8px 12px', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
             {feedBadgeLabel}
           </span>
           <button className="btn btn-primary mono" style={{ padding: '8px 16px', fontSize: '11px', letterSpacing: '0.05em' }} onClick={refresh} disabled={refreshing}>
@@ -225,27 +225,27 @@ function Markets() {
       <section className="markets__stats">
         <article style={{ padding: '16px', background: '#000' }}>
           <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>TRACKED ASSETS</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{summary.trackedCount}</strong>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{summary.trackedCount}</strong>
           <span className="mono text-2xs" style={{ color: 'var(--color-success)', marginTop: '8px', display: 'block' }}>CROSS-ASSET WATCHLIST</span>
         </article>
         <article style={{ padding: '16px', background: '#000' }}>
           <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>A/D LINE</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{summary.advancers} / {summary.decliners}</strong>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{summary.advancers} / {summary.decliners}</strong>
           <span className="mono text-2xs" style={{ color: summary.advancers >= summary.decliners ? 'var(--color-success)' : 'var(--color-danger)', marginTop: '8px', display: 'block' }}>
             BREADTH {summary.advancers >= summary.decliners ? 'SUPPORTS' : 'PRESSURES'} RISK
           </span>
         </article>
         <article style={{ padding: '16px', background: '#000' }}>
           <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>RISK-ON CONFIG</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{summary.riskOnScore}%</strong>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{summary.riskOnScore}%</strong>
           <span className="mono text-2xs" style={{ color: summary.riskOnScore >= 60 ? 'var(--color-success)' : 'var(--color-danger)', marginTop: '8px', display: 'block' }}>
             {summary.riskOnScore >= 60 ? 'VELOCITY APPROVED' : 'TIGHTEN SPEND LOGIC'}
           </span>
         </article>
         <article style={{ padding: '16px', background: '#000' }}>
           <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>24H EXCHANGE VOL</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--color-primary)' }}>{formatVolume(summary.totalVolume)}</strong>
-          <span className="mono text-2xs" style={{ color: 'var(--color-text-2)', marginTop: '8px', display: 'block' }}>SYNC: {formatTimestamp(lastUpdated)}</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{formatVolume(summary.totalVolume)}</strong>
+          <span className="mono text-2xs" style={{ color: 'var(--text-secondary)', marginTop: '8px', display: 'block' }}>SYNC: {formatTimestamp(lastUpdated)}</span>
         </article>
       </section>
 
@@ -365,7 +365,7 @@ function Markets() {
                     <Sparkline points={asset.history} tone={toneClass(asset.change24h)} />
                   </div>
                   <div className="markets__asset-metrics">
-                    <strong style={{ color: 'var(--color-text)' }}>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</strong>
+                    <strong style={{ color: 'var(--text-primary)' }}>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</strong>
                     <span className={toneClass(asset.change24h)}>{formatPercent(asset.change24h)}</span>
                   </div>
                 </button>
@@ -407,12 +407,12 @@ function Markets() {
                       onClick={() => setSelectedSymbol(asset.symbol)}
                       style={{ background: 'transparent', border: 'none', color: 'inherit' }}
                     >
-                      <strong style={{ color: 'var(--color-primary)' }}>{asset.symbol}</strong>
+                      <strong style={{ color: 'var(--accent-primary)' }}>{asset.symbol}</strong>
                       <span>{asset.displayName}</span>
                     </button>
                   </td>
                   <td>{GROUP_LABELS[asset.assetType]}</td>
-                  <td style={{ color: 'var(--color-text)' }}>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</td>
+                  <td style={{ color: 'var(--text-primary)' }}>{asset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(asset)}</td>
                   <td>
                     <span className={`markets__delta ${toneClass(asset.change24h)}`} style={{ background: 'transparent', padding: 0 }}>
                       {formatPercent(asset.change24h)}
