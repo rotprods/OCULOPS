@@ -15,8 +15,8 @@
 **Stack**: React 19 + Vite 7 + Electron 35 + Supabase + Zustand 5 + React Router 7
 **Package manager**: npm
 **Deploy**: Vercel (LIVE) + Electron (desktop)
-**Repo**: github.com/rotprods/ANTIGRAVITY-OS (branch: main) — pending rename to OCULOPS
-**Vercel URL**: https://oculops.vercel.app (pending Vercel rebrand)
+**Repo**: github.com/rotprods/OCULOPS (branch: main)
+**Vercel URL**: https://antigravity-os-theta.vercel.app (oculops.vercel.app aliased — disable Deployment Protection in Vercel dashboard)
 **Supabase project**: yxzdafptqtcvpsbqkmkm
 
 ---
