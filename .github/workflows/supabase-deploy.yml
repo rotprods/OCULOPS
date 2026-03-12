@@ -4,6 +4,7 @@
 name: Deploy Supabase
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -18,9 +19,9 @@ jobs:
   deploy-migrations:
     name: Deploy Migrations
     runs-on: ubuntu-latest
-    if: |
-      contains(toJson(github.event.commits.*.modified), 'supabase/migrations') ||
-      contains(toJson(github.event.commits.*.added), 'supabase/migrations')
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      contains(toJson(github.event.commits), 'supabase/migrations')
 
     steps:
       - name: Checkout
@@ -40,9 +41,9 @@ jobs:
   deploy-functions:
     name: Deploy Edge Functions
     runs-on: ubuntu-latest
-    if: |
-      contains(toJson(github.event.commits.*.modified), 'supabase/functions') ||
-      contains(toJson(github.event.commits.*.added), 'supabase/functions')
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      contains(toJson(github.event.commits), 'supabase/functions')
 
     steps:
       - name: Checkout
@@ -59,6 +60,6 @@ jobs:
           version: latest
 
       - name: Deploy functions
-        run: supabase functions deploy --project-ref yxzdafptqtcvpsbqkmkm
+        run: supabase functions deploy --project-ref yxzdafptqtcvpsbqkmkm --use-api
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
