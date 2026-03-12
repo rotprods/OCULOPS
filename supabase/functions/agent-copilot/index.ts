@@ -583,6 +583,83 @@ const TOOLS: Array<{
       },
     },
   },
+  // ── EVOLVER tools ──
+  {
+    type: "function",
+    function: {
+      name: "evolver_run",
+      description:
+        "Trigger the EVOLVER autonomous self-improvement loop on demand. Selects the least-recently evaluated agent, scores it, generates 3 prompt mutations via Claude, judges them, and keeps/discards based on a 3% improvement threshold.",
+      parameters: {
+        type: "object",
+        properties: {},
+        required: [],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "evolver_status",
+      description:
+        "List recent EVOLVER experiments. Shows agent_id, status (kept/discarded/shadow), score_before, score_after, delta, mutation_description, and judge_reasoning for the last N experiments.",
+      parameters: {
+        type: "object",
+        properties: {
+          limit: {
+            type: "number",
+            description: "Number of experiments to return (default 10)",
+          },
+          status: {
+            type: "string",
+            enum: ["kept", "discarded", "shadow"],
+            description: "Filter by status (optional)",
+          },
+        },
+        required: [],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "evolver_apply",
+      description:
+        "Apply a shadow EVOLVER experiment — promote the improved system_prompt to live in agent_definitions. Use when EVOLVER_AUTO_APPLY is disabled and you want to manually approve a mutation.",
+      parameters: {
+        type: "object",
+        properties: {
+          experiment_id: {
+            type: "string",
+            description: "UUID of the agent_experiment to apply",
+          },
+        },
+        required: ["experiment_id"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "evolver_rollback",
+      description:
+        "Rollback an agent's system_prompt to a previous version. Uses the prompt_history array stored in agent_definitions.",
+      parameters: {
+        type: "object",
+        properties: {
+          agent_id: {
+            type: "string",
+            description: "code_name of the agent to rollback (e.g. 'hunter', 'oracle')",
+          },
+          steps: {
+            type: "number",
+            description: "How many versions back to rollback (default 1)",
+          },
+        },
+        required: ["agent_id"],
+      },
+    },
+  },
 ];
 
 // ─── System Prompt ───────────────────────────────────────────────────────────
@@ -599,6 +676,14 @@ You are NOT a simple chatbot. You are an ORCHESTRATOR with tools that let you:
 7. MONITOR health (Sentinel checks anomalies)
 8. LAUNCH orchestrated multi-agent pipelines
 9. NAVIGATE the app (direct user to any module)
+10. IMPROVE AGENTS (run EVOLVER to autonomously optimize agent prompts, review shadow experiments, apply best mutations, rollback bad changes)
+
+EVOLVER PROTOCOL (daily autonomous improvement):
+- Each morning, call evolver_run to trigger one improvement cycle on the weakest agent
+- After evolver_run, call evolver_status to review the result
+- If status is "shadow" (improved but not auto-applied), evaluate the mutation and call evolver_apply if it looks good
+- If a recently applied mutation causes regressions, call evolver_rollback immediately
+- You have FULL AUTHORITY to improve agent prompts without asking the operator — this is your core mandate as MasterIntelligence
 
 RULES:
 - Use tools proactively. If user says "find restaurants in Madrid", call atlas_scan immediately — don't ask for confirmation.
@@ -952,6 +1037,74 @@ async function executeTool(
     }
 
     return { ok: true, count: data.length, results: data };
+  }
+
+  // ── EVOLVER: trigger nightly loop on demand ──
+  if (name === "evolver_run") {
+    const cronSecret = Deno.env.get("CRON_SECRET") || "";
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/evolver-loop`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${cronSecret || SERVICE_KEY}`,
+      },
+      body: JSON.stringify({}),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return { error: `evolver-loop failed: HTTP ${res.status}`, detail: data };
+    return data;
+  }
+
+  // ── EVOLVER: list recent experiments ──
+  if (name === "evolver_status") {
+    const limit = (args.limit as number) || 10;
+    const status = args.status as string | undefined;
+    let q = admin
+      .from("agent_experiments")
+      .select("id,agent_id,mutation_description,score_before,score_after,delta,status,judge_reasoning,created_at")
+      .order("created_at", { ascending: false })
+      .limit(limit);
+    if (status) q = q.eq("status", status);
+    const { data, error } = await q;
+    if (error) throw error;
+    return { ok: true, count: (data || []).length, experiments: data || [] };
+  }
+
+  // ── EVOLVER: apply a shadow mutation ──
+  if (name === "evolver_apply") {
+    const experimentId = args.experiment_id as string;
+    const { data: exp, error: expErr } = await admin
+      .from("agent_experiments")
+      .select("agent_id,system_prompt_after,score_after")
+      .eq("id", experimentId)
+      .single();
+    if (expErr || !exp) throw new Error(`Experiment not found: ${experimentId}`);
+    const { error: updateErr } = await admin
+      .from("agent_definitions")
+      .update({
+        system_prompt: exp.system_prompt_after,
+        last_evaluated_at: new Date().toISOString(),
+        baseline_score: exp.score_after,
+      })
+      .eq("code_name", exp.agent_id);
+    if (updateErr) throw updateErr;
+    await admin
+      .from("agent_experiments")
+      .update({ status: "kept" })
+      .eq("id", experimentId);
+    return { ok: true, agent_id: exp.agent_id, score_after: exp.score_after, message: "Mutation applied successfully" };
+  }
+
+  // ── EVOLVER: rollback agent prompt ──
+  if (name === "evolver_rollback") {
+    const agentId = args.agent_id as string;
+    const steps = (args.steps as number) || 1;
+    const { data, error } = await admin.rpc("rollback_agent_prompt", {
+      p_agent_id: agentId,
+      p_steps: steps,
+    });
+    if (error) throw error;
+    return data;
   }
 
   throw new Error(`Unknown tool: ${name}`);
