@@ -88,5 +88,22 @@ export function useCreativeAssets() {
         }
     }, [])
 
-    return { assets, loading, persistGeneration, reload: load }
+    // Persist FORGE copy output directly (no job/request chain needed)
+    const persistCopyAsset = useCallback(async (prompt, content, forgeAssetId = null) => {
+        const { data: asset } = await supabase
+            .from('creative_assets')
+            .insert({
+                asset_type: 'copy',
+                prompt_used: prompt,
+                public_url: null,
+                engine: 'forge',
+                status: 'ready',
+                metadata: { content, forge_asset_id: forgeAssetId }
+            })
+            .select('id, asset_type, prompt_used, public_url, status, metadata')
+            .single()
+        return asset
+    }, [])
+
+    return { assets, loading, persistGeneration, persistCopyAsset, reload: load }
 }

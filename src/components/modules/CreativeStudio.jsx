@@ -61,12 +61,12 @@ function SocialOpsTab({ generateCopy }) {
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)', height: '100%' }}>
       {/* Left: Config */}
       <div className="cs-command-console">
-        <div className="cs-panel-header">/// PLATFORM PARAMETERS</div>
+        <div className="cs-panel-header">Platform Parameters</div>
         <div className="cs-command-body">
 
           {/* Platform selector */}
           <div className="cs-input-group">
-            <label className="mono cs-label">TARGET PLATFORM</label>
+            <label className="mono cs-label">Platform</label>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-2)' }}>
               {Object.entries(PLATFORM_TEMPLATES).map(([key, p]) => (
                 <button
@@ -83,7 +83,7 @@ function SocialOpsTab({ generateCopy }) {
 
           {/* Brief inputs */}
           <div className="cs-input-group">
-            <label className="mono cs-label">PRODUCT / SERVICE</label>
+            <label className="mono cs-label">Product / Service</label>
             <textarea
               className="input cs-prompt-input"
               placeholder="What are you promoting? Describe your offer..."
@@ -95,7 +95,7 @@ function SocialOpsTab({ generateCopy }) {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-3)' }}>
             <div className="cs-input-group">
-              <label className="mono cs-label">TONE</label>
+              <label className="mono cs-label">Tone</label>
               <select
                 className="input mono"
                 style={{ fontSize: 'var(--text-xs)', padding: '6px var(--space-2)' }}
@@ -106,7 +106,7 @@ function SocialOpsTab({ generateCopy }) {
               </select>
             </div>
             <div className="cs-input-group">
-              <label className="mono cs-label">GOAL</label>
+              <label className="mono cs-label">Goal</label>
               <select
                 className="input mono"
                 style={{ fontSize: 'var(--text-xs)', padding: '6px var(--space-2)' }}
@@ -123,17 +123,17 @@ function SocialOpsTab({ generateCopy }) {
             onClick={handleGenerate}
             disabled={generating || !brief.product.trim()}
           >
-            {generating ? '[ GENERATING... ]' : '[ DEPLOY COPY ]'}
+            {generating ? 'Generating...' : 'Generate Copy'}
           </button>
 
-          {error && <div className="cs-error-text mono" style={{ color: 'var(--color-danger)', fontSize: 'var(--text-xs)' }}>ERR: {error}</div>}
+          {error && <div className="cs-error-text mono" style={{ color: 'var(--color-danger)', fontSize: 'var(--text-xs)' }}>{error}</div>}
         </div>
       </div>
 
       {/* Right: Output */}
       <div className="cs-gallery-panel">
         <div className="cs-panel-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span>/// GENERATED COPY</span>
+          <span>Generated Copy</span>
           {output && (
             <span className="mono" style={{ fontSize: 'var(--text-xs)', color: overLimit ? 'var(--color-danger)' : 'var(--color-success)' }}>
               {output.charCount} / {tpl.maxChars} CHARS
@@ -143,7 +143,7 @@ function SocialOpsTab({ generateCopy }) {
         <div className="cs-gallery-body">
           {!output && !generating && (
             <div className="cs-empty-state">
-              <span className="mono cs-empty-text">CONFIGURE AND DEPLOY TO SEE OUTPUT.</span>
+              <span className="mono cs-empty-text">Configure and generate to see output.</span>
             </div>
           )}
           {generating && (
@@ -155,13 +155,13 @@ function SocialOpsTab({ generateCopy }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', height: '100%' }}>
               <div style={{
                 flex: 1,
-                background: 'var(--surface-inset)',
-                border: `1px solid ${overLimit ? 'var(--color-danger)' : 'var(--border-default)'}`,
+                background: 'var(--color-bg-3)',
+                border: `1px solid ${overLimit ? 'var(--color-danger)' : 'var(--color-border)'}`,
                 borderRadius: 'var(--radius-sm)',
                 padding: 'var(--space-4)',
                 fontFamily: 'var(--font-mono)',
                 fontSize: 'var(--text-xs)',
-                color: 'var(--text-secondary)',
+                color: 'var(--color-text-2)',
                 whiteSpace: 'pre-wrap',
                 lineHeight: 'var(--leading-relaxed)',
                 overflowY: 'auto',
@@ -277,24 +277,23 @@ function CreativeStudio() {
 
   // Media State
   const { generateImage, generateVideo, generateCopy, isGeneratingImage, isGeneratingVFX, isGeneratingCopy, error } = useGenerativeMedia()
-  const { assets: dbAssets, loading: assetsLoading, persistGeneration } = useCreativeAssets()
+  const { assets: dbAssets, loading: assetsLoading, persistGeneration, persistCopyAsset } = useCreativeAssets()
   const [prompt, setPrompt] = useState('')
   const [modelTarget, setModelTarget] = useState('banana') // 'banana' | 'veo3' | 'forge'
   const [gallery, setGallery] = useState([])
 
-  // Seed gallery from DB on first load (includes copy assets via metadata)
+  // Sync gallery from DB — runs on load and whenever dbAssets updates (realtime)
   useEffect(() => {
-    if (!assetsLoading && gallery.length === 0 && dbAssets.length > 0) {
-      setGallery(dbAssets.map(a => ({
-        id: a.id,
-        type: a.asset_type,
-        prompt: a.prompt_used || '',
-        url: a.public_url,
-        status: a.status === 'ready' ? 'ready' : 'error',
-        content: a.metadata?.content ?? null
-      })))
-    }
-  }, [assetsLoading, dbAssets, gallery.length])
+    if (assetsLoading) return
+    setGallery(dbAssets.map(a => ({
+      id: a.id,
+      type: a.asset_type,
+      prompt: a.prompt_used || '',
+      url: a.public_url,
+      status: a.status === 'ready' ? 'ready' : 'error',
+      content: a.metadata?.content ?? null
+    })))
+  }, [assetsLoading, dbAssets])
 
   // Briefs State
   const { briefs, loading: briefsLoading, trackUsage } = useCreativeBriefs()
@@ -313,14 +312,16 @@ function CreativeStudio() {
     const capturedPrompt = prompt
     setPrompt('')
 
-    // FORGE — copy generation (FORGE already writes creative_asset to DB)
+    // FORGE — copy generation + persist to creative_assets
     if (modelTarget === 'forge') {
       setGallery(prev => [{ id: localId, type: 'copy', prompt: capturedPrompt, status: 'generating', url: null, content: null }, ...prev])
       try {
         const result = await generateCopy(capturedPrompt)
+        const content = result?.content ?? null
+        const saved = await persistCopyAsset(capturedPrompt, content, result?.creative_asset_id ?? null)
         setGallery(prev => prev.map(item =>
           item.id === localId
-            ? { id: result?.creative_asset_id || localId, type: 'copy', prompt: capturedPrompt, status: 'ready', url: null, content: result?.content ?? null }
+            ? { id: saved?.id || localId, type: 'copy', prompt: capturedPrompt, status: 'ready', url: null, content }
             : item
         ))
       } catch (err) {
@@ -368,20 +369,20 @@ function CreativeStudio() {
       {/* ── HEADER ── */}
       <div className="cs-header">
         <div>
-          <h1 className="cs-header-title">MEDIA DEPLOYMENT</h1>
+          <h1 className="cs-header-title">Creative Studio</h1>
           <p className="mono cs-header-subtitle">
-            CREATIVE STUDIO // AI ASSET GENERATION & BRIEF LIBRARY
+            AI Asset Generation & Brief Library
           </p>
         </div>
         <div className="cs-view-toggles">
           <button className={`cs-view-btn ${view === 'deploy' ? 'cs-view-btn--active' : ''}`} onClick={() => setView('deploy')}>
-            [ MEDIA OPS ]
+            Media
           </button>
           <button className={`cs-view-btn ${view === 'briefs' ? 'cs-view-btn--active' : ''}`} onClick={() => setView('briefs')}>
-            [ BRIEF DB ]
+            Briefs
           </button>
           <button className={`cs-view-btn ${view === 'social' ? 'cs-view-btn--active' : ''}`} onClick={() => setView('social')}>
-            [ SOCIAL OPS ]
+            Social
           </button>
         </div>
       </div>
@@ -390,7 +391,7 @@ function CreativeStudio() {
       {error && (
         <div className="cs-error-banner">
           <span className="cs-error-icon">⚠️</span>
-          <span className="mono cs-error-text">SYS_ERR: {error}</span>
+          <span className="mono cs-error-text">{error}</span>
         </div>
       )}
 
@@ -403,11 +404,11 @@ function CreativeStudio() {
 
             {/* Left: Command Console */}
             <div className="cs-command-console">
-              <div className="cs-panel-header">/// DEPLOYMENT PARAMETERS</div>
+              <div className="cs-panel-header">Generation Settings</div>
               <div className="cs-command-body">
 
                 <div className="cs-input-group">
-                  <label className="mono cs-label">TARGET LOGIC CORE</label>
+                  <label className="mono cs-label">Model</label>
                   <div className="cs-model-selector">
                     <button
                       className={`cs-model-btn ${modelTarget === 'banana' ? 'cs-model-btn--active' : ''}`}
@@ -431,7 +432,7 @@ function CreativeStudio() {
                 </div>
 
                 <div className="cs-input-group" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <label className="mono cs-label">NEURAL PROMPT SEQUENCE</label>
+                  <label className="mono cs-label">Prompt</label>
                   <textarea
                     className="input cs-prompt-input"
                     placeholder={modelTarget === 'forge' ? 'Topic or brief to generate copy for...' : 'Execute creative directive...'}
@@ -445,7 +446,7 @@ function CreativeStudio() {
                   onClick={handleDeploy}
                   disabled={isWorking || !prompt.trim()}
                 >
-                  {isWorking ? '[ GENERATING ASSET... ]' : '[ INITIATE GENERATION ]'}
+                  {isWorking ? 'Generating...' : 'Generate'}
                 </button>
 
               </div>
@@ -453,11 +454,11 @@ function CreativeStudio() {
 
             {/* Right: Asset Gallery */}
             <div className="cs-gallery-panel">
-              <div className="cs-panel-header">/// ACTIVE ASSET STREAM</div>
+              <div className="cs-panel-header">Generated Assets</div>
               <div className="cs-gallery-body">
                 {gallery.length === 0 ? (
                   <div className="cs-empty-state">
-                    <span className="mono cs-empty-text">AWAITING GENERATION PROTOCOL.</span>
+                    <span className="mono cs-empty-text">No assets yet. Generate your first one.</span>
                   </div>
                 ) : (
                   <div className="cs-assets-grid">
@@ -495,7 +496,7 @@ function CreativeStudio() {
           <div className="cs-briefs-layout">
             <div className="cs-panel">
               <div className="cs-panel-header" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>/// LIBRARY DIRECTORY</span>
+                <span>LIBRARY DIRECTORY</span>
                 <div style={{ display: 'flex', gap: '6px' }}>
                   {categories.map(c => (
                     <button key={c} className={`cs-filter-btn mono ${filterCat === c ? 'cs-filter-btn--active' : ''}`} onClick={() => setFilterCat(c)}>
