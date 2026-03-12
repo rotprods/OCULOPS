@@ -1,8 +1,5 @@
-// /////////////////////////////////////////////////////////////////////////////
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
-// OCULOPS — ProspectorHub Mega-Module
-// Bloomberg Terminal / War Room Edition
-// /////////////////////////////////////////////////////////////////////////////
+// OCULOPS — ProspectorHub Module
+// Premium Map Intelligence
 
 import { useState, useMemo } from 'react'
 import { useProspector } from '../../hooks/useProspector'
@@ -123,13 +120,13 @@ const API_NODES = [
 ]
 
 const TABS = [
-    { id: 'flight', label: 'FLIGHT DECK' },
-    { id: 'map', label: 'GEO MAP' },
-    { id: 'scanner', label: 'SCAN TRG' },
-    { id: 'leads', label: 'LEADS DB' },
-    { id: 'pipeline', label: 'PIPELINE' },
-    { id: 'outreach', label: 'OUTREACH' },
-    { id: 'network', label: 'API NET' }
+    { id: 'flight', label: 'Flight Deck' },
+    { id: 'map', label: 'Geo Map' },
+    { id: 'scanner', label: 'Scanner' },
+    { id: 'leads', label: 'Leads' },
+    { id: 'pipeline', label: 'Pipeline' },
+    { id: 'outreach', label: 'Outreach' },
+    { id: 'network', label: 'API Network' }
 ]
 
 const PIPELINE_STEPS = [
@@ -168,11 +165,11 @@ function PipelineTab() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)', height: '100%' }}>
             {/* Left: Form */}
             <div style={{ background: 'var(--surface-elevated)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                <div className="mono font-bold text-tertiary ph-history-title">/// ENRICHMENT PARAMETERS</div>
+                <div className="mono font-bold text-tertiary ph-history-title">Enrichment Parameters</div>
                 {[
-                    { label: 'COMPANY NAME', key: 'company', placeholder: 'Clínica Dental Madrid' },
-                    { label: 'WEBSITE URL', key: 'url', placeholder: 'https://example.com' },
-                    { label: 'LOCATION', key: 'location', placeholder: 'Madrid, España' },
+                    { label: 'Company Name', key: 'company', placeholder: 'Clínica Dental Madrid' },
+                    { label: 'Website URL', key: 'url', placeholder: 'https://example.com' },
+                    { label: 'Location', key: 'location', placeholder: 'Madrid, España' },
                 ].map(f => (
                     <div key={f.key} className="input-group">
                         <label className="mono ph-scanner-label">{f.label}</label>
@@ -189,7 +186,7 @@ function PipelineTab() {
                     onClick={handleRun}
                     disabled={loading || (!form.company && !form.url)}
                 >
-                    {loading ? '[ ENRICHING... ]' : '[ RUN PIPELINE ]'}
+                    {loading ? 'Enriching...' : 'Run Pipeline'}
                 </button>
                 {error && (
                     <div style={{ color: 'var(--color-danger)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)' }}>
@@ -202,7 +199,7 @@ function PipelineTab() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                 {/* Step tracker */}
                 <div style={{ background: 'var(--surface-elevated)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-                    <div className="mono font-bold text-tertiary ph-history-title">/// PIPELINE STATUS</div>
+                    <div className="mono font-bold text-tertiary ph-history-title">Pipeline Status</div>
                     {PIPELINE_STEPS.map(step => {
                         const status = stepStatus(step.key)
                         return (
@@ -224,7 +221,7 @@ function PipelineTab() {
                 {/* Score result */}
                 {data && (
                     <div style={{ background: 'var(--surface-elevated)', border: `1px solid ${score >= 60 ? 'var(--color-success)' : 'var(--border-default)'}`, borderRadius: 'var(--radius-md)', padding: 'var(--space-4)', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-                        <div className="mono font-bold text-tertiary ph-history-title">/// RESULT</div>
+                        <div className="mono font-bold text-tertiary ph-history-title">Result</div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
                             <svg width="56" height="56">
                                 <circle cx="28" cy="28" r="24" fill="none" stroke="var(--border-subtle)" strokeWidth="3" />
@@ -386,20 +383,20 @@ function ProspectorHub() {
             {/* ── HEADER ── */}
             <div className="ph-header">
                 <div>
-                    <h1 className="ph-header-title">PROSPECTOR HUB</h1>
+                    <h1 className="ph-header-title">Prospector Hub</h1>
                     <p className="mono font-bold ph-header-subtitle">
-                        GLOBAL INTELLIGENCE NETWORK // {activeLeads.length} LOCATIONS VERIFIED
+                        Intelligence Network — {activeLeads.length} locations verified
                     </p>
                 </div>
                 <div className="ph-header-stats">
                     <div className="ph-stat-box mono text-xs">
-                        <span className="text-tertiary">LIVE: </span><strong className="text-primary">{results.length || activeLeads.length}</strong>
+                        <span className="text-tertiary">Live: </span><strong className="text-primary">{results.length || activeLeads.length}</strong>
                     </div>
                     <div className="ph-stat-box mono text-xs">
-                        <span className="text-tertiary">QUAL: </span><strong className="text-success">{byStatus.qualified?.length || 0}</strong>
+                        <span className="text-tertiary">Qualified: </span><strong className="text-success">{byStatus.qualified?.length || 0}</strong>
                     </div>
                     <div className="ph-stat-box mono text-xs">
-                        <span className="text-tertiary">AVG ID: </span><strong className="text-primary">{avgScore || '-'}</strong>
+                        <span className="text-tertiary">Avg Score: </span><strong className="text-primary">{avgScore || '—'}</strong>
                     </div>
                 </div>
             </div>
@@ -437,13 +434,13 @@ function ProspectorHub() {
                 {tab === 'map' && (
                     <div className="map-container">
                         <div className="map-sidebar">
-                            <div className="map-sidebar-header">/// MISSION TARGETS</div>
+                            <div className="map-sidebar-header">Targets</div>
                             <div className="map-sidebar-list">
                                 {activeLeads.map(l => (
                                     <div key={l.id} className={`map-lead-item ${selectedLead === l.id ? 'selected' : ''}`} onClick={() => setSelectedLead(l.id)}>
                                         <div className={`map-lead-name ${l.status === 'qualified' ? 'text-success' : 'text-primary'}`}>{l.name}</div>
                                         <div className="map-lead-meta">
-                                            <span>{l.ai_score ? `AI:${l.ai_score}` : 'UNRANKED'}</span>
+                                            <span>{l.ai_score ? `AI: ${l.ai_score}` : 'Unranked'}</span>
                                             <span>{l.status}</span>
                                         </div>
                                     </div>
@@ -457,32 +454,32 @@ function ProspectorHub() {
                 {tab === 'scanner' && (
                     <div className="ph-scanner-grid">
                         <div className="ph-scanner-sidebar">
-                            <div className="map-sidebar-header">/// MISSION PARAMETERS</div>
+                            <div className="map-sidebar-header">Scan Parameters</div>
                             <div className="ph-scanner-form">
                                 <div className="input-group">
-                                    <label className="mono ph-scanner-label">TARGET TYPE</label>
+                                    <label className="mono ph-scanner-label">Target Type</label>
                                     <input className="input mono text-xs ph-scanner-input" value={form.query} onChange={e => setForm(f => ({ ...f, query: e.target.value }))} />
                                 </div>
                                 <div className="input-group">
-                                    <label className="mono ph-scanner-label">LOCATION</label>
+                                    <label className="mono ph-scanner-label">Location</label>
                                     <input className="input mono text-xs ph-scanner-input" value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} />
                                 </div>
                                 <div className="input-group">
-                                    <label className="mono ph-scanner-label">RADIUS (m)</label>
+                                    <label className="mono ph-scanner-label">Radius (m)</label>
                                     <input className="input mono text-xs ph-scanner-input" type="number" value={form.radius} onChange={e => setForm(f => ({ ...f, radius: parseInt(e.target.value) }))} />
                                 </div>
                                 <button className="btn btn-primary mono text-xs mt-4 ph-scanner-btn" onClick={handleScan} disabled={scanning}>
-                                    {scanning ? '[ EXECUTING SCAN... ]' : '[ INITIATE SCAN ]'}
+                                    {scanning ? 'Scanning...' : 'Run Scan'}
                                 </button>
                             </div>
                         </div>
                         <div className="ph-history-panel">
-                            <div className="mono font-bold text-tertiary mb-6 ph-history-title">/// DEPLOYMENT HISTORY</div>
+                            <div className="mono font-bold text-tertiary mb-6 ph-history-title">Scan History</div>
                             <div className="ph-history-list">
                                 {scans.map(s => (
                                     <div key={s.id} className="mono text-xs ph-history-item">
-                                        <span className="text-primary font-bold">{s.query.toUpperCase()}</span>
-                                        <span className="text-tertiary">{s.location.toUpperCase()} — {s.results_count} LOGS</span>
+                                        <span className="text-primary font-bold">{s.query}</span>
+                                        <span className="text-tertiary">{s.location} — {s.results_count} results</span>
                                     </div>
                                 ))}
                             </div>
@@ -496,21 +493,21 @@ function ProspectorHub() {
                             <table className="ph-leads-table">
                                 <thead>
                                     <tr className="mono ph-leads-tr-head">
-                                        <th className="ph-leads-th">TARGET ID</th>
-                                        <th className="ph-leads-th">CLASS</th>
-                                        <th className="ph-leads-th">AI LEVEL</th>
-                                        <th className="ph-leads-th">STATE</th>
+                                        <th className="ph-leads-th">Name</th>
+                                        <th className="ph-leads-th">Category</th>
+                                        <th className="ph-leads-th">AI Score</th>
+                                        <th className="ph-leads-th">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {activeLeads.map(l => (
                                         <tr key={l.id} className={`mono ph-leads-tr-body ${selectedLead === l.id ? 'ph-leads-tr-body--selected' : ''}`} onClick={() => setSelectedLead(l.id)}>
-                                            <td className="ph-leads-td ph-leads-td--bold">{l.name.toUpperCase()}</td>
-                                            <td className="ph-leads-td text-tertiary">{l.category ? l.category.toUpperCase() : '[ NULL ]'}</td>
+                                            <td className="ph-leads-td ph-leads-td--bold">{l.name}</td>
+                                            <td className="ph-leads-td text-tertiary">{l.category || '—'}</td>
                                             <td className="ph-leads-td">
-                                                <span className={l.ai_score > 70 ? 'text-success' : 'text-warning'}>{l.ai_score || '[ ? ]'}</span>
+                                                <span className={l.ai_score > 70 ? 'text-success' : 'text-warning'}>{l.ai_score || '—'}</span>
                                             </td>
-                                            <td className={`ph-leads-td ${l.status === 'qualified' ? 'text-success' : ''}`}>{l.status.toUpperCase()}</td>
+                                            <td className={`ph-leads-td ${l.status === 'qualified' ? 'text-success' : ''}`}>{l.status}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -518,21 +515,21 @@ function ProspectorHub() {
                         </div>
                         {selected ? (
                             <div className="ph-lead-detail-panel">
-                                <div className="mono text-primary font-bold mb-6 ph-lead-detail-title">{selected.name.toUpperCase()}</div>
-                                <div className="mono text-xs mb-3 text-tertiary ph-lead-detail-meta">LOCATION: <span className="text-secondary">{selected.address || '[ UNKNOWN ]'}</span></div>
-                                <div className="mono text-xs mb-3 text-tertiary ph-lead-detail-meta">INDEX: <span className="text-secondary">{selected.rating || '[ UNKNOWN ]'}</span></div>
-                                <div className="mono text-xs mb-6 text-tertiary ph-lead-detail-meta">WEB LINK: <span className="text-secondary">{selected.website || '[ NULL ]'}</span></div>
+                                <div className="mono text-primary font-bold mb-6 ph-lead-detail-title">{selected.name}</div>
+                                <div className="mono text-xs mb-3 text-tertiary ph-lead-detail-meta">Location: <span className="text-secondary">{selected.address || '—'}</span></div>
+                                <div className="mono text-xs mb-3 text-tertiary ph-lead-detail-meta">Rating: <span className="text-secondary">{selected.rating || '—'}</span></div>
+                                <div className="mono text-xs mb-6 text-tertiary ph-lead-detail-meta">Website: <span className="text-secondary">{selected.website || '—'}</span></div>
                                 <button className="btn btn-primary mono text-xs mb-6 ph-lead-detail-btn" onClick={() => aiQualify(selected.id)} disabled={qualifying === selected.id}>
-                                    {qualifying === selected.id ? '[ DECRYPTING AI LOGS... ]' : '[ AUTHORIZE AI INFILTRATION ]'}
+                                    {qualifying === selected.id ? 'Qualifying...' : 'Run AI Qualification'}
                                 </button>
-                                <div className="mono font-bold text-primary mb-3 ph-cortex-title">/// CORTEX INTELLIGENCE RECORD</div>
+                                <div className="mono font-bold text-primary mb-3 ph-cortex-title">Intelligence Record</div>
                                 <div className="mono text-secondary ph-cortex-record">
-                                    {selected.ai_reasoning || 'AWAITING RECONNAISSANCE PACKET.'}
+                                    {selected.ai_reasoning || 'No AI analysis yet.'}
                                 </div>
                             </div>
                         ) : (
                             <div className="ph-empty-detail">
-                                <div className="mono ph-empty-detail-text">AWAITING TARGET SELECTION.</div>
+                                <div className="mono ph-empty-detail-text">Select a lead to view details.</div>
                             </div>
                         )}
                     </div>
@@ -561,14 +558,14 @@ function ProspectorHub() {
 
                 {tab === 'outreach' && (
                     <div className="mono font-bold text-tertiary ph-outreach-msg">
-                        OUTREACH MODULE: UI RESTRICTED. FALLBACK TO TERMINAL COMMS.
+                        Outreach module coming soon.
                     </div>
                 )}
             </div>
 
             {loading && (
                 <div className="ph-global-sync">
-                    <div className="mono text-primary font-bold ph-global-sync-text">SYNCHRONIZING GLOBAL DEPLOYMENT...</div>
+                    <div className="mono text-primary font-bold ph-global-sync-text">Synchronizing data...</div>
                 </div>
             )}
         </div>

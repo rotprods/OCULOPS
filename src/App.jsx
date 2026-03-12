@@ -13,15 +13,12 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import CopilotPanel from './components/ui/CopilotPanel'
 
-// Full ParticleField — only loaded when authenticated
-const ParticleField = lazy(() => import('./components/ui/ParticleField'))
-
 // Lightweight ambient background
 function AmbientBackground() {
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
-      background: 'radial-gradient(ellipse at 30% 20%, rgba(123,140,255,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(80,227,194,0.02) 0%, transparent 50%)',
+      background: 'radial-gradient(ellipse at 30% 20%, rgba(255,215,0,0.02) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(255,215,0,0.01) 0%, transparent 50%)',
     }} />
   )
 }
@@ -75,15 +72,15 @@ function LoadingOS() {
     <div style={{
       height: '100vh', width: '100vw', background: 'var(--surface-base)',
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-      fontFamily: 'var(--font-mono)', position: 'relative', zIndex: 2,
+      fontFamily: 'var(--font-sans)', position: 'relative', zIndex: 2,
     }}>
       <div style={{
         width: 40, height: 40, borderRadius: '50%',
         border: '3px solid var(--border-default)', borderTopColor: 'var(--accent-primary)',
         animation: 'spin 1s linear infinite', marginBottom: 16,
       }} />
-      <div style={{ fontSize: 11, letterSpacing: '0.2em', color: 'var(--accent-primary)', opacity: 0.8 }}>
-        INITIALIZING OCULOPS v2...
+      <div style={{ fontSize: 13, color: 'var(--text-tertiary)', fontWeight: 500 }}>
+        Initializing Oculops...
       </div>
     </div>
   )
@@ -178,10 +175,6 @@ function AppContent() {
         }}
       />
 
-      <Suspense fallback={<AmbientBackground />}>
-        <ParticleField />
-      </Suspense>
-
       <Sidebar />
 
       {/* Copilot Floating Button */}
@@ -194,11 +187,11 @@ function AppContent() {
           background: 'var(--accent-primary)', border: 'none',
           color: '#000', fontSize: 20, fontWeight: 700,
           cursor: 'pointer', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', boxShadow: '0 4px 20px rgba(123,140,255,0.3)',
+          justifyContent: 'center', boxShadow: '0 4px 20px rgba(255,215,0,0.3)',
           transition: 'transform 0.2s, box-shadow 0.2s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(123,140,255,0.5)' }}
-        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(123,140,255,0.3)' }}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(255,215,0,0.5)' }}
+        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(255,215,0,0.3)' }}
       >
         ⚡
       </button>
@@ -267,7 +260,7 @@ function AppContent() {
                   display: 'flex', flexDirection: 'column', alignItems: 'center',
                   justifyContent: 'center', height: '100%', color: 'var(--text-tertiary)',
                 }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>MODULE NOT FOUND</div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500 }}>Module not found</div>
                 </div>
               } />
             </Routes>

@@ -85,10 +85,10 @@ function StudyHub() {
                 </div>
 
                 <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>
-                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'docs' ? 'var(--accent-primary)' : 'transparent', color: viewMode === 'docs' ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setViewMode('docs')}>
+                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'docs' ? 'var(--accent-primary)' : 'transparent', color: viewMode === 'docs' ? 'var(--text-primary)' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => setViewMode('docs')}>
                         01. DOSSIER ARCHIVE
                     </button>
-                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'agent' ? 'var(--accent-primary)' : 'transparent', color: viewMode === 'agent' ? '#000' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => { setViewMode('agent'); reloadAgentStudies() }}>
+                    <button className="mono" style={{ padding: '8px 16px', fontSize: '10px', background: viewMode === 'agent' ? 'var(--accent-primary)' : 'transparent', color: viewMode === 'agent' ? 'var(--text-primary)' : 'var(--text-primary)', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} onClick={() => { setViewMode('agent'); reloadAgentStudies() }}>
                         02. AGENT INTELLIGENCE ({agentStudies.length})
                     </button>
                 </div>
@@ -100,7 +100,7 @@ function StudyHub() {
                         ) : agentStudies.length === 0 ? (
                             <div className="mono" style={{ padding: '24px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '11px' }}>[ NO AGENT STUDIES YET — RUN AGENTS TO GENERATE ]</div>
                         ) : agentStudies.map(s => (
-                            <div key={s.id} onClick={() => setSelectedAgentStudy(selectedAgentStudy?.id === s.id ? null : s)} style={{ border: '1px solid var(--border-subtle)', padding: '12px 16px', cursor: 'pointer', background: selectedAgentStudy?.id === s.id ? 'var(--surface-raised)' : '#000' }}>
+                            <div key={s.id} onClick={() => setSelectedAgentStudy(selectedAgentStudy?.id === s.id ? null : s)} style={{ border: '1px solid var(--border-subtle)', padding: '12px 16px', cursor: 'pointer', background: selectedAgentStudy?.id === s.id ? 'var(--surface-raised)' : 'var(--surface-inset)' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <div className="mono" style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-primary)', textTransform: 'uppercase' }}>{s.title}</div>
                                     <div className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>{s.agent_code_name?.toUpperCase()} | {new Date(s.created_at).toLocaleDateString()}</div>
@@ -112,7 +112,7 @@ function StudyHub() {
                                     </div>
                                 )}
                                 {selectedAgentStudy?.id === s.id && s.content_markdown && (
-                                    <div className="mono" style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '12px', padding: '12px', border: '1px solid var(--border-subtle)', background: '#000', whiteSpace: 'pre-wrap', maxHeight: '400px', overflow: 'auto' }}>
+                                    <div className="mono" style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '12px', padding: '12px', border: '1px solid var(--border-subtle)', background: 'var(--surface-inset)', whiteSpace: 'pre-wrap', maxHeight: '400px', overflow: 'auto' }}>
                                         {s.content_markdown}
                                     </div>
                                 )}
@@ -122,7 +122,7 @@ function StudyHub() {
                 )}
 
                 <div className="study-index-header">
-                    <h2>/// KNOWLEDGE MODULES</h2>
+                    <h2>KNOWLEDGE MODULES</h2>
                     <div className="study-progress-badge">
                         [{completed.length} / {studies.length} EXTRACTED]
                     </div>
@@ -236,7 +236,7 @@ function StudyHub() {
 
                 {study.sections.map((section, i) => (
                     <div key={i} className="study-section">
-                        <h2 className="study-section-title">/// {section.title}</h2>
+                        <h2 className="study-section-title">{section.title}</h2>
                         {section.content && (
                             <div
                                 className="study-section-content"
@@ -278,7 +278,7 @@ function StudyHub() {
                     ) : <div></div>}
 
                     {study.id < studies.length - 1 && (
-                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--accent-primary)', background: 'var(--accent-primary)', color: '#000' }} onClick={() => setActiveStudy(study.id + 1)}>
+                        <button className="btn btn-ghost mono" style={{ padding: '8px 16px', fontSize: '11px', border: '1px solid var(--accent-primary)', background: 'var(--accent-primary)', color: 'var(--text-primary)' }} onClick={() => setActiveStudy(study.id + 1)}>
                             NEXT MODULE &gt;
                         </button>
                     )}
@@ -300,7 +300,7 @@ function renderMarkdown(text) {
         .replace(/`([^`]+)`/g, '<code>$1</code>')
         // Headers within content
         .replace(/^### (.*$)/gm, '<h4>$1</h4>')
-        .replace(/^## (.*$)/gm, '<h3>/// $1</h3>')
+        .replace(/^## (.*$)/gm, '<h3>$1</h3>')
         // Tables (simple markdown tables)
         .replace(/^\|(.+)\|$/gm, (match) => {
             const cells = match.split('|').filter(c => c.trim())

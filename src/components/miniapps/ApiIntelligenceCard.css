@@ -6,10 +6,8 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-    var(--surface-elevated);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-lg);
   transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
@@ -26,8 +24,8 @@
   transform: translateY(-3px);
   border-color: var(--api-card-accent, var(--accent-primary));
   box-shadow:
-    0 28px 56px rgba(0, 0, 0, 0.34),
-    0 0 0 1px var(--api-card-accent-soft, rgba(255, 255, 255, 0.08));
+    var(--shadow-xl),
+    0 0 0 1px var(--api-card-accent-soft, var(--border-subtle));
 }
 
 .api-intel-card__cover {
@@ -38,8 +36,8 @@
   min-height: 188px;
   padding: 16px;
   isolation: isolate;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background-color: #08080c;
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: var(--surface-inset);
   background-size: cover;
   background-position: center;
 }
@@ -54,22 +52,21 @@
 
 .api-intel-card__cover::before {
   background:
-    linear-gradient(180deg, rgba(7, 10, 15, 0.08), rgba(7, 10, 15, 0.34)),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 23px);
-  mix-blend-mode: screen;
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.06)),
+    repeating-linear-gradient(0deg, var(--border-subtle) 0 1px, transparent 1px 23px);
   opacity: 0.55;
 }
 
 .api-intel-card__cover::after {
-  background: radial-gradient(circle at 50% 120%, var(--api-card-accent-soft, rgba(255, 255, 255, 0.1)) 0%, transparent 58%);
+  background: radial-gradient(circle at 50% 120%, var(--api-card-accent-soft, var(--accent-primary-muted)) 0%, transparent 58%);
 }
 
 .api-intel-card__cover--constellation::before {
   background:
-    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 100%),
-    radial-gradient(circle at 72% 26%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 100%),
-    radial-gradient(circle at 58% 74%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 100%),
-    linear-gradient(120deg, transparent 0 34%, rgba(255, 255, 255, 0.06) 34% 35%, transparent 35% 100%);
+    radial-gradient(circle at 12% 22%, var(--text-tertiary) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 72% 26%, var(--text-tertiary) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 58% 74%, var(--text-quaternary) 0 1px, transparent 1px 100%),
+    linear-gradient(120deg, transparent 0 34%, var(--border-subtle) 34% 35%, transparent 35% 100%);
 }
 
 .api-intel-card__cover-row,
@@ -95,12 +92,12 @@
   align-items: center;
   padding: 5px 10px;
   border-radius: var(--radius-full);
-  background: rgba(5, 7, 10, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-overlay);
+  border: 1px solid var(--border-default);
   font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--text-secondary);
 }
 
 .api-intel-card__hero {
@@ -115,13 +112,9 @@
   width: 54px;
   height: 54px;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05)),
-    rgba(5, 8, 12, 0.46);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 0 1px rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-default);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
   font-size: 24px;
 }
 
@@ -135,7 +128,7 @@
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--text-tertiary);
 }
 
 .api-intel-card__hero-copy strong {
@@ -153,7 +146,7 @@
 }
 
 .api-intel-card__auth {
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--text-secondary);
 }
 
 .api-intel-card__watermark {
@@ -162,7 +155,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: rgba(255, 255, 255, 0.34);
+  color: var(--text-quaternary);
 }
 
 .api-intel-card__body {

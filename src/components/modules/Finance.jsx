@@ -1,6 +1,5 @@
 // ═══════════════════════════════════════════════════
 // OCULOPS — Finance Module
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
@@ -41,8 +40,8 @@ function Finance() {
       {/* ── HEADER ── */}
       <div className="module-header-bar">
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>CASHFLOW MATRICES</h1>
-          <span className="mono text-xs text-tertiary">REVENUE VELOCITY, NET BURN & MARGIN LEDGERS</span>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', margin: 0 }}>Cashflow</h1>
+          <span className="mono text-xs text-tertiary">Revenue, expenses and margin overview</span>
         </div>
       </div>
 
@@ -52,28 +51,28 @@ function Finance() {
         <div className="kpi-strip kpi-strip-4">
           <div className="kpi-strip-cell">
             <div className="kpi-strip-cell-header">
-              <span className="mono text-xs text-tertiary">GROSS REVENUE</span>
+              <span className="mono text-xs text-tertiary">Revenue</span>
               <span style={{ fontSize: '14px', color: 'var(--color-success)' }}>💰</span>
             </div>
             <span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>€{revenue.toLocaleString()}</span>
           </div>
           <div className="kpi-strip-cell">
             <div className="kpi-strip-cell-header">
-              <span className="mono text-xs text-tertiary">CASH BURN</span>
+              <span className="mono text-xs text-tertiary">Expenses</span>
               <span style={{ fontSize: '14px', color: 'var(--color-danger)' }}>💸</span>
             </div>
             <span className="mono text-lg font-bold" style={{ color: 'var(--color-danger)' }}>€{expenses.toLocaleString()}</span>
           </div>
           <div className="kpi-strip-cell">
             <div className="kpi-strip-cell-header">
-              <span className="mono text-xs text-tertiary">NET PROFIT</span>
+              <span className="mono text-xs text-tertiary">Net Profit</span>
               <span style={{ fontSize: '14px', color: profit >= 0 ? 'var(--color-success)' : 'var(--color-danger)' }}>📊</span>
             </div>
             <span className="mono text-lg font-bold" style={{ color: profit >= 0 ? 'var(--color-success)' : 'var(--color-danger)' }}>€{profit.toLocaleString()}</span>
           </div>
           <div className="kpi-strip-cell">
             <div className="kpi-strip-cell-header">
-              <span className="mono text-xs text-tertiary">PROFIT MARGIN</span>
+              <span className="mono text-xs text-tertiary">Margin</span>
               <span style={{ fontSize: '14px', color: 'var(--accent-primary)' }}>📈</span>
             </div>
             <span className="mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{margin}%</span>
@@ -83,47 +82,47 @@ function Finance() {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
           <div className="section-box">
             <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span>/// FISCAL LOG [{filtered.length}]</span>
+              <span>Transactions ({filtered.length})</span>
               <div style={{ display: 'flex', gap: '8px' }}>
                 {['all', 'revenue', 'expense'].map(f => (
-                  <button key={f} className="mono" style={{ fontSize: '9px', padding: '4px 8px', background: filter === f ? 'var(--accent-primary)' : 'transparent', color: filter === f ? '#000' : 'var(--text-primary)', border: filter === f ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)', cursor: 'pointer' }} onClick={() => setFilter(f)}>
-                    {f === 'all' ? 'FULL LOG' : f === 'revenue' ? 'INFLOW' : 'BURN'}
+                  <button key={f} className="mono" style={{ fontSize: '9px', padding: '4px 8px', background: filter === f ? 'var(--accent-primary)' : 'transparent', color: filter === f ? 'var(--surface-base)' : 'var(--text-primary)', border: filter === f ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)', cursor: 'pointer' }} onClick={() => setFilter(f)}>
+                    {f === 'all' ? 'All' : f === 'revenue' ? 'Revenue' : 'Expenses'}
                   </button>
                 ))}
               </div>
             </div>
             {filtered.length === 0 ? (
-              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO FISCAL MOVEMENTS DETECTED.</div>
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>No transactions yet.</div>
             ) : (
               <table className="data-table">
                 <thead>
                   <tr>
-                    <th>T-MINUS</th>
-                    <th>DESCRIPTOR</th>
-                    <th>CATEGORY</th>
-                    <th>VECTOR</th>
-                    <th>CAPITAL</th>
-                    <th style={{ textAlign: 'center' }}>CMD</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th style={{ textAlign: 'center' }}></th>
                   </tr>
                 </thead>
                 <tbody>
                   {filtered.map((e) => (
                     <tr key={e.id}>
                       <td style={{ color: 'var(--text-tertiary)' }}>{e.date}</td>
-                      <td style={{ fontWeight: 'bold' }}>{(e.description || '').toUpperCase()}</td>
+                      <td style={{ fontWeight: 'bold' }}>{e.description || ''}</td>
                       <td>
-                        <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>{(e.category || '').toUpperCase()}</span>
+                        <span style={{ fontSize: '9px', padding: '2px 6px', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>{e.category || ''}</span>
                       </td>
                       <td>
                         <span style={{ fontSize: '9px', padding: '2px 6px', border: `1px solid var(--color-${e.type === 'revenue' ? 'success' : 'danger'})`, color: `var(--color-${e.type === 'revenue' ? 'success' : 'danger'})` }}>
-                          {e.type === 'revenue' ? 'INFLOW' : 'BURN'}
+                          {e.type === 'revenue' ? 'Revenue' : 'Expense'}
                         </span>
                       </td>
                       <td style={{ fontWeight: 'bold', color: e.type === 'revenue' ? 'var(--color-success)' : 'var(--color-danger)' }}>
                         €{(parseFloat(e.amount) || 0).toLocaleString()}
                       </td>
                       <td style={{ textAlign: 'center' }}>
-                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeEntry(e.id)}>DEL</button>
+                        <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeEntry(e.id)}>Delete</button>
                       </td>
                     </tr>
                   ))}
@@ -134,7 +133,7 @@ function Finance() {
 
           <div className="section-box--gold" style={{ height: 'fit-content' }}>
             <div className="section-header--gold mono text-xs font-bold" style={{ padding: '12px 16px' }}>
-                        /// EXECUTE CASH TRANSFER
+                        New Transaction
             </div>
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div className="input-group">

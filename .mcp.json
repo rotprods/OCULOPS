@@ -36,8 +36,9 @@
       "command": "npx",
       "args": ["@_davideast/stitch-mcp", "proxy", "--transport", "stdio"],
       "env": {
-        "STITCH_API_KEY": "${STITCH_API_KEY}",
-        "STITCH_PROJECT_ID": "${STITCH_PROJECT_ID}"
+        "STITCH_USE_SYSTEM_GCLOUD": "true",
+        "STITCH_PROJECT_ID": "gen-lang-client-0404037988",
+        "PATH": "/Users/robertoortega/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin"
       }
     }
   }

@@ -4,7 +4,7 @@
 
 .os-sidebar {
     width: var(--sidebar-width);
-    background: var(--surface-raised);
+    background: var(--surface-sidebar);
     border-right: 1px solid var(--border-default);
     display: flex;
     flex-direction: column;
@@ -31,11 +31,10 @@
 }
 
 .os-sidebar-logo {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: var(--radius-full);
     background: var(--accent-primary);
-    box-shadow: 0 0 8px var(--accent-primary);
     flex-shrink: 0;
 }
 

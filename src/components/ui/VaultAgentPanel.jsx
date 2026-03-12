@@ -37,7 +37,7 @@ export default function VaultAgentPanel({ title, namespaces, maxAgents = 10, col
     if (filtered.length === 0) return null
 
     return (
-        <div style={{ border: '1px solid var(--border-default)', background: '#000', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-base)', display: 'flex', flexDirection: 'column' }}>
             <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
                 /// {title} — VAULT AGENTS [{filtered.length}]
             </div>

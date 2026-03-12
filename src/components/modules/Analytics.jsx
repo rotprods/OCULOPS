@@ -20,7 +20,7 @@ function FunnelBar({ label, count, max, color }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '8px' }}>
       <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0 }}>{label}</div>
-      <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '16px', position: 'relative' }}>
+      <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: 'var(--surface-inset)', height: '16px', position: 'relative' }}>
         <div style={{ width: `${pct}%`, height: '100%', background: color, transition: 'width 0.4s ease' }} />
       </div>
       <div className="mono font-bold" style={{ width: '40px', textAlign: 'right', fontSize: '13px', color: 'var(--text-primary)' }}>{count}</div>
@@ -122,7 +122,7 @@ function Analytics() {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px' }}>
           <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// FUNNEL TELEMETRY</div>
+            <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Funnel Telemetry</div>
             <div style={{ padding: '24px' }}>
               {convRates.map((stage) => (
                 <FunnelBar
@@ -137,7 +137,7 @@ function Analytics() {
           </div>
 
           <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CONVERSION COEFFICIENTS</div>
+            <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Conversion Rates</div>
             <div style={{ display: 'flex', flexDirection: 'column', padding: '16px' }}>
               {convRates.slice(1).map((stage) => (
                 <div key={stage.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--border-subtle)' }}>
@@ -156,7 +156,7 @@ function Analytics() {
         </div>
 
         <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// LEAD TRAFFIC ORIGIN</div>
+          <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Lead Traffic Origin</div>
           {sourceEntries.length === 0 ? (
             <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO ORIGIN DATA AVAILABLE</div>
           ) : (
@@ -166,7 +166,7 @@ function Analytics() {
                 return (
                   <div key={source} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <div className="mono text-xs font-bold" style={{ width: '160px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0 }}>{source.toUpperCase()}</div>
-                    <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', height: '12px', position: 'relative' }}>
+                    <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: 'var(--surface-inset)', height: '12px', position: 'relative' }}>
                       <div style={{ width: `${pct}%`, height: '100%', background: 'var(--accent-primary)' }} />
                     </div>
                     <div className="mono font-bold" style={{ width: '40px', textAlign: 'right', fontSize: '13px', color: 'var(--text-primary)' }}>{count}</div>
@@ -182,7 +182,7 @@ function Analytics() {
         <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px' }}>
           {/* Revenue trend — 6 months bar chart */}
           <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// REVENUE TREND — 6M</div>
+            <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Revenue Trend — 6M</div>
             {analyticsLoading ? (
               <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
             ) : (
@@ -192,7 +192,7 @@ function Analytics() {
                   return revenueTrend.map(m => (
                     <div key={m.month} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div className="mono text-xs" style={{ width: '36px', color: 'var(--text-tertiary)', textAlign: 'right', flexShrink: 0 }}>{m.label}</div>
-                      <div style={{ flex: 1, height: '14px', background: '#000', border: '1px solid var(--border-subtle)', position: 'relative' }}>
+                      <div style={{ flex: 1, height: '14px', background: 'var(--surface-inset)', border: '1px solid var(--border-subtle)', position: 'relative' }}>
                         <div style={{ width: `${Math.round((m.value / maxVal) * 100)}%`, height: '100%', background: m.value > 0 ? 'var(--color-success)' : 'transparent', transition: 'width 0.4s ease' }} />
                       </div>
                       <div className="mono font-bold" style={{ width: '72px', textAlign: 'right', fontSize: '12px', color: m.value > 0 ? 'var(--color-success)' : 'var(--text-tertiary)' }}>
@@ -208,7 +208,7 @@ function Analytics() {
 
           {/* Pipeline velocity */}
           <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// PIPELINE VELOCITY</div>
+            <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Pipeline Velocity</div>
             {analyticsLoading ? (
               <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
             ) : pipelineVelocity.length === 0 ? (
@@ -239,7 +239,7 @@ function Analytics() {
         <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px' }}>
           {/* Agent activity last 7 days */}
           <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// AGENT ACTIVITY — 7D ROLLING</div>
+            <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Agent Activity — 7D Rolling</div>
             {analyticsLoading ? (
               <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
             ) : agentActivity.length === 0 ? (
@@ -254,7 +254,7 @@ function Analytics() {
                     return (
                       <div key={agent.name} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <div className="mono text-xs font-bold" style={{ width: '100px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0, fontSize: '10px' }}>{agent.name}</div>
-                        <div style={{ flex: 1, height: '12px', background: '#000', border: '1px solid var(--border-subtle)', position: 'relative' }}>
+                        <div style={{ flex: 1, height: '12px', background: 'var(--surface-inset)', border: '1px solid var(--border-subtle)', position: 'relative' }}>
                           <div style={{ width: `${pct}%`, height: '100%', background: 'var(--color-info)', transition: 'width 0.4s ease' }} />
                           {agent.errors > 0 && (
                             <div style={{ position: 'absolute', right: 0, top: 0, width: `${errPct}%`, height: '100%', background: 'rgba(255,51,51,0.5)' }} />
@@ -274,7 +274,7 @@ function Analytics() {
 
           {/* Contact acquisition last 4 weeks */}
           <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
-            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CONTACT ACQUISITION — 4W</div>
+            <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Contact Acquisition — 4W</div>
             {analyticsLoading ? (
               <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
             ) : (
@@ -284,7 +284,7 @@ function Analytics() {
                   return contactTrend.map(w => (
                     <div key={w.week} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div className="mono text-xs" style={{ width: '40px', color: 'var(--text-tertiary)', textAlign: 'right', flexShrink: 0 }}>{w.label}</div>
-                      <div style={{ flex: 1, height: '14px', background: '#000', border: '1px solid var(--border-subtle)' }}>
+                      <div style={{ flex: 1, height: '14px', background: 'var(--surface-inset)', border: '1px solid var(--border-subtle)' }}>
                         <div style={{ width: `${Math.round((w.count / maxC) * 100)}%`, height: '100%', background: 'var(--accent-primary)', transition: 'width 0.4s ease' }} />
                       </div>
                       <div className="mono font-bold" style={{ width: '28px', textAlign: 'right', fontSize: '13px', color: w.count > 0 ? 'var(--text-primary)' : 'var(--text-tertiary)' }}>{w.count}</div>

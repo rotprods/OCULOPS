@@ -381,7 +381,7 @@ export default function OnboardingSetup({ onComplete }) {
                 {CORE_AGENTS.map(a => (
                   <div key={a.code_name} style={{
                     flex: 1, padding: '8px 10px',
-                    background: 'rgba(123,140,255,0.06)',
+                    background: 'var(--accent-primary-muted)',
                     border: '1px solid var(--accent-primary)', opacity: 0.7,
                   }}>
                     <div style={{ fontSize: 14, marginBottom: 2 }}>{a.icon}</div>
@@ -402,7 +402,7 @@ export default function OnboardingSetup({ onComplete }) {
                     <button key={a.code_name} type="button" onClick={() => toggleAgent(a.code_name)}
                       style={{
                         padding: '10px 12px', textAlign: 'left',
-                        background: selected ? 'rgba(123,140,255,0.08)' : 'var(--surface-base)',
+                        background: selected ? 'var(--accent-primary-muted)' : 'var(--surface-base)',
                         border: `1px solid ${selected ? 'var(--accent-primary)' : 'var(--border-default)'}`,
                         cursor: 'pointer', transition: 'all 0.15s', position: 'relative',
                       }}>
@@ -495,8 +495,8 @@ function ErrorMsg({ children }) {
   return (
     <div style={{
       marginTop: 12, padding: '8px 12px', fontSize: 11,
-      color: 'var(--color-danger)', background: 'rgba(255,51,51,0.08)',
-      border: '1px solid rgba(255,51,51,0.15)', fontFamily: 'var(--font-mono)',
+      color: 'var(--color-danger)', background: 'var(--color-danger-muted)',
+      border: '1px solid rgba(229,62,62,0.15)', fontFamily: 'var(--font-mono)',
     }}>
       {children}
     </div>

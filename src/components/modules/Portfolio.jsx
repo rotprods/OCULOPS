@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // OCULOPS — Portfolio (Strategic Bets)
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// Premium Ivory/Gold Design System
 // ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
@@ -40,8 +40,8 @@ function Portfolio() {
             {/* ── HEADER ── */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>PORTFOLIO OF BETS</h1>
-                    <span className="mono text-xs text-tertiary">STRATEGIC ALLOCATIONS (CORE 70% / EXPLORE 30%)</span>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', margin: 0 }}>Portfolio of Bets</h1>
+                    <span className="mono text-xs text-tertiary">Strategic allocations (Core 70% / Explore 30%)</span>
                 </div>
             </div>
 
@@ -49,19 +49,19 @@ function Portfolio() {
 
                 {/* ── KPI STRIP ── */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-default)' }}>
-                    <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <div style={{ background: 'var(--surface-base)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>ACTIVE ALLOCATIONS</div>
                         <div className="mono" style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--color-success)' }}>
                             {active.length}
                         </div>
                     </div>
-                    <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <div style={{ background: 'var(--surface-base)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>CORE BETS</div>
                         <div className="mono" style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--accent-primary)' }}>
                             {(byType.core || []).length}
                         </div>
                     </div>
-                    <div style={{ background: '#000', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <div style={{ background: 'var(--surface-base)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <div className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>EXPLORE BETS</div>
                         <div className="mono" style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--color-info)' }}>
                             {(byType.explore || []).length}
@@ -73,7 +73,7 @@ function Portfolio() {
                 <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)' }}>
                         <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)' }}>
-                            /// STRATEGIC PORTFOLIO [{filtered.length}]
+                            Strategic Portfolio [{filtered.length}]
                         </div>
                         <div style={{ display: 'flex', gap: '8px' }}>
                             {['all', 'core', 'explore'].map(f => (
@@ -85,7 +85,7 @@ function Portfolio() {
                     </div>
                     {filtered.length === 0 ? (
                         <div style={{ padding: '32px', textAlign: 'center', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
-                            AWAITING NEW BET CONFIGURATION
+                            Awaiting new bet configuration
                         </div>
                     ) : (
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -128,17 +128,17 @@ function Portfolio() {
                 {/* ── INPUT MATRIX ── */}
                 <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
                     <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
-                        /// NEW STRATEGIC BET ALLOCATION
+                        New Strategic Bet
                     </div>
                     <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px', gap: '12px' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>BET DESIGNATION</label>
-                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="AUTOMATION V3" />
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Bet Name</label>
+                                <input className="mono" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="AUTOMATION V3" />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>TYPE</label>
-                                <select className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)', padding: '9px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Type</label>
+                                <select className="mono" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)', padding: '9px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
                                     <option value="core">CORE</option>
                                     <option value="explore">EXPLORE</option>
                                 </select>
@@ -146,32 +146,32 @@ function Portfolio() {
                         </div>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                            <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>HYPOTHESIS</label>
-                            <textarea className="mono" rows="2" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%', resize: 'vertical' }} value={form.hypothesis} onChange={e => setForm(f => ({ ...f, hypothesis: e.target.value }))} placeholder="THEORY OF IMPACT..." />
+                            <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Hypothesis</label>
+                            <textarea className="mono" rows="2" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%', resize: 'vertical' }} value={form.hypothesis} onChange={e => setForm(f => ({ ...f, hypothesis: e.target.value }))} placeholder="Theory of impact..." />
                         </div>
 
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>SUCCESS KPI</label>
-                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-success)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.kpi} onChange={e => setForm(f => ({ ...f, kpi: e.target.value }))} placeholder="3 DEALS Y1" />
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Success KPI</label>
+                                <input className="mono" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--color-success)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.kpi} onChange={e => setForm(f => ({ ...f, kpi: e.target.value }))} placeholder="3 deals Y1" />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>KILL CRITERIA</label>
-                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-danger)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.kill_criteria} onChange={e => setForm(f => ({ ...f, kill_criteria: e.target.value }))} placeholder="FAIL CONDITION" />
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Kill Criteria</label>
+                                <input className="mono" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--color-danger)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.kill_criteria} onChange={e => setForm(f => ({ ...f, kill_criteria: e.target.value }))} placeholder="Fail condition" />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>PIVOT PATH</label>
-                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-warning)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.pivot_path} onChange={e => setForm(f => ({ ...f, pivot_path: e.target.value }))} placeholder="BACKUP PLAN" />
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Pivot Path</label>
+                                <input className="mono" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--color-warning)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.pivot_path} onChange={e => setForm(f => ({ ...f, pivot_path: e.target.value }))} placeholder="Backup plan" />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>RESOURCES</label>
-                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--color-info)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.resources} onChange={e => setForm(f => ({ ...f, resources: e.target.value }))} placeholder="30% COMPUTE" />
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Resources</label>
+                                <input className="mono" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--color-info)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.resources} onChange={e => setForm(f => ({ ...f, resources: e.target.value }))} placeholder="30% compute" />
                             </div>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
                             <button className="btn btn-ghost mono" style={{ fontSize: '10px', padding: '10px 24px', border: '1px solid var(--accent-primary)', color: 'var(--surface-base)', background: 'var(--accent-primary)' }} onClick={handleAdd} disabled={saving}>
-                                {saving ? 'TRANSMITTING...' : 'REGISTER BET'}
+                                {saving ? 'Saving...' : 'Register Bet'}
                             </button>
                         </div>
                     </div>
@@ -179,7 +179,7 @@ function Portfolio() {
 
             </div>
 
-                <VaultAgentPanel title="PORTFOLIO INTELLIGENCE" namespaces={['data', 'product', 'research']} />
+                <VaultAgentPanel title="Portfolio Intelligence" namespaces={['data', 'product', 'research']} />
 
         </div>
     )

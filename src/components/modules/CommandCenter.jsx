@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // OCULOPS — Command Center (TouchDesigner Bridge Manager)
-// Military-grade control surface for TD ↔ SaaS connectivity
+// TouchDesigner bridge control surface
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback, useRef } from 'react'
@@ -127,7 +127,7 @@ export default function CommandCenter() {
                         <span style={{ fontSize: 24 }}>🖥</span>
                     </div>
                     <div>
-                        <h1 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontSize: 28, color: 'var(--accent-primary)', letterSpacing: '0.05em', lineHeight: 1 }}>COMMAND CENTER</h1>
+                        <h1 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontSize: 28, color: 'var(--accent-primary)', lineHeight: 1 }}>Command Center</h1>
                         <span className="mono text-xs text-tertiary">TOUCHDESIGNER BRIDGE // REALTIME VISUAL INTELLIGENCE</span>
                     </div>
                 </div>
@@ -161,7 +161,6 @@ export default function CommandCenter() {
                             color: activeTab === tab.id ? 'var(--accent-primary)' : 'var(--text-tertiary)',
                             cursor: 'pointer',
                             fontWeight: activeTab === tab.id ? 700 : 400,
-                            letterSpacing: '0.1em',
                         }}
                     >
                         {tab.label}
@@ -195,7 +194,7 @@ export default function CommandCenter() {
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                         {/* Architecture diagram */}
                         <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// DATA FLOW</div>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Data flow</div>
                             <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                                 {[
                                     { from: 'SUPABASE', to: 'TD-BRIDGE', protocol: 'REALTIME', active: true },
@@ -217,7 +216,7 @@ export default function CommandCenter() {
 
                         {/* Recent events */}
                         <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// RECENT TD EVENTS</div>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Recent events</div>
                             <div style={{ padding: 8, maxHeight: 280, overflowY: 'auto' }}>
                                 {eventStream.slice(0, 10).map((evt, i) => (
                                     <div key={evt.id || i} className="mono" style={{ fontSize: 10, padding: '6px 12px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: 8 }}>
@@ -236,7 +235,7 @@ export default function CommandCenter() {
                 {/* CLIENTS TAB */}
                 {activeTab === 'clients' && (
                     <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CONNECTED TD CLIENTS</div>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Connected clients</div>
                         {clients.length === 0 ? (
                             <div className="mono text-xs text-tertiary" style={{ padding: 48, textAlign: 'center' }}>
                                 NO TOUCHDESIGNER CLIENTS CONNECTED<br />
@@ -267,12 +266,12 @@ export default function CommandCenter() {
                 {activeTab === 'events' && (
                     <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
                         <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between' }}>
-                            <span>/// EVENT STREAM</span>
+                            <span>Event stream</span>
                             <span style={{ color: 'var(--text-tertiary)' }}>{eventStream.length} EVENTS</span>
                         </div>
                         <div style={{ maxHeight: 500, overflowY: 'auto' }}>
                             {eventStream.map((evt, i) => (
-                                <div key={evt.id || i} className="mono" style={{ fontSize: 11, padding: '8px 16px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: 12, background: i % 2 === 0 ? 'transparent' : '#000' }}>
+                                <div key={evt.id || i} className="mono" style={{ fontSize: 11, padding: '8px 16px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: 12, background: i % 2 === 0 ? 'transparent' : 'var(--surface-elevated)' }}>
                                     <span style={{ color: 'var(--text-tertiary)', minWidth: 80, flexShrink: 0 }}>{new Date(evt.created_at).toLocaleTimeString()}</span>
                                     <span style={{ color: 'var(--accent-primary)', minWidth: 180, flexShrink: 0 }}>{evt.event_type}</span>
                                     <span style={{ color: 'var(--text-tertiary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -291,14 +290,14 @@ export default function CommandCenter() {
                 {activeTab === 'commands' && (
                     <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
                         <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'space-between' }}>
-                            <span>/// COMMAND LOG (TD → SAAS)</span>
+                            <span>Command log</span>
                             <span style={{ color: 'var(--text-tertiary)' }}>{commandLog.length} COMMANDS</span>
                         </div>
                         <div style={{ maxHeight: 500, overflowY: 'auto' }}>
                             {commandLog.map((cmd, i) => {
                                 const payload = cmd.payload || {}
                                 return (
-                                    <div key={cmd.id || i} style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)', background: i % 2 === 0 ? 'transparent' : '#000' }}>
+                                    <div key={cmd.id || i} style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)', background: i % 2 === 0 ? 'transparent' : 'var(--surface-elevated)' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
                                             <span className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>{new Date(cmd.created_at).toLocaleString()}</span>
                                             <span className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)' }}>{payload.command || cmd.event_type}</span>
@@ -325,7 +324,7 @@ export default function CommandCenter() {
                 {activeTab === 'config' && (
                     <div style={{ maxWidth: 600 }}>
                         <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
-                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// BRIDGE CONFIGURATION</div>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Configuration</div>
                             <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 20 }}>
                                 <div>
                                     <label className="mono text-xs text-tertiary" style={{ display: 'block', marginBottom: 8 }}>TD SERVICE KEY</label>
@@ -336,7 +335,7 @@ export default function CommandCenter() {
                                             onChange={e => setServiceKey(e.target.value)}
                                             placeholder="Enter your TD_SERVICE_KEY..."
                                             className="mono text-xs"
-                                            style={{ flex: 1, background: '#000', border: '1px solid var(--border-default)', color: 'var(--text-primary)', padding: '8px 12px', outline: 'none' }}
+                                            style={{ flex: 1, background: 'var(--surface-inset)', border: '1px solid var(--border-default)', color: 'var(--text-primary)', padding: '8px 12px', outline: 'none' }}
                                         />
                                         <button
                                             onClick={saveKey}

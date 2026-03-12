@@ -9,17 +9,17 @@ export function SentryErrorBoundary({ children }) {
             fallback={({ error, resetError }) => (
                 <div style={{
                     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                    height: '100vh', background: '#000', color: '#FFD400', fontFamily: 'monospace', gap: '16px', padding: '32px'
+                    height: '100vh', background: 'var(--surface-base)', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)', gap: '16px', padding: '32px'
                 }}>
-                    <div style={{ fontSize: '48px' }}>SYSTEM FAILURE</div>
-                    <div style={{ color: '#FF3333', fontSize: '12px', maxWidth: '600px', textAlign: 'center', lineHeight: '1.6' }}>
+                    <div style={{ fontSize: '32px', fontWeight: 600 }}>Something went wrong</div>
+                    <div style={{ color: 'var(--color-danger)', fontSize: '13px', maxWidth: '600px', textAlign: 'center', lineHeight: '1.6' }}>
                         {error?.message || 'Unknown error'}
                     </div>
                     <button
                         onClick={resetError}
-                        style={{ marginTop: '24px', padding: '12px 32px', background: '#FFD400', color: '#000', border: 'none', fontFamily: 'monospace', fontWeight: 'bold', fontSize: '12px', cursor: 'pointer', letterSpacing: '0.1em' }}
+                        style={{ marginTop: '24px', padding: '12px 32px', background: 'var(--accent-primary)', color: 'var(--text-primary)', border: 'none', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '13px', cursor: 'pointer', borderRadius: '8px' }}
                     >
-                        REBOOT SYSTEM
+                        Reload
                     </button>
                 </div>
             )}

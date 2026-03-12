@@ -125,6 +125,19 @@ supabase functions deploy stripe-checkout
 
 ---
 
+## MASTERINTELLIGENCE — Vision Feature (Phase 6+)
+
+**This changes the entire product.** Not a CSS task — a full product feature.
+
+- **Energy Ball**: Autonomous AI entity visualized as a golden energy sphere (see `oculops_sidebar_navigation.png` mockup). Present in EVERY app section, floating freely with personality and movement
+- **Voice Commands**: MasterIntelligence has its own voice, can run all app operations via voice commands
+- **Self-Improvement**: Uses autoresearch loop (Karpathy path at `~/Documents/AI OPS/github-repos/autoresearch/`) to autonomously improve itself — modifies own train.py, trains, keep/revert by val_bpb
+- **Presence**: Not a static widget — a living entity that moves between sections, reacts to data, pulses with activity, has personality and freedom
+- **Implementation**: Canvas/WebGL energy ball component, Web Speech API for voice, integration with agent-brain-v2 for intelligence, autoresearch integration for self-improvement loop
+- **Depends on**: Visual rebrand complete (Phase 0-5), agent-runner system, brain-v2
+
+---
+
 ## NICE TO HAVE (not blocking)
 
 - @tanstack/virtual for list virtualization (large contact/agent lists)

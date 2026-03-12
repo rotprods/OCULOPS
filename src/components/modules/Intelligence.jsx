@@ -23,13 +23,13 @@ function SignalRadar({ signals = [], agents = [] }) {
   const size = 300, cx = size / 2, cy = size / 2
   const rings = [40, 80, 120]
   const categoryAngles = { macro: 0, mercado: 60, competencia: 120, tecnologia: 180, social: 240, economic: 300 }
-  const categoryColors = { macro: '#5ac8fa', mercado: '#34c759', competencia: '#ff3b30', tecnologia: 'var(--accent-primary)', social: '#af52de', economic: '#ff9f0a' }
+  const categoryColors = { macro: 'var(--color-info)', mercado: 'var(--color-success)', competencia: 'var(--color-danger)', tecnologia: 'var(--accent-primary)', social: 'var(--chart-5)', economic: 'var(--color-warning)' }
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ background: 'var(--surface-base)' }}>
-      {rings.map(r => <circle key={r} cx={cx} cy={cy} r={r} fill="none" stroke="rgba(99,102,241,0.15)" strokeWidth="0.5" strokeDasharray="4 4" />)}
-      <line x1={cx} y1={cx - 140} x2={cx} y2={cx + 140} stroke="rgba(99,102,241,0.2)" strokeWidth="1" />
-      <line x1={cx - 140} y1={cy} x2={cx + 140} y2={cy} stroke="rgba(99,102,241,0.2)" strokeWidth="1" />
+      {rings.map(r => <circle key={r} cx={cx} cy={cy} r={r} fill="none" stroke="var(--border-strong)" strokeWidth="0.5" strokeDasharray="4 4" />)}
+      <line x1={cx} y1={cx - 140} x2={cx} y2={cx + 140} stroke="var(--border-default)" strokeWidth="1" />
+      <line x1={cx - 140} y1={cy} x2={cx + 140} y2={cy} stroke="var(--border-default)" strokeWidth="1" />
       {signals.slice(0, 30).map((s, i) => {
         const angle = (categoryAngles[s.category] || 0) + (i * 15) % 60 - 30
         const dist = Math.min(120, 40 + (s.impact || 50) * 0.8)
@@ -68,12 +68,12 @@ function SignalRadar({ signals = [], agents = [] }) {
 }
 
 const CATEGORIES = [
-  { value: 'macro', label: 'Macro', color: '#5ac8fa' },
-  { value: 'mercado', label: 'Market', color: '#34c759' },
-  { value: 'competencia', label: 'Competition', color: '#ff3b30' },
+  { value: 'macro', label: 'Macro', color: 'var(--color-info)' },
+  { value: 'mercado', label: 'Market', color: 'var(--color-success)' },
+  { value: 'competencia', label: 'Competition', color: 'var(--color-danger)' },
   { value: 'tecnologia', label: 'Technology', color: 'var(--accent-primary)' },
-  { value: 'social', label: 'Social', color: '#af52de' },
-  { value: 'economic', label: 'Economic', color: '#ff9f0a' },
+  { value: 'social', label: 'Social', color: 'var(--chart-5)' },
+  { value: 'economic', label: 'Economic', color: 'var(--color-warning)' },
 ]
 
 const emptyForm = { title: '', category: 'macro', indicator: 'leading', impact: 50, source: '', confidence: 70, implication: '' }

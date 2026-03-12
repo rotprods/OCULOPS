@@ -120,15 +120,15 @@ function Simulation() {
       {/* ── HEADER ── */}
       <div style={{ paddingBottom: '16px', borderBottom: '1px solid var(--border-default)' }}>
         <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0, textTransform: 'uppercase' }}>Simulation Engine</h1>
-        <p className="mono text-xs text-tertiary" style={{ marginTop: '8px', letterSpacing: '0.05em' }}>/// MONTE CARLO PROJECTIONS // 30-60-90 DAY TRAJECTORY</p>
+        <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>Monte Carlo projections — 30/60/90 day trajectory</p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) minmax(400px, 2fr)', gap: '16px' }}>
 
         {/* Controls */}
         <div style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
-              /// MODEL VARIABLES OVERRIDE
+          <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
+              Model Variables
           </div>
           <div style={{ padding: '24px' }}>
             <SliderRow label="CONTACTS/WK" min={5} max={100} value={vars.contactsPerWeek} onChange={v => setVar('contactsPerWeek', v)} />
@@ -143,8 +143,8 @@ function Simulation() {
 
         {/* Results */}
         <div style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
-          <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
-              /// MRR PROJECTION
+          <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
+              MRR Projection
           </div>
           <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
             <div dangerouslySetInnerHTML={{ __html: chartHtml }} style={{ width: '100%', flex: 1 }} />
@@ -164,14 +164,14 @@ function Simulation() {
 
       {/* Scenario comparison */}
       <div style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-default)' }}>
-        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
-            /// FORECAST SCENARIOS
+        <div className="text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
+            Forecast Scenarios
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)' }}>
           {scenarios.map(sc => {
             const m3 = sc.data[2]
             return (
-              <div key={sc.name} style={{ background: '#000', padding: '24px', textAlign: 'center' }}>
+              <div key={sc.name} style={{ background: 'var(--surface-inset)', padding: '24px', textAlign: 'center' }}>
                 <div className="mono" style={{ fontSize: '18px', marginBottom: '12px', color: sc.color }}>{sc.icon}</div>
                 <div className="mono text-2xs" style={{ fontWeight: 'bold', marginBottom: '16px', color: sc.color }}>{sc.name}</div>
                 <div className="mono" style={{ fontSize: '24px', fontWeight: 'bold', color: sc.color }}>{m3.mrr.toLocaleString()}€</div>
@@ -187,12 +187,12 @@ function Simulation() {
       {/* Cash Runway */}
       <div style={{ background: 'var(--surface-raised)', border: '1px solid var(--border-default)' }}>
         <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-default)', background: 'var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div className="mono text-xs font-bold" style={{ color: 'var(--accent-primary)' }}>/// RUNWAY & BURN ANALYSIS</div>
+          <div className="text-xs font-bold" style={{ color: 'var(--accent-primary)' }}>Runway & Burn Analysis</div>
           <div className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>BURN: {monthlyExpenses}€/MO</div>
         </div>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-            <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
+            <thead style={{ background: 'var(--surface-inset)', borderBottom: '1px solid var(--border-subtle)' }}>
               <tr>
                 <th style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>T-MINUS</th>
                 <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>CAPITAL</th>
@@ -206,7 +206,7 @@ function Simulation() {
               {runwayRows.map((r, idx) => {
                 const net = r.mrr - monthlyExpenses
                 return (
-                  <tr key={r.month} style={{ borderBottom: idx < runwayRows.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000' }}>
+                  <tr key={r.month} style={{ borderBottom: idx < runwayRows.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : 'var(--surface-elevated)' }}>
                     <td style={{ padding: '12px 16px', color: 'var(--text-tertiary)' }}>M{r.month}</td>
                     <td style={{ padding: '12px 16px', color: r.cash > 0 ? 'var(--color-success)' : 'var(--color-danger)', fontWeight: 'bold' }}>{r.cash.toLocaleString()}€</td>
                     <td style={{ padding: '12px 16px', color: 'var(--text-primary)' }}>{r.mrr.toLocaleString()}€</td>

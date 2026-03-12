@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   OCULOPS — Global Styles v11.0 (OBSIDIAN)
+   OCULOPS — Global Styles v11.1 (IVORY)
    Autonomous Intelligence OS
    ═══════════════════════════════════════════════════ */
 
@@ -142,7 +142,7 @@ body,
 
 .btn-primary {
     background: var(--accent-primary);
-    color: var(--text-inverse);
+    color: var(--text-primary);
     border-color: var(--accent-primary);
 }
 
@@ -369,8 +369,8 @@ textarea::placeholder {
 .input-group label {
     font-family: var(--font-sans);
     font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
+    text-transform: none;
+    letter-spacing: normal;
     color: var(--text-secondary);
     font-weight: var(--weight-medium);
 }
@@ -946,7 +946,7 @@ tr:last-child td {
 
 .section-header--gold {
     background: var(--accent-primary);
-    color: var(--text-inverse);
+    color: var(--text-primary);
 }
 
 /* ── Terminal-style input (legacy) ── */

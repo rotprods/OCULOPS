@@ -8,9 +8,9 @@ import { useMarkets } from '../../hooks/useMarkets'
 import './Markets.css'
 
 const GROUP_LABELS = {
-  stock: 'EQUITIES',
-  forex: 'FX [USD BASE]',
-  crypto: 'CRYPTO PROTOCOLS',
+  stock: 'Equities',
+  forex: 'FX (USD Base)',
+  crypto: 'Crypto',
 }
 
 const compactNumber = new Intl.NumberFormat('en-US', {
@@ -63,7 +63,7 @@ function toneClass(change) {
 
 function Sparkline({ points, tone = 'is-flat', detailed = false }) {
   if (!points || points.length < 2) {
-    return <div className={`markets__sparkline markets__sparkline--empty ${detailed ? 'markets__sparkline--detail' : ''}`}>[ INSUFFICIENT DATA ]</div>
+    return <div className={`markets__sparkline markets__sparkline--empty ${detailed ? 'markets__sparkline--detail' : ''}`}>Insufficient data</div>
   }
 
   const width = detailed ? 640 : 120
@@ -122,28 +122,28 @@ function buildInsights(selectedAsset, summary, topMovers) {
 
   insights.push(
     summary.riskOnScore >= 60
-      ? 'RISK APPETITE IS CONSTRUCTIVE. INITIATE CAMPAIGN EXPERIMENTS WHILE MACRO DEFENSIVENESS IS LOW.'
-      : 'RISK APPETITE IS CAUTIOUS. FAVOR RETENTION, HYGIENE, AND TIGHT CAC DISCIPLINE.',
+      ? 'Risk appetite is constructive. Initiate campaign experiments while macro defensiveness is low.'
+      : 'Risk appetite is cautious. Favor retention, hygiene, and tight CAC discipline.',
   )
 
   if (selectedAsset.assetType === 'forex') {
     insights.push(
-      `${selectedAsset.displayName.toUpperCase()} IS A MARGIN SIGNAL. A STRONGER DOLLAR PRESSURES SOFTWARE/MEDIA ACQUISITION.`,
+      `${selectedAsset.displayName} is a margin signal. A stronger dollar pressures software/media acquisition.`,
     )
   } else if (selectedAsset.assetType === 'crypto') {
     insights.push(
-      `${selectedAsset.displayName.toUpperCase()} ACTS AS A SENTIMENT PROXY. CORRELATES WITH AGGRESSIVE R&D SPEND.`,
+      `${selectedAsset.displayName} acts as a sentiment proxy. Correlates with aggressive R&D spend.`,
     )
   } else {
     insights.push(
-      `${selectedAsset.displayName.toUpperCase()} IS A PROXY FOR ENTERPRISE TECH CONFIDENCE. LONG BUYING CYCLES EXPECTED IF WEAK.`,
+      `${selectedAsset.displayName} is a proxy for enterprise tech confidence. Long buying cycles expected if weak.`,
     )
   }
 
   const mover = topMovers[0]
   if (mover) {
     insights.push(
-      `${mover.displayName.toUpperCase()} IS FASTEST MOVER AT ${formatPercent(mover.change24h)}. MONITOR SPILLOVER EFFECTS INTO VENDOR BUDGETS.`,
+      `${mover.displayName} is the fastest mover at ${formatPercent(mover.change24h)}. Monitor spillover effects into vendor budgets.`,
     )
   }
 
@@ -188,64 +188,64 @@ function Markets() {
   )
 
   const feedBadgeLabel = dataMode === 'live'
-    ? '[ LIVE SYNC ]'
+    ? 'Live'
     : dataMode === 'mixed'
-      ? '[ MIXED FEED ]'
+      ? 'Mixed Feed'
       : runtimeConfigured
-        ? '[ SECURING SYNC ]'
-        : '[ SIMULATED FEED ]'
+        ? 'Connecting...'
+        : 'Simulated'
 
   if (loading && assets.length === 0) {
-    return <div className="markets markets--loading fade-in">/// ESTABLISHING FINANCIAL DATA LINK...</div>
+    return <div className="markets markets--loading fade-in">Establishing financial data link...</div>
   }
 
   return (
     <div className="markets fade-in">
       <div className="markets__header">
         <div>
-          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', fontSize: '28px', margin: 0 }}>MACRO TELEMETRY</h1>
-          <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>LEADERSHIP CONTEXT FOR MACRO-SENSITIVE CAMPAIGN DECISIONS.</p>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--text-primary)', fontSize: '28px', margin: 0 }}>Macro Telemetry</h1>
+          <p className="mono text-xs text-tertiary" style={{ marginTop: '8px' }}>Leadership context for macro-sensitive campaign decisions.</p>
         </div>
         <div className="markets__actions">
-          <span className="mono text-xs" style={{ padding: '8px 12px', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)' }}>
+          <span className="mono text-xs" style={{ padding: '8px 12px', border: '1px solid var(--border-subtle)', color: 'var(--text-accent)' }}>
             {feedBadgeLabel}
           </span>
-          <button className="btn btn-primary mono" style={{ padding: '8px 16px', fontSize: '11px', letterSpacing: '0.05em' }} onClick={refresh} disabled={refreshing}>
-            {refreshing ? '[ SYNCING ]' : 'INITIATE SYNC'}
+          <button className="btn btn-primary mono" style={{ padding: '8px 16px', fontSize: '11px' }} onClick={refresh} disabled={refreshing}>
+            {refreshing ? 'Syncing...' : 'Sync'}
           </button>
         </div>
       </div>
 
       {refreshError && (
         <div className="markets__banner">
-          <strong style={{ color: 'var(--color-warning)' }}>ERR:</strong> {refreshError.toUpperCase()}
+          <strong style={{ color: 'var(--color-warning)' }}>Error:</strong> {refreshError}
         </div>
       )}
 
       <section className="markets__stats">
-        <article style={{ padding: '16px', background: '#000' }}>
-          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>TRACKED ASSETS</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{summary.trackedCount}</strong>
-          <span className="mono text-2xs" style={{ color: 'var(--color-success)', marginTop: '8px', display: 'block' }}>CROSS-ASSET WATCHLIST</span>
+        <article style={{ padding: '16px', background: 'var(--surface-raised)' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>Tracked Assets</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--text-primary)' }}>{summary.trackedCount}</strong>
+          <span className="mono text-2xs" style={{ color: 'var(--color-success)', marginTop: '8px', display: 'block' }}>Cross-asset watchlist</span>
         </article>
-        <article style={{ padding: '16px', background: '#000' }}>
-          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>A/D LINE</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{summary.advancers} / {summary.decliners}</strong>
+        <article style={{ padding: '16px', background: 'var(--surface-raised)' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>A/D Line</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--text-primary)' }}>{summary.advancers} / {summary.decliners}</strong>
           <span className="mono text-2xs" style={{ color: summary.advancers >= summary.decliners ? 'var(--color-success)' : 'var(--color-danger)', marginTop: '8px', display: 'block' }}>
-            BREADTH {summary.advancers >= summary.decliners ? 'SUPPORTS' : 'PRESSURES'} RISK
+            Breadth {summary.advancers >= summary.decliners ? 'supports' : 'pressures'} risk
           </span>
         </article>
-        <article style={{ padding: '16px', background: '#000' }}>
-          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>RISK-ON CONFIG</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{summary.riskOnScore}%</strong>
+        <article style={{ padding: '16px', background: 'var(--surface-raised)' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>Risk-On Score</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--text-primary)' }}>{summary.riskOnScore}%</strong>
           <span className="mono text-2xs" style={{ color: summary.riskOnScore >= 60 ? 'var(--color-success)' : 'var(--color-danger)', marginTop: '8px', display: 'block' }}>
-            {summary.riskOnScore >= 60 ? 'VELOCITY APPROVED' : 'TIGHTEN SPEND LOGIC'}
+            {summary.riskOnScore >= 60 ? 'Velocity approved' : 'Tighten spend logic'}
           </span>
         </article>
-        <article style={{ padding: '16px', background: '#000' }}>
-          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>24H EXCHANGE VOL</span>
-          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--accent-primary)' }}>{formatVolume(summary.totalVolume)}</strong>
-          <span className="mono text-2xs" style={{ color: 'var(--text-secondary)', marginTop: '8px', display: 'block' }}>SYNC: {formatTimestamp(lastUpdated)}</span>
+        <article style={{ padding: '16px', background: 'var(--surface-raised)' }}>
+          <span className="mono text-2xs text-tertiary" style={{ display: 'block', marginBottom: '8px' }}>24h Exchange Vol</span>
+          <strong className="mono" style={{ display: 'block', fontSize: '24px', color: 'var(--text-primary)' }}>{formatVolume(summary.totalVolume)}</strong>
+          <span className="mono text-2xs" style={{ color: 'var(--text-secondary)', marginTop: '8px', display: 'block' }}>Sync: {formatTimestamp(lastUpdated)}</span>
         </article>
       </section>
 
@@ -253,8 +253,8 @@ function Markets() {
         <article className="markets__focus">
           <div className="markets__focus-header">
             <div>
-              <span className="markets__eyebrow">/// PRIMARY TARGET</span>
-              <h2>{selectedAsset?.displayName.toUpperCase() || 'NO TARGET ASSIGNED'}</h2>
+              <span className="markets__eyebrow">Primary Target</span>
+              <h2>{selectedAsset?.displayName || 'No target assigned'}</h2>
             </div>
             {selectedAsset && (
               <span className={`markets__delta ${toneClass(selectedAsset.change24h)}`}>
@@ -267,13 +267,13 @@ function Markets() {
             <>
               <div className="markets__focus-meta">
                 <div>
-                  <span className="markets__meta-label">LAST BLOCK PRICE</span>
+                  <span className="markets__meta-label">Last Price</span>
                   <strong className="markets__price">
                     {selectedAsset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice(selectedAsset)}
                   </strong>
                 </div>
                 <div>
-                  <span className="markets__meta-label">SESSION VARIANCE</span>
+                  <span className="markets__meta-label">Session Range</span>
                   <strong className="markets__range">
                     {selectedAsset.quoteCurrency === 'USD' ? '$' : ''}{formatPrice({ ...selectedAsset, price: selectedAsset.rangeLow })}
                     {' '}➔{' '}
@@ -281,8 +281,8 @@ function Markets() {
                   </strong>
                 </div>
                 <div>
-                  <span className="markets__meta-label">DATA UPLINK</span>
-                  <strong className="markets__range" style={{ textTransform: 'uppercase' }}>{selectedAsset.source.replace('_', ' ')}</strong>
+                  <span className="markets__meta-label">Data Source</span>
+                  <strong className="markets__range">{selectedAsset.source.replace('_', ' ')}</strong>
                 </div>
               </div>
 
@@ -301,8 +301,8 @@ function Markets() {
         <article className="markets__intel">
           <div className="markets__intel-header">
             <div>
-              <span className="markets__eyebrow">/// MACHINE ANALYSIS</span>
-              <h2>STRATEGIC IMPLICATIONS</h2>
+              <span className="markets__eyebrow">Analysis</span>
+              <h2>Strategic Implications</h2>
             </div>
             {summary.topMover && (
               <span className={`markets__delta ${toneClass(summary.topMover.change24h)}`}>
@@ -321,7 +321,7 @@ function Markets() {
           </div>
 
           <div className="markets__movers">
-            <span className="markets__eyebrow" style={{ padding: '0 0 8px 0', borderBottom: '1px solid var(--border-subtle)', marginBottom: '16px' }}>/// HIGHEST VOLATILITY</span>
+            <span className="markets__eyebrow" style={{ padding: '0 0 8px 0', borderBottom: '1px solid var(--border-subtle)', marginBottom: '16px' }}>Highest Volatility</span>
             {topMovers.map((asset) => (
               <button
                 key={asset.symbol}
@@ -345,8 +345,8 @@ function Markets() {
           <article key={group} className="markets__group">
             <div className="markets__group-header">
               <div>
-                <span className="markets__eyebrow">/// {GROUP_LABELS[group]}</span>
-                <h2>{entries.length} LOGGED</h2>
+                <span className="markets__eyebrow">{GROUP_LABELS[group]}</span>
+                <h2>{entries.length} Assets</h2>
               </div>
             </div>
             <div className="markets__asset-list">
@@ -378,8 +378,8 @@ function Markets() {
       <section className="markets__table-card">
         <div className="markets__table-header">
           <div>
-            <span className="markets__eyebrow">/// FULL RADAR SUMMARY</span>
-            <h2>MARKET SNAPSHOT</h2>
+            <span className="markets__eyebrow">Full Summary</span>
+            <h2>Market Snapshot</h2>
           </div>
           <span className="mono text-xs text-secondary">[ T:{formatTimestamp(lastUpdated)} ]</span>
         </div>
@@ -388,13 +388,13 @@ function Markets() {
           <table>
             <thead>
               <tr>
-                <th>ASSET / TICKER</th>
-                <th>CLASS</th>
-                <th>LATEST QUOTE</th>
-                <th>DELTA (24H)</th>
-                <th>24H VOL</th>
-                <th>TRAJECTORY</th>
-                <th>UPLINK SOURCE</th>
+                <th>Asset / Ticker</th>
+                <th>Class</th>
+                <th>Latest Quote</th>
+                <th>Delta (24h)</th>
+                <th>24h Vol</th>
+                <th>Trajectory</th>
+                <th>Source</th>
               </tr>
             </thead>
             <tbody>
@@ -407,7 +407,7 @@ function Markets() {
                       onClick={() => setSelectedSymbol(asset.symbol)}
                       style={{ background: 'transparent', border: 'none', color: 'inherit' }}
                     >
-                      <strong style={{ color: 'var(--accent-primary)' }}>{asset.symbol}</strong>
+                      <strong style={{ color: 'var(--text-accent)' }}>{asset.symbol}</strong>
                       <span>{asset.displayName}</span>
                     </button>
                   </td>
@@ -422,7 +422,7 @@ function Markets() {
                   <td className="markets__table-chart">
                     <Sparkline points={asset.history} tone={toneClass(asset.change24h)} />
                   </td>
-                  <td style={{ textTransform: 'uppercase' }}>{asset.source.replace('_', ' ')}</td>
+                  <td>{asset.source.replace('_', ' ')}</td>
                 </tr>
               ))}
             </tbody>

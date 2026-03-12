@@ -1,6 +1,6 @@
 /* /////////////////////////////////////////////////////////////////////////////
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // OCULOPS — Flight Deck
+// Premium Ivory/Gold theme
 // ///////////////////////////////////////////////////////////////////////////// */
 
 .flight-deck {
@@ -17,7 +17,7 @@
     border-radius: 0;
     overflow: hidden;
     border: 1px solid var(--border-default);
-    background: #000;
+    background: var(--surface-base);
 }
 
 .flight-map {
@@ -28,9 +28,8 @@
 .flight-map .leaflet-container {
     width: 100%;
     height: 100%;
-    background: #000;
-    filter: saturate(0) sepia(100%) hue-rotate(180deg) brightness(0.5) contrast(1.5);
-    /* Cyan/Monochrome radar vibe */
+    background: var(--surface-base);
+    filter: saturate(0.3) brightness(0.96) contrast(1.05);
 }
 
 .flight-map .leaflet-control-zoom {
@@ -55,7 +54,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, transparent 0 28%, rgba(0, 0, 0, 0.4) 56%, rgba(0, 0, 0, 0.9) 100%);
+    background: radial-gradient(circle at center, transparent 0 28%, rgba(250, 250, 248, 0.3) 56%, rgba(250, 250, 248, 0.85) 100%);
     pointer-events: none;
     z-index: 300;
 }
@@ -64,8 +63,8 @@
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 215, 0, 0.08) 1px, transparent 1px);
+        linear-gradient(var(--accent-primary-muted) 1px, transparent 1px),
+        linear-gradient(90deg, var(--accent-primary-muted) 1px, transparent 1px);
     background-size: 80px 80px;
     pointer-events: none;
     z-index: 310;
@@ -131,16 +130,15 @@
     padding: 8px 12px;
     border-radius: 0;
     border: 1px solid var(--border-default);
-    background: rgba(0, 0, 0, 0.85);
+    background: var(--surface-overlay);
     backdrop-filter: blur(4px);
 }
 
 .flight-stage-label {
-    color: var(--accent-primary);
+    color: var(--text-accent);
     font-size: 9px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.04em;
     font-family: var(--font-mono);
-    text-transform: uppercase;
     opacity: 0.8;
 }
 
@@ -158,13 +156,12 @@
     padding: 6px 12px;
     border-radius: 0;
     border: 1px solid var(--border-default);
-    background: #000;
-    color: var(--accent-primary);
+    background: var(--surface-raised);
+    color: var(--text-accent);
     font-size: 10px;
     font-family: var(--font-mono);
     font-weight: bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .flight-status-dot {
@@ -196,7 +193,7 @@
     aspect-ratio: 1;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 1px dashed rgba(255, 215, 0, 0.4);
+    border: 1px dashed var(--border-active);
     pointer-events: none;
     z-index: 315;
 }
@@ -215,7 +212,7 @@
 .flight-plane svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    filter: drop-shadow(0 0 8px var(--border-focus));
     transform: rotate(var(--plane-heading, 0deg)) rotateZ(var(--plane-bank, 0deg));
     transition: transform 140ms linear;
 }
@@ -234,8 +231,8 @@
 .flight-stick-btn {
     border: 1px solid var(--border-default);
     border-radius: 0;
-    background: #000;
-    color: var(--accent-primary);
+    background: var(--surface-raised);
+    color: var(--text-accent);
     font-family: var(--font-mono);
     cursor: pointer;
     font-size: 14px;
@@ -308,8 +305,7 @@
     font-size: 11px;
     font-weight: bold;
     font-family: var(--font-mono);
-    color: var(--accent-primary);
-    letter-spacing: 0.05em;
+    color: var(--text-primary);
 }
 
 .flight-card-subtitle {
@@ -317,7 +313,6 @@
     font-family: var(--font-mono);
     font-size: 9px;
     margin-top: 4px;
-    text-transform: uppercase;
 }
 
 .flight-chip-row,
@@ -331,25 +326,23 @@
 .flight-chip {
     border: 1px solid var(--border-subtle);
     border-radius: 0;
-    background: #000;
+    background: var(--surface-elevated);
     color: var(--text-primary);
     padding: 4px 8px;
     font-size: 9px;
     font-family: var(--font-mono);
-    text-transform: uppercase;
 }
 
 .flight-preset {
     border: 1px solid var(--border-subtle);
     border-radius: 0;
-    background: #000;
+    background: var(--surface-elevated);
     color: var(--text-primary);
     padding: 6px 12px;
     font-size: 9px;
     font-family: var(--font-mono);
     font-weight: bold;
     cursor: pointer;
-    text-transform: uppercase;
 }
 
 .flight-preset:hover {
@@ -376,8 +369,7 @@
 .flight-field label {
     font-size: 9px;
     font-family: var(--font-mono);
-    color: var(--accent-primary);
-    text-transform: uppercase;
+    color: var(--text-accent);
 }
 
 .flight-field input,
@@ -385,7 +377,7 @@
     height: 36px;
     border-radius: 0;
     border: 1px solid var(--border-subtle);
-    background: #000;
+    background: var(--surface-raised);
     color: var(--text-primary);
     padding: 0 10px;
     font-size: 10px;
@@ -414,14 +406,13 @@
     height: 36px;
     border-radius: 0;
     border: 1px solid var(--border-subtle);
-    background: #000;
+    background: var(--surface-raised);
     color: var(--text-primary);
     padding: 0 12px;
     font-size: 9px;
     font-family: var(--font-mono);
     font-weight: bold;
     cursor: pointer;
-    text-transform: uppercase;
 }
 
 .flight-btn:hover {
@@ -432,7 +423,7 @@
 .flight-btn.primary {
     background: var(--accent-primary);
     border-color: var(--accent-primary);
-    color: #000;
+    color: var(--text-primary);
 }
 
 .flight-btn.primary:hover {
@@ -447,7 +438,7 @@
 
 .flight-btn.secondary:hover {
     background: var(--color-info);
-    color: #000;
+    color: var(--text-inverse);
 }
 
 .flight-btn.agent {
@@ -470,15 +461,13 @@
     padding: 12px;
     border-radius: 0;
     border: 1px solid var(--border-subtle);
-    background: #000;
+    background: var(--surface-elevated);
 }
 
 .flight-metric-box .metric-label {
     color: var(--text-tertiary);
     font-size: 9px;
     font-family: var(--font-mono);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
 .flight-metric-box .metric-value {
@@ -486,7 +475,7 @@
     font-size: 16px;
     font-weight: bold;
     font-family: var(--font-mono);
-    color: var(--accent-primary);
+    color: var(--text-accent);
 }
 
 .flight-metric-box .metric-note {
@@ -494,7 +483,6 @@
     color: var(--text-secondary);
     font-size: 9px;
     font-family: var(--font-mono);
-    text-transform: uppercase;
 }
 
 .flight-lead-list,
@@ -511,7 +499,7 @@
     padding: 12px;
     border-radius: 0;
     border: 1px solid var(--border-subtle);
-    background: #000;
+    background: var(--surface-elevated);
 }
 
 .flight-lead-card {
@@ -528,7 +516,6 @@
     font-size: 12px;
     font-family: var(--font-mono);
     font-weight: bold;
-    text-transform: uppercase;
 }
 
 .flight-lead-meta,
@@ -540,7 +527,6 @@
     color: var(--text-secondary);
     font-size: 9px;
     font-family: var(--font-mono);
-    text-transform: uppercase;
 }
 
 .flight-selected {
@@ -566,7 +552,7 @@
 .flight-selected-item {
     padding: 8px;
     border-radius: 0;
-    background: #000;
+    background: var(--surface-elevated);
     border: 1px solid var(--border-subtle);
 }
 
@@ -575,7 +561,6 @@
     color: var(--text-tertiary);
     font-size: 9px;
     font-family: var(--font-mono);
-    text-transform: uppercase;
 }
 
 .flight-selected-item strong {
@@ -596,7 +581,6 @@
     color: var(--text-primary);
     font-size: 10px;
     font-family: var(--font-mono);
-    text-transform: uppercase;
 }
 
 .flight-log-time {
@@ -625,7 +609,7 @@
     width: 12px;
     height: 12px;
     background: var(--accent-primary);
-    border: 2px solid #000;
+    border: 2px solid var(--surface-base);
     box-shadow: 0 0 12px var(--accent-primary);
 }
 

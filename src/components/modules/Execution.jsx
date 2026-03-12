@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // OCULOPS — Execution Module
-// 100-Year UX: rigorous objective pipeline (Hacker IDE Mode)
+// Premium Ivory/Gold Design System
 // ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
@@ -35,47 +35,47 @@ function Execution() {
 
   const statusMap = {
     'done': { icon: '[✓]', color: 'var(--color-info)', label: 'VERIFIED' },
-    'in_progress': { icon: '[///]', color: 'var(--color-warning)', label: 'ACTIVE' },
+    'in_progress': { icon: '\u25C9', color: 'var(--color-warning)', label: 'ACTIVE' },
     'pending': { icon: '[ ]', color: 'var(--text-tertiary)', label: 'PENDING' }
   }
 
   if (loading) return <ModuleSkeleton variant="table" rows={5} />
 
   return (
-    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column', background: '#000' }}>
+    <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-base)' }}>
 
       {/* ── HEADER ── */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: '16px', borderBottom: '1px solid var(--border-subtle)', marginBottom: '24px' }}>
         <div>
-          <h1 style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0, fontSize: '24px', textTransform: 'uppercase' }}>&gt; EXEC_MATRIX_V10.3.sh</h1>
-          <p className="mono font-bold" style={{ marginTop: '8px', fontSize: '10px', color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>30-DAY ESCALATION PROTOCOL: 0 TO $20K/MO. SELECT DIRECTIVE TO MUTATE SYS_STATE.</p>
+          <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', margin: 0, fontSize: '24px' }}>Execution Matrix</h1>
+          <p className="mono font-bold" style={{ marginTop: '8px', fontSize: '10px', color: 'var(--text-tertiary)' }}>30-day plan: 0 to $20K/mo. Select a task to update status.</p>
         </div>
       </div>
 
       {/* ── Progress KPIs ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--accent-primary)', marginBottom: '24px', boxShadow: 'inset 0 0 10px rgba(255,215,0,0.05)' }}>
-        <div style={{ background: '#000', padding: '16px' }}>
-          <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>CURRENT VECTOR</div>
-          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--accent-primary)', textShadow: '0 0 10px rgba(255,215,0,0.3)' }}>DAY {currentDay}</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-default)', marginBottom: '24px' }}>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px' }}>
+          <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>Current Day</div>
+          <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--accent-primary)' }}>Day {currentDay}</div>
         </div>
-        <div style={{ background: '#000', padding: '16px' }}>
-          <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>COMPLETION TRAJECTORY</div>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px' }}>
+          <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>Completion</div>
           <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-success)' }}>{completionRate}%</div>
         </div>
-        <div style={{ background: '#000', padding: '16px' }}>
-          <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>ACTIVE PARALLEL PROCESSES</div>
+        <div style={{ background: 'var(--surface-raised)', padding: '16px' }}>
+          <div className="mono text-2xs font-bold" style={{ marginBottom: '8px', color: 'var(--text-tertiary)' }}>In Progress</div>
           <div className="mono font-bold" style={{ fontSize: '24px', color: 'var(--color-warning)' }}>{tasks.filter(t => t.status === 'in_progress').length}</div>
         </div>
       </div>
 
       {/* ── MAIN POOL ── */}
-      <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: '#000', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      <div style={{ flex: 1, border: '1px solid var(--border-subtle)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 
         {/* Toolbar */}
         <div style={{ padding: '16px', background: 'var(--surface-raised)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="mono text-xs font-bold" style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: 'var(--accent-primary)' }}>root@oculops:~#</span>
-            <span>cat ./directives.log | filter --status</span>
+            <span style={{ color: 'var(--accent-primary)' }}>Tasks</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>Filter by status</span>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             {['all', 'pending', 'in_progress', 'done'].map(f => (
@@ -85,37 +85,36 @@ function Execution() {
                 style={{
                   padding: '6px 12px',
                   background: filterStatus === f ? 'var(--accent-primary)' : 'transparent',
-                  color: filterStatus === f ? '#000' : 'var(--text-tertiary)',
+                  color: filterStatus === f ? 'var(--text-inverse)' : 'var(--text-tertiary)',
                   border: filterStatus === f ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
-                  borderRadius: 0,
-                  textTransform: 'uppercase'
+                  borderRadius: 0
                 }}
                 onClick={() => setFilterStatus(f)}
               >
-                {f === 'all' ? '--ALL' : `--${statusMap[f].label}`}
+                {f === 'all' ? 'All' : statusMap[f].label}
               </button>
             ))}
           </div>
         </div>
 
         {/* Progress bar */}
-        <div style={{ background: '#000', height: '1px', width: '100%' }}>
+        <div style={{ background: 'var(--surface-inset)', height: '1px', width: '100%' }}>
           <div style={{ width: `${completionRate}%`, height: '1px', background: 'var(--accent-primary)', boxShadow: '0 0 5px var(--accent-primary)' }} />
         </div>
 
         {/* List */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '1px', background: 'var(--border-subtle)' }}>
           {tasks.length === 0 && !loading ? (
-            <div style={{ height: '100%', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', color: 'var(--text-tertiary)', textAlign: 'center', padding: '40px' }}>
+            <div style={{ height: '100%', background: 'var(--surface-inset)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', color: 'var(--text-tertiary)', textAlign: 'center', padding: '40px' }}>
               <div className="mono font-bold" style={{ fontSize: '24px', marginBottom: '16px', color: 'var(--color-danger)' }}>ERR: [ NULL POINTER EXCEPTION ]</div>
-              <h3 className="mono font-bold" style={{ fontSize: '12px', color: 'var(--text-primary)', marginBottom: '8px', letterSpacing: '0.1em' }}>EXECUTION MATRIX UNINITIALIZED</h3>
+              <h3 className="mono font-bold" style={{ fontSize: '12px', color: 'var(--text-primary)', marginBottom: '8px' }}>EXECUTION MATRIX UNINITIALIZED</h3>
               <p className="mono font-bold" style={{ fontSize: '10px', marginBottom: '32px' }}>AWAITING ROOT PROTOCOL INJECTION (0 TO 20K PLAN).</p>
-              <button className="btn btn-ghost mono font-bold" style={{ border: '1px solid var(--accent-primary)', background: 'var(--accent-primary)', color: '#000', padding: '12px 24px', borderRadius: 0, letterSpacing: '0.1em' }} onClick={seedDefaultPlan} disabled={seeding}>
+              <button className="btn btn-ghost mono font-bold" style={{ border: '1px solid var(--accent-primary)', background: 'var(--accent-primary)', color: 'var(--text-primary)', padding: '12px 24px', borderRadius: 0 }} onClick={seedDefaultPlan} disabled={seeding}>
                 {seeding ? './inject --force ...' : 'sudo ./initialize_protocol.sh'}
               </button>
             </div>
           ) : filtered.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '48px 0', background: '#000', color: 'var(--text-tertiary)', flex: 1 }} className="mono text-xs font-bold">
+            <div style={{ textAlign: 'center', padding: '48px 0', background: 'var(--surface-inset)', color: 'var(--text-tertiary)', flex: 1 }} className="mono text-xs font-bold">
               grep: no matches found in current context
             </div>
           ) : (
@@ -130,7 +129,7 @@ function Execution() {
                   className="mono"
                   style={{
                     display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 16px',
-                    background: isDone ? 'rgba(0,0,0,0.8)' : '#000',
+                    background: isDone ? 'rgba(0,0,0,0.8)' : 'var(--surface-inset)',
                     borderLeft: `2px solid ${isDone ? 'transparent' : sm.color}`,
                     cursor: 'pointer', transition: 'all 0.1s',
                     opacity: isDone ? 0.5 : 1

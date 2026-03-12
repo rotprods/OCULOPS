@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
 // OCULOPS — Experiments Lab
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
+// Premium Ivory/Gold Design System
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect } from 'react'
@@ -55,7 +55,7 @@ function EvolverSection() {
         await fetchExperiments()
     }
 
-    if (loading) return <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING EVOLVER DATA...</div>
+    if (loading) return <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>Loading evolver data...</div>
 
     const kept      = exps.filter(e => e.status === 'kept')
     const shadow    = exps.filter(e => e.status === 'shadow')
@@ -101,7 +101,7 @@ function EvolverSection() {
             {/* Shadow — pending review */}
             {shadow.length > 0 && (
                 <div className="section-box" style={{ borderLeft: '2px solid var(--color-primary)' }}>
-                    <div className="section-header" style={{ color: 'var(--color-primary)' }}>/// PENDING REVIEW — SHADOW EXPERIMENTS [{shadow.length}]</div>
+                    <div className="section-header" style={{ color: 'var(--color-primary)' }}>Pending Review -- Shadow Experiments [{shadow.length}]</div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         {shadow.map((exp, idx) => (
                             <EvolverRow
@@ -116,10 +116,10 @@ function EvolverSection() {
 
             {/* Full history table */}
             <div className="section-box">
-                <div className="section-header">/// EXPERIMENT HISTORY [{exps.length}]</div>
+                <div className="section-header">Experiment History [{exps.length}]</div>
                 {exps.length === 0 ? (
                     <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>
-                        NO EXPERIMENTS YET — EVOLVER RUNS NIGHTLY AT 02:00 UTC
+                        No experiments yet -- Evolver runs nightly at 02:00 UTC
                     </div>
                 ) : (
                     <table className="data-table">
@@ -271,16 +271,16 @@ function Experiments() {
             {/* ── HEADER ── */}
             <div className="module-header-bar">
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--color-primary)', letterSpacing: '0.05em', margin: 0 }}>R&D OUTPOST</h1>
-                    <span className="mono text-xs text-tertiary">GROWTH EXPERIMENTS & AGENT SELF-IMPROVEMENT</span>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', margin: 0 }}>R&D Lab</h1>
+                    <span className="mono text-xs text-tertiary">Growth experiments & agent self-improvement</span>
                 </div>
                 {/* Tab switcher */}
                 <div style={{ display: 'flex', gap: '0', border: '1px solid var(--color-border)' }}>
                     {[['evolver', 'EVOLVER'], ['manual', 'MANUAL']].map(([key, label]) => (
                         <button key={key} className="mono" onClick={() => setTab(key)} style={{
                             padding: '6px 16px', fontSize: '10px', border: 'none', cursor: 'pointer',
-                            background: tab === key ? 'var(--color-primary)' : 'transparent',
-                            color: tab === key ? '#000' : 'var(--color-text-3)',
+                            background: tab === key ? 'var(--accent-primary)' : 'transparent',
+                            color: tab === key ? 'var(--text-inverse)' : 'var(--text-tertiary)',
                             fontWeight: tab === key ? 'bold' : 'normal',
                         }}>{label}</button>
                     ))}
@@ -319,9 +319,9 @@ function Experiments() {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                                 {/* ACTIVE */}
                                 <div className="section-box">
-                                    <div className="section-header">/// LIVE DATA STREAMS [{active.length}]</div>
+                                    <div className="section-header">Live Data Streams [{active.length}]</div>
                                     {active.length === 0 ? (
-                                        <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO EXPERIMENTS IN PROGRESS.</div>
+                                        <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>No experiments in progress.</div>
                                     ) : (
                                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                                             {active.map((exp, idx) => (
@@ -352,7 +352,7 @@ function Experiments() {
                                 {/* CONCLUDED */}
                                 {concluded.length > 0 && (
                                     <div className="section-box">
-                                        <div className="section-header">/// ARCHIVED RESULTS [{concluded.length}]</div>
+                                        <div className="section-header">Archived Results [{concluded.length}]</div>
                                         <table className="data-table">
                                             <thead>
                                                 <tr><th>EXPERIMENT</th><th>VERDICT</th><th>START</th><th>END</th></tr>
@@ -378,40 +378,40 @@ function Experiments() {
 
                             {/* ADD FORM */}
                             <div className="section-box--gold" style={{ height: 'fit-content' }}>
-                                <div className="section-header--gold mono text-xs font-bold" style={{ padding: '12px 16px' }}>/// INITIALIZE NEW VECTOR</div>
+                                <div className="section-header--gold mono text-xs font-bold" style={{ padding: '12px 16px' }}>New Experiment</div>
                                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                                     <div className="input-group">
-                                        <label className="mono text-xs">VECTOR DESIGNATION</label>
+                                        <label className="mono text-xs">Experiment Name</label>
                                         <input className="input-terminal" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="EX: A/B EMAIL TEST" />
                                     </div>
                                     <div className="input-group">
-                                        <label className="mono text-xs">DURATION (DAYS)</label>
+                                        <label className="mono text-xs">Duration (days)</label>
                                         <input className="input-terminal" type="number" value={form.duration_days} onChange={e => setForm(f => ({ ...f, duration_days: e.target.value }))} />
                                     </div>
                                     <div className="input-group">
-                                        <label className="mono text-xs">PRIMARY HYPOTHESIS</label>
-                                        <textarea className="input-terminal" rows="3" style={{ resize: 'vertical' }} value={form.hypothesis} onChange={e => setForm(f => ({ ...f, hypothesis: e.target.value }))} placeholder="STATE HYPOTHESIS..." />
+                                        <label className="mono text-xs">Hypothesis</label>
+                                        <textarea className="input-terminal" rows="3" style={{ resize: 'vertical' }} value={form.hypothesis} onChange={e => setForm(f => ({ ...f, hypothesis: e.target.value }))} placeholder="State hypothesis..." />
                                     </div>
                                     <div className="input-group">
-                                        <label className="mono text-xs">METRIC</label>
-                                        <input className="input-terminal" value={form.metric} onChange={e => setForm(f => ({ ...f, metric: e.target.value }))} placeholder="EX: REPLY RATE %" />
+                                        <label className="mono text-xs">Metric</label>
+                                        <input className="input-terminal" value={form.metric} onChange={e => setForm(f => ({ ...f, metric: e.target.value }))} placeholder="Ex: Reply rate %" />
                                     </div>
                                     <div className="input-group">
-                                        <label className="mono text-xs">BASELINE</label>
-                                        <input className="input-terminal" value={form.baseline} onChange={e => setForm(f => ({ ...f, baseline: e.target.value }))} placeholder="EX: 1.2%" />
+                                        <label className="mono text-xs">Baseline</label>
+                                        <input className="input-terminal" value={form.baseline} onChange={e => setForm(f => ({ ...f, baseline: e.target.value }))} placeholder="Ex: 1.2%" />
                                     </div>
                                     <div className="input-group">
-                                        <label className="mono text-xs">TARGET</label>
-                                        <input className="input-terminal" value={form.target_value} onChange={e => setForm(f => ({ ...f, target_value: e.target.value }))} placeholder="EX: 3.0%" />
+                                        <label className="mono text-xs">Target</label>
+                                        <input className="input-terminal" value={form.target_value} onChange={e => setForm(f => ({ ...f, target_value: e.target.value }))} placeholder="Ex: 3.0%" />
                                     </div>
                                     <button className="btn btn-primary mono" style={{ marginTop: '16px', borderRadius: 0, padding: '12px' }} onClick={handleAdd} disabled={saving}>
-                                        {saving ? 'INITIALIZING...' : 'LAUNCH PROTOCOL'}
+                                        {saving ? 'Saving...' : 'Launch Experiment'}
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <VaultAgentPanel title="EXPERIMENT INTELLIGENCE" namespaces={['data', 'research']} maxAgents={12} capSlice={2} />
+                        <VaultAgentPanel title="Experiment Intelligence" namespaces={['data', 'research']} maxAgents={12} capSlice={2} />
                     </>
                 )}
             </div>

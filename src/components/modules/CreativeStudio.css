@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════════
-   OCULOPS — CreativeStudio v5
-   AI Media Deployment Console · War Room Level
-   100-Year UX: strictly OLED Black, Gold, 1px Primitives
+   OCULOPS — CreativeStudio v6
+   AI Media Generation & Brief Library
    ═══════════════════════════════════════════════════ */
 
 .creative-studio {
@@ -11,7 +10,7 @@
     height: calc(100vh - 80px);
     overflow: hidden;
     position: relative;
-    background: #000000;
+    background: var(--color-bg);
 }
 
 /* ── Header ── */
@@ -20,14 +19,13 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--color-border);
     flex-shrink: 0;
 }
 
 .cs-header-title {
     font-family: var(--font-editorial);
-    color: var(--accent-primary);
-    letter-spacing: 0.05em;
+    color: var(--color-primary);
     margin: 0;
     font-size: 28px;
 }
@@ -36,7 +34,6 @@
     font-size: 10px;
     color: var(--text-tertiary);
     margin-top: var(--space-2);
-    letter-spacing: 0.1em;
 }
 
 /* ── Toggles ── */
@@ -74,20 +71,20 @@
 }
 
 .cs-view-btn:hover {
-    color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.03);
+    color: var(--color-text-2);
+    background: var(--color-bg-2);
 }
 
 .cs-view-btn--active {
-    color: var(--text-inverse);
-    background: var(--gradient-accent);
+    color: var(--color-bg);
+    background: var(--color-primary);
     font-weight: 700;
-    box-shadow: 0 2px 8px rgba(255, 214, 10, 0.15);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 15%, transparent);
 }
 
 /* ── Alerts ── */
 .cs-error-banner {
-    background: rgba(255, 59, 48, 0.1);
+    background: color-mix(in srgb, var(--color-danger) 10%, transparent);
     border: 1px solid var(--color-danger);
     padding: 12px 16px;
     display: flex;
@@ -146,7 +143,7 @@
     font-weight: 700;
     font-size: var(--text-sm);
     letter-spacing: -0.01em;
-    color: var(--text-primary);
+    color: var(--color-text);
     background: transparent;
     flex-shrink: 0;
     display: flex;
@@ -173,8 +170,6 @@
 .cs-label {
     font-size: 9px;
     color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
     font-weight: 700;
 }
 
@@ -185,7 +180,7 @@
 }
 
 .cs-model-btn {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-bg-2);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     padding: var(--space-3) var(--space-4);
@@ -203,15 +198,15 @@
 }
 
 .cs-model-btn:hover {
-    border-color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--color-text-2);
+    background: var(--color-bg-3);
 }
 
 .cs-model-btn--active {
-    border-color: var(--accent-primary);
-    color: var(--text-primary);
-    background: rgba(255, 215, 0, 0.08);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+    border-color: var(--color-primary);
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
 .cs-model-icon {
@@ -220,33 +215,30 @@
 
 .cs-prompt-input {
     border-radius: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--color-bg);
     border: 1px solid var(--border-subtle);
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--accent-primary);
+    color: var(--color-primary);
     padding: var(--space-4);
     resize: none;
     flex: 1;
     min-height: 120px;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
     transition: border-color var(--transition-fast);
 }
 
 .cs-prompt-input:focus {
-    border-color: var(--accent-primary);
-    box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1), inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    border-color: var(--color-primary);
     outline: none;
 }
 
 .cs-execute-btn {
     border-radius: 0;
     padding: var(--space-4);
-    letter-spacing: 0.1em;
     font-weight: 700;
     font-size: var(--text-xs);
     margin-top: auto;
-    border: 1px solid var(--accent-primary);
+    border: 1px solid var(--color-primary);
     transition: all var(--transition-base);
 }
 
@@ -272,7 +264,7 @@
     flex: 1;
     padding: var(--space-5);
     overflow-y: auto;
-    background: #000000;
+    background: var(--color-bg);
 }
 
 .cs-empty-state {
@@ -284,7 +276,6 @@
 
 .cs-empty-text {
     font-size: var(--text-xs);
-    letter-spacing: 0.2em;
     color: var(--text-tertiary);
 }
 
@@ -296,7 +287,7 @@
 
 .cs-asset-card {
     border: 1px solid var(--border-subtle);
-    background: var(--surface-raised);
+    background: var(--color-bg-2);
     display: flex;
     flex-direction: column;
     transition: all var(--transition-3d);
@@ -320,12 +311,12 @@
     border-bottom: 1px solid var(--border-subtle);
     font-size: 10px;
     font-weight: 700;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--color-bg);
 }
 
 .cs-asset-preview {
     aspect-ratio: 16 / 9;
-    background: #000000;
+    background: var(--color-bg);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -382,9 +373,9 @@
     left: 0;
     height: 100%;
     width: 30%;
-    background: var(--accent-primary);
+    background: var(--color-primary);
     animation: loadingBar 1.5s infinite linear;
-    box-shadow: 0 0 10px var(--accent-primary);
+    box-shadow: 0 0 10px var(--color-primary);
 }
 
 @keyframes loadingBar {
@@ -400,7 +391,7 @@
 .cs-asset-footer {
     padding: var(--space-3);
     font-size: 10px;
-    color: var(--text-secondary);
+    color: var(--color-text-2);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -427,13 +418,13 @@
 }
 
 .cs-filter-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-bg-3);
 }
 
 .cs-filter-btn--active {
-    background: var(--accent-primary);
-    color: #000000;
-    border-color: var(--accent-primary);
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border-color: var(--color-primary);
 }
 
 .cs-briefs-grid {
@@ -446,7 +437,7 @@
 
 .cs-brief-card {
     border: 1px solid var(--border-subtle);
-    background: var(--surface-raised);
+    background: var(--color-bg-2);
     padding: var(--space-4);
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -471,7 +462,7 @@
 }
 
 .cs-brief-card:hover::before {
-    background: var(--accent-primary);
+    background: var(--color-primary);
 }
 
 .cs-brief-card-header {
@@ -484,7 +475,7 @@
 .cs-brief-card-title {
     font-weight: 700;
     font-size: var(--text-sm);
-    color: var(--text-primary);
+    color: var(--color-text);
 }
 
 .cs-brief-tags {
@@ -497,7 +488,7 @@
     font-family: var(--font-mono);
     font-size: 9px;
     padding: 2px 6px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--color-bg-3);
     border: 1px solid var(--border-subtle);
     color: var(--text-tertiary);
 }
@@ -506,7 +497,7 @@
 .cs-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
@@ -520,15 +511,15 @@
     overflow: auto;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--accent-primary);
+    border: 1px solid var(--color-primary);
     border-radius: 0;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 15%, transparent);
 }
 
 .cs-modal-header {
     position: sticky;
     top: 0;
-    background: var(--surface-raised);
+    background: var(--color-bg-2);
     border-bottom: 1px solid var(--border-subtle);
     padding: 16px 24px;
     display: flex;
@@ -540,7 +531,7 @@
 .cs-modal-title {
     font-family: var(--font-editorial);
     font-size: 20px;
-    color: var(--accent-primary);
+    color: var(--color-primary);
     margin-bottom: 6px;
 }
 
@@ -556,22 +547,20 @@
     font-weight: 700;
     color: var(--text-tertiary);
     margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
 }
 
 .cs-modal-textarea {
     border-radius: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--color-bg);
     border: 1px solid var(--border-subtle);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
-    color: var(--text-primary);
+    color: var(--color-text);
     padding: var(--space-3);
     transition: border-color var(--transition-micro);
 }
 
 .cs-modal-textarea:focus {
     outline: none;
-    border-color: var(--accent-primary);
+    border-color: var(--color-primary);
 }

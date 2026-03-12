@@ -190,7 +190,7 @@ function Sidebar() {
       {credits !== null && (
         <div 
           onClick={() => navigate('/settings')} 
-          style={{ padding: 'var(--space-2) var(--space-4)', margin: '0 var(--space-2) var(--space-2)', borderRadius: 'var(--radius)', background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', transition: 'all 0.2s ease' }}
+          style={{ padding: 'var(--space-2) var(--space-4)', margin: '0 var(--space-2) var(--space-2)', borderRadius: 'var(--radius)', background: 'var(--surface-elevated)', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', transition: 'all 0.2s ease' }}
           className="sidebar-credit-pill hover-glow-gold"
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>

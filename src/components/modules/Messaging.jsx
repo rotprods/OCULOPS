@@ -14,10 +14,10 @@ import ModulePage from '../ui/ModulePage'
 import './Messaging.css'
 
 const CHANNELS = [
-    { key: 'whatsapp', label: 'WhatsApp', color: '#25D366' },
-    { key: 'instagram', label: 'Instagram', color: '#E4405F' },
+    { key: 'whatsapp', label: 'WhatsApp', color: 'var(--color-success)' },
+    { key: 'instagram', label: 'Instagram', color: 'var(--color-danger)' },
     { key: 'email', label: 'Email', color: 'var(--color-info)' },
-    { key: 'linkedin', label: 'LinkedIn', color: '#0077B5' },
+    { key: 'linkedin', label: 'LinkedIn', color: 'var(--color-info)' },
 ]
 
 function ChannelCard({ type, label, channel, connectFn, disconnectFn, syncFn, channelBusy }) {

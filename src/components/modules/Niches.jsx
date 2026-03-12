@@ -1,6 +1,5 @@
 // ═══════════════════════════════════════════════════
 // OCULOPS — Niches Analysis
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // ═══════════════════════════════════════════════════
 
 import { useState } from 'react'
@@ -40,8 +39,8 @@ function Niches() {
             {/* ── HEADER ── */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-default)', marginBottom: '16px' }}>
                 <div>
-                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', letterSpacing: '0.05em', margin: 0 }}>NICHE ANALYSIS MODULE</h1>
-                    <span className="mono text-xs text-tertiary">CEO SCORE ALGORITHM V2.0 ACTIVE</span>
+                    <h1 style={{ fontFamily: 'var(--font-editorial)', color: 'var(--accent-primary)', margin: 0 }}>Niche Analysis</h1>
+                    <span className="mono text-xs text-tertiary">CEO Score Algorithm v2.0</span>
                 </div>
             </div>
 
@@ -50,36 +49,36 @@ function Niches() {
                 {/* ── RANKING MATRIX ── */}
                 <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
                     <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
-                        /// CEO SCORE RANKING [{scored.length} ENTITIES]
+                        Score Ranking ({scored.length})
                     </div>
                     {scored.length === 0 ? (
                         <div style={{ padding: '32px', textAlign: 'center', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
-                            AWAITING NICHE DATA INPUT
+                            No niches added yet
                         </div>
                     ) : (
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', fontFamily: 'var(--font-mono)', textAlign: 'left' }}>
-                            <thead style={{ background: '#000', borderBottom: '1px solid var(--border-subtle)' }}>
+                            <thead style={{ background: 'var(--surface-inset)', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <tr>
                                     <th style={{ padding: '12px 16px', color: 'var(--accent-primary)' }}>#</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>NICHE IDENTIFIER</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SCORE</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>IMP</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>VEL</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>SCL</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>CNF</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>RSK</th>
-                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>CST</th>
-                                    <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--color-danger)' }}>CMD</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Niche</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Score</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Imp</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Vel</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Scl</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Cnf</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Rsk</th>
+                                    <th style={{ padding: '12px 16px', color: 'var(--text-secondary)' }}>Cst</th>
+                                    <th style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-secondary)' }}></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {scored.map((n, i) => (
-                                    <tr key={n.id} style={{ borderBottom: i < scored.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: i % 2 === 0 ? 'transparent' : '#000' }}>
+                                    <tr key={n.id} style={{ borderBottom: i < scored.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: i % 2 === 0 ? 'transparent' : 'var(--surface-inset)' }}>
                                         <td style={{ padding: '12px 16px', fontWeight: 'bold', color: i === 0 ? 'var(--accent-primary)' : 'var(--text-tertiary)' }}>
                                             {String(i + 1).padStart(2, '0')}
                                         </td>
                                         <td style={{ padding: '12px 16px', fontWeight: 'bold', color: 'var(--text-primary)' }}>
-                                            {n.name.toUpperCase()}
+                                            {n.name}
                                         </td>
                                         <td style={{ padding: '12px 16px' }}>
                                             <span style={{ fontWeight: 'bold', fontSize: '12px', color: n.ceoScore > 60 ? 'var(--color-success)' : n.ceoScore > 30 ? 'var(--color-warning)' : 'var(--color-danger)' }}>
@@ -93,7 +92,7 @@ function Niches() {
                                         <td style={{ padding: '12px 16px', color: 'var(--color-danger)' }}>{n.risk}</td>
                                         <td style={{ padding: '12px 16px', color: 'var(--color-warning)' }}>{n.resource_cost}</td>
                                         <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                                            <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeNiche(n.id)}>DEL</button>
+                                            <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeNiche(n.id)}>Delete</button>
                                         </td>
                                     </tr>
                                 ))}
@@ -105,13 +104,13 @@ function Niches() {
                 {/* ── INPUT MATRIX ── */}
                 <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
                     <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>
-                        /// LOG NEW NICHE PARAMETERS
+                        Add New Niche
                     </div>
                     <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>NICHE IDENTIFIER</label>
-                                <input className="mono" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="E.G: HIGH-TICKET INFO-PRODUCTS" />
+                                <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>Niche name</label>
+                                <input className="mono" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="e.g. High-ticket info products" />
                             </div>
                         </div>
 
@@ -119,16 +118,16 @@ function Niches() {
                             {['impact', 'velocity', 'scalability', 'confidence', 'risk', 'resource_cost'].map((field) => (
                                 <div key={field} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                                     <label className="mono text-2xs" style={{ color: 'var(--text-tertiary)' }}>
-                                        {field.replace('_', ' ').toUpperCase()} [0-100]
+                                        {field.replace('_', ' ')} (0-100)
                                     </label>
-                                    <input className="mono" type="number" min="0" max="100" style={{ background: '#000', border: '1px solid var(--border-subtle)', color: 'var(--accent-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form[field]} onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))} />
+                                    <input className="mono" type="number" min="0" max="100" style={{ background: 'var(--surface-base)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', padding: '10px 12px', fontSize: '11px', outline: 'none', width: '100%' }} value={form[field]} onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))} />
                                 </div>
                             ))}
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
                             <button className="btn btn-ghost mono" style={{ fontSize: '10px', padding: '10px 24px', border: '1px solid var(--accent-primary)', color: 'var(--surface-base)', background: 'var(--accent-primary)' }} onClick={handleAdd} disabled={saving}>
-                                {saving ? 'CALCULATING...' : 'INJECT ENTRY'}
+                                {saving ? 'Saving...' : 'Add Niche'}
                             </button>
                         </div>
                     </div>
@@ -136,7 +135,7 @@ function Niches() {
 
             </div>
 
-                <VaultAgentPanel title="NICHE INTELLIGENCE" namespaces={['research', 'product']} />
+                <VaultAgentPanel title="Niche Intelligence" namespaces={['research', 'product']} />
         </div>
     )
 }

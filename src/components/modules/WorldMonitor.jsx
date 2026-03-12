@@ -567,7 +567,7 @@ export default function WorldMonitor() {
                     <div className="wm-detail-header">
                         <div>
                             <div className="wm-detail-type" style={{ color: getMarkerColor(selectedItem) }}>
-                                /// {(selectedItem.type || 'event').toUpperCase()}
+                                {selectedItem.type || 'event'}
                             </div>
                             <div className="wm-detail-name">{selectedItem.name}</div>
                         </div>

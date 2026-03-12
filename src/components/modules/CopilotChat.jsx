@@ -11,26 +11,26 @@ import skills from '../../data/copilot-skills.json'
 import './CopilotChat.css'
 
 const TOOL_LABELS = {
-  atlas_scan: { icon: '🔭', label: 'ATLAS SCAN' },
-  hunter_qualify: { icon: '🎯', label: 'HUNTER QUALIFY' },
-  cortex_orchestrate: { icon: '🧠', label: 'CORTEX PIPELINE' },
-  oracle_analyze: { icon: '📊', label: 'ORACLE ANALYSIS' },
-  sentinel_monitor: { icon: '🗼', label: 'SENTINEL MONITOR' },
-  forge_generate: { icon: '🔨', label: 'FORGE GENERATE' },
-  outreach_stage: { icon: '📧', label: 'OUTREACH STAGE' },
-  outreach_list: { icon: '📋', label: 'OUTREACH LIST' },
-  outreach_approve: { icon: '✅', label: 'OUTREACH APPROVE' },
-  outreach_send: { icon: '📤', label: 'OUTREACH SEND' },
-  proposal_generate: { icon: '📄', label: 'PROPOSAL' },
-  scraper_analyze: { icon: '🕷️', label: 'SCRAPER' },
-  herald_briefing: { icon: '📱', label: 'HERALD BRIEFING' },
-  deal_score: { icon: '⚖️', label: 'DEAL SCORER' },
-  crm_create_contact: { icon: '👤', label: 'CREATE CONTACT' },
-  crm_create_deal: { icon: '💎', label: 'CREATE DEAL' },
-  pipeline_move: { icon: '🔄', label: 'MOVE DEAL' },
-  task_create: { icon: '📌', label: 'CREATE TASK' },
-  query_data: { icon: '🔍', label: 'QUERY DATA' },
-  navigate: { icon: '🧭', label: 'NAVIGATE' },
+  atlas_scan: { icon: '🔭', label: 'Atlas scan' },
+  hunter_qualify: { icon: '🎯', label: 'Hunter qualify' },
+  cortex_orchestrate: { icon: '🧠', label: 'Cortex pipeline' },
+  oracle_analyze: { icon: '📊', label: 'Oracle analysis' },
+  sentinel_monitor: { icon: '🗼', label: 'Sentinel monitor' },
+  forge_generate: { icon: '🔨', label: 'Forge generate' },
+  outreach_stage: { icon: '📧', label: 'Outreach stage' },
+  outreach_list: { icon: '📋', label: 'Outreach list' },
+  outreach_approve: { icon: '✅', label: 'Outreach approve' },
+  outreach_send: { icon: '📤', label: 'Outreach send' },
+  proposal_generate: { icon: '📄', label: 'Proposal' },
+  scraper_analyze: { icon: '🕷️', label: 'Scraper' },
+  herald_briefing: { icon: '📱', label: 'Herald briefing' },
+  deal_score: { icon: '⚖️', label: 'Deal scorer' },
+  crm_create_contact: { icon: '👤', label: 'Create contact' },
+  crm_create_deal: { icon: '💎', label: 'Create deal' },
+  pipeline_move: { icon: '🔄', label: 'Move deal' },
+  task_create: { icon: '📌', label: 'Create task' },
+  query_data: { icon: '🔍', label: 'Query data' },
+  navigate: { icon: '🧭', label: 'Navigate' },
 }
 
 function ToolBadge({ tool, success, error }) {
@@ -53,7 +53,7 @@ function ToolBadge({ tool, success, error }) {
 
 function CopilotChat() {
   const [messages, setMessages] = useState([
-    { role: 'system', content: 'MASTER INTELLIGENCE ONLINE — 20 TOOLS ARMED — AWAITING DIRECTIVE' },
+    { role: 'system', content: 'Copilot ready — 20 tools available' },
   ])
   const [listening, setListening] = useState(false)
   const [energy, setEnergy] = useState(48)
@@ -174,7 +174,7 @@ function CopilotChat() {
     setMessages(prev => {
       const next = [...prev, { role: 'user', content: text }]
       if (skillMatch) {
-        next.push({ role: 'system', content: `SKILL ACTIVATED — ${skillMatch.label}` })
+        next.push({ role: 'system', content: `Skill activated — ${skillMatch.label}` })
       }
       return next
     })
@@ -186,7 +186,7 @@ function CopilotChat() {
     if (skillMatch?.panel) {
       triggerNavigation(skillMatch.panel, skillMatch.label)
     }
-    setMessages(prev => [...prev, { role: 'thinking', content: 'PROCESSING...' }])
+    setMessages(prev => [...prev, { role: 'thinking', content: 'Processing...' }])
 
     try {
       const history = messages
@@ -218,14 +218,14 @@ function CopilotChat() {
       } else {
         setMessages(prev => [...prev, {
           role: 'system',
-          content: 'NO RESPONSE — CHECK EDGE FUNCTION STATUS',
+          content: 'No response — check edge function status',
         }])
       }
     } catch (err) {
       setMessages(prev => prev.filter(m => m.role !== 'thinking'))
       setMessages(prev => [...prev, {
         role: 'system',
-        content: `ERROR: ${err.message?.toUpperCase() || 'UNKNOWN FAILURE'}`,
+        content: `Error: ${err.message || 'Unknown failure'}`,
       }])
     }
 
@@ -241,17 +241,17 @@ function CopilotChat() {
 
   // Quick action buttons
   const quickActions = [
-    { label: 'PIPELINE STATUS', cmd: 'Dame el estado actual del pipeline y los deals activos' },
-    { label: 'FULL SCAN', cmd: 'Lanza un scan completo con Cortex: restaurantes en Madrid' },
-    { label: 'DAILY BRIEFING', cmd: 'Genera el briefing diario y envíalo por Telegram' },
-    { label: 'HEALTH CHECK', cmd: 'Ejecuta Sentinel para detectar anomalías en el sistema' },
+    { label: 'Pipeline status', cmd: 'Dame el estado actual del pipeline y los deals activos' },
+    { label: 'Full scan', cmd: 'Lanza un scan completo con Cortex: restaurantes en Madrid' },
+    { label: 'Daily briefing', cmd: 'Genera el briefing diario y envíalo por Telegram' },
+    { label: 'Health check', cmd: 'Ejecuta Sentinel para detectar anomalías en el sistema' },
   ]
 
   const navShortcuts = [
-    { label: 'PROSPECTOR HUB', path: '/prospector', hint: 'Mira la base de leads y Gmail' },
-    { label: 'MESSAGING', path: '/messaging', hint: 'Revisa canales Gmail + WA' },
-    { label: 'CONTROL TOWER', path: '/control-tower', hint: 'Dashboard ejecutivo' },
-    { label: 'WORLD MONITOR', path: '/world-monitor', hint: 'Señales macro y forecast' },
+    { label: 'Prospector Hub', path: '/prospector', hint: 'Mira la base de leads y Gmail' },
+    { label: 'Messaging', path: '/messaging', hint: 'Revisa canales Gmail + WA' },
+    { label: 'Control Tower', path: '/control-tower', hint: 'Dashboard ejecutivo' },
+    { label: 'World Monitor', path: '/world-monitor', hint: 'Señales macro y forecast' },
   ]
 
   const skillPreview = skills.slice(0, 6)
@@ -265,22 +265,20 @@ function CopilotChat() {
           <h1 style={{
             fontFamily: 'var(--font-editorial)',
             color: 'var(--color-primary)',
-            letterSpacing: '0.05em',
             margin: 0,
             fontSize: '24px',
           }}>
-            MASTER INTELLIGENCE
+            Copilot
           </h1>
           <span className="mono text-xs" style={{ color: 'var(--text-tertiary)' }}>
-            AI BRAIN — 20 TOOLS — FUNCTION CALLING ORCHESTRATOR
+            AI assistant — 20 tools — function calling
           </span>
         </div>
         <div className="mono" style={{
           fontSize: '10px',
           color: sending ? 'var(--color-warning)' : 'var(--color-success)',
-          letterSpacing: '0.1em',
         }}>
-          {sending ? '[ EXECUTING... ]' : '[ ARMED ]'}
+          {sending ? 'Executing...' : 'Ready'}
         </div>
       </div>
 
@@ -288,10 +286,10 @@ function CopilotChat() {
         <div className="copilot-avatar-column">
           <MasterIntelligence state={listening ? 'listening' : 'idle'} energy={energy} phoneConnected={phoneConnected} />
           <div className="copilot-status-grid">
-            <span className="copilot-status-pill">{listening ? 'LISTENING' : 'MIC STANDBY'}</span>
-            <span className="copilot-status-pill">{phoneConnected ? 'PHONE LINKED' : 'PHONE STANDBY'}</span>
-            <span className="copilot-status-pill">{sending ? 'ENGINE BUSY' : 'ENGINE READY'}</span>
-            <span className="copilot-status-pill">{energy > 60 ? 'HIGH ENERGY' : 'STABILIZING'}</span>
+            <span className="copilot-status-pill">{listening ? 'Listening' : 'Mic standby'}</span>
+            <span className="copilot-status-pill">{phoneConnected ? 'Phone linked' : 'Phone standby'}</span>
+            <span className="copilot-status-pill">{sending ? 'Busy' : 'Ready'}</span>
+            <span className="copilot-status-pill">{energy > 60 ? 'High energy' : 'Stabilizing'}</span>
           </div>
           {matchedSkill && (
             <div className="copilot-active-skill">
@@ -313,7 +311,7 @@ function CopilotChat() {
             onClick={togglePhone}
             style={{ width: '100%', marginTop: '6px' }}
           >
-            {phoneConnected ? '[ SEVER PHONE LINK ]' : '[ LINK REMOTE DEVICE ]'}
+            {phoneConnected ? 'Disconnect phone' : 'Link remote device'}
           </button>
         </div>
 
@@ -355,7 +353,7 @@ function CopilotChat() {
                 {msg.role === 'thinking' && (
                   <div className="copilot-message copilot-message--system" style={{ opacity: 0.6 }}>
                     <span className="copilot-thinking-pulse">
-                      EXECUTING...
+                      Processing...
                     </span>
                   </div>
                 )}
@@ -393,7 +391,7 @@ function CopilotChat() {
               onClick={handleSend}
               disabled={sending || !input.trim()}
             >
-              {sending ? '...' : 'EXEC'}
+              {sending ? '...' : 'Send'}
             </button>
           </div>
         </div>

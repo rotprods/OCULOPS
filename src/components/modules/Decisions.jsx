@@ -64,7 +64,7 @@ function Decisions() {
 
                 <div className="section-box--gold">
                     <div className="section-header--gold mono text-xs font-bold" style={{ padding: '12px 16px' }}>
-                        /// INITIALIZE NEW DECISION RECORD
+                        New Decision
                     </div>
                     <div style={{ padding: '16px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                         <div className="input-group">
@@ -104,17 +104,17 @@ function Decisions() {
                 </div>
 
                 {pendingReview.length > 0 && (
-                    <div style={{ border: '1px solid var(--color-warning)', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--color-warning)', color: '#000' }}>
-                            /// CRITICAL: PENDING REVIEW
+                    <div style={{ border: '1px solid var(--color-warning)', background: 'var(--surface-inset)', display: 'flex', flexDirection: 'column' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--color-warning)', color: 'var(--text-primary)' }}>
+                            Pending Review
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             {pendingReview.map((d, idx) => (
                                 <div key={d.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', borderBottom: idx < pendingReview.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'rgba(255,149,0,0.05)' : 'transparent' }}>
                                     <div>
-                                        <div className="mono font-bold" style={{ color: 'var(--color-warning)', fontSize: '14px' }}>{d.title.toUpperCase()}</div>
+                                        <div className="mono font-bold" style={{ color: 'var(--color-warning)', fontSize: '14px' }}>{d.title}</div>
                                         <div className="mono text-xs" style={{ color: 'var(--text-tertiary)', marginTop: '4px' }}>
-                                            DECISION: {d.decision_date || d.created_at?.split('T')[0]} <span style={{ margin: '0 8px' }}>|</span> DEADLINE: <span style={{ color: '#fff' }}>{d.review_date || 'N/A'}</span>
+                                            Decision: {d.decision_date || d.created_at?.split('T')[0]} <span style={{ margin: '0 8px' }}>|</span> Deadline: <span style={{ color: 'var(--text-inverse)' }}>{d.review_date || 'N/A'}</span>
                                         </div>
                                     </div>
                                     <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '4px 8px', border: '1px solid var(--color-warning)', color: 'var(--color-warning)' }} onClick={() => updateDecision(d.id, { status: 'reviewed' })}>
@@ -128,16 +128,16 @@ function Decisions() {
 
                 <div className="section-box">
                     <div className="section-header">
-                        /// HISTORICAL LEDGER [{decisions.length}]
+                        Historical Ledger [{decisions.length}]
                     </div>
                     {decisions.length === 0 ? (
                         <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO DECISIONS SECURED IN LOG.</div>
                     ) : (
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             {decisions.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0)).map((d, idx) => (
-                                <div key={d.id} style={{ padding: '16px', borderBottom: idx < decisions.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000', borderLeft: `2px solid ${d.status === 'reviewed' ? 'var(--color-success)' : 'var(--accent-primary)'}` }}>
+                                <div key={d.id} style={{ padding: '16px', borderBottom: idx < decisions.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : 'var(--surface-elevated)', borderLeft: `2px solid ${d.status === 'reviewed' ? 'var(--color-success)' : 'var(--accent-primary)'}` }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                                        <div className="mono font-bold" style={{ fontSize: '14px', color: 'var(--text-primary)' }}>{d.title.toUpperCase()}</div>
+                                        <div className="mono font-bold" style={{ fontSize: '14px', color: 'var(--text-primary)' }}>{d.title}</div>
                                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                                             <span className="mono text-xs text-tertiary">{d.decision_date || d.created_at?.split('T')[0]}</span>
                                             <button className="btn btn-ghost mono" style={{ fontSize: '9px', padding: '2px 8px', borderColor: 'var(--color-danger)', color: 'var(--color-danger)' }} onClick={() => removeDecision(d.id)}>PURGE</button>
@@ -147,17 +147,17 @@ function Decisions() {
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                                         {d.context && (
                                             <div className="mono text-xs" style={{ color: 'var(--text-secondary)' }}>
-                                                <span style={{ color: 'var(--text-tertiary)' }}>CTX:</span> {d.context.toUpperCase()}
+                                                <span style={{ color: 'var(--text-tertiary)' }}>Context:</span> {d.context}
                                             </div>
                                         )}
                                         {d.rationale && (
                                             <div className="mono text-xs" style={{ color: 'var(--accent-primary)' }}>
-                                                <span style={{ color: 'var(--accent-primary)', opacity: 0.7 }}>LOGIC:</span> {d.rationale.toUpperCase()}
+                                                <span style={{ color: 'var(--accent-primary)', opacity: 0.7 }}>Rationale:</span> {d.rationale}
                                             </div>
                                         )}
                                         {d.expected_outcome && (
                                             <div className="mono text-xs" style={{ color: 'var(--color-success)' }}>
-                                                <span style={{ color: 'var(--color-success)', opacity: 0.7 }}>PROJ:</span> {d.expected_outcome.toUpperCase()}
+                                                <span style={{ color: 'var(--color-success)', opacity: 0.7 }}>Expected:</span> {d.expected_outcome}
                                             </div>
                                         )}
                                     </div>

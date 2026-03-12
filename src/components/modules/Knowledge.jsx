@@ -71,14 +71,14 @@ function Knowledge() {
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                     <button
                         className="mono"
-                        style={{ fontSize: '9px', padding: '6px 12px', background: semanticMode ? 'var(--color-primary)' : '#000', color: semanticMode ? '#000' : 'var(--color-primary)', border: '1px solid var(--color-primary)', cursor: 'pointer', fontWeight: 'bold' }}
+                        style={{ fontSize: '9px', padding: '6px 12px', background: semanticMode ? 'var(--color-primary)' : 'var(--surface-inset)', color: semanticMode ? 'var(--text-primary)' : 'var(--color-primary)', border: '1px solid var(--color-primary)', cursor: 'pointer', fontWeight: 'bold' }}
                         onClick={() => { setSemanticMode(!semanticMode); if (semanticMode) clearSearch() }}
                     >
                         {semanticMode ? 'AI SEARCH ON' : 'AI SEARCH'}
                     </button>
                     <button
                         className="mono"
-                        style={{ fontSize: '9px', padding: '6px 12px', background: '#000', color: 'var(--color-info)', border: '1px solid var(--border-subtle)', cursor: 'pointer', fontWeight: 'bold' }}
+                        style={{ fontSize: '9px', padding: '6px 12px', background: 'var(--surface-inset)', color: 'var(--color-info)', border: '1px solid var(--border-subtle)', cursor: 'pointer', fontWeight: 'bold' }}
                         onClick={handleEmbedAll}
                         disabled={embedding}
                     >
@@ -97,10 +97,10 @@ function Knowledge() {
                         return (
                             <div key={t.value} style={{ background: isSelected ? 'var(--color-primary)' : 'var(--surface-raised)', padding: '16px', display: 'flex', flexDirection: 'column', cursor: 'pointer' }} onClick={() => setFilter(isSelected ? 'all' : t.value)}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                                    <span className="mono text-xs font-bold" style={{ color: isSelected ? '#000' : 'var(--text-tertiary)' }}>{t.label}</span>
+                                    <span className="mono text-xs font-bold" style={{ color: isSelected ? 'var(--text-primary)' : 'var(--text-tertiary)' }}>{t.label}</span>
                                     <span style={{ fontSize: '14px', opacity: isSelected ? 1 : 0.5 }}>{t.icon}</span>
                                 </div>
-                                <span className="mono text-lg font-bold" style={{ color: isSelected ? '#000' : 'var(--color-primary)' }}>{count}</span>
+                                <span className="mono text-lg font-bold" style={{ color: isSelected ? 'var(--text-primary)' : 'var(--color-primary)' }}>{count}</span>
                             </div>
                         )
                     })}
@@ -108,7 +108,7 @@ function Knowledge() {
 
                 {/* ── SEMANTIC SEARCH BAR ── */}
                 {semanticMode && (
-                    <div style={{ border: '1px solid var(--color-primary)', background: '#000', padding: '16px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <div style={{ border: '1px solid var(--color-primary)', background: 'var(--surface-inset)', padding: '16px', display: 'flex', gap: '8px', alignItems: 'center' }}>
                         <span className="mono text-xs font-bold" style={{ color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>AI QUERY:</span>
                         <input
                             className="input mono text-xs"
@@ -120,7 +120,7 @@ function Knowledge() {
                         />
                         <button
                             className="mono font-bold"
-                            style={{ padding: '10px 20px', background: 'var(--color-primary)', color: '#000', border: 'none', fontSize: '10px', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                            style={{ padding: '10px 20px', background: 'var(--color-primary)', color: 'var(--text-primary)', border: 'none', fontSize: '10px', cursor: 'pointer', whiteSpace: 'nowrap' }}
                             onClick={handleSemanticSearch}
                             disabled={searching}
                         >
@@ -134,10 +134,10 @@ function Knowledge() {
                     {/* ── MAIN VAULT CONTENT ── */}
                     <div style={{ border: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column' }}>
                         <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--color-primary)', display: 'flex', justifyContent: 'space-between' }}>
-                            <span>/// {semanticMode && searchResults ? `SEMANTIC RESULTS [${displayEntries.length}]` : `SECURE ENTRIES [${displayEntries.length}]`}</span>
+                            <span>{semanticMode && searchResults ? `SEMANTIC RESULTS [${displayEntries.length}]` : `SECURE ENTRIES [${displayEntries.length}]`}</span>
                             {!semanticMode && (
                                 <div className="input-group" style={{ margin: 0 }}>
-                                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', background: '#000', borderRadius: 0, padding: '4px 8px', color: 'var(--color-primary)', width: '200px' }} placeholder="SEARCH ARCHIVE..." value={search} onChange={e => setSearch(e.target.value)} />
+                                    <input className="input mono text-xs" style={{ border: '1px solid var(--border-subtle)', background: 'var(--surface-inset)', borderRadius: 0, padding: '4px 8px', color: 'var(--color-primary)', width: '200px' }} placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} />
                                 </div>
                             )}
                         </div>
@@ -148,13 +148,13 @@ function Knowledge() {
                             ) : (
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     {displayEntries.map((entry, idx) => (
-                                        <div key={entry.id} style={{ display: 'flex', flexDirection: 'column', padding: '16px', borderBottom: idx < displayEntries.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : '#000' }}>
+                                        <div key={entry.id} style={{ display: 'flex', flexDirection: 'column', padding: '16px', borderBottom: idx < displayEntries.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : 'var(--surface-inset)' }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                                     <span style={{ fontSize: '14px' }}>{TYPES.find(t => t.value === entry.type)?.icon || '📖'}</span>
                                                     <span className="mono font-bold" style={{ color: 'var(--text-primary)', fontSize: '14px' }}>{entry.title.toUpperCase()}</span>
                                                     {entry.similarity != null && (
-                                                        <span className="mono" style={{ fontSize: '9px', padding: '2px 6px', background: 'var(--color-primary)', color: '#000', fontWeight: 'bold' }}>
+                                                        <span className="mono" style={{ fontSize: '9px', padding: '2px 6px', background: 'var(--color-primary)', color: 'var(--text-primary)', fontWeight: 'bold' }}>
                                                             {Math.round(entry.similarity * 100)}% MATCH
                                                         </span>
                                                     )}
@@ -189,9 +189,9 @@ function Knowledge() {
                     </div>
 
                     {/* ── NEW ENTRY TERMINAL ── */}
-                    <div style={{ border: '1px solid var(--color-primary)', background: '#000', display: 'flex', flexDirection: 'column', height: 'fit-content' }}>
-                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--color-primary)', color: '#000' }}>
-                            /// ENCRYPT NEW KNOWLEDGE INPUT
+                    <div style={{ border: '1px solid var(--color-primary)', background: 'var(--surface-inset)', display: 'flex', flexDirection: 'column', height: 'fit-content' }}>
+                        <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--color-primary)', color: 'var(--text-primary)' }}>
+                            ENCRYPT NEW KNOWLEDGE INPUT
                         </div>
                         <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <div className="input-group">

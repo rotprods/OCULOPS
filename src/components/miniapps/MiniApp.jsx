@@ -13,7 +13,7 @@ const STATUS_STYLES = {
   active: { bg: 'var(--success-bg)', color: 'var(--color-success)', label: 'LIVE' },
   degraded: { bg: 'var(--warning-bg)', color: 'var(--warning)', label: 'LIMITED' },
   pending: { bg: 'var(--warning-bg)', color: 'var(--warning)', label: 'PENDING' },
-  planned: { bg: 'rgba(255,255,255,0.04)', color: 'var(--text-tertiary)', label: 'CATALOG' },
+  planned: { bg: 'var(--surface-inset)', color: 'var(--text-tertiary)', label: 'CATALOG' },
 }
 
 function buildInitialForm(inputSchema = [], sampleParams = {}) {
@@ -426,7 +426,7 @@ export default function MiniApp({
           gap: '10px',
           padding: '14px 20px',
           borderBottom: '1px solid var(--border-subtle)',
-          background: 'rgba(255, 255, 255, 0.02)',
+          background: 'var(--surface-inset)',
         }}>
           <div>
             <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--text-tertiary)', marginBottom: '6px', letterSpacing: '0.05em' }}>

@@ -206,7 +206,7 @@
 
 .sidebar-footer-version {
     font-size: 9px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     color: var(--text-secondary);
     opacity: 0.6;
 }
@@ -229,7 +229,7 @@
 
 .sidebar-signout:hover {
     color: var(--color-danger);
-    background: rgba(255, 59, 48, 0.08);
+    background: var(--color-danger-muted);
 }
 
 .sidebar-signout--icon {
@@ -301,12 +301,12 @@
 }
 
 .search-trigger:hover {
-    border-color: #3A3A3A;
+    border-color: var(--border-strong);
     color: var(--text-primary);
 }
 
 .search-shortcut {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 9px;
     padding: 2px 5px;
     border-radius: 3px;
@@ -361,7 +361,7 @@
 .command-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1000;
     display: flex;
     align-items: flex-start;
@@ -377,7 +377,7 @@
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+    box-shadow: var(--shadow-xl);
 }
 
 .command-input {
@@ -389,7 +389,7 @@
     color: var(--text-primary);
     font-size: 14px;
     outline: none;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-sans);
 }
 
 .command-input::placeholder {
@@ -432,7 +432,7 @@
 
 .cmd-shortcut {
     font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     color: var(--text-secondary);
 }
 

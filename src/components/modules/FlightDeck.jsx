@@ -1,6 +1,6 @@
 // /////////////////////////////////////////////////////////////////////////////
-// 100-Year UX: strictly OLED Black, Gold, 1px Primitives
 // OCULOPS — Flight Deck
+// Premium Ivory/Gold theme
 // /////////////////////////////////////////////////////////////////////////////
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -273,7 +273,7 @@ export default function FlightDeck({
             inertia: false,
         })
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             maxZoom: 19,
         }).addTo(map)
 
@@ -350,7 +350,7 @@ export default function FlightDeck({
                 radius: isSelected ? 5 : 4,
                 fillColor: color,
                 fillOpacity: 1,
-                color: '#fff',
+                color: '#FAFAF8',
                 weight: 1,
                 opacity: 0.65,
             }).addTo(mapRef.current)
@@ -358,7 +358,7 @@ export default function FlightDeck({
             halo.bindTooltip(`
                 <div style="font-family: Inter, sans-serif; min-width: 190px;">
                     <div style="font-size: 12px; font-weight: 700; margin-bottom: 3px; color: ${color};">${lead.name}</div>
-                    <div style="font-size: 10px; color: #a0a0a0; line-height: 1.45;">${lead.address || 'No address available'}</div>
+                    <div style="font-size: 10px; color: #6B6B6B; line-height: 1.45;">${lead.address || 'No address available'}</div>
                 </div>
             `, {
                 direction: 'top',
@@ -483,10 +483,10 @@ export default function FlightDeck({
                     }}
                 >
                     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M58 10L68 10L74 48L96 59L96 69L74 66L70 110L56 110L51 66L28 69L28 59L51 48L58 10Z" fill="#FFD700" fillOpacity="0.92" />
-                        <path d="M59 17L67 17L71 49L88 57L88 61L70 60L68 101L58 101L55 60L37 61L37 57L54 49L59 17Z" fill="#FFF3B0" fillOpacity="0.55" />
-                        <path d="M60 0L60 22" stroke="#FFF3B0" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M16 60L104 60" stroke="#35B0FF" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M58 10L68 10L74 48L96 59L96 69L74 66L70 110L56 110L51 66L28 69L28 59L51 48L58 10Z" fill="var(--accent-primary)" fillOpacity="0.92" />
+                        <path d="M59 17L67 17L71 49L88 57L88 61L70 60L68 101L58 101L55 60L37 61L37 57L54 49L59 17Z" fill="var(--accent-primary)" fillOpacity="0.35" />
+                        <path d="M60 0L60 22" stroke="var(--accent-primary)" strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M16 60L104 60" stroke="var(--color-info)" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round" />
                     </svg>
                 </div>
 

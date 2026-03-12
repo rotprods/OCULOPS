@@ -16,7 +16,7 @@
 
 .copilot-avatar-column {
   border: 1px solid var(--border-default);
-  background: radial-gradient(circle at top, rgba(86, 204, 242, 0.15), transparent 65%);
+  background: radial-gradient(circle at top, rgba(var(--accent-primary-rgb), 0.08), transparent 65%);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@
   gap: 8px;
   padding: 12px 20px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(4, 4, 10, 0.6);
+  background: var(--surface-elevated);
 }
 
 .copilot-nav-actions {
@@ -55,44 +55,38 @@
   gap: 12px;
   padding: 12px 20px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(4, 4, 10, 0.3);
+  background: var(--surface-raised);
 }
 
 .copilot-nav-btn {
   border: 1px solid var(--border-subtle);
   padding: 10px 14px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-elevated);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
   font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-secondary);
   cursor: pointer;
 }
 
 .copilot-nav-btn small {
   font-size: 8px;
-  letter-spacing: 0.08em;
   color: var(--text-tertiary);
-  text-transform: none;
 }
 
 .copilot-nav-intent {
   margin: 12px 20px;
-  border: 1px solid rgba(86, 204, 242, 0.4);
+  border: 1px solid rgba(var(--accent-primary-rgb), 0.3);
   border-radius: 12px;
   padding: 12px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: rgba(4, 4, 10, 0.8);
+  background: var(--surface-elevated);
   color: var(--text-secondary);
 }
 
@@ -123,7 +117,7 @@
 .copilot-message--user {
   align-self: flex-end;
   background: var(--accent-primary);
-  color: #000;
+  color: var(--surface-base);
   border: 1px solid var(--accent-primary);
 }
 
@@ -138,8 +132,6 @@
   align-self: center;
   color: var(--text-tertiary);
   font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   padding: 6px 12px;
   border: 1px solid var(--border-subtle);
 }
@@ -159,13 +151,11 @@
   font-size: 9px;
   padding: 4px 10px;
   cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .copilot-action-btn:hover {
   background: var(--accent-primary);
-  color: #000;
+  color: var(--surface-base);
 }
 
 .copilot-input-bar {
@@ -178,7 +168,7 @@
 
 .copilot-input {
   flex: 1;
-  background: #000;
+  background: var(--surface-base);
   border: 1px solid var(--border-subtle);
   border-right: none;
   color: var(--text-primary);
@@ -198,15 +188,13 @@
 
 .copilot-send {
   background: var(--accent-primary);
-  color: #000;
+  color: var(--surface-base);
   border: 1px solid var(--accent-primary);
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: bold;
   padding: 12px 20px;
   cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 .copilot-send:disabled {
@@ -382,8 +370,6 @@
   gap: 2px;
   font-family: var(--font-mono);
   font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   color: var(--text-tertiary);
   z-index: 1;
   line-height: 1.4;
@@ -407,10 +393,9 @@
   border: 1px solid var(--border-subtle);
   padding: 10px;
   border-radius: 10px;
-  background: rgba(4, 4, 10, 0.85);
+  background: var(--surface-elevated);
   font-family: var(--font-mono);
   font-size: 10px;
-  text-transform: uppercase;
   line-height: 1.2;
   color: var(--text-primary);
   display: flex;
@@ -431,14 +416,12 @@
 }
 
 .copilot-active-skill {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 8px 12px;
   font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-primary);
-  background: rgba(4, 4, 10, 0.8);
+  background: var(--surface-elevated);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -460,12 +443,10 @@
   border-radius: 999px;
   padding: 6px 12px;
   font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface-elevated);
 }
 
 /* Tool execution badges */
@@ -485,8 +466,6 @@
   font-size: 9px;
   padding: 3px 8px;
   border: 1px solid var(--border-subtle);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 /* Thinking pulse */

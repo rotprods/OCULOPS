@@ -13,7 +13,7 @@ function Placeholder({ name, icon }) {
             height: '100%',
             textAlign: 'center',
             gap: '24px',
-            background: '#000',
+            background: 'var(--surface-inset)',
             border: '1px solid var(--border-default)',
             padding: '48px',
         }}>
@@ -29,18 +29,17 @@ function Placeholder({ name, icon }) {
                     fontSize: '24px',
                     fontWeight: 'bold',
                     color: 'var(--accent-primary)',
-                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     margin: 0
                 }}>
-                    /// {name} ///
+                    {name}
                 </h2>
-                <div className="mono text-xs" style={{ color: 'var(--color-warning)', border: '1px solid var(--border-subtle)', padding: '4px 12px', letterSpacing: '0.1em' }}>
+                <div className="mono text-xs" style={{ color: 'var(--color-warning)', border: '1px solid var(--border-subtle)', padding: '4px 12px' }}>
                     [ MODULE OFFLINE. AWAITING DEPLOYMENT ]
                 </div>
             </div>
 
-            <p className="mono font-bold" style={{ maxWidth: '400px', fontSize: '11px', color: 'var(--text-tertiary)', lineHeight: 1.6, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            <p className="mono font-bold" style={{ maxWidth: '400px', fontSize: '11px', color: 'var(--text-tertiary)', lineHeight: 1.6, textTransform: 'uppercase' }}>
                 THIS NODE IS PENDING 100-YEAR UX ARCHITECTURE SPECIFICATIONS.
                 EXECUTE CORTEX DEPLOYMENT BATCH OR FALLBACK TO LEGACY SYSTEM OVERRIDE.
             </p>
@@ -51,8 +50,7 @@ function Placeholder({ name, icon }) {
                 background: 'var(--surface-raised)',
                 border: '1px solid var(--border-default)',
                 color: 'var(--accent-primary)',
-                fontSize: '11px',
-                letterSpacing: '0.05em'
+                fontSize: '11px'
             }}>
                 &gt; BUILD_SEQUENCE --target="{name.toUpperCase()}" --protocol=100YR_UX
             </code>

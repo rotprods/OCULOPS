@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════
-   OCULOPS — ProspectorHub v5
-   Premium Map Intelligence · Military Grade
+   OCULOPS — ProspectorHub v6
+   Premium Map Intelligence
    ═══════════════════════════════════════════════════ */
 
 .prospector-hub {
@@ -33,7 +33,7 @@
     font-size: 10px;
     color: var(--text-tertiary);
     margin-top: var(--space-2);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 .ph-header-stats {
@@ -82,14 +82,14 @@
 
 .prospector-tab:hover {
     color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface-elevated);
 }
 
 .prospector-tab.active {
     color: var(--text-inverse);
     background: var(--gradient-accent);
     font-weight: 700;
-    box-shadow: 0 2px 8px rgba(255, 214, 10, 0.15);
+    box-shadow: 0 2px 8px rgba(var(--accent-primary-rgb), 0.15);
 }
 
 /* ── Main Content ── */
@@ -152,7 +152,7 @@
 }
 
 .map-sidebar-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--border-subtle);
     border-radius: var(--radius-full);
 }
 
@@ -177,7 +177,7 @@
 }
 
 .map-lead-item:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-elevated);
 }
 
 .map-lead-item:hover::before {
@@ -210,7 +210,7 @@
 
 /* ── Map Embed & Markers ── */
 .ph-map-embed {
-    background: #000000;
+    background: var(--surface-inset);
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -229,7 +229,7 @@
     width: 100%;
     height: 100%;
     border: 0;
-    filter: saturate(0.88) contrast(1.04) brightness(0.84);
+    filter: saturate(0.92) contrast(1.02);
 }
 
 .ph-map-provider-badge {
@@ -242,12 +242,11 @@
     gap: 2px;
     padding: 8px 10px;
     border: 1px solid var(--border-subtle);
-    background: rgba(0, 0, 0, 0.72);
+    background: var(--surface-overlay);
     backdrop-filter: blur(12px);
-    color: var(--accent-primary);
+    color: var(--text-accent);
     font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .ph-map-empty-state {
@@ -255,7 +254,7 @@
     z-index: 1;
     padding: 14px 18px;
     border: 1px solid var(--border-subtle);
-    background: rgba(0, 0, 0, 0.75);
+    background: var(--surface-overlay);
     letter-spacing: 0.04em;
 }
 
@@ -301,7 +300,7 @@
 /* Marker Colors */
 .ph-marker--success {
     border: 1px solid var(--color-success);
-    background: rgba(52, 199, 89, 0.2);
+    background: var(--color-success-muted);
 }
 
 .ph-marker--success .ph-map-marker-dot {
@@ -309,12 +308,13 @@
 }
 
 .ph-map-marker-container--selected .ph-marker--success {
-    background: rgba(52, 199, 89, 0.33);
+    background: var(--color-success-muted);
+    border-width: 2px;
 }
 
 .ph-marker--warning {
     border: 1px solid var(--color-warning);
-    background: rgba(255, 149, 0, 0.2);
+    background: var(--color-warning-muted);
 }
 
 .ph-marker--warning .ph-map-marker-dot {
@@ -322,12 +322,13 @@
 }
 
 .ph-map-marker-container--selected .ph-marker--warning {
-    background: rgba(255, 149, 0, 0.33);
+    background: var(--color-warning-muted);
+    border-width: 2px;
 }
 
 .ph-marker--danger {
     border: 1px solid var(--color-danger);
-    background: rgba(255, 59, 48, 0.2);
+    background: var(--color-danger-muted);
 }
 
 .ph-marker--danger .ph-map-marker-dot {
@@ -335,12 +336,13 @@
 }
 
 .ph-map-marker-container--selected .ph-marker--danger {
-    background: rgba(255, 59, 48, 0.33);
+    background: var(--color-danger-muted);
+    border-width: 2px;
 }
 
 .ph-marker--primary {
     border: 1px solid var(--accent-primary);
-    background: rgba(255, 215, 0, 0.2);
+    background: var(--accent-primary-muted);
 }
 
 .ph-marker--primary .ph-map-marker-dot {
@@ -348,7 +350,8 @@
 }
 
 .ph-map-marker-container--selected .ph-marker--primary {
-    background: rgba(255, 215, 0, 0.33);
+    background: var(--accent-primary-muted);
+    border-width: 2px;
 }
 
 
@@ -362,7 +365,7 @@
 
 .ph-scanner-sidebar {
     border: 1px solid var(--border-default);
-    background: #000000;
+    background: var(--surface-raised);
     display: flex;
     flex-direction: column;
 }
@@ -377,31 +380,30 @@
 .ph-scanner-label {
     font-size: 9px;
     color: var(--text-tertiary);
-    text-transform: uppercase;
 }
 
 .ph-scanner-input {
-    border-radius: 0;
+    border-radius: var(--radius-sm);
     background: var(--surface-raised);
     border: 1px solid var(--border-subtle);
 }
 
 .ph-scanner-btn {
-    border-radius: 0;
+    border-radius: var(--radius-md);
     padding: var(--space-4);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 .ph-history-panel {
     border: 1px solid var(--border-default);
     padding: var(--space-6);
     overflow-y: auto;
-    background: #000000;
+    background: var(--surface-raised);
 }
 
 .ph-history-title {
     font-size: 11px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 .ph-history-list {
@@ -432,7 +434,7 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    background: #000000;
+    background: var(--surface-raised);
 }
 
 .ph-leads-table {
@@ -448,9 +450,9 @@
 .ph-leads-th {
     padding: 12px 16px;
     text-align: left;
-    color: var(--accent-primary);
+    color: var(--text-secondary);
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 .ph-leads-tr-body {
@@ -474,7 +476,7 @@
 
 .ph-lead-detail-panel {
     border: 1px solid var(--border-default);
-    background: #000000;
+    background: var(--surface-raised);
     display: flex;
     flex-direction: column;
     padding: var(--space-6);
@@ -483,18 +485,18 @@
 
 .ph-lead-detail-title {
     font-size: 24px;
-    letter-spacing: 0.05em;
+    letter-spacing: var(--tracking-tight);
 }
 
 .ph-lead-detail-btn {
-    border-radius: 0;
+    border-radius: var(--radius-md);
     padding: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 .ph-cortex-title {
     font-size: 11px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 .ph-cortex-record {
@@ -508,7 +510,7 @@
 
 .ph-empty-detail {
     border: 1px solid var(--border-default);
-    background: #000000;
+    background: var(--surface-raised);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -517,7 +519,7 @@
 
 .ph-empty-detail-text {
     font-size: 11px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 /* ── Score Ring inline overrides ── */
@@ -549,7 +551,7 @@
     gap: var(--space-3);
     align-items: flex-start;
     transition: all var(--transition-3d);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
 }
@@ -585,7 +587,7 @@
     justify-content: center;
     font-size: 20px;
     flex-shrink: 0;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface-elevated);
 }
 
 .api-node-info {
@@ -622,13 +624,13 @@
     align-items: center;
     height: 100%;
     font-size: 11px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
 }
 
 .ph-global-sync {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: var(--surface-overlay);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -637,5 +639,5 @@
 
 .ph-global-sync-text {
     font-size: 14px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.04em;
 }
