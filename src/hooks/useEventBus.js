@@ -31,24 +31,33 @@ export function useEventBus() {
     useEffect(() => {
         if (!isSupabaseConfigured) return
 
+        function dispatch(payload) {
+            if (!payload) return
+            setLastEvent(payload)
+
+            const eventType = payload.event_type
+            const callbacks = listenersRef.current.get(eventType)
+            if (callbacks) callbacks.forEach((cb) => cb(payload))
+
+            const wildcards = listenersRef.current.get('*')
+            if (wildcards) wildcards.forEach((cb) => cb(payload))
+        }
+
         const channel = supabase
             .channel('oculops:events')
-            .on('broadcast', { event: 'event' }, ({ payload }) => {
-                if (!payload) return
-                setLastEvent(payload)
-
-                // Notify type-specific listeners
-                const eventType = payload.event_type
-                const callbacks = listenersRef.current.get(eventType)
-                if (callbacks) {
-                    callbacks.forEach((cb) => cb(payload))
-                }
-
-                // Notify wildcard listeners
-                const wildcards = listenersRef.current.get('*')
-                if (wildcards) {
-                    wildcards.forEach((cb) => cb(payload))
-                }
+            // Client-to-client broadcast (emit() calls)
+            .on('broadcast', { event: 'event' }, ({ payload }) => dispatch(payload))
+            // Server-side agent events via event_log INSERT → Supabase Realtime
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'event_log' }, ({ new: row }) => {
+                if (!row?.event_type) return
+                dispatch({
+                    event_type: row.event_type,
+                    payload: row.payload || {},
+                    sourceAgent: row.source_agent || null,
+                    id: row.id,
+                    created_at: row.created_at,
+                    user_id: row.user_id,
+                })
             })
             .subscribe()
 

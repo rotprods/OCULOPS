@@ -105,6 +105,16 @@ export function usePixelOffice() {
   const completeAgent = useCallback((codeName, result = '') => {
     const cfg = AGENT_CONFIG[codeName]
     const room = ROOM_BY_AGENT[codeName]
+    // Auto-spawn if agent completed without a prior started event (brain-v2 agents)
+    if (!agentStatesRef.current[codeName] && cfg && room) {
+      agentStatesRef.current[codeName] = {
+        state: 'working',
+        spawnTick: tickRef.current,
+        task: '',
+        result: '', error: '',
+      }
+      setStats(prev => ({ ...prev, total: prev.total + 1 }))
+    }
     const st = agentStatesRef.current[codeName]
     if (!st) return
 
