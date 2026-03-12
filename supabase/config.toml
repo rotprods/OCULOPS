@@ -412,3 +412,9 @@ entrypoint = "./functions/social-signals/index.ts"
 enabled = true
 verify_jwt = false
 entrypoint = "./functions/daily-snapshot/index.ts"
+
+[functions.agent-hunter]
+verify_jwt = false
+
+[functions.agent-outreach]
+verify_jwt = false
