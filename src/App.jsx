@@ -9,6 +9,8 @@ import { ErrorBoundary } from './components/ui/ErrorBoundary'
 import { SentryErrorBoundary } from './components/ui/SentryErrorBoundary'
 import ModuleSkeleton, { RouteAwareSkeleton } from './components/ui/ModuleSkeleton'
 import { Toaster } from 'react-hot-toast'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import CopilotPanel from './components/ui/CopilotPanel'
 
 // Full ParticleField — only loaded when authenticated
@@ -201,6 +203,8 @@ function AppContent() {
       </button>
 
       <CopilotPanel open={copilotOpen} onClose={() => setCopilotOpen(false)} />
+      <VercelAnalytics />
+      <SpeedInsights />
 
       <main style={{
         flex: 1, marginLeft: 240, height: '100%', overflow: 'hidden',

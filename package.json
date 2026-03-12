@@ -43,6 +43,8 @@
     "@heroicons/react": "^2.2.0",
     "@sentry/react": "^10.43.0",
     "@supabase/supabase-js": "^2.49.4",
+    "@vercel/analytics": "^2.0.0",
+    "@vercel/speed-insights": "^2.0.0",
     "framer-motion": "^12.35.2",
     "leaflet": "^1.9.4",
     "react": "^19.2.0",
@@ -52,8 +54,8 @@
     "zustand": "^5.0.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.50.0",
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.50.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.7",
