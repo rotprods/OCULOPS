@@ -5,6 +5,7 @@
 
 import { useLeads } from '../../hooks/useLeads'
 import { useDeals } from '../../hooks/useDeals'
+import { useAnalytics } from '../../hooks/useAnalytics'
 
 const STAGES = [
   { id: 'lead', label: 'ACQUIRED LEAD', color: 'var(--color-info)' },
@@ -31,6 +32,7 @@ function FunnelBar({ label, count, max, color }) {
 function Analytics() {
   const { leads, loading: leadsLoading } = useLeads()
   const { deals, pipelineView, totalValue, weightedValue, loading: dealsLoading } = useDeals()
+  const { revenueTrend, contactTrend, agentActivity, pipelineVelocity, loading: analyticsLoading } = useAnalytics()
 
   const loading = leadsLoading || dealsLoading
 
@@ -175,6 +177,125 @@ function Analytics() {
             </div>
           )}
         </div>
+
+        {/* ── REVENUE TREND + PIPELINE VELOCITY ── */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px' }}>
+          {/* Revenue trend — 6 months bar chart */}
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// REVENUE TREND — 6M</div>
+            {analyticsLoading ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
+            ) : (
+              <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {(() => {
+                  const maxVal = Math.max(...revenueTrend.map(m => m.value), 1)
+                  return revenueTrend.map(m => (
+                    <div key={m.month} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div className="mono text-xs" style={{ width: '36px', color: 'var(--text-tertiary)', textAlign: 'right', flexShrink: 0 }}>{m.label}</div>
+                      <div style={{ flex: 1, height: '14px', background: '#000', border: '1px solid var(--border-subtle)', position: 'relative' }}>
+                        <div style={{ width: `${Math.round((m.value / maxVal) * 100)}%`, height: '100%', background: m.value > 0 ? 'var(--color-success)' : 'transparent', transition: 'width 0.4s ease' }} />
+                      </div>
+                      <div className="mono font-bold" style={{ width: '72px', textAlign: 'right', fontSize: '12px', color: m.value > 0 ? 'var(--color-success)' : 'var(--text-tertiary)' }}>
+                        {m.value > 0 ? `€${Math.round(m.value).toLocaleString()}` : '—'}
+                      </div>
+                      <div className="mono text-xs text-tertiary" style={{ width: '28px', textAlign: 'right' }}>{m.count > 0 ? `×${m.count}` : ''}</div>
+                    </div>
+                  ))
+                })()}
+              </div>
+            )}
+          </div>
+
+          {/* Pipeline velocity */}
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// PIPELINE VELOCITY</div>
+            {analyticsLoading ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
+            ) : pipelineVelocity.length === 0 ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO ACTIVE DEALS</div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', padding: '8px 0' }}>
+                {pipelineVelocity.map(({ stage, avgDays, count }) => {
+                  const heat = avgDays > 14 ? 'var(--color-danger)' : avgDays > 7 ? 'var(--accent-primary)' : 'var(--color-success)'
+                  return (
+                    <div key={stage} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                        <span className="mono text-xs font-bold" style={{ color: 'var(--text-secondary)' }}>{stage}</span>
+                        <span className="mono" style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>{count} deals</span>
+                      </div>
+                      <div style={{ textAlign: 'right' }}>
+                        <span className="mono font-bold" style={{ fontSize: '18px', color: heat }}>{avgDays}</span>
+                        <span className="mono text-xs text-tertiary"> días avg</span>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ── AGENT ACTIVITY 7D + CONTACT ACQUISITION 4W ── */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px' }}>
+          {/* Agent activity last 7 days */}
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// AGENT ACTIVITY — 7D ROLLING</div>
+            {analyticsLoading ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
+            ) : agentActivity.length === 0 ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>NO AGENT LOGS THIS WEEK</div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '20px 24px' }}>
+                {(() => {
+                  const maxCount = Math.max(...agentActivity.map(a => a.count), 1)
+                  return agentActivity.map(agent => {
+                    const pct = Math.round((agent.count / maxCount) * 100)
+                    const errPct = agent.count > 0 ? Math.round((agent.errors / agent.count) * 100) : 0
+                    return (
+                      <div key={agent.name} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div className="mono text-xs font-bold" style={{ width: '100px', color: 'var(--text-secondary)', textAlign: 'right', flexShrink: 0, fontSize: '10px' }}>{agent.name}</div>
+                        <div style={{ flex: 1, height: '12px', background: '#000', border: '1px solid var(--border-subtle)', position: 'relative' }}>
+                          <div style={{ width: `${pct}%`, height: '100%', background: 'var(--color-info)', transition: 'width 0.4s ease' }} />
+                          {agent.errors > 0 && (
+                            <div style={{ position: 'absolute', right: 0, top: 0, width: `${errPct}%`, height: '100%', background: 'rgba(255,51,51,0.5)' }} />
+                          )}
+                        </div>
+                        <div className="mono" style={{ width: '32px', textAlign: 'right', fontSize: '12px', color: 'var(--text-primary)', fontWeight: 700 }}>{agent.count}</div>
+                        {agent.errors > 0 && (
+                          <div className="mono text-xs" style={{ width: '32px', color: 'var(--color-danger)' }}>×{agent.errors}</div>
+                        )}
+                      </div>
+                    )
+                  })
+                })()}
+              </div>
+            )}
+          </div>
+
+          {/* Contact acquisition last 4 weeks */}
+          <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)', display: 'flex', flexDirection: 'column' }}>
+            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>/// CONTACT ACQUISITION — 4W</div>
+            {analyticsLoading ? (
+              <div className="mono text-xs text-tertiary" style={{ padding: '32px', textAlign: 'center' }}>LOADING...</div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '20px 24px' }}>
+                {(() => {
+                  const maxC = Math.max(...contactTrend.map(w => w.count), 1)
+                  return contactTrend.map(w => (
+                    <div key={w.week} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div className="mono text-xs" style={{ width: '40px', color: 'var(--text-tertiary)', textAlign: 'right', flexShrink: 0 }}>{w.label}</div>
+                      <div style={{ flex: 1, height: '14px', background: '#000', border: '1px solid var(--border-subtle)' }}>
+                        <div style={{ width: `${Math.round((w.count / maxC) * 100)}%`, height: '100%', background: 'var(--accent-primary)', transition: 'width 0.4s ease' }} />
+                      </div>
+                      <div className="mono font-bold" style={{ width: '28px', textAlign: 'right', fontSize: '13px', color: w.count > 0 ? 'var(--text-primary)' : 'var(--text-tertiary)' }}>{w.count}</div>
+                    </div>
+                  ))
+                })()}
+              </div>
+            )}
+          </div>
+        </div>
+
       </div>
     </div>
   )
