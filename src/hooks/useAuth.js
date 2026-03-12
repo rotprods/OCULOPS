@@ -1,5 +1,6 @@
 import { useEffect, useSyncExternalStore } from 'react'
 import { fetchOne, getCurrentSession, onAuthStateChange } from '../lib/supabase'
+import { identifyUser, resetUser } from '../lib/posthog'
 
 const DEFAULT_SNAPSHOT = {
     session: null,
@@ -36,6 +37,7 @@ async function syncAuthSnapshot(session) {
     const user = session?.user ?? null
 
     if (!user) {
+        resetUser()
         setSnapshot({
             session: null,
             user: null,
@@ -54,6 +56,11 @@ async function syncAuthSnapshot(session) {
 
     const profile = await fetchOne('profiles', user.id).catch(() => null)
     if (revision !== authRevision) return
+
+    identifyUser(user.id, {
+        email: user.email,
+        name: profile?.full_name || profile?.display_name || undefined,
+    })
 
     setSnapshot({
         session,

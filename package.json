@@ -50,6 +50,7 @@
     "@vercel/speed-insights": "^2.0.0",
     "framer-motion": "^12.35.2",
     "leaflet": "^1.9.4",
+    "posthog-js": "^1.360.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hot-toast": "^2.6.0",
