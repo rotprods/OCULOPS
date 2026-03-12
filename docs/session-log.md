@@ -3,6 +3,74 @@
 
 ---
 
+## 2026-03-12 — Session: n8n repair + full release closure
+
+**Terminal**: Codex CLI (`main`)
+
+### Trabajo realizado
+
+#### 1. Reparación live de n8n
+- Auditadas ejecuciones con error vía API de n8n y localizados fallos en Architect, Speed-to-Lead, Strategist, CORTEX y otros workflows
+- Reparados workflows live quitando auth rota / placeholders de Supabase y normalizando respuestas HTTP
+- Persistidos los fixes al repo en `n8n/*.json`
+- Añadido `scripts/repair-n8n.mjs` para reparar/exportar workflows live y normalizar templates locales
+
+#### 2. Verificación funcional de webhooks
+- `architect-os-handoff`: OK
+- `speed-to-lead`: OK
+- `strategist-evaluate`: OK
+- Confirmado que los errores nuevos ya no provenían de los paths reparados
+
+#### 3. Cierre completo de release
+- Git: commits y push de todo lo trabajado durante la sesión
+- Supabase DB: `supabase db push --include-all` → remoto al día
+- Vercel: múltiples deploys limpios desde export de commit para no arrastrar worktree ajeno
+- Dominio final corregido para dejar `oculops.com` como canónico
+
+#### 4. Dominio / routing
+- Detectado bucle entre `oculops.com/*` y `www.oculops.com/*`
+- Eliminado el redirect a `www` desde `vercel.json`
+- Producción validada con:
+  - `oculops.com/` → `200`
+  - `oculops.com/control-tower` → `200`
+  - `oculops.com/pipeline` → `200`
+  - `www.oculops.com/*` → redirect correcto a apex
+
+#### 5. Artefactos de soporte añadidos
+- `_test-audit.cjs` para auditoría Playwright local autenticada
+- `missings.md` con pasos manuales de Google Workspace + secrets pendientes
+- `dashboard_screenshots/assets/*` añadidos al repo
+
+### Commits relevantes
+- `a28a51c` — `fix(n8n): repair live workflows and sync templates`
+- `deca55b` — `fix(vercel): keep apex domain canonical`
+- `ce5c380` — `chore: add audit script and dashboard support assets`
+
+### Estado final
+- GitHub: ✅ `main` actualizado
+- Supabase DB: ✅ remoto al día
+- Vercel: ✅ producción activa en `https://oculops.com`
+- n8n: ✅ workflows críticos reparados
+- Worktree: ✅ limpio al cierre del release
+
+### Pendientes manuales / no cerrados en código
+- Rotar la API key de n8n expuesta durante la sesión
+- `supabase secrets unset FEPGQ5TC1RSITP`
+- Google Workspace:
+  - activar Sheets / Drive / Calendar APIs
+  - añadir scopes al OAuth consent screen
+  - verificar redirect URI
+  - reconectar Gmail en la app
+- Secrets aún pendientes:
+  - WhatsApp
+  - Meta Ads
+  - TikTok
+  - ManyChat
+  - Telegram
+- Sentry frontend sigue sin DSN configurado
+
+---
+
 ## 2026-03-10 | Terminal: Claude Opus (main session)
 
 ### Phase 1: Token Rebrand
