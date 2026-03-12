@@ -12,6 +12,7 @@ import { Toaster } from 'react-hot-toast'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import CopilotPanel from './components/ui/CopilotPanel'
+import { AgentVaultProvider } from './contexts/AgentVaultContext'
 
 // Lightweight ambient background
 function AmbientBackground() {
@@ -197,6 +198,7 @@ function AppContent() {
       <VercelAnalytics />
       <SpeedInsights />
 
+      <AgentVaultProvider>
       <main style={{
         flex: 1, marginLeft: 240, height: '100%', overflow: 'hidden',
         display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 2,
@@ -264,6 +266,7 @@ function AppContent() {
           </Suspense>
         </div>
       </main>
+      </AgentVaultProvider>
     </div>
   )
 }

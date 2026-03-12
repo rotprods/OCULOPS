@@ -42,14 +42,19 @@ export default function VaultAgentPanel({ title, namespaces, maxAgents = 10, col
                 /// {title} — VAULT AGENTS [{filtered.length}]
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {filtered.map((va, idx) => (
-                    <div key={va.name} className="mono text-xs" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 16px', borderBottom: idx < filtered.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : 'var(--surface-raised)' }}>
-                        <div style={{ width: 6, height: 6, background: colors[va.namespace] || 'var(--accent-primary)' }} />
-                        <span style={{ width: '200px', fontWeight: 'bold', color: 'var(--text-primary)' }}>{va.name.toUpperCase()}</span>
-                        <span style={{ fontSize: '9px', padding: '1px 5px', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}>{va.namespace.toUpperCase()}</span>
-                        <span style={{ flex: 1, color: 'var(--text-tertiary)', fontSize: '9px' }}>{(va.capabilities || []).slice(0, capSlice).join(' / ').toUpperCase()}</span>
+                {filtered.map((va, idx) => {
+                    const name = va.display_name || va.code_name || va.name || 'unnamed'
+                    const ns = va.namespace || ''
+                    const caps = va.capabilities || va.allowed_skills || va.tags || []
+                    return (
+                    <div key={name + idx} className="mono text-xs" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 16px', borderBottom: idx < filtered.length - 1 ? '1px solid var(--border-subtle)' : 'none', background: idx % 2 === 0 ? 'transparent' : 'var(--surface-raised)' }}>
+                        <div style={{ width: 6, height: 6, background: colors[ns] || 'var(--accent-primary)' }} />
+                        <span style={{ width: '200px', fontWeight: 'bold', color: 'var(--text-primary)' }}>{name.toUpperCase()}</span>
+                        <span style={{ fontSize: '9px', padding: '1px 5px', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}>{ns.toUpperCase()}</span>
+                        <span style={{ flex: 1, color: 'var(--text-tertiary)', fontSize: '9px' }}>{caps.slice(0, capSlice).join(' / ').toUpperCase()}</span>
                     </div>
-                ))}
+                    )
+                })}
             </div>
         </div>
     )

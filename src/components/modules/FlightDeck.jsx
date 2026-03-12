@@ -17,9 +17,9 @@ import './FlightDeck.css'
 
 
 export default function FlightDeck({
-    form,
-    setForm,
-    scanResults,
+    form: formProp,
+    setForm: setFormProp,
+    scanResults: scanResultsProp,
     scanning,
     lastScan,
     onScanAirspace,
@@ -28,7 +28,11 @@ export default function FlightDeck({
     onImportAll,
     onStageLeadOutreach,
     crmSyncState,
-}) {
+} = {}) {
+    const [internalForm, internalSetForm] = useState({ query: '', radius: 5000, type: 'restaurant' })
+    const form = formProp || internalForm
+    const setForm = setFormProp || internalSetForm
+    const scanResults = scanResultsProp || []
     const { triggerAgent, stats } = useAgents()
     const [plane, setPlane] = useState(getInitialPlane)
     const mapNodeRef = useRef(null)
