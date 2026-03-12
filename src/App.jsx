@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react'
+import React, { useState, useEffect, useCallback, useRef, Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './hooks/useAuth'
 import { useOrg } from './hooks/useOrg'
@@ -11,10 +11,10 @@ import ModuleSkeleton, { RouteAwareSkeleton } from './components/ui/ModuleSkelet
 import { Toaster } from 'react-hot-toast'
 import CopilotPanel from './components/ui/CopilotPanel'
 
-// Full ParticleField (with data hooks) — only loaded when authenticated
+// Full ParticleField — only loaded when authenticated
 const ParticleField = lazy(() => import('./components/ui/ParticleField'))
 
-// Lightweight ambient background — no data hooks, no Supabase queries
+// Lightweight ambient background
 function AmbientBackground() {
   return (
     <div style={{
@@ -24,7 +24,7 @@ function AmbientBackground() {
   )
 }
 
-// ─── Module guard — wraps each route element in an ErrorBoundary ─────────────
+// ─── Module guard ─────────────────────────────────────────────────────────────
 const guard = (component) => (
   <ErrorBoundary>
     {React.createElement(component)}
@@ -79,20 +79,41 @@ function LoadingOS() {
         border: '3px solid var(--border-default)', borderTopColor: 'var(--accent-primary)',
         animation: 'spin 1s linear infinite', marginBottom: 16,
       }} />
-      <div style={{
-        fontSize: 11, letterSpacing: '0.2em', color: 'var(--accent-primary)', opacity: 0.8,
-      }}>INITIALIZING OCULOPS v2...</div>
+      <div style={{ fontSize: 11, letterSpacing: '0.2em', color: 'var(--accent-primary)', opacity: 0.8 }}>
+        INITIALIZING OCULOPS v2...
+      </div>
     </div>
   )
 }
 
-// ─── Inner app (needs Router context) ────────────────────────────────────────
+// ─── Inner app ────────────────────────────────────────────────────────────────
 function AppContent() {
-  const [onboardingDone, setOnboardingDone] = useState(false)
   const { session, loading: authLoading } = useAuth()
   const { currentOrg, loading: orgLoading } = useOrg()
   const [copilotOpen, setCopilotOpen] = useState(false)
-  const [onboardingActive, setOnboardingActive] = useState(false)
+
+  // Track if user explicitly completed/skipped onboarding this session.
+  // Use a ref so it doesn't cause re-renders, and localStorage so it survives
+  // brief unmounts during auth state transitions.
+  const onboardingDoneRef = useRef(
+    typeof window !== 'undefined' && localStorage.getItem('oculops_onboarding_done') === '1'
+  )
+  const [onboardingDone, setOnboardingDoneState] = useState(onboardingDoneRef.current)
+
+  const markOnboardingDone = useCallback(() => {
+    localStorage.setItem('oculops_onboarding_done', '1')
+    onboardingDoneRef.current = true
+    setOnboardingDoneState(true)
+  }, [])
+
+  // Clear onboarding flag on sign-out so new users see it again
+  useEffect(() => {
+    if (!session) {
+      localStorage.removeItem('oculops_onboarding_done')
+      onboardingDoneRef.current = false
+      setOnboardingDoneState(false)
+    }
+  }, [session])
 
   // Cmd+K / Ctrl+K to toggle Copilot
   const handleGlobalKey = useCallback((e) => {
@@ -107,26 +128,19 @@ function AppContent() {
     return () => window.removeEventListener('keydown', handleGlobalKey)
   }, [handleGlobalKey])
 
-  // If user already has an org on first load, skip onboarding
+  // ── Gate logic ──────────────────────────────────────────────────────────────
+  // Show loading while auth resolves or while org is loading for logged-in users.
+  // Cap org loading wait to avoid infinite spinner if Supabase is slow.
+  const isLoading = authLoading || (session && orgLoading)
+
+  // User needs onboarding if: logged in, org resolved, no org found, and hasn't
+  // completed/skipped onboarding yet in this browser.
   const needsOnboarding = session && !orgLoading && !currentOrg && !onboardingDone
 
-  // Latch: once onboarding starts, keep it mounted even if loading states flicker.
-  // This prevents remounts that reset the step wizard to 0.
-  useEffect(() => {
-    if (needsOnboarding && !onboardingActive) {
-      setOnboardingActive(true)
-    } else if (!needsOnboarding && onboardingActive) {
-      setOnboardingActive(false)
-    }
-  }, [needsOnboarding, onboardingActive])
-
   const content = (() => {
-    if (onboardingActive) {
-      return <OnboardingSetup onComplete={() => setOnboardingDone(true)} />
-    }
-    if (authLoading || (session && orgLoading)) return <LoadingOS />
+    if (isLoading)       return <LoadingOS />
     if (!session)        return <Auth />
-    if (needsOnboarding) return <OnboardingSetup onComplete={() => setOnboardingDone(true)} />
+    if (needsOnboarding) return <OnboardingSetup onComplete={markOnboardingDone} />
     return null
   })()
 
@@ -139,6 +153,7 @@ function AppContent() {
     )
   }
 
+  // ── Main app ─────────────────────────────────────────────────────────────────
   return (
     <div style={{
       display: 'flex', height: '100vh', background: 'var(--surface-base)',
@@ -176,16 +191,15 @@ function AppContent() {
           background: 'var(--accent-primary)', border: 'none',
           color: '#000', fontSize: 20, fontWeight: 700,
           cursor: 'pointer', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', boxShadow: '0 4px 20px rgba(255,212,0,0.3)',
+          justifyContent: 'center', boxShadow: '0 4px 20px rgba(123,140,255,0.3)',
           transition: 'transform 0.2s, box-shadow 0.2s',
         }}
-        onMouseEnter={e => { e.target.style.transform = 'scale(1.1)'; e.target.style.boxShadow = '0 6px 28px rgba(255,212,0,0.5)' }}
-        onMouseLeave={e => { e.target.style.transform = 'scale(1)'; e.target.style.boxShadow = '0 4px 20px rgba(255,212,0,0.3)' }}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(123,140,255,0.5)' }}
+        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(123,140,255,0.3)' }}
       >
         ⚡
       </button>
 
-      {/* Copilot Panel */}
       <CopilotPanel open={copilotOpen} onClose={() => setCopilotOpen(false)} />
 
       <main style={{

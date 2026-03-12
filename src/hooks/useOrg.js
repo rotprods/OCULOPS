@@ -87,7 +87,7 @@ function ensureOrgBootstrap() {
             latestStore.setLoading(false)
             orgBootstrapComplete = true
         }
-    }, 8000)
+    }, 4000)
 
     void authListener
 }
