@@ -1,6 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { runBrain } from "../_shared/agent-brain-v2.ts";
+import { emitSystemEvent } from "../_shared/orchestration.ts";
 
 const corsHeaders = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type' };
 const AGENT_CODE = 'sentinel';
@@ -16,6 +17,8 @@ Deno.serve(async (req: Request) => {
     const { data: agent } = await supabase.from('agent_registry').select('*').eq('code_name', AGENT_CODE).single();
     if (!agent) throw new Error('Agent not found');
     await supabase.from('agent_registry').update({ status: 'running', last_run_at: new Date().toISOString() }).eq('id', agent.id);
+
+    emitSystemEvent({ eventType: "agent.started", sourceAgent: AGENT_CODE, payload: { action, title: `${AGENT_CODE}: ${action}` } }).catch(() => {});
 
     let result: any = {};
 

@@ -2,6 +2,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { runBrain } from "../_shared/agent-brain-v2.ts";
 import { autoConnectApiBatch } from "../_shared/auto-api-connector.ts";
 import { errorResponse, handleCors, jsonResponse, readJson } from "../_shared/http.ts";
+import { emitSystemEvent } from "../_shared/orchestration.ts";
 import { admin } from "../_shared/supabase.ts";
 
 const AGENT_CODE = "oracle";
@@ -40,6 +41,8 @@ Deno.serve(async (req: Request) => {
       .from("agent_registry")
       .update({ status: "running", last_run_at: new Date().toISOString() })
       .eq("id", agent.id);
+
+    emitSystemEvent({ eventType: "agent.started", sourceAgent: AGENT_CODE, payload: { action, title: `${AGENT_CODE}: ${action}` } }).catch(() => {});
 
     if (task_id)
       await admin
