@@ -933,10 +933,138 @@ export async function executeGoal(input: ExecuteGoalInput) {
       continue;
     }
 
+    const goalContext = asRecord(goal.context);
+    const stepInput = asRecord(step.input);
+    const stepImpactLevel = normalizeImpactLevel(
+      stepInput.risk_class ||
+      asRecord(asRecord(goalContext.workflow).governance).risk_class ||
+      goalContext.risk_class ||
+      goalImpactLevel,
+    );
+    const stepGovernance = await evaluateGovernanceGate({
+      targetType: "pipeline_step",
+      targetId: String(step.id),
+      targetRef: compact(step.agent_code_name) || compact(step.action) || compact(step.title) || null,
+      orgId: compact(goal.org_id) || null,
+      userId: compact(goal.user_id) || null,
+      sourceAgent: compact(step.agent_code_name) || "nexus",
+      source: compact(goal.source) || "copilot",
+      riskClass: stepImpactLevel,
+      context: {
+        ...goalContext,
+        workflow: {
+          ...asRecord(goalContext.workflow),
+          template_code_name: compact(asRecord(goalContext.workflow).template_code_name) || null,
+        },
+        step: {
+          id: step.id,
+          step_number: step.step_number,
+          step_type: step.step_type,
+          action: step.action,
+          title: step.title,
+        },
+        policy: {
+          ...asRecord(goalContext.policy),
+          approval_required: stepInput.approval_required === true,
+          approval_granted: stepInput.approval_granted === true,
+          approval_id: compact(stepInput.approval_id) || null,
+        },
+      },
+      plannedStepCount: 1,
+    });
+
+    if (!stepGovernance.allowed) {
+      const stepEscalation = await createGovernanceEscalation({
+        orgId: compact(goal.org_id) || null,
+        title: `Goal step blocked by governance: ${compact(step.title) || compact(step.id)}`,
+        description: stepGovernance.reason,
+        severity: stepImpactLevel === "critical"
+          ? "critical"
+          : stepGovernance.decision === "hard_block"
+            ? "high"
+            : "medium",
+        category: "operational",
+        sourceAgent: compact(step.agent_code_name) || "nexus",
+        metadata: {
+          goal_id: goal.id,
+          goal_step_id: step.id,
+          step_number: step.step_number,
+          governance: stepGovernance,
+        },
+      });
+
+      await admin
+        .from("goal_steps")
+        .update({
+          status: "waiting_approval",
+          output: {
+            governance: stepGovernance,
+            escalation_case_id: stepEscalation.risk_case_id,
+          },
+          error: `Governance gate blocked: ${stepGovernance.reason}`,
+          input: {
+            ...stepInput,
+            governance_gate_decision: stepGovernance.decision,
+            governance_gate_reason: stepGovernance.reason,
+          },
+          updated_at: nowIso(),
+        })
+        .eq("id", step.id);
+
+      await admin
+        .from("goals")
+        .update({
+          status: "paused",
+          result: {
+            step_id: step.id,
+            reason: "governance_blocked_step",
+            governance: stepGovernance,
+            escalation_case_id: stepEscalation.risk_case_id,
+          },
+          updated_at: nowIso(),
+        })
+        .eq("id", goal.id);
+
+      await logSupervisionDecision({
+        orgId: compact(goal.org_id) || null,
+        goalId: String(goal.id),
+        stepId: String(step.id),
+        decisionType: "escalate",
+        rationale: `Governor blocked goal step ${step.step_number}: ${stepGovernance.reason}`,
+        outputAction: {
+          governance: stepGovernance,
+          escalation_case_id: stepEscalation.risk_case_id,
+        },
+      });
+
+      await emitSystemEvent({
+        eventType: "goal.step.governance_blocked",
+        payload: {
+          goal_id: goal.id,
+          step_id: step.id,
+          step_number: step.step_number,
+          governance: stepGovernance,
+          escalation_case_id: stepEscalation.risk_case_id,
+        },
+        userId: compact(goal.user_id) || null,
+        orgId: compact(goal.org_id) || null,
+        sourceAgent: compact(step.agent_code_name) || "nexus",
+        correlationId,
+        status: "failed",
+      });
+
+      return {
+        ok: false,
+        status: "blocked_by_governance",
+        goal_id: goal.id,
+        step_id: step.id,
+        governance: stepGovernance,
+        escalation: stepEscalation,
+      };
+    }
+
     let stepSimulation: Awaited<ReturnType<typeof runSimulation>> | null = null;
     if (requiresSimulationGate(goalImpactLevel)) {
-      const stepInput = asRecord(step.input);
-      const goalContext = asRecord(goal.context);
       stepSimulation = await runSimulation({
         mode: simulationModeForRisk(goalImpactLevel),
         targetType: "goal_step",
@@ -1648,6 +1776,131 @@ export async function executePipelineRun(input: ExecutePipelineRunInput) {
     if (stepRunError) throw stepRunError;
 
     const stepPayload = buildStepPayload(currentRun, step, String(stepRun.id));
+    const stepMetadata = asRecord(step.metadata);
+    const stepImpactLevel = normalizeImpactLevel(
+      stepMetadata.risk_class ||
+      asRecord(stepPayload.policy).risk_class ||
+      runContext.risk_class ||
+      pipelineImpactLevel,
+    );
+    const stepGovernance = await evaluateGovernanceGate({
+      targetType: "pipeline_step",
+      targetId: String(stepRun.id),
+      targetRef: compact(step.step_key) || compact(step.agent_code_name) || compact(step.action) || null,
+      orgId: resolvedOrgId,
+      userId,
+      sourceAgent: compact(step.agent_code_name) || "cortex",
+      source: compact(pipelineRun.source) || "copilot",
+      riskClass: stepImpactLevel,
+      context: {
+        ...runContext,
+        workflow: {
+          ...asRecord(runContext.workflow),
+          template_code_name: compact(template.code_name) || null,
+        },
+        step: {
+          id: stepRun.id,
+          step_number: step.step_number,
+          step_key: step.step_key,
+          step_type: step.step_type,
+          action: step.action,
+          agent_code_name: step.agent_code_name || null,
+        },
+        policy: {
+          ...asRecord(runContext.policy),
+          approval_required: false,
+          approval_granted: asRecord(stepPayload.policy).approval_granted === true,
+        },
+      },
+      plannedStepCount: 1,
+    });
+
+    if (!stepGovernance.allowed) {
+      const stepEscalation = await createGovernanceEscalation({
+        orgId: resolvedOrgId,
+        title: `Pipeline step blocked by governance: ${compact(step.step_key) || compact(stepRun.id)}`,
+        description: stepGovernance.reason,
+        severity: stepImpactLevel === "critical"
+          ? "critical"
+          : stepGovernance.decision === "hard_block"
+            ? "high"
+            : "medium",
+        category: "operational",
+        sourceAgent: compact(step.agent_code_name) || "cortex",
+        metadata: {
+          pipeline_run_id: pipelineRun.id,
+          step_run_id: stepRun.id,
+          step_key: step.step_key,
+          step_number: step.step_number,
+          governance: stepGovernance,
+        },
+      });
+
+      await admin
+        .from("pipeline_step_runs")
+        .update({
+          status: "waiting",
+          input: {
+            ...stepPayload,
+            governance_gate_decision: stepGovernance.decision,
+            governance_gate_reason: stepGovernance.reason,
+          },
+          output: {
+            governance: stepGovernance,
+            escalation_case_id: stepEscalation.risk_case_id,
+          },
+          error: `Governance gate blocked: ${stepGovernance.reason}`,
+          updated_at: nowIso(),
+        })
+        .eq("id", stepRun.id);
+
+      await admin
+        .from("pipeline_runs")
+        .update({
+          status: "paused",
+          last_error: `Governance gate blocked step ${step.step_number}: ${stepGovernance.reason}`,
+          updated_at: nowIso(),
+        })
+        .eq("id", pipelineRun.id);
+
+      await updatePipelineRunState(String(pipelineRun.id), {
+        current_agent: compact(step.agent_code_name) || null,
+        waiting_for_event: "governance_gate",
+        metrics: {
+          total_steps: steps.length,
+          blocked_step: step.step_key,
+          completed_steps: Math.max(Number(step.step_number) - 1, 0),
+        },
+      });
+
+      await emitSystemEvent({
+        eventType: "pipeline.step.governance_blocked",
+        payload: {
+          pipeline_run_id: pipelineRun.id,
+          step_run_id: stepRun.id,
+          step_key: step.step_key,
+          step_number: step.step_number,
+          governance: stepGovernance,
+          escalation_case_id: stepEscalation.risk_case_id,
+        },
+        userId,
+        orgId: resolvedOrgId,
+        sourceAgent: compact(step.agent_code_name) || "cortex",
+        pipelineRunId: String(pipelineRun.id),
+        stepRunId: String(stepRun.id),
+        correlationId: compact(pipelineRun.correlation_id) || null,
+        status: "failed",
+      });
+
+      return {
+        ok: false,
+        pipeline_run_id: pipelineRun.id,
+        step_run_id: stepRun.id,
+        status: "blocked_by_governance",
+        governance: stepGovernance,
+        escalation: stepEscalation,
+      };
+    }
 
     let stepSimulation: Awaited<ReturnType<typeof runSimulation>> | null = null;
     if (requiresSimulationGate(pipelineImpactLevel)) {

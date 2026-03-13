@@ -10,7 +10,11 @@ import {
   listRecentPipelineRuns,
   planGoal,
 } from "../_shared/orchestration.ts";
-import { createGovernanceEscalation, evaluateGovernanceGate } from "../_shared/governance.ts";
+import {
+  createGovernanceEscalation,
+  evaluateGovernanceGate,
+  getGovernanceMetrics,
+} from "../_shared/governance.ts";
 import { errorResponse, handleCors, jsonResponse, readJson } from "../_shared/http.ts";
 
 Deno.serve(async (req: Request) => {
@@ -48,6 +52,7 @@ Deno.serve(async (req: Request) => {
       description?: string;
       category?: "operational" | "financial" | "compliance" | "reputational" | "security" | "agent";
       metadata?: Record<string, unknown>;
+      window_hours?: number;
     }>(req);
 
     const action = body.action || "list";
@@ -220,6 +225,17 @@ Deno.serve(async (req: Request) => {
           category: body.category,
           sourceAgent: body.source_agent || null,
           metadata: body.metadata || {},
+        }),
+      });
+    }
+
+    if (action === "governor_metrics") {
+      return jsonResponse({
+        ok: true,
+        metrics: await getGovernanceMetrics({
+          orgId: body.org_id || null,
+          userId: body.user_id || null,
+          windowHours: body.window_hours,
         }),
       });
     }

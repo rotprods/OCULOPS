@@ -43,6 +43,23 @@ export interface GovernanceEscalationInput {
   metadata?: JsonRecord;
 }
 
+export interface GovernanceMetricsInput {
+  orgId?: string | null;
+  userId?: string | null;
+  windowHours?: number;
+}
+
+export interface GovernanceMetrics {
+  org_id: string | null;
+  generated_at: string;
+  window_hours: number;
+  counts: JsonRecord;
+  backlog: JsonRecord;
+  risk: JsonRecord;
+  events: JsonRecord;
+  warnings: string[];
+}
+
 function asRecord(value: unknown): JsonRecord {
   return typeof value === "object" && value !== null && !Array.isArray(value)
     ? value as JsonRecord
@@ -82,6 +99,22 @@ function appliesToTarget(appliesTo: unknown, targetType: string) {
   const entries = asArray(appliesTo).map((item) => normalizeText(item));
   if (entries.length === 0) return true;
   return entries.includes("all") || entries.includes(normalizeText(targetType));
+}
+
+async function resolveOrgId(explicitOrgId?: string | null, userId?: string | null) {
+  if (compact(explicitOrgId)) return compact(explicitOrgId);
+  if (!compact(userId)) return null;
+
+  const { data, error } = await admin
+    .from("organization_members")
+    .select("org_id")
+    .eq("user_id", compact(userId))
+    .order("created_at", { ascending: true })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) throw error;
+  return compact(data?.org_id) || null;
 }
 
 async function loadActiveKillSwitches(orgId: string) {
@@ -390,4 +423,223 @@ export async function createGovernanceEscalation(input: GovernanceEscalationInpu
       reason: "risk_cases insert failed",
     };
   }
+}
+
+export async function getGovernanceMetrics(input: GovernanceMetricsInput): Promise<GovernanceMetrics> {
+  const windowHours = Math.max(1, Math.min(168, Number(input.windowHours || 24)));
+  const sinceIso = new Date(Date.now() - (windowHours * 60 * 60 * 1000)).toISOString();
+  const warnings: string[] = [];
+
+  let resolvedOrgId: string | null = null;
+  try {
+    resolvedOrgId = await resolveOrgId(input.orgId || null, input.userId || null);
+  } catch {
+    warnings.push("Unable to resolve org_id from user context.");
+  }
+
+  if (!resolvedOrgId) {
+    return {
+      org_id: null,
+      generated_at: new Date().toISOString(),
+      window_hours: windowHours,
+      counts: {
+        active_kill_switches: 0,
+        active_guardrails: 0,
+        active_policies: 0,
+        hard_block_policies: 0,
+      },
+      backlog: {
+        pending_approvals: 0,
+        open_risk_cases: 0,
+        paused_goals: 0,
+        paused_pipeline_runs: 0,
+        waiting_pipeline_steps: 0,
+      },
+      risk: {
+        open_high: 0,
+        open_critical: 0,
+        escalations_window: 0,
+      },
+      events: {
+        governance_blocked_window: 0,
+        goal_blocked_window: 0,
+        pipeline_blocked_window: 0,
+        step_blocked_window: 0,
+        simulation_blocked_window: 0,
+        supervision_escalations_window: 0,
+        latest_blocked_event: null,
+      },
+      warnings: [
+        ...warnings,
+        "No org scope provided; governor_metrics returned advisory defaults.",
+      ],
+    };
+  }
+
+  const safeCount = async (
+    label: string,
+    fn: () => PromiseLike<{ count: number | null; error: unknown }>,
+  ) => {
+    try {
+      const { count, error } = await fn();
+      if (error) throw error;
+      return Number(count || 0);
+    } catch {
+      warnings.push(`${label} unavailable`);
+      return 0;
+    }
+  };
+
+  const [
+    activeKillSwitches,
+    activeGuardrails,
+    activePolicies,
+    hardBlockPolicies,
+    pendingApprovals,
+    openRiskCases,
+    openHighRiskCases,
+    openCriticalRiskCases,
+    escalationsWindow,
+    pausedGoals,
+    pausedPipelineRuns,
+    waitingPipelineSteps,
+    governanceBlockedWindow,
+    goalBlockedWindow,
+    pipelineBlockedWindow,
+    goalStepBlockedWindow,
+    pipelineStepBlockedWindow,
+    simulationBlockedWindow,
+    supervisionEscalationsWindow,
+  ] = await Promise.all([
+    safeCount("kill_switches", () =>
+      admin.from("kill_switches").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("is_active", true)
+    ),
+    safeCount("guardrails", () =>
+      admin.from("guardrails").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("is_active", true)
+    ),
+    safeCount("governance_policies", () =>
+      admin.from("governance_policies").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("is_active", true)
+    ),
+    safeCount("governance_policies_hard_block", () =>
+      admin.from("governance_policies").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("is_active", true).eq("enforcement", "hard_block")
+    ),
+    safeCount("approval_requests_pending", () =>
+      admin.from("approval_requests").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("status", "pending")
+    ),
+    safeCount("risk_cases_open", () =>
+      admin.from("risk_cases").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).in("status", ["identified", "assessed", "mitigating", "accepted"])
+    ),
+    safeCount("risk_cases_open_high", () =>
+      admin.from("risk_cases").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId)
+        .eq("severity", "high")
+        .in("status", ["identified", "assessed", "mitigating", "accepted"])
+    ),
+    safeCount("risk_cases_open_critical", () =>
+      admin.from("risk_cases").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId)
+        .eq("severity", "critical")
+        .in("status", ["identified", "assessed", "mitigating", "accepted"])
+    ),
+    safeCount("risk_cases_window", () =>
+      admin.from("risk_cases").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).gte("created_at", sinceIso)
+    ),
+    safeCount("goals_paused", () =>
+      admin.from("goals").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("status", "paused")
+    ),
+    safeCount("pipeline_runs_paused", () =>
+      admin.from("pipeline_runs").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("status", "paused")
+    ),
+    safeCount("pipeline_steps_waiting", () =>
+      admin.from("pipeline_step_runs").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("status", "waiting")
+    ),
+    safeCount("event_log_governance_blocked", () =>
+      admin.from("event_log").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).gte("created_at", sinceIso).ilike("event_type", "%governance_blocked%")
+    ),
+    safeCount("event_log_goal_governance_blocked", () =>
+      admin.from("event_log").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).gte("created_at", sinceIso).eq("event_type", "goal.governance_blocked")
+    ),
+    safeCount("event_log_pipeline_governance_blocked", () =>
+      admin.from("event_log").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).gte("created_at", sinceIso).eq("event_type", "pipeline.governance_blocked")
+    ),
+    safeCount("event_log_goal_step_governance_blocked", () =>
+      admin.from("event_log").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).gte("created_at", sinceIso).eq("event_type", "goal.step.governance_blocked")
+    ),
+    safeCount("event_log_pipeline_step_governance_blocked", () =>
+      admin.from("event_log").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).gte("created_at", sinceIso).eq("event_type", "pipeline.step.governance_blocked")
+    ),
+    safeCount("event_log_simulation_blocked", () =>
+      admin.from("event_log").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).gte("created_at", sinceIso).ilike("event_type", "%simulation_blocked%")
+    ),
+    safeCount("supervision_log_escalations", () =>
+      admin.from("supervision_log").select("id", { count: "exact", head: true })
+        .eq("org_id", resolvedOrgId).eq("decision_type", "escalate").gte("created_at", sinceIso)
+    ),
+  ]);
+
+  let latestBlockedEvent: JsonRecord | null = null;
+  try {
+    const { data, error } = await admin
+      .from("event_log")
+      .select("id, event_type, created_at, source_agent, payload")
+      .eq("org_id", resolvedOrgId)
+      .ilike("event_type", "%governance_blocked%")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (error) throw error;
+    latestBlockedEvent = data ? asRecord(data) : null;
+  } catch {
+    warnings.push("latest_blocked_event unavailable");
+  }
+
+  return {
+    org_id: resolvedOrgId,
+    generated_at: new Date().toISOString(),
+    window_hours: windowHours,
+    counts: {
+      active_kill_switches: activeKillSwitches,
+      active_guardrails: activeGuardrails,
+      active_policies: activePolicies,
+      hard_block_policies: hardBlockPolicies,
+    },
+    backlog: {
+      pending_approvals: pendingApprovals,
+      open_risk_cases: openRiskCases,
+      paused_goals: pausedGoals,
+      paused_pipeline_runs: pausedPipelineRuns,
+      waiting_pipeline_steps: waitingPipelineSteps,
+    },
+    risk: {
+      open_high: openHighRiskCases,
+      open_critical: openCriticalRiskCases,
+      escalations_window: escalationsWindow,
+    },
+    events: {
+      governance_blocked_window: governanceBlockedWindow,
+      goal_blocked_window: goalBlockedWindow,
+      pipeline_blocked_window: pipelineBlockedWindow,
+      step_blocked_window: goalStepBlockedWindow + pipelineStepBlockedWindow,
+      simulation_blocked_window: simulationBlockedWindow,
+      supervision_escalations_window: supervisionEscalationsWindow,
+      latest_blocked_event: latestBlockedEvent,
+    },
+    warnings,
+  };
 }
