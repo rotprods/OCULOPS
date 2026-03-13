@@ -98,7 +98,7 @@ export async function runBrain(input: BrainInput): Promise<BrainOutput> {
     context = {},
     systemPromptExtra = "",
     maxRounds = 6,
-    model = "gpt-4o",
+    model = "gpt-4o-mini",
     sessionId,
     skipPolicyCheck = false,
     org_id: inputOrgId,

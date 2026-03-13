@@ -92,7 +92,7 @@ Deno.serve(async (req: Request) => {
       },
       systemPromptExtra: agentDef.system_prompt,
       maxRounds: agentDef.max_rounds || 4,
-      model: agentDef.model || "gpt-4o",
+      model: agentDef.model || "gpt-4o-mini",
       org_id,
     });
 

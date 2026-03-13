@@ -19,7 +19,15 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
 const SUPABASE_SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 const EMBED_MODEL = "text-embedding-3-small";
 
+// ─── Embedding cache (avoids re-embedding identical queries) ──────────────────
+const _embedCache = new Map<string, { embedding: number[]; ts: number }>();
+const EMBED_CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+const EMBED_CACHE_MAX = 10_000;
+
 async function generateEmbedding(text: string): Promise<number[]> {
+  const cacheKey = text.slice(0, 8000);
+  const cached = _embedCache.get(cacheKey);
+  if (cached && Date.now() - cached.ts < EMBED_CACHE_TTL) return cached.embedding;
   const res = await fetch("https://api.openai.com/v1/embeddings", {
     method: "POST",
     headers: {
@@ -38,7 +46,16 @@ async function generateEmbedding(text: string): Promise<number[]> {
   }
 
   const data = await res.json();
-  return data.data[0].embedding;
+  const embedding = data.data[0].embedding;
+
+  // Cache the embedding
+  if (_embedCache.size >= EMBED_CACHE_MAX) {
+    const oldest = _embedCache.keys().next().value;
+    if (oldest) _embedCache.delete(oldest);
+  }
+  _embedCache.set(cacheKey, { embedding, ts: Date.now() });
+
+  return embedding;
 }
 
 function supabaseHeaders() {

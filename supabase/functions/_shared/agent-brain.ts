@@ -34,6 +34,27 @@ const OPENAI_KEY = () => Deno.env.get("OPENAI_API_KEY") || "";
 const SUPABASE_URL = () => Deno.env.get("SUPABASE_URL") || "";
 const SERVICE_KEY = () => Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 
+// ─── In-memory LRU cache (survives within a single edge function invocation) ──
+
+const _cache = new Map<string, { data: unknown; ts: number }>();
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+const CACHE_MAX_ENTRIES = 200;
+
+function cacheGet(key: string): unknown | undefined {
+  const entry = _cache.get(key);
+  if (!entry) return undefined;
+  if (Date.now() - entry.ts > CACHE_TTL_MS) { _cache.delete(key); return undefined; }
+  return entry.data;
+}
+
+function cacheSet(key: string, data: unknown): void {
+  if (_cache.size >= CACHE_MAX_ENTRIES) {
+    const oldest = _cache.keys().next().value;
+    if (oldest) _cache.delete(oldest);
+  }
+  _cache.set(key, { data, ts: Date.now() });
+}
+
 // ─── Skill definitions (OpenAI function format) ───────────────────────────────
 
 const SKILLS = [
@@ -337,6 +358,10 @@ async function executeSkill(name: string, args: Record<string, unknown>, agentCo
     }
 
     case "crm_query": {
+      const cacheKey = `crm:${args.table}:${JSON.stringify(args.filters || {})}:${args.select || "*"}:${args.limit || 20}`;
+      const cached = cacheGet(cacheKey);
+      if (cached) return cached;
+
       let q = admin.from(args.table as string).select((args.select as string) || "*");
       if (args.filters && typeof args.filters === "object") {
         for (const [k, v] of Object.entries(args.filters as Record<string, unknown>)) {
@@ -344,7 +369,9 @@ async function executeSkill(name: string, args: Record<string, unknown>, agentCo
         }
       }
       const { data, error } = await q.limit((args.limit as number) || 20);
-      return error ? { error: error.message } : { rows: data, count: data?.length };
+      const result = error ? { error: error.message } : { rows: data, count: data?.length };
+      if (!error) cacheSet(cacheKey, result);
+      return result;
     }
 
     case "crm_write_contact": {
@@ -443,7 +470,7 @@ async function executeSkill(name: string, args: Record<string, unknown>, agentCo
         method: "POST",
         headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "gpt-4o",
+          model: "gpt-4o-mini",
           messages: [
             { role: "system", content: `You are a ${args.tone || "professional"} copywriter for a Spanish AI agency. Write ${args.type} content.` },
             { role: "user", content: args.brief as string },
@@ -501,7 +528,7 @@ export interface BrainOutput {
 }
 
 export async function runBrain(input: BrainInput): Promise<BrainOutput> {
-  const { agent, goal, orgId, userId, context = {}, systemPromptExtra = "", maxRounds = 6, model = "gpt-4o" } = input;
+  const { agent, goal, orgId, userId, context = {}, systemPromptExtra = "", maxRounds = 6, model = "gpt-4o-mini" } = input;
 
   // ─── Credit check ───────────────────────────────────────────────────────
   let usedCustomKey = false;

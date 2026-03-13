@@ -105,6 +105,7 @@ Deno.serve(async (req: Request) => {
 
       const brainResult = await runBrain({
         agent: "cortex",
+        model: "gpt-5",
         goal: `Orchestrate a prospecting pipeline based on the user's request.
 
 User request:

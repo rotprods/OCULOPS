@@ -30,7 +30,7 @@ Core behaviors:
 
 Output format: structured summary of what was delegated, to whom, and what was achieved.',
   'Decompose complex goals into a multi-agent plan and coordinate execution',
-  'gpt-4o', 3, 60000,
+  'gpt-4o-mini', 3, 60000,
   ARRAY['plan_write','plan_step_advance','call_agent','recall_memory','store_memory','audit_log_write','reasoning_trace_store','metrics_query'],
   ARRAY['crm_write_contact','crm_write_deal','send_notification','crm_write_task','create_alert','rollback_action'],
   0.50, false,
@@ -56,7 +56,7 @@ Core behaviors:
 
 Success criteria: complete monitoring sweep in ≤5 rounds, zero missed critical anomalies.',
   'Monitor system health and pipeline anomalies. Take corrective action where allowed.',
-  'gpt-4o', 5, 30000,
+  'gpt-4o-mini', 5, 30000,
   ARRAY['recall_memory','crm_query','metrics_query','create_alert','create_signal','crm_write_task','store_memory','audit_log_write','reasoning_trace_store','incident_create','web_search','budget_check'],
   ARRAY['crm_write_contact','crm_write_deal','fetch_url','rollback_action'],
   0.15, false,
@@ -81,7 +81,7 @@ Core behaviors:
 
 Success criteria: generate ≥3 actionable signals per run, each with clear business implication.',
   'Analyze market conditions, competition, and generate actionable intelligence',
-  'gpt-4o', 6, 45000,
+  'gpt-4o-mini', 6, 45000,
   ARRAY['web_search','fetch_external_data','fetch_url','store_memory','recall_memory','create_signal','create_alert','generate_content','audit_log_write','reasoning_trace_store','crm_query','metrics_query'],
   ARRAY['crm_write_contact','crm_write_deal','send_notification','rollback_action'],
   0.20, false,
@@ -106,7 +106,7 @@ Core behaviors:
 
 Success criteria: briefing delivered in ≤4 rounds, covers all critical events from last 24h.',
   'Build and distribute the daily intelligence briefing to the team',
-  'gpt-4o', 4, 30000,
+  'gpt-4o-mini', 4, 30000,
   ARRAY['recall_memory','crm_query','fetch_external_data','web_search','generate_content','audit_log_write','reasoning_trace_store'],
   ARRAY['crm_write_contact','crm_write_deal','create_alert','crm_write_task','rollback_action'],
   0.15, false,
@@ -131,7 +131,7 @@ Core behaviors:
 
 Success criteria: generate content in ≤3 rounds, approval rate target >70%.',
   'Generate high-quality content (emails, proposals, posts) with company context',
-  'gpt-4o', 5, 45000,
+  'gpt-4o-mini', 5, 45000,
   ARRAY['generate_content','recall_memory','web_search','fetch_url','store_memory','audit_log_write','reasoning_trace_store','crm_query'],
   ARRAY['crm_write_contact','crm_write_deal','create_alert','rollback_action'],
   0.30, false,
@@ -157,7 +157,7 @@ Core behaviors:
 
 Success criteria: find ≥5 qualified leads per run, all with complete contact data.',
   'Find and qualify new business leads in target zones/sectors',
-  'gpt-4o', 6, 45000,
+  'gpt-4o-mini', 6, 45000,
   ARRAY['web_search','fetch_external_data','fetch_url','crm_write_contact','crm_write_task','store_memory','recall_memory','create_signal','audit_log_write','reasoning_trace_store','crm_query','metrics_query'],
   ARRAY['crm_write_deal','send_notification','create_alert','rollback_action'],
   0.25, false,
@@ -188,7 +188,7 @@ Core behaviors:
 
 Success criteria: complete qualification in ≤4 rounds, score accuracy target >70%.',
   'Research and qualify leads. Score them. Update CRM with findings.',
-  'gpt-4o', 6, 45000,
+  'gpt-4o-mini', 6, 45000,
   ARRAY['web_search','fetch_url','crm_query','crm_write_deal','crm_write_contact','crm_write_task','store_memory','recall_memory','audit_log_write','reasoning_trace_store','fetch_external_data'],
   ARRAY['send_notification','create_alert','rollback_action'],
   0.20, false,
@@ -215,7 +215,7 @@ Approval gate: every outreach sequence must be flagged for human review before s
 
 Success criteria: design complete sequence in ≤3 rounds, all steps personalized.',
   'Orchestrate personalized outreach sequences. Never send without approval.',
-  'gpt-4o', 4, 30000,
+  'gpt-4o-mini', 4, 30000,
   ARRAY['recall_memory','crm_query','generate_content','audit_log_write','reasoning_trace_store','crm_write_task','store_memory'],
   ARRAY['crm_write_contact','crm_write_deal','rollback_action','create_alert'],
   0.20, false,
@@ -242,7 +242,7 @@ Primary pipeline: ATLAS (discover) → HUNTER (qualify) → FORGE (content) → 
 
 Success criteria: complete full pipeline in ≤4 orchestration rounds.',
   'Orchestrate multi-agent pipelines for complex business workflows',
-  'gpt-4o', 4, 90000,
+  'gpt-5', 4, 90000,
   ARRAY['call_agent','recall_memory','store_memory','crm_query','audit_log_write','reasoning_trace_store','metrics_query','plan_write'],
   ARRAY['crm_write_contact','crm_write_deal','send_notification','rollback_action'],
   0.50, false,

@@ -28,7 +28,7 @@ const ENV = {
   telegramChatId:  () => Deno.env.get("TELEGRAM_CHAT_ID") ?? "",
 };
 
-const CLAUDE_MODEL          = "claude-opus-4-6-20251101";
+const CLAUDE_MODEL          = "claude-haiku-4-5-20251001";
 const IMPROVEMENT_THRESHOLD = 0.03;  // 3% minimum to keep a mutation
 
 // ─── Supabase REST helpers ────────────────────────────────────────────────────
@@ -81,7 +81,7 @@ async function callClaude(system: string, user: string, maxTokens = 1500): Promi
     method: "POST",
     headers: {
       "x-api-key":         key,
-      "anthropic-version": "2023-06-01",
+      "anthropic-version": "2024-10-22",
       "content-type":      "application/json",
     },
     body: JSON.stringify({

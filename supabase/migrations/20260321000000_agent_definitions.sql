@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS agent_definitions (
   -- Brain configuration
   system_prompt text NOT NULL,                 -- the core prompt injected into runBrain()
   goal_template text,                          -- default goal if none provided
-  model         text DEFAULT 'gpt-4o',
+  model         text DEFAULT 'gpt-4o-mini',
   max_rounds    int DEFAULT 4 CHECK (max_rounds BETWEEN 1 AND 10),
   timeout_ms    int DEFAULT 45000,
 
