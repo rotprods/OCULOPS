@@ -10,6 +10,7 @@ import {
   listRecentPipelineRuns,
   planGoal,
 } from "../_shared/orchestration.ts";
+import { createGovernanceEscalation, evaluateGovernanceGate } from "../_shared/governance.ts";
 import { errorResponse, handleCors, jsonResponse, readJson } from "../_shared/http.ts";
 
 Deno.serve(async (req: Request) => {
@@ -38,6 +39,15 @@ Deno.serve(async (req: Request) => {
       preferred_template_code_name?: string;
       retry_limit?: number;
       auto_replan?: boolean;
+      target_type?: "goal" | "pipeline" | "pipeline_step" | "agent_action";
+      target_id?: string;
+      target_ref?: string;
+      source_agent?: string;
+      severity?: "low" | "medium" | "high" | "critical";
+      title?: string;
+      description?: string;
+      category?: "operational" | "financial" | "compliance" | "reputational" | "security" | "agent";
+      metadata?: Record<string, unknown>;
     }>(req);
 
     const action = body.action || "list";
@@ -171,6 +181,46 @@ Deno.serve(async (req: Request) => {
       return jsonResponse({
         ok: true,
         entries: await listRecentPipelineRunTaxonomies(Math.max(1, Math.min(20, body.limit || 10))),
+      });
+    }
+
+    if (action === "governor_check") {
+      if (!body.target_type) {
+        return errorResponse("target_type is required for governor_check");
+      }
+
+      return jsonResponse({
+        ok: true,
+        governance: await evaluateGovernanceGate({
+          targetType: body.target_type,
+          targetId: body.target_id || null,
+          targetRef: body.target_ref || null,
+          orgId: body.org_id || null,
+          userId: body.user_id || null,
+          sourceAgent: body.source_agent || null,
+          source: body.source || null,
+          riskClass: body.risk_class || null,
+          context: body.context || {},
+        }),
+      });
+    }
+
+    if (action === "governor_escalate") {
+      if (!body.title || !body.description) {
+        return errorResponse("title and description are required for governor_escalate");
+      }
+
+      return jsonResponse({
+        ok: true,
+        escalation: await createGovernanceEscalation({
+          orgId: body.org_id || null,
+          title: body.title,
+          description: body.description,
+          severity: body.severity,
+          category: body.category,
+          sourceAgent: body.source_agent || null,
+          metadata: body.metadata || {},
+        }),
       });
     }
 

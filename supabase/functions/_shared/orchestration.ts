@@ -1,5 +1,6 @@
 import { executeTriggeredWorkflows } from "./automation.ts";
 import { evaluateArtifact, type ImpactLevel } from "./evaluation.ts";
+import { createGovernanceEscalation, evaluateGovernanceGate } from "./governance.ts";
 import { compact } from "./http.ts";
 import { runSimulation } from "./simulation.ts";
 import { admin } from "./supabase.ts";
@@ -820,6 +821,80 @@ export async function executeGoal(input: ExecuteGoalInput) {
   const correlationId = getGoalCorrelationId(goal as JsonRecord);
   const escalationTarget = resolveEscalationTarget(asRecord(goal.context));
   const goalImpactLevel = normalizeImpactLevel(asRecord(goal.context).risk_class);
+  const goalGovernance = await evaluateGovernanceGate({
+    targetType: "goal",
+    targetId: String(goal.id),
+    targetRef: compact(asRecord(asRecord(goal.context).workflow).template_code_name) || null,
+    orgId: compact(goal.org_id) || null,
+    userId: compact(goal.user_id) || null,
+    sourceAgent: "nexus",
+    source: compact(goal.source) || "copilot",
+    riskClass: goalImpactLevel,
+    context: asRecord(goal.context),
+    plannedStepCount: (goalSteps || []).length,
+  });
+
+  if (!goalGovernance.allowed) {
+    const escalation = await createGovernanceEscalation({
+      orgId: compact(goal.org_id) || null,
+      title: `Goal blocked by governance: ${compact(goal.title) || compact(goal.id)}`,
+      description: goalGovernance.reason,
+      severity: goalImpactLevel === "critical" ? "critical" : "high",
+      category: "operational",
+      sourceAgent: "nexus",
+      metadata: {
+        goal_id: goal.id,
+        governance: goalGovernance,
+      },
+    });
+
+    await admin
+      .from("goals")
+      .update({
+        status: "paused",
+        result: {
+          reason: "governance_blocked",
+          governance: goalGovernance,
+          escalation_case_id: escalation.risk_case_id,
+        },
+        updated_at: nowIso(),
+      })
+      .eq("id", goal.id);
+
+    await logSupervisionDecision({
+      orgId: compact(goal.org_id) || null,
+      goalId: String(goal.id),
+      decisionType: "escalate",
+      rationale: `Governor blocked goal execution: ${goalGovernance.reason}`,
+      outputAction: {
+        governance: goalGovernance,
+        escalation_case_id: escalation.risk_case_id,
+      },
+    });
+
+    await emitSystemEvent({
+      eventType: "goal.governance_blocked",
+      payload: {
+        goal_id: goal.id,
+        goal_title: goal.title,
+        governance: goalGovernance,
+        escalation_case_id: escalation.risk_case_id,
+      },
+      userId: compact(goal.user_id) || null,
+      orgId: compact(goal.org_id) || null,
+      sourceAgent: "nexus",
+      correlationId,
+      status: "failed",
+    });
+
+    return {
+      ok: false,
+      status: "blocked_by_governance",
+      goal_id: goal.id,
+      governance: goalGovernance,
+      escalation,
+    };
+  }
 
   await admin
     .from("goals")
@@ -1454,6 +1529,76 @@ export async function executePipelineRun(input: ExecutePipelineRunInput) {
   const userId = compact(pipelineRun.initiated_by_user_id) || null;
   let runContext = asRecord(pipelineRun.context);
   const pipelineImpactLevel = normalizeImpactLevel(runContext.risk_class);
+  const pipelineGovernance = await evaluateGovernanceGate({
+    targetType: "pipeline",
+    targetId: String(pipelineRun.id),
+    targetRef: compact(template.code_name) || null,
+    orgId: resolvedOrgId,
+    userId,
+    sourceAgent: "cortex",
+    source: compact(pipelineRun.source) || "copilot",
+    riskClass: pipelineImpactLevel,
+    context: runContext,
+    plannedStepCount: steps.length,
+  });
+
+  if (!pipelineGovernance.allowed) {
+    const escalation = await createGovernanceEscalation({
+      orgId: resolvedOrgId,
+      title: `Pipeline blocked by governance: ${compact(template.code_name) || compact(pipelineRun.id)}`,
+      description: pipelineGovernance.reason,
+      severity: pipelineImpactLevel === "critical" ? "critical" : "high",
+      category: "operational",
+      sourceAgent: "cortex",
+      metadata: {
+        pipeline_run_id: pipelineRun.id,
+        template_code_name: compact(template.code_name) || null,
+        governance: pipelineGovernance,
+      },
+    });
+
+    await admin
+      .from("pipeline_runs")
+      .update({
+        status: "paused",
+        last_error: `Governance gate blocked: ${pipelineGovernance.reason}`,
+        updated_at: nowIso(),
+      })
+      .eq("id", pipelineRun.id);
+
+    await updatePipelineRunState(String(pipelineRun.id), {
+      current_agent: null,
+      waiting_for_event: "governance_gate",
+      metrics: {
+        total_steps: steps.length,
+        blocked_by_governance: true,
+      },
+    });
+
+    await emitSystemEvent({
+      eventType: "pipeline.governance_blocked",
+      payload: {
+        pipeline_run_id: pipelineRun.id,
+        template_code_name: compact(template.code_name) || null,
+        governance: pipelineGovernance,
+        escalation_case_id: escalation.risk_case_id,
+      },
+      userId,
+      orgId: resolvedOrgId,
+      sourceAgent: "cortex",
+      pipelineRunId: String(pipelineRun.id),
+      correlationId: compact(pipelineRun.correlation_id) || null,
+      status: "failed",
+    });
+
+    return {
+      ok: false,
+      status: "blocked_by_governance",
+      pipeline_run_id: pipelineRun.id,
+      governance: pipelineGovernance,
+      escalation,
+    };
+  }
 
   await admin
     .from("pipeline_runs")
