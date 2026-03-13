@@ -190,6 +190,7 @@ into one execution matrix with strict ownership:
 
 ## AG2-C4 — Evaluation Layer (48h Block 6)
 - Variables: `V2.5`, `V3.4`
+- Status: ✅ Hardened (evaluation metrics endpoint with window/org filters, critic averages, escalation distribution)
 - Subvariables:
   - `AG2-C4.1` Critics: quality, architecture, risk, cost.
   - `AG2-C4.2` Pass/fail + retry recommendation contract.
@@ -199,6 +200,7 @@ into one execution matrix with strict ownership:
 
 ## AG2-C5 — Memory + Simulation Base (48h Block 7-8)
 - Variables: `V2.6`
+- Status: ✅ Hardened (simulation taxonomy + sanitized latest failures API)
 - Deliverables:
   - `memory/product/`
   - `memory/customers/`
@@ -224,14 +226,16 @@ into one execution matrix with strict ownership:
 
 ## AG2-C7 — Provider-Independent Runtime Verification
 - Variables: `V1.2.4`, `V5.4`
-- Status: ✅ Completed baseline
+- Status: ✅ Hardened (agentic-core smoke + governor-runtime smoke)
 - Subvariables:
   - `AG2-C7.1` Add aggregated taxonomy endpoint for recent orchestration runs (`list_taxonomy`).
   - `AG2-C7.2` Add synthetic smoke script for orchestration + simulation + evaluation.
   - `AG2-C7.3` Keep provider integrations as final gate, not dev blocker.
 - Deliverables:
   - `scripts/smoke-agentic-core.mjs`
+  - `scripts/smoke-governor-runtime.mjs`
   - `npm run smoke:agentic-core`
+  - `node scripts/smoke-governor-runtime.mjs`
 - Acceptance:
   - Team can validate core agentic control loops on demand without Gmail/WhatsApp credentials.
 
