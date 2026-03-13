@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-03-13T09:16:33.925Z",
+  "ok": true,
+  "setup": {
+    "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
+    "owner_id": "bf5bfd14-c974-4639-a941-2143c80c0480",
+    "api_proxy_policy": {
+      "tool_id": "4987dd23-4468-4a0b-8037-f5e1ade0f496",
+      "permission_id": "dd66b859-7fef-4dc5-974d-325f7ab0e2cb",
+      "tool_created": false,
+      "permission_created": false
+    },
+    "connector": {
+      "id": "9e9237b2-aa75-4990-a6cb-4be3e2d85353",
+      "name": "Disify",
+      "health_status": "pending"
+    },
+    "synthetic_email_channel": {
+      "id": "1003d3c7-12e0-4b3f-a53e-833d454a02d9",
+      "created": false
+    },
+    "synthetic_contact": {
+      "id": "e0f2d6d5-e7ff-4c2b-b8d9-9badc5b291ad",
+      "email": "smoke-route-1773393395339@example.com"
+    },
+    "synthetic_conversation": {
+      "id": "729333d1-c6c1-4ae1-b2af-3d627f74d454"
+    }
+  },
+  "cases": {
+    "blocked_api_proxy_legacy_high": {
+      "status": 409,
+      "ok": false,
+      "code": "legacy_high_risk_route_required",
+      "error": "High-risk legacy connector execution is blocked. Route through control-plane tool_dispatch (control-plane + tool-bus).",
+      "pass": true,
+      "note": null
+    },
+    "blocked_messaging_dispatch_legacy_high": {
+      "status": 409,
+      "ok": false,
+      "code": "legacy_high_risk_route_required",
+      "error": "High-risk legacy dispatch is blocked. Route through control-plane tool_dispatch (control-plane + tool-bus).",
+      "pass": true
+    },
+    "allowed_run_connector_high_via_control_plane": {
+      "workflow_id": "6883c3e4-9429-4011-8c11-5851e0efd00c",
+      "run_status": "completed",
+      "step_status": "200",
+      "step_error": null,
+      "tool_bus_event_found": true,
+      "tool_bus_rows": 1,
+      "pass": true,
+      "routed_not_legacy_blocked": true
+    },
+    "allowed_run_api_high_via_control_plane": {
+      "workflow_id": "e8d00f92-c231-4108-9935-89198c8b654a",
+      "run_status": "completed",
+      "step_status": "completed",
+      "step_error": null,
+      "tool_bus_event_found": true,
+      "tool_bus_rows": 1,
+      "pass": true,
+      "routed_not_legacy_blocked": true
+    }
+  },
+  "artifacts": {
+    "json_path": "docs/runbooks/hard-block-routing-smoke.latest.json",
+    "markdown_path": "docs/runbooks/hard-block-routing-smoke.md"
+  }
+}

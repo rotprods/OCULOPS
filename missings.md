@@ -116,20 +116,24 @@ URL directa: https://console.cloud.google.com/apis/credentials?project=hale-carp
 - [x] Hard-block server-side en `api-proxy` para rutas legacy `high/critical` sin evidencia `control-plane + tool-bus`
 
 ### Pendientes inmediatos (validación operativa real)
-- [ ] Smoke remoto de bloqueo esperado:
-  - llamada legacy directa `high` a `api-proxy` debe responder `409` (`legacy_high_risk_route_required`)
-  - llamada legacy directa `high` a `messaging-dispatch` debe responder `409` (`legacy_high_risk_route_required`)
-- [ ] Smoke remoto de ruta permitida:
-  - workflow legacy `run_connector` con `risk_class=high` debe ejecutar por `tool_dispatch` sin bloqueo
-  - workflow legacy `run_api` con `risk_class=high` debe ejecutar por `tool_dispatch` sin bloqueo
-- [ ] Verificar en `event_log` correlación completa:
-  - `tool_bus.invocation` existente para `correlation_id`
-  - evento final del endpoint con resultado esperado
+- [x] Smoke remoto de bloqueo esperado:
+  - [x] llamada legacy directa `high` a `api-proxy` responde `409` (`legacy_high_risk_route_required`)
+  - [x] llamada legacy directa `high` a `messaging-dispatch` responde `409` (`legacy_high_risk_route_required`)
+- [x] Smoke remoto de ruta permitida:
+  - [x] workflow legacy `run_connector` con `risk_class=high` ejecuta por `tool_dispatch` sin bloqueo
+  - [x] workflow legacy `run_api` con `risk_class=high` ejecuta por `tool_dispatch` sin bloqueo
+- [x] Verificar en `event_log` correlación completa:
+  - `tool_bus.invocation` existente para `correlation_id` en `run_connector` y `run_api`
+  - evidencia en `docs/runbooks/hard-block-routing-smoke.latest.json`
+
+### Incidente resuelto (2026-03-13)
+- [x] `api-proxy` devolvía `503 BOOT_ERROR` en runtime.
+  - causa raíz: redeclaración de `const payload` en el mismo scope (error de parseo del edge runtime).
+  - fix aplicado: renombrado de payload de respuesta a `responsePayload` + hardening de auth interna para tokens `service_role` por claim JWT.
+  - validación: `node scripts/smoke-hard-block-routing.mjs` con resultado `ok: true` (`4/4 PASS`).
 
 ### Riesgos/errores detectados (registrados)
 - [ ] `run_api` high/critical depende de permisos en `agent_tool_permissions` y/o `tool_registry` para el `endpoint` usado como `tool_code_name`; si falta permiso, `tool-bus` bloqueará (esperado por política, pero requiere configuración).
-- [ ] En entorno local faltan secretos para smoke de control-plane:
-  - `SUPABASE_URL`
-  - `SUPABASE_SERVICE_ROLE_KEY`
+- [x] Secrets locales para smoke de control-plane presentes (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`) y validados en ejecución remota.
 - [ ] CLI actual de Supabase no incluye `functions invoke`; el smoke remoto debe hacerse con cliente HTTP (curl/Postman) o desde la app.
 - [ ] `deno` no está instalado localmente, por lo que no se puede ejecutar `deno check` local de edge functions (deploy remoto sí funciona).

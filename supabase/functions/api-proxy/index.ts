@@ -11,11 +11,9 @@ const corsHeaders = {
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
-const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-
-const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") || "";
+const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 
 type JsonRecord = Record<string, any>;
 
@@ -36,6 +34,27 @@ function compactValue(value: unknown) {
     if (typeof value === "string") return value.trim();
     if (value == null) return "";
     return String(value).trim();
+}
+
+function decodeJwtPayload(token: string): JsonRecord | null {
+    try {
+        const parts = token.split(".");
+        if (parts.length < 2) return null;
+        const payloadBase64Url = parts[1];
+        const payloadBase64 = payloadBase64Url.replace(/-/g, "+").replace(/_/g, "/");
+        const padding = payloadBase64.length % 4;
+        const normalized = padding ? payloadBase64 + "=".repeat(4 - padding) : payloadBase64;
+        const payloadJson = atob(normalized);
+        const parsed = JSON.parse(payloadJson);
+        return isRecord(parsed) ? parsed : null;
+    } catch {
+        return null;
+    }
+}
+
+function isServiceRoleToken(token: string) {
+    const payload = decodeJwtPayload(token);
+    return compactValue(payload?.role).toLowerCase() === "service_role";
 }
 
 function normalizeRiskClass(value: unknown): "low" | "medium" | "high" | "critical" {
@@ -82,7 +101,8 @@ async function hasToolBusInvocationEvidence(correlationId: string, toolCodeName:
     const normalizedCorrelationId = compactValue(correlationId);
     if (!normalizedCorrelationId) return false;
 
-    const { count, error } = await supabase
+    const serviceClient = createServiceClient();
+    const { count, error } = await serviceClient
         .from("event_log")
         .select("id", { count: "exact", head: true })
         .eq("event_type", "tool_bus.invocation")
@@ -351,6 +371,7 @@ function normalizeResponse(normalizerKey: string | null, raw: any, meta: JsonRec
 }
 
 async function updateConnectorStatus(connector: JsonRecord, status: string) {
+    const serviceClient = createServiceClient();
     const updates: JsonRecord = {
         last_synced_at: new Date().toISOString(),
     };
@@ -360,18 +381,36 @@ async function updateConnectorStatus(connector: JsonRecord, status: string) {
         updates.last_healthcheck_at = new Date().toISOString();
     }
 
-    await supabase.from("api_connectors").update(updates).eq("id", connector.id);
+    await serviceClient.from("api_connectors").update(updates).eq("id", connector.id);
 
     if (connector.catalog_slug) {
-        await supabase
+        await serviceClient
             .from("api_catalog_entries")
             .update({ activation_tier: status === "live" ? "live" : "adapter_ready" })
             .eq("slug", connector.catalog_slug);
     }
 }
 
+function createServiceClient() {
+    if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+        throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required for api-proxy");
+    }
+    return createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+}
+
 Deno.serve(async (req: Request) => {
     if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+
+    if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+        return new Response(
+            JSON.stringify({
+                ok: false,
+                error: "SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required for api-proxy",
+                code: "api_proxy_env_missing",
+            }),
+            { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+    }
 
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) {
@@ -382,9 +421,20 @@ Deno.serve(async (req: Request) => {
     }
 
     const rawToken = authHeader.replace(/^Bearer\s+/i, "").trim();
-    const isInternalServiceCall = rawToken.length > 0 && rawToken === SERVICE_ROLE_KEY;
+    const isInternalServiceCall = rawToken.length > 0
+        && (rawToken === SERVICE_ROLE_KEY || isServiceRoleToken(rawToken));
 
     if (!isInternalServiceCall) {
+        if (!SUPABASE_ANON_KEY) {
+            return new Response(
+                JSON.stringify({
+                    ok: false,
+                    error: "SUPABASE_ANON_KEY is required for user-authenticated api-proxy calls",
+                    code: "api_proxy_anon_key_missing",
+                }),
+                { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+            );
+        }
         const supabaseUser = createClient(
             SUPABASE_URL,
             SUPABASE_ANON_KEY,
@@ -400,6 +450,7 @@ Deno.serve(async (req: Request) => {
     }
 
     try {
+        const supabase = createServiceClient();
         const rawInput = await req.json();
         const payload = isRecord(rawInput) ? rawInput : {};
         const { connector_id, endpoint_name, params, body: requestBody, healthcheck } = payload;
@@ -561,7 +612,7 @@ Deno.serve(async (req: Request) => {
                 .eq("id", connector.id);
         }
 
-        const payload = {
+        const responsePayload = {
             ok,
             status: response.status,
             connector_id,
@@ -580,7 +631,7 @@ Deno.serve(async (req: Request) => {
         };
 
         return new Response(
-            JSON.stringify(payload),
+            JSON.stringify(responsePayload),
             { status: ok ? 200 : 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
     } catch (err) {
