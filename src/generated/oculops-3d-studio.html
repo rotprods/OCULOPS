@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCULOPS — 3D Motion Studio</title>
+<script src="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --canvas: #FAFAF8;
+    --gold: #FFD700;
+    --gold-deep: #D4AF37;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B6B6B;
+    --text-tertiary: #9CA3AF;
+    --border: #E5E5E0;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  body { background: #0a0a0a; overflow: hidden; font-family: var(--font-sans); }
+  canvas#scene { position: fixed; inset: 0; }
+
+  /* ── HUD Overlay ── */
+  .hud {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .hud-top {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hud-brand {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.5);
+  }
+  .hud-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    display: flex;
+    gap: 16px;
+  }
+  .hud-bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .hud-screen {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,215,0,0.7);
+  }
+  .hud-controls {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: rgba(255,255,255,0.25);
+    text-align: right;
+    line-height: 1.6;
+    pointer-events: all;
+  }
+  .hud-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .hud-center.visible { opacity: 1; }
+  .hud-center h2 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+  }
+  .hud-center p {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255,215,0,0.5);
+  }
+
+  /* ── Mode selector ── */
+  .mode-bar {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    padding: 2px;
+    z-index: 20;
+    pointer-events: all;
+  }
+  .mode-btn {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 6px 14px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .mode-btn.active {
+    background: rgba(255,215,0,0.15);
+    color: #FFD700;
+  }
+  .mode-btn:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── Loading ── */
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .loader-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 4px;
+  }
+  .loader-bar {
+    width: 160px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 16px;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .loader-fill {
+    height: 100%;
+    width: 0%;
+    background: #FFD700;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="scene"></canvas>
+
+<div class="loader" id="loader">
+  <div class="loader-text">OCULOPS 3D STUDIO</div>
+  <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+</div>
+
+<div class="hud" id="hud" style="opacity:0">
+  <div class="hud-top">
+    <div class="hud-brand">OCULOPS</div>
+    <div class="hud-meta">
+      <span>3D MOTION STUDIO</span>
+      <span id="fps">60 FPS</span>
+      <span id="clock"></span>
+    </div>
+  </div>
+
+  <div class="mode-bar">
+    <button class="mode-btn active" data-mode="orbit">ORBIT</button>
+    <button class="mode-btn" data-mode="tunnel">TUNNEL</button>
+    <button class="mode-btn" data-mode="wall">WALL</button>
+    <button class="mode-btn" data-mode="spiral">SPIRAL</button>
+    <button class="mode-btn" data-mode="explode">EXPLODE</button>
+  </div>
+
+  <div class="hud-center" id="hudCenter">
+    <h2 id="focusName"></h2>
+    <p id="focusDetail"></p>
+  </div>
+
+  <div class="hud-bottom">
+    <div class="hud-screen" id="hudScreen">34 SCREENS LOADED</div>
+    <div class="hud-controls">
+      SCROLL zoom &middot; DRAG orbit<br>
+      1-5 camera modes &middot; SPACE auto-fly<br>
+      CLICK screen to focus &middot; ESC reset
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Screen Data ──
+const SCREENS = [
+  'control-tower','pipeline','crm','intelligence','execution','finance',
+  'markets','analytics','opportunities','reports',
+  'agents','herald','prospector','automation','flight-deck','pixel-office','marketplace',
+  'gtm','messaging','creative','niches',
+  'knowledge','decisions','experiments','simulation','studies',
+  'command-center','watchtower','world-monitor','portfolio','lab',
+  'billing','team-settings','settings'
+]
+
+const LABELS = {
+  'control-tower':'Control Tower','pipeline':'Pipeline','crm':'CRM','intelligence':'Intelligence',
+  'execution':'Execution','finance':'Finance','markets':'Markets','analytics':'Analytics',
+  'opportunities':'Opportunities','reports':'Reports','agents':'Agents','herald':'Herald',
+  'prospector':'Prospector','automation':'Automation','flight-deck':'Flight Deck',
+  'pixel-office':'Pixel Office','marketplace':'Marketplace','gtm':'GTM','messaging':'Messaging',
+  'creative':'Creative','niches':'Niches','knowledge':'Knowledge','decisions':'Decisions',
+  'experiments':'Experiments','simulation':'Simulation','studies':'Studies',
+  'command-center':'Command Center','watchtower':'Watchtower','world-monitor':'World Monitor',
+  'portfolio':'Portfolio','lab':'Lab','billing':'Billing','team-settings':'Team Settings',
+  'settings':'Settings'
+}
+
+// ── Three.js Setup ──
+const canvas = document.getElementById('scene')
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
+renderer.setSize(window.innerWidth, window.innerHeight)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+renderer.toneMapping = THREE.ACESFilmicToneMapping
+renderer.toneMappingExposure = 1.2
+
+const scene = new THREE.Scene()
+scene.fog = new THREE.FogExp2(0x0a0a0a, 0.008)
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
+camera.position.set(0, 5, 40)
+
+// ── Lighting ──
+const ambient = new THREE.AmbientLight(0xffffff, 0.6)
+scene.add(ambient)
+
+const goldLight = new THREE.PointLight(0xffd700, 2, 100)
+goldLight.position.set(0, 10, 0)
+scene.add(goldLight)
+
+const rimLight = new THREE.DirectionalLight(0xffd700, 0.3)
+rimLight.position.set(-10, 8, -5)
+scene.add(rimLight)
+
+// ── Gold Particles ──
+const particleCount = 800
+const particleGeom = new THREE.BufferGeometry()
+const particlePos = new Float32Array(particleCount * 3)
+const particleSizes = new Float32Array(particleCount)
+
+for (let i = 0; i < particleCount; i++) {
+  particlePos[i * 3] = (Math.random() - 0.5) * 80
+  particlePos[i * 3 + 1] = (Math.random() - 0.5) * 60
+  particlePos[i * 3 + 2] = (Math.random() - 0.5) * 80
+  particleSizes[i] = Math.random() * 0.08 + 0.02
+}
+particleGeom.setAttribute('position', new THREE.BufferAttribute(particlePos, 3))
+particleGeom.setAttribute('size', new THREE.BufferAttribute(particleSizes, 1))
+
+const particleMat = new THREE.PointsMaterial({
+  color: 0xffd700,
+  size: 0.06,
+  transparent: true,
+  opacity: 0.4,
+  blending: THREE.AdditiveBlending,
+  sizeAttenuation: true,
+})
+const particles = new THREE.Points(particleGeom, particleMat)
+scene.add(particles)
+
+// ── Load Textures & Create Planes ──
+const loader = new THREE.TextureLoader()
+const planes = []
+const spheres = []
+let loaded = 0
+
+// Layout positions for different modes
+const layouts = {
+  orbit: (i, total) => {
+    const angle = (i / total) * Math.PI * 2
+    const radius = 18
+    return {
+      pos: [Math.cos(angle) * radius, (Math.random() - 0.5) * 4, Math.sin(angle) * radius],
+      rot: [0, -angle + Math.PI, 0]
+    }
+  },
+  tunnel: (i, total) => {
+    const z = -i * 4
+    const angle = (i / total) * Math.PI * 8
+    const radius = 6
+    return {
+      pos: [Math.cos(angle) * radius, Math.sin(angle) * radius, z],
+      rot: [0, 0, angle * 0.1]
+    }
+  },
+  wall: (i, total) => {
+    const cols = 6
+    const row = Math.floor(i / cols)
+    const col = i % cols
+    const spacing = 7
+    return {
+      pos: [(col - cols/2 + 0.5) * spacing, (2 - row) * spacing * 0.65, 0],
+      rot: [0, 0, 0]
+    }
+  },
+  spiral: (i, total) => {
+    const t = i / total
+    const angle = t * Math.PI * 6
+    const radius = 5 + t * 15
+    const y = t * 20 - 10
+    return {
+      pos: [Math.cos(angle) * radius, y, Math.sin(angle) * radius],
+      rot: [0, -angle + Math.PI, (Math.random() - 0.5) * 0.2]
+    }
+  },
+  explode: (i, total) => {
+    const phi = Math.acos(-1 + (2 * i) / total)
+    const theta = Math.sqrt(total * Math.PI) * phi
+    const radius = 20
+    return {
+      pos: [radius * Math.cos(theta) * Math.sin(phi), radius * Math.sin(theta) * Math.sin(phi), radius * Math.cos(phi)],
+      rot: [phi - Math.PI/2, theta, 0]
+    }
+  }
+}
+
+let currentMode = 'orbit'
+let autoFly = true
+let focusedPlane = null
+
+SCREENS.forEach((slug, i) => {
+  // Hero plane
+  const tex = loader.load(`${slug}/hero.png`, () => {
+    loaded++
+    gsap.to('#loaderFill', { width: `${(loaded / SCREENS.length) * 100}%`, duration: 0.3 })
+    if (loaded === SCREENS.length) onAllLoaded()
+  }, undefined, () => {
+    loaded++
+    if (loaded === SCREENS.length) onAllLoaded()
+  })
+
+  tex.colorSpace = THREE.SRGBColorSpace
+
+  const aspect = 16 / 10
+  const planeW = 5.5
+  const planeH = planeW / aspect
+  const geom = new THREE.PlaneGeometry(planeW, planeH)
+  const mat = new THREE.MeshStandardMaterial({
+    map: tex,
+    transparent: true,
+    opacity: 0.95,
+    side: THREE.DoubleSide,
+    roughness: 0.3,
+    metalness: 0.1,
+    emissive: new THREE.Color(0xffd700),
+    emissiveIntensity: 0.02,
+  })
+
+  const mesh = new THREE.Mesh(geom, mat)
+  mesh.userData = { slug, index: i, label: LABELS[slug] }
+
+  // Initial position (orbit)
+  const layout = layouts.orbit(i, SCREENS.length)
+  mesh.position.set(...layout.pos)
+  mesh.rotation.set(...layout.rot)
+
+  scene.add(mesh)
+  planes.push(mesh)
+
+  // Golden sphere companion
+  const sphereGeom = new THREE.SphereGeometry(0.15, 16, 16)
+  const sphereMat = new THREE.MeshStandardMaterial({
+    color: 0xffd700,
+    emissive: 0xffd700,
+    emissiveIntensity: 0.5,
+    roughness: 0.2,
+    metalness: 0.8,
+    transparent: true,
+    opacity: 0.8,
+  })
+  const sphere = new THREE.Mesh(sphereGeom, sphereMat)
+  sphere.position.set(mesh.position.x, mesh.position.y + planeH / 2 + 0.4, mesh.position.z)
+  sphere.userData = { parentIndex: i }
+  scene.add(sphere)
+  spheres.push(sphere)
+
+  // Connection line to center
+  const lineGeom = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, 0),
+    mesh.position.clone()
+  ])
+  const lineMat = new THREE.LineBasicMaterial({
+    color: 0xffd700,
+    transparent: true,
+    opacity: 0.05,
+  })
+  const line = new THREE.Line(lineGeom, lineMat)
+  scene.add(line)
+})
+
+// ── Core Orb ──
+const coreGeom = new THREE.SphereGeometry(0.8, 32, 32)
+const coreMat = new THREE.MeshStandardMaterial({
+  color: 0xffffff,
+  emissive: 0xffd700,
+  emissiveIntensity: 1.5,
+  roughness: 0.1,
+  metalness: 0.9,
+  transparent: true,
+  opacity: 0.9,
+})
+const core = new THREE.Mesh(coreGeom, coreMat)
+scene.add(core)
+
+// Core glow
+const glowGeom = new THREE.SphereGeometry(1.5, 16, 16)
+const glowMat = new THREE.MeshBasicMaterial({
+  color: 0xffd700,
+  transparent: true,
+  opacity: 0.08,
+  side: THREE.BackSide,
+})
+const glow = new THREE.Mesh(glowGeom, glowMat)
+scene.add(glow)
+
+// ── Grid Floor ──
+const gridHelper = new THREE.GridHelper(60, 60, 0x1a1a1a, 0x111111)
+gridHelper.position.y = -12
+scene.add(gridHelper)
+
+// ── Interaction ──
+const raycaster = new THREE.Raycaster()
+const mouse = new THREE.Vector2()
+let isDragging = false
+let prevMouse = { x: 0, y: 0 }
+let cameraTheta = 0
+let cameraPhi = Math.PI / 4
+let cameraRadius = 40
+let targetTheta = 0
+let targetPhi = Math.PI / 4
+let targetRadius = 40
+
+canvas.addEventListener('mousedown', e => {
+  isDragging = true
+  autoFly = false
+  prevMouse = { x: e.clientX, y: e.clientY }
+})
+
+canvas.addEventListener('mousemove', e => {
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
+
+  if (isDragging) {
+    const dx = e.clientX - prevMouse.x
+    const dy = e.clientY - prevMouse.y
+    targetTheta -= dx * 0.005
+    targetPhi = Math.max(0.1, Math.min(Math.PI - 0.1, targetPhi - dy * 0.005))
+    prevMouse = { x: e.clientX, y: e.clientY }
+  }
+})
+
+canvas.addEventListener('mouseup', () => { isDragging = false })
+
+canvas.addEventListener('wheel', e => {
+  targetRadius = Math.max(8, Math.min(80, targetRadius + e.deltaY * 0.05))
+  autoFly = false
+})
+
+canvas.addEventListener('click', () => {
+  raycaster.setFromCamera(mouse, camera)
+  const hits = raycaster.intersectObjects(planes)
+  if (hits.length > 0) {
+    const hit = hits[0].object
+    focusOnPlane(hit)
+  }
+})
+
+function focusOnPlane(mesh) {
+  focusedPlane = mesh
+  autoFly = false
+  const pos = mesh.position.clone()
+  const normal = new THREE.Vector3(0, 0, 1).applyQuaternion(mesh.quaternion)
+  const camTarget = pos.clone().add(normal.multiplyScalar(8))
+
+  gsap.to(camera.position, {
+    x: camTarget.x, y: camTarget.y + 1, z: camTarget.z,
+    duration: 1.5, ease: 'power2.inOut'
+  })
+
+  document.getElementById('focusName').textContent = mesh.userData.label
+  document.getElementById('focusDetail').textContent = `Screen ${mesh.userData.index + 1} / ${SCREENS.length}`
+  document.getElementById('hudCenter').classList.add('visible')
+
+  // Highlight
+  gsap.to(mesh.material, { emissiveIntensity: 0.15, duration: 0.5 })
+  planes.forEach(p => {
+    if (p !== mesh) gsap.to(p.material, { opacity: 0.3, duration: 0.5 })
+  })
+}
+
+function resetFocus() {
+  focusedPlane = null
+  document.getElementById('hudCenter').classList.remove('visible')
+  planes.forEach(p => {
+    gsap.to(p.material, { opacity: 0.95, emissiveIntensity: 0.02, duration: 0.5 })
+  })
+}
+
+// ── Mode Switching ──
+function setMode(mode) {
+  currentMode = mode
+  resetFocus()
+
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode))
+
+  planes.forEach((mesh, i) => {
+    const layout = layouts[mode](i, SCREENS.length)
+    gsap.to(mesh.position, { x: layout.pos[0], y: layout.pos[1], z: layout.pos[2], duration: 1.5, ease: 'power2.inOut' })
+    gsap.to(mesh.rotation, { x: layout.rot[0], y: layout.rot[1], z: layout.rot[2], duration: 1.5, ease: 'power2.inOut' })
+
+    // Move spheres with planes
+    const sphere = spheres[i]
+    gsap.to(sphere.position, {
+      x: layout.pos[0], y: layout.pos[1] + 2, z: layout.pos[2],
+      duration: 1.5, ease: 'power2.inOut'
+    })
+  })
+
+  // Adjust camera for mode
+  const cams = {
+    orbit: { radius: 40, phi: Math.PI / 4 },
+    tunnel: { radius: 15, phi: Math.PI / 2 },
+    wall: { radius: 35, phi: Math.PI / 2 },
+    spiral: { radius: 45, phi: Math.PI / 3 },
+    explode: { radius: 50, phi: Math.PI / 4 },
+  }
+  targetRadius = cams[mode].radius
+  targetPhi = cams[mode].phi
+}
+
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => setMode(btn.dataset.mode))
+})
+
+// ── Keyboard ──
+document.addEventListener('keydown', e => {
+  if (e.key === ' ') { e.preventDefault(); autoFly = !autoFly }
+  if (e.key === 'Escape') { resetFocus(); autoFly = true }
+  if (e.key >= '1' && e.key <= '5') {
+    const modes = ['orbit', 'tunnel', 'wall', 'spiral', 'explode']
+    setMode(modes[parseInt(e.key) - 1])
+  }
+})
+
+// ── Clock + FPS ──
+let frameCount = 0
+let lastFpsTime = performance.now()
+
+function updateHUD() {
+  const now = new Date()
+  document.getElementById('clock').textContent =
+    `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`
+
+  frameCount++
+  const elapsed = performance.now() - lastFpsTime
+  if (elapsed >= 1000) {
+    document.getElementById('fps').textContent = `${Math.round(frameCount * 1000 / elapsed)} FPS`
+    frameCount = 0
+    lastFpsTime = performance.now()
+  }
+}
+
+// ── Animation Loop ──
+const clock = new THREE.Clock()
+
+function animate() {
+  requestAnimationFrame(animate)
+  const t = clock.getElapsedTime()
+
+  // Auto-fly camera
+  if (autoFly) {
+    targetTheta += 0.003
+  }
+
+  // Smooth camera
+  cameraTheta += (targetTheta - cameraTheta) * 0.05
+  cameraPhi += (targetPhi - cameraPhi) * 0.05
+  cameraRadius += (targetRadius - cameraRadius) * 0.05
+
+  if (!focusedPlane) {
+    camera.position.x = cameraRadius * Math.sin(cameraPhi) * Math.cos(cameraTheta)
+    camera.position.y = cameraRadius * Math.cos(cameraPhi)
+    camera.position.z = cameraRadius * Math.sin(cameraPhi) * Math.sin(cameraTheta)
+    camera.lookAt(0, 0, 0)
+  }
+
+  // Core breathing
+  const breathe = 0.8 + Math.sin(t * 0.8) * 0.2
+  core.scale.setScalar(breathe)
+  glow.scale.setScalar(breathe * 2)
+  coreMat.emissiveIntensity = 1 + Math.sin(t * 1.2) * 0.5
+
+  // Sphere breathing
+  spheres.forEach((s, i) => {
+    const phase = t * 0.8 + i * 0.5
+    s.scale.setScalar(0.8 + Math.sin(phase) * 0.3)
+    s.material.emissiveIntensity = 0.3 + Math.sin(phase) * 0.3
+  })
+
+  // Particles drift
+  const pos = particles.geometry.attributes.position
+  for (let i = 0; i < particleCount; i++) {
+    pos.array[i * 3 + 1] += 0.005
+    if (pos.array[i * 3 + 1] > 30) pos.array[i * 3 + 1] = -30
+    pos.array[i * 3] += Math.sin(t * 0.5 + i) * 0.002
+  }
+  pos.needsUpdate = true
+
+  // Gold light pulse
+  goldLight.intensity = 2 + Math.sin(t * 0.5) * 0.5
+
+  // Raycaster hover
+  if (!isDragging) {
+    raycaster.setFromCamera(mouse, camera)
+    const hits = raycaster.intersectObjects(planes)
+    planes.forEach(p => {
+      if (!focusedPlane || p === focusedPlane) {
+        const isHovered = hits.length > 0 && hits[0].object === p
+        const targetEmit = isHovered ? 0.08 : 0.02
+        p.material.emissiveIntensity += (targetEmit - p.material.emissiveIntensity) * 0.1
+      }
+    })
+
+    if (hits.length > 0) {
+      canvas.style.cursor = 'pointer'
+      const hovered = hits[0].object
+      document.getElementById('hudScreen').textContent = hovered.userData.label.toUpperCase()
+    } else {
+      canvas.style.cursor = 'grab'
+      if (!focusedPlane) document.getElementById('hudScreen').textContent = '34 SCREENS LOADED'
+    }
+  }
+
+  updateHUD()
+  renderer.render(scene, camera)
+}
+
+// ── Start ──
+function onAllLoaded() {
+  gsap.to('#loaderFill', { width: '100%', duration: 0.3 })
+  gsap.to('#loader', { opacity: 0, duration: 0.8, delay: 0.5, onComplete: () => {
+    document.getElementById('loader').style.display = 'none'
+  }})
+  gsap.to('#hud', { opacity: 1, duration: 0.8, delay: 1 })
+}
+
+// ── Resize ──
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+})
+
+animate()
+</script>
+</body>
+</html>

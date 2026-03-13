@@ -484,6 +484,10 @@ async function executeOutreachSend({
     companyId: compact(contact.company_id) || companyId,
     correlationId,
   });
+  const dispatchMessage = asRecord(dispatch.message);
+  const dispatchedMessageId = compact(dispatchMessage.id) || null;
+  const dispatchedProviderMessageId = compact(dispatchMessage.provider_message_id) || compact(dispatchMessage.external_id) || null;
+  const dispatchedProviderStatus = compact(dispatchMessage.status) || "sent";
 
   const leadPatch: Record<string, unknown> = {};
   if (lead?.id && !compact(lead.contact_id)) leadPatch.contact_id = contactId;
@@ -503,6 +507,21 @@ async function executeOutreachSend({
       status: "sent",
       sent_at: new Date().toISOString(),
       contact_id: contactId,
+      conversation_id: conversationId,
+      message_id: dispatchedMessageId,
+      provider_message_id: dispatchedProviderMessageId,
+      provider_status: dispatchedProviderStatus,
+      provider_error: null,
+      metadata: {
+        ...asRecord(queueRow.metadata),
+        last_dispatch: {
+          at: new Date().toISOString(),
+          channel: compact(dispatch.channel) || "email",
+          message_id: dispatchedMessageId,
+          provider_message_id: dispatchedProviderMessageId,
+          provider_status: dispatchedProviderStatus,
+        },
+      },
     })
     .eq("id", queueRow.id)
     .select("*, prospector_leads(*)")

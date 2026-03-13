@@ -1,8 +1,6 @@
 :root {
-  --brand-gold: #FFD700;
-  --brand-gold-alpha: rgba(255, 215, 0, 0.5);
-  --brand-ivory: #FAF9F6;
-  
+  --gold-accent: #FFD700;
+  --ivory-canvas: #FDFBF7;
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -14,18 +12,18 @@
 }
 
 @keyframes goldGlow {
-  0%, 100% { box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
   50% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
 }
 
 @keyframes slideIn {
-  0% { 
-    transform: translateY(8px); 
-    opacity: 0; 
+  0% {
+    transform: translateY(8px);
+    opacity: 0;
   }
-  100% { 
-    transform: translateY(0); 
-    opacity: 1; 
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -40,13 +38,13 @@
 }
 
 @keyframes fadeFloat {
-  0%, 100% { 
-    transform: translateY(0); 
-    opacity: 0.4; 
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
   }
-  50% { 
-    transform: translateY(-4px); 
-    opacity: 1; 
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
   }
 }
 
@@ -59,16 +57,11 @@
 }
 
 .animate-slide-in {
-  animation: slideIn var(--transition-slow) forwards;
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animate-shimmer {
-  background: linear-gradient(
-    90deg, 
-    transparent 25%, 
-    rgba(255, 215, 0, 0.08) 50%, 
-    transparent 75%
-  );
+  background: linear-gradient(90deg, transparent 25%, rgba(255, 215, 0, 0.15) 50%, transparent 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite linear;
 }
@@ -78,7 +71,7 @@
 }
 
 .animate-float {
-  animation: fadeFloat 4s ease-in-out infinite;
+  animation: fadeFloat 3s ease-in-out infinite;
 }
 
 .hover-lift {
@@ -96,14 +89,14 @@
 }
 
 .hover-gold:hover {
-  border-color: var(--brand-gold);
-  box-shadow: 0 0 8px var(--brand-gold-alpha);
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
 }
 
 
 import { useEffect } from 'react';
 
-export function useAnimateOnMount(ref) {
+export const useAnimateOnMount = (ref) => {
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
@@ -111,17 +104,17 @@ export function useAnimateOnMount(ref) {
     element.style.opacity = '0';
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          element.style.opacity = '';
-          element.classList.add('animate-slide-in');
-          observer.unobserve(element);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-slide-in');
+            observer.unobserve(entry.target);
+          }
+        });
       },
       {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: '0px 0px -20px 0px'
       }
     );
 
@@ -133,4 +126,4 @@ export function useAnimateOnMount(ref) {
       }
     };
   }, [ref]);
-}
+};

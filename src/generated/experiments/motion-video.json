@@ -1,0 +1,6 @@
+{
+  "screen": "experiments",
+  "model": "veo-3.1-fast-generate-preview",
+  "prompt": "A premium SaaS dashboard loading sequence. Golden particles materialize from screen edges, converging at center. Cards with soft neumorphic shadows slide in from below, staggered. A small golden dot pulses steadily like a heartbeat. Warm off-white canvas. Eye level, static camera. Clean, minimal, expensive. No people, no text overlays. Color palette: warm off-white (#FAFAF8), gold (#FFD700), soft gray (#E5E5E0). Aspect ratio 16:9. Cinematic quality. Bloomberg meets Apple aesthetic.",
+  "status": "prompt_ready"
+}

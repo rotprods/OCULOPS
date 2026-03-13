@@ -1,0 +1,6 @@
+{
+  "screen": "pipeline",
+  "model": "veo-3.1-fast-generate-preview",
+  "prompt": "A smooth tracking shot across a Kanban board. Deal cards slide between columns with subtle physics. A golden energy arc connects the column headers, pulsing left-to-right. Warm ivory background. Clean minimal UI. Eye level, soft focus on the active column. No people, no text overlays. Color palette: warm off-white (#FAFAF8), gold (#FFD700), soft gray (#E5E5E0). Aspect ratio 16:9. Cinematic quality. Bloomberg meets Apple aesthetic.",
+  "status": "prompt_ready"
+}

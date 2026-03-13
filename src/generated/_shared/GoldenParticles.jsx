@@ -1,20 +1,38 @@
 import React, { useRef, useEffect } from 'react';
 
-export default function GoldenParticles({ count = 30, speed = 1, opacity = 1 }) {
-  const canvasRef = useRef(null);
-  const configRef = useRef({ speed, opacity });
+interface GoldenParticlesProps {
+  count?: number;
+  speed?: number;
+  opacity?: number;
+}
 
-  useEffect(() => {
-    configRef.current = { speed, opacity };
-  }, [speed, opacity]);
+type Particle = {
+  x: number;
+  y: number;
+  radius: number;
+  speedY: number;
+  opacity: number;
+  angle: number;
+  angleSpeed: number;
+  amplitude: number;
+};
+
+export const GoldenParticles: React.FC<GoldenParticlesProps> = ({
+  count = 30,
+  speed = 1,
+  opacity = 1
+}) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    let animationFrameId;
-    let particles = [];
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let particles: Particle[] = [];
 
     const parent = canvas.parentElement;
     const resizeObserver = new ResizeObserver(() => {
@@ -26,24 +44,22 @@ export default function GoldenParticles({ count = 30, speed = 1, opacity = 1 }) 
 
     if (parent) {
       resizeObserver.observe(parent);
-    } else {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = parent.clientWidth;
+      canvas.height = parent.clientHeight;
     }
 
     const initParticles = () => {
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push({
-          baseX: Math.random() * canvas.width,
-          x: 0,
+          x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           radius: Math.random() * 3 + 2,
-          speedY: Math.random() * 0.3 + 0.2,
+          speedY: (Math.random() * 0.3 + 0.2) * speed,
+          opacity: (Math.random() * 0.5 + 0.1) * opacity,
           angle: Math.random() * Math.PI * 2,
-          angleSpeed: Math.random() * 0.015 + 0.005,
-          amplitude: Math.random() * 15 + 5,
-          baseOpacity: Math.random() * 0.5 + 0.1
+          angleSpeed: Math.random() * 0.02 + 0.01,
+          amplitude: Math.random() * 1.5 + 0.5
         });
       }
     };
@@ -53,22 +69,25 @@ export default function GoldenParticles({ count = 30, speed = 1, opacity = 1 }) 
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const currentSpeed = configRef.current.speed;
-      const currentOpacity = configRef.current.opacity;
+      particles.forEach(p => {
+        p.y -= p.speedY;
+        p.angle += p.angleSpeed;
+        p.x += Math.sin(p.angle) * p.amplitude * 0.5;
 
-      particles.forEach((p) => {
-        p.y -= p.speedY * currentSpeed;
-        p.angle += p.angleSpeed * currentSpeed;
-        p.x = p.baseX + Math.sin(p.angle) * p.amplitude;
-
-        if (p.y + p.radius < 0) {
-          p.y = canvas.height + p.radius;
-          p.baseX = Math.random() * canvas.width;
+        if (p.y < -p.radius - 10) {
+          p.y = canvas.height + p.radius + 10;
+          p.x = Math.random() * canvas.width;
+          p.radius = Math.random() * 3 + 2;
+          p.speedY = (Math.random() * 0.3 + 0.2) * speed;
+          p.opacity = (Math.random() * 0.5 + 0.1) * opacity;
+          p.angle = Math.random() * Math.PI * 2;
+          p.angleSpeed = Math.random() * 0.02 + 0.01;
+          p.amplitude = Math.random() * 1.5 + 0.5;
         }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 215, 0, ${p.baseOpacity * currentOpacity})`;
+        ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`;
         ctx.shadowBlur = 8;
         ctx.shadowColor = 'rgba(255, 215, 0, 0.3)';
         ctx.fill();
@@ -80,11 +99,13 @@ export default function GoldenParticles({ count = 30, speed = 1, opacity = 1 }) 
     render();
 
     return () => {
-      if (parent) resizeObserver.unobserve(parent);
+      if (parent) {
+        resizeObserver.unobserve(parent);
+      }
       resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
-  }, [count]);
+  }, [count, speed, opacity]);
 
   return (
     <canvas
@@ -94,12 +115,10 @@ export default function GoldenParticles({ count = 30, speed = 1, opacity = 1 }) 
         width: '100%',
         height: '100%',
         pointerEvents: 'none',
-        background: 'transparent',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        zIndex: 10
+        background: 'transparent'
       }}
     />
   );
-}
+};
+
+export default GoldenParticles;

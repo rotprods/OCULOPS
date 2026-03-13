@@ -39,6 +39,7 @@
     "electron:build": "vite build && electron-builder",
     "electron:preview": "vite build && electron .",
     "test:e2e": "playwright test",
+    "smoke:agentic-core": "node scripts/smoke-agentic-core.mjs",
     "design:factory": "node scripts/design-factory.mjs",
     "design:factory:images": "node scripts/design-factory.mjs --only images",
     "design:factory:code": "node scripts/design-factory.mjs --only code",

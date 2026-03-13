@@ -7,6 +7,12 @@ import { admin } from "../_shared/supabase.ts";
 
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
 
+function asRecord(value: unknown) {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {};
+}
+
 async function classifyMessage(content: string, subject: string | null): Promise<Record<string, unknown> | null> {
   if (!OPENAI_API_KEY || !content || content.length < 10) return null;
 
@@ -128,6 +134,37 @@ async function findOrCreateConversation({
   threadId: string | null;
   messageAt: string;
 }) {
+  if (threadId) {
+    let threadQuery = admin
+      .from("conversations")
+      .select("*")
+      .eq("channel_id", channelId)
+      .eq("provider_thread_id", threadId)
+      .limit(1);
+
+    threadQuery = userId ? threadQuery.eq("user_id", userId) : threadQuery.is("user_id", null);
+    const { data: threadedRows, error: threadedError } = await threadQuery;
+    if (threadedError) throw threadedError;
+
+    if (threadedRows?.[0]) {
+      const { data: updatedByThread, error: updateByThreadError } = await admin
+        .from("conversations")
+        .update({
+          status: "open",
+          unread_count: (threadedRows[0].unread_count || 0) + 1,
+          last_message_at: messageAt,
+          last_inbound_at: messageAt,
+          provider_thread_id: threadId,
+        })
+        .eq("id", threadedRows[0].id)
+        .select()
+        .single();
+
+      if (updateByThreadError) throw updateByThreadError;
+      return updatedByThread;
+    }
+  }
+
   let query = admin
     .from("conversations")
     .select("*")
@@ -179,6 +216,66 @@ async function findOrCreateConversation({
 
   if (insertError) throw insertError;
   return created;
+}
+
+async function loadLatestOutreachQueueRow(field: "conversation_id" | "contact_id" | "recipient_email", value: string) {
+  const { data, error } = await admin
+    .from("outreach_queue")
+    .select("id, metadata")
+    .eq(field, value)
+    .in("status", ["sent", "approved"])
+    .order("sent_at", { ascending: false, nullsFirst: false })
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  if (error) throw error;
+  return data?.[0] || null;
+}
+
+async function reconcileOutreachReply({
+  conversation,
+  contact,
+  inboundMessageId,
+  messageAt,
+}: {
+  conversation: Record<string, unknown>;
+  contact: Record<string, unknown>;
+  inboundMessageId: string;
+  messageAt: string;
+}) {
+  let queueRow = await loadLatestOutreachQueueRow("conversation_id", compact(conversation.id));
+  if (!queueRow && compact(contact.id)) {
+    queueRow = await loadLatestOutreachQueueRow("contact_id", compact(contact.id));
+  }
+  if (!queueRow && compact(contact.email)) {
+    queueRow = await loadLatestOutreachQueueRow("recipient_email", compact(contact.email));
+  }
+  if (!queueRow) return null;
+
+  await admin
+    .from("outreach_queue")
+    .update({
+      status: "replied",
+      replied_at: messageAt,
+      provider_status: "replied",
+      provider_error: null,
+      conversation_id: compact(conversation.id) || null,
+      message_id: inboundMessageId,
+      metadata: {
+        ...asRecord(queueRow.metadata),
+        last_reply: {
+          at: messageAt,
+          conversation_id: compact(conversation.id) || null,
+          contact_id: compact(contact.id) || null,
+          inbound_message_id: inboundMessageId,
+          source: "gmail_inbound",
+        },
+      },
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", queueRow.id);
+
+  return queueRow.id as string;
 }
 
 async function persistInboundMessage({
@@ -252,7 +349,37 @@ async function persistInboundMessage({
     },
   });
 
-  // AI classification of inbound message
+  await reconcileOutreachReply({
+    conversation,
+    contact,
+    inboundMessageId: String(data.id),
+    messageAt,
+  }).catch((reconcileError) => {
+    console.error("[gmail-inbound] outreach reply reconcile failed:", reconcileError);
+  });
+
+  try {
+    await executeTriggeredWorkflows({
+      triggerKey: "message_in",
+      userId,
+      context: {
+        user_id: userId,
+        channel: "email",
+        contact_id: contact.id,
+        company_id: contact.company_id || null,
+        conversation_id: conversation.id,
+        message_id: data.id,
+        subject,
+        body: content,
+      },
+      sendLive: false,
+      source: "gmail_inbound",
+    });
+  } catch (automationError) {
+    console.error("[gmail-inbound] automation trigger failed:", automationError);
+  }
+
+  // AI classification is best-effort and runs after message_in trigger.
   try {
     const classification = await classifyMessage(content || "", subject);
     if (classification) {
@@ -277,27 +404,6 @@ async function persistInboundMessage({
     }
   } catch (classifyError) {
     console.error("[gmail-inbound] classification failed:", classifyError);
-  }
-
-  try {
-    await executeTriggeredWorkflows({
-      triggerKey: "message_in",
-      userId,
-      context: {
-        user_id: userId,
-        channel: "email",
-        contact_id: contact.id,
-        company_id: contact.company_id || null,
-        conversation_id: conversation.id,
-        message_id: data.id,
-        subject,
-        body: content,
-      },
-      sendLive: false,
-      source: "gmail_inbound",
-    });
-  } catch (automationError) {
-    console.error("[gmail-inbound] automation trigger failed:", automationError);
   }
 
   return data;

@@ -6,6 +6,12 @@ import { compact, errorResponse, handleCors, jsonResponse, readJson } from "../_
 import { admin, getAuthUser } from "../_shared/supabase.ts";
 import { normalizePhone, sendWhatsAppText } from "../_shared/whatsapp.ts";
 
+function asRecord(value: unknown) {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {};
+}
+
 function inferChannelType({
   explicit,
   message,
@@ -125,6 +131,56 @@ async function upsertOutboundMessage({
   return data;
 }
 
+async function syncOutreachQueueDispatch(input: {
+  queueId: string;
+  conversationId: string;
+  messageId: string | null;
+  providerMessageId: string | null;
+  providerStatus: string;
+  providerError?: string | null;
+  queueStatus?: string | null;
+  channelType: string;
+  recipient: string;
+}) {
+  const { data: queueRow, error: queueError } = await admin
+    .from("outreach_queue")
+    .select("id, metadata")
+    .eq("id", input.queueId)
+    .maybeSingle();
+  if (queueError || !queueRow) return;
+
+  const patch: Record<string, unknown> = {
+    conversation_id: input.conversationId,
+    message_id: input.messageId,
+    provider_message_id: input.providerMessageId,
+    provider_status: input.providerStatus,
+    provider_error: compact(input.providerError) || null,
+    metadata: {
+      ...asRecord(queueRow.metadata),
+      last_dispatch: {
+        at: new Date().toISOString(),
+        channel: input.channelType,
+        recipient: input.recipient,
+        provider_status: input.providerStatus,
+        provider_message_id: input.providerMessageId,
+      },
+    },
+    updated_at: new Date().toISOString(),
+  };
+
+  if (compact(input.queueStatus)) {
+    patch.status = compact(input.queueStatus);
+  }
+  if (input.providerStatus === "sent") {
+    patch.sent_at = new Date().toISOString();
+  }
+
+  await admin
+    .from("outreach_queue")
+    .update(patch)
+    .eq("id", input.queueId);
+}
+
 Deno.serve(async (req: Request) => {
   const cors = handleCors(req);
   if (cors) return cors;
@@ -178,6 +234,7 @@ Deno.serve(async (req: Request) => {
     const existingMetadata = (existingMessage?.metadata as Record<string, unknown>) || {};
     const subject = compact(body.subject) || compact(existingMessage?.subject) || compact(existingMetadata.subject) || null;
     const content = compact(body.body) || compact(body.content) || compact(existingMessage?.content);
+    const queueId = compact(body.metadata?.outreach_queue_id) || compact(existingMetadata.outreach_queue_id) || null;
 
     if (!content) {
       return errorResponse("Message content is required");
@@ -195,14 +252,74 @@ Deno.serve(async (req: Request) => {
       return errorResponse(`No ${channelType === "email" ? "email" : "phone"} recipient found`);
     }
 
-    const sendResult = channelType === "email"
-      ? await sendGmailMessage(channel, {
-        to: recipient,
+    let sendResult: Record<string, unknown>;
+    try {
+      sendResult = channelType === "email"
+        ? await sendGmailMessage(channel, {
+          to: recipient,
+          subject,
+          body: content,
+          threadId: compact(conversation.provider_thread_id) || null,
+        }) as Record<string, unknown>
+        : await sendWhatsAppText(channel, recipient, content) as Record<string, unknown>;
+    } catch (sendError) {
+      const errorMessage = sendError instanceof Error ? sendError.message : "Provider send failed";
+      const metadata = {
+        ...(existingMetadata || {}),
+        ...(body.metadata || {}),
+        channel: channelType,
         subject,
-        body: content,
-        threadId: compact(conversation.provider_thread_id) || null,
-      })
-      : await sendWhatsAppText(channel, recipient, content);
+        recipient,
+        channel_id: channel.id,
+      };
+
+      const failedMessage = await upsertOutboundMessage({
+        messageId: body.message_id || null,
+        conversationId,
+        userId: userId || compact(conversation.user_id) || null,
+        channelId: channel.id,
+        content,
+        subject,
+        metadata,
+        providerMessageId: null,
+        externalId: null,
+        status: "failed",
+        rawPayload: { error: errorMessage },
+        errorMessage,
+      });
+
+      await admin
+        .from("conversations")
+        .update({
+          channel_id: channel.id,
+          channel: channelType,
+          status: "failed",
+          last_message_at: new Date().toISOString(),
+          last_outbound_at: new Date().toISOString(),
+          metadata: {
+            ...(conversation.metadata as Record<string, unknown> || {}),
+            last_channel_type: channelType,
+            last_dispatch_error: errorMessage,
+          },
+        })
+        .eq("id", conversationId);
+
+      if (queueId) {
+        await syncOutreachQueueDispatch({
+          queueId,
+          conversationId,
+          messageId: compact(failedMessage?.id) || null,
+          providerMessageId: null,
+          providerStatus: "failed",
+          providerError: errorMessage,
+          queueStatus: "approved",
+          channelType,
+          recipient,
+        }).catch(() => {});
+      }
+
+      return errorResponse(errorMessage, 500);
+    }
 
     const providerMessageId = channelType === "email"
       ? compact((sendResult as { id?: string }).id)
@@ -233,6 +350,19 @@ Deno.serve(async (req: Request) => {
       status: "sent",
       rawPayload: sendResult as Record<string, unknown>,
     });
+
+    if (queueId) {
+      await syncOutreachQueueDispatch({
+        queueId,
+        conversationId,
+        messageId: compact(persistedMessage?.id) || null,
+        providerMessageId: providerMessageId || null,
+        providerStatus: "sent",
+        queueStatus: "sent",
+        channelType,
+        recipient,
+      }).catch(() => {});
+    }
 
     await admin
       .from("conversations")

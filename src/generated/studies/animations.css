@@ -1,8 +1,6 @@
 :root {
-  --brand-gold: #FFD700;
-  --brand-gold-alpha: rgba(255, 215, 0, 0.5);
-  --brand-ivory: #FAF9F6;
-  
+  --gold-accent: #FFD700;
+  --ivory-canvas: #FFFFF0;
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -14,18 +12,18 @@
 }
 
 @keyframes goldGlow {
-  0%, 100% { box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
-  50% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
+  50% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.5); }
 }
 
 @keyframes slideIn {
-  0% { 
-    transform: translateY(8px); 
-    opacity: 0; 
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
   }
-  100% { 
-    transform: translateY(0); 
-    opacity: 1; 
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -40,22 +38,22 @@
 }
 
 @keyframes fadeFloat {
-  0%, 100% { 
-    transform: translateY(0); 
-    opacity: 0.4; 
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateY(0);
   }
-  50% { 
-    transform: translateY(-4px); 
-    opacity: 1; 
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
   }
 }
 
 .animate-breathe {
-  animation: breathe 3s ease-in-out infinite;
+  animation: breathe 3s infinite ease-in-out;
 }
 
 .animate-gold-glow {
-  animation: goldGlow 2s ease-in-out infinite;
+  animation: goldGlow 2s infinite ease-in-out;
 }
 
 .animate-slide-in {
@@ -64,21 +62,21 @@
 
 .animate-shimmer {
   background: linear-gradient(
-    90deg, 
-    transparent 25%, 
-    rgba(255, 215, 0, 0.08) 50%, 
-    transparent 75%
+    90deg,
+    rgba(255, 255, 240, 0) 0%,
+    rgba(255, 215, 0, 0.15) 50%,
+    rgba(255, 255, 240, 0) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 2s infinite linear;
 }
 
 .animate-heartbeat {
-  animation: heartbeat 2s ease-in-out infinite;
+  animation: heartbeat 2s infinite ease-in-out;
 }
 
 .animate-float {
-  animation: fadeFloat 4s ease-in-out infinite;
+  animation: fadeFloat 3s infinite ease-in-out;
 }
 
 .hover-lift {
@@ -87,7 +85,7 @@
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
 }
 
 .hover-gold {
@@ -96,8 +94,8 @@
 }
 
 .hover-gold:hover {
-  border-color: var(--brand-gold);
-  box-shadow: 0 0 8px var(--brand-gold-alpha);
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
 }
 
 
@@ -111,26 +109,24 @@ export function useAnimateOnMount(ref) {
     element.style.opacity = '0';
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          element.style.opacity = '';
-          element.classList.add('animate-slide-in');
-          observer.unobserve(element);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-slide-in');
+            observer.unobserve(entry.target);
+          }
+        });
       },
       {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: '0px 0px -10px 0px'
       }
     );
 
     observer.observe(element);
 
     return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
+      observer.disconnect();
     };
   }, [ref]);
 }

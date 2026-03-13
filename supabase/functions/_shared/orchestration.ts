@@ -3,9 +3,7 @@ import { evaluateArtifact, type ImpactLevel } from "./evaluation.ts";
 import { compact } from "./http.ts";
 import { runSimulation } from "./simulation.ts";
 import { admin } from "./supabase.ts";
-
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
-const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+import { invokeToolThroughBus } from "./tool-bus.ts";
 
 export interface JsonRecord {
   [key: string]: unknown;
@@ -233,33 +231,6 @@ export function eventMatchesPattern(pattern: string, eventType: string) {
     return normalizedType.startsWith(normalizedPattern.slice(0, -1));
   }
   return false;
-}
-
-async function callEdgeFunction(
-  functionName: string,
-  payload: JsonRecord,
-  authHeader?: string | null,
-) {
-  if (!SUPABASE_URL || !SERVICE_KEY) {
-    throw new Error("Supabase runtime env is not configured");
-  }
-
-  const response = await fetch(`${SUPABASE_URL}/functions/v1/${functionName}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: authHeader || `Bearer ${SERVICE_KEY}`,
-      apikey: SERVICE_KEY,
-    },
-    body: JSON.stringify(payload),
-  });
-
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    throw new Error(typeof data?.error === "string" ? data.error : `${functionName} failed (${response.status})`);
-  }
-
-  return asRecord(data);
 }
 
 export async function emitSystemEvent(input: EventEnvelopeInput) {
@@ -765,9 +736,9 @@ async function executeGoalStep(input: {
       throw new Error(`Goal step ${input.step.id} is missing agent_code_name`);
     }
 
-    output = await callEdgeFunction(
-      `agent-${agentCodeName}`,
-      {
+    output = await invokeToolThroughBus({
+      toolCodeName: `agent-${agentCodeName}`,
+      payload: {
         ...goalContext,
         ...asRecord(stepInput.input_mapping),
         action: compact(input.step.action) || "cycle",
@@ -778,8 +749,15 @@ async function executeGoalStep(input: {
         correlation_id: input.correlationId,
         skip_telegram: true,
       },
-      input.authHeader,
-    );
+      authHeader: input.authHeader,
+      invokerAgentCodeName: "nexus",
+      orgId: resolvedOrgId,
+      userId,
+      goalId: String(input.goal.id),
+      goalStepId: String(input.step.id),
+      correlationId: input.correlationId,
+      source: "goal_executor",
+    });
   } else if (compact(input.step.step_type) === "pipeline") {
     const templateCodeName = compact(input.step.pipeline_template) ||
       compact(asRecord(goalContext.workflow).template_code_name);
@@ -1664,15 +1642,37 @@ export async function executePipelineRun(input: ExecutePipelineRunInput) {
           ? `agent-${compact(step.agent_code_name)}`
           : "";
         if (!functionName) throw new Error(`Pipeline step ${step.step_key} has no agent_code_name`);
-        output = await callEdgeFunction(functionName, stepPayload, input.authHeader);
-      } else if (step.step_type === "workflow") {
-        output = await callEdgeFunction("automation-runner", {
-          action: "trigger",
-          trigger_key: compact(step.action) || compact(step.step_key),
-          context: stepPayload,
+        output = await invokeToolThroughBus({
+          toolCodeName: functionName,
+          payload: stepPayload,
+          authHeader: input.authHeader,
+          invokerAgentCodeName: "cortex",
+          orgId: resolvedOrgId,
+          userId,
+          pipelineRunId: String(pipelineRun.id),
+          stepRunId: String(stepRun.id),
+          correlationId: compact(pipelineRun.correlation_id) || null,
           source: "pipeline_run",
-          send_live: false,
-        }, input.authHeader);
+        });
+      } else if (step.step_type === "workflow") {
+        output = await invokeToolThroughBus({
+          toolCodeName: "automation-runner",
+          payload: {
+            action: "trigger",
+            trigger_key: compact(step.action) || compact(step.step_key),
+            context: stepPayload,
+            source: "pipeline_run",
+            send_live: false,
+          },
+          authHeader: input.authHeader,
+          invokerAgentCodeName: "cortex",
+          orgId: resolvedOrgId,
+          userId,
+          pipelineRunId: String(pipelineRun.id),
+          stepRunId: String(stepRun.id),
+          correlationId: compact(pipelineRun.correlation_id) || null,
+          source: "pipeline_run",
+        });
       } else if (step.step_type === "event") {
         const emitted = await emitSystemEvent({
           eventType: compact(step.emits_event) || compact(step.action) || compact(step.step_key),
@@ -1687,6 +1687,64 @@ export async function executePipelineRun(input: ExecutePipelineRunInput) {
         output = { event: emitted };
       } else {
         output = { ok: true, skipped: true };
+      }
+
+      const waitingApproval = compact(output.status) === "waiting_approval" || output.approval_required === true;
+      if (waitingApproval) {
+        const pausedAt = nowIso();
+        await admin
+          .from("pipeline_step_runs")
+          .update({
+            status: "waiting",
+            output,
+            completed_at: null,
+            updated_at: pausedAt,
+          })
+          .eq("id", stepRun.id);
+
+        await admin
+          .from("pipeline_runs")
+          .update({
+            status: "paused",
+            updated_at: pausedAt,
+            last_error: compact(output.summary) || "Waiting for approval before step execution.",
+          })
+          .eq("id", pipelineRun.id);
+
+        await updatePipelineRunState(String(pipelineRun.id), {
+          current_agent: compact(step.agent_code_name) || null,
+          waiting_for_event: "approval_required",
+          metrics: {
+            total_steps: steps.length,
+            blocked_step: step.step_key,
+            completed_steps: Math.max(Number(step.step_number) - 1, 0),
+          },
+        });
+
+        await emitSystemEvent({
+          eventType: "pipeline.step.waiting_approval",
+          payload: {
+            pipeline_run_id: pipelineRun.id,
+            step_run_id: stepRun.id,
+            step_number: step.step_number,
+            step_key: step.step_key,
+            output,
+          },
+          userId,
+          orgId: resolvedOrgId,
+          sourceAgent: "cortex",
+          pipelineRunId: String(pipelineRun.id),
+          stepRunId: String(stepRun.id),
+          correlationId: compact(pipelineRun.correlation_id) || null,
+        });
+
+        return {
+          ok: true,
+          pipeline_run_id: pipelineRun.id,
+          step_run_id: stepRun.id,
+          status: "waiting_approval",
+          output,
+        };
       }
 
       runContext = mergeContextWithOutput(runContext, compact(step.step_key), output);
@@ -2001,11 +2059,186 @@ export async function getPipelineRunDetails(pipelineRunId: string) {
 
   if (stateError) throw stateError;
 
+  const [
+    deadLetterEventsResult,
+    failedEventsResult,
+  ] = await Promise.all([
+    admin
+      .from("event_log")
+      .select("id", { count: "exact", head: true })
+      .eq("pipeline_run_id", pipelineRunId)
+      .eq("status", "dead_lettered"),
+    admin
+      .from("event_log")
+      .select("id", { count: "exact", head: true })
+      .eq("pipeline_run_id", pipelineRunId)
+      .eq("status", "failed"),
+  ]);
+  if (deadLetterEventsResult.error) throw deadLetterEventsResult.error;
+  if (failedEventsResult.error) throw failedEventsResult.error;
+
+  const failureSignals = {
+    dead_letter_events: deadLetterEventsResult.count || 0,
+    failed_events: failedEventsResult.count || 0,
+  };
+
+  const normalizedRunStatus = compact(pipelineRun?.status);
+  const sortedStepRuns = (stepRuns || []) as JsonRecord[];
+  const failedStep = [...sortedStepRuns].reverse().find((step) => compact(step.status) === "failed") || null;
+  const waitingStep = [...sortedStepRuns].reverse().find((step) => {
+    const status = compact(step.status);
+    return status === "waiting" || status === "waiting_approval";
+  }) || null;
+  const runningStep = [...sortedStepRuns].reverse().find((step) => compact(step.status) === "running") || null;
+  const simulationGateBlocked = compact(asRecord(state || {}).waiting_for_event) === "simulation_gate"
+    || compact(pipelineRun?.last_error).toLowerCase().includes("simulation gate blocked")
+    || compact(waitingStep?.error).toLowerCase().includes("simulation gate blocked");
+  const waitingApproval = compact(waitingStep?.status) === "waiting_approval"
+    || compact(pipelineRun?.status) === "paused" && compact(asRecord(state || {}).waiting_for_event) === "approval";
+
+  const nowMs = Date.now();
+  const latestActivityIso = compact(asRecord(state || {}).updated_at)
+    || compact(runningStep?.started_at)
+    || compact(pipelineRun?.updated_at)
+    || compact(pipelineRun?.created_at);
+  const latestActivityMs = latestActivityIso ? new Date(latestActivityIso).getTime() : null;
+  const stalledSeconds = latestActivityMs ? Math.max(0, Math.round((nowMs - latestActivityMs) / 1000)) : null;
+  const isStuckRunning = normalizedRunStatus === "running" && stalledSeconds !== null && stalledSeconds >= 900;
+
+  const failedStepEvaluation = asRecord(asRecord(failedStep?.output).evaluation);
+  const failedStepDecision = compact(failedStepEvaluation.decision);
+
+  let taxonomyClass = "healthy";
+  let severity: "low" | "medium" | "high" = "low";
+  let reason = "Run completed successfully.";
+  let recommendedAction = "none";
+
+  if (simulationGateBlocked) {
+    taxonomyClass = "simulation_gate_blocked";
+    severity = "high";
+    reason = "High-risk step blocked by simulation policy gate.";
+    recommendedAction = "Review simulation findings and approve/replan before retry.";
+  } else if (waitingApproval) {
+    taxonomyClass = "waiting_approval";
+    severity = "medium";
+    reason = "Pipeline is paused waiting for explicit approval.";
+    recommendedAction = "Resolve approval request and resume run.";
+  } else if (normalizedRunStatus === "failed") {
+    if (failedStepDecision === "reject" || failedStepDecision === "escalate") {
+      taxonomyClass = "evaluation_rejected";
+      severity = "high";
+      reason = `Failure scored by critic decision: ${failedStepDecision}.`;
+      recommendedAction = "Apply critic recommendation before re-running.";
+    } else if ((failureSignals.dead_letter_events || 0) > 0) {
+      taxonomyClass = "delivery_dead_letter";
+      severity = "high";
+      reason = "Event delivery entered dead-letter path.";
+      recommendedAction = "Inspect event delivery target and re-dispatch.";
+    } else {
+      taxonomyClass = "step_execution_failed";
+      severity = "high";
+      reason = compact(failedStep?.error) || compact(pipelineRun?.last_error) || "Step execution failed.";
+      recommendedAction = "Fix failed step cause, then retry/replan.";
+    }
+  } else if (normalizedRunStatus === "paused") {
+    taxonomyClass = "paused";
+    severity = "medium";
+    reason = compact(pipelineRun?.last_error) || "Run is paused.";
+    recommendedAction = "Inspect waiting_for_event and resume when ready.";
+  } else if (isStuckRunning) {
+    taxonomyClass = "stuck_running";
+    severity = "high";
+    reason = `Run has no fresh progress for ${stalledSeconds} seconds.`;
+    recommendedAction = "Inspect current step runtime and recover/abort if needed.";
+  } else if (normalizedRunStatus === "running") {
+    taxonomyClass = "running";
+    severity = "low";
+    reason = "Run is actively executing.";
+    recommendedAction = "Monitor progress.";
+  } else if (normalizedRunStatus === "queued") {
+    taxonomyClass = "queued";
+    severity = "low";
+    reason = "Run is queued and awaiting execution.";
+    recommendedAction = "No action required.";
+  } else if (normalizedRunStatus === "cancelled") {
+    taxonomyClass = "cancelled";
+    severity = "medium";
+    reason = "Run was cancelled before completion.";
+    recommendedAction = "Launch a new run if objective is still active.";
+  }
+
+  const taxonomy = {
+    class: taxonomyClass,
+    severity,
+    run_status: normalizedRunStatus,
+    reason,
+    recommended_action: recommendedAction,
+    stalled_seconds: stalledSeconds,
+    failed_step: failedStep
+      ? {
+        id: failedStep.id,
+        step_number: failedStep.step_number,
+        step_key: failedStep.step_key,
+        agent_code_name: failedStep.agent_code_name || null,
+        error: failedStep.error || null,
+      }
+      : null,
+    waiting_step: waitingStep
+      ? {
+        id: waitingStep.id,
+        step_number: waitingStep.step_number,
+        step_key: waitingStep.step_key,
+        agent_code_name: waitingStep.agent_code_name || null,
+        error: waitingStep.error || null,
+      }
+      : null,
+    simulation_gate_blocked: simulationGateBlocked,
+    waiting_approval: waitingApproval,
+    failure_signals: failureSignals,
+  };
+
   return {
     pipeline_run: pipelineRun,
     step_runs: stepRuns || [],
     state: state || null,
+    taxonomy,
+    failure_signals: failureSignals,
   };
+}
+
+export async function getPipelineRunTaxonomy(pipelineRunId: string) {
+  const details = await getPipelineRunDetails(pipelineRunId);
+  return {
+    pipeline_run_id: pipelineRunId,
+    taxonomy: asRecord(details).taxonomy || null,
+    failure_signals: asRecord(details).failure_signals || {},
+  };
+}
+
+export async function listRecentPipelineRunTaxonomies(limit = 10) {
+  const safeLimit = Math.max(1, Math.min(20, Number(limit || 10)));
+  const runs = await listRecentPipelineRuns(safeLimit);
+
+  const maybeEntries = await Promise.all(
+    (runs || []).map(async (run) => {
+      const runId = compact(run.id);
+      if (!runId) return null;
+
+      const details = await getPipelineRunTaxonomy(runId);
+      return {
+        pipeline_run: run,
+        taxonomy: details.taxonomy,
+        failure_signals: details.failure_signals,
+      };
+    }),
+  );
+
+  const entries = [];
+  for (const entry of maybeEntries) {
+    if (entry) entries.push(entry);
+  }
+
+  return entries;
 }
 
 export async function listRecentPipelineRuns(limit = 20) {
@@ -2080,7 +2313,16 @@ export async function deliverEventToSubscriptions(event: JsonRecord) {
         };
 
         if (invokeDirectly) {
-          result = await callEdgeFunction(`agent-${compact(subscription.target_ref)}`, payload);
+          const invokerAgent = compact(subscriptionConfig.invoker_agent) || "cortex";
+          result = await invokeToolThroughBus({
+            toolCodeName: `agent-${compact(subscription.target_ref)}`,
+            payload,
+            invokerAgentCodeName: invokerAgent,
+            orgId: compact(event.org_id) || null,
+            userId: compact(event.user_id) || null,
+            correlationId: compact(event.correlation_id) || null,
+            source: "event_subscription",
+          });
         } else {
           const { data: task, error: taskError } = await admin
             .from("agent_tasks")

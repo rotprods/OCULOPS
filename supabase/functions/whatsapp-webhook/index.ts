@@ -9,6 +9,12 @@ import { normalizePhone, verifyMetaSignature } from "../_shared/whatsapp.ts";
 const WHATSAPP_VERIFY_TOKEN = Deno.env.get("WHATSAPP_VERIFY_TOKEN");
 const META_APP_SECRET = Deno.env.get("META_APP_SECRET");
 
+function asRecord(value: unknown) {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {};
+}
+
 async function resolveChannel(phoneNumberId: string | null) {
   let query = admin
     .from("messaging_channels")
@@ -63,12 +69,56 @@ async function findOrCreateConversation({
   channel,
   contact,
   messageAt,
+  referencedProviderMessageId,
 }: {
   userId: string | null;
   channel: Record<string, unknown>;
   contact: Record<string, unknown>;
   messageAt: string;
+  referencedProviderMessageId?: string | null;
 }) {
+  if (compact(referencedProviderMessageId)) {
+    const { data: linkedMessages, error: linkedMessagesError } = await admin
+      .from("messages")
+      .select("conversation_id, user_id")
+      .eq("provider_message_id", compact(referencedProviderMessageId))
+      .limit(1);
+    if (linkedMessagesError) throw linkedMessagesError;
+
+    const linked = linkedMessages?.[0];
+    if (compact(linked?.conversation_id)) {
+      let linkedConversationQuery = admin
+        .from("conversations")
+        .select("*")
+        .eq("id", compact(linked.conversation_id))
+        .limit(1);
+      linkedConversationQuery = userId
+        ? linkedConversationQuery.eq("user_id", userId)
+        : linkedConversationQuery.is("user_id", null);
+
+      const { data: linkedConversations, error: linkedConversationError } = await linkedConversationQuery;
+      if (linkedConversationError) throw linkedConversationError;
+      if (linkedConversations?.[0]) {
+        const { data: updatedLinked, error: updatedLinkedError } = await admin
+          .from("conversations")
+          .update({
+            status: "open",
+            unread_count: (linkedConversations[0].unread_count || 0) + 1,
+            last_message_at: messageAt,
+            last_inbound_at: messageAt,
+            channel_id: channel.id,
+            channel: "whatsapp",
+          })
+          .eq("id", linkedConversations[0].id)
+          .select()
+          .single();
+
+        if (updatedLinkedError) throw updatedLinkedError;
+        return updatedLinked;
+      }
+    }
+  }
+
   let query = admin
     .from("conversations")
     .select("*")
@@ -126,6 +176,111 @@ function extractMessageContent(message: Record<string, unknown>) {
   if (type === "button") return compact(message.button?.text);
   if (type === "interactive") return compact(message.interactive?.button_reply?.title) || "[interactive]";
   return `[${type}]`;
+}
+
+async function loadLatestOutreachQueueRow(field: "conversation_id" | "contact_id" | "recipient_email", value: string) {
+  const { data, error } = await admin
+    .from("outreach_queue")
+    .select("id, status, metadata")
+    .eq(field, value)
+    .in("status", ["sent", "approved"])
+    .order("sent_at", { ascending: false, nullsFirst: false })
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  if (error) throw error;
+  return data?.[0] || null;
+}
+
+async function reconcileOutreachReply({
+  conversation,
+  contact,
+  inboundMessageId,
+  messageAt,
+}: {
+  conversation: Record<string, unknown>;
+  contact: Record<string, unknown>;
+  inboundMessageId: string;
+  messageAt: string;
+}) {
+  let queueRow = await loadLatestOutreachQueueRow("conversation_id", compact(conversation.id));
+  if (!queueRow && compact(contact.id)) {
+    queueRow = await loadLatestOutreachQueueRow("contact_id", compact(contact.id));
+  }
+  if (!queueRow && compact(contact.email)) {
+    queueRow = await loadLatestOutreachQueueRow("recipient_email", compact(contact.email));
+  }
+  if (!queueRow) return null;
+
+  await admin
+    .from("outreach_queue")
+    .update({
+      status: "replied",
+      replied_at: messageAt,
+      provider_status: "replied",
+      provider_error: null,
+      conversation_id: compact(conversation.id) || null,
+      message_id: inboundMessageId,
+      metadata: {
+        ...asRecord(queueRow.metadata),
+        last_reply: {
+          at: messageAt,
+          conversation_id: compact(conversation.id) || null,
+          contact_id: compact(contact.id) || null,
+          inbound_message_id: inboundMessageId,
+          source: "whatsapp_webhook",
+        },
+      },
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", queueRow.id);
+
+  return queueRow.id as string;
+}
+
+async function reconcileOutreachProviderStatus(input: {
+  queueId: string;
+  mappedStatus: string;
+  statusAt: string;
+  providerError: string | null;
+  conversationId: string;
+  messageId: string;
+}) {
+  const { data: queueRow, error: queueError } = await admin
+    .from("outreach_queue")
+    .select("id, status, metadata")
+    .eq("id", input.queueId)
+    .maybeSingle();
+  if (queueError || !queueRow) return;
+
+  const patch: Record<string, unknown> = {
+    conversation_id: input.conversationId,
+    message_id: input.messageId,
+    provider_status: input.mappedStatus,
+    provider_error: input.providerError,
+    metadata: {
+      ...asRecord(queueRow.metadata),
+      last_provider_status: {
+        at: input.statusAt,
+        status: input.mappedStatus,
+      },
+    },
+    updated_at: new Date().toISOString(),
+  };
+
+  if (input.mappedStatus === "failed") {
+    patch.status = "approved";
+  } else if (input.mappedStatus === "read") {
+    patch.status = compact(queueRow.status) === "replied" ? "replied" : "sent";
+    patch.opened_at = input.statusAt;
+  } else if (input.mappedStatus === "delivered") {
+    patch.status = compact(queueRow.status) === "replied" ? "replied" : "sent";
+  }
+
+  await admin
+    .from("outreach_queue")
+    .update(patch)
+    .eq("id", queueRow.id);
 }
 
 async function insertInboundMessage({
@@ -193,6 +348,15 @@ async function insertInboundMessage({
       channel: "whatsapp",
       provider_message_id: providerMessageId,
     },
+  });
+
+  await reconcileOutreachReply({
+    conversation,
+    contact,
+    inboundMessageId: String(data.id),
+    messageAt,
+  }).catch((reconcileError) => {
+    console.error("[whatsapp-webhook] outreach reply reconcile failed:", reconcileError);
   });
 
   try {
@@ -272,6 +436,20 @@ async function updateOutboundStatus(channel: Record<string, unknown>, status: Re
     })
     .eq("id", existing.conversation_id);
 
+  const queueId = compact(asRecord(existing.metadata).outreach_queue_id);
+  if (queueId) {
+    await reconcileOutreachProviderStatus({
+      queueId,
+      mappedStatus,
+      statusAt,
+      providerError: compact(updatePayload.error_message) || null,
+      conversationId: compact(existing.conversation_id),
+      messageId: compact(existing.id),
+    }).catch((reconcileError) => {
+      console.error("[whatsapp-webhook] outreach provider status reconcile failed:", reconcileError);
+    });
+  }
+
   return updated;
 }
 
@@ -330,6 +508,7 @@ Deno.serve(async (req: Request) => {
           channel,
           contact,
           messageAt,
+          referencedProviderMessageId: compact(message.context?.id) || null,
         });
 
         await insertInboundMessage({

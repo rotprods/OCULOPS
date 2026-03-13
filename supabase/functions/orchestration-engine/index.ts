@@ -5,6 +5,8 @@ import {
   executeGoal,
   executePipelineRun,
   getPipelineRunDetails,
+  getPipelineRunTaxonomy,
+  listRecentPipelineRunTaxonomies,
   listRecentPipelineRuns,
   planGoal,
 } from "../_shared/orchestration.ts";
@@ -150,10 +152,25 @@ Deno.serve(async (req: Request) => {
       return jsonResponse(await getPipelineRunDetails(body.pipeline_run_id));
     }
 
+    if (action === "get_run_taxonomy") {
+      if (!body.pipeline_run_id) {
+        return errorResponse("pipeline_run_id is required");
+      }
+
+      return jsonResponse(await getPipelineRunTaxonomy(body.pipeline_run_id));
+    }
+
     if (action === "list") {
       return jsonResponse({
         ok: true,
         runs: await listRecentPipelineRuns(Math.max(1, Math.min(50, body.limit || 20))),
+      });
+    }
+
+    if (action === "list_taxonomy") {
+      return jsonResponse({
+        ok: true,
+        entries: await listRecentPipelineRunTaxonomies(Math.max(1, Math.min(20, body.limit || 10))),
       });
     }
 
