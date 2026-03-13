@@ -264,7 +264,7 @@ const TOOLS: Array<{
     type: "function",
     function: {
       name: "outreach_send",
-      description: "Send an approved outreach email via Resend.",
+      description: "Request or execute send for an approved outreach email via the canonical messaging-dispatch path.",
       parameters: {
         type: "object",
         properties: {
@@ -790,7 +790,7 @@ async function executeTool(
       fn: "agent-outreach",
       payload: () => ({
         action: "approve",
-        email_id: args.email_id,
+        id: args.email_id,
         user_id: userId,
       }),
     },
@@ -798,7 +798,7 @@ async function executeTool(
       fn: "agent-outreach",
       payload: () => ({
         action: "send",
-        email_id: args.email_id,
+        id: args.email_id,
         user_id: userId,
       }),
     },

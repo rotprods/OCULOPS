@@ -1,0 +1,107 @@
+{
+  "$schema": "oculops-stitch-screen-map-v1",
+  "updated": "2026-03-12",
+  "stitch_projects": {
+    "dashboard_sections": {
+      "id": "18000541633814833422",
+      "name": "projects/18000541633814833422",
+      "title": "OculOps Dashboard Sections",
+      "device": "MOBILE",
+      "theme": { "color": "#f9de10", "font": "INTER", "mode": "DARK", "roundness": "ROUND_EIGHT" },
+      "screen_count": 27
+    },
+    "premium_rebrand": {
+      "id": "10904318559636289704",
+      "name": "projects/10904318559636289704",
+      "title": "ANTIGRAVITY OS — Premium SaaS Rebrand",
+      "device": "DESKTOP",
+      "theme": { "color": "#ffd60a", "font": "INTER", "mode": "DARK", "roundness": "ROUND_EIGHT" },
+      "screen_count": 6
+    }
+  },
+
+  "existing_stitch_screens": {
+    "control_tower": {
+      "stitch_screens": [
+        { "id": "2853d58b56d94dceb3a66db64e146153", "project": "premium_rebrand", "title": "Control Tower Dashboard", "type": "DESKTOP" },
+        { "id": "088e7664c3d443f78377f86ced41f6dd", "project": "premium_rebrand", "title": "Control Tower V1", "type": "DESKTOP" },
+        { "id": "12cbc5048845499b8d8c21b2c4afa0a9", "project": "premium_rebrand", "title": "Control Tower V2", "type": "DESKTOP" },
+        { "id": "744ea52b6761433fa490f7b85fe440bf", "project": "premium_rebrand", "title": "Control Tower Higgsfield Edition", "type": "MOBILE" },
+        { "id": "8c6c97431460442fa12a4ac1f5cb3d99", "project": "dashboard_sections", "title": "OCULOPS Master Control Tower", "type": "MOBILE" },
+        { "id": "09f7730d6ed04f9fbd9bf0677df90065", "project": "dashboard_sections", "title": "OCULOPS Branded Control Tower", "type": "MOBILE" },
+        { "id": "34ee2ca0ca714e8c8bdeb355e5c21890", "project": "dashboard_sections", "title": "Desktop AI Dashboard 16:9", "type": "DESKTOP" }
+      ],
+      "status": "HAS_STITCH_DESIGNS"
+    },
+    "crm": {
+      "stitch_screens": [
+        { "id": "fd7a4a00a2704e08855dc8c6c5de3265", "project": "premium_rebrand", "title": "CRM Module - Contacts View", "type": "DESKTOP" }
+      ],
+      "status": "HAS_STITCH_DESIGNS"
+    },
+    "messaging": {
+      "stitch_screens": [
+        { "id": "60c11820344f4e6f9156d75bb21b7433", "project": "premium_rebrand", "title": "Messaging Hub - Active Chat View", "type": "DESKTOP" }
+      ],
+      "status": "HAS_STITCH_DESIGNS"
+    },
+    "sidebar_navigation": {
+      "stitch_screens": [
+        { "id": "6f92e5cb23b1425ebf0a5dcf23258ac5", "project": "dashboard_sections", "title": "OculOps Sidebar Navigation (MASTER)", "type": "MOBILE", "is_master": true },
+        { "id": "b54a799821044928aa66941d4293f3a0", "project": "dashboard_sections", "title": "Sidebar V1: Matte White & Signal Yellow", "type": "MOBILE" },
+        { "id": "c7f91dedb6d541e1afd6bb386133ff69", "project": "dashboard_sections", "title": "Sidebar V2: Glassmorphic Floating Rail", "type": "MOBILE" },
+        { "id": "4545b86c1c584f1ba039d4aeb816c734", "project": "dashboard_sections", "title": "Sidebar V3: Structured Black & High Contrast Yellow", "type": "MOBILE" }
+      ],
+      "status": "HAS_STITCH_DESIGNS"
+    },
+    "signal_analysis": {
+      "stitch_screens": [
+        { "id": "e9b55ffe40e04a41ad7cb99461f8cd61", "project": "dashboard_sections", "title": "OCULOPS Signal Analysis Detail", "type": "MOBILE" }
+      ],
+      "status": "HAS_STITCH_DESIGNS"
+    },
+    "master_dashboard": {
+      "stitch_screens": [
+        { "id": "b7f613ecc2b44887883b7cd1425ebbe8", "project": "dashboard_sections", "title": "Master Branded Dashboard (wide)", "type": "DESKTOP" },
+        { "id": "baaaf245f25549e29893aca9816f60df", "project": "dashboard_sections", "title": "Master Branded Dashboard (compact)", "type": "DESKTOP" },
+        { "id": "bbf881b875124d878946c24e63ddb468", "project": "dashboard_sections", "title": "Master Branded Dashboard (full)", "type": "MOBILE" },
+        { "id": "5647859310899894240", "project": "dashboard_sections", "title": "Control Tower Hub Screenshot", "type": "DESKTOP" }
+      ],
+      "status": "HAS_STITCH_DESIGNS"
+    }
+  },
+
+  "screens_needing_stitch_generation": [
+    { "route": "/pipeline",       "name": "Pipeline Kanban",        "priority": "P1", "base_from": "crm" },
+    { "route": "/agents",         "name": "AI Agents Control",      "priority": "P1", "base_from": "control_tower" },
+    { "route": "/intelligence",   "name": "Intelligence Signals",   "priority": "P1", "base_from": "signal_analysis" },
+    { "route": "/prospector",     "name": "Prospector Hub",         "priority": "P1", "base_from": "control_tower" },
+    { "route": "/execution",      "name": "Execution OS",           "priority": "P2", "base_from": "control_tower" },
+    { "route": "/markets",        "name": "Markets Intelligence",   "priority": "P2", "base_from": "signal_analysis" },
+    { "route": "/analytics",      "name": "Analytics Funnel",       "priority": "P2", "base_from": "crm" },
+    { "route": "/gtm",            "name": "Go To Market",           "priority": "P2", "base_from": "control_tower" },
+    { "route": "/herald",         "name": "Herald Agent",           "priority": "P2", "base_from": "messaging" },
+    { "route": "/flight-deck",    "name": "Flight Deck",            "priority": "P2", "base_from": "control_tower" },
+    { "route": "/automation",     "name": "Automation Hub",         "priority": "P2", "base_from": "control_tower" },
+    { "route": "/finance",        "name": "Finance Tracker",        "priority": "P2", "base_from": "crm" },
+    { "route": "/command-center", "name": "Command Center",         "priority": "P2", "base_from": "messaging" },
+    { "route": "/reports",        "name": "Reports",                "priority": "P3", "base_from": "control_tower" },
+    { "route": "/simulation",     "name": "Simulation",             "priority": "P3", "base_from": "control_tower" },
+    { "route": "/studies",        "name": "Study Hub",              "priority": "P3", "base_from": "crm" },
+    { "route": "/knowledge",      "name": "Knowledge Base",         "priority": "P3", "base_from": "crm" },
+    { "route": "/experiments",    "name": "Experiments",            "priority": "P3", "base_from": "control_tower" },
+    { "route": "/opportunities",  "name": "Opportunities",          "priority": "P3", "base_from": "crm" },
+    { "route": "/decisions",      "name": "Decisions",              "priority": "P3", "base_from": "crm" },
+    { "route": "/niches",         "name": "Niches",                 "priority": "P3", "base_from": "signal_analysis" },
+    { "route": "/creative",       "name": "Creative Studio",        "priority": "P3", "base_from": "control_tower" },
+    { "route": "/world-monitor",  "name": "World Monitor",          "priority": "P3", "base_from": "control_tower" },
+    { "route": "/portfolio",      "name": "Portfolio",              "priority": "P3", "base_from": "crm" },
+    { "route": "/lab",            "name": "Lab",                    "priority": "P3", "base_from": "control_tower" },
+    { "route": "/watchtower",     "name": "Watchtower",             "priority": "P3", "base_from": "control_tower" },
+    { "route": "/billing",        "name": "Billing",                "priority": "P3", "base_from": "crm" },
+    { "route": "/settings",       "name": "Settings",               "priority": "P3", "base_from": "crm" },
+    { "route": "/team-settings",  "name": "Team Settings",          "priority": "P3", "base_from": "crm" },
+    { "route": "/pixel-office",   "name": "Pixel Office",           "priority": "P3", "base_from": "control_tower" },
+    { "route": "/marketplace",    "name": "Marketplace",            "priority": "P3", "base_from": "crm" }
+  ]
+}

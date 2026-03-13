@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Kinetic Flow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E2FF00",
+              "background-light": "#F8F9FA",
+              "background-dark": "#0A0A0A",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            borderRadius: {
+              DEFAULT: "12px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            background-color: #0A0A0A;}
+        .kinetic-river {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+        .orb-glow {
+            box-shadow: 0 0 30px 10px rgba(226, 255, 0, 0.2);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        .tilt-card {
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.3s ease;
+        }
+        .tilt-card:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+        .scrolling-text {
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .glass-liquid {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .liquid-yellow {
+            background: linear-gradient(90deg, transparent, #E2FF00, transparent);
+            height: 1px;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-black">
+<div class="relative w-screen h-screen flex flex-col overflow-hidden bg-white dark:bg-black">
+<header class="h-[30%] w-full flex items-center justify-between px-12 pt-6 z-20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons-outlined text-black font-bold">radar</span>
+</div>
+<div>
+<h1 class="text-xl font-extrabold tracking-tighter dark:text-white">OCULOPS <span class="text-primary">CORE</span></h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-mono">Control Tower v3.4</p>
+</div>
+</div>
+<div class="flex gap-20">
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full orb-glow bg-primary/20 border border-primary/40 flex items-center justify-center overflow-hidden">
+<img alt="Intelligence Orb" class="w-full h-full object-cover mix-blend-screen opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCecqbwKD7Pkdqj3822rc_Ft0ZKFaoj7Uvvt4Pq9d5dA6ZhaedZqndeAOazBtQrQV_uvRUprtfSZKVyLJ7Nzn_6TR-tuVyseqfKbSSy1-lpWbFbX5cnsk_wCc9M6MyaqiPRCZk5yhilYJ7QZgakySTaCm_E1IEFyeBAcAKsZsRkC4tzD4Unb44jXmUWOT21LK_z0FngJne_ATyc38UDVZMLge-q7mg7SwsDCrEHGBTDkAqxQWWqO-j2Zxh04FQS3GpBN-jj6uGGaG3U"/>
+</div>
+<span class="text-[9px] uppercase font-bold tracking-widest opacity-50">Intelligence</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-14 h-14 rounded-full orb-glow bg-primary/30 border-2 border-primary/60 flex items-center justify-center overflow-hidden">
+<img alt="Command Orb" class="w-full h-full object-cover mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDUk4OIf4DOmwbUuHiSZMDxhypc3UeShI0v0OsxVtV5D30OIL48U5YoRXuhaohkeO4qqxuSwuekl12-qTksQA3RRk-S2aA3GW514PMlGqhrDAU-4KJpRjCs0JvaQkOa-Auo8u16MHVskpqUh93mDPO56ZKlSRxCpashQUozMA5_b5hu4yqrgCrKpsI4evqM4IZZNgSGQfToxiyLWF_dCFVna2kVAq0_n31ir49kf_Ei9u7joLx2fabbImPCBbHC9PgQ_aUrdEHGSj4"/>
+</div>
+<span class="text-[9px] uppercase font-bold tracking-widest text-primary">Command</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full orb-glow bg-primary/20 border border-primary/40 flex items-center justify-center overflow-hidden">
+<img alt="Fleet Orb" class="w-full h-full object-cover mix-blend-screen opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARmBva9XTfNM8BAWFHMhaigh6hwnTD-ybOh4NqzglTkmMUFMCS69y2rd9iRcNVr9M6RF-FussuTV_Isjf9Mf3eosRjYkFys-0BAkA_8da_mjuKAB560CmxNNGX7thRZnVYtcmQpdfOaMuXeFYIzN42LZqFFg0v7w0ffjJtLcnIPx-uNsME7KSbQJbNhC5xZkniZTVDFzEXD-3Rb0Kp5p80Da64Q74uxmVFgT0C9-dwVDFPpzGW312RbVQI6R-LG3sQMw_eTWHHCGDh"/>
+</div>
+<span class="text-[9px] uppercase font-bold tracking-widest opacity-50">Fleet</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+<span class="material-icons-outlined text-sm">search</span>
+</button>
+<div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800">
+<div class="w-6 h-6 rounded-full bg-slate-300 dark:bg-slate-700 overflow-hidden">
+<img alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeF1fv3h6t2Fq9-MDVb_GYpIEjBvHN-uD0vZtvGI4q1pItY783DdYKR_qg1-JLl_ywL50SUf5VWviQfV4h-5OjDjnha8KkWtUCVYBV-D516OG3uRNXWCfQ2UOPf1YNGXBC2VSOSZbvyEwgHYRzVPL-GSiDidV2ulxit4FojU2ea-RKKS9VTNH0ORM5t_02vR_RNwOra2-mA7FDF8_oFR-Mn6GUP8Mu9-9UBp6-E8hxXTuWmZzr83rBL6vu6L9gUcl8gMjyq1zalWwr"/>
+</div>
+<span class="text-xs font-semibold">Vance</span>
+</div>
+</div>
+</header>
+<main class="relative h-[25%] w-full flex items-center z-10">
+<div class="liquid-yellow top-1/2 -translate-y-1/2 opacity-30"></div>
+<div class="kinetic-river w-full overflow-hidden flex items-center h-full">
+<div class="scrolling-text flex items-center gap-12 px-12">
+<div class="flex items-center gap-3 group">
+<span class="text-primary font-mono text-xs">08:42:11</span>
+<span class="glass-liquid px-4 py-2 rounded-full text-sm font-mono flex items-center gap-2 text-slate-700 dark:text-slate-300">
+<span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                            SIGNAL_DETECTED: SECTOR_7G [ENCRYPTED]
+                        </span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">08:42:15</span>
+<span class="glass-liquid px-4 py-2 rounded-full text-sm font-mono flex items-center gap-2 text-slate-700 dark:text-slate-300">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            AI_COPILOT: THREAT_LEVEL_LOW
+                        </span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">08:42:22</span>
+<span class="glass-liquid px-4 py-2 rounded-full text-sm font-mono flex items-center gap-2 text-slate-700 dark:text-slate-300">
+<span class="w-2 h-2 rounded-full bg-red-500"></span>
+                            FLEET_SYNC: UNIT_88_OFFLINE
+                        </span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">08:42:28</span>
+<span class="glass-liquid px-4 py-2 rounded-full text-sm font-mono flex items-center gap-2 text-slate-700 dark:text-slate-300">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            MISSION_ALPHA: COMPLETE
+                        </span>
+</div>
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">08:42:11</span>
+<span class="glass-liquid px-4 py-2 rounded-full text-sm font-mono flex items-center gap-2 text-slate-700 dark:text-slate-300">
+<span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                                SIGNAL_DETECTED: SECTOR_7G [ENCRYPTED]
+                            </span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-primary font-mono text-xs">08:42:15</span>
+<span class="glass-liquid px-4 py-2 rounded-full text-sm font-mono flex items-center gap-2 text-slate-700 dark:text-slate-300">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                AI_COPILOT: THREAT_LEVEL_LOW
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="h-[45%] w-full flex items-center gap-8 px-12 pb-8 overflow-x-auto overflow-y-hidden z-20 no-scrollbar">
+<div class="tilt-card min-w-[320px] h-full glass-liquid rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="relative z-10">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Fleet Health</p>
+<h2 class="text-4xl font-extrabold text-slate-900 dark:text-white">98.4%</h2>
+</div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<p class="text-[10px] text-primary font-mono">+1.2% from peak</p>
+<div class="w-32 h-1 bg-slate-200 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
+<div class="h-full bg-primary w-[98%]"></div>
+</div>
+</div>
+<span class="material-icons-outlined text-slate-400">sensors</span>
+</div>
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<div class="tilt-card min-w-[320px] h-full glass-liquid rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="relative z-10">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Active Missions</p>
+<h2 class="text-4xl font-extrabold text-slate-900 dark:text-white">12</h2>
+</div>
+<div class="relative z-10">
+<div class="flex -space-x-3 mb-4">
+<div class="w-8 h-8 rounded-full border-2 border-black bg-slate-800 overflow-hidden"><img alt="mission icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt8JUlZvj2RgJPeBcF8RqdH1vT9be2SP0ig8sFIc-03m_OSWtYshzTzQ6rwuW7uuiJDPU0zq-etOQtEfBLM9Plkn_9TtSGFVYX_BH179nueQ49Q9uowRm8BBYYTvJGPxk7VIqp_J5Pmkz6RB8QNYhnDFF5W8Jd8id7yDXE3_QJmNJT21wNHXGxPo30IO-Eov3AQz3qYbO6MukGnJOE6a0NRMkLeUH4YAn3UOiCZOXYGzy1IG9t0DDhGLi1N6EHnkMOVoctCA0P8b7y"/></div>
+<div class="w-8 h-8 rounded-full border-2 border-black bg-slate-800 overflow-hidden"><img alt="mission icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF8pzbnCwIiWIi0nGSuND2PV7RADg1flcLdrzf7Wym-wIsquMO7r7lZARwhJyMIZ9cdQXN_PEdqwBX9eYPHtTIC-HfeASUiuHi5EV7fRQ1JPCX_jGT_75SveGfusZQE8cBvKFIKhc_YsPy4jat0zYXpds5tDN0u1zArpJDLfcakmxBCrPNLQW2kSbV1ndbPz1WEtTF1IlnPxVmDjzyjBnjnmXrWHq491OGt1r9VrCY8JtVxWe2its71NtmOdZe49QqSo4cPfcT6GIR"/></div>
+<div class="w-8 h-8 rounded-full border-2 border-black bg-slate-800 overflow-hidden"><img alt="mission icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg7JVibwFzYPFvDYaKg8Bg2wgCi5wXDUqux5f43NLaeyhdt-3lyl42D0ug_6JTjYYXcNyJ1KnsV4_QaflaDgRLTCTXvzrDR9wOFQM0GV6N_BzS3ArCYLvLV9XZCEyJByyMqliHEbMEG_mcOzh1tPqJEpHISylkwvza0TLuhLFCFAW0tcJTBin1x_27r340qb10I00U446u8EWjZp8YA9t1_kJO5-xNZP-mDNbEIdoTHkvTBnGnm_P1NCeq7L6hGgFQb2NVCNxaskJl"/></div>
+<div class="w-8 h-8 rounded-full border-2 border-black bg-slate-700 flex items-center justify-center text-[8px] font-bold">+9</div>
+</div>
+<div class="flex items-center justify-between">
+<button class="bg-primary text-black text-[10px] font-bold uppercase px-4 py-2 rounded-full hover:brightness-110 transition-all">Command Hub</button>
+<span class="material-icons-outlined text-slate-400">rocket_launch</span>
+</div>
+</div>
+</div>
+<div class="tilt-card min-w-[320px] h-full glass-liquid rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between">
+<img alt="Grid Visualization" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT4_bpnQrqnGwLhnZkmYCeRGu7--4Nfvfdqj3ubH9GO8E-5LzuNY6VlxkxVefZ7b3awHJbco7MxxttfhwOL7_XHbkR5l3Kj1qCdeSgBszEKE61plafW33EP9ljrdC8nmkcurpXytcQJ0rnfyRzzw1_NVfuMQymK53lMgSqKbt8CWx7hXLFXkwyLOUR8eLTxJwZ-efjodzfDO1ljG7pNkoqqtbrN4rIxRxdKx6AcXm38rNvXu8I_k0etGW7ecYj-VJyTEIzt1NrpyDy"/>
+<div class="relative z-10">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Current Focus</p>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">North Pacific Grid<br/>Sector 7-G</h2>
+</div>
+<div class="relative z-10 flex items-center justify-between">
+<span class="flex items-center gap-2 text-[10px] text-slate-400 font-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                        LIVE_SCAN_ACTIVE
+                    </span>
+<span class="material-icons-outlined text-primary">gps_fixed</span>
+</div>
+</div>
+</footer>
+<nav class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-slate-900/80 backdrop-blur-xl border border-slate-800 px-6 py-3 rounded-full z-50">
+<button class="text-primary flex flex-col items-center">
+<span class="material-icons-outlined">home</span>
+</button>
+<div class="w-[1px] h-4 bg-slate-800"></div>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-icons-outlined">insights</span>
+</button>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-icons-outlined">layers</span>
+</button>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-icons-outlined">settings</span>
+</button>
+</nav>
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-500/5 blur-[120px] pointer-events-none"></div>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+</body></html>

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oculops.local/contracts/output-contract.json",
+  "title": "OCULOPS Output Contract",
+  "type": "object",
+  "$defs": {
+    "base_result": {
+      "type": "object",
+      "required": [
+        "ok"
+      ],
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trace": {
+          "type": "object"
+        },
+        "metrics": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "pipeline_run_result": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_result"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "pipeline_run": {
+              "type": "object"
+            },
+            "steps": {
+              "type": "array"
+            },
+            "events_emitted": {
+              "type": "array"
+            }
+          }
+        }
+      ]
+    },
+    "agent_cycle_result": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_result"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "object"
+            },
+            "next_actions": {
+              "type": "array"
+            },
+            "handoff": {
+              "type": [
+                "object",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "outreach_send_result": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_result"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "message_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "provider_message_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "approval_required": {
+              "type": "boolean"
+            },
+            "delivery_status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "critic_result": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_result"
+        },
+        {
+          "type": "object",
+          "required": [
+            "scores",
+            "overall_score",
+            "decision"
+          ],
+          "properties": {
+            "scores": {
+              "type": "object"
+            },
+            "overall_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "decision": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "retry",
+                "reject",
+                "escalate"
+              ]
+            },
+            "reasoning": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "simulation_result": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base_result"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "simulation_id": {
+              "type": "string"
+            },
+            "delta_summary": {
+              "type": "object"
+            },
+            "risk_findings": {
+              "type": "array"
+            },
+            "recommended_action": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

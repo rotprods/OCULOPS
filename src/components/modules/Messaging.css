@@ -180,6 +180,23 @@
     gap: var(--space-4);
 }
 
+.msg-correlation-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 2px 6px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.msg-correlation-link:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
 /* ── Compose Bar ── */
 .msg-compose {
     display: flex;
@@ -202,6 +219,87 @@
 }
 
 .msg-compose-input:focus { border-color: var(--accent-primary); }
+
+/* ── AG1-P0.1: Message Status Chips ── */
+.msg-status-chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: var(--weight-bold);
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+.msg-status-chip--draft     { background: var(--color-warning-muted); color: var(--color-warning); }
+.msg-status-chip--sent      { background: var(--color-info-muted); color: var(--color-info); }
+.msg-status-chip--delivered  { background: var(--color-success-muted); color: var(--color-success); }
+.msg-status-chip--read      { background: var(--color-success-muted); color: var(--color-success); }
+.msg-status-chip--failed    { background: var(--color-danger-muted); color: var(--color-danger); }
+
+/* ── AG1-P0.2: Conversation status row + blocked indicators ── */
+.msg-convo-status-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.msg-blocked-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: var(--weight-bold);
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.msg-blocked-badge--approval {
+    background: var(--color-warning-muted);
+    color: var(--color-warning);
+}
+.msg-blocked-badge--approval:hover {
+    background: var(--color-warning);
+    color: var(--surface-base);
+}
+
+.msg-blocked-badge--failed {
+    background: var(--color-danger-muted);
+    color: var(--color-danger);
+}
+
+.msg-blocked-badge--attention {
+    background: var(--color-info-muted);
+    color: var(--color-info);
+}
+
+/* ── AG1-P0.3: Conversation quick-action row ── */
+.msg-convo-actions-row {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    flex-wrap: wrap;
+}
+
+/* ── Error detail line on failed messages ── */
+.msg-error-detail {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-danger);
+    margin-top: var(--space-2);
+    padding: 2px 4px;
+    background: var(--color-danger-muted);
+    border-radius: var(--radius-sm);
+}
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {

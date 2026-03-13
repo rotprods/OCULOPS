@@ -1,0 +1,371 @@
+{
+  "visual_dna_version": "1.0",
+  "master_image": "oculops_sidebar_navigation.png",
+  "analysis_date": "2026-03-12",
+  "analysis_method": "Forensic pixel-level reverse-engineering from master screenshot + 6 interface examples",
+
+  "global_canvas": {
+    "background": "Warm off-white #FAFAF8 matte surface with extremely subtle warm noise texture (grain at ~2% opacity). Not pure white — there is a cream/parchment warmth. Edges of the viewport show a very faint warm radial gradient darkening to approximately #F0EDE6 in the corners, creating a vignette effect that pushes focus inward.",
+    "ambient_light": "Top-left directional soft light source at approximately 315 degrees (northwest). This is visible in how card shadows fall slightly down-right, and how the sidebar has a slightly warmer illumination on its left edge. The lighting model mimics a diffused overhead panel light in a premium showroom — no harsh highlights, just gentle luminosity variation across surfaces.",
+    "depth_model": "Hybrid soft-neumorphism. NOT classic neumorphism (no embossed/debossed extremes). Instead: cards float 2-4px above the base surface using soft directional shadows. The sidebar sits at the lowest elevation (flush). Cards sit at elevation-1 (2px shadow). The hero visualization panel sits at elevation-2 (4-8px shadow). Modals sit at elevation-3 (16px shadow). Depth is created through shadow opacity gradients, NOT through border thickness or color changes."
+  },
+
+  "panel_system": {
+    "outer_border": "1px solid #E5E5E0 — barely visible warm gray. On cards adjacent to the golden visualization, the border picks up a faint yellow reflection: 1px solid rgba(255, 215, 0, 0.08). Corner radius: 12px for main content panels, 8px for cards within panels. NO border glow on standard panels.",
+    "inner_shadow": "inset 0 1px 0 rgba(255, 255, 255, 0.8) — a 1px white highlight on the top inner edge of every card, simulating a beveled top edge catching the overhead light. This is extremely subtle but present on every raised surface.",
+    "outer_shadow": "Standard card: 0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03). Elevated panel: 0 4px 16px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04). Hero panel: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04).",
+    "surface_material": "Matte white (#FFFFFF) for card surfaces. Not glossy — no specular highlights. The material reads as high-quality matte paper or premium plastic (think Apple product box surface). There is an implied micro-texture at 1-2% opacity that prevents surfaces from looking digitally flat.",
+    "corner_radius": "Cards: 12px. KPI cards: 12px. Buttons: 8px (standard), 9999px (capsule/pill). Input fields: 8px. Sidebar nav items: 8px. Main content area: 16px outer container. Table cells: 0px (sharp). Tags/badges: 6px.",
+    "padding": "Cards: 20px all sides. KPI cards: 20px. Section containers: 24px. Sidebar: 16px horizontal, 8px between items. Table cells: 12px 16px. The hero banner: 32px.",
+    "border_glow": "Only on active/selected states and the hero visualization container. Active nav item: box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.15), 0 0 8px rgba(255, 215, 0, 0.06). Hero panel border: 0 0 20px rgba(255, 215, 0, 0.08) bleeding outward."
+  },
+
+  "sidebar": {
+    "background": "Warm cream gradient — top: #F5F0E8, bottom: #F0EBE0. Slightly warmer than the main canvas. In the master image, the lower portion of the sidebar shows a golden/amber warm glow bleeding from the hero visualization (approximately rgba(255, 210, 50, 0.06) radial gradient centered at the hero sphere position). The sidebar surface reads as parchment-warm, distinct from the cooler white of content cards.",
+    "border": "Right edge: 1px solid #E5E5E0. No top/bottom/left border — it bleeds to the viewport edge. The border is structural, not decorative.",
+    "width": "240px expanded. 64px collapsed (icon-only mode visible in IMG_2535).",
+    "section_labels": "font-family: Inter; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #9A9A9A; margin-bottom: 12px; margin-top: 24px; padding-left: 12px. Reads as: 'CORE', 'INTELLIGENCE', 'AUTOMATION', 'ANALYTICS'.",
+    "nav_items": "font-family: Inter; font-size: 13px (0.8125rem); font-weight: 500; color: #6B6B6B; padding: 8px 12px; border-radius: 8px; height: 40px; display: flex; align-items: center; gap: 10px. Icon: 20px, stroke-weight 1.5-2, color matching text. Hover state: background: #F0F0EB; color: #1A1A1A; transition: 200ms ease.",
+    "nav_items_active": "background: rgba(255, 215, 0, 0.10); color: #1A1A1A; font-weight: 600; border: 1px solid rgba(255, 215, 0, 0.20); border-radius: 8px. Icon color shifts to #C8A200 (darkened gold). A subtle left accent might appear as border-left: 3px solid #FFD700 on some variants. The active item has a micro box-shadow: 0 1px 4px rgba(255, 215, 0, 0.08).",
+    "nav_item_spacing": "gap: 2px between items within a section. Sections separated by 24px (including the section label height).",
+    "logo_area": "Top-left. Logo icon: a circle with an inner ring, rendered in #FFD700 gold, approximately 28-32px diameter. Text: 'OCULOPS' or 'OculOps' in Inter, font-weight: 700, font-size: 18px, color: #1A1A1A, letter-spacing: -0.01em. Below logo in some variants: a subtitle badge 'AI Intelligence OS Signal' in a small rounded chip with background: rgba(255, 215, 0, 0.10), font-size: 11px.",
+    "footer": "Bottom of sidebar. User email: 'dev@oculops.os' in font-size: 12px, color: #6B6B6B. Version: 'v1.0.0' in font-size: 10px, color: #9A9A9A. A settings/logout icon button to the right. Separated from nav by border-top: 1px solid #E5E5E0. Padding: 16px."
+  },
+
+  "hero_visualization": {
+    "description": "A massive golden energy sphere with neural network tendrils, resembling a TouchDesigner-inspired reactive data visualization. The sphere dominates the upper-right quadrant of the main content area, approximately 400x400px in visual footprint. It depicts a luminous golden orb with white-hot core radiating energy filaments.",
+    "style": "TouchDesigner generative art / data sculpture. Not a flat illustration — it reads as a 3D volumetric render with depth-of-field blur on the extremities. The tendrils are organic, branching, electrical — like neural dendrites or lightning captured in amber. The sphere has internal luminosity gradients: white core (#FFFFFF) fading through bright gold (#FFD700) to amber (#CC9900) at the edges.",
+    "colors": "Core: #FFFFFF pure white emission. Inner ring: #FFE44D bright yellow. Mid body: #FFD700 standard gold. Outer tendrils: #CC9900 darker gold to #997700 at tips. Particle scatter: tiny #FFD700 dots at 20-60% opacity floating around the sphere. Background glow: radial gradient from rgba(255, 215, 0, 0.15) at center to transparent at 300px radius.",
+    "container": "The sphere sits within the main content hero panel, which is a large card (approximately 60% of content width, 350-400px tall) with 12px border-radius, 1px solid #E5E5E0 border. The sphere bleeds slightly beyond the card boundaries via overflow: visible, creating a layered depth effect. The card background is white with the golden glow bleeding onto it.",
+    "grid_overlay": "Behind the sphere: a subtle geometric wireframe grid rendered at approximately 5-8% opacity in #9A9A9A. The grid is perspective-corrected (vanishing point behind the sphere), creating depth. Grid lines are 1px, spaced approximately 40-60px apart. Some grid intersections have small dot markers.",
+    "data_points": "Scattered around the sphere: floating numeric labels like coordinate pairs, percentages, or data values. Font: JetBrains Mono, 9-10px, color: #9A9A9A at 50-70% opacity. Positioned seemingly randomly but following the energy tendril paths. These create a 'live data processing' feeling."
+  },
+
+  "kpi_cards": {
+    "shape": "Rounded rectangle, border-radius: 12px. Aspect ratio approximately 1.4:1 (wider than tall). Standard size approximately 200px wide x 140px tall in a 4-column grid.",
+    "border": "1px solid #E5E5E0. On the MRR card (first card), the border has a subtle yellow tint: 1px solid rgba(255, 215, 0, 0.25). This signals 'primary KPI'.",
+    "shadow": "0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03). Hover: 0 4px 16px rgba(0, 0, 0, 0.07).",
+    "background": "#FFFFFF solid matte white surface.",
+    "label_style": "font-family: Inter; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #6B6B6B. Positioned below the value. Examples: 'MRR', 'CLIENTS', 'PIPELINE', 'ALERTS', 'COMPLETED', 'SIGNALS'.",
+    "value_style": "font-family: Inter (NOT mono for these); font-size: 32px (2rem); font-weight: 700; color: #1A1A1A; line-height: 1.1. The value is the dominant element. For percentages: '98.4%'. For currency: '\u20ac0'. For counts: '15'. The value sits vertically centered with generous whitespace.",
+    "icon_style": "Top-left corner of each card. 32x32px container with border-radius: 8px. Background: the icon's semantic color at 10% opacity. Icon itself: 20px, matching semantic color. Examples: yellow bell for alerts, green checkmark for completed, blue signal icon for signals. The icon container has: padding: 6px, background: rgba(color, 0.10).",
+    "progress_bar": "Below the label, a target line: font-size: 11px, color: #9A9A9A, e.g. 'Target: \u20ac20k'. No visible progress bar fill in the standard state — the target is text-only. The health score widget uses a circular progress ring instead (see health_score_widget)."
+  },
+
+  "health_score_widget": {
+    "type": "Circular progress ring / donut chart",
+    "size": "120px diameter outer ring, 80px inner cutout",
+    "ring_stroke": "8px stroke-width",
+    "ring_color_track": "#E5E5E0 at 100% (background track)",
+    "ring_color_fill": "Gradient from #FFD700 to #FFC400, rendered as stroke-dasharray animation",
+    "center_value": "font-family: Inter; font-size: 36px; font-weight: 700; color: #1A1A1A. The number sits perfectly centered.",
+    "label_below": "'HEALTH SCORE' in font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #6B6B6B; text-align: center; margin-top: 8px."
+  },
+
+  "data_table": {
+    "header_row": "background: #FAFAF8 (matching page bg, not card white). font-family: Inter; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #6B6B6B. Padding: 12px 16px. Border-bottom: 1px solid #E5E5E0. No border-top on first header.",
+    "data_rows": "background: #FFFFFF. font-family: Inter; font-size: 13px; font-weight: 400; color: #1A1A1A. Padding: 12px 16px. Height: 48px. Border-bottom: 1px solid #F0F0EB (very subtle separator, lighter than header border).",
+    "alternating": "No zebra striping. All rows are white. Hover: background transitions to rgba(255, 215, 0, 0.04) — an almost imperceptible warm gold highlight.",
+    "borders": "Outer container: 1px solid #E5E5E0, border-radius: 12px, overflow: hidden. Internal cell borders: none (no vertical dividers). Only horizontal separators between rows.",
+    "typography": "Data cells: Inter 13px regular #1A1A1A. Numeric data: Inter 13px medium #1A1A1A (slightly bolder for scanability). Dates/timestamps: Inter 12px regular #6B6B6B.",
+    "status_indicators": "Colored dot + text label. Pattern: 8px circle (filled) + 4px gap + text. Colors: green #34C759 for 'Online'/'Active', yellow #FFD700 for 'Processing'/'Warning', red #E53E3E for 'Error'/'Critical'. The dot may have a subtle box-shadow: 0 0 4px rgba(color, 0.4) for live feeling.",
+    "signal_bars": "In the master image, the 'Signal Strength' column contains miniature horizontal bar charts. Each bar: height 4px, border-radius: 2px. Fill color: #FFD700 gold. Background track: #E5E5E0. Width proportional to signal value, max ~80px. These bars are THE signature data visualization element in tables.",
+    "highlight_column": "The 'Signal Strength' column header in the master image has a distinct yellow background: background: rgba(255, 215, 0, 0.15); border-radius: 4px; padding: 4px 8px. This highlights it as the key intelligence metric column. Text remains the standard header style but may shift to #C8A200 gold."
+  },
+
+  "color_relationships": {
+    "yellow_usage": {
+      "fills": "Active sidebar nav item background (10% opacity). KPI accent card border (25% opacity). Hero sphere visualization (100% opacity). Health score ring (100% fill). Signal strength bars in tables (100% fill). CTA buttons: solid #FFD700 background with #1A1A1A text. Tag/badge background for 'OPPORTUNITY' type (15% opacity).",
+      "borders": "Active nav item: 1px solid rgba(255,215,0,0.20). Primary KPI card: 1px solid rgba(255,215,0,0.25). Cortex agent card: 1px solid rgba(255,215,0,0.30). Focus ring on inputs: 0 0 0 3px rgba(255,215,0,0.20).",
+      "text": "Never use #FFD700 for body text (too light). Accent text uses darkened gold: #C8A200 or #997700. Section emphasis labels. Active nav item icon color.",
+      "glows": "Hero visualization: 0 0 24px rgba(255,215,0,0.12). Active elements: 0 0 8px rgba(255,215,0,0.06). The golden sphere casts a warm ambient glow onto nearby surfaces.",
+      "distribution": "Yellow must not exceed 5% of total visual surface area. It is a SIGNAL color — used to draw attention, not to decorate."
+    },
+    "white_usage": "Pure #FFFFFF: card surfaces, input field backgrounds, modal panels. Off-white #FAFAF8: page background canvas. #F5F5F0: secondary inset surfaces, table header backgrounds. White dominates 70%+ of visual area.",
+    "gray_spectrum": [
+      { "value": "#FAFAF8", "usage": "Page background" },
+      { "value": "#F5F5F0", "usage": "Secondary surfaces, elevated backgrounds" },
+      { "value": "#F5F0E8", "usage": "Sidebar background (warm cream variant)" },
+      { "value": "#F0F0EB", "usage": "Inset areas, input backgrounds, subtle separators" },
+      { "value": "#E5E5E0", "usage": "Standard borders, dividers, progress bar tracks" },
+      { "value": "#D4D4CF", "usage": "Strong borders, emphasized dividers" },
+      { "value": "#C4C4C4", "usage": "Disabled text, decorative elements" },
+      { "value": "#9A9A9A", "usage": "Tertiary text, placeholders, grid overlays" },
+      { "value": "#6B6B6B", "usage": "Secondary text, labels, descriptions" },
+      { "value": "#1A1A1A", "usage": "Primary text, headlines, values — the only 'black'" }
+    ],
+    "accent_rules": "Green #34C759 only for success/online states. Red #E53E3E only for errors/danger. Orange #FF9F43 only for warnings. Blue #3B82F6 only for informational/links. These semantic colors appear ONLY in status dots, badges, and trend indicators — never in backgrounds, borders, or large surfaces. Yellow #FFD700 is the SOLE brand accent."
+  },
+
+  "typography_observed": {
+    "heading_1": {
+      "example": "'Master Intelligence' in the master image",
+      "font_family": "Inter",
+      "font_size": "24px (1.5rem)",
+      "font_weight": 700,
+      "color": "#1A1A1A",
+      "letter_spacing": "-0.015em",
+      "line_height": 1.2,
+      "text_transform": "none"
+    },
+    "heading_2": {
+      "example": "'Critical Signals' table section title",
+      "font_family": "Inter",
+      "font_size": "16px (1rem)",
+      "font_weight": 600,
+      "color": "#1A1A1A",
+      "letter_spacing": "0",
+      "line_height": 1.35
+    },
+    "heading_hero": {
+      "example": "'OCULOPS' brand title in hero banner",
+      "font_family": "Inter",
+      "font_size": "36-48px (2.5-3rem)",
+      "font_weight": 700,
+      "color": "#1A1A1A",
+      "letter_spacing": "-0.03em",
+      "line_height": 1.1
+    },
+    "nav_section_label": {
+      "example": "'INTELLIGENCE', 'CORE', 'AUTOMATION', 'ANALYTICS'",
+      "font_family": "Inter",
+      "font_size": "11px",
+      "font_weight": 700,
+      "color": "#9A9A9A",
+      "letter_spacing": "0.2em",
+      "text_transform": "uppercase"
+    },
+    "nav_item": {
+      "example": "'Data Time', 'Experts', 'Security'",
+      "font_family": "Inter",
+      "font_size": "13px",
+      "font_weight": 500,
+      "color_inactive": "#6B6B6B",
+      "color_active": "#1A1A1A"
+    },
+    "kpi_value": {
+      "example": "'98.4%' fleet health percentage",
+      "font_family": "Inter",
+      "font_size": "32-36px",
+      "font_weight": 700,
+      "color": "#1A1A1A",
+      "line_height": 1.1,
+      "note": "Some variants use JetBrains Mono for numeric-heavy KPIs"
+    },
+    "kpi_label": {
+      "example": "'Fleet Health:' label text",
+      "font_family": "Inter",
+      "font_size": "12px",
+      "font_weight": 500,
+      "color": "#6B6B6B",
+      "letter_spacing": "0.02em"
+    },
+    "table_header": {
+      "font_family": "Inter",
+      "font_size": "11px",
+      "font_weight": 600,
+      "color": "#6B6B6B",
+      "letter_spacing": "0.04em",
+      "text_transform": "uppercase"
+    },
+    "table_data": {
+      "font_family": "Inter",
+      "font_size": "13px",
+      "font_weight": 400,
+      "color": "#1A1A1A"
+    },
+    "badge_text": {
+      "font_family": "Inter",
+      "font_size": "11px",
+      "font_weight": 600,
+      "letter_spacing": "0.02em",
+      "text_transform": "uppercase"
+    },
+    "button_text": {
+      "font_family": "Inter",
+      "font_size": "13px",
+      "font_weight": 500,
+      "letter_spacing": "0"
+    },
+    "caption": {
+      "font_family": "Inter",
+      "font_size": "11px",
+      "font_weight": 400,
+      "color": "#9A9A9A"
+    }
+  },
+
+  "agent_cards": {
+    "cortex_master_card": {
+      "background": "Linear gradient from rgba(255, 215, 0, 0.06) top-left to rgba(255, 215, 0, 0.02) bottom-right, layered on #FFFFFF",
+      "border": "1px solid rgba(255, 215, 0, 0.25)",
+      "border_radius": "12px",
+      "padding": "24px",
+      "shadow": "0 4px 16px rgba(255, 215, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04)",
+      "title": "Inter 24px bold #1A1A1A, 'CORTEX'",
+      "subtitle": "Inter 13px regular #6B6B6B, 'Head Orchestrator'",
+      "live_badge": "Green #34C759 dot 8px + 'Online' or 'LIVE' text in 11px semibold, green pill badge background rgba(52,199,89,0.10)",
+      "metrics_row": "Three metric blocks side by side: label 11px #6B6B6B, value 20px bold #1A1A1A. Separated by 1px vertical dividers in #E5E5E0.",
+      "action_buttons": "Capsule buttons: border: 1px solid #E5E5E0, border-radius: 8px, padding: 8px 16px, font: 13px medium. Icon prefix 16px. Hover: border-color: #D4D4CF, shadow: 0 1px 4px rgba(0,0,0,0.06)."
+    },
+    "sub_agent_card": {
+      "background": "#FFFFFF",
+      "border": "1px solid #E5E5E0",
+      "border_radius": "12px",
+      "padding": "20px",
+      "shadow": "0 2px 8px rgba(0, 0, 0, 0.05)",
+      "header": "Agent name: Inter 18px bold #1A1A1A. Online badge: green dot + 'Online' pill. Positioned top-right.",
+      "capability_tags": "Pill badges: background: #F0F0EB, border: 1px solid #E5E5E0, border-radius: 6px, padding: 3px 10px, font: 11px medium #6B6B6B. Horizontal row with 6px gap.",
+      "body_text": "Inter 13px regular #6B6B6B. 2-3 lines describing current intelligence task.",
+      "confidence_badges": "Two inline pills: type badge (OPPORTUNITY/RISK) in yellow/red bg + severity badge (HIGH/MEDIUM) in matching color + percentage text '85% CONFIDENT'.",
+      "footer": "'OPERATIONAL LOGIC' label in 11px semibold #9A9A9A, with right arrow icon. Click target for detail expansion."
+    }
+  },
+
+  "button_system": {
+    "primary_solid": {
+      "background": "#FFD700",
+      "color": "#1A1A1A",
+      "border": "none",
+      "border_radius": "8px",
+      "padding": "10px 20px",
+      "font": "Inter 13px 600",
+      "shadow": "0 2px 8px rgba(255, 215, 0, 0.20)",
+      "hover": "background: #FFC400; shadow: 0 4px 12px rgba(255, 215, 0, 0.25)"
+    },
+    "secondary_outline": {
+      "background": "transparent",
+      "color": "#1A1A1A",
+      "border": "1px solid #E5E5E0",
+      "border_radius": "8px",
+      "padding": "10px 20px",
+      "font": "Inter 13px 500",
+      "hover": "border-color: #D4D4CF; background: #FAFAF8"
+    },
+    "ghost": {
+      "background": "transparent",
+      "color": "#6B6B6B",
+      "border": "none",
+      "padding": "8px 12px",
+      "font": "Inter 13px 500",
+      "hover": "background: #F0F0EB; color: #1A1A1A"
+    },
+    "capsule_action": {
+      "background": "#FFFFFF",
+      "border": "1px solid #E5E5E0",
+      "border_radius": "9999px",
+      "padding": "8px 20px",
+      "font": "Inter 13px 500",
+      "icon": "16px left-aligned",
+      "hover": "shadow: 0 2px 8px rgba(0,0,0,0.06)"
+    }
+  },
+
+  "input_fields": {
+    "search_bar": {
+      "width": "320px centered in header",
+      "height": "40px",
+      "background": "#F0F0EB",
+      "border": "1px solid transparent",
+      "border_radius": "8px",
+      "padding": "0 16px 0 40px",
+      "font": "Inter 13px 400 #1A1A1A",
+      "placeholder": "Inter 13px 400 #9A9A9A",
+      "icon": "Search icon 18px #9A9A9A, positioned left 12px",
+      "focus": "border-color: rgba(255, 215, 0, 0.4); box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.10); background: #FFFFFF"
+    },
+    "standard_input": {
+      "height": "40px",
+      "background": "#F5F5F0",
+      "border": "1px solid #E5E5E0",
+      "border_radius": "8px",
+      "padding": "0 12px",
+      "font": "Inter 14px 400",
+      "focus": "border-color: rgba(255, 215, 0, 0.5); box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.12)"
+    }
+  },
+
+  "badge_system": {
+    "live_badge": {
+      "text": "LIVE",
+      "dot": "8px circle #34C759 with box-shadow: 0 0 6px rgba(52,199,89,0.5) — pulsing animation",
+      "font": "Inter 11px 700 #34C759",
+      "position": "Top-right of header bar"
+    },
+    "status_online": {
+      "background": "rgba(52, 199, 89, 0.10)",
+      "border": "1px solid rgba(52, 199, 89, 0.20)",
+      "color": "#34C759",
+      "border_radius": "9999px",
+      "padding": "2px 10px",
+      "dot": "6px circle #34C759 inline"
+    },
+    "tag_default": {
+      "background": "#F0F0EB",
+      "border": "1px solid #E5E5E0",
+      "color": "#6B6B6B",
+      "border_radius": "6px",
+      "padding": "3px 10px",
+      "font": "Inter 11px 500"
+    },
+    "tag_opportunity": {
+      "background": "rgba(255, 215, 0, 0.12)",
+      "border": "1px solid rgba(255, 215, 0, 0.25)",
+      "color": "#C8A200",
+      "border_radius": "6px",
+      "font": "Inter 11px 600 uppercase"
+    },
+    "tag_risk": {
+      "background": "rgba(229, 62, 62, 0.08)",
+      "border": "1px solid rgba(229, 62, 62, 0.20)",
+      "color": "#E53E3E",
+      "border_radius": "6px",
+      "font": "Inter 11px 600 uppercase"
+    }
+  },
+
+  "neumorphic_treatment": {
+    "enabled": true,
+    "variant": "Soft neumorphism — subtle, not extreme. Closer to Apple's visionOS card depth than classic neumorphism.",
+    "light_source": "Top-left (315 degrees / northwest). Consistent across all elements.",
+    "raised_elements": "Cards, KPI tiles, buttons, the sidebar logo icon, the health score ring container. These have a bright top-left edge and a dark bottom-right shadow.",
+    "inset_elements": "Search input field, progress bar tracks, toggle switch tracks, slider tracks. These read as recessed into the surface.",
+    "shadow_light": "offset: -1px -1px, blur: 3px, color: rgba(255, 255, 255, 0.8). Applied to the top-left of raised elements as inset 0.",
+    "shadow_dark": "offset: 2px 2px, blur: 8px, color: rgba(0, 0, 0, 0.06). Applied to the bottom-right of raised elements.",
+    "combined_card": "box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.8);",
+    "combined_inset": "box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04), inset 0 1px 2px rgba(0, 0, 0, 0.06);"
+  },
+
+  "motion_cues": {
+    "pulse_elements": "The LIVE badge green dot pulses with a CSS animation: scale(1) to scale(1.2) over 2s ease-in-out infinite. Agent online status dots pulse similarly. The health score ring has a subtle pulse on the filled portion.",
+    "shimmer_elements": "The hero golden sphere implies constant shimmer — particle effects around it suggest motion. Active agent cards have a subtle border shimmer: the yellow border opacity oscillates between 0.15 and 0.30 over 3s. The Cortex orchestration progress bar has a moving gradient fill.",
+    "glow_elements": "The hero sphere radiates a warm golden glow onto surrounding surfaces. Active/selected nav items have a micro glow: 0 0 8px rgba(255,215,0,0.06). Primary CTA buttons have a warm shadow glow on hover.",
+    "live_indicators": "Green pulse dot for LIVE badge. Orchestration progress bars with moving fills. 'Last Run: 5 min ago' timestamps that update. Signal strength bars that feel live. The overall impression is a living, breathing intelligence instrument — not a static dashboard."
+  },
+
+  "layout_grid": {
+    "viewport": "Desktop-first, minimum 1280px width. Optimized for 1440px-1920px.",
+    "sidebar_width": "240px fixed (or 64px collapsed)",
+    "content_area": "calc(100vw - 240px), max-width: 1400px, centered with auto margins",
+    "header_height": "56px",
+    "content_padding": "32px",
+    "card_grid": "CSS Grid or Flexbox. KPI cards: 4-column grid with 16px gap. Agent cards: 3-column grid with 20px gap. Full-width sections stack vertically with 24px gap.",
+    "responsive_breakpoints": "Not mobile — this is a desktop SaaS. But content reflows at 1280px (3-col KPI), 1024px (2-col KPI), sidebar collapses to 64px."
+  },
+
+  "toggle_switch": {
+    "track_width": "44px",
+    "track_height": "24px",
+    "track_radius": "12px",
+    "track_off": "background: #E5E5E0",
+    "track_on": "background: #FFD700",
+    "thumb": "20px circle, #FFFFFF, box-shadow: 0 1px 4px rgba(0,0,0,0.15)",
+    "transition": "200ms ease"
+  },
+
+  "map_component": {
+    "provider": "Mapbox",
+    "style": "Light base map with warm cream tones matching the app palette. NOT dark map. Overlays in #FFD700 gold for data regions. Map container: border-radius: 12px, overflow: hidden, border: 1px solid #E5E5E0.",
+    "controls": "Minimal zoom +/- buttons in top-right, styled as app buttons (white bg, subtle border)."
+  }
+}

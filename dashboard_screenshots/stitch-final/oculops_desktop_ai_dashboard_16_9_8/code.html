@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Finance Module</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D4AF37", // Boutique Gold
+                        "bg-cream": "#FAFAF8",
+                        "card-ivory": "#FFFFFF",
+                        "text-main": "#1A1A1A",
+                        "text-muted": "#6B7280",
+                        "border-light": "#E5E7EB",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        'xl': "16px",
+                        '2xl': "24px",
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.03)',
+                        'gold-glow': '0 0 15px rgba(212, 175, 55, 0.3)',
+                    }
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--tw-color-bg-cream);
+        }
+        .ivory-card {
+            @apply bg-card-ivory border border-border-light shadow-soft rounded-2xl;
+        }
+        .sidebar-item-active {
+            @apply bg-primary/10 border border-primary/20 text-primary font-medium;
+        }
+        .sidebar-item {
+            @apply text-text-muted hover:bg-black/5 hover:text-text-main transition-colors font-medium;
+        }::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+    </style>
+</head>
+<body class="bg-bg-cream text-text-main h-screen w-screen flex antialiased overflow-hidden">
+<aside class="w-64 h-full bg-card-ivory border-r border-border-light flex flex-col p-6 z-20 shrink-0">
+<div class="flex items-center gap-3 mb-12 px-2">
+<div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary font-bold">visibility</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-text-main leading-none">OculOps</h1>
+<p class="text-[10px] uppercase tracking-widest text-text-muted mt-1 font-semibold">Control Tower</p>
+</div>
+</div>
+<nav class="flex-1 space-y-8 overflow-y-auto pr-2">
+<div>
+<p class="text-[10px] font-bold text-text-muted uppercase tracking-[0.2em] mb-4 px-2">Overview</p>
+<div class="space-y-1">
+<a class="sidebar-item flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="sidebar-item-active flex items-center justify-between px-4 py-2.5 rounded-xl transition-all" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg">stacked_line_chart</span>
+<span class="text-sm">Finance</span>
+</div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary shadow-gold-glow"></div>
+</a>
+<a class="sidebar-item flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm">Customers</span>
+</a>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-text-muted uppercase tracking-[0.2em] mb-4 px-2">Operations</p>
+<div class="space-y-1">
+<a class="sidebar-item flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">campaign</span>
+<span class="text-sm">Marketing</span>
+</a>
+<a class="sidebar-item flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+<span class="text-sm">Support</span>
+</a>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-text-muted uppercase tracking-[0.2em] mb-4 px-2">System</p>
+<div class="space-y-1">
+<a class="sidebar-item flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<div class="mt-auto pt-6 border-t border-border-light">
+<div class="flex items-center gap-3 px-2">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-gray-100 border border-border-light shrink-0">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfJy2qfDDake9X6m2OOM5cod0BMVw5V9aEeCVJh4lg08UkXITLPSNkdDRZCJVIwYtQ-RdmnICR0G9sjGWne5UvltiXOfF-0OH0qxVlnw-o3Jt5mT40iGQkw2vVQgiTD73_w4-dGtyhcjx7Fv7ENedDwRtI3HCcXQvXhjV3uq5RDYZxpIK2Y1rzC9Ikqr42HAwODRTUduhcxsltp4miem4_OLwk_atHHaMyUT8LtrOIZ9B447PGfpBopjB2ODlc6Fm3iAFOJdLGAMOI"/>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-sm font-semibold text-text-main truncate">Vance Director</span>
+<span class="text-[10px] text-text-muted truncate">Admin</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 h-full flex flex-col overflow-hidden">
+<header class="h-20 border-b border-border-light bg-bg-cream/80 backdrop-blur-md px-8 flex items-center justify-between shrink-0 z-10 sticky top-0">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-white border border-border-light flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-text-main text-[20px]">stacked_line_chart</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Finance</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-white border border-border-light rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors shadow-sm text-text-main">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                Export Report
+            </button>
+<div class="h-6 w-px bg-border-light"></div>
+<button class="w-10 h-10 rounded-full bg-white border border-border-light flex items-center justify-center text-text-muted hover:text-text-main transition-colors shadow-sm relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-[1400px] mx-auto space-y-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 ivory-card p-6 flex flex-col">
+<div class="flex justify-between items-start mb-8">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h3 class="text-[24px] font-bold tracking-tight">Financial Intelligence</h3>
+<div class="w-3 h-3 bg-primary rounded-full shadow-gold-glow relative">
+<div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-40"></div>
+</div>
+</div>
+<div class="flex items-baseline gap-4 mt-2">
+<span class="text-[36px] font-bold tracking-tighter leading-none">€0</span>
+<span class="text-sm font-medium text-text-muted px-2 py-1 bg-gray-100 rounded-md">MRR</span>
+<span class="text-sm font-medium text-text-muted ml-2">Target: €20k</span>
+</div>
+</div>
+<div class="flex bg-gray-100/50 p-1 rounded-lg border border-border-light">
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md text-text-muted hover:text-text-main transition-colors">7D</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md bg-white text-text-main shadow-sm border border-border-light/50">30D</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md text-text-muted hover:text-text-main transition-colors">90D</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md text-text-muted hover:text-text-main transition-colors">1Y</button>
+</div>
+</div>
+<div class="flex-1 min-h-[240px] w-full relative mt-4">
+<div class="absolute left-0 top-0 bottom-0 w-8 flex flex-col justify-between text-[10px] text-text-muted font-medium py-2">
+<span>20k</span>
+<span>15k</span>
+<span>10k</span>
+<span>5k</span>
+<span>0</span>
+</div>
+<div class="absolute left-10 right-0 top-0 bottom-6 flex flex-col justify-between">
+<div class="w-full border-b border-dashed border-gray-200 h-0"></div>
+<div class="w-full border-b border-dashed border-gray-200 h-0"></div>
+<div class="w-full border-b border-dashed border-gray-200 h-0"></div>
+<div class="w-full border-b border-dashed border-gray-200 h-0"></div>
+<div class="w-full border-b border-solid border-gray-300 h-0"></div>
+</div>
+<div class="absolute left-10 right-0 top-0 bottom-6 overflow-hidden">
+<div class="absolute inset-0 top-[60%] bg-gradient-to-t from-primary/5 to-transparent clip-path-chart-area">
+<svg class="w-full h-full text-primary opacity-10" fill="currentColor" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M0,100 L0,80 Q20,80 30,70 T60,65 T80,50 T100,60 L100,100 Z"></path>
+</svg>
+</div>
+<svg class="w-full h-full absolute inset-0 overflow-visible z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path class="drop-shadow-[0_4px_6px_rgba(212,175,55,0.3)]" d="M0,80 Q20,80 30,70 T60,65 T80,50 T100,60" fill="none" stroke="#D4AF37" stroke-width="2"></path>
+<circle cx="30" cy="70" fill="#fff" r="1.5" stroke="#D4AF37" stroke-width="1"></circle>
+<circle cx="60" cy="65" fill="#fff" r="1.5" stroke="#D4AF37" stroke-width="1"></circle>
+<circle cx="80" cy="50" fill="#fff" r="1.5" stroke="#D4AF37" stroke-width="1"></circle>
+<circle class="animate-pulse" cx="100" cy="60" fill="#D4AF37" r="2"></circle>
+</svg>
+</div>
+<div class="absolute left-10 right-0 bottom-0 h-6 flex justify-between items-end text-[10px] text-text-muted font-medium px-4">
+<span>Oct 1</span>
+<span>Oct 8</span>
+<span>Oct 15</span>
+<span>Oct 22</span>
+<span>Today</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 ivory-card p-6 flex flex-col">
+<h3 class="text-sm font-bold tracking-widest text-text-muted uppercase mb-6">Expense Breakdown</h3>
+<div class="flex-1 flex flex-col items-center justify-center relative">
+<div class="w-48 h-48 relative mb-6">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="40" stroke="#F3F4F6" stroke-width="12"></circle>
+<circle class="transition-all duration-1000" cx="50" cy="50" fill="none" r="40" stroke="#D4AF37" stroke-dasharray="251.2" stroke-dashoffset="180" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="none" r="40" stroke="#1A1A1A" stroke-dasharray="251.2" stroke-dashoffset="200" stroke-width="12" transform="rotate(70 50 50)"></circle>
+<circle cx="50" cy="50" fill="none" r="40" stroke="#9CA3AF" stroke-dasharray="251.2" stroke-dashoffset="230" stroke-width="12" transform="rotate(120 50 50)"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-[28px] font-bold tracking-tight text-text-main leading-none mt-1">€0</span>
+<span class="text-[10px] uppercase font-bold text-text-muted mt-1">Total</span>
+</div>
+</div>
+<div class="w-full space-y-3 mt-auto">
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-sm bg-primary"></div>
+<span class="text-text-muted font-medium">Software</span>
+</div>
+<span class="font-bold">0%</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-sm bg-text-main"></div>
+<span class="text-text-muted font-medium">Marketing</span>
+</div>
+<span class="font-bold">0%</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-sm bg-gray-400"></div>
+<span class="text-text-muted font-medium">Other</span>
+</div>
+<span class="font-bold">0%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="ivory-card p-5 border-primary/30 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<p class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em] mb-2">Monthly Recurring Rev</p>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-bold tracking-tight text-primary">€0</span>
+</div>
+</div>
+<div class="ivory-card p-5">
+<p class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em] mb-2">Total Pipeline</p>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-bold tracking-tight">€242,600</span>
+</div>
+</div>
+<div class="ivory-card p-5">
+<p class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em] mb-2">Active Deals</p>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-bold tracking-tight">6</span>
+</div>
+</div>
+<div class="ivory-card p-5">
+<p class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em] mb-2">Monthly Expenses</p>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-bold tracking-tight">€0</span>
+</div>
+</div>
+</div>
+<div class="ivory-card overflow-hidden flex flex-col">
+<div class="px-6 py-5 border-b border-border-light flex items-center justify-between bg-white">
+<h3 class="text-sm font-bold tracking-widest text-text-muted uppercase">Recent Transactions</h3>
+<button class="text-sm font-medium text-text-main hover:text-primary transition-colors flex items-center gap-1">
+                        View All
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead class="bg-gray-50/50 text-text-muted text-[11px] uppercase tracking-wider font-semibold border-b border-border-light">
+<tr>
+<th class="px-6 py-3" scope="col">Date</th>
+<th class="px-6 py-3" scope="col">Description</th>
+<th class="px-6 py-3" scope="col">Category</th>
+<th class="px-6 py-3 text-right" scope="col">Amount</th>
+<th class="px-6 py-3 text-center" scope="col">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light bg-white">
+<tr>
+<td class="px-6 py-12 text-center text-text-muted" colspan="5">
+<div class="flex flex-col items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-gray-400">receipt_long</span>
+</div>
+<p class="text-sm font-medium text-text-main">No transactions yet</p>
+<p class="text-xs mt-1">Transactions will appear here once recorded.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Agent Marketplace Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0..1,-25..0&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --canvas: #FAFAF8;
+            --sidebar: #F5F0E8;
+            --card: #FFFFFF;
+            --border: #E5E5E0;
+            --gold: #FFD700;
+            --gold-muted: rgba(255, 215, 0, 0.1);
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B6B6B;
+            --text-tertiary: #9CA3AF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+        }
+        .text-primary { color: var(--text-primary); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-tertiary { color: var(--text-tertiary); }
+        .weight-body { font-weight: 400; }
+        .weight-heading { font-weight: 600; }
+        .weight-kpi { font-weight: 700; }
+        .tertiary-label {
+            color: var(--text-tertiary);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'wght' 300;
+        }
+        .neumorphic-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 0 rgba(255,255,255,0.8) inset;
+        }
+        .sidebar-active {
+            background: #EBE4D8;
+            color: var(--text-primary);
+        }
+        .gold-pill {
+            background: var(--gold);
+            color: #000;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D1D1CB;
+            border-radius: 10px;
+        }
+        .particle-bg {
+            background-image: radial-gradient(circle, var(--gold) 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden weight-body">
+<aside class="w-[240px] bg-[var(--sidebar)] border-r border-[var(--border)] flex flex-col h-full shrink-0">
+<div class="h-14 flex items-center px-6 gap-3 border-b border-[var(--border)]">
+<div class="w-7 h-7 bg-black rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-[var(--gold)] text-lg">view_in_ar</span>
+</div>
+<span class="weight-heading tracking-tight text-lg text-primary">OCULOPS</span>
+</div>
+<nav class="flex-1 py-6 px-3 space-y-1 overflow-y-auto custom-scrollbar">
+<div class="px-3 mb-2">
+<p class="text-[10px] tertiary-label">Platform</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-secondary hover:bg-[#EBE4D8] transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm weight-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md sidebar-active" href="#">
+<span class="material-symbols-outlined text-xl">storefront</span>
+<span class="text-sm weight-heading">Marketplace</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-secondary hover:bg-[#EBE4D8] transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">account_tree</span>
+<span class="text-sm weight-body">Workflows</span>
+</a>
+<div class="px-3 mb-2 mt-8">
+<p class="text-[10px] tertiary-label">Assets</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-secondary hover:bg-[#EBE4D8] transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+<span class="text-sm weight-body">My Agents</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-secondary hover:bg-[#EBE4D8] transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+<span class="text-sm weight-body">Templates</span>
+</a>
+</nav>
+<div class="p-4 border-t border-[var(--border)] bg-[#F0EBE0]/30">
+<div class="flex items-center gap-3 px-2 py-1">
+<div class="w-8 h-8 rounded-full bg-neutral-300 overflow-hidden">
+<img alt="Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACWYnDZo3KEffrZsPjKiUBPXEK0znASrc-wvbOSzRvgkZOqemYIjB3dW5-_ayWXiLEcXOC7eLRppDZ2whnY0x3RrppbeP_3tW_3j8K2SR-C8R4G892hW4w4XgPvvtMznfzqw3JsclxVleo9Z71aqEMSDE7-yVpJhtSrLkt8wsgdvXm-Okv8V1FyrG2oBTmgpwv9xRWqiTkK2O4mdGXY1UlgTfb4VrxMTN-fqV-sbjbg3SzoUB2Qxo9ADW6AhgPJJk-IokPcHJ_Aw_y"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs weight-heading text-primary">Vance Miller</span>
+<span class="text-[10px] text-secondary weight-body">Enterprise Plan</span>
+</div>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto bg-[var(--canvas)]">
+<header class="h-14 border-b border-[var(--border)] flex items-center justify-between px-8 bg-[var(--card)] sticky top-0 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">store</span>
+<span class="weight-heading text-sm text-primary">Marketplace</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-secondary hover:text-black">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="h-4 w-[1px] bg-[var(--border)]"></div>
+<button class="bg-black text-white px-4 py-1.5 rounded text-[10px] tertiary-label text-white !tracking-[0.1em] hover:bg-neutral-800 transition-colors">
+                Build Agent
+            </button>
+</div>
+</header>
+<main class="p-8 max-w-[1200px] mx-auto w-full space-y-8">
+<section class="neumorphic-card rounded-2xl p-10 relative overflow-hidden flex flex-col items-center text-center">
+<div class="absolute inset-0 particle-bg"></div>
+<div class="relative z-10">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black mb-4">
+<span class="material-symbols-outlined text-[var(--gold)]">rocket_launch</span>
+</div>
+<h2 class="text-[24px] weight-heading tracking-tight mb-2 text-primary">OCULOPS Marketplace</h2>
+<p class="text-secondary text-sm weight-body max-w-md mx-auto">Access the world's most advanced autonomous agents and architectural workflows designed for precision scaling.</p>
+</div>
+</section>
+<section class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<button class="px-4 py-1.5 rounded-full gold-pill text-xs weight-heading">All Assets</button>
+<button class="px-4 py-1.5 rounded-full text-xs weight-body text-secondary border border-[var(--border)] hover:bg-[var(--sidebar)]">Agents</button>
+<button class="px-4 py-1.5 rounded-full text-xs weight-body text-secondary border border-[var(--border)] hover:bg-[var(--sidebar)]">Workflows</button>
+<button class="px-4 py-1.5 rounded-full text-xs weight-body text-secondary border border-[var(--border)] hover:bg-[var(--sidebar)]">Data Sets</button>
+<button class="px-4 py-1.5 rounded-full text-xs weight-body text-secondary border border-[var(--border)] hover:bg-[var(--sidebar)]">Connectors</button>
+</div>
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-tertiary text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-1.5 bg-[var(--card)] border border-[var(--border)] rounded-lg text-sm weight-body text-primary focus:outline-none focus:ring-1 focus:ring-[var(--gold)]" placeholder="Search Marketplace..." type="text"/>
+</div>
+</section>
+<section class="neumorphic-card rounded-xl p-8 border-l-4 border-l-[var(--gold)] flex items-center justify-between relative group hover:border-[var(--gold)] transition-all">
+<div class="flex items-center gap-8">
+<div class="w-24 h-24 rounded-lg bg-[var(--sidebar)] border border-[var(--border)] flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-tertiary">hub</span>
+</div>
+<div>
+<div class="inline-flex items-center gap-1 bg-[var(--gold-muted)] px-2 py-0.5 rounded text-[10px] tertiary-label !text-primary mb-3 border border-[var(--gold)]/30">
+<span class="material-symbols-outlined text-[12px]">workspace_premium</span>
+                        Featured
+                    </div>
+<h3 class="text-xl weight-heading text-primary mb-1">Advanced Prospector Pack</h3>
+<p class="text-sm text-secondary weight-body">A master-tier workflow sequence for multi-channel outbound automation and lead scoring.</p>
+</div>
+</div>
+<button class="px-6 py-2.5 bg-black text-white rounded-lg text-sm weight-heading hover:bg-neutral-800 transition-colors">
+                View Details
+            </button>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+<article class="neumorphic-card rounded-xl p-5 flex flex-col gap-4 group hover:translate-y-[-2px] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-[var(--sidebar)] border border-[var(--border)] flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-500">search_check</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[var(--gold)] text-sm">star</span>
+<span class="text-xs weight-kpi text-primary">4.9</span>
+</div>
+</div>
+<div>
+<div class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded text-[10px] tertiary-label !text-blue-600 w-fit mb-2 border border-blue-100">AI Agent</div>
+<h4 class="weight-heading text-base text-primary leading-tight">SEO Scanner Agent</h4>
+<p class="text-secondary text-xs weight-body mt-2 line-clamp-2">Autonomous crawler that identifies SEO gaps and provides real-time optimization suggestions.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-[var(--border)] flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">download</span>
+<span class="text-[11px] weight-body">2.4k installs</span>
+</div>
+<button class="bg-[var(--gold)] text-black px-3 py-1.5 rounded-md text-[11px] weight-heading hover:brightness-95 transition-all">Install</button>
+</div>
+</article>
+<article class="neumorphic-card rounded-xl p-5 flex flex-col gap-4 group hover:translate-y-[-2px] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-[var(--sidebar)] border border-[var(--border)] flex items-center justify-center">
+<span class="material-symbols-outlined text-green-500">database</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[var(--gold)] text-sm">star</span>
+<span class="text-xs weight-kpi text-primary">5.0</span>
+</div>
+</div>
+<div>
+<div class="bg-green-50 text-green-600 px-2 py-0.5 rounded text-[10px] tertiary-label !text-green-600 w-fit mb-2 border border-green-100">Workflow</div>
+<h4 class="weight-heading text-base text-primary leading-tight">Lead Enrichment Workflow</h4>
+<p class="text-secondary text-xs weight-body mt-2 line-clamp-2">Connect to 50+ data sources to enrich cold leads with social and firmographic data automatically.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-[var(--border)] flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">download</span>
+<span class="text-[11px] weight-body">1.8k installs</span>
+</div>
+<button class="bg-[var(--gold)] text-black px-3 py-1.5 rounded-md text-[11px] weight-heading hover:brightness-95 transition-all">Install</button>
+</div>
+</article>
+<article class="neumorphic-card rounded-xl p-5 flex flex-col gap-4 group hover:translate-y-[-2px] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-[var(--sidebar)] border border-[var(--border)] flex items-center justify-center">
+<span class="material-symbols-outlined text-purple-500">translate</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[var(--gold)] text-sm">star</span>
+<span class="text-xs weight-kpi text-primary">4.7</span>
+</div>
+</div>
+<div>
+<div class="bg-purple-50 text-purple-600 px-2 py-0.5 rounded text-[10px] tertiary-label !text-purple-600 w-fit mb-2 border border-purple-100">AI Agent</div>
+<h4 class="weight-heading text-base text-primary leading-tight">Polyglot Support Agent</h4>
+<p class="text-secondary text-xs weight-body mt-2 line-clamp-2">Multilingual support agent capable of handling complex queries in 45+ languages.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-[var(--border)] flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">download</span>
+<span class="text-[11px] weight-body">942 installs</span>
+</div>
+<button class="bg-[var(--gold)] text-black px-3 py-1.5 rounded-md text-[11px] weight-heading hover:brightness-95 transition-all">Install</button>
+</div>
+</article>
+<article class="neumorphic-card rounded-xl p-5 flex flex-col gap-4 group hover:translate-y-[-2px] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-[var(--sidebar)] border border-[var(--border)] flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-500">monitoring</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[var(--gold)] text-sm">star</span>
+<span class="text-xs weight-kpi text-primary">4.8</span>
+</div>
+</div>
+<div>
+<div class="bg-orange-50 text-orange-600 px-2 py-0.5 rounded text-[10px] tertiary-label !text-orange-600 w-fit mb-2 border border-orange-100">Analytics</div>
+<h4 class="weight-heading text-base text-primary leading-tight">Predictive Churn Monitor</h4>
+<p class="text-secondary text-xs weight-body mt-2 line-clamp-2">Uses historical behavior patterns to predict and flag high-risk customers before they leave.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-[var(--border)] flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">download</span>
+<span class="text-[11px] weight-body">1.1k installs</span>
+</div>
+<button class="bg-[var(--gold)] text-black px-3 py-1.5 rounded-md text-[11px] weight-heading hover:brightness-95 transition-all">Install</button>
+</div>
+</article>
+<article class="neumorphic-card rounded-xl p-5 flex flex-col gap-4 group hover:translate-y-[-2px] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-[var(--sidebar)] border border-[var(--border)] flex items-center justify-center">
+<span class="material-symbols-outlined text-cyan-500">shield_with_heart</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[var(--gold)] text-sm">star</span>
+<span class="text-xs weight-kpi text-primary">4.9</span>
+</div>
+</div>
+<div>
+<div class="bg-cyan-50 text-cyan-600 px-2 py-0.5 rounded text-[10px] tertiary-label !text-cyan-600 w-fit mb-2 border border-cyan-100">AI Agent</div>
+<h4 class="weight-heading text-base text-primary leading-tight">Compliance Sentry</h4>
+<p class="text-secondary text-xs weight-body mt-2 line-clamp-2">Ensures all outgoing communication meets legal and brand guidelines in real-time.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-[var(--border)] flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">download</span>
+<span class="text-[11px] weight-body">3.2k installs</span>
+</div>
+<button class="bg-[var(--gold)] text-black px-3 py-1.5 rounded-md text-[11px] weight-heading hover:brightness-95 transition-all">Install</button>
+</div>
+</article>
+<article class="neumorphic-card rounded-xl p-5 flex flex-col gap-4 group hover:translate-y-[-2px] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-[var(--sidebar)] border border-[var(--border)] flex items-center justify-center">
+<span class="material-symbols-outlined text-red-500">bolt</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[var(--gold)] text-sm">star</span>
+<span class="text-xs weight-kpi text-primary">4.6</span>
+</div>
+</div>
+<div>
+<div class="bg-red-50 text-red-600 px-2 py-0.5 rounded text-[10px] tertiary-label !text-red-600 w-fit mb-2 border border-red-100">Workflow</div>
+<h4 class="weight-heading text-base text-primary leading-tight">Crisis Response Chain</h4>
+<p class="text-secondary text-xs weight-body mt-2 line-clamp-2">Instant automated triage and notification chain for server outages or critical bugs.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-[var(--border)] flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">download</span>
+<span class="text-[11px] weight-body">654 installs</span>
+</div>
+<button class="bg-[var(--gold)] text-black px-3 py-1.5 rounded-md text-[11px] weight-heading hover:brightness-95 transition-all">Install</button>
+</div>
+</article>
+</div>
+</main>
+</div>
+
+</body></html>

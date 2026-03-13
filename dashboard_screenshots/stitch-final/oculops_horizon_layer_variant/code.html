@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Horizon Layer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FACC15",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#0F172A",
+                        "card-light": "rgba(255, 255, 255, 0.8)",
+                        "card-dark": "rgba(30, 41, 59, 0.7)",
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(250, 204, 21, 0.3);
+        }
+        .cinematic-glow {
+            box-shadow: 0 0 40px rgba(250, 204, 21, 0.15);
+        }
+        .neomorphism-inset {
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.05);
+        }
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col">
+<header class="w-full h-14 glass-panel bg-card-light dark:bg-card-dark sticky top-0 z-50 flex items-center justify-between px-4 border-b border-primary/20">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+<span class="material-icons-outlined text-background-dark text-lg">visibility</span>
+</div>
+<h1 class="font-display font-bold text-sm tracking-widest text-primary">OCULOPS</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[10px] uppercase tracking-widest font-bold text-primary border-b-2 border-primary pb-1" href="#">Intelligence</a>
+<a class="text-[10px] uppercase tracking-widest font-medium opacity-60 hover:opacity-100 transition-opacity" href="#">Operations</a>
+<a class="text-[10px] uppercase tracking-widest font-medium opacity-60 hover:opacity-100 transition-opacity" href="#">Fleet</a>
+<a class="text-[10px] uppercase tracking-widest font-medium opacity-60 hover:opacity-100 transition-opacity" href="#">Security</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-icons-outlined text-xl opacity-60">search</span>
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full overflow-hidden border border-primary/50">
+<img alt="Commander Vance Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvtVNnpkvez8RkeT9nmn3d6U1EO5ou_L6XzScCdurRGT0xM6r-rsvuZR2H5pIlfC1VRcLTKvttv-fMbERpBC44xrYQggw3c93CamplVAZT8Bnt8ox2GUshRymrMcjLYhEXOZQtpKO-hixTpRCgS4ma_4XQ-i_Qh3NukL1aAeIgJ_pQogYG8Vew-RQ5x8ebz_wyup81R3w2KOCGc5PV0yLzxsQzxwuYEXKwnH6GBcfDdjqYuWxhoMdZFGl-HAAhom9bwVcs_bmoTtaJ"/>
+</div>
+<span class="text-[10px] font-bold hidden sm:inline">VANCE</span>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col w-full">
+<section class="grid grid-cols-2 gap-[1px] bg-primary/20 border-b border-primary/20">
+<div class="bg-card-light dark:bg-card-dark p-4 flex flex-col items-center justify-center text-center">
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1">Global Threat Level</span>
+<div class="flex items-center gap-2">
+<span class="material-icons-outlined text-primary text-xl">public</span>
+<span class="font-display text-lg font-bold">LOW</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 flex flex-col items-center justify-center text-center border-l border-primary/20">
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1">Fleet Health</span>
+<div class="flex items-center gap-2">
+<span class="font-display text-lg font-bold">98.4%</span>
+<span class="material-icons-outlined text-green-500 text-sm">north_east</span>
+</div>
+<div class="w-24 h-1 bg-slate-200 dark:bg-slate-700 mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98.4%]"></div>
+</div>
+</div>
+</section>
+<section class="relative flex-1 min-h-[400px] flex items-center justify-center overflow-hidden bg-slate-900">
+<div class="absolute inset-0 z-0 opacity-80 scale-110">
+<img alt="Cinematic Nebula Background" class="w-full h-full object-cover blur-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo_aj6oLWJt2eQJgKlZFZsMpcXUyofPtCsjuqW0-qhI-3b74jHMpsPE9N01T3dAPlkS48I2yEt5f8qkROpIVO_AlCr3bpBtJ-NSdg5ix5tsSEKR0IBNjV5BP_Uws5L4LzczwW5dkwH0u6xlYp6zMN5yfDemAW9siDbVAmhubyoadVc9SWYdvFwTObWEheYTGAbnYySs0pVlZ3YkssWmNnJVqnxPsYeP21_EZst94clMJWC4Uqk8eqWSkFlgcpWploWKbLs-d1rHQ15"/>
+</div>
+<div class="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full cinematic-glow border border-primary/40 bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-primary/40 via-transparent to-transparent animate-pulse"></div>
+<div class="w-3/4 h-3/4 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center">
+<div class="w-1/2 h-1/2 rounded-full bg-white blur-xl opacity-30"></div>
+</div>
+<div class="absolute w-[120%] h-[20%] border border-primary/40 rounded-[100%] rotate-[25deg]"></div>
+<div class="absolute w-[120%] h-[20%] border border-primary/20 rounded-[100%] -rotate-[15deg]"></div>
+</div>
+<div class="absolute top-6 left-6 z-20">
+<h2 class="font-display text-xs tracking-widest text-primary uppercase font-bold">Master Intelligence</h2>
+<div class="flex items-center gap-2 text-[10px] opacity-60 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                    LIVE FEED ACTIVE
+                </div>
+</div>
+</section>
+<section class="w-full glass-panel bg-card-light dark:bg-card-dark p-4 border-t border-primary/20">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-display text-[11px] font-bold tracking-widest uppercase">Critical Signals</h3>
+<span class="material-icons-outlined text-sm opacity-60">more_horiz</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-[10px] border-collapse">
+<thead>
+<tr class="opacity-40 uppercase tracking-tighter border-b border-primary/10">
+<th class="py-2 pr-4 font-medium">Date</th>
+<th class="py-2 pr-4 font-medium">Dag/Trxr</th>
+<th class="py-2 pr-4 font-medium">Alerts</th>
+<th class="py-2 pr-4 font-medium">Strength</th>
+<th class="py-2 font-medium">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr>
+<td class="py-3 pr-4 font-mono">08:17.02.51</td>
+<td class="py-3 pr-4 font-mono opacity-60">09:12.22.60</td>
+<td class="py-3 pr-4">
+<span class="flex items-center gap-1 text-red-500 font-bold">
+<span class="material-icons-outlined text-xs">report_problem</span> ALERT
+                                </span>
+</td>
+<td class="py-3 pr-4">
+<div class="flex items-end gap-[1px]">
+<div class="w-1 h-2 bg-primary"></div>
+<div class="w-1 h-3 bg-primary"></div>
+<div class="w-1 h-2 bg-slate-300 dark:bg-slate-600"></div>
+<div class="w-1 h-4 bg-slate-300 dark:bg-slate-600"></div>
+</div>
+</td>
+<td class="py-3"><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[9px] font-bold">LOW</span></td>
+</tr>
+<tr>
+<td class="py-3 pr-4 font-mono">08:17.02.52</td>
+<td class="py-3 pr-4 font-mono opacity-60">09:17.22.60</td>
+<td class="py-3 pr-4">
+<span class="flex items-center gap-1 text-primary font-bold">
+<span class="material-icons-outlined text-xs">warning</span> ALERT
+                                </span>
+</td>
+<td class="py-3 pr-4">
+<div class="flex items-end gap-[1px]">
+<div class="w-1 h-2 bg-primary"></div>
+<div class="w-1 h-3 bg-primary"></div>
+<div class="w-1 h-4 bg-primary"></div>
+<div class="w-1 h-1 bg-slate-300 dark:bg-slate-600"></div>
+</div>
+</td>
+<td class="py-3"><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[9px] font-bold">HIGH</span></td>
+</tr>
+<tr>
+<td class="py-3 pr-4 font-mono">08:17.02.53</td>
+<td class="py-3 pr-4 font-mono opacity-60">08:17.22.60</td>
+<td class="py-3 pr-4">
+<span class="flex items-center gap-1 text-primary font-bold">
+<span class="material-icons-outlined text-xs">warning</span> ALERT
+                                </span>
+</td>
+<td class="py-3 pr-4">
+<div class="flex items-end gap-[1px]">
+<div class="w-1 h-1 bg-primary"></div>
+<div class="w-1 h-2 bg-primary"></div>
+<div class="w-1 h-1 bg-slate-300 dark:bg-slate-600"></div>
+<div class="w-1 h-2 bg-slate-300 dark:bg-slate-600"></div>
+</div>
+</td>
+<td class="py-3"><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[9px] font-bold">LOW</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<footer class="md:hidden glass-panel bg-card-light dark:bg-card-dark h-16 flex items-center justify-around border-t border-primary/20 fixed bottom-0 left-0 right-0">
+<button class="text-primary flex flex-col items-center">
+<span class="material-icons-outlined">radar</span>
+<span class="text-[8px] font-bold uppercase mt-1">Intel</span>
+</button>
+<button class="opacity-40 flex flex-col items-center">
+<span class="material-icons-outlined">precision_manufacturing</span>
+<span class="text-[8px] font-bold uppercase mt-1">Ops</span>
+</button>
+<button class="opacity-40 flex flex-col items-center">
+<span class="material-icons-outlined">rocket_launch</span>
+<span class="text-[8px] font-bold uppercase mt-1">Fleet</span>
+</button>
+<button class="opacity-40 flex flex-col items-center">
+<span class="material-icons-outlined">security</span>
+<span class="text-[8px] font-bold uppercase mt-1">Safe</span>
+</button>
+</footer>
+<div class="h-16 md:hidden"></div>
+
+</body></html>

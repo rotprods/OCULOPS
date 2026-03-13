@@ -37,6 +37,8 @@ export { useAlerts } from './useAlerts'
 export { useFinance } from './useFinance'
 export { useAutomation } from './useAutomation'
 export { useCampaigns } from './useCampaigns'
+export { useOutreachQueue } from './useOutreachQueue'
+export { useApprovals } from './useApprovals'
 
 // History
 export { useSnapshots } from './useSnapshots'

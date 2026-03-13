@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCULOPS — Rebrand Master Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   OCULOPS Master Reference — IVORY Design System
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --surface-base: #FAFAF8;
+  --surface-raised: #FFFFFF;
+  --surface-elevated: #F5F5F0;
+  --surface-sidebar: #F5F0E8;
+  --surface-inset: #F0F0EB;
+
+  --border-default: #E5E5E0;
+  --border-subtle: #F0F0EB;
+  --border-strong: #D4D4CF;
+  --border-active: rgba(255, 215, 0, 0.4);
+
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #9A9A9A;
+  --text-quaternary: #C4C4C4;
+
+  --accent-primary: #FFD700;
+  --accent-primary-hover: #FFC400;
+  --accent-primary-muted: rgba(255, 215, 0, 0.10);
+  --accent-primary-rgb: 255, 215, 0;
+
+  --color-success: #34C759;
+  --color-warning: #FF9F43;
+  --color-danger: #E53E3E;
+  --color-info: #3B82F6;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.10);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --sidebar-width: 260px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--surface-base);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--surface-sidebar);
+  border-right: 1px solid var(--border-default);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--border-default);
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(var(--accent-primary-rgb), 0.3);
+}
+
+.sidebar-logo-icon .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.sidebar-logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.sidebar-logo-text span {
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: 11px;
+  display: block;
+  letter-spacing: 0.04em;
+}
+
+.sidebar-section { padding: 8px 12px; }
+
+.sidebar-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-tertiary);
+  padding: 8px 8px 6px;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.2, 0, 0, 1);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.sidebar-nav-item:hover {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+}
+
+.sidebar-nav-item.active {
+  background: var(--accent-primary-muted);
+  color: #B8960A;
+  border-color: rgba(var(--accent-primary-rgb), 0.2);
+  font-weight: 600;
+}
+
+.sidebar-nav-item.active::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px rgba(var(--accent-primary-rgb), 0.5);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+  50% { opacity: 0.6; transform: translateY(-50%) scale(0.8); }
+}
+
+.sidebar-nav-item .material-symbols-outlined {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.sidebar-avatar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  border: 2px solid var(--surface-sidebar);
+}
+
+.sidebar-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-user-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-user-role {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+}
+
+/* ── Main Content ── */
+.main {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 250, 248, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-default);
+  padding: 0 40px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-date {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  background: rgba(52, 199, 89, 0.08);
+  border: 1px solid rgba(52, 199, 89, 0.2);
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #2DA44E;
+}
+
+.live-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-success);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ── Content Container ── */
+.content {
+  max-width: 1400px;
+  padding: 32px 40px 80px;
+}
+
+/* ── Brand DNA Panel ── */
+.brand-dna-panel {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  margin-bottom: 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-dna-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms;
+}
+
+.brand-dna-header:hover {
+  background: var(--surface-elevated);
+}
+
+.brand-dna-header.open {
+  border-bottom-color: var(--border-default);
+}
+
+.brand-dna-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.brand-dna-title .material-symbols-outlined {
+  color: var(--accent-primary);
+}
+
+.brand-dna-chevron {
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1);
+  color: var(--text-tertiary);
+}
+
+.brand-dna-chevron.open { transform: rotate(180deg); }
+
+.brand-dna-body {
+  display: none;
+  padding: 24px;
+}
+
+.brand-dna-body.open { display: block; }
+
+.dna-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+
+.dna-section-title:first-child { margin-top: 0; }
+
+/* Swatches */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.swatch {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.swatch-color {
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4px 8px;
+}
+
+.swatch-color-value {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.85);
+  color: var(--text-primary);
+}
+
+.swatch-info {
+  padding: 6px 8px;
+  background: var(--surface-raised);
+}
+
+.swatch-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1px;
+}
+
+.swatch-role {
+  font-size: 9px;
+  color: var(--text-tertiary);
+  line-height: 1.3;
+}
+
+/* Typography samples */
+.typo-samples {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.typo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.typo-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-tertiary);
+  width: 60px;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+.typo-sample {
+  color: var(--text-primary);
+}
+
+/* Shadow/Radius/Motion */
+.material-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.material-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+}
+
+.material-card-label {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  margin-top: 8px;
+  letter-spacing: 0.04em;
+}
+
+.shadow-demo {
+  width: 60px;
+  height: 40px;
+  background: var(--surface-raised);
+  border-radius: var(--radius-md);
+  margin: 0 auto;
+}
+
+.radius-demo {
+  width: 60px;
+  height: 40px;
+  background: var(--accent-primary-muted);
+  border: 1px solid var(--border-active);
+  margin: 0 auto;
+}
+
+.motion-demo {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-primary-muted);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-md);
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.motion-demo:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-primary);
+}
+
+/* Glass demo */
+.glass-demo {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ── Screen Sections ── */
+.screens-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.screens-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.screens-header-meta {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+}
+
+.category-section {
+  margin-bottom: 40px;
+}
+
+.category-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-label .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.category-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--surface-elevated);
+  padding: 1px 6px;
+  border-radius: 9999px;
+  color: var(--text-tertiary);
+}
+
+/* Screen card */
+.screen-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms;
+}
+
+.screen-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--border-strong);
+}
+
+.screen-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.screen-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.screen-card-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  background: var(--surface-elevated);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+}
+
+.screen-card-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.screen-card-route {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+.screen-card-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Priority badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.badge-p1 {
+  background: rgba(var(--accent-primary-rgb), 0.15);
+  color: #B8960A;
+  border: 1px solid rgba(var(--accent-primary-rgb), 0.3);
+}
+
+.badge-p2 {
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
+
+.badge-p3 {
+  background: transparent;
+  color: var(--text-quaternary);
+  border: 1px solid var(--border-subtle);
+}
+
+.badge-category {
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 9px;
+}
+
+/* Status badges */
+.status-done {
+  background: rgba(52, 199, 89, 0.08);
+  color: #2DA44E;
+  border: 1px solid rgba(52, 199, 89, 0.2);
+}
+
+.status-partial {
+  background: rgba(255, 159, 67, 0.08);
+  color: #D97706;
+  border: 1px solid rgba(255, 159, 67, 0.2);
+}
+
+.status-shell {
+  background: transparent;
+  color: var(--text-quaternary);
+  border: 1px solid var(--border-subtle);
+}
+
+.status-exists {
+  background: rgba(59, 130, 246, 0.06);
+  color: #2563EB;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.screen-card-body {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.screen-info { display: flex; flex-direction: column; gap: 12px; }
+
+.screen-description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.screen-components-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.screen-components-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.screen-components-list li {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: var(--surface-elevated);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Stitch render placeholder */
+.stitch-placeholder {
+  aspect-ratio: 16 / 9;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--surface-elevated);
+  transition: all 300ms;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.stitch-placeholder:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary-muted);
+}
+
+.stitch-placeholder .material-symbols-outlined {
+  font-size: 32px;
+  color: var(--text-quaternary);
+}
+
+.stitch-placeholder:hover .material-symbols-outlined {
+  color: var(--accent-primary);
+}
+
+.stitch-placeholder-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.stitch-placeholder-sub {
+  font-size: 9px;
+  color: var(--text-quaternary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+/* ── Scrollspy indicator ── */
+.screen-card[id] { scroll-margin-top: 72px; }
+
+/* ── Stats Bar ── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-xs);
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.stat-value.gold { color: #B8960A; }
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* ── Filter pills ── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms;
+  border: 1px solid var(--border-default);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+}
+
+.filter-pill:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.filter-pill.active {
+  background: var(--accent-primary-muted);
+  border-color: rgba(var(--accent-primary-rgb), 0.3);
+  color: #B8960A;
+  font-weight: 600;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+  .screen-card-body { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .stats-bar { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media print {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .page-header { position: static; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon">
+      <span class="material-symbols-outlined">visibility</span>
+    </div>
+    <div class="sidebar-logo-text">
+      OculOps
+      <span>Intelligence OS</span>
+    </div>
+  </div>
+
+  <!-- CORE -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Core</div>
+    <a class="sidebar-nav-item active" href="#control-tower" data-screen="control-tower">
+      <span class="material-symbols-outlined">space_dashboard</span>
+      Control Tower
+    </a>
+    <a class="sidebar-nav-item" href="#crm" data-screen="crm">
+      <span class="material-symbols-outlined">contacts</span>
+      CRM
+    </a>
+    <a class="sidebar-nav-item" href="#pipeline" data-screen="pipeline">
+      <span class="material-symbols-outlined">view_kanban</span>
+      Pipeline
+    </a>
+    <a class="sidebar-nav-item" href="#execution" data-screen="execution">
+      <span class="material-symbols-outlined">task_alt</span>
+      Execution
+    </a>
+    <a class="sidebar-nav-item" href="#command-center" data-screen="command-center">
+      <span class="material-symbols-outlined">terminal</span>
+      Command Center
+    </a>
+  </div>
+
+  <!-- INTELLIGENCE -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Intelligence</div>
+    <a class="sidebar-nav-item" href="#intelligence" data-screen="intelligence">
+      <span class="material-symbols-outlined">radar</span>
+      Intelligence
+    </a>
+    <a class="sidebar-nav-item" href="#markets" data-screen="markets">
+      <span class="material-symbols-outlined">monitoring</span>
+      Markets
+    </a>
+    <a class="sidebar-nav-item" href="#analytics" data-screen="analytics">
+      <span class="material-symbols-outlined">analytics</span>
+      Analytics
+    </a>
+    <a class="sidebar-nav-item" href="#opportunities" data-screen="opportunities">
+      <span class="material-symbols-outlined">diamond</span>
+      Opportunities
+    </a>
+    <a class="sidebar-nav-item" href="#gtm" data-screen="gtm">
+      <span class="material-symbols-outlined">rocket_launch</span>
+      Go To Market
+    </a>
+    <a class="sidebar-nav-item" href="#world-monitor" data-screen="world-monitor">
+      <span class="material-symbols-outlined">public</span>
+      World Monitor
+    </a>
+    <a class="sidebar-nav-item" href="#niches" data-screen="niches">
+      <span class="material-symbols-outlined">category</span>
+      Niches
+    </a>
+    <a class="sidebar-nav-item" href="#creative" data-screen="creative">
+      <span class="material-symbols-outlined">palette</span>
+      Creative Studio
+    </a>
+  </div>
+
+  <!-- AUTOMATION -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Automation</div>
+    <a class="sidebar-nav-item" href="#agents" data-screen="agents">
+      <span class="material-symbols-outlined">smart_toy</span>
+      AI Agents
+    </a>
+    <a class="sidebar-nav-item" href="#prospector" data-screen="prospector">
+      <span class="material-symbols-outlined">explore</span>
+      Prospector Hub
+    </a>
+    <a class="sidebar-nav-item" href="#herald" data-screen="herald">
+      <span class="material-symbols-outlined">campaign</span>
+      Herald Agent
+    </a>
+    <a class="sidebar-nav-item" href="#flight-deck" data-screen="flight-deck">
+      <span class="material-symbols-outlined">flight</span>
+      Flight Deck
+    </a>
+    <a class="sidebar-nav-item" href="#automation" data-screen="automation">
+      <span class="material-symbols-outlined">bolt</span>
+      Automation
+    </a>
+    <a class="sidebar-nav-item" href="#messaging" data-screen="messaging">
+      <span class="material-symbols-outlined">chat</span>
+      Messaging
+    </a>
+    <a class="sidebar-nav-item" href="#marketplace" data-screen="marketplace">
+      <span class="material-symbols-outlined">storefront</span>
+      Marketplace
+    </a>
+    <a class="sidebar-nav-item" href="#pixel-office" data-screen="pixel-office">
+      <span class="material-symbols-outlined">grid_view</span>
+      Pixel Office
+    </a>
+    <a class="sidebar-nav-item" href="#watchtower" data-screen="watchtower">
+      <span class="material-symbols-outlined">security</span>
+      Watchtower
+    </a>
+  </div>
+
+  <!-- ANALYTICS -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Analytics</div>
+    <a class="sidebar-nav-item" href="#finance" data-screen="finance">
+      <span class="material-symbols-outlined">account_balance</span>
+      Finance
+    </a>
+    <a class="sidebar-nav-item" href="#knowledge" data-screen="knowledge">
+      <span class="material-symbols-outlined">auto_stories</span>
+      Knowledge
+    </a>
+    <a class="sidebar-nav-item" href="#decisions" data-screen="decisions">
+      <span class="material-symbols-outlined">balance</span>
+      Decisions
+    </a>
+    <a class="sidebar-nav-item" href="#experiments" data-screen="experiments">
+      <span class="material-symbols-outlined">science</span>
+      Experiments
+    </a>
+    <a class="sidebar-nav-item" href="#simulation" data-screen="simulation">
+      <span class="material-symbols-outlined">show_chart</span>
+      Simulation
+    </a>
+    <a class="sidebar-nav-item" href="#studies" data-screen="studies">
+      <span class="material-symbols-outlined">school</span>
+      Study Hub
+    </a>
+    <a class="sidebar-nav-item" href="#portfolio" data-screen="portfolio">
+      <span class="material-symbols-outlined">cases</span>
+      Portfolio
+    </a>
+    <a class="sidebar-nav-item" href="#lab" data-screen="lab">
+      <span class="material-symbols-outlined">biotech</span>
+      Lab
+    </a>
+    <a class="sidebar-nav-item" href="#reports" data-screen="reports">
+      <span class="material-symbols-outlined">summarize</span>
+      Reports
+    </a>
+    <a class="sidebar-nav-item" href="#billing" data-screen="billing">
+      <span class="material-symbols-outlined">receipt_long</span>
+      Billing
+    </a>
+    <a class="sidebar-nav-item" href="#team-settings" data-screen="team-settings">
+      <span class="material-symbols-outlined">group</span>
+      Team Settings
+    </a>
+    <a class="sidebar-nav-item" href="#settings" data-screen="settings">
+      <span class="material-symbols-outlined">settings</span>
+      Settings
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-avatar">RO</div>
+    <div class="sidebar-user-info">
+      <div class="sidebar-user-name">Roberto Ortega</div>
+      <div class="sidebar-user-role">CEO / Operator</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main">
+  <header class="page-header">
+    <div class="header-left">
+      <span class="header-title">OCULOPS Brand DNA Reference</span>
+      <span class="header-subtitle">v1.0 / IVORY Design System</span>
+    </div>
+    <div class="header-right">
+      <span class="header-date">2026-03-12</span>
+      <span class="live-badge">REFERENCE</span>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- ═══ BRAND DNA PANEL ═══ -->
+    <div class="brand-dna-panel" id="brand-dna">
+      <div class="brand-dna-header" onclick="toggleBrandDNA()" id="brand-dna-header">
+        <div class="brand-dna-title">
+          <span class="material-symbols-outlined">palette</span>
+          Brand DNA — IVORY Design System Tokens
+        </div>
+        <span class="material-symbols-outlined brand-dna-chevron" id="brand-dna-chevron">expand_more</span>
+      </div>
+      <div class="brand-dna-body" id="brand-dna-body">
+
+        <!-- Palette Swatches — Surfaces -->
+        <div class="dna-section-title">Surfaces</div>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#FAFAF8;border-bottom:1px solid #E5E5E0"><span class="swatch-color-value">#FAFAF8</span></div><div class="swatch-info"><div class="swatch-name">Base</div><div class="swatch-role">Page background</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border-bottom:1px solid #E5E5E0"><span class="swatch-color-value">#FFFFFF</span></div><div class="swatch-info"><div class="swatch-name">Raised</div><div class="swatch-role">Cards, panels</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#F5F5F0;border-bottom:1px solid #E5E5E0"><span class="swatch-color-value">#F5F5F0</span></div><div class="swatch-info"><div class="swatch-name">Elevated</div><div class="swatch-role">Secondary surfaces</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#F0F0EB;border-bottom:1px solid #E5E5E0"><span class="swatch-color-value">#F0F0EB</span></div><div class="swatch-info"><div class="swatch-name">Inset</div><div class="swatch-role">Input fields, recessed</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#F5F0E8;border-bottom:1px solid #E5E5E0"><span class="swatch-color-value">#F5F0E8</span></div><div class="swatch-info"><div class="swatch-name">Sidebar</div><div class="swatch-role">Navigation warm cream</div></div></div>
+        </div>
+
+        <!-- Palette Swatches — Borders -->
+        <div class="dna-section-title">Borders</div>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#E5E5E0"><span class="swatch-color-value">#E5E5E0</span></div><div class="swatch-info"><div class="swatch-name">Default</div><div class="swatch-role">Standard 1px</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#F0F0EB"><span class="swatch-color-value">#F0F0EB</span></div><div class="swatch-info"><div class="swatch-name">Subtle</div><div class="swatch-role">Barely visible</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#D4D4CF"><span class="swatch-color-value">#D4D4CF</span></div><div class="swatch-info"><div class="swatch-name">Strong</div><div class="swatch-role">Emphasized</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(255,215,0,0.4)"><span class="swatch-color-value">gold/40%</span></div><div class="swatch-info"><div class="swatch-name">Active</div><div class="swatch-role">Active/selected</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(255,215,0,0.6)"><span class="swatch-color-value">gold/60%</span></div><div class="swatch-info"><div class="swatch-name">Focus</div><div class="swatch-role">Focus ring</div></div></div>
+        </div>
+
+        <!-- Palette Swatches — Text -->
+        <div class="dna-section-title">Text</div>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"><span class="swatch-color-value" style="color:#fff">#1A1A1A</span></div><div class="swatch-info"><div class="swatch-name">Primary</div><div class="swatch-role">Headlines, body</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#6B6B6B"><span class="swatch-color-value" style="color:#fff">#6B6B6B</span></div><div class="swatch-info"><div class="swatch-name">Secondary</div><div class="swatch-role">Descriptions, labels</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#9A9A9A"><span class="swatch-color-value" style="color:#fff">#9A9A9A</span></div><div class="swatch-info"><div class="swatch-name">Tertiary</div><div class="swatch-role">Placeholders, muted</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#C4C4C4"><span class="swatch-color-value">#C4C4C4</span></div><div class="swatch-info"><div class="swatch-name">Quaternary</div><div class="swatch-role">Disabled</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#C8A200"><span class="swatch-color-value" style="color:#fff">#C8A200</span></div><div class="swatch-info"><div class="swatch-name">Accent</div><div class="swatch-role">Gold emphasis</div></div></div>
+        </div>
+
+        <!-- Palette Swatches — Accent & Semantic -->
+        <div class="dna-section-title">Accent & Semantic</div>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#FFD700"><span class="swatch-color-value">#FFD700</span></div><div class="swatch-info"><div class="swatch-name">Primary Gold</div><div class="swatch-role">Intelligence signal</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#FFC400"><span class="swatch-color-value">#FFC400</span></div><div class="swatch-info"><div class="swatch-name">Gold Hover</div><div class="swatch-role">Hover state</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#50E3C2"><span class="swatch-color-value">#50E3C2</span></div><div class="swatch-info"><div class="swatch-name">Teal</div><div class="swatch-role">Secondary data</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#34C759"><span class="swatch-color-value" style="color:#fff">#34C759</span></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-role">Online, complete</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#FF9F43"><span class="swatch-color-value">#FF9F43</span></div><div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-role">Caution</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#E53E3E"><span class="swatch-color-value" style="color:#fff">#E53E3E</span></div><div class="swatch-info"><div class="swatch-name">Danger</div><div class="swatch-role">Error, critical</div></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#3B82F6"><span class="swatch-color-value" style="color:#fff">#3B82F6</span></div><div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-role">Informational</div></div></div>
+        </div>
+
+        <!-- Typography -->
+        <div class="dna-section-title">Typography Scale</div>
+        <div class="typo-samples">
+          <div class="typo-row"><span class="typo-label">hero</span><span class="typo-sample" style="font-size:3rem;font-weight:700;letter-spacing:-0.03em;line-height:1.2">Intelligence Amplified</span></div>
+          <div class="typo-row"><span class="typo-label">4xl</span><span class="typo-sample" style="font-size:2.5rem;font-weight:700;letter-spacing:-0.03em">Dashboard Title</span></div>
+          <div class="typo-row"><span class="typo-label">3xl</span><span class="typo-sample" style="font-size:1.875rem;font-weight:700;letter-spacing:-0.015em">Section Header</span></div>
+          <div class="typo-row"><span class="typo-label">2xl</span><span class="typo-sample" style="font-size:1.5rem;font-weight:600;letter-spacing:-0.015em">Card Title</span></div>
+          <div class="typo-row"><span class="typo-label">xl</span><span class="typo-sample" style="font-size:1.25rem;font-weight:600">KPI Value</span></div>
+          <div class="typo-row"><span class="typo-label">lg</span><span class="typo-sample" style="font-size:1.0625rem;font-weight:500">Module Label</span></div>
+          <div class="typo-row"><span class="typo-label">base</span><span class="typo-sample" style="font-size:0.875rem;font-weight:400">Body text for descriptions and general content across the interface.</span></div>
+          <div class="typo-row"><span class="typo-label">sm</span><span class="typo-sample" style="font-size:0.8125rem;font-weight:500;color:#6B6B6B">Secondary labels and metadata</span></div>
+          <div class="typo-row"><span class="typo-label">xs</span><span class="typo-sample" style="font-size:0.6875rem;font-weight:500;color:#9A9A9A">Micro text, timestamps</span></div>
+          <div class="typo-row"><span class="typo-label">mono</span><span class="typo-sample" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;font-weight:500">$24,500.00 / 127ms / 99.7%</span></div>
+          <div class="typo-row"><span class="typo-label">section</span><span class="typo-sample" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#9A9A9A">Section Header Label</span></div>
+        </div>
+
+        <!-- Shadows -->
+        <div class="dna-section-title">Shadows & Depth</div>
+        <div class="material-grid">
+          <div class="material-card"><div class="shadow-demo" style="box-shadow:0 1px 2px rgba(0,0,0,0.04)"></div><div class="material-card-label">xs</div></div>
+          <div class="material-card"><div class="shadow-demo" style="box-shadow:0 2px 8px rgba(0,0,0,0.06)"></div><div class="material-card-label">sm</div></div>
+          <div class="material-card"><div class="shadow-demo" style="box-shadow:0 4px 16px rgba(0,0,0,0.08)"></div><div class="material-card-label">md</div></div>
+          <div class="material-card"><div class="shadow-demo" style="box-shadow:0 8px 32px rgba(0,0,0,0.10)"></div><div class="material-card-label">lg</div></div>
+          <div class="material-card"><div class="shadow-demo" style="box-shadow:0 16px 48px rgba(0,0,0,0.12)"></div><div class="material-card-label">xl</div></div>
+          <div class="material-card"><div class="shadow-demo" style="box-shadow:0 0 24px rgba(255,215,0,0.12)"></div><div class="material-card-label">glow</div></div>
+        </div>
+
+        <!-- Radius -->
+        <div class="dna-section-title">Border Radius</div>
+        <div class="material-grid">
+          <div class="material-card"><div class="radius-demo" style="border-radius:4px"></div><div class="material-card-label">xs / 4px</div></div>
+          <div class="material-card"><div class="radius-demo" style="border-radius:6px"></div><div class="material-card-label">sm / 6px</div></div>
+          <div class="material-card"><div class="radius-demo" style="border-radius:8px"></div><div class="material-card-label">md / 8px</div></div>
+          <div class="material-card"><div class="radius-demo" style="border-radius:12px"></div><div class="material-card-label">lg / 12px</div></div>
+          <div class="material-card"><div class="radius-demo" style="border-radius:16px"></div><div class="material-card-label">xl / 16px</div></div>
+          <div class="material-card"><div class="radius-demo" style="border-radius:9999px"></div><div class="material-card-label">full / pill</div></div>
+        </div>
+
+        <!-- Motion -->
+        <div class="dna-section-title">Motion & Interaction (hover to preview)</div>
+        <div class="material-grid">
+          <div class="material-card"><div class="motion-demo" style="transition-duration:120ms"></div><div class="material-card-label">fast / 120ms</div></div>
+          <div class="material-card"><div class="motion-demo" style="transition-duration:200ms"></div><div class="material-card-label">base / 200ms</div></div>
+          <div class="material-card"><div class="motion-demo" style="transition-duration:350ms"></div><div class="material-card-label">slow / 350ms</div></div>
+          <div class="material-card"><div class="motion-demo" style="transition-duration:500ms;transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)"></div><div class="material-card-label">spring / 500ms</div></div>
+        </div>
+
+        <!-- Glass -->
+        <div class="dna-section-title">Material System</div>
+        <div class="material-grid">
+          <div class="material-card" style="background:linear-gradient(135deg,rgba(255,215,0,0.05),rgba(80,227,194,0.03))">
+            <div class="glass-demo">Glass Surface</div>
+            <div class="material-card-label">glass-bg / blur(20px)</div>
+          </div>
+          <div class="material-card">
+            <div style="width:60px;height:40px;margin:0 auto;background:#FFF;border:1px solid #E5E5E0;border-radius:8px;border-left:3px solid #FFD700"></div>
+            <div class="material-card-label">active-state / left border</div>
+          </div>
+          <div class="material-card">
+            <div style="width:60px;height:40px;margin:0 auto;background:#FFF;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.03),0 2px 8px rgba(0,0,0,0.06)"></div>
+            <div class="material-card-label">inner-glow + shadow</div>
+          </div>
+          <div class="material-card" style="background:linear-gradient(135deg,rgba(255,215,0,0.06),transparent)">
+            <div style="width:60px;height:40px;margin:0 auto;background:rgba(255,215,0,0.10);border:1px solid rgba(255,215,0,0.2);border-radius:8px;box-shadow:0 0 24px rgba(255,215,0,0.12)"></div>
+            <div class="material-card-label">gold glow accent</div>
+          </div>
+        </div>
+
+        <!-- Icon System -->
+        <div class="dna-section-title">Icon System (Material Symbols Outlined)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;padding:8px 0">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">space_dashboard</span>
+            <span style="font-size:8px;color:#9A9A9A">dashboard</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">contacts</span>
+            <span style="font-size:8px;color:#9A9A9A">contacts</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">smart_toy</span>
+            <span style="font-size:8px;color:#9A9A9A">agents</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">radar</span>
+            <span style="font-size:8px;color:#9A9A9A">intel</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">explore</span>
+            <span style="font-size:8px;color:#9A9A9A">prospect</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">bolt</span>
+            <span style="font-size:8px;color:#9A9A9A">auto</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">view_kanban</span>
+            <span style="font-size:8px;color:#9A9A9A">pipeline</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">analytics</span>
+            <span style="font-size:8px;color:#9A9A9A">analytics</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">campaign</span>
+            <span style="font-size:8px;color:#9A9A9A">herald</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:56px">
+            <span class="material-symbols-outlined" style="font-size:24px;color:#6B6B6B">terminal</span>
+            <span style="font-size:8px;color:#9A9A9A">command</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ STATS BAR ═══ -->
+    <div class="stats-bar">
+      <div class="stat-card"><div class="stat-value">34</div><div class="stat-label">Total Screens</div></div>
+      <div class="stat-card"><div class="stat-value gold">7</div><div class="stat-label">P1 Priority</div></div>
+      <div class="stat-card"><div class="stat-value">10</div><div class="stat-label">Done</div></div>
+      <div class="stat-card"><div class="stat-value">7</div><div class="stat-label">Partial / Exists</div></div>
+      <div class="stat-card"><div class="stat-value">10</div><div class="stat-label">Shell</div></div>
+    </div>
+
+    <!-- ═══ FILTER BAR ═══ -->
+    <div class="filter-bar">
+      <span style="font-size:11px;font-weight:600;color:var(--text-tertiary);margin-right:4px">Filter:</span>
+      <div class="filter-pill active" data-filter="all">All</div>
+      <div class="filter-pill" data-filter="CORE">Core</div>
+      <div class="filter-pill" data-filter="INTELLIGENCE">Intelligence</div>
+      <div class="filter-pill" data-filter="AUTOMATION">Automation</div>
+      <div class="filter-pill" data-filter="ANALYTICS">Analytics</div>
+      <div style="width:1px;height:20px;background:var(--border-default);margin:0 4px"></div>
+      <div class="filter-pill" data-filter="p1">P1</div>
+      <div class="filter-pill" data-filter="p2">P2</div>
+      <div class="filter-pill" data-filter="p3">P3</div>
+      <div style="width:1px;height:20px;background:var(--border-default);margin:0 4px"></div>
+      <div class="filter-pill" data-filter="DONE">Done</div>
+      <div class="filter-pill" data-filter="PARTIAL">In Progress</div>
+      <div class="filter-pill" data-filter="SHELL">Shell</div>
+    </div>
+
+    <!-- ═══ SCREENS HEADER ═══ -->
+    <div class="screens-header">
+      <h2>Screen Reference Catalog</h2>
+      <span class="screens-header-meta">34 screens / 4 categories / IVORY v12.0</span>
+    </div>
+
+    <!-- ═══ SCREEN SECTIONS ═══ -->
+    <div id="screens-container"></div>
+
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// OCULOPS Brand DNA — Embedded JSON
+// ═══════════════════════════════════════════════════
+window.OCULOPS_BRAND_DNA = {"$schema":"oculops-brand-dna-v1","version":"1.0.0","name":"OCULOPS \u2014 Premium Intelligence OS","tagline":"Intelligence Amplified","updated":"2026-03-12","identity":{"philosophy":"From dashboard to intelligence instrument. An open airspace where data lives \u2014 not boxes containing data.","aesthetic":"Apple \u00d7 Whisk \u00d7 Higgsfield \u00d7 Pomelli \u2014 boutique premium AI operating system","feel":"Expensive, alive, reactive, editorial, tactile","anti_patterns":["generic SaaS dashboard","cyberpunk neon","gaming HUD","dribbble fantasy UI","dark war-room terminal","noisy typography","emoji icons"]},"palette":{"surfaces":{"base":{"value":"#FAFAF8","role":"Page background \u2014 warm white"},"raised":{"value":"#FFFFFF","role":"Cards, panels, elevated containers"},"elevated":{"value":"#F5F5F0","role":"Secondary surfaces, inset areas"},"overlay":{"value":"rgba(250, 250, 248, 0.92)","role":"Glass overlays"},"inset":{"value":"#F0F0EB","role":"Input fields, recessed areas"},"sidebar":{"value":"#F5F0E8","role":"Navigation sidebar warm cream"}},"borders":{"default":{"value":"#E5E5E0","role":"Standard 1px borders"},"subtle":{"value":"#F0F0EB","role":"Barely visible separators"},"strong":{"value":"#D4D4CF","role":"Emphasized borders"},"active":{"value":"rgba(255, 215, 0, 0.4)","role":"Active/selected state"},"focus":{"value":"rgba(255, 215, 0, 0.6)","role":"Focus ring"}},"text":{"primary":{"value":"#1A1A1A","role":"Headlines, body, primary content"},"secondary":{"value":"#6B6B6B","role":"Descriptions, labels"},"tertiary":{"value":"#9A9A9A","role":"Placeholders, muted"},"quaternary":{"value":"#C4C4C4","role":"Disabled, decorative"},"inverse":{"value":"#FFFFFF","role":"Text on dark/accent backgrounds"},"accent":{"value":"#C8A200","role":"Gold text for emphasis"}},"accent":{"primary":{"value":"#FFD700","role":"Intelligence signal \u2014 THE accent"},"primary_hover":{"value":"#FFC400","role":"Hover state"},"primary_muted":{"value":"rgba(255, 215, 0, 0.10)","role":"Subtle backgrounds"},"primary_rgb":{"value":"255, 215, 0","role":"For rgba() composition"},"teal":{"value":"#50E3C2","role":"Secondary data accent"},"teal_muted":{"value":"rgba(80, 227, 194, 0.10)","role":"Subtle teal bg"}},"semantic":{"success":{"value":"#34C759","role":"Online, complete, positive"},"success_muted":{"value":"rgba(52, 199, 89, 0.10)","role":"Success background"},"warning":{"value":"#FF9F43","role":"Caution, attention"},"warning_muted":{"value":"rgba(255, 159, 67, 0.08)","role":"Warning background"},"danger":{"value":"#E53E3E","role":"Error, critical, destructive"},"danger_muted":{"value":"rgba(229, 62, 62, 0.08)","role":"Danger background"},"info":{"value":"#3B82F6","role":"Informational, links"},"info_muted":{"value":"rgba(59, 130, 246, 0.08)","role":"Info background"}},"distribution_rule":"Yellow accent must not exceed 5% of visual weight. White surfaces dominate 70%+. Black is structural typography only."},"typography":{"families":{"sans":{"value":"Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif","role":"All operational UI"},"mono":{"value":"JetBrains Mono, SF Mono, Fira Code, monospace","role":"Data, metrics, code"},"display":{"value":"Inter","role":"Hero headlines"},"editorial":{"value":"Inter","note":"Can swap to Times New Roman / Canela for hero emphasis if needed"}},"scale":{"2xs":"0.625rem","xs":"0.6875rem","sm":"0.8125rem","base":"0.875rem","md":"0.9375rem","lg":"1.0625rem","xl":"1.25rem","2xl":"1.5rem","3xl":"1.875rem","4xl":"2.5rem","hero":"3rem"},"weights":{"regular":400,"medium":500,"semibold":600,"bold":700},"leading":{"tight":1.2,"snug":1.35,"normal":1.5,"relaxed":1.65},"tracking":{"tighter":"-0.03em","tight":"-0.015em","normal":"0","wide":"0.04em","wider":"0.08em","widest":"0.2em"},"rules":["Sans-serif for ALL operational UI","Clean product-grade hierarchy","Section headers: 11px, bold, uppercase, tracking-widest, secondary color","No noisy typography \u2014 generous whitespace between sections"]},"material_system":{"surfaces":{"matte_white":"Soft matte white \u2014 dominant surface treatment","warm_cream":"Sidebar and navigation areas use warm cream (#F5F0E8)","glass":{"bg":"rgba(255, 255, 255, 0.80)","bg_light":"rgba(255, 255, 255, 0.60)","blur":"blur(20px)","border":"rgba(0, 0, 0, 0.06)","inner_glow":"inset 0 0 0 1px rgba(0, 0, 0, 0.03)"}},"depth":{"method":"Soft shadows, not hard borders","shadows":{"xs":"0 1px 2px rgba(0, 0, 0, 0.04)","sm":"0 2px 8px rgba(0, 0, 0, 0.06)","md":"0 4px 16px rgba(0, 0, 0, 0.08)","lg":"0 8px 32px rgba(0, 0, 0, 0.10)","xl":"0 16px 48px rgba(0, 0, 0, 0.12)","glow":"0 0 24px rgba(255, 215, 0, 0.12)","glow_strong":"0 0 40px rgba(255, 215, 0, 0.20)"},"rule":"Slight 3D dimensionality \u2014 tactile UI objects, not flat"},"borders":{"default_width":"1px","treatment":"Thin, barely visible \u2014 structure through typography not borders","active_state":"border-left: 3px solid accent-primary","card_border":"1px solid #E5E5E0"},"radius":{"xs":"4px","sm":"6px","md":"8px","lg":"12px","xl":"16px","2xl":"20px","full":"9999px"}},"motion_implied":{"description":"Even in static renders, every section must FEEL alive","cues":["Subtle pulse states on live indicators","Live status shimmer on active agents","Soft edge glow on selected items","Active query emphasis bars","Orchestration progress bars","Reactive borders on hover","Hover-ready card depth (shadow increase)","Breathing status indicators (animate-pulse)"],"durations":{"fast":"120ms","base":"200ms","slow":"350ms","enter":"300ms","exit":"200ms"},"easing":{"default":"cubic-bezier(0.2, 0, 0, 1)","bounce":"cubic-bezier(0.34, 1.56, 0.64, 1)","spring":"cubic-bezier(0.175, 0.885, 0.32, 1.275)"}},"layout":{"sidebar":{"width":"240px","collapsed":"64px","background":"var(--surface-sidebar) / #F5F0E8","sections":["CORE","INTELLIGENCE","AUTOMATION","ANALYTICS"],"nav_item":{"height":"40px","padding":"8px 12px","radius":"8px","icon_size":"20px","font_size":"0.8125rem","font_weight":500,"active_style":"bg: accent-primary-muted, color: accent-primary, border: 1px solid accent/20, pulse dot","inactive_style":"color: text-secondary, hover: surface-elevated"},"section_label":{"font_size":"11px","font_weight":700,"text_transform":"uppercase","letter_spacing":"0.2em","color":"text-tertiary","margin_bottom":"12px"},"account_footer":{"avatar_size":"40px","border_top":"1px solid border-default","status_dot":"green for online"}},"header":{"height":"56px","elements":["module_icon","module_title","search_bar_center","LIVE_badge_right"],"search_bar":{"style":"Minimal, soft inset, focus glow","width":"320px","position":"center"},"live_badge":{"text":"LIVE","dot":"green pulse","position":"top-right"}},"content":{"max_width":"1400px","gutter":"32px","gap_between_sections":"24px"}},"component_patterns":{"hero_banner":{"description":"System activity summary \u2014 top of Control Tower","height":"auto, content-driven","background":"surface-raised with subtle gradient-mesh","content":["OCULOPS title","system activity summary","LIVE / ACTIVE INTELLIGENCE badge"],"border":"1px solid border-default","radius":"radius-lg"},"kpi_card":{"background":"surface-raised","border":"1px solid border-default","radius":"radius-md","padding":"20px","icon":"40x40 rounded-md with muted accent bg","label":"xs, medium weight, text-tertiary","value":"2xl, bold, mono font, text-primary","trend":"xs, success/danger color, with arrow icon","target":"xs, text-tertiary, e.g. 'Target: \u20ac20k'"},"agent_card":{"cortex_master":{"border":"1px solid accent-primary/30","background":"accent-primary-muted gradient","status":"LIVE badge with green dot","metrics":["Runs","Avg Time","Last Run"],"actions":["Ver Mensajes"],"orchestration_bar":"Progress indicator"},"sub_agent":{"background":"surface-raised","border":"1px solid border-default","header":"Agent name + Online badge (green dot)","capabilities":"Tag pills (badge-default)","body":"Brief intelligence summary text","footer":"OPERATIONAL LOGIC \u2192 arrow link"}},"data_table":{"container":"border-default rounded-md overflow-hidden","header_row":"surface-base, xs font, semibold, text-secondary","data_row":"surface-raised, hover: accent-primary-muted","row_height":"48px","avatar_column":"32px circle with initials"},"modal":{"overlay":"rgba(0, 0, 0, 0.6) + blur(8px)","panel":"surface-elevated, border-default, radius-lg, shadow-xl","header":"border-bottom, bold title, close button","body":"padded, scrollable","footer":"border-top, flex-end actions"},"quick_actions":{"style":"Capsule buttons in a horizontal row","button":"Ghost style, border-default, rounded-full or radius-sm","icon_prefix":true,"examples":["+ A\u00f1adir Lead","Nueva Se\u00f1al","Crear Tarea","Nuevo Experimento","Buscar Leads"]},"health_score_widget":{"type":"Circular progress ring","size":"120px","ring_color":"accent-primary gradient","center_value":"4xl bold","label":"HEALTH SCORE below"}},"icon_system":{"library":"Material Symbols Outlined","weight":"400-500","size_default":"20px","fill":0,"rule":"NO emojis \u2014 all icons must be sharp, minimal SVGs or Material Symbols"},"screens":{"total":30,"routes":[{"path":"/control-tower","name":"Control Tower","category":"CORE","priority":1},{"path":"/crm","name":"CRM","category":"CORE","priority":1},{"path":"/pipeline","name":"Pipeline","category":"CORE","priority":1},{"path":"/execution","name":"Execution","category":"CORE","priority":2},{"path":"/intelligence","name":"Intelligence","category":"INTELLIGENCE","priority":1},{"path":"/markets","name":"Markets","category":"INTELLIGENCE","priority":2},{"path":"/analytics","name":"Analytics","category":"INTELLIGENCE","priority":2},{"path":"/opportunities","name":"Opportunities","category":"INTELLIGENCE","priority":3},{"path":"/agents","name":"AI Agents","category":"AUTOMATION","priority":1},{"path":"/herald","name":"Herald Agent","category":"AUTOMATION","priority":2},{"path":"/prospector","name":"Prospector Hub","category":"AUTOMATION","priority":1},{"path":"/automation","name":"Automation","category":"AUTOMATION","priority":2},{"path":"/flight-deck","name":"Flight Deck","category":"AUTOMATION","priority":2},{"path":"/pixel-office","name":"Pixel Office","category":"AUTOMATION","priority":3},{"path":"/marketplace","name":"Marketplace","category":"AUTOMATION","priority":3},{"path":"/gtm","name":"Go To Market","category":"INTELLIGENCE","priority":2},{"path":"/messaging","name":"Messaging","category":"AUTOMATION","priority":2},{"path":"/creative","name":"Creative Studio","category":"INTELLIGENCE","priority":3},{"path":"/niches","name":"Niches","category":"INTELLIGENCE","priority":3},{"path":"/knowledge","name":"Knowledge","category":"ANALYTICS","priority":3},{"path":"/decisions","name":"Decisions","category":"ANALYTICS","priority":3},{"path":"/experiments","name":"Experiments","category":"ANALYTICS","priority":3},{"path":"/simulation","name":"Simulation","category":"ANALYTICS","priority":3},{"path":"/studies","name":"Study Hub","category":"ANALYTICS","priority":3},{"path":"/finance","name":"Finance","category":"ANALYTICS","priority":2},{"path":"/command-center","name":"Command Center","category":"CORE","priority":2},{"path":"/watchtower","name":"Watchtower","category":"AUTOMATION","priority":3},{"path":"/world-monitor","name":"World Monitor","category":"INTELLIGENCE","priority":3},{"path":"/portfolio","name":"Portfolio","category":"ANALYTICS","priority":3},{"path":"/lab","name":"Lab","category":"ANALYTICS","priority":3},{"path":"/billing","name":"Billing","category":"ANALYTICS","priority":3},{"path":"/team-settings","name":"Team Settings","category":"ANALYTICS","priority":3},{"path":"/settings","name":"Settings","category":"ANALYTICS","priority":3},{"path":"/reports","name":"Reports","category":"ANALYTICS","priority":3}]},"stitch_generation_rules":{"master_image":"oculops_sidebar_navigation.png","style_lock":"Every generated screen MUST match the master image visual DNA","output_format":"High-fidelity desktop UI, straight-on, no device mockup","section_based":true,"preserve":["information architecture","screen purposes","module hierarchy","route identity"],"do_not":["invent new product logic","remove required sections","use generic UI generation"],"priority_order":["UI_001 \u2014 Control Tower","UI_002 \u2014 AI Agents","UI_003 \u2014 CRM","UI_004 \u2014 Pipeline","UI_005 \u2014 Prospector Hub","UI_006 \u2014 Intelligence","UI_007 \u2014 Execution","UI_008 \u2014 Markets / GTM","remaining screens"]},"inspiration_references":{"primary":[{"source":"Apple Store","extract":"White-dominant, generous negative space, editorial typography, product realism"},{"source":"Whisk (Google Labs)","extract":"Yellow as signal color on white, playful premium, clean controls"},{"source":"Affinity","extract":"Professional creative tool aesthetic, precision UI, dark accents on light"},{"source":"Higgsfield","extract":"Boutique AI product feel, subtle glassmorphism, live reactive feeling"},{"source":"TouchDesigner","extract":"Reactive logic visualization, signal shimmer, breathing status indicators"}],"feel_keywords":["Apple-grade minimalism","White-dominant interface","Yellow intelligence signal","Black structure and typography","Premium boutique SaaS","Subtle 3D depth","Soft glassmorphism","Live interactive feeling","Implementation-ready product UI"]}};
+
+// ═══════════════════════════════════════════════════
+// Screen Data — All 34 screens
+// ═══════════════════════════════════════════════════
+const SCREENS = [
+  // CORE
+  {
+    id: 'control-tower', route: '/control-tower', name: 'Control Tower',
+    category: 'CORE', priority: 1, status: 'DONE',
+    icon: 'space_dashboard',
+    description: 'CEO dashboard and system nerve center. Health Score ring visualization, KPI grid (MRR, Clients, Pipeline, Alerts, Completed, Signals), Quick Actions row for rapid commands, 30-Day Roadmap timeline, and Active Alerts feed. The primary operational view of the entire system.',
+    components: ['Health Score Ring', 'KPI Cards (6)', 'Quick Actions Row', '30-Day Roadmap', 'Active Alerts Feed', 'Hero Banner', 'Agent Health Matrix']
+  },
+  {
+    id: 'crm', route: '/crm', name: 'CRM',
+    category: 'CORE', priority: 1, status: 'DONE',
+    icon: 'contacts',
+    description: 'Full CRUD contact relationship manager. Tab bar for Contacts, Companies, Deals, and Activities. Search bar with real-time filtering, data table with clickable rows, create/edit modals with form validation, and toast notifications for all CRUD operations.',
+    components: ['Tab Bar', 'Search Bar', 'Data Table', 'Create Modal', 'Edit Modal', 'Toast Notifications', 'Contact Cards', 'Company Cards']
+  },
+  {
+    id: 'pipeline', route: '/pipeline', name: 'Pipeline',
+    category: 'CORE', priority: 1, status: 'DONE',
+    icon: 'view_kanban',
+    description: 'Visual deal pipeline with Kanban board. Drag-and-drop deal cards between stages using @dnd-kit. DealDetailModal for deep-dive on any deal. Funnel visualization showing stage progression and conversion rates. Filter by stage, value, and owner.',
+    components: ['Kanban Board', 'Deal Cards', 'DnD Columns', 'DealDetailModal', 'Funnel Chart', 'Stage Filters', 'Total Value Display']
+  },
+  {
+    id: 'execution', route: '/execution', name: 'Execution',
+    category: 'CORE', priority: 2, status: 'PARTIAL',
+    icon: 'task_alt',
+    description: 'Task management and execution tracking. Filter system (all/pending/in-progress/completed), task list with status markers, progress tracking bars, and completion metrics. Connects to the tasks table in Supabase.',
+    components: ['Task Filters', 'Task List', 'Progress Bars', 'Status Markers', 'Summary Cards', 'Completion Metrics']
+  },
+  {
+    id: 'command-center', route: '/command-center', name: 'Command Center',
+    category: 'CORE', priority: 2, status: 'PARTIAL',
+    icon: 'terminal',
+    description: 'AI copilot terminal interface. Chat-style command input for natural language queries to the system. System responses with structured data, agent status updates, and quick command suggestions.',
+    components: ['Chat Interface', 'Command Input', 'System Responses', 'Quick Commands', 'Agent Status Feed']
+  },
+
+  // INTELLIGENCE
+  {
+    id: 'intelligence', route: '/intelligence', name: 'Intelligence',
+    category: 'INTELLIGENCE', priority: 1, status: 'DONE',
+    icon: 'radar',
+    description: 'Signal monitoring and intelligence feed. SignalEditModal with impact/confidence sliders for scoring signals. Clickable signal rows with category tags (macro, market, competition, technology). Real-time updates from the signals table.',
+    components: ['Signal Table', 'SignalEditModal', 'Impact Slider', 'Confidence Slider', 'Category Tags', 'Signal Cards', 'Trend Indicators']
+  },
+  {
+    id: 'markets', route: '/markets', name: 'Markets',
+    category: 'INTELLIGENCE', priority: 2, status: 'PARTIAL',
+    icon: 'monitoring',
+    description: 'Market intelligence dashboard. Signal cards organized by type: macro, market, competition, and technology. Social radar with captured posts, hot opportunities, average sentiment scoring, and platform mix breakdown.',
+    components: ['Signal Metric Cards', 'Social Radar', 'Captured Posts', 'Platform Mix', 'Sentiment Scoring', 'Topic Cloud']
+  },
+  {
+    id: 'analytics', route: '/analytics', name: 'Analytics',
+    category: 'INTELLIGENCE', priority: 2, status: 'EXISTS',
+    icon: 'analytics',
+    description: 'Funnel analytics and conversion tracking. Stage progression visualization, conversion rates between pipeline stages, meeting and proposal tracking metrics, and time-in-stage analysis.',
+    components: ['Funnel Visualization', 'Conversion Rates', 'Stage Progression', 'Meeting Tracker', 'Proposal Metrics', 'Time Analysis']
+  },
+  {
+    id: 'opportunities', route: '/opportunities', name: 'Opportunities',
+    category: 'INTELLIGENCE', priority: 3, status: 'SHELL',
+    icon: 'diamond',
+    description: 'Opportunity tracking pipeline. Identified business opportunities from agent scanning, scored by potential value, fit, and timing. Links to CRM deals when converted.',
+    components: ['Opportunity Cards', 'Scoring Matrix', 'Value Estimates', 'Conversion Actions']
+  },
+  {
+    id: 'gtm', route: '/gtm', name: 'Go To Market',
+    category: 'INTELLIGENCE', priority: 2, status: 'DONE',
+    icon: 'rocket_launch',
+    description: 'Go-to-market strategy dashboard. Campaign metrics, channel performance tracking, audience segmentation, and launch readiness indicators. Connects marketing strategy to pipeline outcomes.',
+    components: ['Campaign Metrics', 'Channel Performance', 'Audience Segments', 'Launch Readiness', 'ROI Tracking']
+  },
+  {
+    id: 'world-monitor', route: '/world-monitor', name: 'World Monitor',
+    category: 'INTELLIGENCE', priority: 3, status: 'EXISTS',
+    icon: 'public',
+    description: 'Geospatial intelligence map view. Target markets, prospects, and clients visualized on an interactive map. Geographic clustering and density analysis for prospecting strategy.',
+    components: ['Interactive Map', 'Market Clusters', 'Prospect Pins', 'Client Overlay', 'Density Analysis']
+  },
+  {
+    id: 'niches', route: '/niches', name: 'Niches',
+    category: 'INTELLIGENCE', priority: 3, status: 'SHELL',
+    icon: 'category',
+    description: 'Vertical niche analysis and scoring. Market sizing by industry vertical, competitive density assessment, and opportunity scoring for targeting decisions.',
+    components: ['Niche Scorecards', 'Market Sizing', 'Competitive Density', 'Opportunity Matrix']
+  },
+  {
+    id: 'creative', route: '/creative', name: 'Creative Studio',
+    category: 'INTELLIGENCE', priority: 3, status: 'EXISTS',
+    icon: 'palette',
+    description: 'Content generation and creative tools. AI-assisted content creation for campaigns, social media posts, email templates, and proposal documents.',
+    components: ['Content Editor', 'Template Gallery', 'AI Generator', 'Asset Library']
+  },
+
+  // AUTOMATION
+  {
+    id: 'agents', route: '/agents', name: 'AI Agents',
+    category: 'AUTOMATION', priority: 1, status: 'DONE',
+    icon: 'smart_toy',
+    description: 'CORTEX master orchestrator + 6 sub-agent cards (ATLAS, ORACLE, FORGE, HUNTER, HERALD, SCRIBE). Tabs for Network view, Queue management, Logs, Studies output, and Automation packs. Connected to agent_registry + agent_logs + agent_messages + agent_studies tables.',
+    components: ['CORTEX Master Card', 'Agent Cards (6)', 'Network Tab', 'Queue Tab', 'Logs Tab', 'Studies Tab', 'Automation Tab', 'Orchestration Bar', 'LIVE Badges']
+  },
+  {
+    id: 'prospector', route: '/prospector', name: 'Prospector Hub',
+    category: 'AUTOMATION', priority: 1, status: 'DONE',
+    icon: 'explore',
+    description: '6-tab prospecting command center: Airspace overview, Map with Mapbox canvas, Scanner for active searches, Leads pipeline, Outreach tracking, and API Network connections. KPI strip at top, flight command panel with location chips and scan controls.',
+    components: ['6-Tab System', 'KPI Strip', 'Map Canvas', 'Flight Command Panel', 'Location Chips', 'Scan Controls', 'Lead Cards', 'API Network Grid']
+  },
+  {
+    id: 'herald', route: '/herald', name: 'Herald Agent',
+    category: 'AUTOMATION', priority: 2, status: 'DONE',
+    icon: 'campaign',
+    description: 'Daily briefing agent interface. Automated morning intelligence digest with key signals, agent activity summary, pipeline updates, and recommended actions for the day.',
+    components: ['Daily Briefing Card', 'Signal Summary', 'Agent Activity', 'Pipeline Updates', 'Action Recommendations']
+  },
+  {
+    id: 'flight-deck', route: '/flight-deck', name: 'Flight Deck',
+    category: 'AUTOMATION', priority: 2, status: 'DONE',
+    icon: 'flight',
+    description: 'Lead scanning interface with Mapbox integration. Flight command panel for configuring search parameters: location, radius, vertical, and scan intensity. Real-time scan progress and results feed.',
+    components: ['Mapbox Map', 'Flight Command Panel', 'Scan Controls', 'Results Feed', 'Location Selector', 'Radius Config']
+  },
+  {
+    id: 'automation', route: '/automation', name: 'Automation',
+    category: 'AUTOMATION', priority: 2, status: 'PARTIAL',
+    icon: 'bolt',
+    description: 'n8n workflow automation packs. Pre-built automation triggers and workflow templates. Connection status to n8n instance, workflow execution logs, and trigger configuration.',
+    components: ['Workflow Packs', 'Trigger Cards', 'n8n Connection Status', 'Execution Logs', 'Pack Templates']
+  },
+  {
+    id: 'messaging', route: '/messaging', name: 'Messaging',
+    category: 'AUTOMATION', priority: 2, status: 'PARTIAL',
+    icon: 'chat',
+    description: 'Multi-channel messaging hub. WhatsApp, Gmail, and Telegram channel management. Message templates, send queues, delivery tracking, and conversation threads.',
+    components: ['Channel Selector', 'Message Templates', 'Send Queue', 'Delivery Tracking', 'Conversation Threads']
+  },
+  {
+    id: 'marketplace', route: '/marketplace', name: 'Marketplace',
+    category: 'AUTOMATION', priority: 3, status: 'SHELL',
+    icon: 'storefront',
+    description: 'Agent and automation marketplace. Browse and install additional AI agents and automation workflow packs to extend system capabilities.',
+    components: ['Agent Catalog', 'Pack Catalog', 'Install Actions', 'Rating System']
+  },
+  {
+    id: 'pixel-office', route: '/pixel-office', name: 'Pixel Office',
+    category: 'AUTOMATION', priority: 3, status: 'SHELL',
+    icon: 'grid_view',
+    description: 'Pixel art agent workspace. Visual representation of agent activity in a virtual office environment. Decorative/ambient module.',
+    components: ['Pixel Canvas', 'Agent Sprites', 'Activity Feed']
+  },
+  {
+    id: 'watchtower', route: '/watchtower', name: 'Watchtower',
+    category: 'AUTOMATION', priority: 3, status: 'SHELL',
+    icon: 'security',
+    description: 'Agent monitoring and health surface. System-wide agent health metrics, error rates, response times, and uptime tracking across all deployed agents.',
+    components: ['Health Dashboard', 'Error Rates', 'Response Times', 'Uptime Grid', 'Alert Feed']
+  },
+
+  // ANALYTICS
+  {
+    id: 'finance', route: '/finance', name: 'Finance',
+    category: 'ANALYTICS', priority: 2, status: 'SHELL',
+    icon: 'account_balance',
+    description: 'Financial tracking and P&L overview. Revenue entries, expense categories, profit and loss statements, and cash flow projections.',
+    components: ['Entry Table', 'Category Breakdown', 'P&L Statement', 'Cash Flow Chart']
+  },
+  {
+    id: 'knowledge', route: '/knowledge', name: 'Knowledge',
+    category: 'ANALYTICS', priority: 3, status: 'SHELL',
+    icon: 'auto_stories',
+    description: 'Knowledge base with semantic search (needs pgvector). Document storage, agent-generated insights, and searchable intelligence archive.',
+    components: ['Document List', 'Search Interface', 'Insight Cards', 'Tag System']
+  },
+  {
+    id: 'decisions', route: '/decisions', name: 'Decisions',
+    category: 'ANALYTICS', priority: 3, status: 'SHELL',
+    icon: 'balance',
+    description: 'Decision log and tracking. Record strategic decisions, rationale, outcomes, and lessons learned for organizational memory.',
+    components: ['Decision Cards', 'Rationale Fields', 'Outcome Tracking', 'Timeline View']
+  },
+  {
+    id: 'experiments', route: '/experiments', name: 'Experiments',
+    category: 'ANALYTICS', priority: 3, status: 'SHELL',
+    icon: 'science',
+    description: 'A/B testing and experimentation framework. Hypothesis tracking, test configuration, result analysis, and statistical significance indicators.',
+    components: ['Experiment Cards', 'Hypothesis Fields', 'Result Charts', 'Significance Badges']
+  },
+  {
+    id: 'simulation', route: '/simulation', name: 'Simulation',
+    category: 'ANALYTICS', priority: 3, status: 'EXISTS',
+    icon: 'show_chart',
+    description: 'MRR projection simulator. Three scenarios (optimistic, base, pessimistic) with SVG chart visualization. Adjustable parameters for growth modeling.',
+    components: ['SVG Projection Chart', 'Scenario Selector', 'Parameter Controls', 'Projection Table']
+  },
+  {
+    id: 'studies', route: '/studies', name: 'Study Hub',
+    category: 'ANALYTICS', priority: 3, status: 'DONE',
+    icon: 'school',
+    description: 'Research studies generated by AI agents. Study catalog with categories, full study reader, and export capabilities. Connected to agent_studies table.',
+    components: ['Study Catalog', 'Category Filters', 'Study Reader', 'Export Actions']
+  },
+  {
+    id: 'portfolio', route: '/portfolio', name: 'Portfolio',
+    category: 'ANALYTICS', priority: 3, status: 'SHELL',
+    icon: 'cases',
+    description: 'Strategic bets portfolio. Track strategic initiatives, resource allocation, and bet-level outcomes across the business.',
+    components: ['Bet Cards', 'Resource Allocation', 'Outcome Tracking', 'Priority Matrix']
+  },
+  {
+    id: 'lab', route: '/lab', name: 'Lab',
+    category: 'ANALYTICS', priority: 3, status: 'EXISTS',
+    icon: 'biotech',
+    description: 'Experimental features sandbox. Token/staking mechanics, prototype interactions, and feature flag testing area.',
+    components: ['Feature Prototypes', 'Token Display', 'Staking Interface', 'Feature Flags']
+  },
+  {
+    id: 'reports', route: '/reports', name: 'Reports',
+    category: 'ANALYTICS', priority: 3, status: 'EXISTS',
+    icon: 'summarize',
+    description: 'Reporting dashboard. Generate and view structured reports on pipeline, agents, signals, and business performance.',
+    components: ['Report Generator', 'Report Viewer', 'Template Selector', 'Export PDF']
+  },
+  {
+    id: 'billing', route: '/billing', name: 'Billing',
+    category: 'ANALYTICS', priority: 3, status: 'EXISTS',
+    icon: 'receipt_long',
+    description: 'Billing and subscription management. Plan tiers, usage tracking, invoice history, and payment method management.',
+    components: ['Plan Cards', 'Usage Meters', 'Invoice History', 'Payment Methods']
+  },
+  {
+    id: 'team-settings', route: '/team-settings', name: 'Team Settings',
+    category: 'ANALYTICS', priority: 3, status: 'EXISTS',
+    icon: 'group',
+    description: 'Team and organization configuration. Member management, role assignments, permissions, and organization profile settings.',
+    components: ['Member List', 'Role Selector', 'Permissions Grid', 'Org Profile']
+  },
+  {
+    id: 'settings', route: '/settings', name: 'Settings',
+    category: 'ANALYTICS', priority: 3, status: 'EXISTS',
+    icon: 'settings',
+    description: 'Application settings. Theme preferences, notification configuration, API integrations, and account management.',
+    components: ['Theme Toggle', 'Notifications Config', 'API Keys', 'Account Settings']
+  }
+];
+
+// ═══════════════════════════════════════════════════
+// Render Logic
+// ═══════════════════════════════════════════════════
+
+const CATEGORY_ICONS = {
+  'CORE': 'hub',
+  'INTELLIGENCE': 'radar',
+  'AUTOMATION': 'smart_toy',
+  'ANALYTICS': 'analytics'
+};
+
+const CATEGORY_ORDER = ['CORE', 'INTELLIGENCE', 'AUTOMATION', 'ANALYTICS'];
+
+function getPriorityBadge(p) {
+  const cls = p === 1 ? 'badge-p1' : p === 2 ? 'badge-p2' : 'badge-p3';
+  return `<span class="badge ${cls}">P${p}</span>`;
+}
+
+function getStatusBadge(s) {
+  const map = {
+    'DONE': 'status-done',
+    'PARTIAL': 'status-partial',
+    'SHELL': 'status-shell',
+    'EXISTS': 'status-exists'
+  };
+  const labels = {
+    'DONE': 'DONE',
+    'PARTIAL': 'IN PROGRESS',
+    'SHELL': 'SHELL',
+    'EXISTS': 'EXISTS'
+  };
+  return `<span class="badge ${map[s] || 'status-shell'}">${labels[s] || s}</span>`;
+}
+
+function renderScreenCard(screen, index) {
+  const components = screen.components.map(c => `<li>${c}</li>`).join('');
+  return `
+    <div class="screen-card" id="${screen.id}" data-category="${screen.category}" data-priority="${screen.priority}" data-status="${screen.status}">
+      <div class="screen-card-header">
+        <div class="screen-card-left">
+          <span class="screen-card-id">${String(index + 1).padStart(2, '0')}</span>
+          <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">${screen.icon}</span>
+          <span class="screen-card-name">${screen.name}<span class="screen-card-route">${screen.route}</span></span>
+        </div>
+        <div class="screen-card-badges">
+          <span class="badge badge-category">${screen.category}</span>
+          ${getPriorityBadge(screen.priority)}
+          ${getStatusBadge(screen.status)}
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="screen-info">
+          <div class="screen-description">${screen.description}</div>
+          <div>
+            <div class="screen-components-title">Key Components</div>
+            <ul class="screen-components-list">${components}</ul>
+          </div>
+        </div>
+        <div class="stitch-placeholder" title="Drop Stitch render here or click to upload">
+          <span class="material-symbols-outlined">image</span>
+          <span class="stitch-placeholder-label">Stitch Render Placeholder</span>
+          <span class="stitch-placeholder-sub">16:9 / Drop image or connect Stitch MCP</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderScreens(filter) {
+  const container = document.getElementById('screens-container');
+  let html = '';
+
+  CATEGORY_ORDER.forEach(cat => {
+    let screens = SCREENS.filter(s => s.category === cat);
+
+    // Apply filter
+    if (filter && filter !== 'all') {
+      if (['CORE','INTELLIGENCE','AUTOMATION','ANALYTICS'].includes(filter)) {
+        if (cat !== filter) return;
+      } else if (filter.startsWith('p')) {
+        const p = parseInt(filter[1]);
+        screens = screens.filter(s => s.priority === p);
+      } else if (['DONE','PARTIAL','SHELL','EXISTS'].includes(filter)) {
+        screens = screens.filter(s => s.status === filter);
+      }
+      if (screens.length === 0) return;
+    }
+
+    html += `<div class="category-section" data-cat="${cat}">`;
+    html += `<div class="category-label">
+      <span class="material-symbols-outlined">${CATEGORY_ICONS[cat]}</span>
+      ${cat}
+      <span class="category-count">${screens.length}</span>
+    </div>`;
+
+    screens.forEach((screen, i) => {
+      const globalIndex = SCREENS.indexOf(screen);
+      html += renderScreenCard(screen, globalIndex);
+    });
+
+    html += '</div>';
+  });
+
+  container.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════
+// Interactions
+// ═══════════════════════════════════════════════════
+
+// Brand DNA toggle
+function toggleBrandDNA() {
+  const body = document.getElementById('brand-dna-body');
+  const chevron = document.getElementById('brand-dna-chevron');
+  const header = document.getElementById('brand-dna-header');
+  body.classList.toggle('open');
+  chevron.classList.toggle('open');
+  header.classList.toggle('open');
+}
+
+// Filter pills
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    renderScreens(pill.dataset.filter);
+  });
+});
+
+// Sidebar nav — scroll + active state
+document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = item.getAttribute('href')?.replace('#', '');
+    if (!target) return;
+
+    document.querySelectorAll('.sidebar-nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+
+    const el = document.getElementById(target);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Scrollspy — update active sidebar item
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.screen === id);
+      });
+    }
+  });
+}, { rootMargin: '-100px 0px -60% 0px', threshold: 0.1 });
+
+// Observe screen cards after render
+function observeScreens() {
+  document.querySelectorAll('.screen-card[id]').forEach(card => {
+    observer.observe(card);
+  });
+}
+
+// Stitch placeholder click — file upload
+document.addEventListener('click', (e) => {
+  const placeholder = e.target.closest('.stitch-placeholder');
+  if (!placeholder) return;
+
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = (ev) => {
+    const file = ev.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (re) => {
+      placeholder.style.backgroundImage = `url(${re.target.result})`;
+      placeholder.style.backgroundSize = 'cover';
+      placeholder.style.backgroundPosition = 'center';
+      placeholder.style.border = '2px solid var(--accent-primary)';
+      placeholder.innerHTML = '';
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+});
+
+// Initial render
+renderScreens('all');
+observeScreens();
+
+// Re-observe after filter changes
+const origRender = renderScreens;
+renderScreens = function(filter) {
+  origRender(filter);
+  observeScreens();
+};
+// Re-run initial render with observer
+renderScreens('all');
+</script>
+</body>
+</html>

@@ -4,11 +4,14 @@
 // ═══════════════════════════════════════════════════
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppStore } from '../../stores/useAppStore'
 import { useAgents } from '../../hooks/useAgents'
 import { useAgentStudies } from '../../hooks/useAgentStudies'
 import { useAgentVault, ROLE_CAPABILITY_MAP } from '../../hooks/useAgentVault'
 import { useAgentState } from '../../hooks/useAgentState'
+import { useOutreachQueue } from '../../hooks/useOutreachQueue'
+import { useApprovals } from '../../hooks/useApprovals'
 import { AGENT_AUTOMATION_PACKS } from '../../data/agentAutomationPacks'
 import {
   CpuChipIcon,
@@ -34,11 +37,14 @@ const INITIAL_TELEGRAM_FORM = { label: 'Primary Telegram', chat_id: '', thread_i
 const TAB_CONFIG = [
   { id: 'network', label: 'Network', icon: CpuChipIcon },
   { id: 'queue', label: 'Queue', icon: QueueListIcon },
+  { id: 'outreach', label: 'Outreach', icon: PaperAirplaneIcon },
+  { id: 'approvals', label: 'Approvals', icon: CheckCircleIcon },
   { id: 'logs', label: 'Logs', icon: DocumentTextIcon },
   { id: 'studies', label: 'Studies', icon: BookOpenIcon },
   { id: 'automation', label: 'Automation', icon: CogIcon },
   { id: 'vault', label: 'Vault', icon: ArchiveBoxIcon },
 ]
+const TAB_IDS = new Set(TAB_CONFIG.map(tab => tab.id))
 
 function formatTime(iso) {
   if (!iso) return '—'
@@ -50,26 +56,67 @@ function formatDuration(ms) {
   return ms < 1000 ? `${ms}ms` : `${(ms / 1000).toFixed(1)}s`
 }
 
+function formatCurrency(value) {
+  const amount = Number(value || 0)
+  if (!Number.isFinite(amount) || amount <= 0) return '—'
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(amount)
+}
+
+function stripHtml(value) {
+  return String(value || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+}
+
 function statusColor(status) {
   if (status === 'online') return 'var(--color-success)'
   if (status === 'running') return 'var(--color-warning)'
   return 'var(--color-danger)'
 }
 
+function outreachBadge(status) {
+  if (status === 'approved' || status === 'sent') return 'success'
+  if (status === 'skipped') return 'danger'
+  return 'warning'
+}
+
+function approvalBadge(status) {
+  if (status === 'approved') return 'success'
+  if (status === 'rejected' || status === 'expired') return 'danger'
+  return 'warning'
+}
+
 function Agents() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const { toast } = useAppStore()
   const { agents, tasks, logs, stats, triggerAgent, runCortexCycle } = useAgents()
   const { studies, telegramTarget, loading: studiesLoading, busy: studiesBusy, postStudy, resendStudy, saveTelegramTarget } = useAgentStudies()
+  const { items: outreachItems, stats: outreachStats, statusFilter: outreachFilter, setStatusFilter: setOutreachFilter, loading: outreachLoading, error: outreachError, busyKey: outreachBusyKey, approveItem, sendItem, skipItem, batchApprove, reload: reloadOutreach } = useOutreachQueue()
+  const { items: approvalItems, stats: approvalStats, statusFilter: approvalFilter, setStatusFilter: setApprovalFilter, loading: approvalLoading, error: approvalError, busyKey: approvalBusyKey, approveRequest, rejectRequest, reload: reloadApprovals } = useApprovals()
   const { filteredAgents: vaultAgents, namespaces: vaultNamespaces, loading: vaultLoading, error: vaultError, filters: vaultFilters, setNamespace: setVaultNamespace, setSearch: setVaultSearch, setRole: setVaultRole, suggestRole, toggleActive: toggleVaultAgent, runAgent: runVaultAgent, runningAgent: vaultRunning, totalAgents: vaultTotal, activeCount: vaultActive, } = useAgentVault()
   const { agentHealth, runningAgents } = useAgentState()
 
   const [triggering, setTriggering] = useState(null)
-  const [activeTab, setActiveTab] = useState('network')
+  const tabFromSearch = useMemo(() => {
+    const params = new URLSearchParams(location.search)
+    const requestedTab = (params.get('tab') || '').trim().toLowerCase()
+    return TAB_IDS.has(requestedTab) ? requestedTab : null
+  }, [location.search])
+  const approvalFocusId = useMemo(() => {
+    const params = new URLSearchParams(location.search)
+    const requestedApproval = (params.get('approval') || '').trim()
+    return requestedApproval || null
+  }, [location.search])
+  const [activeTab, setActiveTab] = useState(tabFromSearch || 'network')
   const [vaultRunModal, setVaultRunModal] = useState(null) // { code_name, display_name }
   const [vaultGoal, setVaultGoal] = useState('')
   const [vaultResult, setVaultResult] = useState(null)
   const [studyForm, setStudyForm] = useState(INITIAL_STUDY_FORM)
   const [telegramForm, setTelegramForm] = useState(INITIAL_TELEGRAM_FORM)
+
+  useEffect(() => {
+    if (!tabFromSearch || tabFromSearch === activeTab) return
+    setActiveTab(tabFromSearch)
+  }, [tabFromSearch, activeTab])
 
   useEffect(() => {
     if (!telegramTarget) return
@@ -121,6 +168,53 @@ function Agents() {
     } catch (e) { toast(e.message, 'warning') }
   }, [resendStudy, toast])
 
+  const handleApproveOutreach = useCallback(async (id) => {
+    const result = await approveItem(id)
+    if (result?.error) toast(result.error, 'warning')
+    else if (result?.approval_required) toast('Outreach approved. Approval request created.', 'warning')
+    else toast('Outreach approved', 'success')
+  }, [approveItem, toast])
+
+  const handleSendOutreach = useCallback(async (id) => {
+    const result = await sendItem(id)
+    if (result?.error) toast(result.error, 'warning')
+    else if (result?.requires_approval) toast('Approval required before send. Check Approvals tab.', 'warning')
+    else if (result?.sent) toast('Outreach sent', 'success')
+    else toast('Outreach queued for approval', 'warning')
+  }, [sendItem, toast])
+
+  const handleSkipOutreach = useCallback(async (id) => {
+    const result = await skipItem(id)
+    if (result?.error) toast(result.error, 'warning')
+    else toast('Outreach skipped', 'success')
+  }, [skipItem, toast])
+
+  const handleBatchApprove = useCallback(async () => {
+    const result = await batchApprove()
+    if (result?.error) toast(result.error, 'warning')
+    else toast(`Approved ${result?.approved_count || 0} outreach items`, 'success')
+  }, [batchApprove, toast])
+
+  const handleApproveRequest = useCallback(async (id) => {
+    const result = await approveRequest(id)
+    if (result?.error) toast(result.error, 'warning')
+    else if (result?.sent) toast('Approval accepted and outreach sent', 'success')
+    else toast('Approval accepted', 'success')
+  }, [approveRequest, toast])
+
+  const handleRejectRequest = useCallback(async (id) => {
+    const result = await rejectRequest(id)
+    if (result?.error) toast(result.error, 'warning')
+    else toast('Approval rejected', 'warning')
+  }, [rejectRequest, toast])
+
+  const setTabAndSearch = useCallback((nextTab) => {
+    setActiveTab(nextTab)
+    const params = new URLSearchParams(location.search)
+    params.set('tab', nextTab)
+    navigate(`/agents?${params.toString()}`, { replace: true })
+  }, [location.search, navigate])
+
   const cortex = agents.find(a => a.code_name === 'cortex')
   const subAgents = agents.filter(a => a.code_name !== 'cortex').sort((a, b) => a.code_name.localeCompare(b.code_name))
   const agentOptions = useMemo(() => {
@@ -132,6 +226,12 @@ function Agents() {
 
   const recentStudies = studies.slice(0, 24)
   const deliveryStats = useMemo(() => ({ total: studies.length, sent: studies.filter(s => s.delivery_status === 'sent').length, failed: studies.filter(s => s.delivery_status === 'failed').length }), [studies])
+  const visibleApprovalItems = useMemo(() => {
+    if (!approvalFocusId) return approvalItems
+    const highlighted = approvalItems.find(item => item.id === approvalFocusId)
+    if (!highlighted) return approvalItems
+    return [highlighted, ...approvalItems.filter(item => item.id !== approvalFocusId)]
+  }, [approvalItems, approvalFocusId])
 
   return (
     <div className="module-page ag fade-in">
@@ -151,7 +251,7 @@ function Agents() {
         {TAB_CONFIG.map(t => {
           const Icon = t.icon
           return (
-            <button key={t.id} className={`crm-tab${activeTab === t.id ? ' crm-tab-active' : ''}`} onClick={() => setActiveTab(t.id)}>
+            <button key={t.id} className={`crm-tab${activeTab === t.id ? ' crm-tab-active' : ''}`} onClick={() => setTabAndSearch(t.id)}>
               <Icon width={16} height={16} />
               <span>{t.label}</span>
             </button>
@@ -246,6 +346,200 @@ function Agents() {
           </div>
         )}
 
+        {activeTab === 'outreach' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+            <div className="kpi-strip kpi-strip-4">
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Staged</span></div><div className="kpi-value">{outreachStats.staged || 0}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Approved</span></div><div className="kpi-value" style={{ color: 'var(--color-success)' }}>{outreachStats.approved || 0}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Sent</span></div><div className="kpi-value">{outreachStats.sent || 0}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Replied</span></div><div className="kpi-value">{outreachStats.replied || 0}</div></div>
+            </div>
+
+            <div className="ag-status-tabs">
+              {['staged', 'approved', 'sent', 'replied', 'all'].map((status) => (
+                <button
+                  key={status}
+                  className={`crm-tab${outreachFilter === status ? ' crm-tab-active' : ''}`}
+                  onClick={() => setOutreachFilter(status)}
+                >
+                  {status.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
+            <div className="ct-section">
+              <div className="ct-section-header">
+                <span className="ct-section-title">Outreach queue</span>
+                <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
+                  <button className="btn btn-ghost btn-sm" onClick={reloadOutreach} disabled={outreachLoading}>Refresh</button>
+                  <button className="btn btn-primary btn-sm" onClick={handleBatchApprove} disabled={outreachBusyKey === 'batch' || !outreachStats.staged}>
+                    {outreachBusyKey === 'batch' ? 'Approving...' : 'Approve staged'}
+                  </button>
+                </div>
+              </div>
+              <div className="ct-section-body">
+                {outreachError && <div className="ag-vault-error" style={{ marginBottom: 'var(--space-3)' }}>{outreachError}</div>}
+                {outreachLoading ? <div className="crm-table-empty">Loading outreach queue...</div> :
+                  outreachItems.length === 0 ? <div className="crm-table-empty">No outreach items for {outreachFilter}</div> :
+                    <div className="ag-outreach-list">
+                      {outreachItems.map((item) => {
+                        const preview = stripHtml(item.html_body).slice(0, 220)
+                        const score = item.prospector_leads?.ai_score
+                        const dealValue = item.prospector_leads?.estimated_deal_value
+                        return (
+                          <div key={item.id} className="ag-outreach-card">
+                            <div className="ag-outreach-header">
+                              <div>
+                                <div className="ag-outreach-recipient">{item.recipient_name || 'Unknown recipient'}</div>
+                                <div className="ag-outreach-email">{item.recipient_email}</div>
+                              </div>
+                              <span className={`badge badge-${outreachBadge(item.status)}`}>{item.status}</span>
+                            </div>
+
+                            <div className="ag-outreach-subject">{item.subject}</div>
+                            <div className="ag-outreach-preview">{preview}{preview.length >= 220 ? '…' : ''}</div>
+
+                            <div className="ag-outreach-meta">
+                              <span className="badge badge-default">{item.niche || item.prospector_leads?.category || 'general'}</span>
+                              <span className="badge badge-default">Score: {score ?? '—'}</span>
+                              <span className="badge badge-default">Deal: {formatCurrency(dealValue)}</span>
+                              <span className="badge badge-default">Created: {formatTime(item.created_at)}</span>
+                            </div>
+
+                            <div className="ag-outreach-actions">
+                              {item.status === 'staged' && (
+                                <>
+                                  <button className="btn btn-primary btn-sm" onClick={() => handleApproveOutreach(item.id)} disabled={outreachBusyKey === `approve:${item.id}`}>
+                                    {outreachBusyKey === `approve:${item.id}` ? 'Approving...' : 'Approve'}
+                                  </button>
+                                  <button className="btn btn-ghost btn-sm" onClick={() => handleSkipOutreach(item.id)} disabled={outreachBusyKey === `skip:${item.id}`}>
+                                    {outreachBusyKey === `skip:${item.id}` ? 'Skipping...' : 'Skip'}
+                                  </button>
+                                </>
+                              )}
+                              {item.status === 'approved' && (
+                                <button className="btn btn-primary btn-sm" onClick={() => handleSendOutreach(item.id)} disabled={outreachBusyKey === `send:${item.id}`}>
+                                  {outreachBusyKey === `send:${item.id}` ? 'Sending...' : 'Send now'}
+                                </button>
+                              )}
+                              {/* AG1-P0.4: One-click inspect from outreach */}
+                              {item.correlation_id && (
+                                <button className="btn btn-ghost btn-xs" onClick={() => navigate(`/control-tower?corr=${encodeURIComponent(item.correlation_id)}`)}>
+                                  Trace
+                                </button>
+                              )}
+                              {item.sent_at && <span className="ag-outreach-timestamp">Sent {formatTime(item.sent_at)}</span>}
+                              {item.replied_at && <span className="ag-outreach-timestamp">Reply {formatTime(item.replied_at)}</span>}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                }
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'approvals' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+            <div className="kpi-strip kpi-strip-4">
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Pending</span></div><div className="kpi-value" style={{ color: 'var(--color-warning)' }}>{approvalStats.pending || 0}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Approved</span></div><div className="kpi-value" style={{ color: 'var(--color-success)' }}>{approvalStats.approved || 0}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Rejected</span></div><div className="kpi-value" style={{ color: 'var(--color-danger)' }}>{approvalStats.rejected || 0}</div></div>
+              <div className="kpi-strip-cell"><div className="kpi-strip-cell-header"><span className="kpi-label">Expired</span></div><div className="kpi-value">{approvalStats.expired || 0}</div></div>
+            </div>
+
+            <div className="ag-status-tabs">
+              {['pending', 'approved', 'rejected', 'expired', 'all'].map((status) => (
+                <button
+                  key={status}
+                  className={`crm-tab${approvalFilter === status ? ' crm-tab-active' : ''}`}
+                  onClick={() => setApprovalFilter(status)}
+                >
+                  {status.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
+            <div className="ct-section">
+              <div className="ct-section-header">
+                <span className="ct-section-title">Approval requests</span>
+                <button className="btn btn-ghost btn-sm" onClick={reloadApprovals} disabled={approvalLoading}>Refresh</button>
+              </div>
+              <div className="ct-section-body">
+                {approvalError && <div className="ag-vault-error" style={{ marginBottom: 'var(--space-3)' }}>{approvalError}</div>}
+                {approvalLoading ? <div className="crm-table-empty">Loading approvals...</div> :
+                  approvalItems.length === 0 ? <div className="crm-table-empty">No approval requests for {approvalFilter}</div> :
+                    <div className="ag-outreach-list">
+                      {visibleApprovalItems.map((item) => {
+                        const payload = item.payload || {}
+                        const preview = String(payload.preview || '').trim()
+                        const recipient = payload.recipient_name || payload.recipient_email || 'Unknown recipient'
+                        const channel = payload.channel || 'email'
+                        return (
+                          <div
+                            key={item.id}
+                            className="ag-outreach-card"
+                            style={item.id === approvalFocusId
+                              ? { borderColor: 'var(--accent-primary)', boxShadow: '0 0 0 1px color-mix(in srgb, var(--accent-primary) 35%, transparent)' }
+                              : undefined}
+                          >
+                            <div className="ag-outreach-header">
+                              <div>
+                                <div className="ag-outreach-recipient">{recipient}</div>
+                                <div className="ag-outreach-email">{payload.recipient_email || '—'}</div>
+                              </div>
+                              <span className={`badge badge-${approvalBadge(item.status)}`}>{item.status}</span>
+                            </div>
+
+                            <div className="ag-outreach-subject">{payload.subject || 'No subject'}</div>
+                            {preview && <div className="ag-outreach-preview">{preview}{preview.length >= 300 ? '…' : ''}</div>}
+
+                            <div className="ag-outreach-meta">
+                              <span className="badge badge-default">Skill: {item.skill}</span>
+                              <span className="badge badge-default">Channel: {channel}</span>
+                              <span className="badge badge-default">Urgency: {item.urgency || 'medium'}</span>
+                              {payload.outreach_queue_id && <span className="badge badge-default">Queue: {payload.outreach_queue_id}</span>}
+                            </div>
+
+                            {/* AG1-P0.3/P0.4: Run-inspection quick actions */}
+                            <div className="ag-outreach-actions">
+                              {item.status === 'pending' && (
+                                <>
+                                  <button className="btn btn-primary btn-sm" onClick={() => handleApproveRequest(item.id)} disabled={approvalBusyKey === `approve:${item.id}`}>
+                                    {approvalBusyKey === `approve:${item.id}` ? 'Approving...' : 'Approve & Send'}
+                                  </button>
+                                  <button className="btn btn-ghost btn-sm" onClick={() => handleRejectRequest(item.id)} disabled={approvalBusyKey === `reject:${item.id}`}>
+                                    {approvalBusyKey === `reject:${item.id}` ? 'Rejecting...' : 'Reject'}
+                                  </button>
+                                </>
+                              )}
+                              {(payload.correlation_id || payload.correlationId) && (
+                                <button className="btn btn-ghost btn-xs" onClick={() => navigate(`/control-tower?corr=${encodeURIComponent(payload.correlation_id || payload.correlationId)}`)}>
+                                  Trace
+                                </button>
+                              )}
+                              {(payload.correlation_id || payload.correlationId) && (
+                                <button className="btn btn-ghost btn-xs" onClick={() => navigate(`/messaging?correlation=${encodeURIComponent(payload.correlation_id || payload.correlationId)}`)}>
+                                  Conversation
+                                </button>
+                              )}
+                              {item.user_comment && <span className="ag-outreach-timestamp">Comment: {item.user_comment}</span>}
+                              {item.approved_by && <span className="ag-outreach-timestamp">By {item.approved_by}</span>}
+                              <span className="ag-outreach-timestamp">Created {formatTime(item.created_at)}</span>
+                              <span className="ag-outreach-timestamp">Expires {formatTime(item.expires_at)}</span>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                }
+              </div>
+            </div>
+          </div>
+        )}
+
         {activeTab === 'logs' && (
           <div className="ct-section">
             <div className="ct-section-header"><span className="ct-section-title">Activity logs</span></div>
@@ -256,6 +550,11 @@ function Agents() {
                   <span className="ag-log-agent" style={{ color: AGENT_COLORS[log.agent_code_name] || 'var(--accent-primary)' }}>{log.agent_code_name}</span>
                   <span className={`ag-log-text${log.error ? ' ag-log-error' : ''}`}>{log.action}{log.error ? ` — ${log.error}` : ''}</span>
                   <span className="ag-log-duration">{formatDuration(log.duration_ms)}</span>
+                  {log.correlation_id && (
+                    <button className="btn btn-ghost btn-xs" style={{ flexShrink: 0 }} onClick={() => navigate(`/control-tower?corr=${encodeURIComponent(log.correlation_id)}`)}>
+                      Trace
+                    </button>
+                  )}
                 </div>
               ))}
             </div>

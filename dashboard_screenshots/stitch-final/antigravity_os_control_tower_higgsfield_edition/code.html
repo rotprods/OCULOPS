@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANTIGRAVITY OS - Control Tower</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#D1FE17",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#0F1113",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(31, 35, 15, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(209, 254, 23, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(209, 254, 23, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen pb-24">
+<!-- Top Bar -->
+<header class="sticky top-0 z-50 glass-panel border-b border-primary/10 px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-primary flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-background-dark font-bold">rocket_launch</span>
+</div>
+<div>
+<h1 class="text-sm font-bold tracking-tight text-slate-100 uppercase">ANTIGRAVITY OS</h1>
+<p class="text-[10px] text-primary font-medium tracking-[0.2em] uppercase">Higgsfield Edition</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="size-8 rounded-full border border-primary/30 p-0.5">
+<img alt="User profile" class="w-full h-full rounded-full object-cover" data-alt="Minimalist high-contrast portrait of a tech executive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4k_nP1CDHbkIT5048mLoxbSQ87xVO7BCdFknGIv16zpOD1T7dLaMBEcTeT2kIii0IFRYsKUhviCjmp5aGPVhnHJuXBoXaNr_LN5fLv_e_gTCwoAuYPVoOLeMdQKwo049ZiGbb7h-yEr6YMRpl2zo2xbUwigDW_dRbbLKrWWrqe5astTPlE-D1D4k7cUNcBYgqi6vP61Ae9GzKdaZ0FsSiySbWw8nQ-0o0EHovuhkk3UIO0CUVAyFWQZoddiDHq8-TUyNzq1fz9Ff-"/>
+</div>
+</div>
+</header>
+<main class="p-4 space-y-6">
+<!-- KPI Row -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Health Score Card -->
+<div class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center text-center space-y-3">
+<p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Health Score</p>
+<div class="relative size-20 flex items-center justify-center">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-slate-800" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="98, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-lg font-bold text-white">98%</span>
+</div>
+<p class="text-[10px] text-primary font-medium">+2.4% vs LY</p>
+</div>
+<!-- MRR Card -->
+<div class="glass-panel p-4 rounded-xl space-y-1">
+<p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">MRR</p>
+<h2 class="text-2xl font-bold text-white">$42.5k</h2>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs font-medium">+15%</span>
+</div>
+</div>
+<!-- Active Bets -->
+<div class="glass-panel p-4 rounded-xl space-y-1">
+<p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Active Bets</p>
+<h2 class="text-2xl font-bold text-white text-primary">12</h2>
+<p class="text-xs text-slate-400">High priority initiatives</p>
+</div>
+<!-- Pipeline Value -->
+<div class="glass-panel p-4 rounded-xl space-y-1 border-l-4 border-primary">
+<p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Pipeline</p>
+<h2 class="text-2xl font-bold text-white">$1.2M</h2>
+<p class="text-xs text-slate-400">Weighted forecast</p>
+</div>
+</section>
+<!-- AI Strategy Advisor -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-bold text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+                    AI Strategy Advisor
+                </h2>
+<span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase">Live</span>
+</div>
+<div class="glass-panel p-5 rounded-xl border border-primary/20 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-6xl">bolt</span>
+</div>
+<div class="relative z-10 space-y-4">
+<div>
+<h3 class="text-white font-bold text-base leading-tight">Optimize GPU Clusters</h3>
+<p class="text-slate-400 text-sm mt-1 leading-relaxed">Predicted 15% efficiency gain by reallocating idle nodes in the Higgsfield H100 cluster.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-primary text-background-dark text-xs font-bold px-4 py-2 rounded-lg neon-glow transition-transform active:scale-95">
+                            APPLY NOW
+                        </button>
+<button class="bg-slate-800 text-slate-300 text-xs font-bold px-4 py-2 rounded-lg border border-slate-700">
+                            DETAILS
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Intel Feed -->
+<section class="space-y-4">
+<h2 class="text-lg font-bold text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">sensors</span>
+                Intel Feed
+            </h2>
+<div class="space-y-3">
+<!-- Feed Item 1 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-slate-800/30 border border-slate-800 hover:border-primary/20 transition-all">
+<div class="relative">
+<div class="size-2 bg-primary rounded-full neon-glow"></div>
+<div class="absolute inset-0 size-2 bg-primary rounded-full animate-ping opacity-75"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-200">Competitor X launched Higgsfield API</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tight">2m ago • High Priority</p>
+</div>
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</div>
+<!-- Feed Item 2 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-slate-800/30 border border-slate-800">
+<div class="size-2 bg-slate-600 rounded-full"></div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-200">New Token integration successful</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tight">14m ago • System</p>
+</div>
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</div>
+<!-- Feed Item 3 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-slate-800/30 border border-slate-800">
+<div class="relative">
+<div class="size-2 bg-primary rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-200">Venture Round Signal: Series B</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tight">42m ago • Opportunity</p>
+</div>
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 inset-x-0 z-[60] pb-6 px-4">
+<div class="glass-panel rounded-full px-6 py-3 flex items-center justify-between border border-primary/20 shadow-2xl">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-primary neon-glow" style="font-variation-settings: 'FILL' 1">grid_view</span>
+<span class="text-[10px] font-bold text-primary tracking-tighter">OS</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">psychology</span>
+<span class="text-[10px] font-medium text-slate-500 group-hover:text-primary tracking-tighter">STRATEGY</span>
+</a>
+<div class="relative -top-6">
+<button class="size-14 rounded-full bg-primary flex items-center justify-center text-background-dark shadow-[0_0_20px_rgba(209,254,23,0.4)] border-4 border-background-dark active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl font-bold">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">analytics</span>
+<span class="text-[10px] font-medium text-slate-500 group-hover:text-primary tracking-tighter">INTEL</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">settings</span>
+<span class="text-[10px] font-medium text-slate-500 group-hover:text-primary tracking-tighter">SETUP</span>
+</a>
+</div>
+</nav>
+</body></html>

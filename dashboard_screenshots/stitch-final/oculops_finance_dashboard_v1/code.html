@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Finance Dashboard V1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f9d406",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#1A1A1A",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.75rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .premium-card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E5E5E0;
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .dark .premium-card {
+            background-color: #2A2A2A;
+            border-color: #3A3A3A;
+            border-top-color: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex antialiased">
+<!-- Sidebar -->
+<aside class="w-[240px] flex-shrink-0 bg-[#F5F0E8] dark:bg-[#252525] border-r border-[#E5E5E0] dark:border-[#3A3A3A] flex flex-col h-screen sticky top-0">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary aspect-square rounded-full size-8 flex items-center justify-center text-slate-900 font-bold">
+                O
+            </div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">OculOps</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">AI Agency</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-2 flex flex-col gap-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">space_dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 border border-primary/20 text-slate-900 dark:text-white font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary">account_balance_wallet</span>
+<span class="text-sm">Finance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_open</span>
+<span class="text-sm font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+</nav>
+<div class="p-4 border-t border-[#E5E5E0] dark:border-[#3A3A3A]">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-[#E5E5E0] dark:border-[#3A3A3A] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-10 flex-shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">monitoring</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold tracking-tight">Finance</h2>
+</div>
+<div class="flex-1 max-w-md mx-8 hidden md:block">
+<div class="relative flex items-center w-full h-9 rounded-lg bg-[#F0F0EB] dark:bg-[#2A2A2A] border border-transparent focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 text-[18px]">search</span>
+<input class="w-full h-full pl-9 pr-4 bg-transparent border-none text-sm text-slate-900 dark:text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-0" placeholder="Search transactions, clients..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-2 py-1 rounded-md bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    LIVE
+                </div>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-500 hover:bg-black/5 dark:hover:bg-white/5 transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center border border-slate-300 dark:border-slate-600 cursor-pointer" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAC9nkDn1ZnYxjWmxww4k40dAwGGPxnRe_aJoJJaS7t9QDPfc0VoAGWC5au6ckEt6h9jmtDvdiPc4UMNdJ5pVHmA3L3PVUXnYn-VgXcG6vLuzcYHCZQv573yEaKreHvtutr6Pui9HQgiLISv-QSXuZexZ4aRhg1wm-WI_s7fhnTNULZuy7Mkf10Bdzs-smpsfU38Hw_xp2ke-Q576ejWtbxAsWdkHfp_ri9K0rmJTsPAy275I749K78mRLuuzaoVSth1fvozYvV6FHD');"></div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- Banner -->
+<div class="premium-card p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<h2 class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Financial Command</h2>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">€0</span>
+<span class="text-sm font-medium text-slate-500">MRR</span>
+</div>
+</div>
+<button class="relative z-10 bg-primary hover:bg-primary/90 text-slate-900 px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add Transaction
+                </button>
+</div>
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="premium-card p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Monthly Revenue</span>
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+</div>
+<div>
+<span class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">€0</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 0%"></div>
+</div>
+<span class="text-xs font-medium text-slate-400">0%</span>
+</div>
+</div>
+<div class="premium-card p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Expenses</span>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">receipt_long</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">€2,340</span>
+</div>
+<div class="flex items-center gap-1 text-red-500">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="text-xs font-bold">+5% <span class="text-slate-400 font-medium ml-1">vs last month</span></span>
+</div>
+</div>
+<div class="premium-card p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Runway</span>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">flight_takeoff</span>
+</div>
+<div>
+<span class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">8 months</span>
+</div>
+<div class="flex items-center gap-1 text-red-500">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+<span class="text-xs font-bold">-2 months <span class="text-slate-400 font-medium ml-1">vs projection</span></span>
+</div>
+</div>
+<div class="premium-card p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Profit Margin</span>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">pie_chart</span>
+</div>
+<div>
+<span class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">-100%</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">drag_handle</span>
+<span class="text-xs font-medium">0% change</span>
+</div>
+</div>
+</div>
+<!-- Charts Row -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+<!-- Revenue Trend -->
+<div class="premium-card p-6 lg:col-span-3 flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold">Revenue Trend</h3>
+<div class="flex items-center gap-1 text-green-500 bg-green-50 dark:bg-green-500/10 px-2 py-1 rounded text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                            0%
+                        </div>
+</div>
+<div class="flex-1 min-h-[200px] w-full relative">
+<!-- Simplified SVG Chart -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<defs>
+<lineargradient id="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="var(--tw-colors-primary)" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="var(--tw-colors-primary)" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 80 L20 80 L40 80 L60 80 L80 80 L100 80 L100 100 L0 100 Z" fill="url(#chart-gradient)"></path>
+<path d="M0 80 L20 80 L40 80 L60 80 L80 80 L100 80" fill="none" stroke="var(--tw-colors-primary)" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+<div class="absolute bottom-0 w-full flex justify-between text-xs text-slate-400 font-medium px-2 pb-1">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+</div>
+</div>
+</div>
+<!-- Expense Distribution -->
+<div class="premium-card p-6 lg:col-span-2 flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold">Expense Distribution</h3>
+<span class="text-xs font-medium text-slate-500">Last 30 Days</span>
+</div>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- Simplified Donut Chart -->
+<div class="w-40 h-40 rounded-full border-[16px] border-slate-100 dark:border-slate-800 relative flex items-center justify-center">
+<!-- Fake segments using conic-gradient for simplicity, though SVG is better for real charts -->
+<div class="absolute inset-[-16px] rounded-full" style="background: conic-gradient(var(--tw-colors-primary) 0% 45%, #94a3b8 45% 75%, #e2e8f0 75% 100%); mask: radial-gradient(transparent 55%, black 56%); -webkit-mask: radial-gradient(transparent 55%, black 56%);"></div>
+<div class="text-center z-10">
+<span class="block text-xl font-bold text-slate-900 dark:text-slate-100">€2.3k</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-3 mt-2">
+<div class="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Software
+                        </div>
+<div class="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 font-medium">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span> Marketing
+                        </div>
+<div class="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 font-medium">
+<span class="w-2 h-2 rounded-full bg-slate-200 dark:bg-slate-700"></span> Misc
+                        </div>
+</div>
+</div>
+</div>
+<!-- Transactions Table -->
+<div class="premium-card overflow-hidden">
+<div class="p-5 border-b border-[#E5E5E0] dark:border-[#3A3A3A] flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold">Recent Transactions</h3>
+<button class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-slate-500 uppercase bg-slate-50/50 dark:bg-slate-800/50 border-b border-[#E5E5E0] dark:border-[#3A3A3A]">
+<tr>
+<th class="px-5 py-3 font-semibold">Date</th>
+<th class="px-5 py-3 font-semibold">Description</th>
+<th class="px-5 py-3 font-semibold">Category</th>
+<th class="px-5 py-3 font-semibold">Status</th>
+<th class="px-5 py-3 font-semibold text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E5E5E0] dark:divide-[#3A3A3A]">
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-5 py-3 whitespace-nowrap text-slate-500">Today, 10:23 AM</td>
+<td class="px-5 py-3 font-medium text-slate-900 dark:text-slate-100">Supabase</td>
+<td class="px-5 py-3"><span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">Software</span></td>
+<td class="px-5 py-3"><span class="flex w-fit items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Paid</span></td>
+<td class="px-5 py-3 text-right font-medium text-slate-900 dark:text-slate-100">-€25.00</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-5 py-3 whitespace-nowrap text-slate-500">Yesterday</td>
+<td class="px-5 py-3 font-medium text-slate-900 dark:text-slate-100">Vercel Pro</td>
+<td class="px-5 py-3"><span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">Software</span></td>
+<td class="px-5 py-3"><span class="flex w-fit items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Paid</span></td>
+<td class="px-5 py-3 text-right font-medium text-slate-900 dark:text-slate-100">-€20.00</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-5 py-3 whitespace-nowrap text-slate-500">Oct 24, 2023</td>
+<td class="px-5 py-3 font-medium text-slate-900 dark:text-slate-100">OpenAI API</td>
+<td class="px-5 py-3"><span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">API Usage</span></td>
+<td class="px-5 py-3"><span class="flex w-fit items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Pending</span></td>
+<td class="px-5 py-3 text-right font-medium text-slate-900 dark:text-slate-100">-€145.50</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-5 py-3 whitespace-nowrap text-slate-500">Oct 22, 2023</td>
+<td class="px-5 py-3 font-medium text-slate-900 dark:text-slate-100">Client Retainer - Acme Corp</td>
+<td class="px-5 py-3"><span class="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">Revenue</span></td>
+<td class="px-5 py-3"><span class="flex w-fit items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Paid</span></td>
+<td class="px-5 py-3 text-right font-bold text-green-600 dark:text-green-400">+€5,000.00</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-5 py-3 whitespace-nowrap text-slate-500">Oct 20, 2023</td>
+<td class="px-5 py-3 font-medium text-slate-900 dark:text-slate-100">Google Workspace</td>
+<td class="px-5 py-3"><span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">Software</span></td>
+<td class="px-5 py-3"><span class="flex w-fit items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Paid</span></td>
+<td class="px-5 py-3 text-right font-medium text-slate-900 dark:text-slate-100">-€36.00</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-5 py-3 whitespace-nowrap text-slate-500">Oct 18, 2023</td>
+<td class="px-5 py-3 font-medium text-slate-900 dark:text-slate-100">Meta Ads</td>
+<td class="px-5 py-3"><span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">Marketing</span></td>
+<td class="px-5 py-3"><span class="flex w-fit items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Paid</span></td>
+<td class="px-5 py-3 text-right font-medium text-slate-900 dark:text-slate-100">-€350.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="h-8"></div> <!-- Bottom Spacing -->
+</div>
+</main>
+</body></html>

@@ -34,6 +34,9 @@ tests/e2e/.auth/
 *.sw?
 .vercel
 credentials.json
+# MCP config (contains API keys)
+.mcp.json
+
 # Local agent/tooling artifacts
 .claude/
 docker_logs.txt

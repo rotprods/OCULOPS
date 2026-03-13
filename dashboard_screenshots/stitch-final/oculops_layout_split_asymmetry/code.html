@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Dashboard - Split Asymmetry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Material+Icons+Outlined&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FACC15",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#111827",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+        .dark .glass-card {
+            background: rgba(31, 41, 55, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neumorphic-inset {
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05), inset -2px -2px 5px rgba(255,255,255,0.5);
+        }
+        .dark .neumorphic-inset {
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(255,255,255,0.05);
+        }
+        .sidebar-right { border-left: 2px solid #FACC15; }
+        .card-accent { border: 1.5px solid #FACC15; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen transition-colors duration-300 overflow-hidden">
+<div class="flex h-screen w-full p-2 gap-2">
+<div class="w-1/2 flex flex-col gap-2">
+<div class="flex-1 glass-card card-accent rounded-3xl relative overflow-hidden flex flex-col">
+<div class="p-4 z-10">
+<h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">Master Intelligence</h2>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<img alt="Glow Sphere AI" class="w-full h-full object-cover opacity-90 scale-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQqiNaOaD1Ug3AN6Ys2jU1L3yw9tWQBW-JY-n9RQY03a8KcZ_6tvwQQhHsMfE2Qv_ucUfh2C8i339rVNOgS3RNOupUfyLDa0uq00DtxG2Hj_aPTaOpUUcyyVzgghIAkB5pC7WUXCaFh__6U-Q-8XgJJCxKVVhHhEp9L6LZVjkcsgb7iq9nS-QKMJA5H6LuWwlIY5oaWmbsamntJ_k7oIjvtDpt9rEkq0AvZLjYNk07RnnR2j4g3FTKl48dGNU6bDFuBMgzoik1sDRO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-light/50 dark:from-background-dark/50 to-transparent"></div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+</div>
+</div>
+<div class="w-1/2 flex gap-2">
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex-1 glass-card rounded-3xl overflow-hidden flex flex-col">
+<div class="p-4 flex justify-between items-center border-b border-gray-100 dark:border-gray-800">
+<h3 class="font-bold text-gray-800 dark:text-gray-100">Critical Signals</h3>
+<span class="material-icons-outlined text-gray-400 text-sm">more_horiz</span>
+</div>
+<div class="flex-1 overflow-y-auto">
+<table class="w-full text-[10px] text-left">
+<thead class="bg-gray-50/50 dark:bg-gray-800/50 text-gray-500 uppercase">
+<tr>
+<th class="px-2 py-3 font-medium">Date</th>
+<th class="px-2 py-3 font-medium text-right">Alerts</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<tr class="hover:bg-primary/5">
+<td class="px-2 py-4 dark:text-gray-300">08:17.02.51</td>
+<td class="px-2 py-4 text-right">
+<span class="text-red-500 flex items-center justify-end gap-1">
+<span class="material-icons-outlined text-xs">report_problem</span> Alert
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5">
+<td class="px-2 py-4 dark:text-gray-300">08:17.02.51</td>
+<td class="px-2 py-4 text-right">
+<span class="text-yellow-500 flex items-center justify-end gap-1">
+<span class="material-icons-outlined text-xs">warning</span> Alert
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5">
+<td class="px-2 py-4 dark:text-gray-300">08:17.02.51</td>
+<td class="px-2 py-4 text-right">
+<span class="text-yellow-500 flex items-center justify-end gap-1">
+<span class="material-icons-outlined text-xs">warning</span> Alert
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5"><td class="px-2 py-4 dark:text-gray-300">08:17.02.55</td><td class="px-2 py-4 text-right text-gray-400">#FFD400</td></tr>
+<tr class="hover:bg-primary/5"><td class="px-2 py-4 dark:text-gray-300">08:17.02.56</td><td class="px-2 py-4 text-right text-gray-400">#FFD400</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="w-24 glass-card sidebar-right rounded-3xl flex flex-col items-center py-6">
+<div class="mb-8">
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+<span class="material-icons-outlined text-white text-xl">remove_red_eye</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-6 text-gray-400">
+<span class="material-icons-outlined text-primary cursor-pointer">dashboard</span>
+<span class="material-icons-outlined cursor-pointer hover:text-primary transition-colors">history</span>
+<span class="material-icons-outlined cursor-pointer hover:text-primary transition-colors">file_download</span>
+<div class="h-px w-6 bg-gray-200 dark:bg-gray-700 my-2"></div>
+<span class="material-icons-outlined cursor-pointer hover:text-primary transition-colors">group</span>
+<span class="material-icons-outlined cursor-pointer hover:text-primary transition-colors">settings_input_component</span>
+<span class="material-icons-outlined cursor-pointer hover:text-primary transition-colors">near_me</span>
+<span class="material-icons-outlined cursor-pointer hover:text-primary transition-colors">security</span>
+<div class="h-px w-6 bg-gray-200 dark:bg-gray-700 my-2"></div>
+<span class="material-icons-outlined cursor-pointer hover:text-primary transition-colors">mail</span>
+</div>
+<div class="mt-auto">
+<img alt="Commander Vance" class="w-10 h-10 rounded-xl border-2 border-primary/50 grayscale hover:grayscale-0 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDScW3zO6kFSqapw6cuHNqTbBvcfTc4rjPjrc4wgenGl_qnMtf-Y1SxStyfNPMMbnpOEtGUIlty66mzMK_T7_qfOTc5NiCBSzHADYj1kYABHqe34AtVIhy1DPr460dMsBVOHancJeewiw7dMBDNp90BHSgE68ifGxErzHrZeIxdntBUITfDWh1iEC_78SnVpM4C4W0iRYnWpPCGN6iQBLpiDovzXjP-KtkOXCrM5X78G1bn6KI2_lFqzFTTQcGKKgiI_rtSmI6meKFr"/>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-4 left-4 right-28 flex gap-4 h-32">
+<div class="flex-1 glass-card rounded-3xl p-4 flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-primary/10 rounded-full blur-xl"></div>
+<span class="material-icons-outlined text-gray-400 text-3xl mb-1">public</span>
+<p class="text-xs text-gray-500 uppercase tracking-widest">Global Threat Level</p>
+<h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">Low</h3>
+</div>
+<div class="flex-[1.5] glass-card rounded-3xl p-4 flex flex-col justify-center">
+<div class="flex justify-between items-end mb-2">
+<div>
+<p class="text-xs text-gray-500 uppercase tracking-widest">Fleet Health</p>
+<h3 class="text-3xl font-bold text-gray-800 dark:text-gray-100">98.4%</h3>
+</div>
+<span class="material-icons-outlined text-green-500 mb-1">trending_up</span>
+</div>
+<div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden neumorphic-inset">
+<div class="h-full bg-primary" style="width: 98.4%;"></div>
+</div>
+</div>
+</div>
+<button class="fixed top-6 right-32 p-2 rounded-full glass-card text-gray-500 dark:text-primary shadow-lg z-50" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-outlined block dark:hidden">dark_mode</span>
+<span class="material-icons-outlined hidden dark:block">light_mode</span>
+</button>
+
+</body></html>

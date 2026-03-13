@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps AI Agents Dashboard V1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffd900",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#23200f",
+                        "surface": "#FFFFFF",
+                        "surface-dark": "#2a2718",
+                        "border-light": "#E5E5E0",
+                        "border-dark": "#3d3926",
+                        "text-primary": "#1A1A1A",
+                        "text-secondary": "#6B6B6B",
+                        "sidebar": "#F5F0E8"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1.5rem", "full": "9999px" },
+                    boxShadow: {
+                        'soft': '0 2px 5px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-primary dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<div class="w-[240px] flex-shrink-0 bg-sidebar dark:bg-surface-dark border-r border-border-light dark:border-border-dark flex flex-col h-full overflow-y-auto">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-yellow-200" data-alt="Abstract gradient logo"></div>
+<h1 class="text-sm font-bold tracking-widest text-text-primary dark:text-white">OCULOPS</h1>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">space_dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/20 dark:bg-primary/30 text-text-primary dark:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary dark:text-primary">robot_2</span>
+<span class="text-sm font-medium">AI Agents</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="text-sm font-medium">Cortex</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 transition-colors mt-auto" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- Header -->
+<header class="h-20 border-b border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark flex items-center justify-between px-8 flex-shrink-0">
+<div>
+<h2 class="text-[18px] font-semibold text-text-primary dark:text-white">AI Agents</h2>
+<p class="text-sm text-text-secondary dark:text-slate-400">Sophisticated multi-agent orchestration</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-text-primary font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                    Run Cortex cycle
+                </button>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Tabs -->
+<div class="flex border-b border-border-light dark:border-border-dark mb-8">
+<a class="px-6 py-3 border-b-2 border-primary text-text-primary dark:text-white font-medium text-sm" href="#">Network</a>
+<a class="px-6 py-3 border-b-2 border-transparent text-text-secondary dark:text-slate-400 hover:text-text-primary dark:hover:text-white font-medium text-sm transition-colors" href="#">Activity</a>
+<a class="px-6 py-3 border-b-2 border-transparent text-text-secondary dark:text-slate-400 hover:text-text-primary dark:hover:text-white font-medium text-sm transition-colors" href="#">Settings</a>
+</div>
+<!-- Cortex Master Card -->
+<div class="bg-primary/5 dark:bg-primary/10 border border-border-light dark:border-border-dark rounded-lg shadow-soft border-l-[3px] border-l-primary p-6 mb-8">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<h3 class="text-2xl font-bold text-text-primary dark:text-white">CORTEX</h3>
+<span class="px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                Online
+                            </span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-6 mb-8 divide-x divide-border-light dark:divide-border-dark">
+<div class="flex flex-col gap-1 px-4 first:pl-0">
+<span class="text-sm text-text-secondary dark:text-slate-400 font-medium">Runs</span>
+<span class="text-2xl font-bold text-text-primary dark:text-white">1,452</span>
+</div>
+<div class="flex flex-col gap-1 px-4">
+<span class="text-sm text-text-secondary dark:text-slate-400 font-medium">Avg Time</span>
+<span class="text-2xl font-bold text-text-primary dark:text-white">2.3s</span>
+</div>
+<div class="flex flex-col gap-1 px-4">
+<span class="text-sm text-text-secondary dark:text-slate-400 font-medium">Last Run</span>
+<span class="text-2xl font-bold text-text-primary dark:text-white">5 min ago</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<button class="px-4 py-1.5 rounded-full border border-border-light dark:border-border-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Data Ingestion</button>
+<button class="px-4 py-1.5 rounded-full border border-border-light dark:border-border-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Analysis</button>
+<button class="px-4 py-1.5 rounded-full border border-border-light dark:border-border-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Synthesis</button>
+<button class="px-4 py-1.5 rounded-full border border-border-light dark:border-border-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Reporting</button>
+<button class="px-4 py-1.5 rounded-full border border-border-light dark:border-border-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Alerting</button>
+<button class="px-4 py-1.5 rounded-full border border-border-light dark:border-border-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Optimization</button>
+</div>
+<div class="flex items-center justify-between">
+<button class="text-primary font-medium text-sm flex items-center gap-1 hover:underline">
+                            Ver Mensajes <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<div class="w-1/2 h-1 bg-border-light dark:bg-border-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Agent Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- ATLAS -->
+<div class="bg-surface dark:bg-surface-dark rounded-lg shadow-soft border border-border-light dark:border-border-dark p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-lg text-text-primary dark:text-white">ATLAS</h4>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Data</span>
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Mapping</span>
+</div>
+<p class="text-[13px] text-text-secondary dark:text-slate-400 mb-6 flex-grow">Responsible for spatial data ingestion, normalization, and structural mapping across distributed nodes.</p>
+<a class="text-xs font-bold text-text-primary dark:text-slate-300 flex items-center gap-1 hover:text-primary transition-colors uppercase tracking-wider mt-auto" href="#">
+                            Operational Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- FORGE -->
+<div class="bg-surface dark:bg-surface-dark rounded-lg shadow-soft border border-border-light dark:border-border-dark p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-lg text-text-primary dark:text-white">FORGE</h4>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Synthesis</span>
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Generation</span>
+</div>
+<p class="text-[13px] text-text-secondary dark:text-slate-400 mb-6 flex-grow">Synthesizes raw data streams into actionable intelligence constructs and generative outputs.</p>
+<a class="text-xs font-bold text-text-primary dark:text-slate-300 flex items-center gap-1 hover:text-primary transition-colors uppercase tracking-wider mt-auto" href="#">
+                            Operational Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- HERALD -->
+<div class="bg-surface dark:bg-surface-dark rounded-lg shadow-soft border border-border-light dark:border-border-dark p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-lg text-text-primary dark:text-white">HERALD</h4>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Comm</span>
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Alerts</span>
+</div>
+<p class="text-[13px] text-text-secondary dark:text-slate-400 mb-6 flex-grow">Manages outbound communications, alert routing, and external API webhook integrations.</p>
+<a class="text-xs font-bold text-text-primary dark:text-slate-300 flex items-center gap-1 hover:text-primary transition-colors uppercase tracking-wider mt-auto" href="#">
+                            Operational Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- HUNTER -->
+<div class="bg-surface dark:bg-surface-dark rounded-lg shadow-soft border border-border-light dark:border-border-dark p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-lg text-text-primary dark:text-white">HUNTER</h4>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Search</span>
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Retrieval</span>
+</div>
+<p class="text-[13px] text-text-secondary dark:text-slate-400 mb-6 flex-grow">Executes deep web searches, document retrieval, and vector database querying protocols.</p>
+<a class="text-xs font-bold text-text-primary dark:text-slate-300 flex items-center gap-1 hover:text-primary transition-colors uppercase tracking-wider mt-auto" href="#">
+                            Operational Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- ORACLE -->
+<div class="bg-surface dark:bg-surface-dark rounded-lg shadow-soft border border-border-light dark:border-border-dark p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-lg text-text-primary dark:text-white">ORACLE</h4>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Predictive</span>
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Analysis</span>
+</div>
+<p class="text-[13px] text-text-secondary dark:text-slate-400 mb-6 flex-grow">Applies predictive models to historical data to forecast trends and identify anomalies.</p>
+<a class="text-xs font-bold text-text-primary dark:text-slate-300 flex items-center gap-1 hover:text-primary transition-colors uppercase tracking-wider mt-auto" href="#">
+                            Operational Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- SCRIBE -->
+<div class="bg-surface dark:bg-surface-dark rounded-lg shadow-soft border border-border-light dark:border-border-dark p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-lg text-text-primary dark:text-white">SCRIBE</h4>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Logging</span>
+<span class="px-2 py-1 bg-black/5 dark:bg-white/10 rounded text-xs font-medium text-text-secondary dark:text-slate-300">Audit</span>
+</div>
+<p class="text-[13px] text-text-secondary dark:text-slate-400 mb-6 flex-grow">Maintains immutable audit trails, formats reports, and manages archival documentation.</p>
+<a class="text-xs font-bold text-text-primary dark:text-slate-300 flex items-center gap-1 hover:text-primary transition-colors uppercase tracking-wider mt-auto" href="#">
+                            Operational Logic <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

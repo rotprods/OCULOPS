@@ -1,0 +1,304 @@
+{
+  "version": "2026-03-13",
+  "owner": "agent-2-codex",
+  "purpose": "Canonical governed workforce registry for OCULOPS runtime agents.",
+  "defaults": {
+    "autonomy_level": "guarded",
+    "budget_class": "medium",
+    "retry_policy": {
+      "max_attempts": 2,
+      "backoff_seconds": [
+        5,
+        20
+      ]
+    }
+  },
+  "agents": [
+    {
+      "agent_id": "agent-copilot",
+      "name": "Copilot",
+      "category": "operations",
+      "role": "goal_router_and_supervisor",
+      "description": "Translates operator intent into governed pipeline actions and escalations.",
+      "allowed_tools": [
+        "orchestration-engine"
+      ],
+      "model_tier": "top_reasoning",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/copilot_message",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/pipeline_run_result",
+      "expected_latency_ms": 15000,
+      "budget_class": "high",
+      "autonomy_level": "supervised",
+      "retry_policy": {
+        "max_attempts": 1,
+        "backoff_seconds": [
+          0
+        ]
+      },
+      "supervisor": null,
+      "score_history": "evaluation://agent-copilot",
+      "memory_scope": [
+        "product",
+        "operations",
+        "improvements"
+      ],
+      "status": "active"
+    },
+    {
+      "agent_id": "agent-cortex",
+      "name": "Cortex",
+      "category": "operations",
+      "role": "workflow_executor",
+      "description": "Executes orchestrated multi-step workflows and coordinates worker agents.",
+      "allowed_tools": [
+        "automation-runner",
+        "event-dispatcher"
+      ],
+      "model_tier": "standard_reasoner",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/pipeline_create_run",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/pipeline_run_result",
+      "expected_latency_ms": 30000,
+      "budget_class": "medium",
+      "autonomy_level": "guarded",
+      "retry_policy": {
+        "max_attempts": 2,
+        "backoff_seconds": [
+          10,
+          30
+        ]
+      },
+      "supervisor": "agent-copilot",
+      "score_history": "evaluation://agent-cortex",
+      "memory_scope": [
+        "operations",
+        "improvements"
+      ],
+      "status": "active"
+    },
+    {
+      "agent_id": "agent-atlas",
+      "name": "Atlas",
+      "category": "research",
+      "role": "lead_scanner",
+      "description": "Scans geo markets and discovers lead candidates.",
+      "allowed_tools": [
+        "google-maps-search"
+      ],
+      "model_tier": "standard_reasoner",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/atlas_cycle",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/agent_cycle_result",
+      "expected_latency_ms": 45000,
+      "budget_class": "medium",
+      "autonomy_level": "guarded",
+      "retry_policy": {
+        "max_attempts": 2,
+        "backoff_seconds": [
+          15,
+          45
+        ]
+      },
+      "supervisor": "agent-cortex",
+      "score_history": "evaluation://agent-atlas",
+      "memory_scope": [
+        "operations",
+        "customers"
+      ],
+      "status": "active"
+    },
+    {
+      "agent_id": "agent-hunter",
+      "name": "Hunter",
+      "category": "sales",
+      "role": "lead_qualifier",
+      "description": "Qualifies leads and builds shortlist with commercial potential.",
+      "allowed_tools": [
+        "ai-qualifier",
+        "google-maps-search"
+      ],
+      "model_tier": "standard_reasoner",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/hunter_cycle",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/agent_cycle_result",
+      "expected_latency_ms": 45000,
+      "budget_class": "medium",
+      "autonomy_level": "guarded",
+      "retry_policy": {
+        "max_attempts": 2,
+        "backoff_seconds": [
+          15,
+          45
+        ]
+      },
+      "supervisor": "agent-cortex",
+      "score_history": "evaluation://agent-hunter",
+      "memory_scope": [
+        "customers",
+        "operations"
+      ],
+      "status": "active"
+    },
+    {
+      "agent_id": "agent-outreach",
+      "name": "Outreach",
+      "category": "growth",
+      "role": "message_stager_and_sender",
+      "description": "Stages outbound messages, enforces approval gate, triggers provider dispatch.",
+      "allowed_tools": [
+        "messaging-dispatch",
+        "send-email"
+      ],
+      "model_tier": "standard_reasoner",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/outreach_cycle",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/outreach_send_result",
+      "expected_latency_ms": 30000,
+      "budget_class": "medium",
+      "autonomy_level": "approval_required",
+      "retry_policy": {
+        "max_attempts": 1,
+        "backoff_seconds": [
+          0
+        ]
+      },
+      "supervisor": "agent-cortex",
+      "score_history": "evaluation://agent-outreach",
+      "memory_scope": [
+        "customers",
+        "operations",
+        "improvements"
+      ],
+      "status": "active"
+    },
+    {
+      "agent_id": "agent-herald",
+      "name": "Herald",
+      "category": "operations",
+      "role": "briefing_and_delivery_sidecar",
+      "description": "Packages strategic updates and dispatches briefings.",
+      "allowed_tools": [
+        "event-dispatcher"
+      ],
+      "model_tier": "lightweight",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/goal_request",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/agent_cycle_result",
+      "expected_latency_ms": 12000,
+      "budget_class": "low",
+      "autonomy_level": "guarded",
+      "retry_policy": {
+        "max_attempts": 2,
+        "backoff_seconds": [
+          5,
+          20
+        ]
+      },
+      "supervisor": "agent-copilot",
+      "score_history": "evaluation://agent-herald",
+      "memory_scope": [
+        "operations"
+      ],
+      "status": "active"
+    },
+    {
+      "agent_id": "agent-oracle",
+      "name": "Oracle",
+      "category": "research",
+      "role": "strategic_analyst",
+      "description": "Performs cross-signal analysis and strategic synthesis.",
+      "allowed_tools": [
+        "market-data",
+        "social-signals"
+      ],
+      "model_tier": "high_reasoning",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/goal_request",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/agent_cycle_result",
+      "expected_latency_ms": 60000,
+      "budget_class": "high",
+      "autonomy_level": "supervised",
+      "retry_policy": {
+        "max_attempts": 1,
+        "backoff_seconds": [
+          0
+        ]
+      },
+      "supervisor": "agent-copilot",
+      "score_history": "evaluation://agent-oracle",
+      "memory_scope": [
+        "product",
+        "operations",
+        "improvements"
+      ],
+      "status": "experimental"
+    },
+    {
+      "agent_id": "agent-sentinel",
+      "name": "Sentinel",
+      "category": "qa",
+      "role": "risk_monitor",
+      "description": "Detects anomalies, runtime drift, and operational risk signals.",
+      "allowed_tools": [
+        "event-dispatcher"
+      ],
+      "model_tier": "standard_reasoner",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/goal_request",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/agent_cycle_result",
+      "expected_latency_ms": 30000,
+      "budget_class": "medium",
+      "autonomy_level": "guarded",
+      "retry_policy": {
+        "max_attempts": 2,
+        "backoff_seconds": [
+          10,
+          30
+        ]
+      },
+      "supervisor": "agent-copilot",
+      "score_history": "evaluation://agent-sentinel",
+      "memory_scope": [
+        "operations",
+        "improvements"
+      ],
+      "status": "experimental"
+    },
+    {
+      "agent_id": "quality-critic",
+      "name": "Quality Critic",
+      "category": "evaluation",
+      "role": "output_quality_reviewer",
+      "description": "Scores result quality and flags low-value outputs.",
+      "allowed_tools": [
+        "evaluation-engine"
+      ],
+      "model_tier": "standard_reasoner",
+      "input_contract": "contracts/INPUT_CONTRACT.json#/$defs/critic_evaluate",
+      "output_contract": "contracts/OUTPUT_CONTRACT.json#/$defs/critic_result",
+      "expected_latency_ms": 10000,
+      "budget_class": "low",
+      "autonomy_level": "guarded",
+      "retry_policy": {
+        "max_attempts": 1,
+        "backoff_seconds": [
+          0
+        ]
+      },
+      "supervisor": "agent-copilot",
+      "score_history": "evaluation://quality-critic",
+      "memory_scope": [
+        "improvements",
+        "operations"
+      ],
+      "status": "planned"
+    }
+  ],
+  "compatibility_aliases": [
+    {
+      "alias": "agent-strategist",
+      "resolves_to": "agent-hunter"
+    },
+    {
+      "alias": "agent-scribe",
+      "resolves_to": "agent-oracle"
+    },
+    {
+      "alias": "agent-study-dispatch",
+      "resolves_to": "agent-herald"
+    }
+  ]
+}

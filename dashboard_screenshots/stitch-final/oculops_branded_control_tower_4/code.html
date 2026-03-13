@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Intelligence Reports Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --canvas: #FAFAF8;
+            --sidebar: #F5F0E8;
+            --card: #FFFFFF;
+            --gold: #FFD700;
+            --gold-muted: rgba(255, 215, 0, 0.1);
+            --border: #E5E1D8;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas);
+            color: #1A1A1A;
+        }
+        .neumorphic-card {
+            background: var(--card);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+<aside class="w-[240px] h-full bg-[var(--sidebar)] border-r border-[var(--border)] flex flex-col shrink-0">
+<div class="h-14 flex items-center px-6 border-b border-[var(--border)/50]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold)]">blur_on</span>
+<span class="font-bold tracking-tight text-sm">OCULOPS <span class="text-xs font-normal opacity-50">OS</span></span>
+</div>
+</div>
+<div class="flex-1 py-8 px-4 space-y-8 overflow-y-auto custom-scrollbar">
+<div>
+<h3 class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Core</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-gray-600 hover:bg-white/50 rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                        Control Tower
+                    </a>
+</nav>
+</div>
+<div>
+<h3 class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Analytics</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-black font-semibold bg-white shadow-sm rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+                        Reports
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-gray-600 hover:bg-white/50 rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-lg">query_stats</span>
+                        Metrics
+                    </a>
+</nav>
+</div>
+</div>
+<div class="p-6 border-t border-[var(--border)/50]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-white border border-[var(--border)] flex items-center justify-center text-[10px] font-bold">JD</div>
+<div>
+<p class="text-xs font-semibold">John Doe</p>
+<p class="text-[10px] opacity-50 uppercase tracking-tighter">Premium Tier</p>
+</div>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<header class="h-14 bg-white/80 backdrop-blur-md border-b border-[var(--border)] flex items-center justify-between px-8 shrink-0 z-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">description</span>
+<h1 class="text-sm font-semibold tracking-tight">Reports</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">search</span>
+<input class="bg-[#F3F4F6] border-none rounded-full py-1.5 pl-10 pr-4 text-xs w-64 focus:ring-1 focus:ring-[var(--gold)]" placeholder="Search reports..." type="text"/>
+</div>
+<div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-50 border border-green-100">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-[10px] font-bold text-green-700 tracking-wider">LIVE</span>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-hidden flex">
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<div class="max-w-5xl mx-auto space-y-8">
+<section class="neumorphic-card rounded-2xl p-8 relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-3xl font-light tracking-tight text-gray-900 mb-2">Intelligence Reports</h2>
+<p class="text-sm text-gray-500 max-w-md">Automated generation of proprietary market insights and strategic intelligence briefs.</p>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1.5 bg-gray-50 overflow-hidden">
+<div class="absolute inset-0 bg-[var(--gold)] opacity-30"></div>
+<div class="absolute bottom-0 left-0 h-full w-1/3 bg-[var(--gold)] shadow-[0_0_15px_var(--gold)]"></div>
+</div>
+</section>
+<section class="grid grid-cols-3 gap-6">
+<div class="neumorphic-card rounded-xl p-5 border-l-4 border-[var(--gold)]">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Generated</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">12</span>
+<span class="text-[10px] text-gray-500">REPORTS</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-5">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">In Queue</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">3</span>
+<span class="text-[10px] text-gray-500">PENDING REVIEW</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-5">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Frequency</p>
+<div class="flex items-baseline gap-2">
+<span class="text-xl font-medium">Weekly</span>
+<span class="text-[10px] text-gray-500">CADENCE</span>
+</div>
+</div>
+</section>
+<div class="flex gap-4">
+<button class="bg-[var(--gold)] hover:brightness-105 text-black font-semibold text-sm px-6 py-2.5 rounded-lg transition-all shadow-md">
+                            Generate New Report
+                        </button>
+<button class="border border-gray-200 hover:border-gray-400 text-gray-700 font-medium text-sm px-6 py-2.5 rounded-lg transition-all">
+                            Schedule Reports
+                        </button>
+</div>
+<section class="space-y-3 pb-12">
+<div class="neumorphic-card rounded-xl p-4 flex items-center justify-between group cursor-pointer hover:border-[var(--gold)] transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-[var(--gold-muted)] flex items-center justify-center text-[var(--gold)]">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-900">Market Volatility Assessment</h4>
+<p class="text-[11px] text-gray-500">Aug 24, 2024 • 4.2MB • Market Research</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-2.5 py-1 rounded-full bg-green-50 text-green-600 text-[10px] font-bold border border-green-100">READY</span>
+<button class="p-2 text-gray-400 hover:text-black transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-900">Competitor Defense Brief</h4>
+<p class="text-[11px] text-gray-500">Aug 23, 2024 • 1.8MB • Security</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-yellow-50 text-yellow-700 text-[10px] font-bold border border-yellow-100">
+<span class="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse"></span>
+                                    GENERATING
+                                </div>
+<button class="p-2 text-gray-200 cursor-not-allowed">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-900">Q3 Expansion Roadmap</h4>
+<p class="text-[11px] text-gray-500">Aug 22, 2024 • 5.1MB • Strategic</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-500 text-[10px] font-bold border border-gray-200">DRAFT</span>
+<button class="p-2 text-gray-400 hover:text-black transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex items-center justify-between opacity-70">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center text-purple-500">
+<span class="material-symbols-outlined">person_search</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-900">Talent Acquisition Signal</h4>
+<p class="text-[11px] text-gray-500">Aug 21, 2024 • 0.9MB • Intelligence</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-2.5 py-1 rounded-full bg-green-50 text-green-600 text-[10px] font-bold">READY</span>
+<span class="material-symbols-outlined text-lg text-gray-300">download</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex items-center justify-between opacity-70">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-900">VC Sentiment Index</h4>
+<p class="text-[11px] text-gray-500">Aug 20, 2024 • 3.2MB • Finance</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-2.5 py-1 rounded-full bg-green-50 text-green-600 text-[10px] font-bold">READY</span>
+<span class="material-symbols-outlined text-lg text-gray-300">download</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex items-center justify-between opacity-70">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">globe</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-900">Global Supply Chain Audit</h4>
+<p class="text-[11px] text-gray-500">Aug 19, 2024 • 12.1MB • Operations</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-2.5 py-1 rounded-full bg-green-50 text-green-600 text-[10px] font-bold">READY</span>
+<span class="material-symbols-outlined text-lg text-gray-300">download</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+<aside class="w-[35%] bg-white border-l border-[var(--border)] overflow-y-auto custom-scrollbar p-8">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest">Preview</h3>
+<button class="text-gray-400 hover:text-black">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+<div class="p-8 border border-[var(--border)] rounded-sm bg-[#FFFDF9] shadow-inner min-h-[600px] flex flex-col">
+<div class="border-b-2 border-black pb-4 mb-6">
+<h2 class="text-xl font-bold uppercase tracking-tighter">Weekly Intelligence Brief</h2>
+<p class="text-[10px] font-medium text-gray-500 mt-1">ISSUED: AUGUST 24, 2024 • SERIAL: OC-0824-A</p>
+</div>
+<div class="space-y-6 flex-1">
+<div>
+<h4 class="text-[10px] font-bold uppercase text-gray-400 mb-2">Executive Summary</h4>
+<p class="text-xs leading-relaxed text-gray-800">
+                                Global market signals indicate a significant shift in enterprise AI spend patterns. Current data suggest a 14% uptick in mid-market adoption of automated intelligence protocols.
+                            </p>
+</div>
+<div>
+<h4 class="text-[10px] font-bold uppercase text-gray-400 mb-4">Key Metrics</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 bg-white border border-gray-100 rounded">
+<p class="text-[9px] text-gray-400 uppercase">Growth Index</p>
+<p class="text-lg font-bold">8.4%</p>
+</div>
+<div class="p-3 bg-white border border-gray-100 rounded">
+<p class="text-[9px] text-gray-400 uppercase">Risk Score</p>
+<p class="text-lg font-bold text-red-500">Low</p>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-[10px] font-bold uppercase text-gray-400 mb-2">Trend Analysis</h4>
+<div class="h-16 w-full flex items-end gap-1 mb-2">
+<div class="flex-1 bg-gray-100 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-gray-100 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-gray-100 h-[50%] rounded-t-sm"></div>
+<div class="flex-1 bg-[var(--gold)] h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-[var(--gold)] h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-[var(--gold)] h-[100%] rounded-t-sm"></div>
+</div>
+<p class="text-[9px] text-center text-gray-400 italic">Projected Sentiment Velocity (6-Week Delta)</p>
+</div>
+<div class="pt-6 border-t border-gray-100">
+<h4 class="text-[10px] font-bold uppercase text-gray-400 mb-2">Critical Signal</h4>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--gold)]">bolt</span>
+<p class="text-[11px] font-semibold">Anomaly detected in sector 4 execution logs.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-gray-200">
+<img alt="Stamp" class="w-8 opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHF3LocS24BCUdXPr6dTTEAsSTdBaA5kZJjtyC_lH6WG4OkE-VIzXKpS_gwMsszsQa07uksUy-dFO8HUU0fWQwDes_li5eP66MD08DWhr_FBACBQEcr7ShcA_YIxhqy15ceOiSSN-hmpyaXCGRyhXEuJFnoO8dC6AzrebkwRgLumry6qM10S2_Na7aHuCeuwQmfpCsff8Bq2_fNCm6wu_YiFot52IwgEw27Km77RmU7nFWkorE9bKDv0BGSljtiPYlgz56CrQ2bQ0_"/>
+</div>
+</div>
+</aside>
+</main>
+</div>
+
+</body></html>

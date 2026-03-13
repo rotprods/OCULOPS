@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Execution Dashboard V2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FFD700",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#1a1a1a",
+                        "sidebar-bg": "#F5F0E8",
+                        "card-bg": "#FFFFFF",
+                        "border-color": "#E5E5E0",
+                        "text-primary": "#1A1A1A",
+                        "text-secondary": "#6B6B6B",
+                        "status-green": "#34C759",
+                        "status-red": "#FF3B30",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-primary dark:text-slate-100 antialiased font-display min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-[240px] bg-sidebar-bg dark:bg-zinc-900 border-r border-border-color dark:border-zinc-800 flex flex-col h-screen shrink-0 sticky top-0">
+<div class="p-6 flex items-center gap-3 border-b border-border-color dark:border-zinc-800">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-text-primary text-xl">blur_on</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-text-primary dark:text-slate-100 text-sm font-bold tracking-wider uppercase leading-none">Oculops</h1>
+<p class="text-text-secondary dark:text-slate-400 text-xs mt-1">AI OS Execution</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span class="text-sm font-medium">Core</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 border border-primary/20 text-text-primary dark:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary">rocket_launch</span>
+<span class="text-sm font-medium">Execution</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="text-sm font-medium">Intelligence</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+<span class="text-sm font-medium">Automation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-color dark:border-zinc-800">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary dark:text-slate-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+<!-- Top Header -->
+<header class="h-[56px] bg-card-bg dark:bg-zinc-900 border-b border-border-color dark:border-zinc-800 flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-primary dark:text-slate-100">rocket_launch</span>
+<h2 class="text-lg font-semibold text-text-primary dark:text-slate-100">Execution</h2>
+</div>
+<div class="flex-1 max-w-md mx-4">
+<div class="relative flex items-center w-full h-9 rounded-full bg-background-light dark:bg-zinc-800 border border-border-color dark:border-zinc-700 overflow-hidden focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-text-secondary dark:text-slate-400 ml-3 text-lg">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm text-text-primary dark:text-slate-100 placeholder:text-text-secondary/70 h-full px-2 outline-none" placeholder="Search tasks, models, agents..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-status-green/10 text-status-green px-3 py-1.5 rounded-full text-xs font-semibold">
+<div class="w-1.5 h-1.5 rounded-full bg-status-green animate-pulse"></div>
+                    LIVE
+                </div>
+<button class="w-8 h-8 rounded-full bg-background-light dark:bg-zinc-800 border border-border-color dark:border-zinc-700 flex items-center justify-center hover:bg-black/5 transition-colors">
+<span class="material-symbols-outlined text-text-secondary text-sm">notifications</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-6 md:p-8 space-y-8">
+<!-- Banner & Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-text-primary dark:text-slate-100 tracking-tight">Task Execution Hub</h2>
+<p class="text-text-secondary dark:text-slate-400 mt-1 text-sm flex items-center gap-2">
+<span class="font-medium text-text-primary dark:text-slate-300">23 Active</span>
+<span>•</span>
+<span class="text-status-red font-medium">4 Overdue</span>
+<span>•</span>
+<span class="text-status-green font-medium">89% Completion</span>
+</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded-full bg-card-bg dark:bg-zinc-800 border border-border-color dark:border-zinc-700 text-sm font-medium hover:bg-black/5 transition-colors flex items-center gap-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter
+                    </button>
+<button class="px-4 py-2 rounded-full bg-primary text-black text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-[0_2px_8px_rgba(255,215,0,0.2)]">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Task
+                    </button>
+</div>
+</div>
+<!-- KPI Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-card-bg dark:bg-zinc-900 border border-border-color dark:border-zinc-800 rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-sm font-medium text-text-secondary dark:text-slate-400">Completed</h3>
+<span class="material-symbols-outlined text-status-green text-lg">check_circle</span>
+</div>
+<div class="text-3xl font-bold text-text-primary dark:text-slate-100">147</div>
+<div class="mt-2 text-xs text-status-green flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        +12% this week
+                    </div>
+</div>
+<div class="bg-card-bg dark:bg-zinc-900 border-2 border-primary rounded-xl p-5 shadow-[0_4px_12px_rgba(255,215,0,0.1)] relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-primary/10 rounded-full blur-xl"></div>
+<div class="flex items-center justify-between mb-3 relative z-10">
+<h3 class="text-sm font-medium text-text-secondary dark:text-slate-400">In Progress</h3>
+<span class="material-symbols-outlined text-primary text-lg">sync</span>
+</div>
+<div class="text-3xl font-bold text-text-primary dark:text-slate-100 relative z-10">23</div>
+<div class="mt-2 text-xs text-text-secondary dark:text-slate-400 flex items-center gap-1 font-medium relative z-10">
+                        8 high priority
+                    </div>
+</div>
+<div class="bg-card-bg dark:bg-zinc-900 border border-border-color dark:border-zinc-800 rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-sm font-medium text-text-secondary dark:text-slate-400">Overdue</h3>
+<span class="material-symbols-outlined text-status-red text-lg">warning</span>
+</div>
+<div class="text-3xl font-bold text-text-primary dark:text-slate-100">4</div>
+<div class="mt-2 text-xs text-status-red flex items-center gap-1 font-medium">
+                        Requires attention
+                    </div>
+</div>
+<div class="bg-card-bg dark:bg-zinc-900 border border-border-color dark:border-zinc-800 rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-sm font-medium text-text-secondary dark:text-slate-400">Avg Completion</h3>
+<span class="material-symbols-outlined text-text-secondary text-lg">timer</span>
+</div>
+<div class="text-3xl font-bold text-text-primary dark:text-slate-100">2.3<span class="text-lg font-medium text-text-secondary ml-1">days</span></div>
+<div class="mt-2 text-xs text-status-green flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">trending_down</span>
+                        -0.4 days vs avg
+                    </div>
+</div>
+</div>
+<!-- Task Table -->
+<div class="bg-card-bg dark:bg-zinc-900 border border-border-color dark:border-zinc-800 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] overflow-hidden">
+<div class="px-6 py-4 border-b border-border-color dark:border-zinc-800 flex items-center justify-between bg-black/[0.02] dark:bg-white/[0.02]">
+<h3 class="font-semibold text-text-primary dark:text-slate-100">Active Pipeline</h3>
+<div class="flex gap-2">
+<button class="text-xs font-medium text-text-secondary hover:text-text-primary px-2 py-1 rounded transition-colors">View All</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-text-secondary dark:text-slate-400 uppercase bg-transparent border-b border-border-color dark:border-zinc-800">
+<tr>
+<th class="px-6 py-3 font-medium" scope="col">Task</th>
+<th class="px-6 py-3 font-medium" scope="col">Assignee</th>
+<th class="px-6 py-3 font-medium" scope="col">Priority</th>
+<th class="px-6 py-3 font-medium" scope="col">Status</th>
+<th class="px-6 py-3 font-medium" scope="col">Due Date</th>
+<th class="px-6 py-3 font-medium" scope="col">Progress</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-color dark:divide-zinc-800">
+<!-- Row 1 -->
+<tr class="hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors group">
+<td class="px-6 py-4 font-medium text-text-primary dark:text-slate-200">
+                                    Optimize Neural Net Weights
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold border border-blue-200">JD</div>
+<span class="text-text-secondary dark:text-slate-400">John D.</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-status-red font-medium">
+<div class="w-2 h-2 rounded-full bg-status-red"></div>
+                                        High
+                                    </div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/20 text-[#B8860B] border border-primary/30">
+                                        In Progress
+                                    </span>
+</td>
+<td class="px-6 py-4 text-text-secondary dark:text-slate-400">Oct 24</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full bg-background-light dark:bg-zinc-800 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 65%"></div>
+</div>
+<span class="text-xs font-medium text-text-secondary min-w-[32px]">65%</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors group">
+<td class="px-6 py-4 font-medium text-text-primary dark:text-slate-200">
+                                    Data Pipeline Refactor
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold border border-purple-200">AS</div>
+<span class="text-text-secondary dark:text-slate-400">Anna S.</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-text-secondary font-medium">
+<div class="w-2 h-2 rounded-full bg-text-secondary"></div>
+                                        Medium
+                                    </div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-status-green/10 text-status-green border border-status-green/20">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-6 py-4 text-text-secondary dark:text-slate-400">Oct 22</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full bg-background-light dark:bg-zinc-800 rounded-full h-1.5">
+<div class="bg-status-green h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+<span class="text-xs font-medium text-text-secondary min-w-[32px]">100%</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors group">
+<td class="px-6 py-4 font-medium text-text-primary dark:text-slate-200">
+                                    API Endpoint Integration
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xs font-bold border border-orange-200">MK</div>
+<span class="text-text-secondary dark:text-slate-400">Mike K.</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-status-red font-medium">
+<div class="w-2 h-2 rounded-full bg-status-red"></div>
+                                        High
+                                    </div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-status-red/10 text-status-red border border-status-red/20">
+                                        Blocked
+                                    </span>
+</td>
+<td class="px-6 py-4 text-status-red font-medium">Oct 20</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full bg-background-light dark:bg-zinc-800 rounded-full h-1.5">
+<div class="bg-status-red h-1.5 rounded-full" style="width: 30%"></div>
+</div>
+<span class="text-xs font-medium text-text-secondary min-w-[32px]">30%</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

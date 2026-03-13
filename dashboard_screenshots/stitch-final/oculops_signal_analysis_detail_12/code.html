@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Opportunity Scoring Matrix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0..1,0&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ivory': '#FAFAF8',
+                        'sidebar': '#F5F0E8',
+                        'border-light': '#E5E5E0',
+                        'gold': '#FFD700',
+                        'primary-text': '#1A1A1A',
+                        'secondary-text': '#6B6B6B',
+                        'tertiary-text': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neumorphic': '0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body { 
+                @apply bg-ivory text-primary-text font-sans;
+                font-weight: 400;
+            }
+        }
+        .scatter-grid {
+            background-image: linear-gradient(#E5E5E0 1px, transparent 1px), linear-gradient(90deg, #E5E5E0 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'wght' 300;
+        }
+        .tertiary-label {
+            @apply text-tertiary-text uppercase;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+        }
+        .section-heading {
+            @apply text-primary-text;
+            font-weight: 600;
+        }
+        .hero-number {
+            @apply text-primary-text;
+            font-weight: 700;
+        }
+        .secondary-label {
+            @apply text-secondary-text;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold/30">
+<div class="flex min-h-screen">
+<aside class="w-[240px] bg-sidebar border-r border-border-light flex flex-col fixed h-full z-20">
+<div class="p-6">
+<div class="flex items-center gap-2 mb-10">
+<div class="w-8 h-8 bg-[#1A1A1A] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">blur_on</span>
+</div>
+<span class="section-heading tracking-tighter text-lg">OCULOPS</span>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 secondary-label hover:text-primary-text transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm">Intelligence</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-white text-primary-text rounded-md shadow-sm border border-border-light/50" href="#">
+<span class="material-symbols-outlined text-[20px] text-gold">target</span>
+<span class="text-sm font-semibold">Opportunities</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 secondary-label hover:text-primary-text transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+<span class="text-sm">Signals</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 secondary-label hover:text-primary-text transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span class="text-sm">Agents</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="p-4 bg-white/50 border border-border-light rounded-xl">
+<div class="text-[10px] tertiary-label mb-2">System Status</div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+<span class="text-xs secondary-label">Operational</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 ml-[240px] p-8">
+<header class="h-14 flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-text">target</span>
+<h1 class="text-lg section-heading tracking-tight">Opportunities</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG_DXeKXPV3WdLxxw5oVG4IIBubR1SH40BZQLSTOIDGeiG6bGrERV4lizrJSjMNeTvjWacUUOkVta75HhzYpRC2qh915WTt58Q9Dk8okt-zxWStjwEFkVSRaUWe4-x6OJCDPkTKbeVfYMpGmys3tBUyPOVOvWpZJZGR98DyWXyIUb65mkXBl3Fqtq6cPPm-Zg_FVw8TGlFg-v_vJw6I_sWuHZZfIpQgz9c5nMhVXul0jOmM9Z9bzeFmrtlCevjywvuUE3Fl_zlLau2"/>
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBVZuaryWLeqKXozO3IrqjE9WlZbe5uOKphlFPNLMoMV90u5gfm_fiMYoO2CEurEljGHatXobTfO6pBKrV9kTV3WCzr9hRmi2PRbZY1_U8E4Ecsi22_ETnQRv5MExnwOVX5QXtVGsKFfSXdAt-KpLoxx3yS8evA38wBKLdj_J3EInTB73e1hk-GZWAyvSWZV9_qiEaX432Gpyvmjz9sH5_fRxFO_KO2_XBnFhczaIxLHeWjckXQQ4ffc1RAd5Aatsgw666Mn4bh3uw"/>
+</div>
+<button class="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-[10px] tertiary-label flex items-center gap-2 hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                    ADD OPPORTUNITY
+                </button>
+</div>
+</header>
+<div class="bg-white border border-border-light rounded-2xl p-8 mb-8 shadow-neumorphic relative overflow-hidden">
+<div class="relative z-10 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h2 class="text-[24px] section-heading">Opportunity Matrix</h2>
+<div class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-gold"></span>
+</div>
+</div>
+<p class="secondary-label max-w-xl">Deep-intelligence scoring based on multi-vector signal analysis and historical performance telemetry.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 border border-border-light rounded-full text-xs font-semibold bg-white hover:bg-ivory transition-colors text-primary-text">Export CSV</button>
+<button class="px-4 py-2 border border-border-light rounded-full text-xs font-semibold bg-white hover:bg-ivory transition-colors text-primary-text">Filters</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-6 mb-8">
+<div class="bg-white border-2 border-gold rounded-xl p-5 shadow-neumorphic">
+<div class="text-[10px] tertiary-label mb-1">Priority Analysis</div>
+<div class="text-2xl hero-number">8 HIGH PRIORITY</div>
+</div>
+<div class="bg-white border border-border-light rounded-xl p-5 shadow-neumorphic">
+<div class="text-[10px] tertiary-label mb-1">Total Pipeline Value</div>
+<div class="text-2xl hero-number">€47,500 <span class="text-sm tertiary-label">VALUE</span></div>
+</div>
+<div class="bg-white border border-border-light rounded-xl p-5 shadow-neumorphic">
+<div class="text-[10px] tertiary-label mb-1">Avg. Win Probability</div>
+<div class="text-2xl hero-number">64.2% <span class="text-sm tertiary-label">RATE</span></div>
+</div>
+<div class="bg-white border border-border-light rounded-xl p-5 shadow-neumorphic">
+<div class="text-[10px] tertiary-label mb-1">Active Intelligence</div>
+<div class="text-2xl hero-number">24 <span class="text-sm tertiary-label">ACTIVE</span></div>
+</div>
+</div>
+<div class="bg-white border border-border-light rounded-2xl shadow-neumorphic mb-8">
+<div class="p-6 border-b border-border-light flex justify-between items-center">
+<h3 class="text-sm tertiary-label">Strategic Distribution</h3>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-gold"></div>
+<span class="text-[10px] tertiary-label">Opportunity Value</span>
+</div>
+</div>
+</div>
+<div class="h-[400px] relative p-12 scatter-grid">
+<div class="absolute -left-20 top-1/2 -rotate-90 text-[10px] tertiary-label tracking-[.2em]">Win Probability</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tertiary-label tracking-[.2em]">Revenue Potential</div>
+<div class="absolute top-[20%] left-[75%] w-10 h-10 bg-gold/40 border border-gold rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,215,0,0.3)]">
+<div class="w-4 h-4 bg-gold rounded-full"></div>
+<div class="absolute -top-8 bg-[#1A1A1A] text-white text-[10px] px-2 py-1 rounded whitespace-nowrap font-sans">Deal: €12.4k</div>
+</div>
+<div class="absolute top-[45%] left-[60%] w-8 h-8 bg-gold/40 border border-gold rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+<div class="w-3 h-3 bg-gold rounded-full"></div>
+</div>
+<div class="absolute top-[70%] left-[30%] w-12 h-12 bg-gold/40 border border-gold rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+<div class="w-5 h-5 bg-gold rounded-full"></div>
+</div>
+<div class="absolute top-[30%] left-[20%] w-6 h-6 bg-gold/40 border border-gold rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+<div class="w-2 h-2 bg-gold rounded-full"></div>
+</div>
+<div class="absolute top-[15%] left-[90%] w-14 h-14 bg-gold/40 border border-gold rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-[0_0_25px_rgba(255,215,0,0.4)]">
+<div class="w-6 h-6 bg-gold rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="bg-white border border-border-light rounded-2xl shadow-neumorphic overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-ivory border-b border-border-light">
+<th class="px-6 py-4 text-[10px] tertiary-label">Opportunity</th>
+<th class="px-6 py-4 text-[10px] tertiary-label">Company</th>
+<th class="px-6 py-4 text-[10px] tertiary-label">Value</th>
+<th class="px-6 py-4 text-[10px] tertiary-label">Confidence</th>
+<th class="px-6 py-4 text-[10px] tertiary-label">Score</th>
+<th class="px-6 py-4 text-[10px] tertiary-label">Agent</th>
+<th class="px-6 py-4 text-[10px] tertiary-label">Next Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light">
+<tr class="hover:bg-ivory/50 transition-colors">
+<td class="px-6 py-4 text-sm section-heading">Cloud Infrastructure Expansion</td>
+<td class="px-6 py-4 text-sm secondary-label">Nebula Systems</td>
+<td class="px-6 py-4 text-sm font-semibold text-primary-text">€14,200</td>
+<td class="px-6 py-4">
+<div class="w-24 h-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-gold w-[85%]"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-[#1A1A1A] text-white text-[10px] px-2 py-1 rounded hero-number">92</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="Agent" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWr8-_QOnKlNWg8i95fEwGia3ZNloguVZ5Wpj-zReqPkdUU4Lc1ZL-JZpdDT4xyDye-UqM7zu-Ott7PIBC9ARFnPEHnH7qcDbaJNaIjOVi6F_TxnJWRpTBd9qzFCrL5QA6rUMh63TD2SQ9vMg_F-ErUYvvLWF0rSIwJSI7NDBQ9h_eybDvhx24c5sNuSeQxqUHBTr4j4nQ-AVEXsm0Y8RraEtmB8XsDnAlD99JQUR8m-aWbZ6HQWkdolIIqSl_PNaxMNy11Y1rerlp"/>
+<span class="text-xs secondary-label">Shadow.7</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[10px] tertiary-label border border-border-light px-3 py-1 rounded-full">Deploy Signal</span>
+</td>
+</tr>
+<tr class="hover:bg-ivory/50 transition-colors">
+<td class="px-6 py-4 text-sm section-heading">Data Security Protocol 4</td>
+<td class="px-6 py-4 text-sm secondary-label">Titan Group</td>
+<td class="px-6 py-4 text-sm font-semibold text-primary-text">€8,500</td>
+<td class="px-6 py-4">
+<div class="w-24 h-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-gold w-[62%]"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-[#1A1A1A] text-white text-[10px] px-2 py-1 rounded hero-number">74</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="Agent" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgtR_S_ZTY-yt6_c-7kmT7ZoX9sB7B9YJkLRXo8jNnhwgxc3ztDWBh24N779loOFHeh_ygwU5zu5M9DN6H1Qj-0WwEjJ8LNDM6t6aG9vMyO6dEfYfaPxOHW9ut4wUag6PKzMrP73geImJEe67kPqZ2vBTOa3zaYeRc3WgQRngvvkKOakKoViDGvKe2SAyvHe3rVLZdI-omJLAqYrgVHY38WOsxaw5gNonbsxd2iI1YieUIFv2BlVqCe8W1XL8DwNh87aOCv7nDEDq9"/>
+<span class="text-xs secondary-label">Ghost.3</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[10px] tertiary-label border border-border-light px-3 py-1 rounded-full">Analysis</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,101 @@
+{
+  "version": "2026-03-13",
+  "owner": "agent-2-codex",
+  "purpose": "Autonomy, budget, permission, and escalation governance for agent execution.",
+  "autonomy_levels": [
+    {
+      "level": "manual_only",
+      "description": "No autonomous execution allowed.",
+      "requires_human_approval": true,
+      "allowed_environments": [
+        "staging"
+      ]
+    },
+    {
+      "level": "guarded",
+      "description": "Autonomous execution on low-risk tasks under strict policy checks.",
+      "requires_human_approval": false,
+      "allowed_environments": [
+        "staging",
+        "production"
+      ]
+    },
+    {
+      "level": "approval_required",
+      "description": "Autonomous preparation is allowed, external side effects require approval.",
+      "requires_human_approval": true,
+      "allowed_environments": [
+        "staging",
+        "production"
+      ]
+    },
+    {
+      "level": "supervised",
+      "description": "Strategic actions require explicit review and escalation handling.",
+      "requires_human_approval": true,
+      "allowed_environments": [
+        "staging",
+        "production"
+      ]
+    }
+  ],
+  "risk_classes": {
+    "low": {
+      "simulation_required": false,
+      "max_auto_retries": 2,
+      "default_escalation_target": "agent-cortex"
+    },
+    "medium": {
+      "simulation_required": true,
+      "max_auto_retries": 1,
+      "default_escalation_target": "agent-copilot"
+    },
+    "high": {
+      "simulation_required": true,
+      "max_auto_retries": 0,
+      "default_escalation_target": "human_operator"
+    },
+    "critical": {
+      "simulation_required": true,
+      "max_auto_retries": 0,
+      "default_escalation_target": "human_operator"
+    }
+  },
+  "budget_guardrails": {
+    "per_run_usd": {
+      "low": 5,
+      "medium": 25,
+      "high": 50,
+      "critical": 100
+    },
+    "daily_usd_cap_per_agent": {
+      "default": 150,
+      "agent-copilot": 250,
+      "agent-oracle": 250
+    }
+  },
+  "approval_gates": [
+    {
+      "gate_id": "external_message_send",
+      "condition": "tool_id in ['messaging-dispatch', 'send-email'] and risk_class in ['high', 'critical']",
+      "required_table": "approval_requests",
+      "required_status": "approved"
+    },
+    {
+      "gate_id": "self_improvement_patch_production",
+      "condition": "workflow_id = 'self_improvement_patch_cycle' and target_environment = 'production'",
+      "required_table": "approval_requests",
+      "required_status": "approved"
+    }
+  ],
+  "environment_rules": {
+    "staging": {
+      "allow_live_messaging": false,
+      "allow_auto_patch_apply": true
+    },
+    "production": {
+      "allow_live_messaging": true,
+      "allow_auto_patch_apply": false
+    }
+  }
+}

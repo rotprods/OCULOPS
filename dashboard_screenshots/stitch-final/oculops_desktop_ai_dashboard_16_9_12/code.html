@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS GTM Strategy Board</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --parchment: #F5F0E8;
+            --canvas: #FAFAF8;
+            --gold: #FFD700;
+            --border: #E5E5E0;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B6B6B;
+            --text-tertiary: #9CA3AF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+        }
+        .sidebar-active {
+            background-color: rgba(0, 0, 0, 0.04);
+            border-left: 2px solid var(--gold);
+        }
+        .card-neumorphic {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .heartbeat-bar {
+            height: 2px;
+            width: 40px;
+            background: var(--gold);
+            position: relative;
+        }
+        .heartbeat-bar::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -2px;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+        .uppercase-label {
+            color: var(--text-tertiary);
+            letter-spacing: 0.08em;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'wght' 300, 'FILL' 0, 'grad' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex overflow-hidden">
+<aside class="w-[240px] h-full bg-[#F5F0E8] border-r border-[#E5E5E0] flex flex-col">
+<div class="p-6 flex items-center gap-2">
+<div class="w-8 h-8 bg-[#1A1A1A] rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">view_in_ar</span>
+</div>
+<span class="font-bold tracking-tight text-lg text-[var(--text-primary)]">OCULOPS</span>
+</div>
+<nav class="flex-1 px-3 py-4 space-y-6">
+<div>
+<p class="px-3 text-[10px] uppercase-label mb-3">Core</p>
+<div class="space-y-0.5">
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[var(--text-secondary)] hover:bg-black/5 rounded transition-colors font-normal" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Intelligence</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-semibold sidebar-active transition-colors text-[var(--text-primary)]" href="#">
+<span class="material-symbols-outlined text-[20px] text-[var(--gold)]">rocket_launch</span>
+<span>GTM</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[var(--text-secondary)] hover:bg-black/5 rounded transition-colors font-normal" href="#">
+<span class="material-symbols-outlined text-[20px]">lan</span>
+<span>Operations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[var(--text-secondary)] hover:bg-black/5 rounded transition-colors font-normal" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span>Fleet</span>
+</a>
+</div>
+</div>
+<div>
+<p class="px-3 text-[10px] uppercase-label mb-3">Analytics</p>
+<div class="space-y-0.5">
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[var(--text-secondary)] hover:bg-black/5 rounded transition-colors font-normal" href="#">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span>Market Trends</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[var(--text-secondary)] hover:bg-black/5 rounded transition-colors font-normal" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+<span>Performance</span>
+</a>
+</div>
+</div>
+</nav>
+<div class="p-4 border-t border-[#E5E5E0]">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-[#E5E5E0] overflow-hidden border border-black/5">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEn_GY5Z20tS7IF9gagielXsQ3KnIxlTV15glZukIIvkwljFtC_AQ8qPgXni3knEIOLMbari7t1qbDFBexWXzhM_P8JsXMbIVhqGHf0_UoiCRJNmY8wOyCyMZw-CjmPmPTH87SSRFDHU3qLYbFjU--ddzwdHEFxWaZ2ld_B6ECrRk_iJ6dvWTeOZxuuJNw-Ag010DXDSYIsRzOR4J2ZXPwJZIwoCTrjaUwVwKuFJSSvpzh_gfCvt931SCyJglQFzR6MwQdsT2gd2iD"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-[var(--text-primary)]">Vance R.</span>
+<span class="text-[10px] text-[var(--text-tertiary)]">Strategist</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 h-full flex flex-col overflow-y-auto no-scrollbar">
+<header class="h-14 border-b border-[#E5E5E0] bg-white flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-3 text-[var(--text-primary)]">
+<span class="material-symbols-outlined text-xl">rocket_launch</span>
+<h2 class="font-semibold text-sm tracking-tight">Go-To-Market</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="w-px h-4 bg-[#E5E5E0]"></div>
+<button class="text-xs font-semibold uppercase tracking-widest bg-[#1A1A1A] text-white px-4 py-2 rounded">New Board</button>
+</div>
+</header>
+<div class="p-8 max-w-[1440px] mx-auto w-full space-y-6">
+<section class="card-neumorphic p-8 rounded-xl relative">
+<div class="absolute top-8 right-8 flex items-center gap-2">
+<span class="text-[10px] font-semibold text-[var(--gold)] uppercase tracking-[0.08em]">Live Pulse</span>
+<div class="heartbeat-bar"></div>
+</div>
+<div>
+<h1 class="text-2xl font-bold text-[var(--text-primary)] tracking-tight mb-2">GTM Strategy Board</h1>
+<p class="text-[var(--text-secondary)] text-sm max-w-2xl font-normal">Orchestrating multi-channel offensive maneuvers for Q4 expansion. All intelligence nodes synchronized with n8n automated reporting.</p>
+</div>
+<div class="mt-8 flex gap-3">
+<button class="bg-[var(--gold)] text-[#1A1A1A] px-5 py-2.5 rounded-lg font-semibold text-xs uppercase tracking-[0.08em] shadow-sm hover:brightness-105 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span>
+                    New Campaign
+                </button>
+<button class="border border-[var(--border)] text-[var(--text-primary)] px-5 py-2.5 rounded-lg font-semibold text-xs uppercase tracking-[0.08em] hover:bg-black/[0.02] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">sync_alt</span>
+                    Import from n8n
+                </button>
+<button class="text-[var(--text-secondary)] px-5 py-2.5 rounded-lg font-semibold text-xs uppercase tracking-[0.08em] hover:text-[var(--text-primary)] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">menu_book</span>
+                    Strategy Playbook
+                </button>
+</div>
+</section>
+<div class="grid grid-cols-4 gap-6">
+<div class="card-neumorphic p-6 rounded-xl border-l-4 border-l-[var(--gold)]">
+<p class="text-[10px] uppercase-label mb-1">Status</p>
+<h3 class="text-lg font-bold text-[var(--text-primary)]">3 ACTIVE CAMPAIGNS</h3>
+</div>
+<div class="card-neumorphic p-6 rounded-xl">
+<p class="text-[10px] uppercase-label mb-1">Total Spend</p>
+<h3 class="text-lg font-bold text-[var(--text-primary)]">€8,500.00</h3>
+</div>
+<div class="card-neumorphic p-6 rounded-xl">
+<p class="text-[10px] uppercase-label mb-1">Efficiency</p>
+<h3 class="text-lg font-bold text-[var(--text-primary)]">2.4x ROAS</h3>
+</div>
+<div class="card-neumorphic p-6 rounded-xl">
+<p class="text-[10px] uppercase-label mb-1">Fleet Reach</p>
+<h3 class="text-lg font-bold text-[var(--text-primary)]">1.2M IMPRESSIONS</h3>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="card-neumorphic p-6 rounded-xl group hover:border-[var(--gold)] transition-colors">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="font-semibold text-base mb-1 text-[var(--text-primary)]">Project Phoenix Expansion</h4>
+<div class="flex items-center gap-2">
+<span class="bg-black/5 text-[10px] font-semibold px-2 py-0.5 rounded text-[var(--text-secondary)]">ACTIVE</span>
+<div class="flex items-center gap-1 ml-2">
+<span class="material-symbols-outlined text-base text-[var(--text-tertiary)]">ads_click</span>
+<span class="material-symbols-outlined text-base text-[var(--text-tertiary)]">mail</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#E5E5E0] group-hover:text-[var(--gold)] transition-colors">trending_up</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-xs font-normal">
+<span class="text-[var(--text-secondary)]">Budget Allocation</span>
+<span class="text-[var(--text-primary)]">€4,200 / €5,000</span>
+</div>
+<div class="w-full bg-[#F0F0EE] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[var(--gold)] h-full rounded-full" style="width: 84%"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div>
+<p class="text-[10px] uppercase-label">Conv. Rate</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">3.2%</p>
+</div>
+<div>
+<p class="text-[10px] uppercase-label">CAC</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">€12.40</p>
+</div>
+</div>
+</div>
+</div>
+<div class="card-neumorphic p-6 rounded-xl group hover:border-[var(--gold)] transition-colors">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="font-semibold text-base mb-1 text-[var(--text-primary)]">EMEA Channel Offensive</h4>
+<div class="flex items-center gap-2">
+<span class="bg-black/5 text-[10px] font-semibold px-2 py-0.5 rounded text-[var(--text-secondary)]">ACTIVE</span>
+<div class="flex items-center gap-1 ml-2">
+<span class="material-symbols-outlined text-base text-[var(--text-tertiary)]">campaign</span>
+<span class="material-symbols-outlined text-base text-[var(--text-tertiary)]">hub</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#E5E5E0] group-hover:text-[var(--gold)] transition-colors">trending_up</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-xs font-normal">
+<span class="text-[var(--text-secondary)]">Budget Allocation</span>
+<span class="text-[var(--text-primary)]">€2,300 / €3,500</span>
+</div>
+<div class="w-full bg-[#F0F0EE] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[var(--gold)] h-full rounded-full" style="width: 65%"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div>
+<p class="text-[10px] uppercase-label">Conv. Rate</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">2.8%</p>
+</div>
+<div>
+<p class="text-[10px] uppercase-label">CAC</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">€15.10</p>
+</div>
+</div>
+</div>
+</div>
+<div class="card-neumorphic p-6 rounded-xl group hover:border-[var(--gold)] transition-colors opacity-70">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="font-semibold text-base mb-1 text-[var(--text-primary)]">Direct Outreach Delta</h4>
+<div class="flex items-center gap-2">
+<span class="bg-black/5 text-[10px] font-semibold px-2 py-0.5 rounded text-[var(--text-secondary)]">PLANNED</span>
+<div class="flex items-center gap-1 ml-2">
+<span class="material-symbols-outlined text-base text-[var(--text-tertiary)]">call</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#E5E5E0] transition-colors">schedule</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-xs font-normal">
+<span class="text-[var(--text-secondary)]">Forecasted Spend</span>
+<span class="text-[var(--text-primary)]">€1,200</span>
+</div>
+<div class="w-full bg-[#F0F0EE] h-1.5 rounded-full overflow-hidden">
+<div class="bg-gray-300 h-full rounded-full w-0"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div>
+<p class="text-[10px] uppercase-label">Target LTV</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">€2,400</p>
+</div>
+<div>
+<p class="text-[10px] uppercase-label">Lead Goal</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">500</p>
+</div>
+</div>
+</div>
+</div>
+<div class="card-neumorphic p-6 rounded-xl group hover:border-[var(--gold)] transition-colors">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="font-semibold text-base mb-1 text-[var(--text-primary)]">Signal Boost Retargeting</h4>
+<div class="flex items-center gap-2">
+<span class="bg-black/5 text-[10px] font-semibold px-2 py-0.5 rounded text-[var(--text-secondary)]">ACTIVE</span>
+<div class="flex items-center gap-1 ml-2">
+<span class="material-symbols-outlined text-base text-[var(--text-tertiary)]">sensors</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#E5E5E0] group-hover:text-[var(--gold)] transition-colors">trending_up</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-xs font-normal">
+<span class="text-[var(--text-secondary)]">Budget Allocation</span>
+<span class="text-[var(--text-primary)]">€2,000 / €2,000</span>
+</div>
+<div class="w-full bg-[#F0F0EE] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[var(--gold)] h-full rounded-full" style="width: 100%"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div>
+<p class="text-[10px] uppercase-label">Conv. Rate</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">4.1%</p>
+</div>
+<div>
+<p class="text-[10px] uppercase-label">CAC</p>
+<p class="text-sm font-bold text-[var(--text-primary)]">€8.90</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="card-neumorphic rounded-xl p-8 overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-semibold text-base uppercase-label">Campaign Timeline</h3>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-[var(--gold)]"></div>
+<span class="text-[10px] uppercase-label">Active</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-gray-300"></div>
+<span class="text-[10px] uppercase-label">Planned</span>
+</div>
+</div>
+</div>
+<div class="relative space-y-8">
+<div class="flex justify-between text-[10px] uppercase-label border-b border-[#E5E5E0] pb-2 px-1">
+<span>WEEK 01</span>
+<span>WEEK 02</span>
+<span>WEEK 03</span>
+<span>WEEK 04</span>
+<span>WEEK 05</span>
+<span>WEEK 06</span>
+<span>WEEK 07</span>
+<span>WEEK 08</span>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-32 shrink-0">
+<p class="text-xs font-semibold text-[var(--text-primary)] truncate">Project Phoenix</p>
+</div>
+<div class="flex-1 h-6 bg-[#F0F0EE] rounded relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 bg-[var(--gold)] rounded" style="width: 65%"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-32 shrink-0">
+<p class="text-xs font-semibold text-[var(--text-primary)] truncate">EMEA Offensive</p>
+</div>
+<div class="flex-1 h-6 bg-[#F0F0EE] rounded relative overflow-hidden">
+<div class="absolute left-[15%] top-0 bottom-0 bg-[var(--gold)] rounded" style="width: 45%"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-32 shrink-0">
+<p class="text-xs font-semibold text-[var(--text-primary)] truncate">Signal Boost</p>
+</div>
+<div class="flex-1 h-6 bg-[#F0F0EE] rounded relative overflow-hidden">
+<div class="absolute left-[30%] top-0 bottom-0 bg-[var(--gold)] rounded" style="width: 70%"></div>
+</div>
+</div>
+<div class="flex items-center gap-4 opacity-50">
+<div class="w-32 shrink-0">
+<p class="text-xs font-semibold text-[var(--text-primary)] truncate">Direct Outreach</p>
+</div>
+<div class="flex-1 h-6 bg-[#F0F0EE] rounded relative overflow-hidden">
+<div class="absolute left-[70%] top-0 bottom-0 bg-gray-400 rounded" style="width: 30%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+</body></html>

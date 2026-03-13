@@ -1,0 +1,6 @@
+{
+  "screen": "finance",
+  "model": "veo-3.1-fast-generate-preview",
+  "prompt": "A gold revenue chart line drawing itself across the screen left to right. The line emits a subtle golden glow trail. At data peaks tiny gold particle sparks burst upward. Clean warm white background with faint grid lines. Eye level, tracking the line. No people, no text overlays. Color palette: warm off-white (#FAFAF8), gold (#FFD700), soft gray (#E5E5E0). Aspect ratio 16:9. Cinematic quality. Bloomberg meets Apple aesthetic.",
+  "status": "generated"
+}

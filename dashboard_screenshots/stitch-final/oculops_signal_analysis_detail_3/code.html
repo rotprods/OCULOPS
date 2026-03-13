@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Creative Studio AI Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --sidebar-bg: #F5F0E8;
+            --main-bg: #FAFAF8;
+            --card-border: #E5E5E0;
+            --gold-accent: #D4AF37;
+            --gold-soft: #F9F1E0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--main-bg);
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .neumorphic-card {
+            background: #FFFFFF;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+        .gold-sphere {
+            background: radial-gradient(circle at 30% 30%, #FFD700 0%, #D4AF37 40%, #B8860B 100%);
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E5E5E0;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="text-slate-900 antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="w-[240px] bg-[var(--sidebar-bg)] border-r border-[var(--card-border)] flex flex-col shrink-0">
+<div class="p-6">
+<div class="flex items-center gap-2 mb-8">
+<div class="w-8 h-8 bg-black rounded flex items-center justify-center">
+<span class="text-white font-bold text-xs">OC</span>
+</div>
+<span class="font-bold tracking-tight text-lg">OCULOPS</span>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Intelligence OS</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-900 bg-white/50 rounded-lg border border-[var(--card-border)] shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-[var(--gold-accent)]">brush</span>
+<span class="text-sm font-semibold">Creative Studio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">database</span>
+<span class="text-sm font-medium">Signal Assets</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="text-sm font-medium">Market Analysis</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="p-4 bg-white/40 rounded-xl border border-[var(--card-border)]">
+<p class="text-[10px] mono uppercase tracking-widest text-slate-400 mb-1">System Status</p>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-xs font-semibold">FORGE Engine Active</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<header class="h-[56px] px-8 flex items-center justify-between border-b border-[var(--card-border)] bg-white/50 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">brush</span>
+<h1 class="font-semibold text-sm tracking-tight">Creative Studio</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 bg-[var(--sidebar-bg)] px-3 py-1 rounded-full border border-[var(--card-border)]">
+<span class="w-2 h-2 rounded-full bg-[var(--gold-accent)]"></span>
+<span class="text-[10px] mono font-medium">FORGE-V2.5</span>
+</div>
+<button class="p-1 hover:bg-slate-100 rounded transition-colors">
+<span class="material-symbols-outlined text-slate-400">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-white shadow-sm overflow-hidden">
+<img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvqMXg8CwhL-fYTXEIGEi_qWyNuGMIJ_ntOFhqR5HC00cfh39RlPYG3UTEN-SzCyw9cLkzzAncSGUouO7CUNr3dLnB17uYShGIf6YAIeRG8kYxYpiw-8pusGHg4bd7HBjFg9ANCMiwWXczul-1OdRtC43DqWNlqbmtjEEaBIyWeMQMVtFLzQAqNukEtO3WX8Zf_UapLpSl9PyXqZB9kOZvsf_--N6_gZgTcg-XEv8APnRbQ476YgMMapCFygbY1RJi2vY57JYCObJd"/>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<div class="max-w-5xl mx-auto space-y-8">
+<section class="neumorphic-card rounded-2xl overflow-hidden relative min-h-[220px] flex items-center p-10 group">
+<div class="relative z-10 max-w-md">
+<span class="mono text-[11px] text-[var(--gold-accent)] font-semibold tracking-[0.2em] uppercase mb-3 block">Neural Forge Enabled</span>
+<h2 class="text-3xl font-bold tracking-tight mb-4">Creative Intelligence</h2>
+<p class="text-slate-500 mb-6 text-sm leading-relaxed">Synthesize cross-platform assets with Bloomberg-grade precision. AI-driven creative orchestration at your fingertips.</p>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-black text-white text-[10px] mono rounded tracking-widest uppercase">FORGE agent ready</span>
+<span class="text-slate-300 text-xs">|</span>
+<span class="text-slate-400 text-xs font-medium">Latency: 14ms</span>
+</div>
+</div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] pointer-events-none">
+<div class="gold-sphere w-[200px] h-[200px] rounded-full absolute top-1/2 right-10 -translate-y-1/2"></div>
+<div class="absolute inset-0 flex items-center justify-center pr-20">
+<span class="material-symbols-outlined text-[100px] text-[var(--gold-accent)] opacity-20">auto_awesome</span>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Creative Templates</h3>
+<button class="text-xs font-semibold text-[var(--gold-accent)] hover:underline">View Library</button>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<div class="neumorphic-card rounded-xl p-5 hover:border-[var(--gold-accent)] transition-all group cursor-pointer">
+<div class="aspect-video bg-[var(--sidebar-bg)] rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+<div class="w-1/2 h-1/2 border-2 border-dashed border-slate-300 rounded opacity-50"></div>
+</div>
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-sm">Visual Brand Deck</h4>
+<span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] mono rounded">PITCH</span>
+</div>
+<button class="w-full py-2 bg-[var(--gold-soft)] text-[var(--gold-accent)] text-[10px] mono font-bold uppercase tracking-widest rounded-lg border border-[var(--gold-accent)]/20 hover:bg-[var(--gold-accent)] hover:text-white transition-colors">AI Generate</button>
+</div>
+<div class="neumorphic-card rounded-xl p-5 hover:border-[var(--gold-accent)] transition-all group cursor-pointer">
+<div class="aspect-video bg-[var(--sidebar-bg)] rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+<div class="flex gap-2">
+<div class="w-8 h-8 rounded-full bg-slate-300 opacity-30"></div>
+<div class="w-8 h-8 rounded-full bg-slate-400 opacity-30"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-sm">Quarterly Analysis</h4>
+<span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] mono rounded">DATA</span>
+</div>
+<button class="w-full py-2 bg-[var(--gold-soft)] text-[var(--gold-accent)] text-[10px] mono font-bold uppercase tracking-widest rounded-lg border border-[var(--gold-accent)]/20 hover:bg-[var(--gold-accent)] hover:text-white transition-colors">AI Generate</button>
+</div>
+<div class="neumorphic-card rounded-xl p-5 hover:border-[var(--gold-accent)] transition-all group cursor-pointer">
+<div class="aspect-video bg-[var(--sidebar-bg)] rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+<div class="w-full h-full flex flex-col p-4 gap-2">
+<div class="h-1 w-full bg-slate-300 opacity-50 rounded"></div>
+<div class="h-1 w-3/4 bg-slate-300 opacity-50 rounded"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-semibold text-sm">Social Media Set</h4>
+<span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] mono rounded">SOCIAL</span>
+</div>
+<button class="w-full py-2 bg-[var(--gold-soft)] text-[var(--gold-accent)] text-[10px] mono font-bold uppercase tracking-widest rounded-lg border border-[var(--gold-accent)]/20 hover:bg-[var(--gold-accent)] hover:text-white transition-colors">AI Generate</button>
+</div>
+<div class="neumorphic-card rounded-xl p-5 hover:border-[var(--gold-accent)] transition-all group cursor-pointer">
+<div class="aspect-video bg-[var(--sidebar-bg)] rounded-lg mb-4"></div>
+<h4 class="font-semibold text-sm mb-3">Executive Summary</h4>
+<button class="w-full py-2 bg-[var(--gold-soft)] text-[var(--gold-accent)] text-[10px] mono font-bold uppercase rounded-lg border border-[var(--gold-accent)]/20 transition-colors">AI Generate</button>
+</div>
+<div class="neumorphic-card rounded-xl p-5 hover:border-[var(--gold-accent)] transition-all group cursor-pointer">
+<div class="aspect-video bg-[var(--sidebar-bg)] rounded-lg mb-4"></div>
+<h4 class="font-semibold text-sm mb-3">Ad Creative Suite</h4>
+<button class="w-full py-2 bg-[var(--gold-soft)] text-[var(--gold-accent)] text-[10px] mono font-bold uppercase rounded-lg border border-[var(--gold-accent)]/20 transition-colors">AI Generate</button>
+</div>
+<div class="neumorphic-card rounded-xl p-5 hover:border-[var(--gold-accent)] transition-all group cursor-pointer">
+<div class="aspect-video bg-[var(--sidebar-bg)] rounded-lg mb-4"></div>
+<h4 class="font-semibold text-sm mb-3">Newsletter Master</h4>
+<button class="w-full py-2 bg-[var(--gold-soft)] text-[var(--gold-accent)] text-[10px] mono font-bold uppercase rounded-lg border border-[var(--gold-accent)]/20 transition-colors">AI Generate</button>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Recent Creations</h3>
+<div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+<div class="shrink-0 w-48 neumorphic-card rounded-lg p-3 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="aspect-square bg-slate-50 rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-200">image</span>
+</div>
+<p class="text-[10px] mono text-slate-400 mb-0.5 uppercase">2m ago</p>
+<p class="text-xs font-bold truncate">Q4 Growth Story</p>
+</div>
+<div class="shrink-0 w-48 neumorphic-card rounded-lg p-3 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="aspect-square bg-slate-50 rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-200">description</span>
+</div>
+<p class="text-[10px] mono text-slate-400 mb-0.5 uppercase">1h ago</p>
+<p class="text-xs font-bold truncate">Market Entry Plan</p>
+</div>
+<div class="shrink-0 w-48 neumorphic-card rounded-lg p-3 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="aspect-square bg-slate-50 rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-200">present_to_all</span>
+</div>
+<p class="text-[10px] mono text-slate-400 mb-0.5 uppercase">3h ago</p>
+<p class="text-xs font-bold truncate">Brand Refresh v2</p>
+</div>
+<div class="shrink-0 w-48 neumorphic-card rounded-lg p-3 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="aspect-square bg-slate-50 rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-200">movie</span>
+</div>
+<p class="text-[10px] mono text-slate-400 mb-0.5 uppercase">Yesterday</p>
+<p class="text-xs font-bold truncate">Global Launch Reel</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<aside class="w-1/4 min-w-[320px] bg-white border-l border-[var(--card-border)] overflow-y-auto custom-scrollbar">
+<div class="p-8 space-y-8">
+<div>
+<h3 class="text-[11px] mono font-bold text-slate-400 uppercase tracking-widest mb-4">AI Tools</h3>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between p-4 neumorphic-card rounded-xl hover:border-[var(--gold-accent)] transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--gold-accent)]">history_edu</span>
+<span class="text-sm font-semibold">Generate Copy</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 neumorphic-card rounded-xl hover:border-[var(--gold-accent)] transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--gold-accent)]">image_search</span>
+<span class="text-sm font-semibold">Suggest Images</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 neumorphic-card rounded-xl hover:border-[var(--gold-accent)] transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--gold-accent)]">palette</span>
+<span class="text-sm font-semibold">Re-color Palette</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</button>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-[11px] mono font-bold text-slate-400 uppercase tracking-widest">Brand Assets</h3>
+<span class="material-symbols-outlined text-sm text-slate-400">verified</span>
+</div>
+<div class="neumorphic-card rounded-xl p-5 space-y-6">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase mb-3">Color Swatches</p>
+<div class="flex gap-2">
+<div class="w-8 h-8 rounded-full bg-slate-900 border border-slate-100 ring-2 ring-transparent hover:ring-[var(--gold-accent)] cursor-pointer"></div>
+<div class="w-8 h-8 rounded-full bg-[var(--gold-accent)] border border-slate-100 cursor-pointer"></div>
+<div class="w-8 h-8 rounded-full bg-[var(--sidebar-bg)] border border-slate-100 cursor-pointer"></div>
+<div class="w-8 h-8 rounded-full bg-white border border-slate-200 cursor-pointer"></div>
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-slate-100 cursor-pointer"></div>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase mb-3">Typography Samples</p>
+<div class="space-y-3">
+<div class="flex items-end justify-between border-b border-slate-50 pb-2">
+<span class="text-lg font-bold">Inter Display</span>
+<span class="text-[10px] mono text-slate-400">Heading 1</span>
+</div>
+<div class="flex items-end justify-between border-b border-slate-50 pb-2">
+<span class="mono text-sm">JetBrains Mono</span>
+<span class="text-[10px] mono text-slate-400">System</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-[var(--gold-soft)] rounded-2xl border border-[var(--gold-accent)]/10">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] mono font-bold text-[var(--gold-accent)] uppercase">Generation Limit</span>
+<span class="text-[10px] font-bold text-[var(--gold-accent)]">84%</span>
+</div>
+<div class="h-1.5 w-full bg-white rounded-full overflow-hidden mb-3">
+<div class="h-full bg-[var(--gold-accent)] w-[84%]"></div>
+</div>
+<p class="text-[10px] text-[var(--gold-accent)] opacity-80 leading-tight">Your Forge cycle resets in 12 hours. Professional license active.</p>
+</div>
+</div>
+</aside>
+</div>
+
+</body></html>

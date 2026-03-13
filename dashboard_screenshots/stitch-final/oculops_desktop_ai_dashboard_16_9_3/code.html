@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps - Task Execution Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFD700", // Signature Gold
+                        "background-light": "#FDFBF7", // Warm Cream/Ivory
+                        "background-dark": "#0A0A05", // Deep Spatial Dark
+                        "card-light": "#FFFFFF",
+                        "card-dark": "rgba(25, 25, 15, 0.6)",
+                        "surface-light": "#F4F1EA",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'neumorphic': '5px 5px 15px rgba(0, 0, 0, 0.03), -5px -5px 15px rgba(255, 255, 255, 0.8)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            background-color: #0A0A05;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a12 0%, #0A0A05 70%);
+        }
+        .glass-panel {
+            background: #FDFBF7;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,1);
+        }
+        .sidebar-item-active {
+            background: rgba(255, 215, 0, 0.1);
+            border-right: 3px solid #FFD700;
+            color: #9C7A00;
+            font-weight: 600;
+        }
+        .heartbeat-bar {
+            background: linear-gradient(90deg, #FFD700 0%, rgba(255, 215, 0, 0) 100%);
+        }
+        .progress-bar-bg {
+            background: #E5E0D5;
+        }
+        .text-gold {
+            color: #9C7A00;
+        }
+        .bg-gold-light {
+            background: rgba(255, 215, 0, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-slate-800 h-screen w-screen flex antialiased">
+<aside class="w-72 h-full bg-[#11110A] border-r border-white/5 flex flex-col p-6 z-20">
+<div class="flex items-center gap-3 mb-10 px-2">
+<div class="w-10 h-10 bg-[#FFD700] rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/20">
+<span class="material-icons-outlined text-black font-bold">visibility</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-white leading-none">OculOps</h1>
+<p class="text-[10px] uppercase tracking-widest text-[#FFD700] mt-1 font-semibold">Workspace</p>
+</div>
+</div>
+<nav class="flex-1 space-y-8 overflow-y-auto no-scrollbar text-slate-400">
+<div>
+<p class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-4 px-2">Core</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+<span class="text-sm font-medium">Agents</span>
+</a>
+<a class="sidebar-item-active flex items-center justify-between px-4 py-3 rounded-xl transition-all" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+<span class="text-sm">Execution</span>
+</div>
+</a>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-4 px-2">Settings</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span class="text-sm font-medium">Preferences</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">vpn_key</span>
+<span class="text-sm font-medium">API Keys</span>
+</a>
+</div>
+</div>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/5">
+<div class="flex items-center justify-between p-3 bg-white/5 rounded-2xl">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 border border-white/10">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPNx5L3R6-0Las6FEkagjFeY1OuxFajYL6a30eCTY2xsh1aqTqGbWdAoGc4v6JlL97iQooxRkJKXY1A4U5DSgmcgWdXuqx47B29Dd0xC9bKf3zNQNytthAsoM0Ytd3UoFyHuBVkqFKjbDGICHdz0aT2Bh-A50U1nodqCzhgvqyjcMKVUN34xwrRBJmHguJ5_CTHmgXjw3K8nCig1jyVDk4FlUawPia167ibs5_R-doc-ZitNOcJHce8sNUHluCPWGUxJ8SEHs6gYp4"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-[#11110A] rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-white truncate max-w-[100px]">Alex Vance</span>
+<span class="text-[10px] text-slate-500 truncate max-w-[100px]">Admin</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 h-full p-6 lg:p-10 flex flex-col gap-8 relative overflow-y-auto bg-[#FDFBF7] rounded-l-[40px] shadow-[-20px_0_40px_rgba(0,0,0,0.5)] z-30">
+<header class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-soft border border-slate-100">
+<span class="material-symbols-outlined text-2xl text-slate-800">rocket_launch</span>
+</div>
+<div>
+<h2 class="text-3xl font-bold text-slate-900 tracking-tight">Execution</h2>
+<p class="text-sm text-slate-500 mt-1">Manage and monitor active agent tasks</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span> New Task
+                </button>
+<button class="px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">play_arrow</span> Run All Queued
+                </button>
+<button class="px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">pause</span> Pause Active
+                </button>
+<button class="px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">receipt_long</span> View Logs
+                </button>
+</div>
+</header>
+<section class="glass-panel rounded-3xl p-8 relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+<div>
+<h3 class="text-2xl font-bold text-slate-900 mb-2">Task Execution Center</h3>
+<p class="text-slate-500">14 active tasks across 4 agents</p>
+</div>
+<div class="flex flex-col items-end gap-3 w-full lg:w-1/3">
+<div class="flex justify-between w-full text-sm font-semibold text-slate-700">
+<span>System Throughput</span>
+<span>94%</span>
+</div>
+<div class="w-full h-1 progress-bar-bg rounded-full overflow-hidden">
+<div class="h-full w-[94%] heartbeat-bar rounded-full"></div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-slate-500">Completed Today</span>
+<span class="material-symbols-outlined text-slate-400">task_alt</span>
+</div>
+<span class="text-4xl font-bold text-slate-900">12</span>
+</div>
+<div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-slate-500">In Progress</span>
+<span class="material-symbols-outlined text-[#FFD700]">sync</span>
+</div>
+<span class="text-4xl font-bold text-slate-900">4</span>
+</div>
+<div class="glass-panel rounded-2xl p-6 flex flex-col justify-between border-l-4 border-l-red-500">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-red-500">Blocked</span>
+<span class="material-symbols-outlined text-red-400">block</span>
+</div>
+<span class="text-4xl font-bold text-red-600">2</span>
+</div>
+<div class="glass-panel rounded-2xl p-6 flex flex-col justify-between items-center relative overflow-hidden">
+<div class="absolute top-4 left-4">
+<span class="text-sm font-medium text-slate-500">Throughput</span>
+</div>
+<div class="mt-6 relative w-20 h-20 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-slate-200" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="3"></path>
+<path class="text-[#FFD700]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-width="3"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="text-lg font-bold text-slate-900">94%</span>
+</div>
+</div>
+</div>
+</section>
+<section class="glass-panel rounded-3xl overflow-hidden flex-1 flex flex-col">
+<div class="p-6 border-b border-slate-100 flex justify-between items-center bg-white/50">
+<h4 class="text-lg font-bold text-slate-900">Active Queue</h4>
+<button class="text-sm text-slate-500 hover:text-slate-900 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-xs uppercase tracking-wider text-slate-500 border-b border-slate-100 bg-slate-50/50">
+<th class="px-6 py-4 font-semibold">Task</th>
+<th class="px-6 py-4 font-semibold">Agent</th>
+<th class="px-6 py-4 font-semibold">Priority</th>
+<th class="px-6 py-4 font-semibold">Status</th>
+<th class="px-6 py-4 font-semibold">Duration</th>
+<th class="px-6 py-4 font-semibold w-64">Progress</th>
+<th class="px-6 py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-slate-100">
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-6 py-4 font-medium text-slate-900">Scrape competitor pricing data</td>
+<td class="px-6 py-4 text-slate-600 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">O</div>
+                                Oracle
+                            </td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200">High</span>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-slate-700">
+<span class="w-2 h-2 rounded-full bg-[#FFD700] animate-pulse"></span>
+                                    Running
+                                </span>
+</td>
+<td class="px-6 py-4 font-mono text-slate-500">00:12:45</td>
+<td class="px-6 py-4">
+<div class="w-full flex items-center gap-3">
+<div class="flex-1 h-1.5 progress-bar-bg rounded-full overflow-hidden">
+<div class="h-full bg-[#FFD700] rounded-full" style="width: 75%"></div>
+</div>
+<span class="text-xs font-mono text-slate-500">75%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-slate-900"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-6 py-4 font-medium text-slate-900">Generate weekly marketing report</td>
+<td class="px-6 py-4 text-slate-600 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">S</div>
+                                Scribe
+                            </td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-yellow-100 text-yellow-800 border border-yellow-200">Medium</span>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-slate-700">
+<span class="w-2 h-2 rounded-full bg-[#FFD700] animate-pulse"></span>
+                                    Running
+                                </span>
+</td>
+<td class="px-6 py-4 font-mono text-slate-500">00:04:12</td>
+<td class="px-6 py-4">
+<div class="w-full flex items-center gap-3">
+<div class="flex-1 h-1.5 progress-bar-bg rounded-full overflow-hidden">
+<div class="h-full bg-[#FFD700] rounded-full" style="width: 32%"></div>
+</div>
+<span class="text-xs font-mono text-slate-500">32%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-slate-900"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-6 py-4 font-medium text-slate-900">Sync customer DB with CRM</td>
+<td class="px-6 py-4 text-slate-600 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">N</div>
+                                Nexus
+                            </td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">Low</span>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-slate-700">
+<span class="w-2 h-2 rounded-full bg-[#FFD700] animate-pulse"></span>
+                                    Running
+                                </span>
+</td>
+<td class="px-6 py-4 font-mono text-slate-500">00:01:05</td>
+<td class="px-6 py-4">
+<div class="w-full flex items-center gap-3">
+<div class="flex-1 h-1.5 progress-bar-bg rounded-full overflow-hidden">
+<div class="h-full bg-[#FFD700] rounded-full" style="width: 15%"></div>
+</div>
+<span class="text-xs font-mono text-slate-500">15%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-slate-900"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-red-50/30 transition-colors group bg-red-50/10">
+<td class="px-6 py-4 font-medium text-slate-900">Process Q3 financial invoices</td>
+<td class="px-6 py-4 text-slate-600 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">O</div>
+                                Oracle
+                            </td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200">High</span>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-red-600 font-medium">
+<span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                    Blocked
+                                </span>
+</td>
+<td class="px-6 py-4 font-mono text-slate-500">01:45:22</td>
+<td class="px-6 py-4">
+<div class="w-full flex items-center gap-3">
+<div class="flex-1 h-1.5 progress-bar-bg rounded-full overflow-hidden">
+<div class="h-full bg-red-400 rounded-full" style="width: 88%"></div>
+</div>
+<span class="text-xs font-mono text-red-500">88%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-slate-900"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</body></html>

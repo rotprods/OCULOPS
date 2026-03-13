@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Execution Center - Ivory OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "ivory-bg": "#FAFAF8",
+            "ivory-sidebar": "#F5F0E8",
+            "ivory-card": "#FFFFFF",
+            "ivory-border": "#E5E5E0",
+            "gold-main": "#C8A200",
+            "gold-light": "rgba(200, 162, 0, 0.1)",
+            "gold-bright": "#FFD700",
+            "text-main": "#1A1A1A",
+            "text-muted": "#666666",
+            "status-green": "#10B981",
+            "status-blue": "#3B82F6",
+            "status-orange": "#F59E0B",
+            "status-red": "#EF4444"
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"],
+            "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+          },
+          boxShadow: {
+            "ivory-soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+            "inner-top": "inset 0 1px 0 0 rgba(255, 255, 255, 0.8)",
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: theme('colors.ivory-bg');
+      color: theme('colors.text-main');
+    }
+    .card-style {
+      background-color: theme('colors.ivory-card');
+      border: 1px solid theme('colors.ivory-border');
+      border-radius: 12px;
+      box-shadow: theme('boxShadow.ivory-soft'), theme('boxShadow.inner-top');
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes pulse-live {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .live-dot {
+      animation: pulse-live 2s infinite;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased overflow-hidden text-sm h-screen w-full flex">
+<aside class="w-[240px] bg-ivory-sidebar border-r border-ivory-border flex flex-col z-20 shrink-0">
+<div class="h-14 px-5 flex items-center gap-3 border-b border-ivory-border/50">
+<div class="w-6 h-6 rounded-full bg-gold-bright flex items-center justify-center shadow-sm">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+<h1 class="font-bold tracking-widest text-[13px] text-text-main">OCULOPS</h1>
+</div>
+<div class="flex-1 overflow-y-auto hide-scrollbar py-6 flex flex-col gap-6">
+<div class="px-3">
+<h2 class="px-3 text-[10px] font-bold text-text-muted mb-2 tracking-widest">CORE</h2>
+<nav class="space-y-0.5">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+<span class="font-medium text-[13px]">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+<span class="font-medium text-[13px]">Systems</span>
+</a>
+</nav>
+</div>
+<div class="px-3">
+<h2 class="px-3 text-[10px] font-bold text-text-muted mb-2 tracking-widest">AUTOMATION</h2>
+<nav class="space-y-0.5">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md bg-gold-light text-gold-main border border-gold-main/20 font-semibold shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4)]" href="#">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+<span class="text-[13px]">Execution</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">alt_route</span>
+<span class="font-medium text-[13px]">Workflows</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">smart_toy</span>
+<span class="font-medium text-[13px]">Agents</span>
+</a>
+</nav>
+</div>
+<div class="px-3">
+<h2 class="px-3 text-[10px] font-bold text-text-muted mb-2 tracking-widest">INTELLIGENCE</h2>
+<nav class="space-y-0.5">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+<span class="font-medium text-[13px]">Models</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">database</span>
+<span class="font-medium text-[13px]">Knowledge</span>
+</a>
+</nav>
+</div>
+<div class="px-3">
+<h2 class="px-3 text-[10px] font-bold text-text-muted mb-2 tracking-widest">ANALYTICS</h2>
+<nav class="space-y-0.5">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">monitoring</span>
+<span class="font-medium text-[13px]">Performance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-muted hover:bg-black/5 hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span class="font-medium text-[13px]">Logs</span>
+</a>
+</nav>
+</div>
+</div>
+<div class="p-4 border-t border-ivory-border/50">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-ivory-border bg-cover bg-center border border-ivory-border" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDas1TcHU0uRI7ihYesoiQX-_2KFMzIU93dkOJ5YwjTd-HeZYBZVSoNnkSiQGDL5WnrHm48n7AR5RYZ8kJHZMKAbug2Fvg1PjH-DHCvNjbzlFdBLelMMNFEaSXDQd5walONE5QNzbhHY4QdN4Zsc6crzSH_5BkHvZSnAVHye8BGBfujQitfH-OUMtZw9Or38lfxB6zCzeWQB6SstyEs2fU2ZqzIyelePpaD0a41Qbivbn_giMO7DW5EHHv5IpyRyFFOku5wqu2Apktn')"></div>
+<div class="flex flex-col">
+<span class="text-[12px] font-semibold text-text-main leading-tight">Admin User</span>
+<span class="text-[10px] text-text-muted">admin@oculops.io</span>
+</div>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0 bg-ivory-bg">
+<header class="h-14 bg-ivory-bg border-b border-ivory-border flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-main text-xl">rocket_launch</span>
+<h2 class="font-semibold text-[15px] text-text-main">Execution</h2>
+</div>
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px]">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3 text-text-muted text-[18px]">search</span>
+<input class="w-full h-8 pl-9 pr-4 rounded-full bg-white border border-ivory-border text-[13px] placeholder:text-text-muted/70 focus:outline-none focus:border-gold-main/50 focus:ring-1 focus:ring-gold-main/50 transition-all shadow-sm" placeholder="Search tasks, agents, or status..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-ivory-border shadow-sm">
+<div class="w-2 h-2 rounded-full bg-status-green live-dot"></div>
+<span class="text-[11px] font-bold tracking-wider text-text-muted">LIVE</span>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/5 text-text-muted transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-8 space-y-6">
+<div class="card-style p-6 flex items-center justify-between relative overflow-hidden">
+<div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-gold-light/30 to-transparent pointer-events-none"></div>
+<div class="z-10">
+<h1 class="text-[24px] font-bold text-text-main mb-1 tracking-tight">Task Execution Center</h1>
+<p class="text-[14px] text-text-muted">Monitor, manage, and optimize automated system tasks in real-time.</p>
+</div>
+<div class="z-10 flex flex-col items-end gap-2">
+<div class="text-[12px] font-semibold text-text-muted uppercase tracking-wider">System Throughput</div>
+<div class="flex items-center gap-4">
+<svg class="text-gold-bright drop-shadow-sm" height="30" viewBox="0 0 120 30" width="120">
+<path d="M0,15 L20,15 L30,5 L40,25 L50,15 L80,15 L90,2 L100,28 L110,15 L120,15" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[28px] font-bold text-text-main">94%</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-text-main text-white rounded-full text-[13px] font-semibold hover:bg-black transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+        New Task
+      </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white border border-ivory-border text-text-main rounded-full text-[13px] font-semibold hover:bg-black/5 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-status-blue">play_arrow</span>
+        Run All Queued
+      </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white border border-ivory-border text-text-main rounded-full text-[13px] font-semibold hover:bg-black/5 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-text-muted">pause</span>
+        Pause Execution
+      </button>
+<div class="flex-1"></div>
+<button class="flex items-center gap-2 px-4 py-2 bg-white border border-ivory-border text-text-main rounded-full text-[13px] font-semibold hover:bg-black/5 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-text-muted">filter_list</span>
+        Filter
+      </button>
+<button class="flex items-center justify-center w-9 h-9 bg-white border border-ivory-border text-text-main rounded-full hover:bg-black/5 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="card-style p-5 flex flex-col justify-between h-[110px]">
+<div class="flex items-center justify-between">
+<span class="text-[13px] font-medium text-text-muted">Completed Today</span>
+<div class="w-8 h-8 rounded-full bg-status-green/10 flex items-center justify-center text-status-green">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-text-main leading-none">12</div>
+</div>
+<div class="card-style p-5 flex flex-col justify-between h-[110px]">
+<div class="flex items-center justify-between">
+<span class="text-[13px] font-medium text-text-muted">In Progress</span>
+<div class="w-8 h-8 rounded-full bg-status-blue/10 flex items-center justify-center text-status-blue">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-text-main leading-none">4</div>
+</div>
+<div class="card-style p-5 flex flex-col justify-between h-[110px]">
+<div class="flex items-center justify-between">
+<span class="text-[13px] font-medium text-text-muted">Blocked</span>
+<div class="w-8 h-8 rounded-full bg-status-orange/10 flex items-center justify-center text-status-orange">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-text-main leading-none">2</div>
+</div>
+<div class="card-style p-5 flex flex-col justify-between h-[110px]">
+<div class="flex items-center justify-between">
+<span class="text-[13px] font-medium text-text-muted">Avg. Throughput</span>
+<div class="w-8 h-8 rounded-full bg-gold-main/10 flex items-center justify-center text-gold-main">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-text-main leading-none">94%</div>
+</div>
+</div>
+<div class="card-style overflow-hidden flex flex-col">
+<div class="px-6 py-4 border-b border-ivory-border flex items-center justify-between bg-white">
+<h3 class="font-semibold text-[15px] text-text-main">Active Execution Queue</h3>
+<a class="text-[13px] font-medium text-gold-main hover:underline" href="#">View All</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-ivory-bg/50 border-b border-ivory-border text-[12px] font-semibold text-text-muted uppercase tracking-wider">
+<th class="px-6 py-3 font-semibold w-[30%]">Task</th>
+<th class="px-6 py-3 font-semibold">Agent</th>
+<th class="px-6 py-3 font-semibold">Priority</th>
+<th class="px-6 py-3 font-semibold">Status</th>
+<th class="px-6 py-3 font-semibold">Duration</th>
+<th class="px-6 py-3 font-semibold w-[15%]">Progress</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-ivory-border text-[13px] bg-white">
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Data Pipeline Sync: CRM</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8921</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span>
+</div>
+<span class="font-medium">ETL-Alpha</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-status-red/10 text-status-red">HIGH</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-blue"></div>
+<span class="font-medium text-text-main">Running</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">00:14:22</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-gold-main rounded-full" style="width: 78%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">78%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Generate Weekly Analytics Report</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8922</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+</div>
+<span class="font-medium">Analyzer-X</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-gold-main/10 text-gold-main">MEDIUM</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-blue"></div>
+<span class="font-medium text-text-main">Running</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">00:05:41</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-gold-main rounded-full" style="width: 42%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">42%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Image Asset Optimization</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8919</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">image</span>
+</div>
+<span class="font-medium">Media-Bot</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-text-muted/10 text-text-muted">LOW</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-orange"></div>
+<span class="font-medium text-text-main">Blocked</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">01:02:15</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-status-orange rounded-full" style="width: 33%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">33%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Customer Support Triage</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8923</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">support_agent</span>
+</div>
+<span class="font-medium">Support-AI</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-status-red/10 text-status-red">HIGH</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-ivory-border border border-text-muted/30"></div>
+<span class="font-medium text-text-main">Queued</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">00:00:00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-gold-main rounded-full" style="width: 0%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">0%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Database Index Rebuild</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8910</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">storage</span>
+</div>
+<span class="font-medium">SysAdmin-1</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-gold-main/10 text-gold-main">MEDIUM</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-green"></div>
+<span class="font-medium text-text-main">Completed</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">00:45:12</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-status-green rounded-full" style="width: 100%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">100%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Security Log Audit</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8915</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">security</span>
+</div>
+<span class="font-medium">Sec-Ops</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-status-red/10 text-status-red">HIGH</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-green"></div>
+<span class="font-medium text-text-main">Completed</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">00:12:05</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-status-green rounded-full" style="width: 100%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">100%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Invoice Generation Batch</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8924</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">request_quote</span>
+</div>
+<span class="font-medium">Finance-Bot</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-gold-main/10 text-gold-main">MEDIUM</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-blue"></div>
+<span class="font-medium text-text-main">Running</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">00:08:33</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-gold-main rounded-full" style="width: 61%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">61%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-text-main">Cache Invalidations</div>
+<div class="text-[11px] text-text-muted mt-0.5">ID: TSK-8925</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black/5 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[14px]">speed</span>
+</div>
+<span class="font-medium">SysAdmin-2</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-text-muted/10 text-text-muted">LOW</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-ivory-border border border-text-muted/30"></div>
+<span class="font-medium text-text-main">Queued</span>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-[12px] text-text-muted">00:00:00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-full h-1 bg-ivory-border rounded-full overflow-hidden">
+<div class="h-full bg-gold-main rounded-full" style="width: 0%"></div>
+</div>
+<span class="text-[11px] font-medium text-text-muted min-w-[3ch]">0%</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -2,9 +2,11 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 import {
   createPipelineRun,
+  executeGoal,
   executePipelineRun,
   getPipelineRunDetails,
   listRecentPipelineRuns,
+  planGoal,
 } from "../_shared/orchestration.ts";
 import { errorResponse, handleCors, jsonResponse, readJson } from "../_shared/http.ts";
 
@@ -28,6 +30,12 @@ Deno.serve(async (req: Request) => {
       source?: string;
       auto_execute?: boolean;
       limit?: number;
+      goal_id?: string;
+      priority?: "low" | "medium" | "high" | "critical";
+      risk_class?: "low" | "medium" | "high" | "critical";
+      preferred_template_code_name?: string;
+      retry_limit?: number;
+      auto_replan?: boolean;
     }>(req);
 
     const action = body.action || "list";
@@ -62,6 +70,76 @@ Deno.serve(async (req: Request) => {
       });
 
       return jsonResponse(result);
+    }
+
+    if (action === "plan_goal") {
+      if (!body.goal) {
+        return errorResponse("goal is required");
+      }
+
+      const result = await planGoal({
+        goal: body.goal,
+        context: body.context || {},
+        userId: body.user_id || null,
+        orgId: body.org_id || null,
+        source: body.source || "copilot",
+        priority: body.priority,
+        riskClass: body.risk_class,
+        preferredTemplateCodeName: body.preferred_template_code_name || body.template_code_name || null,
+      });
+
+      return jsonResponse(result);
+    }
+
+    if (action === "execute_goal") {
+      if (!body.goal_id) {
+        return errorResponse("goal_id is required");
+      }
+
+      const result = await executeGoal({
+        goalId: body.goal_id,
+        authHeader: req.headers.get("Authorization"),
+        retryLimit: body.retry_limit,
+        autoReplan: body.auto_replan,
+      });
+
+      return jsonResponse(result);
+    }
+
+    if (action === "plan_and_execute_goal") {
+      if (!body.goal) {
+        return errorResponse("goal is required");
+      }
+
+      const plan = await planGoal({
+        goal: body.goal,
+        context: body.context || {},
+        userId: body.user_id || null,
+        orgId: body.org_id || null,
+        source: body.source || "copilot",
+        priority: body.priority,
+        riskClass: body.risk_class,
+        preferredTemplateCodeName: body.preferred_template_code_name || body.template_code_name || null,
+      });
+
+      const plannedGoalId = String((plan as { goal?: { id?: string } }).goal?.id || "");
+      if (!plannedGoalId) {
+        return errorResponse("Failed to derive goal_id after planning", 500);
+      }
+
+      const execution = await executeGoal({
+        goalId: plannedGoalId,
+        authHeader: req.headers.get("Authorization"),
+        retryLimit: body.retry_limit,
+        autoReplan: body.auto_replan,
+      });
+
+      return jsonResponse({
+        ok: true,
+        status: "planned_and_executed",
+        plan,
+        execution,
+      });
     }
 
     if (action === "get_run") {

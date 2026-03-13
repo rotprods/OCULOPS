@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Experiment Lab</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --parchment: #F5F0E8;
+            --ivory: #FAFAF8;
+            --gold: #FFD700;
+            --border: #E5E5E0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory);
+            color: #1A1A1A;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .neumorphic-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .sidebar-active {
+            background: rgba(0,0,0,0.03);
+            border-right: 2px solid var(--gold);
+        }
+        .gold-pulse {
+            position: relative;
+        }
+        .gold-pulse::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 8px var(--gold);
+        }
+    </style>
+</head>
+<body class="flex h-[900px] w-[1440px] mx-auto overflow-hidden border-x border-gray-100">
+<aside class="w-[240px] bg-[#F5F0E8] border-r border-[#E5E5E0] flex flex-col h-full flex-shrink-0">
+<div class="p-6 mb-8">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-black rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">visibility</span>
+</div>
+<span class="font-bold tracking-tighter text-xl">OCULOPS</span>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-2 mb-2">Platform</div>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-gray-500 hover:text-black transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center justify-between px-3 py-2 text-sm font-semibold text-black sidebar-active" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">science</span> Experiments
+                </div>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-gray-500 hover:text-black transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">insights</span> Analytics
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-gray-500 hover:text-black transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">account_tree</span> Segments
+            </a>
+<div class="pt-8 text-[10px] font-bold text-gray-400 uppercase tracking-widest px-2 mb-2">Management</div>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-gray-500 hover:text-black transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-gray-500 hover:text-black transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">help</span> Support
+            </a>
+</nav>
+<div class="p-6 mt-auto border-t border-black/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
+<img alt="Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOsyQq9wDNYIVRNZ4xKcNpRIpXqRw1zwHb5bWGHcOejQiE6GKm0NK_Ah9OkMCHKiulQ5eLQ2-I03KkNgjXPRKRl2mx2TCN9i_UPkLhGpv9VrvXcNcWDmLmNjbLxQ-twd0aXgi86M5vPTNcaP3AVZtr1e1ylV6zSpRhtkie5p3VAeAf6O9hM0StYued4vlrV70bVOIsP8X6n7MJHpMLF5JiEulO11v5dHPRYPu6N6eyaDht0VMcLT3-3suESpRIFfnz7fS_TirLv8GU"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-wider">Vance P.</span>
+<span class="text-[10px] text-gray-400">Pro Tier</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-[#FAFAF8]">
+<header class="h-[56px] border-b border-[#E5E5E0] flex items-center justify-between px-8 bg-white/50 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-lg">science</span>
+<span class="text-sm font-medium text-gray-600">Experiments</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-gray-400 hover:text-black transition-colors">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="text-gray-400 hover:text-black transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<div class="neumorphic-card rounded-xl p-8 flex items-center justify-between relative overflow-hidden">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h1 class="text-2xl font-bold tracking-tight">Experiment Lab</h1>
+<div class="flex gap-1.5">
+<div class="w-1 h-1 bg-[#FFD700] rounded-full"></div>
+<div class="w-1 h-1 bg-[#FFD700] rounded-full opacity-60"></div>
+<div class="w-1 h-1 bg-[#FFD700] rounded-full opacity-30"></div>
+</div>
+</div>
+<p class="text-gray-400 text-sm max-w-lg">Advanced hypothesis validation and multi-arm bandit testing for high-performance interfaces.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 bg-transparent border border-gray-200 hover:bg-gray-50 text-gray-600 rounded-lg text-sm font-medium transition-all">
+                        Archive
+                    </button>
+<button class="px-5 py-2.5 bg-[#FFD700] hover:bg-[#F0C800] text-black rounded-lg text-sm font-bold shadow-lg shadow-[#FFD700]/20 flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-lg">add</span> New Experiment
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-6">
+<div class="neumorphic-card rounded-xl p-6 border-l-4 border-l-[#FFD700]">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Status</p>
+<p class="text-2xl font-bold">3 <span class="text-sm font-medium text-gray-500 uppercase ml-1">Running</span></p>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Historical</p>
+<p class="text-2xl font-bold">12 <span class="text-sm font-medium text-gray-500 uppercase ml-1">Completed</span></p>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Efficiency</p>
+<p class="text-2xl font-bold text-green-600">67% <span class="text-sm font-medium text-gray-500 uppercase ml-1">Win Rate</span></p>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Impact</p>
+<p class="text-2xl font-bold">€2,400 <span class="text-sm font-medium text-gray-500 uppercase ml-1 text-black/40">Value</span></p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="neumorphic-card rounded-xl p-6 flex items-stretch gap-8">
+<div class="flex-1 border-r border-gray-100 pr-8">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<h3 class="font-bold text-lg">Checkout CTAs: High Friction</h3>
+<span class="flex items-center gap-2 bg-[#FFD700]/10 text-black px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider gold-pulse ml-4">
+                                    Running
+                                </span>
+</div>
+<span class="mono text-[11px] text-gray-400">EXP-7721</span>
+</div>
+<p class="text-sm text-gray-500 mb-6 italic">"Removing multi-step breadcrumbs will reduce psychological drop-off at the payment gateway."</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-gray-50 rounded-lg relative border border-transparent">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-bold text-gray-400 uppercase">Variant A (Control)</span>
+<span class="text-xs font-medium text-gray-600">48.2%</span>
+</div>
+<div class="w-full bg-gray-200 h-1.5 rounded-full">
+<div class="bg-gray-400 h-1.5 rounded-full" style="width: 48.2%"></div>
+</div>
+</div>
+<div class="p-4 bg-white border border-[#FFD700]/30 rounded-lg relative">
+<div class="absolute -top-3 -right-1">
+<span class="material-symbols-outlined text-[#FFD700] text-xl" style="font-variation-settings: 'FILL' 1">emoji_events</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-bold text-gray-800 uppercase">Variant B (Active)</span>
+<span class="text-xs font-bold text-black">54.9%</span>
+</div>
+<div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#FFD700] h-1.5 rounded-full" style="width: 54.9%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-[300px] flex flex-col justify-between">
+<div>
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Statistical Power</p>
+<div class="flex items-end gap-1 h-12 mb-2">
+<div class="w-3 bg-gray-100 h-[20%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-100 h-[40%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-100 h-[35%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-100 h-[60%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[80%] rounded-t-sm"></div>
+<div class="w-3 bg-[#FFD700] h-[95%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[70%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-100 h-[40%] rounded-t-sm"></div>
+</div>
+<p class="mono text-[11px] font-medium text-green-600">p &lt; 0.05 (Significant)</p>
+</div>
+<div class="flex justify-end">
+<button class="p-2 hover:bg-gray-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-gray-400">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-6 flex items-stretch gap-8 opacity-90">
+<div class="flex-1 border-r border-gray-100 pr-8">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<h3 class="font-bold text-lg">Landing Hero: Motion vs Static</h3>
+<span class="bg-gray-100 text-gray-500 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ml-4">
+                                    Completed
+                                </span>
+</div>
+<span class="mono text-[11px] text-gray-400">EXP-7719</span>
+</div>
+<p class="text-sm text-gray-500 mb-6 italic">"A cinematic background video will increase time-on-page but may reduce conversion velocity."</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-white border border-[#FFD700]/30 rounded-lg relative">
+<div class="absolute -top-3 -right-1">
+<span class="material-symbols-outlined text-[#FFD700] text-xl" style="font-variation-settings: 'FILL' 1">emoji_events</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-bold text-gray-800 uppercase">Variant A (Motion)</span>
+<span class="text-xs font-bold text-black">3.2s avg.</span>
+</div>
+<div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#FFD700] h-1.5 rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div class="p-4 bg-gray-50 rounded-lg relative">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-bold text-gray-400 uppercase">Variant B (Static)</span>
+<span class="text-xs font-medium text-gray-600">1.8s avg.</span>
+</div>
+<div class="w-full bg-gray-200 h-1.5 rounded-full">
+<div class="bg-gray-400 h-1.5 rounded-full" style="width: 42%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-[300px] flex flex-col justify-between">
+<div>
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Statistical Power</p>
+<div class="flex items-end gap-1 h-12 mb-2">
+<div class="w-3 bg-gray-200 h-[60%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[70%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[65%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[80%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[85%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[90%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-300 h-[100%] rounded-t-sm"></div>
+<div class="w-3 bg-gray-200 h-[80%] rounded-t-sm"></div>
+</div>
+<p class="mono text-[11px] font-medium text-gray-400">p = 0.012 (Reliable)</p>
+</div>
+<div class="flex justify-end">
+<button class="p-2 hover:bg-gray-50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-gray-400">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="h-10 border-t border-[#E5E5E0] bg-white flex items-center justify-between px-8">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+<span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Lab Live</span>
+</div>
+<span class="mono text-[10px] text-gray-400 tracking-tight">LATENCY: 14MS</span>
+</div>
+<div class="flex items-center gap-4 text-[10px] font-medium text-gray-400">
+<span class="uppercase tracking-widest">© OCULOPS INTELLIGENCE 2024</span>
+</div>
+</footer>
+</main>
+
+</body></html>

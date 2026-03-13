@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Billing Management Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --sidebar-bg: #F5F0E8;
+            --canvas-bg: #FAFAF8;
+            --border-color: #E5E5E0;
+            --gold-accent: #FFD700;
+            --text-main: #1C1C1E;
+            --text-muted: #8E8E93;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas-bg);
+            color: var(--text-main);
+        }
+        .sidebar-active {
+            background-color: rgba(0, 0, 0, 0.04);
+            border-right: 2px solid var(--gold-accent);
+        }
+        .neumorphic-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.04);
+        }
+        .gold-border {
+            border: 1px solid rgba(255, 215, 0, 0.4);
+        }
+        .breathing-gold {
+            box-shadow: 0 0 0 0 rgba(255, 214, 0, 0.4);
+            animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 214, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 214, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 214, 0, 0); }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E5E5E0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+<aside class="w-[240px] bg-[#F5F0E8] border-r border-[#E5E5E0] flex flex-col h-full z-20">
+<div class="p-6 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">adjust</span>
+<span class="font-bold tracking-tight text-lg">OCULOPS</span>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-muted)] hover:bg-black/5 rounded-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Control Tower
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-muted)] hover:bg-black/5 rounded-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+                Intelligence
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-[var(--text-main)] sidebar-active rounded-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+                Billing
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-muted)] hover:bg-black/5 rounded-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="p-6 border-t border-[#E5E5E0]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[10px] font-bold border border-black/10">JD</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold">Julian Draxler</span>
+<span class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">Enterprise Admin</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col bg-[#FAFAF8] overflow-hidden">
+<header class="h-[56px] min-h-[56px] border-b border-[#E5E5E0] bg-white flex items-center justify-between px-8 z-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#1C1C1E] text-[20px]">credit_card</span>
+<h1 class="text-[18px] font-semibold tracking-tight">Billing</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-1.5 text-xs font-medium border border-[#E5E5E0] rounded hover:bg-[#FAFAF8] transition-all">Support</button>
+<button class="px-4 py-1.5 text-xs font-medium bg-black text-white rounded hover:bg-zinc-800 transition-all">Manage Account</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<div class="max-w-[1100px] mx-auto p-8 space-y-8">
+<section class="neumorphic-card gold-border p-8 rounded-xl flex flex-col md:flex-row justify-between gap-8 relative overflow-hidden">
+<div class="flex-1 space-y-6">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 rounded-full bg-[var(--gold-accent)] breathing-gold"></span>
+<h2 class="text-[20px] font-bold">Current Plan: Operator Pro</h2>
+</div>
+<div class="grid grid-cols-2 gap-y-4">
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-[var(--gold-accent)] text-lg font-bold">check_circle</span>
+                                Unlimited Core Deployments
+                            </div>
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-[var(--gold-accent)] text-lg font-bold">check_circle</span>
+                                Advanced LLM Context Rails
+                            </div>
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-[var(--gold-accent)] text-lg font-bold">check_circle</span>
+                                Priority Signal Processing
+                            </div>
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-[var(--gold-accent)] text-lg font-bold">check_circle</span>
+                                24/7 Dedicated Architect Support
+                            </div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-center min-w-[200px]">
+<div class="text-[36px] font-bold">€0<span class="text-lg font-medium text-[var(--text-muted)]">/month</span></div>
+<p class="text-[11px] text-[var(--text-muted)] uppercase tracking-[0.1em] mt-2">Next Renewal: Oct 12, 2023</p>
+<button class="mt-6 px-6 py-2 border border-black text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Change Plan</button>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="neumorphic-card gold-border p-6 rounded-lg">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-1">€0 CURRENT BILL</p>
+<p class="text-2xl font-bold tracking-tight">€0.00</p>
+<p class="text-[11px] text-green-600 mt-2 flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">trending_flat</span> No pending charges
+                        </p>
+</div>
+<div class="neumorphic-card p-6 rounded-lg">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-1">€0 TOTAL SPENT</p>
+<p class="text-2xl font-bold tracking-tight">€0.00</p>
+<p class="text-[11px] text-[var(--text-muted)] mt-2 font-medium">Lifetime platform usage</p>
+</div>
+<div class="neumorphic-card p-6 rounded-lg bg-zinc-50/50">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-1">FREE TIER active</p>
+<p class="text-2xl font-bold tracking-tight text-zinc-400 italic">Unlimited</p>
+<p class="text-[11px] text-[var(--text-muted)] mt-2 font-medium">Legacy founder access granted</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="neumorphic-card p-8 rounded-xl space-y-8">
+<h3 class="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">Usage Quotas</h3>
+<div class="space-y-3">
+<div class="flex justify-between text-sm font-medium">
+<span>API Calls</span>
+<span class="text-[var(--text-muted)]">12,402 / 100k</span>
+</div>
+<div class="w-full bg-[#E5E5E0] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full rounded-full" style="width: 12.4%"></div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-sm font-medium">
+<span>Storage</span>
+<span class="text-[var(--text-muted)]">45.2 GB / 500 GB</span>
+</div>
+<div class="w-full bg-[#E5E5E0] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full rounded-full" style="width: 9%"></div>
+</div>
+</div>
+</div>
+<div class="neumorphic-card p-8 rounded-xl flex flex-col justify-between">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] mb-6">Payment Method</h3>
+<div class="flex items-center gap-4">
+<div class="w-12 h-8 bg-zinc-100 border border-[#E5E5E0] rounded flex items-center justify-center font-bold italic text-zinc-400 text-[10px]">VISA</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Visa ending in 4242</span>
+<span class="text-xs text-[var(--text-muted)]">Expires 12/2026</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 mt-8">
+<button class="text-xs font-bold uppercase tracking-widest text-black hover:underline underline-offset-4">Update Card</button>
+<button class="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-black">Remove</button>
+</div>
+</div>
+</div>
+<section class="neumorphic-card rounded-xl overflow-hidden">
+<div class="px-8 py-5 border-b border-[#E5E5E0] flex justify-between items-center bg-white">
+<h3 class="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">Billing History</h3>
+<button class="flex items-center gap-2 text-xs font-medium text-zinc-600 hover:text-black">
+<span class="material-symbols-outlined text-[16px]">download</span> Export All
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-[#FAFAF8] text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider">
+<tr>
+<th class="px-8 py-4">Date</th>
+<th class="px-8 py-4">Description</th>
+<th class="px-8 py-4">Amount</th>
+<th class="px-8 py-4">Status</th>
+<th class="px-8 py-4 text-right">Invoice</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E5E5E0]">
+<tr class="hover:bg-[#FAFAF8] transition-colors">
+<td class="px-8 py-4 font-medium">Sep 12, 2023</td>
+<td class="px-8 py-4 text-[var(--text-muted)]">Operator Pro Plan Subscription</td>
+<td class="px-8 py-4 font-semibold">€0.00</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded border border-green-200 uppercase tracking-tight">Paid</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="text-[var(--gold-accent)] material-symbols-outlined hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1">description</button>
+</td>
+</tr>
+<tr class="hover:bg-[#FAFAF8] transition-colors">
+<td class="px-8 py-4 font-medium">Aug 12, 2023</td>
+<td class="px-8 py-4 text-[var(--text-muted)]">Operator Pro Plan Subscription</td>
+<td class="px-8 py-4 font-semibold">€0.00</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded border border-green-200 uppercase tracking-tight">Paid</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="text-[var(--gold-accent)] material-symbols-outlined hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1">description</button>
+</td>
+</tr>
+<tr class="opacity-60 grayscale">
+<td class="px-8 py-4 font-medium">Jul 12, 2023</td>
+<td class="px-8 py-4 text-[var(--text-muted)]">Oculops Core Add-on</td>
+<td class="px-8 py-4 font-semibold">€49.00</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-red-50 text-red-700 text-[10px] font-bold rounded border border-red-200 uppercase tracking-tight">Failed</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="text-zinc-300 material-symbols-outlined cursor-not-allowed">description</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<p class="text-[11px] text-[var(--text-muted)] text-center py-8 font-medium">
+                    OCULOPS OS v12.4.2 // SECURITY PROTOCOL ACTIVE // ENCRYPTED ENDPOINT
+                </p>
+</div>
+</div>
+</main>
+
+</body></html>

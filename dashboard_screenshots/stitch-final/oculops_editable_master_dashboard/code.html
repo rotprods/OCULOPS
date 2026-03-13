@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Herald Intelligence Briefing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --parchment: #F5F0E8;
+            --canvas: #FAFAF8;
+            --gold: #D4AF37;
+            --gold-light: #F9F3E6;
+            --border: #E5E5E0;
+            --ivory: #FFFFFF;
+            --primary-text: #1A1A1A;
+            --secondary-text: #6B6B6B;
+            --tertiary-text: #9CA3AF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas);
+            color: var(--primary-text);
+            -webkit-font-smoothing: antialiased;
+        }
+        .sidebar {
+            background-color: var(--parchment);
+            width: 240px;
+            border-right: 1px solid var(--border);
+        }
+        .neumorphic-card {
+            background: var(--ivory);
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 0 rgba(255,255,255,0.8) inset;
+        }
+        .signal-pulse {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        .ring-1 { width: 40px; height: 40px; }
+        .ring-2 { width: 70px; height: 70px; opacity: 0.15; }
+        .ring-3 { width: 100px; height: 100px; opacity: 0.05; }
+        .gold-bar {
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E0DCD4;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-primary { color: var(--primary-text); }
+        .text-secondary { color: var(--secondary-text); }
+        .text-tertiary { color: var(--tertiary-text); }
+        .uppercase-label {
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--tertiary-text);
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+<aside class="sidebar flex flex-col h-full z-20">
+<div class="p-6">
+<div class="flex items-center gap-2 mb-8">
+<div class="w-8 h-8 bg-black rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">lens_blur</span>
+</div>
+<span class="font-bold tracking-tighter text-xl text-primary">OCULOPS</span>
+</div>
+<nav class="space-y-8">
+<section>
+<p class="text-[10px] uppercase-label mb-4">Intelligence</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm font-normal text-secondary hover:text-primary" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                            Monitor
+                        </a>
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm font-normal text-secondary hover:text-primary" href="#">
+<span class="material-symbols-outlined text-lg">language</span>
+                            Network
+                        </a>
+</div>
+</section>
+<section>
+<p class="text-[10px] uppercase-label mb-4">Automation</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-primary bg-white/50 border border-black/5 rounded shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">campaign</span>
+                            Herald
+                            <div class="ml-auto w-1.5 h-1.5 rounded-full bg-[var(--gold)]"></div>
+</a>
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm font-normal text-secondary hover:text-primary" href="#">
+<span class="material-symbols-outlined text-lg">smart_toy</span>
+                            Agents
+                        </a>
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm font-normal text-secondary hover:text-primary" href="#">
+<span class="material-symbols-outlined text-lg">terminal</span>
+                            Workflows
+                        </a>
+</div>
+</section>
+</nav>
+</div>
+<div class="mt-auto p-4 border-t border-black/5">
+<div class="flex items-center gap-3 px-2 py-3 bg-white/30 rounded-lg">
+<div class="w-8 h-8 rounded bg-gray-200 overflow-hidden">
+<img alt="User" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAePupMJnutGC7Bo1viwBQH3lON57P80JgXMTmGeqmCVBvuI7yTOBn5doev1PSxjDXdSQNGZb0GLV7ucjo3_r3Z9y09yD4SW84NF8sTocesuwUQjJPUnF8fibW62zQ49o3NHBo3Lo70gfBSKGYVWNfvIYPp5ulfDKGUzmsyIOo0l7d3ITicg4K2M81CyYpKqGmDLAtABZNbESnek0fHivXzbuDpnm2jYr9goZp_mrMZl1JaQRPFYVzRisLB7VRVpLKLZnZR-s2tBZZK"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-semibold truncate text-primary">Director Vance</p>
+<p class="text-[10px] text-tertiary font-normal">L-7 Clearance</p>
+</div>
+<span class="material-symbols-outlined text-tertiary text-lg">settings</span>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<header class="h-[56px] border-b border-[var(--border)] bg-white/50 backdrop-blur-md flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--gold)]">campaign</span>
+<h2 class="font-semibold text-sm uppercase-label !text-primary">Herald</h2>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-[10px] uppercase-label">System Status: Nominal</span>
+<div class="h-4 w-[1px] bg-[var(--border)]"></div>
+<button class="text-secondary hover:text-primary">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="text-secondary hover:text-primary">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex overflow-hidden">
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-6">
+<div class="neumorphic-card rounded-2xl p-8 flex justify-between items-center relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-[10px] uppercase-label !text-[var(--gold)] mb-2">Morning Intelligence Packet</p>
+<h1 class="text-3xl font-semibold tracking-tight mb-2 text-primary">Daily Intelligence Briefing</h1>
+<p class="text-sm font-normal text-secondary">October 24, 2024 • 06:00 Zulu Time</p>
+</div>
+<div class="signal-pulse mr-8">
+<div class="ring ring-1"></div>
+<div class="ring ring-2"></div>
+<div class="ring ring-3"></div>
+<div class="w-3 h-3 bg-[var(--gold)] rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_15px_var(--gold)]"></div>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-[var(--border)] flex justify-between items-center bg-[var(--gold-light)]/30">
+<h3 class="text-xs font-semibold uppercase-label !text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-red-600 text-sm">priority_high</span>
+                            Priority Alerts
+                        </h3>
+<span class="text-[10px] uppercase-label">3 ACTIVE</span>
+</div>
+<div class="divide-y divide-[var(--border)]">
+<div class="p-6 flex items-start gap-4">
+<span class="px-2 py-0.5 bg-red-100 text-red-700 text-[9px] font-semibold rounded uppercase">Critical</span>
+<div class="flex-1">
+<p class="text-sm font-semibold mb-1 text-primary">Anomalous movement in South China Sea</p>
+<p class="text-xs text-secondary leading-relaxed">Three unregistered vessels detected moving toward deep-sea cable node Alpha-9. Signature match: Epsilon-class.</p>
+</div>
+<span class="text-[10px] font-normal text-tertiary whitespace-nowrap">2m ago</span>
+</div>
+<div class="p-6 flex items-start gap-4">
+<span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-[9px] font-semibold rounded uppercase">High</span>
+<div class="flex-1">
+<p class="text-sm font-semibold mb-1 text-primary">Neural Net Divergence detected</p>
+<p class="text-xs text-secondary leading-relaxed">Agent 'Solis' reporting 12% drift in predictive accuracy for commodities market.</p>
+</div>
+<span class="text-[10px] font-normal text-tertiary whitespace-nowrap">14m ago</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="neumorphic-card rounded-xl p-6">
+<h3 class="text-xs font-semibold uppercase-label !text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold)] text-lg">trending_up</span>
+                            Market Signals
+                        </h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-xs font-normal text-secondary">Energy Index</span>
+<span class="text-xs font-bold text-[var(--gold)]">+4.2%</span>
+</div>
+<div class="w-full bg-black/5 h-1 rounded-full flex gap-1">
+<div class="gold-bar w-3/4"></div>
+<div class="gold-bar w-1/4 opacity-30"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-xs font-normal text-secondary">Quantum Compute Shares</span>
+<span class="text-xs font-bold text-[var(--gold)]">+1.8%</span>
+</div>
+<div class="w-full bg-black/5 h-1 rounded-full flex gap-1">
+<div class="gold-bar w-2/5"></div>
+<div class="gold-bar w-1/5 opacity-50"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<h3 class="text-xs font-semibold uppercase-label !text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold)] text-lg">precision_manufacturing</span>
+                            Agent Activity Summary
+                        </h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-sm font-semibold flex-1 text-primary">ARGUS-1</span>
+<svg class="w-16 h-4 text-[var(--gold)]" viewBox="0 0 100 20">
+<path d="M0 15 Q 10 5, 20 15 T 40 10 T 60 18 T 80 5 T 100 12" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-sm font-semibold flex-1 text-primary">VESPER-4</span>
+<svg class="w-16 h-4 text-[var(--gold)]" viewBox="0 0 100 20">
+<path d="M0 10 Q 20 18, 40 10 T 80 15 T 100 5" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-orange-400"></div>
+<span class="text-sm font-semibold flex-1 text-primary">SOLIS-9</span>
+<svg class="w-16 h-4 text-[var(--gold)] opacity-40" viewBox="0 0 100 20">
+<path d="M0 5 L 20 15 L 40 8 L 60 12 L 80 5 L 100 18" fill="none" stroke="currentColor" stroke-dasharray="2,2" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-[var(--border)]">
+<h3 class="text-xs font-semibold uppercase-label !text-primary">Recommended Actions</h3>
+</div>
+<div class="divide-y divide-[var(--border)]">
+<label class="p-4 flex items-center gap-4 hover:bg-black/[0.01] cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-[var(--gold)] focus:ring-[var(--gold)]" type="checkbox"/>
+<span class="text-sm font-normal flex-1 text-primary">Deploy satellite constellation Alpha for enhanced node monitoring</span>
+<span class="material-symbols-outlined text-tertiary group-hover:text-secondary text-lg">chevron_right</span>
+</label>
+<label class="p-4 flex items-center gap-4 hover:bg-black/[0.01] cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-[var(--gold)] focus:ring-[var(--gold)]" type="checkbox"/>
+<span class="text-sm font-normal flex-1 text-primary">Authorize Agent Vesper to initiate direct interrogation of grid leakage</span>
+<span class="material-symbols-outlined text-tertiary group-hover:text-secondary text-lg">chevron_right</span>
+</label>
+<label class="p-4 flex items-center gap-4 hover:bg-black/[0.01] cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-gray-300 text-[var(--gold)] focus:ring-[var(--gold)]" type="checkbox"/>
+<span class="text-sm font-normal flex-1 line-through text-tertiary">Refresh cryptographic keys for all Field Operative units</span>
+<span class="material-symbols-outlined text-tertiary group-hover:text-secondary text-lg">chevron_right</span>
+</label>
+</div>
+</div>
+</div>
+<aside class="w-[30%] border-l border-[var(--border)] bg-white p-8 overflow-y-auto custom-scrollbar">
+<div class="mb-8">
+<h3 class="text-xs uppercase-label mb-6">Briefing Archive</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-[var(--border)] hover:bg-[var(--canvas)] transition-all cursor-pointer">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)] mt-1.5"></div>
+<div>
+<p class="text-xs font-semibold mb-1 text-primary">Packet 2024.10.23</p>
+<p class="text-[10px] text-tertiary font-normal">Status: Reviewed by Admin</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-[var(--border)] hover:bg-[var(--canvas)] transition-all cursor-pointer">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)] mt-1.5 opacity-30"></div>
+<div>
+<p class="text-xs font-semibold mb-1 text-primary">Packet 2024.10.22</p>
+<p class="text-[10px] text-tertiary font-normal">Status: Archived</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-[var(--border)] hover:bg-[var(--canvas)] transition-all cursor-pointer">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)] mt-1.5 opacity-30"></div>
+<div>
+<p class="text-xs font-semibold mb-1 text-primary">Packet 2024.10.21</p>
+<p class="text-[10px] text-tertiary font-normal">Status: Archived</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-[var(--border)] hover:bg-[var(--canvas)] transition-all cursor-pointer">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)] mt-1.5 opacity-30"></div>
+<div>
+<p class="text-xs font-semibold mb-1 text-primary">Packet 2024.10.20</p>
+<p class="text-[10px] text-tertiary font-normal">Status: Archived</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6 rounded-2xl bg-[var(--gold-light)] border border-[var(--gold)]/10">
+<p class="text-[10px] uppercase-label !text-[var(--gold)] mb-2">Architectural Note</p>
+<p class="text-xs text-secondary font-normal leading-relaxed italic">"Precision is the cornerstone of intelligence. All systems operating at peak structural integrity."</p>
+</div>
+</aside>
+</main>
+</div>
+
+</body></html>

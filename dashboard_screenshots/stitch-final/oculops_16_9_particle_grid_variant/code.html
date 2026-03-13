@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps | Control Tower - Particle Grid Variant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FDE047", // Intense Yellow
+              "background-light": "#F9FAFB",
+              "background-dark": "#0A0A0A",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          },
+        },
+      };
+    </script>
+<style>
+      .particle-grid {
+        background-image: radial-gradient(circle, rgba(253, 224, 71, 0.15) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+      .energy-field-gradient {
+        background: radial-gradient(circle at center, rgba(253, 224, 71, 0.3) 0%, transparent 70%);
+      }
+      .glass {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .hologram-shadow {
+        box-shadow: 0 10px 40px -10px rgba(253, 224, 71, 0.2);
+      }
+      .dark .hologram-shadow {
+        box-shadow: 0 10px 40px -10px rgba(253, 224, 71, 0.4);
+      }
+      @keyframes particle-drift {
+        0% { transform: translate(0, 0); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translate(100px, -100px); opacity: 0; }
+      }
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #FDE047;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300 overflow-x-hidden">
+<div class="fixed inset-0 particle-grid opacity-40 dark:opacity-20 pointer-events-none"></div>
+<div class="fixed inset-0 pointer-events-none overflow-hidden">
+<div class="particle opacity-20" style="top: 20%; left: 30%; animation: particle-drift 8s infinite linear;"></div>
+<div class="particle opacity-40" style="top: 60%; left: 80%; animation: particle-drift 12s infinite linear 2s;"></div>
+<div class="particle opacity-30" style="top: 40%; left: 10%; animation: particle-drift 10s infinite linear 4s;"></div>
+<div class="particle opacity-50" style="top: 80%; left: 50%; animation: particle-drift 15s infinite linear 1s;"></div>
+</div>
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col pb-24">
+<header class="sticky top-0 z-50 px-6 py-4 flex items-center justify-between glass bg-white/70 dark:bg-black/70 border-b border-slate-200 dark:border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-icons-round text-slate-900">center_focus_strong</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight leading-none">OculOps</h1>
+<span class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">Control Tower</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-white/10" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round text-xl">dark_mode</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+<img alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBUZJxSo5bnW-Cjyjrb93OMRG7mu10y3VxXrNBixskHUkIn5OeFqjXrDFv-Mui1KBgJs1a-P1wVGUHLAnSeIKa3sSX9MYou6uXfGCvodzclCKAmNqhnjQF65SHzoTqnLwdUFMy8kstTThx_RJgOAKYUdPI8ZwyHYwTtrJwhiFwDUSgiJONssnWULVKUxzpOztnUsv_kHwokQITu9sH73AOZOHiwNSu6BTdqIoJWqbGl3bCm2ZAXQMMhZQ6K8ZL89ANAemWB3MrLu82"/>
+</div>
+</div>
+</header>
+<nav class="flex items-center gap-6 px-6 py-3 overflow-x-auto no-scrollbar border-b border-slate-200 dark:border-white/10 bg-white/40 dark:bg-transparent">
+<a class="text-sm font-bold border-b-2 border-primary pb-1 whitespace-nowrap" href="#">Intelligence</a>
+<a class="text-sm font-medium text-slate-400 hover:text-slate-600 dark:hover:text-white pb-1 whitespace-nowrap" href="#">Operations</a>
+<a class="text-sm font-medium text-slate-400 hover:text-slate-600 dark:hover:text-white pb-1 whitespace-nowrap" href="#">Fleet Registry</a>
+<a class="text-sm font-medium text-slate-400 hover:text-slate-600 dark:hover:text-white pb-1 whitespace-nowrap" href="#">Archived</a>
+</nav>
+<main class="flex-1 px-6 pt-6 space-y-8">
+<section class="relative">
+<div class="aspect-video w-full rounded-3xl bg-slate-900 dark:bg-zinc-950 overflow-hidden relative shadow-2xl group hologram-shadow">
+<div class="absolute inset-0 energy-field-gradient"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
+<div class="absolute w-24 h-24 border border-primary/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
+<div class="absolute w-40 h-40 border border-primary/10 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+<div class="z-10 text-center">
+<h2 class="text-white text-3xl font-black tracking-tight mb-1">Global Threat</h2>
+<p class="text-primary text-xl font-bold uppercase tracking-widest">Level: Low</p>
+</div>
+</div>
+<div class="absolute bottom-4 left-6 text-white/50 font-mono text-[10px] space-y-0.5">
+<p>COORD: 34.0522° N, 118.2437° W</p>
+<p>SCAN: SECTOR 7-G</p>
+<p>ANOMALIES: 0.00%</p>
+</div>
+<div class="absolute top-4 right-6 glass bg-white/10 px-3 py-1 rounded-full border border-white/20">
+<p class="text-white text-[10px] font-bold uppercase tracking-tighter flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                            Live Signal
+                        </p>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-2 gap-4">
+<div class="aspect-square bg-white dark:bg-zinc-900/50 p-5 rounded-3xl border border-slate-100 dark:border-white/5 hologram-shadow flex flex-col justify-between group hover:scale-[1.02] transition-transform animate-float">
+<div class="flex items-center justify-between">
+<span class="material-icons-round text-primary bg-primary/10 p-2 rounded-xl">health_and_safety</span>
+<span class="material-icons-round text-slate-300 text-sm">more_vert</span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Fleet Health</p>
+<div class="flex items-end gap-1">
+<h3 class="text-3xl font-black">98.4</h3>
+<span class="text-primary font-bold mb-1">%</span>
+</div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98.4%]"></div>
+</div>
+</div>
+<div class="aspect-square bg-white dark:bg-zinc-900/50 p-5 rounded-3xl border border-slate-100 dark:border-white/5 hologram-shadow flex flex-col justify-between group hover:scale-[1.02] transition-transform animate-float [animation-delay:0.5s]">
+<div class="flex items-center justify-between">
+<span class="material-icons-round text-primary bg-primary/10 p-2 rounded-xl">task_alt</span>
+<div class="px-2 py-0.5 bg-slate-100 dark:bg-white/10 rounded text-[10px] font-bold text-slate-500 dark:text-slate-400">ACTIVE</div>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Active Missions</p>
+<h3 class="text-3xl font-black">1,240</h3>
+</div>
+<div class="flex items-center gap-2 text-green-500 text-[10px] font-bold">
+<span class="material-icons-round text-xs">trending_up</span>
+<span>+12 from last hour</span>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-sm font-bold uppercase tracking-widest text-slate-400">Current Focus</h2>
+<button class="text-xs font-bold text-primary">VIEW MAP</button>
+</div>
+<div class="relative rounded-3xl overflow-hidden glass border border-slate-100 dark:border-white/5 shadow-xl bg-white/40 dark:bg-white/5 p-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl bg-slate-900 flex items-center justify-center overflow-hidden">
+<img alt="Grid View" class="opacity-70 group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0ZKpUwhTuXrfDM-jTorkBRnWSdRZ58bsUjdb4HJi6KsHlEVLhTYjyNq7k8xk9DTFuEs5GCfiTV_DyT_TDdBz0xZZXJHG9Ny9p2kOwmBUXWe-WyXviSezq0J8mL90Tmg1wxWsXEJAJxzb8pdRJtZvZ_IJYZU2XiaHqq69402tZtNGLaTvQXDn0MOUqZycxeEs6QmAX7G9WMWpPC7PNoW1pJR1_HSjVTy625OUxLWlksoPANwgjMJNsnAhxSuER3wzC53FxUmWHsC7h"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-lg">North Pacific Grid</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Monitoring Sector 7-G for anomalous patterns.</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center">
+<span class="material-icons-round">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto glass bg-white/80 dark:bg-black/80 border-t border-slate-200 dark:border-white/10 pb-6 pt-3 px-8 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-icons-round text-primary group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-primary">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-icons-round text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-colors">insights</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-colors">Intelligence</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 -mt-8 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/40 text-slate-900 border-4 border-white dark:border-background-dark">
+<span class="material-icons-round">add</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-slate-400 mt-1">Deploy</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-icons-round text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-colors">hub</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-colors">Fleet</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-icons-round text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-colors">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-colors">Ops</span>
+</button>
+</nav>
+</div>
+<script>
+        // Simple animation trigger for "intelligence pulses"
+        setInterval(() => {
+            const grid = document.querySelector('.particle-grid');
+            grid.style.opacity = (Math.random() * 0.1 + 0.15).toString();
+        }, 2000);
+    </script>
+
+</body></html>

@@ -1,319 +1,448 @@
-# OCULOPS — Implementation Plan
-> Generated: 2026-03-11 | Branch: audit/2026-02-23
-> Covers all outstanding P0–P3 issues. Execute top-to-bottom; each block lists deps.
+# OCULOPS — Agentic Platform Implementation Plan
+> Updated: 2026-03-13
+> Canonical intent: close the gap between a premium operator app and a real agentic operating platform.
 
 ---
 
-## P0 — Crash Bugs (fix before any other work)
+## Objective
 
-### P0-1: Rules-of-hooks violation in AgentVaultContext
+Turn OCULOPS into an operator-grade internal platform where one business objective can move through a full persisted loop:
 
-**Root cause**: `useAgentVaultContext()` calls `useAgentVault()` inside a conditional branch — line 22 of `src/contexts/AgentVaultContext.jsx`:
-```js
-if (!ctx) return useAgentVault() // fallback if provider not mounted  ← illegal
-```
-React's rules of hooks forbid calling a hook inside a conditional. If `AgentVaultProvider` is not mounted this crashes React's dispatcher.
+1. Operator gives a directive in Copilot.
+2. Copilot launches a pipeline run with a clear goal and correlation ID.
+3. Agents execute against shared persisted entities.
+4. High-risk actions pause behind approval.
+5. Approved actions send through real provider channels.
+6. Provider status and inbound replies write back into the same system.
+7. The UI shows outcome, trace, and next recommended action.
 
-**Fix**: Replace the conditional hook call with an unconditional hook call at the top of a wrapper, then branch on the result.
+This plan is aligned to:
 
-**File**: `src/contexts/AgentVaultContext.jsx`
-
-**Strategy**:
-- Remove the conditional `return useAgentVault()`.
-- Add a `AgentVaultFallback` component (or inline wrapper) that calls `useAgentVault()` unconditionally and passes data down.
-- Alternatively: ensure `AgentVaultProvider` is always mounted above every consumer in `App.jsx` and throw a clear error if context is missing.
-- Preferred minimum fix: always mount the provider in `App.jsx` (it already exists), and replace the fallback with `throw new Error('AgentVaultProvider not mounted')` so mis-wiring fails loudly.
-
-**Vault agent**: `engineering/debug.md` (rules-of-hooks diagnosis) + `engineering/react-specialist.md` (context pattern)
-
-**Complexity**: S
-
-**Dependencies**: none
+- `CURRENT_TRUTH.md`
+- `docs/CONTINUITY_STATUS_2026-03-09.md`
+- `docs/OPERATIONS_ARCHITECTURE.md`
+- `docs/OPERATIONS_DEPLOY_CHECKLIST.md`
 
 ---
 
-### P0-2: 17 ESLint errors (unused vars + missing hook deps)
+## North-Star Outcome
 
-**Files likely affected** (based on hook usage patterns in codebase):
-- `src/components/modules/Agents.jsx` — large useCallback/useEffect blocks
-- `src/components/modules/Automation.jsx`
-- `src/components/modules/Watchtower.jsx`
-- `src/hooks/useAgentVault.js`
+The first fully closed loop must be:
 
-**Fix strategy**:
-1. Run `npm run lint 2>&1 | tee /tmp/eslint-report.txt` to get the exact 17 errors with file+line.
-2. For unused vars: remove or prefix with `_` if intentionally unused.
-3. For missing `useEffect` / `useCallback` deps: add the missing dep OR wrap the dep in `useRef` if it is a stable callback that should not re-trigger the effect.
-4. Do NOT blindly add all warned deps — reason through each one to avoid infinite loops.
+`Copilot -> orchestration-engine -> pipeline_runs -> agent-cortex / atlas / hunter / strategist / outreach -> approval_requests -> messaging-dispatch -> gmail-inbound or whatsapp-webhook -> event_log -> UI feedback`
 
-**Vault agent**: `engineering/react-specialist.md`
-
-**Complexity**: S
-
-**Dependencies**: none (but fix P0-1 first to avoid masking errors)
+When this loop works reliably, OCULOPS stops being a premium dashboard with agent features and becomes a real agentic system.
 
 ---
 
-## P1 — Missing Critical Wiring
+## Success Definition
 
-### P1-3: Auto-register leads → CRM (lead.captured not wired to contact creation)
+The implementation is successful when all of the following are true:
 
-**Current state**: The DB trigger `emit_lead_captured_event()` in migration `20260318110000_event_bus_auto_emit_triggers.sql` fires correctly when a contact is inserted with a non-manual source. The `event-dispatcher` edge function routes `lead.captured` to n8n `/speed-to-lead`. But the reverse path — "a lead detected by HUNTER/ATLAS creates a CRM contact" — has no explicit consumer on the Supabase side.
-
-**The gap**: `agent-hunter` writes to `detected_leads` (raw capture), not to `contacts` (CRM). There is no bridge that promotes a `detected_lead` into a `contacts` row automatically.
-
-**Fix**:
-1. Create a Postgres trigger on `detected_leads` AFTER INSERT that calls `emit_lead_captured_event()` variant which inserts into `contacts` with `status = 'lead'` and `source = NEW.source`.
-2. OR: wire the `event-dispatcher` `lead.captured` handler to call a new `crm-ingest` edge function that upserts into `contacts`.
-3. Recommended path (least new code): add a SQL trigger on `detected_leads` that upserts a row in `contacts` when a new lead is inserted.
-
-**Files**:
-- New migration: `supabase/migrations/YYYYMMDDHHMMSS_auto_promote_leads_to_contacts.sql`
-- Optional: `supabase/functions/event-dispatcher/index.ts` (add handler for `lead.captured` → call contacts upsert)
-
-**Vault agent**: `data/supabase-schema-architect.md`
-
-**Complexity**: S
-
-**Dependencies**: P0 bugs resolved (stable build)
+- An operator can launch a business outcome, not just a tool call, from [src/components/ui/CopilotPanel.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/ui/CopilotPanel.jsx).
+- Every run writes durable rows to `pipeline_runs`, `pipeline_step_runs`, `event_log`, and `event_deliveries`.
+- Outreach never sends directly from agent logic; risky actions move through `approval_requests`.
+- A real outbound Gmail or WhatsApp send completes through `messaging-dispatch`.
+- A delivery update or inbound reply lands through `gmail-inbound` or `whatsapp-webhook` and updates `messages`, `conversations`, and follow-up automation state.
+- The same run can be inspected from Agents, Automation, Messaging, and CRM without context loss.
+- The path is covered by authenticated smoke tests and at least one end-to-end automated test.
 
 ---
 
-### P1-4: Pipeline stage triggers (deal.stage_changed not triggering follow-up)
+## Non-Goals For This Plan
 
-**Current state**: `event-dispatcher` has `deal.stage_changed` routed to n8n `/deal-stage-changed`. The n8n webhook path exists in the route map. But:
-1. There is no DB trigger that emits `deal.stage_changed` when a deal's `stage` column changes.
-2. The `useDeals` hook calls `update()` on deals directly — no event is emitted client-side either.
+- No global visual rebrand.
+- No public SaaS packaging push.
+- No Stripe, marketplace, or blockchain expansion on the critical path.
+- No net-new feature families until the first agentic loop is closed and observable.
 
-**Fix**:
-1. Add Postgres trigger on `deals` AFTER UPDATE OF `stage` that inserts into `event_log` with `event_type = 'deal.stage_changed'` and payload `{deal_id, contact_id, old_stage, new_stage, value}`.
-2. Verify n8n has an active workflow listening at `/deal-stage-changed` (currently it may be a stub).
-
-**Files**:
-- New migration: `supabase/migrations/YYYYMMDDHHMMSS_deal_stage_change_trigger.sql`
-- `n8n/` — ensure deal-stage-changed workflow is activated
-
-**Vault agent**: `data/supabase-schema-architect.md`
-
-**Complexity**: S
-
-**Dependencies**: P1-3 (same migration pattern — batch them in one migration file)
+Those can return after the core execution path is stable.
 
 ---
 
-### P1-5: RESEND_API_KEY not set → welcome email broken
+## Workstreams
 
-**Current state**: `supabase/functions/welcome-email/index.ts` and `supabase/functions/send-email/index.ts` both read `RESEND_API_KEY` from env. The key is missing from Supabase secrets (confirmed: not in the secrets inventory in CLAUDE.md).
+### Workstream A — Runtime Closure
 
-**Fix**:
-1. Create a Resend account at resend.com → get API key → verify sending domain `oculops.com`.
-2. Set the secret: `supabase secrets set RESEND_API_KEY=re_xxxx FROM_EMAIL="OCULOPS <noreply@oculops.com>"`
-3. Set in Vercel if any server action calls send-email directly: `vercel env add RESEND_API_KEY production`
-4. Test: `curl -X POST https://yxzdafptqtcvpsbqkmkm.supabase.co/functions/v1/welcome-email -H "Authorization: Bearer <anon_key>" -d '{"email":"test@test.com","name":"Test"}'`
+Goal: restore confidence that the edge-runtime path is deployable and live.
 
-**Files**: No code changes needed — purely secret configuration.
+Primary scope:
 
-**Vault agent**: none needed (ops task, not code)
+- Re-auth Supabase CLI and restore deploy capability.
+- Finish blocked deploys:
+  - `ai-advisor`
+  - `messaging-dispatch`
+  - `api-proxy`
+- Verify operating functions are deployed and callable:
+  - `agent-copilot`
+  - `orchestration-engine`
+  - `automation-runner`
+  - `gmail-inbound`
+  - `messaging-channel-oauth`
+  - `whatsapp-webhook`
+- Close missing env and secret coverage:
+  - Google OAuth + Pub/Sub
+  - WhatsApp Cloud API
+  - `ALPHA_VANTAGE_KEY`
+  - any provider keys required by `api-proxy`
+- Close scheduler configuration for:
+  - `market-data`
+  - `social-signals`
 
-**Complexity**: S
+Primary touchpoints:
 
-**Dependencies**: none
+- [CURRENT_TRUTH.md](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/CURRENT_TRUTH.md)
+- [docs/OPERATIONS_DEPLOY_CHECKLIST.md](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/docs/OPERATIONS_DEPLOY_CHECKLIST.md)
+- [supabase/functions/messaging-dispatch/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/messaging-dispatch/index.ts)
+- [supabase/functions/api-proxy/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/api-proxy/index.ts)
+- [supabase/functions/ai-advisor/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/ai-advisor/index.ts)
+
+Exit criteria:
+
+- All required edge functions deploy successfully.
+- Secrets and provider credentials are present in the correct runtime.
+- Scheduled jobs run on the intended cadence.
+- Manual smoke checks reach live services instead of local/demo fallbacks.
+
+### Workstream B — Control Plane Canonicalization
+
+Goal: remove ambiguity in how agents, events, approvals, and pipeline state are represented.
+
+Primary scope:
+
+- Make the canonical agent registry the only execution truth:
+  - `agent-atlas`
+  - `agent-hunter`
+  - `agent-strategist`
+  - `agent-cortex`
+  - `agent-outreach`
+- Keep persona labels such as Vanta, Apex, Scout, Radar, and Pulse as UX language only, not persisted runtime identifiers.
+- Standardize event naming and payload contracts for:
+  - lead discovery
+  - qualification
+  - approval requested
+  - message sent
+  - message delivered
+  - reply received
+  - follow-up created
+- Ensure `correlation_id` is carried from Copilot to pipeline runs, step runs, event log, and message artifacts.
+- Make `approval_requests` the formal gate for high-risk actions instead of ad hoc UI-only caution.
+- Review agent policy wiring so risky external actions remain approval-aware.
+
+Primary touchpoints:
+
+- [docs/AGENT_ROLES.md](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/docs/AGENT_ROLES.md)
+- [supabase/functions/_shared/orchestration.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/_shared/orchestration.ts)
+- [supabase/functions/_shared/policy-engine.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/_shared/policy-engine.ts)
+- [supabase/functions/_shared/agent-registry.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/_shared/agent-registry.ts)
+- [supabase/migrations/20260317113000_multiagent_orchestration_core.sql](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/migrations/20260317113000_multiagent_orchestration_core.sql)
+- [supabase/migrations/20260312300000_agent_intelligence_v2.sql](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/migrations/20260312300000_agent_intelligence_v2.sql)
+
+Exit criteria:
+
+- One canonical agent naming model is used in code, docs, and database rows.
+- All pipeline and event artifacts can be correlated to a single run.
+- Approval is enforceable as data and policy, not just operator discipline.
+
+### Workstream C — Closed Loop MVP
+
+Goal: make one business objective execute end-to-end with durable state and operator feedback.
+
+Primary scope:
+
+- Upgrade Copilot from tool launcher to outcome launcher.
+- Route business intents through `orchestration-engine` and reusable pipeline templates instead of isolated one-off calls where possible.
+- Ensure pipeline templates for `lead_discovery` and `sales_outreach` are usable from Copilot.
+- Make `agent-cortex` orchestrate the same persisted context used by Atlas, Hunter, Strategist, and Outreach.
+- Make Outreach stage drafts first and request approval before live external send.
+- Approve and execute sends through `messaging-dispatch`.
+- Persist provider response and delivery state into `messages` and `conversations`.
+- On inbound reply or delivery update, trigger `message_in` automation paths and log the result in `event_log`.
+
+Primary touchpoints:
+
+- [src/components/ui/CopilotPanel.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/ui/CopilotPanel.jsx)
+- [src/components/modules/Agents.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/Agents.jsx)
+- [src/components/modules/Automation.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/Automation.jsx)
+- [src/components/modules/Messaging.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/Messaging.jsx)
+- [src/hooks/useAgents.js](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/hooks/useAgents.js)
+- [src/hooks/useAutomation.js](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/hooks/useAutomation.js)
+- [supabase/functions/agent-copilot/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/agent-copilot/index.ts)
+- [supabase/functions/orchestration-engine/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/orchestration-engine/index.ts)
+- [supabase/functions/agent-cortex/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/agent-cortex/index.ts)
+- [supabase/functions/agent-outreach/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/agent-outreach/index.ts)
+- [supabase/functions/messaging-dispatch/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/messaging-dispatch/index.ts)
+- [supabase/functions/gmail-inbound/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/gmail-inbound/index.ts)
+- [supabase/functions/whatsapp-webhook/index.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/whatsapp-webhook/index.ts)
+
+Exit criteria:
+
+- A Copilot command can launch a `pipeline_run`.
+- The run produces `pipeline_step_runs` for each stage.
+- Outreach creates a draft and a matching approval record when live send is gated.
+- Approval triggers a real outbound provider send.
+- A provider update or reply closes the loop back into the same conversation and run history.
+
+### Workstream D — Trust, Replay, And Evaluation
+
+Goal: make the system explainable enough to operate daily without guessing.
+
+Primary scope:
+
+- Expose per-run traceability:
+  - goal
+  - context
+  - step inputs and outputs
+  - approval checkpoints
+  - provider responses
+  - failure reasons
+- Surface event delivery health and retry state.
+- Define run success metrics:
+  - scan completed
+  - qualified leads created
+  - outreach drafted
+  - approval turnaround
+  - sent status reached
+  - reply received
+- Add run-level and step-level failure taxonomy.
+- Add operator views for:
+  - pending approvals
+  - stuck pipeline steps
+  - failed deliveries
+  - no-response conversations
+
+Primary touchpoints:
+
+- [src/components/modules/Agents.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/Agents.jsx)
+- [src/components/modules/CommandCenter.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/CommandCenter.jsx)
+- [src/components/modules/Watchtower.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/Watchtower.jsx)
+- [src/hooks/useAgentState.js](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/hooks/useAgentState.js)
+- [supabase/functions/_shared/orchestration.ts](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/supabase/functions/_shared/orchestration.ts)
+
+Exit criteria:
+
+- Every failed run can be diagnosed from stored state without re-running blind.
+- Operators can see where the loop is blocked and why.
+- Approval, delivery, and reply data are first-class operational surfaces.
+
+### Workstream E — Premium UX On Proven Contracts
+
+Goal: improve perceived intelligence and polish without destabilizing runtime behavior.
+
+Primary scope:
+
+- Redesign Prospector and Intelligence around the persisted model that already exists.
+- Add strong agent presence to Copilot, Agents, Messaging, and Command Center.
+- Make run detail and approval state visible as part of the product language.
+- Improve operator ergonomics:
+  - one-click inspect run
+  - one-click approve / reject
+  - one-click open conversation
+  - one-click retry failed step
+
+Primary touchpoints:
+
+- [src/components/modules/ProspectorHub.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/ProspectorHub.jsx)
+- [src/components/modules/Intelligence.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/Intelligence.jsx)
+- [src/components/modules/Messaging.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/modules/Messaging.jsx)
+- [src/components/ui/CopilotPanel.jsx](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/src/components/ui/CopilotPanel.jsx)
+
+Exit criteria:
+
+- The premium experience sits on top of proven state contracts instead of masking runtime gaps.
+- The UI clearly communicates agent intent, current status, and required operator action.
 
 ---
 
-## P2 — Low-Coverage Layers
+## Phase Plan
 
-### P2-6: Outreach layer (20% coverage)
+Companion execution doc:
 
-**Current gaps**:
-- `agent-outreach` edge function exists but drip sequence logic is minimal
-- No drip sequence scheduler in the DB (no `outreach_sequences` table or `outreach_queue` populated)
-- Inbox parsing (`gmail-inbound`) exists as an edge function but is not connected to contact status updates
+- [docs/sprint-01-closed-loop-mvp.md](/Users/robertoortega/Documents/AI OPS/ANTIGRAVITY-OS/docs/sprint-01-closed-loop-mvp.md)
 
-**Files to modify / create**:
-- `supabase/functions/agent-outreach/index.ts` — add drip step executor
-- New migration: `outreach_sequences` table + `outreach_queue` table + cron trigger for `outreach.step_due` events
-- `supabase/functions/gmail-inbound/index.ts` — wire reply detection → update `contacts.status` to `responded`
-- `src/components/modules/` — `Outreach.jsx` or extend `Automation.jsx` with drip sequence UI
+### Phase 1 — Restore Runtime Closure
 
-**Approach** (minimum viable):
-1. Migration: `outreach_sequences(id, org_id, name, steps jsonb[])` + `outreach_queue(id, contact_id, sequence_id, step_index, scheduled_at, status)`.
-2. Cron edge function (or pg_cron) that reads due queue items → emits `outreach.step_due` events.
-3. `event-dispatcher` already routes `outreach.step_due` → n8n `/drip-outreach-step`. Wire n8n to call `send-email`.
-4. `gmail-inbound` webhook: on reply detected, UPDATE contacts SET status = 'responded' WHERE email = sender.
+Estimated span: 3 to 5 days
 
-**Vault agents**: `content/email-marketing-specialist.md` + `data/supabase-schema-architect.md`
+Deliverables:
 
-**Complexity**: L
+- Supabase deploy path restored
+- blocked functions deployed
+- env matrix completed
+- schedulers configured
+- updated deploy checklist with current reality
 
-**Dependencies**: P1-5 (RESEND_API_KEY must be set first), P1-4 (event bus triggers pattern)
+Gating dependencies:
 
----
+- none
 
-### P2-7: Creative layer (15% coverage)
+Must finish before:
 
-**Current gaps**:
-- `agent-forge` generates content but there is no `social_posts` table or publishing pipeline
-- No content templates stored in DB
-- `CreativeStudio.jsx` exists as a module but has no backend wiring
+- any major Copilot or orchestration changes
 
-**Files to modify / create**:
-- New migration: `content_templates(id, org_id, type, name, body_template, variables jsonb)` + `social_posts(id, org_id, template_id, platform, content, status, scheduled_at, published_at)`
-- `supabase/functions/agent-forge/index.ts` — add `publish_post` action that writes to `social_posts`
-- `src/components/modules/CreativeStudio.jsx` — connect to `social_posts` via new `useSocialPosts` hook
-- `src/hooks/useSocialPosts.js` — new hook (CRUD + realtime on `social_posts`)
+### Phase 2 — Canonicalize Control Plane
 
-**Vault agent**: `content/social-media-copywriter.md`
+Estimated span: 2 to 4 days
 
-**Complexity**: M
+Deliverables:
 
-**Dependencies**: P0 bugs resolved
+- canonical agent registry usage
+- normalized event taxonomy
+- correlation path verified
+- approval path formalized
 
----
+Gating dependencies:
 
-### P2-8: Analytics (30% coverage)
+- Phase 1
 
-**Current state**: `Analytics.jsx` exists as a shell. `ControlTower.jsx` has live KPIs but they are count-only (no trends, no funnel conversion, no revenue metrics). `ORACLE` agent is active but its output is not plumbed into an analytics surface.
+Must finish before:
 
-**Files to modify**:
-- `src/components/modules/Analytics.jsx` — implement with real data from hooks
-- `src/hooks/useAnalytics.js` (new) — aggregation queries against `contacts`, `deals`, `crm_activities`, `agent_logs`, `event_log`
-- Supabase: create a `analytics_snapshots` table (populated by `daily-snapshot` edge function, which already exists) — verify `daily-snapshot` is writing data and add if missing
+- live-send loop work
 
-**Key KPIs to connect**:
-- Lead → Contact conversion rate (detected_leads vs contacts count, last 30d)
-- Pipeline velocity (average days per stage from crm_activities)
-- Email open/click (once Resend is live, pull from Resend webhooks)
-- Agent activity (agent_logs count by agent, 7d rolling)
-- Revenue forecast (weighted pipeline value from deals hook — already computed in `useDeals`)
+### Phase 3 — Ship The First Closed Loop
 
-**Vault agent**: `data/supabase-schema-architect.md` + `data/analytics-engineer.md` (if available, else `data/postgres-pro.md`)
+Estimated span: 1 to 2 weeks
 
-**Complexity**: M
+Deliverables:
 
-**Dependencies**: P1-3 (lead data), P1-4 (deal data flowing)
+- Copilot launches reusable pipeline runs
+- pipeline templates execute with persisted context
+- outreach drafts and approvals work
+- messaging send and inbound/status sync work
+- UI reflects the same run across modules
 
----
+Gating dependencies:
 
-## P3 — SaaS Readiness
+- Phase 1
+- Phase 2
 
-### P3-9: Stripe billing integration
+This is the primary milestone.
 
-**Current state**: `stripe-checkout` and `stripe-webhook` edge functions exist and are well-structured. Missing:
-- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_STARTER`, `STRIPE_PRICE_PRO`, `STRIPE_PRICE_ENTERPRISE` not set in Supabase secrets
-- No `subscriptions` table in DB (stripe-webhook tries to UPDATE `organizations` directly — fragile)
-- `Billing.jsx` is a placeholder
+### Phase 4 — Add Trust And Replay
 
-**Fix**:
-1. Stripe Dashboard: create 3 products (Starter $99/mo, Pro $299/mo, Enterprise custom) → get price IDs.
-2. Set secrets: `supabase secrets set STRIPE_SECRET_KEY=sk_live_xxx STRIPE_WEBHOOK_SECRET=whsec_xxx STRIPE_PRICE_STARTER=price_xxx STRIPE_PRICE_PRO=price_xxx`
-3. New migration: `subscriptions(id, org_id, stripe_customer_id, stripe_subscription_id, plan, status, current_period_end)` — decouple from `organizations`.
-4. Update `stripe-webhook/index.ts` to write to `subscriptions` table.
-5. Wire `Billing.jsx` to a `useSubscription` hook that reads from `subscriptions`.
-6. Add Stripe webhook URL to Stripe Dashboard: `https://yxzdafptqtcvpsbqkmkm.supabase.co/functions/v1/stripe-webhook`
+Estimated span: 4 to 6 days
 
-**Files**:
-- New migration: `YYYYMMDDHHMMSS_subscriptions_table.sql`
-- `supabase/functions/stripe-webhook/index.ts` — update org_id logic
-- `src/components/modules/Billing.jsx` — implement
-- `src/hooks/useSubscription.js` — new hook
+Deliverables:
 
-**Vault agent**: `engineering/fintech-engineer.md`
+- run and step diagnostics
+- approval visibility
+- event delivery visibility
+- retry and stuck-run detection
 
-**Complexity**: M
+Gating dependencies:
 
-**Dependencies**: P0 resolved, Stripe account with live keys
+- Phase 3
 
----
+### Phase 5 — Lock QA And Observability
 
-### P3-10: CI/CD GitHub Actions
+Estimated span: 3 to 5 days
 
-**Current gaps**: no `.github/workflows/` directory exists. Deploys are manual (`vercel --prod`, `supabase functions deploy`).
+Deliverables:
 
-**Minimal pipeline needed**:
-1. `ci.yml` — on every PR to `main`: `npm ci` → `npm run build` → `npm run lint` → `npm test`
-2. `deploy-vercel.yml` — on push to `main`: deploy to Vercel production via `vercel --prod`
-3. `deploy-supabase.yml` — on push to `main` when `supabase/functions/**` changes: deploy changed edge functions
+- authenticated smoke checklist passes
+- end-to-end test for the closed loop
+- production monitoring for failed runs and failed sends
 
-**Files to create**:
-- `.github/workflows/ci.yml`
-- `.github/workflows/deploy.yml` (combine Vercel + Supabase deploys, triggered after CI passes)
+Gating dependencies:
 
-**Required GitHub secrets**: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`
+- Phase 3
 
-**Vault agent**: `infra/github-actions-expert.md`
+### Phase 6 — Premium Operator UX
 
-**Complexity**: S
+Estimated span: 1 week
 
-**Dependencies**: P0 resolved (lint must pass for CI to be green on day 1)
+Deliverables:
+
+- upgraded Prospector, Intelligence, Messaging, and Copilot surfaces
+- approval and run detail embedded into the visual language
+- no change to core data contracts unless required by a proven runtime issue
+
+Gating dependencies:
+
+- Phase 3
+- Phase 4
+- Phase 5
 
 ---
 
-### P3-11: Sentry error tracking
+## Immediate Backlog
 
-**Current gaps**: PostHog is configured (`POSTHOG_API_KEY` set) for product analytics, but there is no error boundary or exception tracking.
+Execute these in order:
 
-**Fix**:
-1. `npm install @sentry/react @sentry/vite-plugin`
-2. Init in `src/main.jsx`: `Sentry.init({ dsn, environment, integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()] })`
-3. Wrap `<App />` with `<Sentry.ErrorBoundary fallback={<ErrorFallback />}>` in `main.jsx`
-4. Add `VITE_SENTRY_DSN` to `.env`, Vercel env, and `vite.config.js` sentryVitePlugin for source maps
-5. For edge functions: add `Sentry.captureException(e)` in the catch blocks of critical functions (`agent-cortex`, `event-dispatcher`, `stripe-webhook`)
-
-**Files**:
-- `src/main.jsx` — Sentry init + ErrorBoundary
-- `vite.config.js` — sentryVitePlugin
-- `supabase/functions/agent-cortex/index.ts` — Sentry DSN via `SENTRY_DSN` secret
-- `.env` — add `VITE_SENTRY_DSN`
-
-**Vault agent**: `infra/monitoring-specialist.md`
-
-**Complexity**: S
-
-**Dependencies**: P0 resolved (source maps only useful once build is clean)
+1. Restore Supabase CLI auth and verify remote deploy access.
+2. Deploy and verify `ai-advisor`, `messaging-dispatch`, and `api-proxy`.
+3. Audit production secrets and fill missing env coverage.
+4. Close scheduler setup for `market-data` and `social-signals`.
+5. Run authenticated smoke checks for Messaging, Automation, Agents, and Copilot.
+6. Normalize canonical agent naming in docs and runtime surfaces.
+7. Verify `correlation_id` survives Copilot -> orchestration -> event -> messaging paths.
+8. Implement or finish the approval UI and approval execution path for outreach.
+9. Complete the first live Copilot-driven `sales_outreach` or `lead_discovery` run.
+10. Add run diagnostics, failure states, and operator retry controls.
 
 ---
 
-## Execution Order
+## Required Smoke Path
 
-```
-P0-1  →  P0-2  →  P1-5 (ops)  →  P1-3 + P1-4 (one migration)
-  →  P3-10 (CI — so CI validates everything from here on)
-  →  P2-8  →  P2-7  →  P2-6
-  →  P3-9  →  P3-11
-```
+This path is the minimum operational proof:
 
-**Rationale**:
-- P0 first: hooks violation can crash the app tree in production. ESLint errors block clean CI.
-- P1-5 is a pure secrets ops task — do it in 5 minutes while P0 PRs are in review.
-- P1-3 + P1-4 share the same migration pattern — batch in one PR.
-- CI/CD (P3-10) goes in early so all subsequent work has automated validation.
-- P2 layers (outreach, creative, analytics) are independent of each other after CI is green.
-- Stripe (P3-9) requires external account setup — schedule for a dedicated session.
-- Sentry (P3-11) last, once builds are clean and source maps are stable.
+1. Open Copilot and issue a lead discovery or sales outreach goal.
+2. Confirm a row is created in `pipeline_runs`.
+3. Confirm step rows are created in `pipeline_step_runs`.
+4. Confirm agent logs and task activity appear in Agents.
+5. Confirm an outreach draft is created, not silently sent.
+6. Confirm an `approval_requests` row is created for the risky send.
+7. Approve the send and confirm `messaging-dispatch` writes provider metadata to `messages`.
+8. Confirm delivery status or inbound reply updates the same conversation.
+9. Confirm follow-up automation writes back into `automation_runs`, `event_log`, or CRM activity.
+10. Confirm the operator can inspect the whole history without leaving the platform blind.
+
+If this path fails, do not move to broader feature expansion.
 
 ---
 
-## Agent Activation Map
+## Test Strategy
 
-| Issue | Vault Agent to Load | Namespace |
-|-------|--------------------|-----------|
-| P0-1 hooks violation | `react-specialist` | engineering |
-| P0-2 ESLint | `react-specialist` | engineering |
-| P1-3 lead→CRM trigger | `supabase-schema-architect` | data |
-| P1-4 deal stage trigger | `supabase-schema-architect` | data |
-| P2-6 outreach schema | `supabase-schema-architect` + `email-marketing-specialist` (if available) | data + content |
-| P2-7 creative layer | `social-media-copywriter` | content |
-| P2-8 analytics | `postgres-pro` | data |
-| P3-9 Stripe | `fintech-engineer` | engineering |
-| P3-10 CI/CD | `github-actions-expert` | infra |
-| P3-11 Sentry | `monitoring-specialist` | infra |
+### Manual
 
-Load at most 2 agents per session. Suggested pairings:
-- Session A: `react-specialist` (P0-1 + P0-2)
-- Session B: `supabase-schema-architect` (P1-3 + P1-4 + migration batch)
-- Session C: `github-actions-expert` (P3-10)
-- Session D: `supabase-schema-architect` + `social-media-copywriter` (P2-6 + P2-7)
-- Session E: `fintech-engineer` (P3-9)
-- Session F: `monitoring-specialist` (P3-11)
-```
+- Use the deploy checklist to run authenticated Gmail and WhatsApp smoke tests.
+- Run one Copilot-initiated business objective per target loop.
+- Verify state from four surfaces:
+  - Copilot
+  - Agents
+  - Automation
+  - Messaging
+
+### Automated
+
+- Add one end-to-end Playwright flow for the primary closed loop.
+- Add focused integration coverage around:
+  - `orchestration-engine`
+  - `automation-runner`
+  - `messaging-dispatch`
+  - inbound webhook processing
+- Add regression coverage for approval gating so no external send bypasses human review.
+
+---
+
+## Sequencing Rules
+
+- Do not start a broad redesign before the first loop is closed.
+- Do not add new monetization or marketplace work to the critical path.
+- Do not introduce new agent names or conceptual layers without wiring them into the canonical registry.
+- Do not let Copilot remain a decorative chat shell; it must drive real pipeline execution.
+
+---
+
+## Definition Of Done
+
+OCULOPS can be called an agentic platform when:
+
+- business goals launch durable multi-step runs
+- agents operate on shared persisted state
+- risky actions are approval-aware
+- outbound messaging uses real providers
+- inbound and delivery events return to the same memory graph
+- operators can inspect, trust, and intervene in the loop
+
+Until then, the correct priority is execution closure, not surface expansion.

@@ -1,0 +1,390 @@
+{
+  "$schema": "oculops-brand-dna-v1",
+  "version": "1.0.0",
+  "name": "OCULOPS — Premium Intelligence OS",
+  "tagline": "Intelligence Amplified",
+  "updated": "2026-03-12",
+
+  "identity": {
+    "philosophy": "From dashboard to intelligence instrument. An open airspace where data lives — not boxes containing data.",
+    "aesthetic": "Apple × Whisk × Higgsfield × Pomelli — boutique premium AI operating system",
+    "feel": "Expensive, alive, reactive, editorial, tactile",
+    "anti_patterns": [
+      "generic SaaS dashboard",
+      "cyberpunk neon",
+      "gaming HUD",
+      "dribbble fantasy UI",
+      "dark war-room terminal",
+      "noisy typography",
+      "emoji icons"
+    ]
+  },
+
+  "palette": {
+    "surfaces": {
+      "base":       { "value": "#FAFAF8", "role": "Page background — warm white" },
+      "raised":     { "value": "#FFFFFF", "role": "Cards, panels, elevated containers" },
+      "elevated":   { "value": "#F5F5F0", "role": "Secondary surfaces, inset areas" },
+      "overlay":    { "value": "rgba(250, 250, 248, 0.92)", "role": "Glass overlays" },
+      "inset":      { "value": "#F0F0EB", "role": "Input fields, recessed areas" },
+      "sidebar":    { "value": "#F5F0E8", "role": "Navigation sidebar warm cream" }
+    },
+    "borders": {
+      "default":    { "value": "#E5E5E0", "role": "Standard 1px borders" },
+      "subtle":     { "value": "#F0F0EB", "role": "Barely visible separators" },
+      "strong":     { "value": "#D4D4CF", "role": "Emphasized borders" },
+      "active":     { "value": "rgba(255, 215, 0, 0.4)", "role": "Active/selected state" },
+      "focus":      { "value": "rgba(255, 215, 0, 0.6)", "role": "Focus ring" }
+    },
+    "text": {
+      "primary":    { "value": "#1A1A1A", "role": "Headlines, body, primary content" },
+      "secondary":  { "value": "#6B6B6B", "role": "Descriptions, labels" },
+      "tertiary":   { "value": "#9A9A9A", "role": "Placeholders, muted" },
+      "quaternary": { "value": "#C4C4C4", "role": "Disabled, decorative" },
+      "inverse":    { "value": "#FFFFFF", "role": "Text on dark/accent backgrounds" },
+      "accent":     { "value": "#C8A200", "role": "Gold text for emphasis" }
+    },
+    "accent": {
+      "primary":       { "value": "#FFD700", "role": "Intelligence signal — THE accent" },
+      "primary_hover":  { "value": "#FFC400", "role": "Hover state" },
+      "primary_muted":  { "value": "rgba(255, 215, 0, 0.10)", "role": "Subtle backgrounds" },
+      "primary_rgb":    { "value": "255, 215, 0", "role": "For rgba() composition" },
+      "teal":           { "value": "#50E3C2", "role": "Secondary data accent" },
+      "teal_muted":     { "value": "rgba(80, 227, 194, 0.10)", "role": "Subtle teal bg" }
+    },
+    "semantic": {
+      "success":      { "value": "#34C759", "role": "Online, complete, positive" },
+      "success_muted": { "value": "rgba(52, 199, 89, 0.10)", "role": "Success background" },
+      "warning":      { "value": "#FF9F43", "role": "Caution, attention" },
+      "warning_muted": { "value": "rgba(255, 159, 67, 0.08)", "role": "Warning background" },
+      "danger":       { "value": "#E53E3E", "role": "Error, critical, destructive" },
+      "danger_muted":  { "value": "rgba(229, 62, 62, 0.08)", "role": "Danger background" },
+      "info":         { "value": "#3B82F6", "role": "Informational, links" },
+      "info_muted":    { "value": "rgba(59, 130, 246, 0.08)", "role": "Info background" }
+    },
+    "distribution_rule": "Yellow accent must not exceed 5% of visual weight. White surfaces dominate 70%+. Black is structural typography only."
+  },
+
+  "typography": {
+    "families": {
+      "sans":      { "value": "Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif", "role": "All operational UI" },
+      "mono":      { "value": "JetBrains Mono, SF Mono, Fira Code, monospace", "role": "Data, metrics, code" },
+      "display":   { "value": "Inter", "role": "Hero headlines" },
+      "editorial": { "value": "Inter", "note": "Can swap to Times New Roman / Canela for hero emphasis if needed" }
+    },
+    "scale": {
+      "2xs":  "0.625rem",
+      "xs":   "0.6875rem",
+      "sm":   "0.8125rem",
+      "base": "0.875rem",
+      "md":   "0.9375rem",
+      "lg":   "1.0625rem",
+      "xl":   "1.25rem",
+      "2xl":  "1.5rem",
+      "3xl":  "1.875rem",
+      "4xl":  "2.5rem",
+      "hero": "3rem"
+    },
+    "weights": {
+      "regular":  400,
+      "medium":   500,
+      "semibold": 600,
+      "bold":     700
+    },
+    "leading": {
+      "tight":   1.2,
+      "snug":    1.35,
+      "normal":  1.5,
+      "relaxed": 1.65
+    },
+    "tracking": {
+      "tighter": "-0.03em",
+      "tight":   "-0.015em",
+      "normal":  "0",
+      "wide":    "0.04em",
+      "wider":   "0.08em",
+      "widest":  "0.2em"
+    },
+    "rules": [
+      "Sans-serif for ALL operational UI",
+      "Clean product-grade hierarchy",
+      "Section headers: 11px, bold, uppercase, tracking-widest, secondary color",
+      "No noisy typography — generous whitespace between sections"
+    ]
+  },
+
+  "material_system": {
+    "surfaces": {
+      "matte_white": "Soft matte white — dominant surface treatment",
+      "warm_cream": "Sidebar and navigation areas use warm cream (#F5F0E8)",
+      "glass": {
+        "bg": "rgba(255, 255, 255, 0.80)",
+        "bg_light": "rgba(255, 255, 255, 0.60)",
+        "blur": "blur(20px)",
+        "border": "rgba(0, 0, 0, 0.06)",
+        "inner_glow": "inset 0 0 0 1px rgba(0, 0, 0, 0.03)"
+      }
+    },
+    "depth": {
+      "method": "Soft shadows, not hard borders",
+      "shadows": {
+        "xs":   "0 1px 2px rgba(0, 0, 0, 0.04)",
+        "sm":   "0 2px 8px rgba(0, 0, 0, 0.06)",
+        "md":   "0 4px 16px rgba(0, 0, 0, 0.08)",
+        "lg":   "0 8px 32px rgba(0, 0, 0, 0.10)",
+        "xl":   "0 16px 48px rgba(0, 0, 0, 0.12)",
+        "glow": "0 0 24px rgba(255, 215, 0, 0.12)",
+        "glow_strong": "0 0 40px rgba(255, 215, 0, 0.20)"
+      },
+      "rule": "Slight 3D dimensionality — tactile UI objects, not flat"
+    },
+    "borders": {
+      "default_width": "1px",
+      "treatment": "Thin, barely visible — structure through typography not borders",
+      "active_state": "border-left: 3px solid accent-primary",
+      "card_border": "1px solid #E5E5E0"
+    },
+    "radius": {
+      "xs": "4px",
+      "sm": "6px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "16px",
+      "2xl": "20px",
+      "full": "9999px"
+    }
+  },
+
+  "motion_implied": {
+    "description": "Even in static renders, every section must FEEL alive",
+    "cues": [
+      "Subtle pulse states on live indicators",
+      "Live status shimmer on active agents",
+      "Soft edge glow on selected items",
+      "Active query emphasis bars",
+      "Orchestration progress bars",
+      "Reactive borders on hover",
+      "Hover-ready card depth (shadow increase)",
+      "Breathing status indicators (animate-pulse)"
+    ],
+    "durations": {
+      "fast":  "120ms",
+      "base":  "200ms",
+      "slow":  "350ms",
+      "enter": "300ms",
+      "exit":  "200ms"
+    },
+    "easing": {
+      "default": "cubic-bezier(0.2, 0, 0, 1)",
+      "bounce":  "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      "spring":  "cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    }
+  },
+
+  "layout": {
+    "sidebar": {
+      "width": "240px",
+      "collapsed": "64px",
+      "background": "var(--surface-sidebar) / #F5F0E8",
+      "sections": ["CORE", "INTELLIGENCE", "AUTOMATION", "ANALYTICS"],
+      "nav_item": {
+        "height": "40px",
+        "padding": "8px 12px",
+        "radius": "8px",
+        "icon_size": "20px",
+        "font_size": "0.8125rem",
+        "font_weight": 500,
+        "active_style": "bg: accent-primary-muted, color: accent-primary, border: 1px solid accent/20, pulse dot",
+        "inactive_style": "color: text-secondary, hover: surface-elevated"
+      },
+      "section_label": {
+        "font_size": "11px",
+        "font_weight": 700,
+        "text_transform": "uppercase",
+        "letter_spacing": "0.2em",
+        "color": "text-tertiary",
+        "margin_bottom": "12px"
+      },
+      "account_footer": {
+        "avatar_size": "40px",
+        "border_top": "1px solid border-default",
+        "status_dot": "green for online"
+      }
+    },
+    "header": {
+      "height": "56px",
+      "elements": ["module_icon", "module_title", "search_bar_center", "LIVE_badge_right"],
+      "search_bar": {
+        "style": "Minimal, soft inset, focus glow",
+        "width": "320px",
+        "position": "center"
+      },
+      "live_badge": {
+        "text": "LIVE",
+        "dot": "green pulse",
+        "position": "top-right"
+      }
+    },
+    "content": {
+      "max_width": "1400px",
+      "gutter": "32px",
+      "gap_between_sections": "24px"
+    }
+  },
+
+  "component_patterns": {
+    "hero_banner": {
+      "description": "System activity summary — top of Control Tower",
+      "height": "auto, content-driven",
+      "background": "surface-raised with subtle gradient-mesh",
+      "content": ["OCULOPS title", "system activity summary", "LIVE / ACTIVE INTELLIGENCE badge"],
+      "border": "1px solid border-default",
+      "radius": "radius-lg"
+    },
+    "kpi_card": {
+      "background": "surface-raised",
+      "border": "1px solid border-default",
+      "radius": "radius-md",
+      "padding": "20px",
+      "icon": "40x40 rounded-md with muted accent bg",
+      "label": "xs, medium weight, text-tertiary",
+      "value": "2xl, bold, mono font, text-primary",
+      "trend": "xs, success/danger color, with arrow icon",
+      "target": "xs, text-tertiary, e.g. 'Target: €20k'"
+    },
+    "agent_card": {
+      "cortex_master": {
+        "border": "1px solid accent-primary/30",
+        "background": "accent-primary-muted gradient",
+        "status": "LIVE badge with green dot",
+        "metrics": ["Runs", "Avg Time", "Last Run"],
+        "actions": ["Ver Mensajes"],
+        "orchestration_bar": "Progress indicator"
+      },
+      "sub_agent": {
+        "background": "surface-raised",
+        "border": "1px solid border-default",
+        "header": "Agent name + Online badge (green dot)",
+        "capabilities": "Tag pills (badge-default)",
+        "body": "Brief intelligence summary text",
+        "footer": "OPERATIONAL LOGIC → arrow link"
+      }
+    },
+    "data_table": {
+      "container": "border-default rounded-md overflow-hidden",
+      "header_row": "surface-base, xs font, semibold, text-secondary",
+      "data_row": "surface-raised, hover: accent-primary-muted",
+      "row_height": "48px",
+      "avatar_column": "32px circle with initials"
+    },
+    "modal": {
+      "overlay": "rgba(0, 0, 0, 0.6) + blur(8px)",
+      "panel": "surface-elevated, border-default, radius-lg, shadow-xl",
+      "header": "border-bottom, bold title, close button",
+      "body": "padded, scrollable",
+      "footer": "border-top, flex-end actions"
+    },
+    "quick_actions": {
+      "style": "Capsule buttons in a horizontal row",
+      "button": "Ghost style, border-default, rounded-full or radius-sm",
+      "icon_prefix": true,
+      "examples": ["+ Añadir Lead", "Nueva Señal", "Crear Tarea", "Nuevo Experimento", "Buscar Leads"]
+    },
+    "health_score_widget": {
+      "type": "Circular progress ring",
+      "size": "120px",
+      "ring_color": "accent-primary gradient",
+      "center_value": "4xl bold",
+      "label": "HEALTH SCORE below"
+    }
+  },
+
+  "icon_system": {
+    "library": "Material Symbols Outlined",
+    "weight": "400-500",
+    "size_default": "20px",
+    "fill": 0,
+    "rule": "NO emojis — all icons must be sharp, minimal SVGs or Material Symbols"
+  },
+
+  "screens": {
+    "total": 30,
+    "routes": [
+      { "path": "/control-tower",  "name": "Control Tower",     "category": "CORE",         "priority": 1 },
+      { "path": "/crm",            "name": "CRM",               "category": "CORE",         "priority": 1 },
+      { "path": "/pipeline",       "name": "Pipeline",          "category": "CORE",         "priority": 1 },
+      { "path": "/execution",      "name": "Execution",         "category": "CORE",         "priority": 2 },
+      { "path": "/intelligence",   "name": "Intelligence",      "category": "INTELLIGENCE", "priority": 1 },
+      { "path": "/markets",        "name": "Markets",           "category": "INTELLIGENCE", "priority": 2 },
+      { "path": "/analytics",      "name": "Analytics",         "category": "INTELLIGENCE", "priority": 2 },
+      { "path": "/opportunities",  "name": "Opportunities",     "category": "INTELLIGENCE", "priority": 3 },
+      { "path": "/agents",         "name": "AI Agents",         "category": "AUTOMATION",   "priority": 1 },
+      { "path": "/herald",         "name": "Herald Agent",      "category": "AUTOMATION",   "priority": 2 },
+      { "path": "/prospector",     "name": "Prospector Hub",    "category": "AUTOMATION",   "priority": 1 },
+      { "path": "/automation",     "name": "Automation",        "category": "AUTOMATION",   "priority": 2 },
+      { "path": "/flight-deck",    "name": "Flight Deck",       "category": "AUTOMATION",   "priority": 2 },
+      { "path": "/pixel-office",   "name": "Pixel Office",      "category": "AUTOMATION",   "priority": 3 },
+      { "path": "/marketplace",    "name": "Marketplace",       "category": "AUTOMATION",   "priority": 3 },
+      { "path": "/gtm",            "name": "Go To Market",      "category": "INTELLIGENCE", "priority": 2 },
+      { "path": "/messaging",      "name": "Messaging",         "category": "AUTOMATION",   "priority": 2 },
+      { "path": "/creative",       "name": "Creative Studio",   "category": "INTELLIGENCE", "priority": 3 },
+      { "path": "/niches",         "name": "Niches",            "category": "INTELLIGENCE", "priority": 3 },
+      { "path": "/knowledge",      "name": "Knowledge",         "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/decisions",      "name": "Decisions",         "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/experiments",    "name": "Experiments",        "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/simulation",     "name": "Simulation",        "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/studies",        "name": "Study Hub",         "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/finance",        "name": "Finance",           "category": "ANALYTICS",    "priority": 2 },
+      { "path": "/command-center", "name": "Command Center",    "category": "CORE",         "priority": 2 },
+      { "path": "/watchtower",     "name": "Watchtower",        "category": "AUTOMATION",   "priority": 3 },
+      { "path": "/world-monitor",  "name": "World Monitor",     "category": "INTELLIGENCE", "priority": 3 },
+      { "path": "/portfolio",      "name": "Portfolio",         "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/lab",            "name": "Lab",               "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/billing",        "name": "Billing",           "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/team-settings",  "name": "Team Settings",     "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/settings",       "name": "Settings",          "category": "ANALYTICS",    "priority": 3 },
+      { "path": "/reports",        "name": "Reports",           "category": "ANALYTICS",    "priority": 3 }
+    ]
+  },
+
+  "stitch_generation_rules": {
+    "master_image": "oculops_sidebar_navigation.png",
+    "style_lock": "Every generated screen MUST match the master image visual DNA",
+    "output_format": "High-fidelity desktop UI, straight-on, no device mockup",
+    "section_based": true,
+    "preserve": ["information architecture", "screen purposes", "module hierarchy", "route identity"],
+    "do_not": ["invent new product logic", "remove required sections", "use generic UI generation"],
+    "priority_order": [
+      "UI_001 — Control Tower",
+      "UI_002 — AI Agents",
+      "UI_003 — CRM",
+      "UI_004 — Pipeline",
+      "UI_005 — Prospector Hub",
+      "UI_006 — Intelligence",
+      "UI_007 — Execution",
+      "UI_008 — Markets / GTM",
+      "remaining screens"
+    ]
+  },
+
+  "inspiration_references": {
+    "primary": [
+      { "source": "Apple Store", "extract": "White-dominant, generous negative space, editorial typography, product realism" },
+      { "source": "Whisk (Google Labs)", "extract": "Yellow as signal color on white, playful premium, clean controls" },
+      { "source": "Affinity", "extract": "Professional creative tool aesthetic, precision UI, dark accents on light" },
+      { "source": "Higgsfield", "extract": "Boutique AI product feel, subtle glassmorphism, live reactive feeling" },
+      { "source": "TouchDesigner", "extract": "Reactive logic visualization, signal shimmer, breathing status indicators" }
+    ],
+    "feel_keywords": [
+      "Apple-grade minimalism",
+      "White-dominant interface",
+      "Yellow intelligence signal",
+      "Black structure and typography",
+      "Premium boutique SaaS",
+      "Subtle 3D depth",
+      "Soft glassmorphism",
+      "Live interactive feeling",
+      "Implementation-ready product UI"
+    ]
+  }
+}

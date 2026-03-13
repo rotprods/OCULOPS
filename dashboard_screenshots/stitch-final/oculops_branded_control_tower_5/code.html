@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Research Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --sidebar-bg: #F5F0E8;
+            --canvas-bg: #FAFAF8;
+            --card-bg: #FFFFFF;
+            --border-color: #E5E5E0;
+            --gold-accent: #FFD700;
+            --text-main: #1C1C1E;
+            --text-muted: #8E8E93;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas-bg);
+            color: var(--text-main);
+        }
+        .neumorphic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D1D1D6;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+        }
+    </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+<aside class="w-[240px] h-full flex-shrink-0 bg-[var(--sidebar-bg)] border-r border-[var(--border-color)] flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-2 mb-10">
+<span class="material-symbols-outlined text-[var(--gold-accent)] text-2xl">blur_on</span>
+<span class="font-bold tracking-tight text-lg">OCULOPS</span>
+</div>
+<div class="space-y-8">
+<div>
+<h3 class="text-[10px] font-bold text-[var(--text-muted)] tracking-[0.15em] mb-4 uppercase">Core</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+<span>Control Tower</span>
+</a>
+</nav>
+</div>
+<div>
+<h3 class="text-[10px] font-bold text-[var(--text-muted)] tracking-[0.15em] mb-4 uppercase">Intelligence</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm font-semibold text-[var(--text-main)] rounded-md" href="#">
+<span class="material-symbols-outlined text-[18px] text-[var(--gold-accent)]">science</span>
+<span>Studies</span>
+</a>
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">auto_graph</span>
+<span>Markets</span>
+</a>
+<a class="flex items-center gap-3 px-2 py-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">radar</span>
+<span>Watchtower</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6 border-t border-[var(--border-color)]/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-white border border-[var(--border-color)] flex items-center justify-center">
+<span class="text-[10px] font-bold">JD</span>
+</div>
+<div>
+<p class="text-[11px] font-semibold">Intelligence Hub</p>
+<p class="text-[10px] text-[var(--text-muted)]">v10.4.2</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<header class="h-[56px] flex-shrink-0 border-b border-[var(--border-color)] px-8 flex items-center justify-between bg-white/50 backdrop-blur-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--text-main)]">magnification_small</span>
+<h1 class="text-[18px] font-semibold tracking-tight">Studies</h1>
+<div class="ml-4 flex items-center gap-2 px-2 py-0.5 bg-green-50 rounded border border-green-100">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-bold text-green-700 tracking-wider">LIVE</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-[var(--text-muted)]">search</span>
+<input class="w-64 bg-[var(--canvas-bg)] border border-[var(--border-color)] rounded-full py-1.5 pl-9 pr-4 text-xs focus:ring-0 focus:border-[var(--gold-accent)] transition-all" placeholder="Search research index..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">notifications</button>
+<button class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">settings</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8">
+<div class="max-w-6xl mx-auto space-y-8">
+<section class="neumorphic-card rounded-2xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8">
+<div class="flex items-end gap-0.5 h-8">
+<div class="w-1 h-3 bg-[var(--gold-accent)]/30"></div>
+<div class="w-1 h-5 bg-[var(--gold-accent)]/50"></div>
+<div class="w-1 h-8 bg-[var(--gold-accent)]"></div>
+<div class="w-1 h-4 bg-[var(--gold-accent)]/60"></div>
+<div class="w-1 h-6 bg-[var(--gold-accent)]/40"></div>
+<div class="w-1 h-2 bg-[var(--gold-accent)]/20"></div>
+</div>
+</div>
+<div class="relative z-10">
+<h2 class="text-2xl font-bold tracking-tight mb-2">Research Intelligence</h2>
+<p class="text-[var(--text-muted)] max-w-md text-sm leading-relaxed">
+                            Deep-dive synthesis of emerging market signals across vertical industrial sectors and behavioral patterns.
+                        </p>
+</div>
+</section>
+<div class="grid grid-cols-3 gap-6">
+<div class="neumorphic-card rounded-xl p-5 border-t-2 border-t-[var(--gold-accent)]">
+<p class="text-[10px] font-bold text-[var(--text-muted)] tracking-widest uppercase mb-1">Published</p>
+<p class="text-2xl font-bold">14 STUDIES</p>
+</div>
+<div class="neumorphic-card rounded-xl p-5">
+<p class="text-[10px] font-bold text-[var(--text-muted)] tracking-widest uppercase mb-1">Active</p>
+<p class="text-2xl font-bold">3 IN PROGRESS</p>
+</div>
+<div class="neumorphic-card rounded-xl p-5">
+<p class="text-[10px] font-bold text-[var(--text-muted)] tracking-widest uppercase mb-1">Neural Load</p>
+<p class="text-2xl font-bold">4 AGENTS</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="neumorphic-card rounded-xl p-6 group hover:border-[var(--gold-accent)] transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold-accent)] text-[20px]">psychology</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Agent: ORACLE</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-24 h-1 bg-[var(--border-color)] rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full w-[87%]"></div>
+</div>
+<span class="text-[10px] font-bold">87% CONF</span>
+</div>
+</div>
+<h3 class="text-lg font-bold mb-3">Quantum Logistics: Post-Port Congestion Mitigation</h3>
+<p class="text-sm italic text-[var(--text-muted)] leading-relaxed mb-4">
+                            "The shift toward autonomous relay stations suggests a 14% reduction in manual oversight requirements by Q4..."
+                        </p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[var(--canvas-bg)] text-[9px] font-bold rounded">LOGISTICS</span>
+<span class="px-2 py-1 bg-[var(--canvas-bg)] text-[9px] font-bold rounded">Q4 PREDICTION</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-6 group hover:border-[var(--gold-accent)] transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold-accent)] text-[20px]">security</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Agent: SENTINEL</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-24 h-1 bg-[var(--border-color)] rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full w-[92%]"></div>
+</div>
+<span class="text-[10px] font-bold">92% CONF</span>
+</div>
+</div>
+<h3 class="text-lg font-bold mb-3">Sub-Terranean Data Cooling: Cost Arbitrage</h3>
+<p class="text-sm italic text-[var(--text-muted)] leading-relaxed mb-4">
+                            "Energy delta in Nordic cluster indicates high-yield potential for localized LLM training farms..."
+                        </p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[var(--canvas-bg)] text-[9px] font-bold rounded">INFRASTRUCTURE</span>
+<span class="px-2 py-1 bg-[var(--canvas-bg)] text-[9px] font-bold rounded">NORDIC</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2 text-[var(--text-muted)]">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Agent: ORACLE</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-24 h-1 bg-[var(--border-color)] rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full w-[78%]"></div>
+</div>
+<span class="text-[10px] font-bold">78% CONF</span>
+</div>
+</div>
+<h3 class="text-lg font-bold mb-3">Synthetic Biology: IP Moat Analysis</h3>
+<p class="text-sm italic text-[var(--text-muted)] leading-relaxed mb-4">
+                            "Current litigation trends around CRISPR-Cas9 variants are creating a vacuum for non-viral delivery startups..."
+                        </p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[var(--canvas-bg)] text-[9px] font-bold rounded">BIOTECH</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2 text-[var(--text-muted)]">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Agent: SENTINEL</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-24 h-1 bg-[var(--border-color)] rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full w-[81%]"></div>
+</div>
+<span class="text-[10px] font-bold">81% CONF</span>
+</div>
+</div>
+<h3 class="text-lg font-bold mb-3">Semi-Conductor Sovereignty: SEA Supply</h3>
+<p class="text-sm italic text-[var(--text-muted)] leading-relaxed mb-4">
+                            "Vietnam and Malaysia are emerging as critical lithography service hubs as legacy giants decentralize..."
+                        </p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[var(--canvas-bg)] text-[9px] font-bold rounded">CHIPS</span>
+<span class="px-2 py-1 bg-[var(--canvas-bg)] text-[9px] font-bold rounded">GEO-POL</span>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<div class="flex justify-between items-start mb-4 text-[var(--text-muted)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Agent: ORACLE</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-24 h-1 bg-[var(--border-color)] rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full w-[85%]"></div>
+</div>
+<span class="text-[10px] font-bold">85% CONF</span>
+</div>
+</div>
+<h3 class="text-lg font-bold mb-3">Meta-Material Housing: Scalability Audit</h3>
+<p class="text-sm italic text-[var(--text-muted)] leading-relaxed mb-4">
+                            "Regulatory approval paths for 3D printed cementitious composites have stabilized across EMEA..."
+                        </p>
+</div>
+<div class="neumorphic-card rounded-xl p-6">
+<div class="flex justify-between items-start mb-4 text-[var(--text-muted)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Agent: SENTINEL</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-24 h-1 bg-[var(--border-color)] rounded-full overflow-hidden">
+<div class="bg-[var(--gold-accent)] h-full w-[89%]"></div>
+</div>
+<span class="text-[10px] font-bold">89% CONF</span>
+</div>
+</div>
+<h3 class="text-lg font-bold mb-3">Private Satellite Networks: Low-Orbit Mesh</h3>
+<p class="text-sm italic text-[var(--text-muted)] leading-relaxed mb-4">
+                            "Inter-satellite laser links are reaching a price floor, enabling boutique mesh networks for private fintech..."
+                        </p>
+</div>
+</div>
+<section class="neumorphic-card rounded-2xl p-6">
+<h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--text-muted)] mb-8">Study Pipeline</h4>
+<div class="relative px-4">
+<div class="absolute top-[14px] left-0 right-0 h-[2px] bg-[var(--gold-accent)]/20 mx-12"></div>
+<div class="absolute top-[14px] left-0 h-[2px] bg-[var(--gold-accent)] w-3/4 mx-12"></div>
+<div class="relative flex justify-between items-center">
+<div class="flex flex-col items-center">
+<div class="w-[30px] h-[30px] rounded-full bg-[var(--gold-accent)] border-4 border-white shadow-sm flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-white">check</span>
+</div>
+<span class="text-[10px] font-bold mt-2 uppercase tracking-tight">Queued</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-[30px] h-[30px] rounded-full bg-[var(--gold-accent)] border-4 border-white shadow-sm flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-white">check</span>
+</div>
+<span class="text-[10px] font-bold mt-2 uppercase tracking-tight">Ingestion</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-[30px] h-[30px] rounded-full bg-[var(--gold-accent)] border-4 border-white shadow-sm flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-white">check</span>
+</div>
+<span class="text-[10px] font-bold mt-2 uppercase tracking-tight">Synthesis</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-[30px] h-[30px] rounded-full bg-[var(--gold-accent)] border-4 border-white shadow-sm flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-white animate-pulse">sync</span>
+</div>
+<span class="text-[10px] font-bold mt-2 uppercase tracking-tight">Review</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-[30px] h-[30px] rounded-full bg-white border-2 border-[var(--border-color)] z-10"></div>
+<span class="text-[10px] font-bold mt-2 uppercase tracking-tight text-[var(--text-muted)]">Published</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+</body></html>

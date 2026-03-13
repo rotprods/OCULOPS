@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps AI Agents Control Center V2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FFD700",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#23200f",
+                        "surface": "#FFFFFF",
+                        "sidebar": "#F5F0E8",
+                        "border-color": "#E5E5E0",
+                        "text-primary": "#1A1A1A",
+                        "text-secondary": "#666666"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-primary dark:text-slate-100 font-display antialiased min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-[240px] bg-sidebar dark:bg-black/20 border-r border-border-color dark:border-white/10 flex flex-col h-screen sticky top-0 shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-6 bg-primary rounded shadow-sm"></div>
+<h1 class="font-bold text-lg tracking-tight">OculOps</h1>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                CORE
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+                INTELLIGENCE
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-text-primary dark:text-primary font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary">smart_toy</span>
+                AGENTS
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+                GROWTH
+            </a>
+</nav>
+<div class="p-4 border-t border-border-color dark:border-white/10 flex items-center gap-2">
+<div class="size-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs font-semibold text-text-secondary uppercase tracking-wider">Live Feed</span>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+<!-- Header -->
+<header class="bg-background-light dark:bg-background-dark border-b border-border-color dark:border-white/10 px-8 py-5 flex items-center justify-between sticky top-0 z-10">
+<div>
+<h2 class="text-2xl font-bold tracking-tight">AI Agents</h2>
+<p class="text-text-secondary text-sm mt-1">Multi-agent orchestration · 10 online · 0 executing</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-text-primary font-bold px-5 py-2.5 rounded-lg text-sm transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                Run Cortex cycle
+            </button>
+</header>
+<!-- Tabs -->
+<div class="px-8 border-b border-border-color dark:border-white/10 flex gap-8">
+<a class="py-4 text-sm font-semibold border-b-[3px] border-primary text-text-primary" href="#">Network</a>
+<a class="py-4 text-sm font-semibold border-b-[3px] border-transparent text-text-secondary hover:text-text-primary" href="#">Queue</a>
+<a class="py-4 text-sm font-semibold border-b-[3px] border-transparent text-text-secondary hover:text-text-primary" href="#">Logs</a>
+<a class="py-4 text-sm font-semibold border-b-[3px] border-transparent text-text-secondary hover:text-text-primary" href="#">Studies</a>
+<a class="py-4 text-sm font-semibold border-b-[3px] border-transparent text-text-secondary hover:text-text-primary" href="#">Automation</a>
+<a class="py-4 text-sm font-semibold border-b-[3px] border-transparent text-text-secondary hover:text-text-primary" href="#">Vault</a>
+</div>
+<div class="p-8 space-y-8">
+<!-- Cortex Master Card -->
+<div class="bg-surface dark:bg-white/5 rounded-xl border-l-[3px] border-l-primary border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="p-6 bg-primary/5">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-xl font-bold tracking-tight">CORTEX</h3>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-semibold">
+<div class="size-1.5 rounded-full bg-green-500"></div>
+                                    Online
+                                </div>
+</div>
+<p class="text-text-secondary text-sm">Head Orchestrator</p>
+</div>
+<button class="bg-primary text-text-primary px-4 py-2 rounded-lg text-sm font-semibold shadow-sm hover:bg-primary/90 transition-colors">
+                            Ver Mensajes
+                        </button>
+</div>
+<div class="flex gap-4 mt-6">
+<div class="bg-white dark:bg-white/10 px-4 py-2 rounded-lg border border-border-color dark:border-white/10 text-sm font-medium shadow-sm">
+<span class="text-text-secondary mr-2">Runs</span> 1,248
+                        </div>
+<div class="bg-white dark:bg-white/10 px-4 py-2 rounded-lg border border-border-color dark:border-white/10 text-sm font-medium shadow-sm">
+<span class="text-text-secondary mr-2">Avg Time</span> 4.2s
+                        </div>
+<div class="bg-white dark:bg-white/10 px-4 py-2 rounded-lg border border-border-color dark:border-white/10 text-sm font-medium shadow-sm">
+<span class="text-text-secondary mr-2">Last Run</span> 2m ago
+                        </div>
+</div>
+</div>
+<div class="px-6 py-4 border-t border-border-color dark:border-white/10 bg-white dark:bg-transparent">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium">Cortex run progress</span>
+<span class="text-sm font-bold">100%</span>
+</div>
+<div class="h-1.5 w-full bg-sidebar dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+</div>
+</div>
+<!-- Agent Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Agent 1 -->
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-5 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold text-lg">ATLAS</h4>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-semibold">
+<div class="size-1.5 rounded-full bg-green-500"></div>
+                            Online
+                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Data Retrieval</span>
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Parsing</span>
+</div>
+<p class="text-sm text-text-secondary mb-6 flex-1">Specialized in deep-web data extraction and structuring unstructured content into standardized formats.</p>
+<a class="text-xs font-bold text-text-primary dark:text-white flex items-center gap-1 hover:text-primary transition-colors mt-auto" href="#">
+                        OPERATIONAL LOGIC <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Agent 2 -->
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-5 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold text-lg">FORGE</h4>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-semibold">
+<div class="size-1.5 rounded-full bg-green-500"></div>
+                            Online
+                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Content Gen</span>
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Synthesis</span>
+</div>
+<p class="text-sm text-text-secondary mb-6 flex-1">Generates high-fidelity analytical reports and synthesizes multiple data streams into cohesive narratives.</p>
+<a class="text-xs font-bold text-text-primary dark:text-white flex items-center gap-1 hover:text-primary transition-colors mt-auto" href="#">
+                        OPERATIONAL LOGIC <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Agent 3 -->
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-5 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold text-lg">HERALD</h4>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-semibold">
+<div class="size-1.5 rounded-full bg-green-500"></div>
+                            Online
+                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Distribution</span>
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Webhooks</span>
+</div>
+<p class="text-sm text-text-secondary mb-6 flex-1">Manages outbound communication protocols and multi-channel payload distribution.</p>
+<a class="text-xs font-bold text-text-primary dark:text-white flex items-center gap-1 hover:text-primary transition-colors mt-auto" href="#">
+                        OPERATIONAL LOGIC <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Agent 4 -->
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-5 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold text-lg">HUNTER</h4>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300 text-xs font-semibold">
+<div class="size-1.5 rounded-full bg-gray-400"></div>
+                            Standby
+                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Market Scan</span>
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Signals</span>
+</div>
+<p class="text-sm text-text-secondary mb-6 flex-1">Continuously monitors predefined market sectors for emerging trends and actionable signals.</p>
+<a class="text-xs font-bold text-text-primary dark:text-white flex items-center gap-1 hover:text-primary transition-colors mt-auto" href="#">
+                        OPERATIONAL LOGIC <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Agent 5 -->
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-5 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold text-lg">ORACLE</h4>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-semibold">
+<div class="size-1.5 rounded-full bg-green-500"></div>
+                            Online
+                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Prediction</span>
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Modeling</span>
+</div>
+<p class="text-sm text-text-secondary mb-6 flex-1">Applies advanced statistical models to forecast outcomes based on historical and real-time data.</p>
+<a class="text-xs font-bold text-text-primary dark:text-white flex items-center gap-1 hover:text-primary transition-colors mt-auto" href="#">
+                        OPERATIONAL LOGIC <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Agent 6 -->
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-5 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold text-lg">SCRIBE</h4>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-semibold">
+<div class="size-1.5 rounded-full bg-green-500"></div>
+                            Online
+                        </div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Logging</span>
+<span class="px-2 py-1 bg-sidebar dark:bg-white/10 rounded text-xs font-medium text-text-secondary">Audit</span>
+</div>
+<p class="text-sm text-text-secondary mb-6 flex-1">Maintains immutable records of all agent interactions, decisions, and system state changes.</p>
+<a class="text-xs font-bold text-text-primary dark:text-white flex items-center gap-1 hover:text-primary transition-colors mt-auto" href="#">
+                        OPERATIONAL LOGIC <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Bottom Panels -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8">
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-6">
+<h4 class="font-bold mb-4">Top Nichos</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-secondary">SaaS B2B</span>
+<span class="font-medium">42%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-secondary">Fintech</span>
+<span class="font-medium">28%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-secondary">HealthTech</span>
+<span class="font-medium">15%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface dark:bg-white/5 rounded-xl border border-border-color dark:border-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-6">
+<h4 class="font-bold mb-4">Apuestas Activas</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-secondary">Project Alpha</span>
+<span class="text-green-600 dark:text-green-400 font-medium">+12.4%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-secondary">Beta Initiative</span>
+<span class="text-green-600 dark:text-green-400 font-medium">+8.1%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-secondary">Gamma Protocol</span>
+<span class="text-red-600 dark:text-red-400 font-medium">-2.3%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

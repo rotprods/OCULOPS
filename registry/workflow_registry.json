@@ -1,0 +1,239 @@
+{
+  "version": "2026-03-13",
+  "owner": "agent-2-codex",
+  "purpose": "Canonical workflow plans and task graphs for orchestration-engine routing.",
+  "workflows": [
+    {
+      "workflow_id": "lead_discovery",
+      "display_name": "Lead Discovery",
+      "goal_type": "pipeline",
+      "description": "Scan market, qualify leads, and stage outreach.",
+      "entry_conditions": [
+        "goal.intent in ['lead_discovery', 'prospecting']",
+        "org context is available"
+      ],
+      "task_graph": [
+        {
+          "step_number": 1,
+          "step_key": "atlas_scan",
+          "type": "agent",
+          "agent_id": "agent-atlas",
+          "action": "cycle"
+        },
+        {
+          "step_number": 2,
+          "step_key": "hunter_qualify",
+          "type": "agent",
+          "agent_id": "agent-hunter",
+          "action": "cycle",
+          "depends_on": [
+            "atlas_scan"
+          ]
+        },
+        {
+          "step_number": 3,
+          "step_key": "outreach_stage",
+          "type": "agent",
+          "agent_id": "agent-outreach",
+          "action": "cycle",
+          "depends_on": [
+            "hunter_qualify"
+          ]
+        }
+      ],
+      "success_signals": [
+        "outreach.staged",
+        "pipeline.completed"
+      ],
+      "failure_signals": [
+        "pipeline.failed",
+        "agent.error"
+      ],
+      "critical_gates": [
+        "approval_requests for messaging-dispatch"
+      ],
+      "escalation_policy": {
+        "on_failure": "agent-copilot",
+        "max_retries": 1
+      }
+    },
+    {
+      "workflow_id": "sales_outreach",
+      "display_name": "Sales Outreach",
+      "goal_type": "pipeline",
+      "description": "Refresh lead quality, stage messages, and gather outreach stats.",
+      "entry_conditions": [
+        "goal.intent in ['sales_outreach', 'outreach']"
+      ],
+      "task_graph": [
+        {
+          "step_number": 1,
+          "step_key": "hunter_refresh",
+          "type": "agent",
+          "agent_id": "agent-hunter",
+          "action": "cycle"
+        },
+        {
+          "step_number": 2,
+          "step_key": "outreach_stage",
+          "type": "agent",
+          "agent_id": "agent-outreach",
+          "action": "cycle",
+          "depends_on": [
+            "hunter_refresh"
+          ]
+        },
+        {
+          "step_number": 3,
+          "step_key": "outreach_stats",
+          "type": "agent",
+          "agent_id": "agent-outreach",
+          "action": "stats",
+          "depends_on": [
+            "outreach_stage"
+          ]
+        }
+      ],
+      "success_signals": [
+        "pipeline.completed",
+        "message.sent"
+      ],
+      "failure_signals": [
+        "pipeline.failed",
+        "agent.error"
+      ],
+      "critical_gates": [
+        "approval_requests for messaging-dispatch"
+      ],
+      "escalation_policy": {
+        "on_failure": "agent-copilot",
+        "max_retries": 1
+      }
+    },
+    {
+      "workflow_id": "marketing_intelligence",
+      "display_name": "Marketing Intelligence",
+      "goal_type": "pipeline",
+      "description": "Collect market and social signals and synthesize an actionable brief.",
+      "entry_conditions": [
+        "goal.intent in ['market_brief', 'intelligence']"
+      ],
+      "task_graph": [
+        {
+          "step_number": 1,
+          "step_key": "market_scan",
+          "type": "workflow",
+          "tool_id": "market-data",
+          "action": "run"
+        },
+        {
+          "step_number": 2,
+          "step_key": "social_scan",
+          "type": "workflow",
+          "tool_id": "social-signals",
+          "action": "run",
+          "depends_on": [
+            "market_scan"
+          ]
+        },
+        {
+          "step_number": 3,
+          "step_key": "oracle_brief",
+          "type": "agent",
+          "agent_id": "agent-oracle",
+          "action": "analyze",
+          "depends_on": [
+            "social_scan"
+          ]
+        }
+      ],
+      "success_signals": [
+        "pipeline.completed"
+      ],
+      "failure_signals": [
+        "pipeline.failed",
+        "agent.error"
+      ],
+      "critical_gates": [],
+      "escalation_policy": {
+        "on_failure": "agent-copilot",
+        "max_retries": 1
+      }
+    },
+    {
+      "workflow_id": "self_improvement_patch_cycle",
+      "display_name": "Self-Improvement Patch Cycle",
+      "goal_type": "system_improvement",
+      "description": "Propose patch, test, simulate, evaluate, and route approval safely.",
+      "entry_conditions": [
+        "issue classified as process or quality regression",
+        "target scope not in protected production-only components"
+      ],
+      "task_graph": [
+        {
+          "step_number": 1,
+          "step_key": "proposal",
+          "type": "task",
+          "agent_id": "agent-copilot",
+          "action": "propose_fix"
+        },
+        {
+          "step_number": 2,
+          "step_key": "test",
+          "type": "task",
+          "tool_id": "automation-runner",
+          "action": "run_tests",
+          "depends_on": [
+            "proposal"
+          ]
+        },
+        {
+          "step_number": 3,
+          "step_key": "simulate",
+          "type": "task",
+          "agent_id": "agent-cortex",
+          "action": "simulate",
+          "depends_on": [
+            "test"
+          ]
+        },
+        {
+          "step_number": 4,
+          "step_key": "evaluate",
+          "type": "task",
+          "agent_id": "quality-critic",
+          "action": "score",
+          "depends_on": [
+            "simulate"
+          ]
+        },
+        {
+          "step_number": 5,
+          "step_key": "approve_or_escalate",
+          "type": "event",
+          "action": "policy_gate",
+          "depends_on": [
+            "evaluate"
+          ]
+        }
+      ],
+      "success_signals": [
+        "patch.approved",
+        "patch.applied"
+      ],
+      "failure_signals": [
+        "patch.rejected",
+        "simulation.failed"
+      ],
+      "critical_gates": [
+        "risk critic >= pass threshold",
+        "cost critic >= pass threshold",
+        "human approval for high-risk changes"
+      ],
+      "escalation_policy": {
+        "on_failure": "agent-copilot",
+        "max_retries": 0
+      }
+    }
+  ]
+}

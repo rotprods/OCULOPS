@@ -1,0 +1,1102 @@
+{
+  "$schema": "oculops-ui-dna-v2",
+  "version": "2.0.0",
+  "name": "OCULOPS — UI DNA v2",
+  "tagline": "Intelligence Amplified",
+  "created": "2026-03-12",
+  "purpose": "Single source of truth for all screen generation via Google Stitch. Every value is forensically derived from master reference images. No value is estimated — each is anchored to a specific image observation.",
+  "master_references": {
+    "primary_master": "oculops_sidebar_navigation.png — golden sphere, Intelligence module, cream sidebar",
+    "secondary_master": "IMG_2536.WEBP — Intelligence Amplified annotated, design intent labels",
+    "warm_variant": "IMG_2528.WEBP — Control Tower IVORY, full sidebar, capsule quick actions",
+    "agent_warm": "IMG_2529.WEBP — AI Agents warm, Cortex master card, 3-column sub-agent grid",
+    "agent_clean": "IMG_2530.WEBP — AI Agents v2, cleaner variant, confidence pills, capability tags",
+    "prospector": "IMG_2531.WEBP — Prospector/Map, dark map + gold overlay, flight command panel",
+    "mobile": "IMG_2532.WEBP — Mobile Control Tower, shows KPI cards at scale, health score ring",
+    "dark_variant": "IMG_2533.WEBP — Dark variant, yellow-on-black cards, shows alternate treatment",
+    "design_system": "IMG_2535.WEBP — Component design system, neumorphic surfaces, signal shimmer annotations",
+    "master_branded": "oculops_master_branded_dashboard.png — full branded master with health score 39, pipeline €242k",
+    "current_gap_1": "current-ivory/01_control_tower.png — CURRENT STATE: sparse, flat, no depth",
+    "current_gap_2": "current-ivory/09_agents.png — CURRENT STATE: empty agent view, no cards",
+    "current_gap_3": "current-ivory/05_intelligence.png — CURRENT STATE: basic signal list, no visualization"
+  },
+
+  "gap_analysis": {
+    "summary": "The current app (v2) reads as a functional wireframe. The target design reads as a $5,000/mo intelligence instrument. The gap is in material depth, typographic weight, visual hierarchy, the golden sphere system, and agent card richness.",
+    "current_problems": [
+      "Sidebar: flat white, no warm cream gradient, nav items have no visual weight difference between active/inactive",
+      "KPI cards: no icon containers with semantic color backgrounds, no bottom target text treatment, no micro-progress bars",
+      "Health score ring: exists but black background treatment (IMG_2532 dark variant) — target is warm cream ring on white",
+      "Agent module: completely empty — zero card content rendered in current-ivory/09_agents.png",
+      "Intelligence module: basic table, no golden sphere, no neural network visualization, no signal strength bars",
+      "Typography: inconsistent weight usage — headlines not using the tight letter-spacing of -0.015em to -0.03em",
+      "No golden sphere element on any screen",
+      "Quick action buttons: currently rendered as yellow pills — target is capsule outline buttons (border, not fill)",
+      "No LIVE badge in header",
+      "Card shadows too thin — missing the layered soft-neumorphic shadow stack"
+    ],
+    "priority_fixes": [
+      "1. Sidebar warm cream treatment + active state gold background",
+      "2. KPI card icon containers + full shadow stack + progress target",
+      "3. LIVE badge in header",
+      "4. Agent cards — Cortex master + sub-agent 3-column grid",
+      "5. Intelligence golden sphere + neural network visualization",
+      "6. Typography weight corrections throughout",
+      "7. Quick action capsule outline style"
+    ]
+  },
+
+  "design_philosophy": {
+    "identity": "Apple × Whisk × TouchDesigner — boutique premium AI operating system",
+    "feel": "Expensive, alive, reactive, editorial, tactile",
+    "aesthetic_sentence": "A general's war room viewed through a premium optical instrument. Every surface is matte, every accent is signal. The UI has physical presence — it does not float in a void.",
+    "pricing_signal": "Every visual decision must communicate that this is a $5,000/mo tool, not a $50/mo SaaS. Premium is achieved through restraint, precision, and depth — not decoration.",
+    "anti_patterns": [
+      "Flat Material Design — no depth, everything same plane",
+      "Dark war-room terminal — we are IVORY/warm, not black",
+      "Glassmorphism blur-everything — reserved for modals only",
+      "Generic SaaS blue/purple — yellow is the sole brand accent",
+      "Dribbble fantasy UI — every element must be implementable",
+      "Noisy typography — only 3 text color levels used: primary, secondary, tertiary",
+      "Dense information without hierarchy — white space is structural",
+      "Emoji icons — Material Symbols Outlined only",
+      "Hard borders as structure — depth from shadows, not thick outlines",
+      "Yellow as decoration — gold is a SIGNAL color, maximum 5% visual surface area"
+    ]
+  },
+
+  "canvas_system": {
+    "background": {
+      "color": "#FAFAF8",
+      "description": "Warm off-white — not pure white, not gray. Has a subtle parchment warmth. Observable in IMG_2528, IMG_2529, IMG_2530, IMG_2536.",
+      "texture": "Imperceptible noise grain at 1.5-2% opacity layered on top. Prevents digitally-flat appearance.",
+      "vignette": "Radial gradient from transparent at center to rgba(0,0,0,0.02) at viewport edges. Creates subtle focus inward.",
+      "css": "background: #FAFAF8;"
+    },
+    "ambient_light_model": {
+      "direction": "315 degrees (top-left, northwest)",
+      "implication": "Card shadows fall southeast. Top-left edge of all raised elements catches slightly more light. Inner highlight on top edge of every card.",
+      "source": "Consistent across all reference images — soft diffused overhead panel, no directional harsh light."
+    },
+    "depth_model": {
+      "name": "Soft Hybrid Neumorphism",
+      "description": "NOT classic neumorphism (no extreme emboss). Cards float 2-4px above the canvas. Depth created through shadow opacity stacks, not border thickness or color contrast.",
+      "elevation_levels": {
+        "0_base": "Page background #FAFAF8 — no shadow",
+        "1_card": "Standard cards — 2px float: box-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.80)",
+        "2_elevated": "Cortex master card, hero panels — 4px float: box-shadow: 0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.80)",
+        "3_hero": "Hero visualization panel, golden sphere container — 8px float: box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.80)",
+        "4_modal": "Modals, drawers — 16px float: box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06)",
+        "inset": "Input fields, progress tracks, toggle tracks: box-shadow: inset 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 2px rgba(0,0,0,0.06)"
+      },
+      "inner_highlight_rule": "Every raised surface has: inset 0 1px 0 rgba(255,255,255,0.80) — a 1px top edge bright highlight simulating the northwest light source catching the card edge. This is the single most important detail that creates the premium material feel."
+    }
+  },
+
+  "color_system": {
+    "surfaces": {
+      "base":       { "hex": "#FAFAF8", "role": "Page canvas — warm white" },
+      "raised":     { "hex": "#FFFFFF", "role": "Cards, panels, all elevated containers" },
+      "elevated":   { "hex": "#F5F5F0", "role": "Secondary inset surfaces, table headers" },
+      "inset":      { "hex": "#F0F0EB", "role": "Input fields, recessed areas, search bar bg" },
+      "sidebar":    { "hex": "#F5F0E8", "role": "Navigation sidebar — warm cream, visually distinct from content" },
+      "sidebar_gradient": "linear-gradient(180deg, #F5F0E8 0%, #F0EBE0 100%)",
+      "overlay_glass": "rgba(250,250,248,0.92) + backdrop-filter: blur(20px)"
+    },
+    "borders": {
+      "default":    { "value": "#E5E5E0",                     "usage": "All standard 1px borders on cards, dividers" },
+      "subtle":     { "value": "#F0F0EB",                     "usage": "Row separators within tables, lightest dividers" },
+      "strong":     { "value": "#D4D4CF",                     "usage": "Section separators, emphasized structure" },
+      "gold_active":{ "value": "rgba(255,215,0,0.40)",        "usage": "Active/selected element borders" },
+      "gold_focus": { "value": "rgba(255,215,0,0.60)",        "usage": "Focus rings on inputs" },
+      "gold_glow":  { "value": "0 0 0 3px rgba(255,215,0,0.12)", "usage": "Focus ring spread for inputs" },
+      "gold_card":  { "value": "rgba(255,215,0,0.25)",        "usage": "Cortex card, primary KPI card border tint" },
+      "gold_hero":  { "value": "0 0 20px rgba(255,215,0,0.08)", "usage": "Outer glow bleed on golden sphere container" }
+    },
+    "text": {
+      "primary":    { "hex": "#1A1A1A", "role": "All headlines, values, primary body. The only 'black'." },
+      "secondary":  { "hex": "#6B6B6B", "role": "Labels, descriptions, nav items inactive, card sublabels" },
+      "tertiary":   { "hex": "#9A9A9A", "role": "Section headers uppercase, placeholders, timestamps, grid overlays" },
+      "quaternary": { "hex": "#C4C4C4", "role": "Disabled states, decorative" },
+      "inverse":    { "hex": "#FFFFFF", "role": "Text on solid gold CTA buttons, text on dark banner" },
+      "gold_accent":{ "hex": "#C8A200", "role": "Darkened gold for text — used where #FFD700 would be unreadable" }
+    },
+    "gold_spectrum": {
+      "pure":       { "hex": "#FFD700", "rgb": "255, 215, 0",  "usage": "Solid fills: CTA buttons, health ring arc, active toggle, signal bars, active nav bg-tinted" },
+      "bright":     { "hex": "#FFE44D",                        "usage": "Sphere inner ring, brightest gold gradient stop" },
+      "hover":      { "hex": "#FFC400",                        "usage": "Gold button hover state" },
+      "active":     { "hex": "#FFB800",                        "usage": "Gold button active/pressed state" },
+      "text":       { "hex": "#C8A200",                        "usage": "All gold text — never pure #FFD700 on white (too low contrast)" },
+      "text_deep":  { "hex": "#997700",                        "usage": "Gold text on light gold backgrounds" },
+      "muted_10":   { "value": "rgba(255,215,0,0.10)",         "usage": "Active nav item background, tag backgrounds" },
+      "muted_12":   { "value": "rgba(255,215,0,0.12)",         "usage": "OPPORTUNITY badge background" },
+      "muted_15":   { "value": "rgba(255,215,0,0.15)",         "usage": "Signal strength column header highlight" },
+      "muted_25":   { "value": "rgba(255,215,0,0.25)",         "usage": "Border tint on primary KPI card, OPPORTUNITY badge border" },
+      "muted_glow": { "value": "rgba(255,215,0,0.12)",         "usage": "Sphere ambient glow on surrounding surfaces" },
+      "distribution_rule": "Gold must not exceed 5% of total visual surface area. It is a SIGNAL. Its rarity is what makes it carry weight."
+    },
+    "semantic": {
+      "success":        { "hex": "#34C759", "usage": "Online status, completed states, positive trends" },
+      "success_muted":  { "value": "rgba(52,199,89,0.10)", "usage": "Online badge background" },
+      "success_border": { "value": "rgba(52,199,89,0.20)", "usage": "Online badge border" },
+      "success_glow":   { "value": "0 0 6px rgba(52,199,89,0.50)", "usage": "Live indicator pulse shadow" },
+      "warning":        { "hex": "#FF9F43", "usage": "Caution, attention states (NOT primary gold)" },
+      "warning_muted":  { "value": "rgba(255,159,67,0.08)", "usage": "Warning badge background" },
+      "danger":         { "hex": "#E53E3E", "usage": "Error, critical, RISK badge" },
+      "danger_muted":   { "value": "rgba(229,62,62,0.08)", "usage": "RISK badge background" },
+      "danger_border":  { "value": "rgba(229,62,62,0.20)", "usage": "RISK badge border" },
+      "info":           { "hex": "#3B82F6", "usage": "Informational, link text only" },
+      "info_muted":     { "value": "rgba(59,130,246,0.08)", "usage": "Info badge background" }
+    },
+    "rule": "Semantic colors appear ONLY in status dots, badges, and directional trend indicators. Never as backgrounds, large borders, or decorative surfaces. Yellow is the sole brand accent."
+  },
+
+  "typography_system": {
+    "families": {
+      "sans":      "Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+      "mono":      "JetBrains Mono, SF Mono, Fira Code, monospace",
+      "display":   "Inter",
+      "rule": "NEVER hardcode font strings. All tokens are CSS variables. Sans-serif for all operational UI. Mono only for data values, timestamps, coordinates, code."
+    },
+    "scale_px_rem": {
+      "micro":   { "px": 10, "rem": "0.625rem",  "usage": "Footnotes, version numbers, grid overlay labels" },
+      "xs":      { "px": 11, "rem": "0.6875rem", "usage": "Section headers uppercase, badge text, KPI labels, table headers, captions" },
+      "sm":      { "px": 13, "rem": "0.8125rem", "usage": "Nav items, table body, button text, body paragraphs, card body text, tag text" },
+      "base":    { "px": 14, "rem": "0.875rem",  "usage": "Standard input text, sidebar footer" },
+      "md":      { "px": 16, "rem": "1rem",      "usage": "Section titles (h2), card section headings" },
+      "lg":      { "px": 18, "rem": "1.125rem",  "usage": "Agent names in sub-agent cards, metric values in Cortex card" },
+      "xl":      { "px": 20, "rem": "1.25rem",   "usage": "Cortex metrics row values, medium KPI values" },
+      "2xl":     { "px": 24, "rem": "1.5rem",    "usage": "Page title / module name (h1), 'Master Intelligence'" },
+      "3xl":     { "px": 32, "rem": "2rem",      "usage": "Primary KPI values (€0, 0, 5, 1, 4%)" },
+      "4xl":     { "px": 36, "rem": "2.25rem",   "usage": "Health score ring center number, large stat values" },
+      "hero":    { "px": 48, "rem": "3rem",       "usage": "OCULOPS wordmark in hero banner, landing-grade display" }
+    },
+    "weights": {
+      "regular":  400,
+      "medium":   500,
+      "semibold": 600,
+      "bold":     700
+    },
+    "line_heights": {
+      "tight":   1.1,
+      "snug":    1.2,
+      "compact": 1.35,
+      "normal":  1.5,
+      "relaxed": 1.65
+    },
+    "letter_spacing": {
+      "hero":     "-0.03em",
+      "heading":  "-0.015em",
+      "normal":   "0",
+      "label":    "0.02em",
+      "uppercase":"0.04em",
+      "widest":   "0.20em"
+    },
+    "usage_map": {
+      "display_hero":       "Inter 700 48px/-0.03em/1.1 #1A1A1A — 'OCULOPS' wordmark",
+      "h1_module":          "Inter 700 24px/-0.015em/1.2 #1A1A1A — 'Master Intelligence', 'AI Agents'",
+      "h2_section":         "Inter 600 16px/0/1.35 #1A1A1A — 'Metrics Grid', 'Critical Signals', 'Quick Actions'",
+      "kpi_value_primary":  "Inter 700 32-36px/-0.015em/1.1 #1A1A1A — '€0', '98.4%', '15'",
+      "kpi_value_large":    "JetBrains Mono 700 32px/0/1.1 #1A1A1A — for numeric-only values to signal data precision",
+      "kpi_label":          "Inter 600 11px/0.04em uppercase #6B6B6B — 'MRR', 'CLIENTS', 'PIPELINE', 'HEALTH SCORE'",
+      "kpi_target":         "Inter 400 11px/0.02em #9A9A9A — 'Target: €20k'",
+      "agent_name":         "Inter 700 18-24px/-0.015em #1A1A1A — 'CORTEX', 'ATLAS', 'FORGE'",
+      "agent_subtitle":     "Inter 400 13px/0 #6B6B6B — 'Head Orchestrator'",
+      "nav_section":        "Inter 700 11px/0.20em uppercase #9A9A9A — 'CORE', 'INTELLIGENCE', 'AUTOMATION', 'ANALYTICS'",
+      "nav_item":           "Inter 500 13px/0 #6B6B6B inactive, #1A1A1A active",
+      "table_header":       "Inter 600 11px/0.04em uppercase #6B6B6B",
+      "table_body":         "Inter 400 13px/0 #1A1A1A",
+      "table_numeric":      "JetBrains Mono 400 13px/0 #1A1A1A — pipeline values, timestamps",
+      "badge_text":         "Inter 600 11px/0.02em uppercase — color per type",
+      "button_primary":     "Inter 600 13px/0 #1A1A1A — on gold CTA",
+      "button_secondary":   "Inter 500 13px/0 #1A1A1A — on outline/ghost buttons",
+      "body_card":          "Inter 400 13px/0 1.5 #6B6B6B — agent intelligence body text",
+      "caption":            "Inter 400 11px/0.02em #9A9A9A",
+      "mono_data":          "JetBrains Mono 400 9-10px/0 #9A9A9A — grid overlays, coordinate labels on sphere"
+    }
+  },
+
+  "spacing_system": {
+    "base_unit": 4,
+    "scale": {
+      "1":  "4px",
+      "2":  "8px",
+      "3":  "12px",
+      "4":  "16px",
+      "5":  "20px",
+      "6":  "24px",
+      "7":  "28px",
+      "8":  "32px",
+      "10": "40px",
+      "12": "48px",
+      "16": "64px"
+    },
+    "named_tokens": {
+      "xs":  "4px",
+      "sm":  "8px",
+      "md":  "12px",
+      "lg":  "16px",
+      "xl":  "20px",
+      "2xl": "24px",
+      "3xl": "32px",
+      "4xl": "48px"
+    },
+    "context_applications": {
+      "card_padding":          "20px all sides",
+      "card_padding_hero":     "32px all sides",
+      "section_container":     "24px padding",
+      "content_area_gutter":   "32px",
+      "gap_between_cards":     "16px (KPI grid), 20px (agent grid)",
+      "gap_between_sections":  "24px",
+      "sidebar_horizontal":    "16px",
+      "sidebar_item_gap":      "2px between items within section",
+      "sidebar_section_gap":   "24px between sections (including label height)",
+      "table_cell":            "12px top/bottom, 16px left/right",
+      "badge_padding":         "2px 10px (standard), 3px 10px (tags)",
+      "button_standard":       "10px 20px",
+      "button_capsule":        "8px 20px"
+    }
+  },
+
+  "radius_system": {
+    "xs":   "4px  — micro elements, checkboxes",
+    "sm":   "6px  — tags, badge containers",
+    "md":   "8px  — buttons, inputs, nav items, icon containers",
+    "lg":   "12px — cards, panels, main content areas, KPI cards",
+    "xl":   "16px — outer main content container",
+    "2xl":  "20px — large modal panels",
+    "full": "9999px — pill buttons, status badges, capsule CTAs, toggle tracks"
+  },
+
+  "shadow_system": {
+    "card_standard":   "0 2px 8px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.80)",
+    "card_elevated":   "0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.80)",
+    "card_hero":       "0 8px 32px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.80)",
+    "card_hover":      "0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04)",
+    "modal":           "0 16px 48px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06)",
+    "inset_field":     "inset 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 2px rgba(0,0,0,0.06)",
+    "gold_glow_sm":    "0 0 8px rgba(255,215,0,0.08)",
+    "gold_glow_md":    "0 0 16px rgba(255,215,0,0.10)",
+    "gold_glow_lg":    "0 0 24px rgba(255,215,0,0.12)",
+    "gold_glow_hero":  "0 0 40px rgba(255,215,0,0.20)",
+    "gold_btn":        "0 2px 8px rgba(255,215,0,0.20)",
+    "gold_btn_hover":  "0 4px 12px rgba(255,215,0,0.25)",
+    "inner_highlight": "inset 0 1px 0 rgba(255,255,255,0.80)",
+    "status_live_dot": "0 0 6px rgba(52,199,89,0.50)"
+  },
+
+  "golden_sphere_system": {
+    "description": "The signature visual element of OCULOPS. A luminous golden energy sphere with neural network tendrils, rendered as a TouchDesigner-style generative data visualization. Observable in oculops_sidebar_navigation.png and IMG_2536.WEBP annotations.",
+    "classification": "3D volumetric render aesthetic — NOT a flat SVG. Reads as a real-time simulation output. Has depth-of-field blur on extremities.",
+    "dimensions": {
+      "hero_intelligence": "400x400px visual footprint in the hero panel of the Intelligence module",
+      "header_widget": "Not shown as a full sphere — only the ambient glow bleeds into surrounding surfaces",
+      "animation_feel": "Constant subtle rotation implied — like a slowly turning neural energy mass"
+    },
+    "color_layers": {
+      "core_white": "#FFFFFF — pure white emission at the absolute center, hot point",
+      "inner_ring":  "#FFE44D — bright yellow halo immediately surrounding the core, 15-20px band",
+      "mid_body":    "#FFD700 — standard gold fills the main sphere body",
+      "outer_body":  "#CC9900 — darker amber at 70-80% of sphere radius outward",
+      "tendril_tips":"#997700 — darkest gold at the extremities of the energy filaments",
+      "particle_dots":"#FFD700 at 20-60% opacity — tiny scattered dots floating around the sphere in 3D space",
+      "ambient_glow": "radial-gradient from rgba(255,215,0,0.15) at sphere center to transparent at 300px radius. Bleeds onto surrounding white card surface and sidebar."
+    },
+    "internal_gradient": "Radial from white core outward: #FFFFFF → #FFE44D → #FFD700 → #CC9900 → #997700 at edges",
+    "tendrils": {
+      "description": "Organic branching filaments, like neural dendrites or lightning captured in amber. NOT geometric or straight.",
+      "count": "Dozens of branching arms extending from the sphere surface",
+      "style": "1-2px thick, variable opacity (30-80%), blur increases with distance from sphere",
+      "color": "#FFD700 at root, fading to rgba(255,215,0,0.15) at tips",
+      "animation_principle": "Tendrils feel like they are slowly shifting/breathing — no sharp movement"
+    },
+    "neural_network_overlay": {
+      "description": "In IMG_2536, a distinct neural network diagram is shown — nodes as circles connected by gold lines",
+      "node_style": "12-16px hollow circles, stroke 1.5px, fill: white or rgba(255,215,0,0.08)",
+      "node_accent": "Some nodes have gold fill at 100% — these represent active/signal nodes",
+      "connection_lines": "1px lines at 20-40% opacity gold (#FFD700), connecting all nodes in a network topology",
+      "connection_active":"Lines between active nodes are fully opaque gold, 1.5px",
+      "layout": "Left-to-right neural layer structure: input layer → hidden layers → output layer",
+      "gold_active_node": "22-24px filled circle, #FFD700 fill, box-shadow: 0 0 12px rgba(255,215,0,0.40)"
+    },
+    "background_grid": {
+      "description": "Behind the sphere: subtle wireframe geometric grid",
+      "opacity": "5-8%",
+      "color": "#9A9A9A",
+      "line_weight": "1px",
+      "spacing": "40-60px",
+      "perspective": "Perspective-corrected, vanishing point behind the sphere center, creating depth",
+      "intersection_dots": "3-4px dots at grid crossings, same opacity as lines"
+    },
+    "floating_data_labels": {
+      "description": "Scattered around the sphere: floating coordinate pairs, percentages, data values",
+      "font": "JetBrains Mono 9-10px #9A9A9A at 50-70% opacity",
+      "examples": ["32.4°", "0.85", "98.4%", "→ 1245", "0.7x"],
+      "positioning": "Seemingly random but following tendril paths — 3D scattered placement"
+    },
+    "container": {
+      "type": "Large hero card in the Intelligence module main panel",
+      "dimensions": "60% of content width, 350-400px tall",
+      "border_radius": "12px",
+      "border": "1px solid #E5E5E0 — standard card border",
+      "background": "#FFFFFF with the golden glow bleeding onto it from the sphere",
+      "overflow": "visible — sphere bleeds slightly beyond card boundaries for depth effect",
+      "outer_glow": "0 0 20px rgba(255,215,0,0.08) — the card itself has a faint gold outer glow"
+    },
+    "scaling_per_screen": {
+      "intelligence_hero": "Full sphere render, 400px, dominates upper-right of module",
+      "control_tower_health": "Health score ring — gold arc on gray track, 120px ring, NOT the sphere itself but the gold arc is the same gold energy color",
+      "agents_cortex": "Cortex master card has a small 40x40px circular icon container with a gold background — a micro-echo of the sphere. The yellow border on the Cortex card references the sphere's gold energy.",
+      "pipeline_won_column": "Kanban column header background uses gold tint for 'Won' state",
+      "prospector_map": "Yellow/gold polygon overlays on dark Mapbox map represent target scan zones — same gold, different surface",
+      "signal_bars_table": "4px tall horizontal bars in #FFD700 — the sphere energy materialized as data signal visualization",
+      "active_nav_item": "rgba(255,215,0,0.10) background with 1px gold border — micro echo of sphere's warmth",
+      "health_score_ring": "#FFD700 arc on #E5E5E0 track — the sphere's gold concentrated into a ring glyph",
+      "kpi_progress_bar": "Gold fill on gray track under the 'SIGNALS' KPI card — 4px bar",
+      "button_cta": "Solid #FFD700 background — the sphere's core color as the primary action signal"
+    }
+  },
+
+  "material_system": {
+    "surface_hierarchy": {
+      "level_0_canvas": { "color": "#FAFAF8", "description": "Page background. Visible between cards, in sidebar gutters, behind content." },
+      "level_1_panel": { "color": "#FFFFFF", "description": "Cards, content panels. The dominant UI surface. Matte white — no specular highlight." },
+      "level_2_inset": { "color": "#F5F5F0", "description": "Table header rows, slightly recessed secondary surfaces." },
+      "level_3_field": { "color": "#F0F0EB", "description": "Input fields, search bars, toggle tracks, progress bar tracks. Recessed into level_1 surface." },
+      "level_4_sidebar":{ "color": "#F5F0E8", "description": "Sidebar only. Warm cream — clearly different temperature from content white." }
+    },
+    "card_material": {
+      "surface": "#FFFFFF matte — no sheen, no gloss, no specular highlight",
+      "top_edge": "inset 0 1px 0 rgba(255,255,255,0.80) — 1px white highlight simulating light catching the raised top edge",
+      "border": "1px solid #E5E5E0",
+      "border_radius": "12px",
+      "shadow_stack": "0 2px 8px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.80)",
+      "hover_transition": "box-shadow transitions to 0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04) over 200ms ease",
+      "micro_texture": "Imperceptible noise grain at 1.5% opacity — prevents digitally-flat surface"
+    },
+    "cortex_card_material": {
+      "surface": "linear-gradient(135deg, rgba(255,215,0,0.06) 0%, rgba(255,215,0,0.02) 100%) over #FFFFFF",
+      "border": "1px solid rgba(255,215,0,0.25)",
+      "border_radius": "12px",
+      "shadow_stack": "0 4px 16px rgba(255,215,0,0.06), 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.80)",
+      "note": "The only card with a gold gradient background. All other agent cards are pure white."
+    },
+    "primary_kpi_card_material": {
+      "border": "1px solid rgba(255,215,0,0.25)",
+      "note": "MRR card — the primary revenue KPI — gets the gold border tint. Signals it as the most important metric."
+    },
+    "glass_overlay": {
+      "bg": "rgba(255,255,255,0.80)",
+      "blur": "backdrop-filter: blur(20px)",
+      "border": "1px solid rgba(0,0,0,0.06)",
+      "inner_glow": "inset 0 0 0 1px rgba(0,0,0,0.03)",
+      "usage": "Modal overlays, tooltip panels, floating menus only — not card surfaces"
+    },
+    "dark_banner_variant": {
+      "description": "The system activity summary hero banner uses a dark treatment in some variants (IMG_2533 dark, IMG_2528 warm light). Standard variant: #1A1A1A background with white text and yellow CTA.",
+      "background": "#1A1A1A",
+      "text": "#FFFFFF",
+      "cta_button": "background: #FFD700, color: #1A1A1A, border-radius: 9999px",
+      "texture": "Subtle topographic/contour line pattern at 8% opacity in a warm tone — visible in IMG_2533",
+      "usage": "Control Tower hero banner top strip only"
+    }
+  },
+
+  "layout_system": {
+    "grid": {
+      "base_viewport": "1440px design target, minimum 1280px, optimized for 1440-1920px",
+      "sidebar_width_expanded": "240px",
+      "sidebar_width_collapsed": "64px",
+      "content_area": "calc(100vw - 240px), max-width 1400px, auto margins",
+      "header_height": "56px",
+      "content_padding": "32px",
+      "responsive": "Desktop-only SaaS. Not designed for mobile (IMG_2532 mobile is Electron/tablet view only). Reflow at 1280px: 3-col KPI. At 1024px: 2-col KPI, sidebar collapses."
+    },
+    "content_grids": {
+      "kpi_4col": "CSS Grid, 4 equal columns, 16px gap — standard KPI row",
+      "kpi_3col": "CSS Grid, 3 equal columns, 16px gap — secondary KPI row or 1280px breakpoint",
+      "agent_3col": "CSS Grid, 3 equal columns, 20px gap — sub-agent cards",
+      "two_col_hero": "2-column layout: 60% hero panel + 40% sidebar panel for Intelligence/Control Tower hero area",
+      "full_width": "100% content width — tables, banners, the Cortex master card"
+    },
+    "header": {
+      "height": "56px",
+      "border_bottom": "1px solid #E5E5E0",
+      "background": "#FFFFFF",
+      "layout": "flex, space-between",
+      "left": "Module icon (24px) + module title (Inter 700 24px #1A1A1A) — e.g. '⚡ Control Tower'",
+      "center": "Search bar (320px wide)",
+      "right": "LIVE badge (green dot + 'LIVE' text)",
+      "live_badge_detail": {
+        "dot": "8px circle, #34C759, box-shadow: 0 0 6px rgba(52,199,89,0.50), CSS animation: pulse scale(1)→scale(1.2) 2s ease-in-out infinite",
+        "text": "Inter 700 11px #34C759, letter-spacing: 0.04em, uppercase",
+        "gap": "6px between dot and text"
+      }
+    },
+    "sidebar": {
+      "width": "240px",
+      "background": "linear-gradient(180deg, #F5F0E8 0%, #F0EBE0 100%)",
+      "right_border": "1px solid #E5E5E0",
+      "golden_ambient": "rgba(255,210,50,0.06) radial gradient centered at hero sphere position bleeding into lower sidebar — creates warmth bleed from Intelligence hero",
+      "logo_area": {
+        "height": "64px",
+        "padding": "16px 16px",
+        "logo_mark": "Circle with inner ring glyph, #FFD700, 28-32px diameter. Observable in IMG_2529, IMG_2530, IMG_2532, IMG_2536.",
+        "wordmark": "Inter 700 18px #1A1A1A, letter-spacing: -0.01em, 'OCULOPS' or 'OculOps'",
+        "tagline_chip": "In some variants: 'AI Intelligence OS Signal' chip below logo — background: rgba(255,215,0,0.10), border: 1px solid rgba(255,215,0,0.20), border-radius: 9999px, padding: 2px 10px, font: Inter 11px 600 #C8A200"
+      },
+      "section_label": {
+        "font": "Inter 700 11px uppercase",
+        "color": "#9A9A9A",
+        "letter_spacing": "0.20em",
+        "margin_top": "24px",
+        "margin_bottom": "12px",
+        "padding_left": "12px",
+        "sections": ["CORE", "INTELLIGENCE", "AUTOMATION", "ANALYTICS"]
+      },
+      "nav_item_inactive": {
+        "height": "40px",
+        "padding": "8px 12px",
+        "border_radius": "8px",
+        "font": "Inter 500 13px",
+        "color": "#6B6B6B",
+        "icon_size": "20px",
+        "icon_color": "#6B6B6B",
+        "icon_stroke": "1.5-2px",
+        "gap": "10px (icon-to-text)",
+        "hover": "background: #F0F0EB, color: #1A1A1A, transition: 200ms ease"
+      },
+      "nav_item_active": {
+        "background": "rgba(255,215,0,0.10)",
+        "border": "1px solid rgba(255,215,0,0.20)",
+        "border_radius": "8px",
+        "font_weight": "600",
+        "color": "#1A1A1A",
+        "icon_color": "#C8A200",
+        "shadow": "0 0 0 1px rgba(255,215,0,0.15), 0 0 8px rgba(255,215,0,0.06)",
+        "left_accent": "Some variants show border-left: 3px solid #FFD700 — use this for strongest active signaling"
+      },
+      "item_spacing": "2px gap between items within a section",
+      "footer": {
+        "border_top": "1px solid #E5E5E0",
+        "padding": "16px",
+        "email": "Inter 12px #6B6B6B — 'dev@oculops.os'",
+        "version": "Inter 10px #9A9A9A — 'v1.0.0'",
+        "avatar_or_logout": "32-40px circular avatar or icon button at right"
+      }
+    }
+  },
+
+  "component_dna": {
+    "kpi_card": {
+      "description": "The standard metric display unit. Appears in 4-column or 3-column grids.",
+      "dimensions": "~200px wide x 140px tall in 4-col grid. Full-width at 1280px breakpoint with 2-col.",
+      "structure_layers": [
+        "1. Icon container — top-left, 32x32px, border-radius: 8px, background: semantic-muted-10, icon 20px matching semantic color",
+        "2. Value — Inter 700 32px #1A1A1A, dominant element, below icon or beside icon",
+        "3. Label — Inter 600 11px uppercase letter-spacing: 0.04em #6B6B6B, below value",
+        "4. Target line — Inter 400 11px #9A9A9A, 'Target: €20k', at bottom of card",
+        "5. Optional: mini gold progress bar 4px tall on bottom edge for SIGNALS card — track: #E5E5E0, fill: #FFD700"
+      ],
+      "card_shell": {
+        "background": "#FFFFFF",
+        "border": "1px solid #E5E5E0",
+        "border_radius": "12px",
+        "padding": "20px",
+        "shadow": "0 2px 8px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.80)"
+      },
+      "primary_kpi_variant": {
+        "trigger": "MRR card — first/primary revenue metric",
+        "border_override": "1px solid rgba(255,215,0,0.25)",
+        "note": "Only this card gets the gold border tint"
+      },
+      "value_color_overrides": {
+        "default": "#1A1A1A",
+        "positive_trend": "#34C759 — percentage values with + trend",
+        "gold_accent": "#C8A200 — signal count when it represents opportunity",
+        "danger_override": "#E53E3E — for ALERTS count > threshold"
+      },
+      "icon_container_colors": {
+        "MRR": "background: rgba(255,215,0,0.10), icon: #C8A200",
+        "CLIENTS": "background: rgba(59,130,246,0.10), icon: #3B82F6",
+        "PIPELINE": "background: rgba(59,130,246,0.10), icon: #3B82F6",
+        "ALERTS": "background: rgba(255,159,67,0.10), icon: #FF9F43",
+        "COMPLETED": "background: rgba(52,199,89,0.10), icon: #34C759",
+        "SIGNALS": "background: rgba(255,215,0,0.10), icon: #C8A200"
+      }
+    },
+
+    "health_score_widget": {
+      "type": "Circular progress ring (donut chart)",
+      "outer_diameter": "120px",
+      "inner_cutout": "80px",
+      "track_stroke_width": "8px",
+      "track_color": "#E5E5E0",
+      "fill_color": "linear gradient #FFD700 → #FFC400 rendered as animated stroke-dasharray",
+      "center_value": {
+        "font": "Inter 700 36px",
+        "color": "#1A1A1A",
+        "vertically_centered": true
+      },
+      "label": "Inter 700 10px uppercase letter-spacing: 0.15em #6B6B6B — 'HEALTH SCORE'",
+      "label_position": "Below the ring, 8px gap",
+      "container_note": "In IMG_2528 the health ring sits in a dedicated card in the KPI row, same dimensions as KPI cards"
+    },
+
+    "cortex_master_card": {
+      "description": "Full-width special card at the top of the AI Agents module. The master orchestrator's command card.",
+      "structure": {
+        "header_row": "CORTEX icon-container (40x40px gold bg, #C8A200 brain/cortex icon) + 'CORTEX' Inter 700 24px #1A1A1A + 'Head Orchestrator' Inter 400 13px #6B6B6B + LIVE badge (green dot + pill) — all left-aligned. Action buttons right-aligned.",
+        "metrics_row": "Three metric blocks: Runs | Average Time | Last Run. Each: label 11px #9A9A9A above, value Inter 700 20px #1A1A1A below. Separated by 1px vertical dividers in #E5E5E0.",
+        "orchestration_bar": "Full-width progress indicator below metrics. Background: #F0F0EB, fill: animated gold gradient. Height: 8px, border-radius: 4px. Represents current Cortex cycle progress.",
+        "action_buttons_row": "Capsule outline buttons: '+Añadir Lead', '◉Nueva Señal', '▣ Crear Tarea', '✎ Nuevo Experimento', '⊕ Buscar Leads', '💬 Ver Mensajes'. Each: border 1px #E5E5E0, border-radius: 8px, padding: 8px 16px, Inter 500 13px, icon prefix 16px.",
+        "playback_controls": "Right side: + (add), pause, play, settings icon buttons. Each 40x40px."
+      },
+      "card_material": {
+        "background": "linear-gradient(135deg, rgba(255,215,0,0.06) 0%, rgba(255,215,0,0.02) 100%) over #FFFFFF",
+        "border": "1px solid rgba(255,215,0,0.25)",
+        "border_radius": "12px",
+        "padding": "24px",
+        "shadow": "0 4px 16px rgba(255,215,0,0.06), 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.80)"
+      },
+      "live_badge": {
+        "dot": "8px #34C759 with pulse animation",
+        "pill": "background: rgba(52,199,89,0.10), border: 1px solid rgba(52,199,89,0.20), color: #34C759, Inter 700 11px, border-radius: 9999px, padding: 2px 10px"
+      }
+    },
+
+    "sub_agent_card": {
+      "description": "Cards for ATLAS, FORGE, HERALD, HUNTER, ORACLE, SCRIBE, etc. Grid of 3 columns.",
+      "structure": {
+        "header": "Agent icon (28px, themed per agent) + agent name (Inter 700 18px #1A1A1A uppercase) + Online badge (top-right, green dot pill). All on same row.",
+        "capability_tags": "Row of pill tags: background: #F0F0EB, border: 1px solid #E5E5E0, border-radius: 6px, padding: 3px 10px, Inter 500 11px #6B6B6B. 6px gap. Examples: 'Capability', 'Redeshing', 'Consistanies'.",
+        "body_text": "Inter 400 13px #6B6B6B, line-height: 1.5, 2-3 lines of current intelligence task description.",
+        "confidence_pills": "OPPORTUNITY/RISK badge + HIGH/MEDIUM severity badge + '85% CONFIDENT' text. All in a horizontal row with 6px gap.",
+        "footer": "'OPERATIONAL LOGIC →' — Inter 600 11px uppercase #9A9A9A + right arrow icon. Clickable to expand."
+      },
+      "card_material": {
+        "background": "#FFFFFF",
+        "border": "1px solid #E5E5E0",
+        "border_radius": "12px",
+        "padding": "20px",
+        "shadow": "0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.80)"
+      },
+      "idle_variant": {
+        "body_text": "Inter 400 13px #9A9A9A — 'Idle'",
+        "capability_tags": "Shown but dimmed — opacity: 0.5"
+      },
+      "agent_icon_treatments": {
+        "ATLAS":   "Compass-rose / satellite dish icon, muted amber tinted container",
+        "FORGE":   "Flame icon, warm orange tinted container",
+        "HERALD":  "Megaphone icon, blue tinted container",
+        "HUNTER":  "Crosshair icon, neutral container",
+        "ORACLE":  "Eye/oracle icon, gold tinted container",
+        "SCRIBE":  "Pen/document icon, neutral container",
+        "CORTEX":  "Brain/circuit icon, gold container (40x40px, #FFD700 background)"
+      }
+    },
+
+    "data_table": {
+      "container": {
+        "border": "1px solid #E5E5E0",
+        "border_radius": "12px",
+        "overflow": "hidden",
+        "background": "#FFFFFF"
+      },
+      "header_row": {
+        "background": "#FAFAF8",
+        "font": "Inter 600 11px uppercase letter-spacing: 0.04em #6B6B6B",
+        "padding": "12px 16px",
+        "border_bottom": "1px solid #E5E5E0"
+      },
+      "data_row": {
+        "height": "48px",
+        "background": "#FFFFFF",
+        "font": "Inter 400 13px #1A1A1A",
+        "padding": "12px 16px",
+        "border_bottom": "1px solid #F0F0EB",
+        "hover_bg": "rgba(255,215,0,0.04) — imperceptible warm gold tint, not solid color"
+      },
+      "numeric_cells": "JetBrains Mono 13px #1A1A1A",
+      "timestamp_cells": "Inter 12px #6B6B6B",
+      "signal_strength_column": {
+        "header_bg": "background: rgba(255,215,0,0.15), border-radius: 4px, padding: 4px 8px — highlights this as THE key intelligence column",
+        "bar_element": {
+          "height": "4px",
+          "border_radius": "2px",
+          "fill": "#FFD700",
+          "track": "#E5E5E0",
+          "max_width": "80px",
+          "width_proportional": "to signal value 0-100"
+        }
+      },
+      "status_dot": {
+        "size": "8px circle",
+        "gap": "4px to label text",
+        "online": "#34C759, shadow: 0 0 4px rgba(52,199,89,0.40)",
+        "processing": "#FFD700, shadow: 0 0 4px rgba(255,215,0,0.40)",
+        "error": "#E53E3E, shadow: 0 0 4px rgba(229,62,62,0.40)",
+        "idle": "#9A9A9A, no shadow"
+      },
+      "no_zebra_striping": true,
+      "no_vertical_dividers": true
+    },
+
+    "quick_action_buttons": {
+      "description": "Horizontal scrollable row of capsule buttons below the hero banner. Observable in IMG_2528 and IMG_2530.",
+      "style": "OUTLINE capsule — NOT filled gold. Common mistake: making these solid yellow. They are outline/ghost.",
+      "spec": {
+        "background": "#FFFFFF",
+        "border": "1px solid #E5E5E0",
+        "border_radius": "9999px",
+        "padding": "8px 20px",
+        "font": "Inter 500 13px #1A1A1A",
+        "icon_prefix": "16px icon, same color as text, 8px gap",
+        "hover": "border-color: #D4D4CF, box-shadow: 0 2px 8px rgba(0,0,0,0.06)"
+      },
+      "examples": ["+ Add Lead", "+ Create Deal", "Run Report", "Create Planner", "Rosion Action", "Get Manage", "OS Trandle"]
+    },
+
+    "primary_cta_button": {
+      "background": "#FFD700",
+      "color": "#1A1A1A",
+      "border": "none",
+      "border_radius": "8px",
+      "padding": "10px 20px",
+      "font": "Inter 600 13px",
+      "shadow": "0 2px 8px rgba(255,215,0,0.20)",
+      "hover": "background: #FFC400, shadow: 0 4px 12px rgba(255,215,0,0.25)",
+      "active": "background: #FFB800",
+      "note": "The only fully gold-filled button. Used for primary actions per module: 'Scan Query' on Prospector, 'EN VIDO' on dark banner CTA."
+    },
+
+    "outline_button": {
+      "background": "transparent",
+      "color": "#1A1A1A",
+      "border": "1px solid #E5E5E0",
+      "border_radius": "8px",
+      "padding": "10px 20px",
+      "font": "Inter 500 13px",
+      "hover": "border-color: #D4D4CF, background: #FAFAF8"
+    },
+
+    "ghost_button": {
+      "background": "transparent",
+      "color": "#6B6B6B",
+      "border": "none",
+      "padding": "8px 12px",
+      "font": "Inter 500 13px",
+      "hover": "background: #F0F0EB, color: #1A1A1A"
+    },
+
+    "toggle_switch": {
+      "track_width": "44px",
+      "track_height": "24px",
+      "track_radius": "12px",
+      "track_off": "#E5E5E0",
+      "track_on": "#FFD700",
+      "thumb_size": "20px",
+      "thumb_color": "#FFFFFF",
+      "thumb_shadow": "0 1px 4px rgba(0,0,0,0.15)",
+      "transition": "200ms ease"
+    },
+
+    "status_badges": {
+      "online": {
+        "background": "rgba(52,199,89,0.10)",
+        "border": "1px solid rgba(52,199,89,0.20)",
+        "color": "#34C759",
+        "border_radius": "9999px",
+        "padding": "2px 10px",
+        "font": "Inter 700 11px",
+        "dot": "6px #34C759 inline"
+      },
+      "live_system": {
+        "background": "transparent",
+        "border": "none",
+        "color": "#34C759",
+        "dot": "8px pulsing #34C759",
+        "text": "Inter 700 11px uppercase 'LIVE'"
+      },
+      "opportunity_tag": {
+        "background": "rgba(255,215,0,0.12)",
+        "border": "1px solid rgba(255,215,0,0.25)",
+        "color": "#C8A200",
+        "border_radius": "6px",
+        "padding": "2px 8px",
+        "font": "Inter 600 11px uppercase"
+      },
+      "risk_tag": {
+        "background": "rgba(229,62,62,0.08)",
+        "border": "1px solid rgba(229,62,62,0.20)",
+        "color": "#E53E3E",
+        "border_radius": "6px",
+        "padding": "2px 8px",
+        "font": "Inter 600 11px uppercase"
+      },
+      "severity_high": {
+        "background": "rgba(229,62,62,0.08)",
+        "border": "1px solid rgba(229,62,62,0.20)",
+        "color": "#E53E3E",
+        "border_radius": "6px",
+        "padding": "2px 8px",
+        "font": "Inter 600 11px uppercase"
+      },
+      "severity_medium": {
+        "background": "rgba(255,159,67,0.08)",
+        "border": "1px solid rgba(255,159,67,0.20)",
+        "color": "#FF9F43",
+        "border_radius": "6px",
+        "padding": "2px 8px",
+        "font": "Inter 600 11px uppercase"
+      },
+      "confidence_text": "Inter 600 11px #6B6B6B — '85% CONFIDENT' inline after severity badge"
+    },
+
+    "capability_tag": {
+      "background": "#F0F0EB",
+      "border": "1px solid #E5E5E0",
+      "color": "#6B6B6B",
+      "border_radius": "6px",
+      "padding": "3px 10px",
+      "font": "Inter 500 11px"
+    },
+
+    "search_bar": {
+      "width": "320px",
+      "height": "40px",
+      "background": "#F0F0EB",
+      "border": "1px solid transparent",
+      "border_radius": "8px",
+      "padding": "0 16px 0 40px",
+      "font": "Inter 400 13px #1A1A1A",
+      "placeholder_color": "#9A9A9A",
+      "icon": "18px search icon, #9A9A9A, positioned left 12px",
+      "focus_state": "border: 1px solid rgba(255,215,0,0.40), box-shadow: 0 0 0 3px rgba(255,215,0,0.10), background: #FFFFFF",
+      "note": "In IMG_2536 the focused search bar has a gold focus ring — this is the key distinction from generic search"
+    },
+
+    "modal": {
+      "overlay": "rgba(0,0,0,0.60) + backdrop-filter: blur(8px)",
+      "panel": {
+        "background": "#FFFFFF",
+        "border": "1px solid #E5E5E0",
+        "border_radius": "16px",
+        "shadow": "0 16px 48px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06)",
+        "max_width": "600px",
+        "padding": "32px"
+      },
+      "header": "border-bottom: 1px solid #E5E5E0, padding-bottom: 16px, Inter 700 18px #1A1A1A + close button top-right",
+      "footer": "border-top: 1px solid #E5E5E0, padding-top: 16px, flex-end, gap: 12px"
+    },
+
+    "map_component": {
+      "provider": "Mapbox",
+      "base_style": {
+        "standard_light": "Warm cream base map matching app palette for Intelligence/World Monitor",
+        "dark_for_prospector": "Dark (#1A1A1A base) map used in Prospector/Scan — observable in IMG_2531. Dark map lets gold overlays maximum contrast."
+      },
+      "gold_overlays": {
+        "polygon_fill": "rgba(255,215,0,0.20) — scan zone polygon fill",
+        "polygon_stroke": "#FFD700 — polygon border, 2px",
+        "intent": "Target territories and scan zones rendered as gold on dark map"
+      },
+      "container": {
+        "border_radius": "12px",
+        "overflow": "hidden",
+        "border": "1px solid #E5E5E0"
+      },
+      "controls": {
+        "zoom_buttons": "White bg, subtle border, positioned top-right, same button spec as outline_button"
+      }
+    },
+
+    "hero_banner": {
+      "description": "Top-of-page system status banner in Control Tower. Two variants: light (IVORY, IMG_2528) and dark (IMG_2533).",
+      "light_variant": {
+        "background": "#FFFFFF",
+        "border": "1px solid #E5E5E0",
+        "wordmark": "Inter 700 48px letter-spacing: -0.03em #1A1A1A — 'OCULOPS'",
+        "subtitle": "Inter 400 16px #6B6B6B — 'system activity summary'",
+        "live_chip": "border: 1px solid #E5E5E0, border-radius: 8px, padding: 8px 16px — 'LIVE / ACTIVE INTELLIGENCE SYSTEM' Inter 600 12px uppercase #6B6B6B. Green dot prefix."
+      },
+      "dark_variant": {
+        "background": "#1A1A1A",
+        "texture": "Topographic contour lines at 8% opacity, warm amber tint",
+        "text": "#FFFFFF",
+        "icon_circle": "56px circle, #FFD700 bg, ⚡ icon #1A1A1A",
+        "title": "Inter 500 14px #FFFFFF — 'system activity summary'",
+        "subtitle": "Inter 400 12px rgba(255,255,255,0.60) — 'live / active intelligence system'",
+        "cta_button": "background: #FFD700, color: #1A1A1A, border-radius: 9999px, padding: 10px 24px, Inter 600 13px — 'EN VIDO →'"
+      }
+    },
+
+    "progress_bar": {
+      "height": "4px",
+      "border_radius": "2px",
+      "track_color": "#E5E5E0",
+      "fill_color": "#FFD700",
+      "usage": "KPI cards bottom edge (SIGNALS card), Cortex orchestration bar (8px tall variant), agent confidence bars"
+    },
+
+    "chart_line": {
+      "sparkline_color": "#FFD700",
+      "sparkline_fill": "rgba(255,215,0,0.08) — area fill below line",
+      "bar_chart_active_bar": "#FFD700",
+      "bar_chart_inactive_bar": "#E5E5E0",
+      "health_chart_area": "#FFD700 stroke on white background, fill: rgba(255,215,0,0.12)",
+      "note": "Charts use gold as the primary data color. The bar chart in IMG_2535 'Hero uncare' shows gold bars with increasing heights Mon-Sat."
+    },
+
+    "select_dropdown": {
+      "background": "#F5F5F0",
+      "border": "1px solid #E5E5E0",
+      "border_radius": "8px",
+      "height": "40px",
+      "padding": "0 12px",
+      "font": "Inter 400 14px #1A1A1A",
+      "caret": "chevron-down 16px #9A9A9A",
+      "focus": "border-color: rgba(255,215,0,0.40), box-shadow: 0 0 0 3px rgba(255,215,0,0.10)",
+      "active_option": "background: rgba(255,215,0,0.10), color: #C8A200 — confirmed by IMG_2535 'Yellow' selected state with gold checkmark"
+    },
+
+    "slider": {
+      "track_height": "4px",
+      "track_radius": "2px",
+      "track_color": "#E5E5E0",
+      "fill_color": "#FFD700",
+      "thumb_size": "16px",
+      "thumb_color": "#FFD700",
+      "thumb_shadow": "0 1px 4px rgba(0,0,0,0.15)",
+      "label_right": "Inter 500 13px #1A1A1A — percentage value"
+    }
+  },
+
+  "motion_system": {
+    "philosophy": "Even in static renders, the interface must FEEL alive. Motion is implied through visual cues: pulsing dots, directional arrows, layered shadows that suggest 'just hovered'. The overall impression is a living, breathing intelligence instrument.",
+    "durations": {
+      "instant":  "0ms",
+      "fast":     "120ms",
+      "base":     "200ms",
+      "slow":     "350ms",
+      "enter":    "300ms",
+      "exit":     "200ms",
+      "pulse":    "2000ms"
+    },
+    "easing": {
+      "standard": "cubic-bezier(0.2, 0, 0, 1)",
+      "enter":    "cubic-bezier(0, 0, 0.2, 1)",
+      "exit":     "cubic-bezier(0.4, 0, 1, 1)",
+      "spring":   "cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    "breathing_status": {
+      "description": "Observable in IMG_2535 annotation: 'Breathing Status Indicator'. Active status indicators scale-pulse.",
+      "animation": "scale(1) → scale(1.2) → scale(1) over 2s ease-in-out infinite",
+      "elements": "LIVE dot in header, agent Online dots, health score ring fill",
+      "css_keyframes": "@keyframes pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.8; } }"
+    },
+    "signal_shimmer": {
+      "description": "Observable in IMG_2535 annotation: 'Live data shimmer'. Gold particles flow along data connections.",
+      "visual": "A moving gradient shimmer on the Cortex orchestration bar and the golden sphere neural connection lines",
+      "css": "background: linear-gradient(90deg, #FFD700 0%, #FFE44D 50%, #FFD700 100%), background-size: 200% 100%, animation: shimmer 2s linear infinite",
+      "css_keyframes": "@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }"
+    },
+    "micro_glow": {
+      "description": "Observable in IMG_2535 annotation: 'Micro glow'. Active elements have a subtle outer glow.",
+      "elements": "Active nav item, selected card, primary CTA button on hover",
+      "css": "box-shadow: 0 0 8px rgba(255,215,0,0.08) — transitioning from 0 on inactive"
+    },
+    "gold_border_pulse": {
+      "description": "The border on the Cortex card oscillates between opacity 0.15 and 0.30 over 3s — makes the card feel like it is breathing with gold energy.",
+      "css": "@keyframes borderPulse { 0%,100% { border-color: rgba(255,215,0,0.15); } 50% { border-color: rgba(255,215,0,0.30); } }"
+    },
+    "card_hover_lift": {
+      "description": "On hover, cards lift slightly — shadow expands from elevation-1 to elevation-2",
+      "shadow_from": "0 2px 8px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03)",
+      "shadow_to": "0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04)",
+      "transition": "box-shadow 200ms ease, transform 200ms ease",
+      "transform": "translateY(-1px)"
+    },
+    "data_refresh_sweep": {
+      "description": "When data refreshes, a golden sweep animation passes across the card from left to right",
+      "css": "A 200ms linear gradient sweep from left (rgba(255,215,0,0.06)) to right (transparent) over the card surface"
+    },
+    "sphere_ambient": {
+      "description": "The golden sphere implies constant slow rotation and particle drift. In static renders: the tendril paths and particle positions are the 'frozen moment' of this animation.",
+      "rotation_speed_implied": "~20 seconds per full rotation — extremely slow, meditative",
+      "particle_drift": "Individual dots drift outward from sphere center on independent curved paths"
+    }
+  },
+
+  "screen_continuity_system": {
+    "persistent_chrome": {
+      "sidebar": "Identical across all screens. Same width, same background, same nav items. Active item changes per screen.",
+      "header": "Height 56px, module icon + title left, search center, LIVE badge right. The module title and icon change per screen.",
+      "live_indicator": "Always visible in header top-right. Green dot pulse never stops."
+    },
+    "golden_sphere_adaptation_per_screen": {
+      "intelligence_module": {
+        "adaptation": "FULL golden sphere hero — the primary, unreduced manifestation",
+        "placement": "Upper-right of content area, 60% width panel, 350-400px tall",
+        "extras": "Neural network diagram shown alongside KPI metrics. The sphere IS the feature."
+      },
+      "control_tower": {
+        "adaptation": "Health score ring — gold arc on gray track. Same gold (#FFD700), same energy, distilled to a ring",
+        "placement": "Left side of KPI metrics row, full card with the ring centered",
+        "extras": "Gold border on MRR primary KPI card"
+      },
+      "ai_agents": {
+        "adaptation": "Cortex master card with gold gradient background and gold border. Agent icon containers use gold for Cortex.",
+        "placement": "Cortex is the sphere-analog — the orchestrating intelligence made visible",
+        "extras": "Gold orchestration progress bar, gold borders on Cortex card"
+      },
+      "pipeline": {
+        "adaptation": "Gold column header for 'Won' / 'Closed Won' kanban column. Gold border on deal cards in that column.",
+        "placement": "Kanban board top column header bar = gold fill",
+        "extras": "Gold progress markers on deal value completion"
+      },
+      "prospector_hub": {
+        "adaptation": "Gold polygon overlays on dark Mapbox map — target scan zones = gold territories",
+        "placement": "Over the entire dark map canvas",
+        "extras": "Gold 'Scan Query' CTA button — the only full gold button on this screen"
+      },
+      "crm": {
+        "adaptation": "Gold signal strength bar column in contacts table. Gold border on top-priority contact row.",
+        "placement": "In the data table, Signal Strength column header gets gold highlight"
+      },
+      "intelligence_signals": {
+        "adaptation": "Signal strength bars (4px tall, #FFD700) in every table row. The spark that flows through the system.",
+        "placement": "Rightmost column in Critical Signals table"
+      },
+      "finance": {
+        "adaptation": "Gold chart line for revenue. Gold fill area under the line chart.",
+        "placement": "Primary chart on Finance module"
+      },
+      "universal_elements": "Active nav item background = gold tint. All primary CTA buttons = gold fill. All progress bars = gold fill. All health rings = gold arc. Toggle switches on = gold track. All focus rings = gold glow."
+    },
+    "data_density_levels": {
+      "command_dense": {
+        "screens": ["Control Tower", "AI Agents", "Intelligence", "Pipeline"],
+        "description": "Maximum information density. KPI grid + hero visualization + data tables all visible simultaneously. No empty space.",
+        "card_gap": "16px",
+        "section_gap": "24px"
+      },
+      "operational_medium": {
+        "screens": ["CRM", "Prospector", "GTM", "Automation", "Messaging"],
+        "description": "Medium density. Primary focus area + supporting data. Some white space for focus.",
+        "card_gap": "20px",
+        "section_gap": "28px"
+      },
+      "analytical_sparse": {
+        "screens": ["Finance", "Reports", "Analytics", "Knowledge"],
+        "description": "Lower density. Chart/visualization dominates. More white space for readability.",
+        "card_gap": "24px",
+        "section_gap": "32px"
+      },
+      "settings_minimal": {
+        "screens": ["Settings", "Billing", "Team Settings"],
+        "description": "Minimal density. Form fields, section headers, generous spacing. Feels premium via restraint.",
+        "card_gap": "24px",
+        "section_gap": "40px"
+      }
+    },
+    "navigation_transition": {
+      "method": "React Router lazy loading — no page reload",
+      "visual": "Content area fades: opacity 0 → 1 over 150ms. Sidebar active item animates background fill.",
+      "sidebar_active_change": "Previous active item fades out gold background 150ms. New active item fades in 150ms. The gold never flashes — it slides."
+    }
+  },
+
+  "icon_system": {
+    "library": "Material Symbols Outlined",
+    "weight": "400-500",
+    "grade": "0",
+    "optical_size": "20",
+    "fill": "0 (outline) — fill 1 only for active states in some contexts",
+    "size_nav": "20px",
+    "size_card_header": "20px",
+    "size_icon_container": "20px inside a 32x40px container",
+    "size_button_prefix": "16px",
+    "size_status_inline": "16px",
+    "color_default": "#6B6B6B",
+    "color_active_nav": "#C8A200",
+    "color_semantic": "matches semantic text color per context",
+    "rule": "NO emoji. All icons must be clean, minimal SVG or Material Symbols. Icon containers use semantic muted backgrounds."
+  },
+
+  "anti_patterns": {
+    "what_this_design_is_not": {
+      "NOT_flat_material": "No single-plane depth. No Material Design flat card shadows (0 1px 3px). Every surface must have the neumorphic shadow stack with inner highlight.",
+      "NOT_glassmorphism": "No frosted glass on card surfaces. Glass (blur + translucency) is ONLY for modal overlays and tooltips.",
+      "NOT_generic_saas": "No blue primary color. No purple. No green primary. No gradient hero backgrounds. Yellow is the sole brand accent.",
+      "NOT_dark_warroom": "This is IVORY — warm white dominant. The dark variant (IMG_2533) is one specific screen treatment (Control Tower hero banner), not the system aesthetic.",
+      "NOT_noisy_typography": "Maximum 3 text color levels (primary #1A1A1A, secondary #6B6B6B, tertiary #9A9A9A). No rainbow of text colors. No decorative fonts.",
+      "NOT_wireframe": "The current app (current-ivory screenshots) IS the wireframe quality to surpass. The target is 5-10x more visual weight and component richness.",
+      "NOT_50mo_saas": {
+        "50mo_signals": [
+          "Generic Material/Tailwind component library aesthetic",
+          "All cards same shadow, same border, same weight — no visual hierarchy",
+          "No brand signature element (= no golden sphere, no health ring, no signal bars)",
+          "Search bar: generic gray input with no personality",
+          "Empty agent module with just 4 numbers and no cards",
+          "Sidebar: flat #FFFFFF background, generic text links",
+          "No icon containers — just bare icons",
+          "No live indicator pulse",
+          "Quick actions: solid yellow pill buttons instead of capsule outline"
+        ],
+        "5000mo_signals": [
+          "Warm cream sidebar distinct from content white",
+          "Inner highlight on every card top edge",
+          "Golden sphere as recurring visual signature",
+          "Every agent has a rich card with capability tags + intelligence body + confidence badges",
+          "Signal strength bars in data tables",
+          "Health score ring with gold arc",
+          "Live badge with pulse animation",
+          "Icon containers with semantic muted backgrounds",
+          "Cortex card with gold gradient background",
+          "Search bar with gold focus ring",
+          "Typography: tight letter-spacing on headlines, uppercase section labels with 0.2em tracking",
+          "Capsule outline quick actions (not solid fills)",
+          "Neural network visualization on Intelligence screen",
+          "Floating data labels on sphere canvas"
+        ]
+      }
+    }
+  },
+
+  "stitch_generation_directives": {
+    "model_behavior": "When generating any OCULOPS screen, treat this file as the law. Do not invent visual treatments not specified here. Do not default to generic UI patterns.",
+    "mandatory_per_screen": [
+      "Sidebar: warm cream (#F5F0E8→#F0EBE0 gradient), correct active state (gold background + gold border)",
+      "Header: 56px, search center, LIVE badge top-right with green pulse dot",
+      "Cards: shadow stack with inner highlight (inset 0 1px 0 rgba(255,255,255,0.80))",
+      "Gold only where specified — not as general decoration",
+      "Typography: Inter throughout, correct weights and sizes per token"
+    ],
+    "screen_specific_requirements": {
+      "control_tower": "Hero banner (dark or light variant) + 6 KPI cards in 2 rows + health score ring + quick actions row. Use dark banner variant for premium signal.",
+      "ai_agents": "Cortex master card full-width (gold gradient border) + 3-col sub-agent grid (ATLAS, FORGE, HERALD row 1 / HUNTER, ORACLE, SCRIBE row 2). Each sub-agent card: name + online badge + capability tags + intelligence body + confidence pills + OPERATIONAL LOGIC footer.",
+      "intelligence": "Golden sphere hero panel (60% width, 350-400px tall) + KPI cards alongside + Critical Signals data table with signal strength bars in last column.",
+      "pipeline": "Kanban board: columns for each deal stage. Won column header = gold. Deal cards in each column. Pipeline value summary at top.",
+      "crm": "Data table with avatar column + name + company + signal strength bars + status dot. Search bar. Create contact CTA.",
+      "prospector": "Dark Mapbox map with gold polygon overlays. Flight Command panel right side with toggles. Gold 'Scan Query' CTA button.",
+      "finance": "Gold line chart as hero. Supporting KPI cards. Financial table."
+    },
+    "quality_checklist": [
+      "Does the sidebar have warm cream color distinct from content white?",
+      "Does the active nav item have gold background tint AND gold border?",
+      "Do all cards have the inner highlight (top edge white line)?",
+      "Is the health score ring's arc in #FFD700?",
+      "Does the Cortex card have a gold gradient background?",
+      "Do agent sub-cards show capability tags, intelligence body text, and confidence pills?",
+      "Does the Intelligence screen show the golden sphere?",
+      "Are signal strength bars present in data tables?",
+      "Are quick action buttons OUTLINE capsules (not solid gold)?",
+      "Is the LIVE badge visible in the header with a green pulse dot?",
+      "Are KPI icon containers using semantic muted color backgrounds?",
+      "Is gold used sparingly (max 5% visual area)?",
+      "Are section headers UPPERCASE, 11px, 0.20em tracking, #9A9A9A?",
+      "Are headlines using tight letter-spacing (-0.015em to -0.03em)?"
+    ]
+  }
+}

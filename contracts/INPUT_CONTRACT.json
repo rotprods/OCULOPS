@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oculops.local/contracts/input-contract.json",
+  "title": "OCULOPS Input Contract",
+  "type": "object",
+  "$defs": {
+    "base_trace": {
+      "type": "object",
+      "required": [
+        "correlation_id"
+      ],
+      "properties": {
+        "correlation_id": {
+          "type": "string",
+          "minLength": 8
+        },
+        "pipeline_run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "step_run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "goal_request": {
+      "type": "object",
+      "required": [
+        "goal"
+      ],
+      "properties": {
+        "goal": {
+          "type": "string",
+          "minLength": 3
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "copilot_message": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "history": {
+          "type": "array"
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "pipeline_create_run": {
+      "type": "object",
+      "required": [
+        "template_code_name"
+      ],
+      "properties": {
+        "template_code_name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "goal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "context": {
+          "type": "object"
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "atlas_cycle": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "lat": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "lng": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "radius": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "hunter_cycle": {
+      "type": "object",
+      "properties": {
+        "scan_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limit": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "outreach_cycle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limit": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "outreach_send": {
+      "type": "object",
+      "required": [
+        "conversation_id",
+        "channel",
+        "body"
+      ],
+      "properties": {
+        "conversation_id": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string",
+          "enum": [
+            "email",
+            "whatsapp"
+          ]
+        },
+        "subject": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "critic_evaluate": {
+      "type": "object",
+      "required": [
+        "artifact_type",
+        "artifact_payload",
+        "impact_level"
+      ],
+      "properties": {
+        "artifact_type": {
+          "type": "string"
+        },
+        "artifact_payload": {
+          "type": "object"
+        },
+        "impact_level": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    },
+    "simulation_request": {
+      "type": "object",
+      "required": [
+        "target",
+        "scenario"
+      ],
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "scenario": {
+          "type": "object"
+        },
+        "apply_changes": {
+          "type": "boolean"
+        },
+        "trace": {
+          "$ref": "#/$defs/base_trace"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

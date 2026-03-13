@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps YOLO: Brutalist Grid</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#EAB308",
+                        "background-dark": "#050505",
+                        "brutalist-white": "#FFFFFF",
+                    },
+                    fontFamily: {
+                        mono: ["'Space Mono'", "monospace"],
+                        brutal: ["'JetBrains Mono'", "monospace"],
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">@layer base {
+    body {
+        @apply bg-background-dark text-white font-mono overflow-hidden h-screen w-screen uppercase;
+        }
+    }
+.brutalist-border {
+    border: 1px solid #FFF
+    }
+.grid-bg {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px
+    }
+.blueprint-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAamuhcsgYtciRmusSkxy39MrlZ3e-mplBf9Jlzi8bKkm11rRdF4G_mB2nZx2MTJrgUIfQbixKVFe7b_yl9sPBr6jLo7caw8iHibguIF1dQRaPJpIcTo8CxHAt77iFq_UFlrZUoZInzf5RKAYDxHDOQt6dkTDW82g7pO1O-4CWW3dq1SsQNS8H7apKTr3SC7XuRwfrIC5xg4DuJAhenoZ_0b5QLh483p4_ppRU9nYRShDdz7yP8lAmQDs6xWPmhuXJvqvbWSebPDZ23);
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: overlay;
+    opacity: 0.15;
+    filter: grayscale(1) contrast(200%);
+    z-index: -1
+    }
+.neural-vector {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, #FFF 10px, #FFF 11px);
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    z-index: -2
+    }
+.control-panel-btn {
+    @apply flex items-center justify-center border-r border-white/20 px-6 transition-colors hover: bg-primary hover: text-black h-full;
+    }
+.data-box {
+    @apply bg-white text-black p-4 brutalist-border flex flex-col justify-between;
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="grid-bg">
+<div class="blueprint-overlay"></div>
+<div class="neural-vector"></div>
+<header class="fixed top-0 left-0 w-full h-16 bg-black brutalist-border border-t-0 border-x-0 z-50 flex items-center justify-between px-6">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-black text-xl font-bold">terminal</span>
+</div>
+<h1 class="font-brutal text-2xl tracking-tighter leading-none">OCULOPS <span class="text-primary">V.01</span></h1>
+</div>
+<nav class="flex h-full items-center">
+<button class="control-panel-btn bg-primary/10 text-primary">
+<span class="material-symbols-outlined">toggle_on</span>
+<span class="ml-2 text-[10px] font-bold">SYSTEM_AUTO</span>
+</button>
+<button class="control-panel-btn">
+<span class="material-symbols-outlined">toggle_off</span>
+<span class="ml-2 text-[10px] font-bold">GRID_SYNC</span>
+</button>
+<button class="control-panel-btn">
+<span class="material-symbols-outlined">sensors</span>
+<span class="ml-2 text-[10px] font-bold">UPLINK</span>
+</button>
+<button class="control-panel-btn border-r-0">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="ml-2 text-[10px] font-bold">DEBUG</span>
+</button>
+</nav>
+<div class="font-brutal text-xl">
+            22:14:05 <span class="text-[10px] text-white/50">UTC</span>
+</div>
+</header>
+<main class="relative h-screen pt-16 pb-12 px-6 flex flex-col gap-6">
+<div class="flex-1 grid grid-cols-12 gap-6 items-stretch">
+<div class="col-span-3 flex flex-col gap-6">
+<div class="data-box h-48">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-bold">GLOBAL THREAT LEVEL</span>
+<span class="material-symbols-outlined text-sm">shield</span>
+</div>
+<div class="font-brutal text-7xl leading-none tracking-tighter">LOW</div>
+<div class="h-1 bg-black/10 w-full">
+<div class="h-full bg-black w-1/4"></div>
+</div>
+</div>
+<div class="data-box flex-1">
+<div class="text-[10px] font-bold mb-4">FLEET HEALTH METRICS</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[10px] mb-1">
+<span>ALPHA-CORE</span>
+<span>98.4%</span>
+</div>
+<div class="h-4 brutalist-border p-[1px] bg-white">
+<div class="h-full bg-primary w-[98.4%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1">
+<span>BETA-CORE</span>
+<span>72.1%</span>
+</div>
+<div class="h-4 brutalist-border p-[1px] bg-white">
+<div class="h-full bg-black w-[72.1%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-6 brutalist-border bg-black/40 relative flex flex-col overflow-hidden">
+<div class="p-2 border-b border-white flex justify-between bg-white text-black font-bold text-[10px]">
+<span>NEURAL_NETWORK_TOPOLOGY_044</span>
+<span>RNDR: 60FPS</span>
+</div>
+<div class="flex-1 relative flex items-center justify-center">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+<svg fill="none" height="100%" viewBox="0 0 800 400" width="100%" xmlns="http://www.w3.org/2000/svg">
+<circle cx="400" cy="200" r="150" stroke="white" stroke-width="0.5"></circle>
+<circle cx="400" cy="200" r="100" stroke="white" stroke-width="0.5"></circle>
+<line stroke="white" stroke-width="0.5" x1="0" x2="800" y1="200" y2="200"></line>
+<line stroke="white" stroke-width="0.5" x1="400" x2="400" y1="0" y2="400"></line>
+<path d="M100 100 L700 300 M100 300 L700 100" stroke="white" stroke-dasharray="4 4" stroke-width="0.5"></path>
+</svg>
+</div>
+<div class="text-center z-10">
+<div class="font-brutal text-8xl text-primary opacity-50">OCULOPS</div>
+<div class="font-mono text-xs tracking-[0.5em] mt-2">ORBITAL_COMMAND_STRUCTURE</div>
+</div>
+</div>
+<div class="p-4 border-t border-white grid grid-cols-3 gap-4">
+<div class="text-[10px]">
+<div class="text-white/50">COORDINATES</div>
+<div class="text-white font-bold">35.6895 N / 139.6917 E</div>
+</div>
+<div class="text-[10px]">
+<div class="text-white/50">ENCRYPTION</div>
+<div class="text-white font-bold">AES-256 BIT ROTATION</div>
+</div>
+<div class="text-[10px] text-right">
+<div class="text-white/50">STATUS</div>
+<div class="text-primary font-bold">SYNC_COMPLETE</div>
+</div>
+</div>
+</div>
+<div class="col-span-3 flex flex-col gap-6">
+<div class="data-box h-48">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-bold">ACTIVE PINGS</span>
+<span class="material-symbols-outlined text-sm">radar</span>
+</div>
+<div class="font-brutal text-7xl leading-none tracking-tighter">1,248</div>
+<div class="text-[10px] font-bold text-right text-primary">+14% REL_TO_PEAK</div>
+</div>
+<div class="data-box flex-1">
+<div class="text-[10px] font-bold mb-4">LOG_OUTPUT_FEED</div>
+<div class="font-mono text-[9px] space-y-2 leading-tight">
+<p class="text-black/60">14:05:01 &gt; SYNCING_ORBITAL_PLANE...</p>
+<p class="text-black font-bold">14:05:05 &gt; HANDSHAKE_ACCEPTED [0.992]</p>
+<p class="text-black/60">14:05:10 &gt; FETCHING_TELEMETRY_DATAPOINTS</p>
+<p class="text-black">14:05:12 &gt; NODE_0041_ALPHA CONNECTED</p>
+<p class="text-black/60">14:05:22 &gt; STATION_GAMMA PING RESPONSE 12MS</p>
+<div class="pt-2 border-t border-black/10 mt-2">
+<span class="bg-black text-white px-1">CURSOR_WAITING_</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 w-full h-10 bg-white text-black brutalist-border border-b-0 border-x-0 z-50 flex items-center justify-between px-6 text-[10px] font-bold">
+<div class="flex gap-8">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-black animate-pulse"></span>
+                SYSTEM_STABLE
+            </div>
+<div>LINK_ID: ORBITAL_7G_001</div>
+</div>
+<div class="flex gap-6">
+<button class="hover:underline">RE-CALIBRATE</button>
+<button class="hover:underline">NETWORK_FLUSH</button>
+<button class="bg-black text-white px-4 h-full flex items-center">TERMINATE_SESSION</button>
+</div>
+</footer>
+
+</body></html>

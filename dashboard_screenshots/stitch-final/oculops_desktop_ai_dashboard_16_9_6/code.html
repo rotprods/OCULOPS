@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS System Watchtower Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --parchment: #F5F0E8;
+            --ivory: #FAFAF8;
+            --gold: #FFD700;
+            --border: #E5E5E0;
+            --text-main: #1C1C1A;
+            --text-muted: #70706B;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-main);
+        }
+        .neumorphic-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .sidebar-active {
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid var(--gold);
+        }
+        .gold-sparkline {
+            background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+            height: 2px;
+        }
+        .uptime-bar {
+            height: 4px;
+            background: #E5E5E0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .uptime-fill {
+            height: 100%;
+            background: var(--gold);
+        }
+        .health-ring {
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="h-[900px] w-[1440px] flex overflow-hidden mx-auto border-x border-[var(--border)] shadow-2xl">
+<aside class="w-[240px] bg-[var(--parchment)] border-r border-[var(--border)] flex flex-col">
+<div class="h-14 flex items-center px-6 border-b border-[var(--border)] bg-white/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold)] text-xl font-bold">visibility</span>
+<span class="font-bold tracking-tight text-lg">OCULOPS</span>
+</div>
+</div>
+<nav class="flex-1 py-6">
+<div class="px-4 mb-8">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-4 px-2">Monitoring</p>
+<div class="space-y-1">
+<a class="sidebar-active flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm font-semibold" href="#">
+<span class="material-symbols-outlined text-lg">eyeglasses</span>
+                        Watchtower
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm text-[var(--text-muted)] hover:bg-white/40 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+                        Signal Flow
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm text-[var(--text-muted)] hover:bg-white/40 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">hub</span>
+                        Fleet Topology
+                    </a>
+</div>
+</div>
+<div class="px-4">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-4 px-2">Systems</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm text-[var(--text-muted)] hover:bg-white/40 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">settings_input_component</span>
+                        Core Engine
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm text-[var(--text-muted)] hover:bg-white/40 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">security</span>
+                        Encrypted Logs
+                    </a>
+</div>
+</div>
+</nav>
+<div class="p-6 border-t border-[var(--border)]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-white border border-[var(--border)] flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Director J. Doe</p>
+<p class="text-[10px] text-[var(--text-muted)] truncate">L7 Clearance</p>
+</div>
+<span class="material-symbols-outlined text-sm text-[var(--text-muted)]">settings</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-14 bg-white border-b border-[var(--border)] flex items-center justify-between px-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--text-muted)]">eyeglasses</span>
+<h2 class="font-semibold text-sm tracking-tight">Watchtower Control Panel</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest">Live Feed Active</span>
+</div>
+<div class="h-4 w-px bg-[var(--border)]"></div>
+<span class="text-[10px] font-mono font-medium text-[var(--text-muted)] uppercase">14:22:08 UTC</span>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 space-y-6 no-scrollbar">
+<section class="neumorphic-card rounded-xl p-6 relative overflow-hidden">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.2em] mb-1">Status Overview</p>
+<h1 class="text-2xl font-bold tracking-tight">System Watchtower</h1>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-[var(--gold)]">STABLE</span>
+</div>
+</div>
+<div class="mt-6 w-full h-[2px] bg-[var(--border)] rounded-full overflow-hidden">
+<div class="h-full w-2/3 bg-[var(--gold)] rounded-full opacity-80 shadow-[0_0_10px_rgba(255,215,0,0.5)]"></div>
+</div>
+<div class="absolute right-6 top-1/2 -translate-y-1/2 opacity-10">
+<svg height="40" viewBox="0 0 200 40" width="200">
+<path d="M0 20 L40 20 L50 5 L60 35 L70 20 L130 20 L140 0 L150 40 L160 20 L200 20" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+</section>
+<div class="grid grid-cols-4 gap-6">
+<div class="neumorphic-card rounded-xl p-5 border-l-4 border-l-[var(--gold)]">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-2">Network State</p>
+<p class="text-xl font-bold tracking-tight">7/7 AGENTS ONLINE</p>
+</div>
+<div class="neumorphic-card rounded-xl p-5">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-2">Latency Index</p>
+<p class="text-xl font-bold tracking-tight">12.4ms <span class="text-[10px] text-green-600 font-bold ml-1">↓ 2%</span></p>
+</div>
+<div class="neumorphic-card rounded-xl p-5">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-2">Threat Mitigation</p>
+<p class="text-xl font-bold tracking-tight">100% SECURE</p>
+</div>
+<div class="neumorphic-card rounded-xl p-5">
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-2">System Load</p>
+<p class="text-xl font-bold tracking-tight">24.8% <span class="text-[10px] text-[var(--gold)] font-bold ml-1">OPTIMAL</span></p>
+</div>
+</div>
+<section>
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.2em]">Agent Health Matrix</h3>
+<span class="text-[10px] text-[var(--text-muted)]">30-DAY METRICS</span>
+</div>
+<div class="grid grid-cols-7 gap-4">
+<div class="neumorphic-card rounded-xl p-4 flex flex-col items-center text-center">
+<div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+<div class="absolute inset-0 health-ring opacity-20"></div>
+<div class="absolute inset-0 health-ring" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); border-right-color: transparent;"></div>
+<span class="text-xs font-bold">98%</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold tracking-tighter">ATLAS</span>
+</div>
+<div class="w-full mt-3 h-[1px] gold-sparkline opacity-40"></div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex flex-col items-center text-center">
+<div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+<div class="absolute inset-0 health-ring opacity-20"></div>
+<div class="absolute inset-0 health-ring"></div>
+<span class="text-xs font-bold">100%</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold tracking-tighter">HUNTER</span>
+</div>
+<div class="w-full mt-3 h-[1px] gold-sparkline opacity-40"></div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex flex-col items-center text-center">
+<div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+<div class="absolute inset-0 health-ring opacity-20"></div>
+<div class="absolute inset-0 health-ring" style="clip-path: polygon(0 0, 100% 0, 100% 92%, 0 92%);"></div>
+<span class="text-xs font-bold">92%</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold tracking-tighter">FALCON</span>
+</div>
+<div class="w-full mt-3 h-[1px] gold-sparkline opacity-40"></div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex flex-col items-center text-center">
+<div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+<div class="absolute inset-0 health-ring opacity-20"></div>
+<div class="absolute inset-0 health-ring" style="clip-path: polygon(0 0, 100% 0, 100% 99%, 0 99%);"></div>
+<span class="text-xs font-bold">99%</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold tracking-tighter">GHOST</span>
+</div>
+<div class="w-full mt-3 h-[1px] gold-sparkline opacity-40"></div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex flex-col items-center text-center border-t-2 border-t-[var(--gold)]">
+<div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+<div class="absolute inset-0 health-ring opacity-20"></div>
+<div class="absolute inset-0 health-ring" style="clip-path: polygon(0 0, 100% 0, 100% 88%, 0 88%);"></div>
+<span class="text-xs font-bold">88%</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)]"></div>
+<span class="text-[10px] font-bold tracking-tighter text-[var(--gold)]">TITAN</span>
+</div>
+<div class="w-full mt-3 h-[1px] gold-sparkline"></div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex flex-col items-center text-center">
+<div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+<div class="absolute inset-0 health-ring opacity-20"></div>
+<div class="absolute inset-0 health-ring"></div>
+<span class="text-xs font-bold">100%</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold tracking-tighter">NEON</span>
+</div>
+<div class="w-full mt-3 h-[1px] gold-sparkline opacity-40"></div>
+</div>
+<div class="neumorphic-card rounded-xl p-4 flex flex-col items-center text-center">
+<div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+<div class="absolute inset-0 health-ring opacity-20"></div>
+<div class="absolute inset-0 health-ring" style="clip-path: polygon(0 0, 100% 0, 100% 95%, 0 95%);"></div>
+<span class="text-xs font-bold">95%</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold tracking-tighter">VECTOR</span>
+</div>
+<div class="w-full mt-3 h-[1px] gold-sparkline opacity-40"></div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-12 gap-6">
+<section class="col-span-7 neumorphic-card rounded-xl flex flex-col overflow-hidden">
+<div class="p-4 border-b border-[var(--border)] bg-slate-50/50 flex justify-between items-center">
+<h3 class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">Recent System Alerts</h3>
+<button class="text-[10px] font-bold text-[var(--text-muted)] hover:text-black">VIEW ALL</button>
+</div>
+<div class="divide-y divide-[var(--border)] overflow-y-auto max-h-[220px]">
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50/30 transition-colors">
+<div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+<span class="text-[10px] font-mono font-bold text-[var(--text-muted)] w-20">14:15:22</span>
+<span class="text-xs flex-1">Agent TITAN re-synchronized with primary relay cluster.</span>
+<span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-[var(--text-muted)]">INFO</span>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50/30 transition-colors">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)]"></div>
+<span class="text-[10px] font-mono font-bold text-[var(--text-muted)] w-20">14:02:10</span>
+<span class="text-xs flex-1 font-semibold">Minor packet drift detected in Sector G-9. Calibrating...</span>
+<span class="text-[10px] font-bold bg-yellow-50 px-2 py-0.5 rounded text-[var(--gold)]">NOTICE</span>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50/30 transition-colors">
+<div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+<span class="text-[10px] font-mono font-bold text-[var(--text-muted)] w-20">13:44:59</span>
+<span class="text-xs flex-1">Global integrity check completed. No deviations found.</span>
+<span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-[var(--text-muted)]">SYSTEM</span>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50/30 transition-colors">
+<div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+<span class="text-[10px] font-mono font-bold text-[var(--text-muted)] w-20">13:12:04</span>
+<span class="text-xs flex-1">Satellite handshake established via OCULOPS-7.</span>
+<span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-[var(--text-muted)]">INFO</span>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50/30 transition-colors">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-mono font-bold text-[var(--text-muted)] w-20">12:55:31</span>
+<span class="text-xs flex-1">Watchtower encryption keys rotated successfully.</span>
+<span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-[var(--text-muted)]">SECURE</span>
+</div>
+</div>
+</section>
+<section class="col-span-5 neumorphic-card rounded-xl p-6 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">30-Day Uptime Log</h3>
+</div>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-bold text-[var(--text-muted)]">
+<span>ATLAS GROUP</span>
+<span>99.9%</span>
+</div>
+<div class="uptime-bar"><div class="uptime-fill w-full"></div></div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-bold text-[var(--text-muted)]">
+<span>HUNTER/VECTOR</span>
+<span>99.8%</span>
+</div>
+<div class="uptime-bar"><div class="uptime-fill w-[99.8%]"></div></div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-bold text-[var(--text-muted)]">
+<span>TITAN UNIT</span>
+<span>97.2%</span>
+</div>
+<div class="uptime-bar"><div class="uptime-fill w-[97.2%]"></div></div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-bold text-[var(--text-muted)]">
+<span>GHOST CORE</span>
+<span>100.0%</span>
+</div>
+<div class="uptime-bar"><div class="uptime-fill w-full"></div></div>
+</div>
+</div>
+<div class="mt-auto pt-4 flex justify-between items-center">
+<div class="flex gap-1">
+<div class="w-1 h-3 bg-[var(--gold)]"></div>
+<div class="w-1 h-3 bg-[var(--gold)]"></div>
+<div class="w-1 h-3 bg-[var(--gold)]"></div>
+<div class="w-1 h-3 bg-[var(--gold)] opacity-30"></div>
+<div class="w-1 h-3 bg-[var(--gold)]"></div>
+</div>
+<p class="text-[9px] font-mono text-[var(--text-muted)]">RELAY NODE: SYD-442</p>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+</body></html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Decision Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --sidebar-bg: #F5F0E8;
+            --canvas-bg: #FAFAF8;
+            --card-bg: #FFFFFF;
+            --border-color: #E5E5E0;
+            --gold-accent: #FFD700;
+            --text-primary: #1A1A1A;
+            --text-secondary: #666660;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas-bg);
+            color: var(--text-primary);
+        }
+        .neumorphic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .gold-border {
+            border: 1px solid var(--gold-accent);
+        }
+        .gold-bg {
+            background-color: var(--gold-accent);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D1D1CB;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+<aside class="w-[240px] h-full bg-[#F5F0E8] border-r border-[#E5E5E0] flex flex-col shrink-0">
+<div class="p-6 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold-accent)] font-bold">blur_on</span>
+<span class="font-bold tracking-tight text-lg">OCULOPS</span>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<div class="text-[10px] font-bold text-[#99948D] px-3 mb-2 tracking-widest uppercase">System</div>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[#666660] hover:bg-[#EBE5DA] rounded transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span>Control Tower</span>
+</a>
+<div class="mt-8 text-[10px] font-bold text-[#99948D] px-3 mb-2 tracking-widest uppercase">Intelligence</div>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-semibold bg-white text-[var(--text-primary)] rounded shadow-sm border border-[#E5E5E0]" href="#">
+<span class="material-symbols-outlined text-[20px] text-[var(--gold-accent)]" style="font-variation-settings: 'FILL' 1">balance</span>
+<span>Decisions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[#666660] hover:bg-[#EBE5DA] rounded transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span>Cortex</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-[#666660] hover:bg-[#EBE5DA] rounded transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">query_stats</span>
+<span>Markets</span>
+</a>
+</nav>
+<div class="p-4 border-t border-[#E5E5E0]">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-[#E5E0D8] border border-[#D5D0C8] flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-semibold truncate">James D.</p>
+<p class="text-[10px] text-[#99948D] uppercase tracking-wider">Premium Access</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col bg-[#FAFAF8] overflow-hidden">
+<header class="h-[56px] border-b border-[#E5E5E0] bg-white px-8 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--text-primary)]">balance</span>
+<h1 class="text-sm font-semibold uppercase tracking-widest">Decisions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-1.5 border border-[#E5E5E0] text-[11px] font-bold uppercase tracking-wider hover:bg-gray-50 transition-all">
+                    Export Decision Log
+                </button>
+<button class="flex items-center gap-2 px-4 py-1.5 gold-bg text-black text-[11px] font-bold uppercase tracking-wider shadow-sm hover:brightness-95 transition-all">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    Log Decision
+                </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<div class="max-w-[1200px] mx-auto space-y-8">
+<section class="neumorphic-card p-8 relative overflow-hidden">
+<div class="absolute top-8 right-8 w-48 flex items-center gap-1 opacity-60">
+<div class="h-1 bg-[var(--gold-accent)] w-4 rounded-full"></div>
+<div class="h-3 bg-[var(--gold-accent)] w-1 rounded-full"></div>
+<div class="h-6 bg-[var(--gold-accent)] w-1 rounded-full"></div>
+<div class="h-4 bg-[var(--gold-accent)] w-1 rounded-full"></div>
+<div class="h-8 bg-[var(--gold-accent)] w-1 rounded-full"></div>
+<div class="h-5 bg-[var(--gold-accent)] w-1 rounded-full"></div>
+<div class="h-2 bg-[var(--gold-accent)] w-1 rounded-full"></div>
+<div class="h-1 bg-[var(--gold-accent)] w-16 rounded-full"></div>
+</div>
+<div>
+<h2 class="text-[24px] font-bold tracking-tight mb-2">Decision Intelligence</h2>
+<p class="text-[var(--text-secondary)] text-sm max-w-lg leading-relaxed">
+                            Augmenting executive judgment through autonomous market signal analysis and Bayesian probability modeling.
+                        </p>
+</div>
+</section>
+<section class="grid grid-cols-3 gap-6">
+<div class="neumorphic-card p-6 gold-border">
+<p class="text-[10px] font-bold text-[var(--text-secondary)] tracking-widest uppercase mb-1">Pending Decisions</p>
+<div class="text-3xl font-light">8</div>
+</div>
+<div class="neumorphic-card p-6">
+<p class="text-[10px] font-bold text-[var(--text-secondary)] tracking-widest uppercase mb-1">Decisions Made</p>
+<div class="text-3xl font-light">24</div>
+</div>
+<div class="neumorphic-card p-6">
+<p class="text-[10px] font-bold text-[var(--text-secondary)] tracking-widest uppercase mb-1">Positive Outcomes</p>
+<div class="text-3xl font-light">78%</div>
+</div>
+</section>
+<section class="neumorphic-card overflow-hidden">
+<div class="px-6 py-4 border-b border-[#E5E5E0] bg-[#FAFAF8]">
+<h3 class="text-xs font-bold uppercase tracking-widest">Active Decision Log</h3>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[10px] text-[#99948D] uppercase tracking-wider border-b border-[#E5E5E0]">
+<th class="px-6 py-3 font-semibold">Category</th>
+<th class="px-6 py-3 font-semibold">Status</th>
+<th class="px-6 py-3 font-semibold">Options</th>
+<th class="px-6 py-3 font-semibold">Confidence</th>
+<th class="px-6 py-3 font-semibold text-right">Outcomes</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-[#F0F0EE] hover:bg-[#FDFDFD]">
+<td class="px-6 py-4 font-medium">Market Entry</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 bg-[#FFFCE6] text-[#A68900] text-[10px] font-bold rounded uppercase">In Review</span>
+</td>
+<td class="px-6 py-4 text-[#666660]">3 Vectors</td>
+<td class="px-6 py-4">
+<div class="flex gap-0.5">
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+<div class="w-1 h-3 bg-[#E5E5E0] rounded-full opacity-30"></div>
+</div>
+</td>
+<td class="px-6 py-4 text-right text-[#666660]">--</td>
+</tr>
+<tr class="border-b border-[#F0F0EE] hover:bg-[#FDFDFD]">
+<td class="px-6 py-4 font-medium">Capital Allocation</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 bg-[#E6F5EC] text-[#008F39] text-[10px] font-bold rounded uppercase">Executed</span>
+</td>
+<td class="px-6 py-4 text-[#666660]">Tier 1 Buyback</td>
+<td class="px-6 py-4">
+<div class="flex gap-0.5">
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+</div>
+</td>
+<td class="px-6 py-4 text-right text-green-600 font-medium">+12.4%</td>
+</tr>
+<tr class="hover:bg-[#FDFDFD]">
+<td class="px-6 py-4 font-medium">Platform Scaling</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 bg-[#F0F0EE] text-[#666660] text-[10px] font-bold rounded uppercase">Archived</span>
+</td>
+<td class="px-6 py-4 text-[#666660]">Cloud Migrat.</td>
+<td class="px-6 py-4">
+<div class="flex gap-0.5">
+<div class="w-1 h-3 gold-bg rounded-full"></div>
+<div class="w-1 h-3 bg-[#E5E5E0] rounded-full opacity-30"></div>
+<div class="w-1 h-3 bg-[#E5E5E0] rounded-full opacity-30"></div>
+<div class="w-1 h-3 bg-[#E5E5E0] rounded-full opacity-30"></div>
+</div>
+</td>
+<td class="px-6 py-4 text-right text-[#666660]">Neutral</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold uppercase tracking-widest text-[#99948D]">Current Analysis: Market Entry EU</h3>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<div class="neumorphic-card p-6 flex flex-col h-full bg-[#FAFAF8]/50 opacity-80">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-[#99948D] mb-1">Option A</p>
+<h4 class="font-bold">Direct Acquisition</h4>
+</div>
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="20" cy="20" fill="none" r="18" stroke="#E5E5E0" stroke-width="2"></circle>
+<circle cx="20" cy="20" fill="none" r="18" stroke="#FFD700" stroke-dasharray="113" stroke-dashoffset="65" stroke-width="2"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold">42%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8 flex-1">
+<div>
+<p class="text-[9px] font-bold text-green-600 uppercase tracking-widest mb-1">Pros</p>
+<p class="text-xs text-[#666660]">Immediate market share, existing infrastructure.</p>
+</div>
+<div>
+<p class="text-[9px] font-bold text-red-600 uppercase tracking-widest mb-1">Cons</p>
+<p class="text-xs text-[#666660]">High capital intensity, integration complexity.</p>
+</div>
+</div>
+<button class="w-full py-2 border border-[#E5E5E0] text-[10px] font-bold uppercase tracking-wider hover:bg-white transition-all">Review</button>
+</div>
+<div class="neumorphic-card p-6 flex flex-col h-full ring-1 ring-[var(--gold-accent)] relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--gold-accent)] text-black text-[9px] font-bold px-3 py-1 uppercase tracking-widest rounded-full">AI Recommendation</div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-[#99948D] mb-1">Option B</p>
+<h4 class="font-bold">Organic Expansion</h4>
+</div>
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="20" cy="20" fill="none" r="18" stroke="#E5E5E0" stroke-width="2"></circle>
+<circle cx="20" cy="20" fill="none" r="18" stroke="#FFD700" stroke-dasharray="113" stroke-dashoffset="12" stroke-width="2"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold">89%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8 flex-1">
+<div>
+<p class="text-[9px] font-bold text-green-600 uppercase tracking-widest mb-1">Pros</p>
+<p class="text-xs text-[#666660]">Brand consistency, manageable risk, cost effective.</p>
+</div>
+<div>
+<p class="text-[9px] font-bold text-red-600 uppercase tracking-widest mb-1">Cons</p>
+<p class="text-xs text-[#666660]">Slower time-to-market compared to M&amp;A.</p>
+</div>
+</div>
+<button class="w-full py-2 gold-bg text-black text-[10px] font-bold uppercase tracking-wider shadow-sm hover:brightness-95 transition-all">Select Option</button>
+</div>
+<div class="neumorphic-card p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-[#99948D] mb-1">Option C</p>
+<h4 class="font-bold">Strategic Partnership</h4>
+</div>
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="20" cy="20" fill="none" r="18" stroke="#E5E5E0" stroke-width="2"></circle>
+<circle cx="20" cy="20" fill="none" r="18" stroke="#FFD700" stroke-dasharray="113" stroke-dashoffset="35" stroke-width="2"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold">68%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8 flex-1">
+<div>
+<p class="text-[9px] font-bold text-green-600 uppercase tracking-widest mb-1">Pros</p>
+<p class="text-xs text-[#666660]">Shared risk, local expertise access.</p>
+</div>
+<div>
+<p class="text-[9px] font-bold text-red-600 uppercase tracking-widest mb-1">Cons</p>
+<p class="text-xs text-[#666660]">Reduced profit margin, partner reliance.</p>
+</div>
+</div>
+<button class="w-full py-2 border border-[#E5E5E0] text-[10px] font-bold uppercase tracking-wider hover:bg-[#FAFAF8] transition-all">Review</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+</body></html>

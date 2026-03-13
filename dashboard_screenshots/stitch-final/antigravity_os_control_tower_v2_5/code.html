@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Analytics Module - Ivory Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "ivory-bg": "#FAFAF8",
+            "ivory-sidebar": "#F5F0E8",
+            "ivory-card": "#FFFFFF",
+            "ivory-border": "#E5E5E0",
+            "ivory-accent": "#FFD700",
+            "ivory-text": "#1A1A1A",
+            "ivory-text-muted": "#666666",
+            "ivory-search": "#F0F0EB",
+            "ivory-green": "#34C759",
+            "ivory-red": "#FF3B30",
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "kpi": "12px",
+          },
+          boxShadow: {
+            "ivory": "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.05)",
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-ivory-bg font-sans text-ivory-text antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="w-[240px] border-r border-ivory-border flex flex-col bg-ivory-sidebar z-20 shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-kpi bg-ivory-text flex items-center justify-center">
+<span class="material-symbols-outlined text-white font-bold text-sm">visibility</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-black tracking-tighter uppercase text-ivory-text">OculOps</h1>
+<span class="text-[10px] text-ivory-text-muted font-medium uppercase tracking-widest">Ivory Edition</span>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-2">
+<div class="flex items-center gap-3 px-4 py-3 rounded-kpi text-ivory-text-muted hover:text-ivory-text hover:bg-black/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-kpi bg-ivory-accent/10 text-ivory-text border border-ivory-accent/30 cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="text-sm font-semibold">Analytics</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-kpi text-ivory-text-muted hover:text-ivory-text hover:bg-black/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium">Audience</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-kpi text-ivory-text-muted hover:text-ivory-text hover:bg-black/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+<span class="text-sm font-medium">Campaigns</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-kpi text-ivory-text-muted hover:text-ivory-text hover:bg-black/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</div>
+</nav>
+<div class="p-4 border-t border-ivory-border">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-ivory-border border border-ivory-border bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDztVBEmIjllbQd06UKsYkZRn9ku478YBs8C673ao_G76mwCmcVyXvD4rSbrbxje-G9A5zcuCmpjRRO8_hkm9Hp2HhPVMFtizfsBENTv0dYRBpOeDmINL86RUov9w1Y0lzS3_N3r6pg-nCmHUxukKbVzZG2RRl7OQQgxfpyG_8Fpfb-llt_-7_eF6t6Cr6_RWgWTbaA2n8fPpNmQ9EjtobGUOL73lu4FWZoQeElXIzvIsKa3jvdzum4sOCS9P2-XBxcSW04NfpG0m-H')"></div>
+<div class="text-left flex-1">
+<p class="text-xs font-semibold text-ivory-text">Sarah Jenkins</p>
+<p class="text-[10px] text-ivory-text-muted">Admin</p>
+</div>
+<span class="material-symbols-outlined text-ivory-text-muted text-sm cursor-pointer hover:text-ivory-text">unfold_more</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto hide-scrollbar bg-ivory-bg">
+<header class="h-[56px] border-b border-ivory-border flex items-center justify-between px-8 sticky top-0 bg-ivory-bg z-10 shrink-0">
+<div class="flex items-center gap-3 w-1/3">
+<span class="material-symbols-outlined text-ivory-text text-[22px]">bar_chart</span>
+<h2 class="text-base font-semibold text-ivory-text">Analytics</h2>
+<div class="flex items-center gap-1.5 ml-4 px-2.5 py-1 rounded-full bg-ivory-green/10 border border-ivory-green/20">
+<div class="w-1.5 h-1.5 rounded-full bg-ivory-green animate-pulse"></div>
+<span class="text-[10px] font-bold text-ivory-green uppercase tracking-wider">Live</span>
+</div>
+</div>
+<div class="flex items-center justify-center w-1/3">
+<div class="flex items-center bg-ivory-search rounded-full px-4 py-1.5 w-[320px] border border-transparent focus-within:border-ivory-border transition-all">
+<span class="material-symbols-outlined text-ivory-text-muted text-lg mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-ivory-text-muted text-ivory-text outline-none" placeholder="Search metrics, reports..." type="text"/>
+<span class="text-[10px] text-ivory-text-muted font-medium px-1.5 py-0.5 border border-ivory-border rounded bg-white">⌘K</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-4 w-1/3">
+<button class="text-ivory-text-muted hover:text-ivory-text transition-colors">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</button>
+<button class="text-ivory-text-muted hover:text-ivory-text transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</header>
+<div class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<div class="flex flex-col gap-1">
+<h1 class="text-[24px] font-bold tracking-tight text-ivory-text">Performance Analytics</h1>
+<p class="text-ivory-text-muted text-sm">Real-time business intelligence and growth metrics.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-ivory-card rounded-kpi p-5 border border-ivory-border shadow-ivory flex flex-col justify-between h-[110px]">
+<div class="flex justify-between items-start">
+<p class="text-ivory-text-muted text-xs font-medium">Conversion Rate</p>
+<span class="material-symbols-outlined text-ivory-text-muted text-[18px]">ads_click</span>
+</div>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-semibold text-ivory-text">3.2%</h3>
+<p class="text-ivory-green text-xs font-medium flex items-center bg-ivory-green/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px] mr-0.5">arrow_upward</span> 0.4%
+              </p>
+</div>
+</div>
+<div class="bg-ivory-card rounded-kpi p-5 border border-ivory-border shadow-ivory flex flex-col justify-between h-[110px]">
+<div class="flex justify-between items-start">
+<p class="text-ivory-text-muted text-xs font-medium">Avg Deal Size</p>
+<span class="material-symbols-outlined text-ivory-text-muted text-[18px]">euro_symbol</span>
+</div>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-semibold text-ivory-text">€3,750</h3>
+<p class="text-ivory-text-muted text-[11px] font-medium">Steady</p>
+</div>
+</div>
+<div class="bg-ivory-card rounded-kpi p-5 border border-ivory-border shadow-ivory flex flex-col justify-between h-[110px]">
+<div class="flex justify-between items-start">
+<p class="text-ivory-text-muted text-xs font-medium">Sales Velocity</p>
+<span class="material-symbols-outlined text-ivory-text-muted text-[18px]">speed</span>
+</div>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-semibold text-ivory-text">12 <span class="text-sm text-ivory-text-muted font-normal">days</span></h3>
+<p class="text-ivory-green text-xs font-medium flex items-center bg-ivory-green/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px] mr-0.5">arrow_downward</span> 2d
+              </p>
+</div>
+</div>
+<div class="bg-ivory-card rounded-kpi p-5 border border-ivory-border shadow-ivory flex items-center justify-between h-[110px]">
+<div class="flex flex-col h-full justify-between">
+<p class="text-ivory-text-muted text-xs font-medium">Win Rate</p>
+<h3 class="text-2xl font-semibold text-ivory-text">28%</h3>
+</div>
+<div class="relative w-14 h-14">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-ivory-border" cx="28" cy="28" fill="transparent" r="24" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-ivory-accent" cx="28" cy="28" fill="transparent" r="24" stroke="currentColor" stroke-dasharray="150" stroke-dashoffset="108" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-ivory-accent text-[20px]">emoji_events</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-6">
+<div class="lg:w-[60%] bg-ivory-card rounded-kpi p-6 border border-ivory-border shadow-ivory flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-sm font-semibold text-ivory-text">Performance Overview</h3>
+<p class="text-[11px] text-ivory-text-muted">12-Month Trajectory</p>
+</div>
+<div class="flex items-center gap-4 text-[11px] font-medium">
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-ivory-border"></div>
+<span class="text-ivory-text-muted">Leads</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-gray-300"></div>
+<span class="text-ivory-text-muted">Deals</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-ivory-accent"></div>
+<span class="text-ivory-text">Revenue</span>
+</div>
+</div>
+</div>
+<div class="flex-1 relative min-h-[240px] w-full mt-4">
+<div class="absolute inset-0 flex flex-col justify-between pb-6">
+<div class="w-full border-t border-ivory-border border-dashed h-0"></div>
+<div class="w-full border-t border-ivory-border border-dashed h-0"></div>
+<div class="w-full border-t border-ivory-border border-dashed h-0"></div>
+<div class="w-full border-t border-ivory-border border-dashed h-0"></div>
+<div class="w-full border-t border-ivory-border h-0"></div>
+</div>
+<svg class="absolute inset-0 w-full h-[calc(100%-24px)]" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M 0 80 Q 10 75, 20 70 T 40 65 T 60 50 T 80 40 T 100 45" fill="none" stroke="#E5E5E0" stroke-width="1.5"></path>
+<path d="M 0 90 Q 10 88, 20 85 T 40 80 T 60 70 T 80 65 T 100 60" fill="none" stroke="#D1D1D1" stroke-width="1.5"></path>
+<path d="M 0 70 Q 10 60, 20 65 T 40 40 T 60 45 T 80 20 T 100 10" fill="none" stroke="#FFD700" stroke-width="2"></path>
+</svg>
+<div class="absolute bottom-0 left-0 w-full flex justify-between text-[10px] text-ivory-text-muted font-medium">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+</div>
+</div>
+</div>
+<div class="lg:w-[40%] bg-ivory-card rounded-kpi p-6 border border-ivory-border shadow-ivory">
+<h3 class="text-sm font-semibold text-ivory-text mb-1">Top Performing Channels</h3>
+<p class="text-[11px] text-ivory-text-muted mb-6">Attribution by Revenue</p>
+<div class="space-y-5">
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-medium text-ivory-text">Google Maps</span>
+<span class="text-xs font-semibold text-ivory-text">42%</span>
+</div>
+<div class="w-full bg-ivory-bg h-1.5 rounded-full overflow-hidden">
+<div class="bg-ivory-accent h-full rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-medium text-ivory-text">LinkedIn Ads</span>
+<span class="text-xs font-semibold text-ivory-text">28%</span>
+</div>
+<div class="w-full bg-ivory-bg h-1.5 rounded-full overflow-hidden">
+<div class="bg-ivory-accent h-full rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-medium text-ivory-text">Direct Traffic</span>
+<span class="text-xs font-semibold text-ivory-text">15%</span>
+</div>
+<div class="w-full bg-ivory-bg h-1.5 rounded-full overflow-hidden">
+<div class="bg-ivory-accent h-full rounded-full" style="width: 15%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-medium text-ivory-text">Email Marketing</span>
+<span class="text-xs font-semibold text-ivory-text">10%</span>
+</div>
+<div class="w-full bg-ivory-bg h-1.5 rounded-full overflow-hidden">
+<div class="bg-ivory-accent h-full rounded-full" style="width: 10%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-medium text-ivory-text">Referrals</span>
+<span class="text-xs font-semibold text-ivory-text">5%</span>
+</div>
+<div class="w-full bg-ivory-bg h-1.5 rounded-full overflow-hidden">
+<div class="bg-ivory-accent h-full rounded-full" style="width: 5%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-ivory-card rounded-kpi border border-ivory-border shadow-ivory overflow-hidden">
+<div class="px-6 py-5 border-b border-ivory-border">
+<h3 class="text-sm font-semibold text-ivory-text">Weekly Comparison</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-ivory-bg/50 text-[11px] uppercase tracking-wider text-ivory-text-muted font-medium border-b border-ivory-border">
+<tr>
+<th class="px-6 py-3">Metric</th>
+<th class="px-6 py-3">This Week</th>
+<th class="px-6 py-3">Last Week</th>
+<th class="px-6 py-3">Change</th>
+<th class="px-6 py-3 text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-ivory-border">
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4 font-medium text-ivory-text">New Leads</td>
+<td class="px-6 py-4 text-ivory-text">145</td>
+<td class="px-6 py-4 text-ivory-text-muted">120</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-ivory-green/10 text-ivory-green">
+                      +20.8%
+                    </span>
+</td>
+<td class="px-6 py-4 flex justify-end">
+<svg class="w-16 h-6" preserveAspectRatio="none" viewBox="0 0 100 20">
+<path d="M 0 15 Q 25 10, 50 12 T 100 5" fill="none" stroke="#FFD700" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4 font-medium text-ivory-text">Qualified Opportunities</td>
+<td class="px-6 py-4 text-ivory-text">42</td>
+<td class="px-6 py-4 text-ivory-text-muted">45</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-ivory-red/10 text-ivory-red">
+                      -6.6%
+                    </span>
+</td>
+<td class="px-6 py-4 flex justify-end">
+<svg class="w-16 h-6" preserveAspectRatio="none" viewBox="0 0 100 20">
+<path d="M 0 5 Q 25 8, 50 5 T 100 15" fill="none" stroke="#FF3B30" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4 font-medium text-ivory-text">Proposals Sent</td>
+<td class="px-6 py-4 text-ivory-text">28</td>
+<td class="px-6 py-4 text-ivory-text-muted">22</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-ivory-green/10 text-ivory-green">
+                      +27.2%
+                    </span>
+</td>
+<td class="px-6 py-4 flex justify-end">
+<svg class="w-16 h-6" preserveAspectRatio="none" viewBox="0 0 100 20">
+<path d="M 0 18 Q 25 15, 50 10 T 100 2" fill="none" stroke="#FFD700" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</td>
+</tr>
+<tr class="hover:bg-ivory-bg/30 transition-colors">
+<td class="px-6 py-4 font-medium text-ivory-text">Deals Won</td>
+<td class="px-6 py-4 text-ivory-text">8</td>
+<td class="px-6 py-4 text-ivory-text-muted">7</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-ivory-green/10 text-ivory-green">
+                      +14.2%
+                    </span>
+</td>
+<td class="px-6 py-4 flex justify-end">
+<svg class="w-16 h-6" preserveAspectRatio="none" viewBox="0 0 100 20">
+<path d="M 0 10 Q 25 12, 50 8 T 100 5" fill="none" stroke="#FFD700" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

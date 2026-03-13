@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Opportunities Module - Ivory Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#FFD700",
+          "background-page": "#FAFAF8",
+          "background-sidebar": "#F5F0E8",
+          "background-card": "#FFFFFF",
+          "border-color": "#E5E5E0",
+          "text-main": "#1A1A1A",
+          "text-muted": "#6B7280"
+        },
+        fontFamily: {
+          "sans": ['"Inter"', 'sans-serif'],
+        },
+        boxShadow: {
+          'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.05)',
+        },
+        borderRadius: {
+          "xl": "12px",
+        }
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: #FAFAF8;
+    color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+</head>
+<body class="bg-background-page text-text-main font-sans h-screen w-screen overflow-hidden flex">
+<aside class="w-[240px] flex-shrink-0 border-r border-border-color bg-background-sidebar flex flex-col py-6 px-4 gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-lg bg-text-main flex items-center justify-center text-white font-bold text-lg">
+      O
+    </div>
+<span class="font-bold text-lg tracking-tight">OculOps</span>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h3 class="text-xs font-semibold text-text-muted px-2 uppercase tracking-wider mb-2">Workspace</h3>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium">Agents</span>
+</a>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-xs font-semibold text-text-muted px-2 uppercase tracking-wider mb-2">Intelligence</h3>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main bg-primary/10 border border-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary">my_location</span>
+<span class="text-sm font-semibold">Opportunities</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<header class="h-[56px] border-b border-border-color flex items-center justify-between px-8 bg-background-page shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-main text-[24px]">my_location</span>
+<h1 class="text-lg font-semibold">Opportunities</h1>
+</div>
+<div class="flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-[18px]">search</span>
+<input class="w-full h-9 bg-[#F0F0EB] border-none rounded-full pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/50 outline-none text-text-main placeholder-text-muted" placeholder="Search opportunities, companies..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-color shadow-sm">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-xs font-medium text-text-main">LIVE</span>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-auto p-8">
+<div class="max-w-7xl mx-auto flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-background-card border border-border-color rounded-xl p-5 shadow-subtle flex flex-col gap-1">
+<span class="text-sm font-medium text-text-muted">Total Opportunities</span>
+<div class="text-3xl font-bold text-text-main">34</div>
+</div>
+<div class="bg-background-card border border-border-color rounded-xl p-5 shadow-subtle flex flex-col gap-1 relative">
+<div class="absolute top-4 right-4 bg-primary/20 text-yellow-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Critical</div>
+<span class="text-sm font-medium text-text-muted">High Priority</span>
+<div class="text-3xl font-bold text-text-main">8</div>
+</div>
+<div class="bg-background-card border border-border-color rounded-xl p-5 shadow-subtle flex flex-col gap-1">
+<span class="text-sm font-medium text-text-muted">Estimated Value</span>
+<div class="text-3xl font-bold text-text-main">€125K</div>
+</div>
+<div class="bg-background-card border border-border-color rounded-xl p-5 shadow-subtle flex flex-col gap-1">
+<span class="text-sm font-medium text-text-muted">Conversion Potential</span>
+<div class="text-3xl font-bold text-text-main">67%</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-background-card border border-border-color rounded-xl p-6 shadow-subtle flex flex-col h-[400px]">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-base font-semibold">Opportunity Scoring Matrix</h2>
+<div class="flex items-center gap-4 text-xs">
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-primary"></div><span>High Priority</span></div>
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-gray-300"></div><span>Standard</span></div>
+</div>
+</div>
+<div class="flex-1 relative border-l border-b border-border-color ml-6 mb-6">
+<div class="absolute -left-6 top-1/2 -translate-y-1/2 -rotate-90 text-xs font-medium text-text-muted whitespace-nowrap origin-center">Potential Value</div>
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-medium text-text-muted">Effort Required</div>
+<div class="absolute inset-0 flex flex-col justify-between">
+<div class="border-t border-border-color w-full h-0"></div>
+<div class="border-t border-border-color w-full h-0"></div>
+<div class="border-t border-border-color w-full h-0"></div>
+<div class="border-t border-border-color w-full h-0"></div>
+<div class="border-t border-transparent w-full h-0"></div>
+</div>
+<div class="absolute inset-0 flex justify-between">
+<div class="border-l border-transparent h-full w-0"></div>
+<div class="border-l border-border-color h-full w-0"></div>
+<div class="border-l border-border-color h-full w-0"></div>
+<div class="border-l border-border-color h-full w-0"></div>
+<div class="border-l border-border-color h-full w-0"></div>
+</div>
+<div class="absolute top-[15%] left-[20%] w-3 h-3 rounded-full bg-primary shadow-sm hover:scale-125 transition-transform cursor-pointer" title="Acme Corp: €45k"></div>
+<div class="absolute top-[25%] left-[10%] w-3 h-3 rounded-full bg-primary shadow-sm hover:scale-125 transition-transform cursor-pointer" title="TechFlow: €30k"></div>
+<div class="absolute top-[10%] left-[30%] w-3 h-3 rounded-full bg-primary shadow-sm hover:scale-125 transition-transform cursor-pointer" title="GlobalNet: €50k"></div>
+<div class="absolute top-[40%] left-[60%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+<div class="absolute top-[60%] left-[40%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+<div class="absolute top-[80%] left-[80%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+<div class="absolute top-[30%] left-[70%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+<div class="absolute top-[70%] left-[20%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+<div class="absolute top-[50%] left-[50%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+<div class="absolute top-[85%] left-[30%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+<div class="absolute top-[20%] left-[85%] w-2 h-2 rounded-full bg-gray-300 hover:scale-125 transition-transform cursor-pointer"></div>
+</div>
+</div>
+<div class="bg-background-card border border-border-color rounded-xl p-6 shadow-subtle flex flex-col h-[400px]">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-base font-semibold">Top Opportunities</h2>
+<button class="text-sm text-text-muted hover:text-text-main font-medium">View All</button>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-3">
+<div class="p-3 border border-border-color rounded-lg hover:border-primary/50 transition-colors bg-background-page/50">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="font-bold text-sm">Acme Corporation</div>
+<div class="text-xs text-text-muted mt-0.5">2 days ago</div>
+</div>
+<div class="text-sm font-semibold">€45K</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-gray-100 text-text-muted rounded uppercase font-medium">Atlas</span>
+</div>
+</div>
+<div class="p-3 border border-border-color rounded-lg hover:border-primary/50 transition-colors bg-background-page/50">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="font-bold text-sm">TechFlow Dynamics</div>
+<div class="text-xs text-text-muted mt-0.5">3 days ago</div>
+</div>
+<div class="text-sm font-semibold">€32K</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-gray-100 text-text-muted rounded uppercase font-medium">Hunter</span>
+</div>
+</div>
+<div class="p-3 border border-border-color rounded-lg hover:border-primary/50 transition-colors bg-background-page/50">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="font-bold text-sm">GlobalNet Systems</div>
+<div class="text-xs text-text-muted mt-0.5">5 days ago</div>
+</div>
+<div class="text-sm font-semibold">€28K</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%]"></div>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-gray-100 text-text-muted rounded uppercase font-medium">Atlas</span>
+</div>
+</div>
+<div class="p-3 border border-border-color rounded-lg hover:border-primary/50 transition-colors bg-background-page/50">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="font-bold text-sm">Nexus Innovations</div>
+<div class="text-xs text-text-muted mt-0.5">1 week ago</div>
+</div>
+<div class="text-sm font-semibold">€15K</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-gray-100 text-text-muted rounded uppercase font-medium">Scout</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-background-card border border-border-color rounded-xl p-6 shadow-subtle flex flex-col">
+<h2 class="text-base font-semibold mb-6">Pipeline Status</h2>
+<div class="flex w-full gap-2">
+<div class="flex-1 flex flex-col gap-2">
+<div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-gray-400 w-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold uppercase tracking-wider text-text-muted">Detected</span>
+<span class="text-lg font-bold">18</span>
+<span class="text-xs text-text-muted">€42K</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary/60 w-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold uppercase tracking-wider text-text-muted">Qualified</span>
+<span class="text-lg font-bold">8</span>
+<span class="text-xs text-text-muted">€38K</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary/80 w-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold uppercase tracking-wider text-text-muted">Proposal</span>
+<span class="text-lg font-bold">5</span>
+<span class="text-xs text-text-muted">€25K</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold uppercase tracking-wider text-text-muted">Negotiation</span>
+<span class="text-lg font-bold">3</span>
+<span class="text-xs text-text-muted">€20K</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

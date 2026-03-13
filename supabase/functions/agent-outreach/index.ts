@@ -6,6 +6,8 @@ import { emitSystemEvent } from "../_shared/orchestration.ts";
 import { admin } from "../_shared/supabase.ts";
 
 const AGENT_CODE = "outreach";
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // OUTREACH — Email Staging & Delivery Agent
@@ -43,6 +45,494 @@ function buildEmailDraft(lead: Record<string, unknown>) {
   `.trim();
 
   return { niche, subject, html_body };
+}
+
+function asRecord(value: unknown) {
+  if (typeof value !== "object" || value === null || Array.isArray(value)) return {};
+  return value as Record<string, unknown>;
+}
+
+function scopeByUser<T extends { eq: Function; is: Function }>(query: T, userId: string | null) {
+  return userId ? query.eq("user_id", userId) : query.is("user_id", null);
+}
+
+function htmlToPlainText(value: string | null | undefined) {
+  const html = compact(value);
+  if (!html) return "";
+
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/(p|div|h[1-6]|li|tr|section|article)>/gi, "\n")
+    .replace(/<li>/gi, "- ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/\r/g, "")
+    .split("\n")
+    .map(line => line.replace(/[ \t]+/g, " ").trim())
+    .filter(Boolean)
+    .join("\n");
+}
+
+async function loadLead(leadId: string | null | undefined) {
+  if (!leadId) return null;
+  const { data, error } = await admin
+    .from("prospector_leads")
+    .select("*")
+    .eq("id", leadId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data as Record<string, unknown> | null;
+}
+
+async function loadContact(contactId: string | null | undefined) {
+  if (!contactId) return null;
+  const { data, error } = await admin
+    .from("contacts")
+    .select("*")
+    .eq("id", contactId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data as Record<string, unknown> | null;
+}
+
+async function loadCompany(companyId: string | null | undefined) {
+  if (!companyId) return null;
+  const { data, error } = await admin
+    .from("companies")
+    .select("*")
+    .eq("id", companyId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data as Record<string, unknown> | null;
+}
+
+async function findOrCreateCompany({
+  userId,
+  lead,
+}: {
+  userId: string | null;
+  lead: Record<string, unknown> | null;
+}) {
+  const leadCompanyId = compact(lead?.company_id) || null;
+  const existingById = await loadCompany(leadCompanyId);
+  if (existingById) return existingById;
+
+  const companyName = compact(lead?.name) || compact(lead?.business_name);
+  const website = compact(lead?.website) || null;
+
+  if (website) {
+    let query = admin
+      .from("companies")
+      .select("*")
+      .eq("website", website)
+      .limit(1);
+
+    query = scopeByUser(query, userId);
+    const { data, error } = await query;
+    if (error) throw error;
+    if (data?.[0]) return data[0] as Record<string, unknown>;
+  }
+
+  if (companyName) {
+    let query = admin
+      .from("companies")
+      .select("*")
+      .eq("name", companyName)
+      .limit(1);
+
+    query = scopeByUser(query, userId);
+    const { data, error } = await query;
+    if (error) throw error;
+    if (data?.[0]) return data[0] as Record<string, unknown>;
+  }
+
+  if (!companyName) return null;
+
+  const { data, error } = await admin
+    .from("companies")
+    .insert({
+      user_id: userId,
+      name: companyName,
+      website,
+      location: compact(lead?.address) || compact(lead?.city) || null,
+      status: "prospect",
+      source: "outreach_agent",
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as Record<string, unknown>;
+}
+
+async function findOrCreateContact({
+  userId,
+  explicitContactId,
+  companyId,
+  recipientName,
+  recipientEmail,
+  lead,
+}: {
+  userId: string | null;
+  explicitContactId: string | null;
+  companyId: string | null;
+  recipientName: string | null;
+  recipientEmail: string;
+  lead: Record<string, unknown> | null;
+}) {
+  const fromExplicit = await loadContact(explicitContactId);
+  if (fromExplicit) return fromExplicit;
+
+  const leadContactId = compact(lead?.contact_id) || null;
+  const fromLeadId = await loadContact(leadContactId);
+  if (fromLeadId) return fromLeadId;
+
+  let query = admin
+    .from("contacts")
+    .select("*")
+    .eq("email", recipientEmail)
+    .limit(1);
+  query = scopeByUser(query, userId);
+
+  const { data: existingRows, error: existingError } = await query;
+  if (existingError) throw existingError;
+
+  const existing = existingRows?.[0] as Record<string, unknown> | undefined;
+  if (existing) {
+    if (!compact(existing.company_id) && companyId) {
+      await admin
+        .from("contacts")
+        .update({ company_id: companyId })
+        .eq("id", existing.id);
+    }
+    return existing;
+  }
+
+  const fallbackName = compact(recipientName) || compact(lead?.contact_name) || compact(lead?.name) || recipientEmail.split("@")[0];
+  const { data, error } = await admin
+    .from("contacts")
+    .insert({
+      user_id: userId,
+      company_id: companyId,
+      name: fallbackName,
+      email: recipientEmail,
+      phone: compact(lead?.phone) || null,
+      role: compact(lead?.role) || "Owner / Front Desk",
+      status: "contacted",
+      source: "outreach_agent",
+      confidence: 68,
+      last_contacted_at: new Date().toISOString(),
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as Record<string, unknown>;
+}
+
+async function ensureConversation({
+  userId,
+  contactId,
+  companyId,
+}: {
+  userId: string | null;
+  contactId: string;
+  companyId: string | null;
+}) {
+  let query = admin
+    .from("conversations")
+    .select("*")
+    .eq("contact_id", contactId)
+    .eq("channel", "email")
+    .limit(1);
+  query = scopeByUser(query, userId);
+
+  const { data, error } = await query;
+  if (error) throw error;
+  if (data?.[0]) return data[0] as Record<string, unknown>;
+
+  const { data: created, error: insertError } = await admin
+    .from("conversations")
+    .insert({
+      user_id: userId,
+      contact_id: contactId,
+      company_id: companyId || null,
+      channel: "email",
+      external_id: `email:${contactId}`,
+      status: "pending",
+      assigned_to: "Outreach",
+      last_message_at: new Date().toISOString(),
+      last_outbound_at: new Date().toISOString(),
+    })
+    .select()
+    .single();
+
+  if (insertError) throw insertError;
+  return created as Record<string, unknown>;
+}
+
+async function dispatchApprovedOutreach({
+  queue,
+  conversationId,
+  contactId,
+  companyId,
+  correlationId,
+}: {
+  queue: Record<string, unknown>;
+  conversationId: string;
+  contactId: string;
+  companyId: string | null;
+  correlationId: string | null;
+}) {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error("Supabase runtime env is not configured");
+  }
+
+  const body = htmlToPlainText(compact(queue.html_body));
+  if (!body) throw new Error("Outreach body is empty");
+
+  const dispatchResponse = await fetch(`${SUPABASE_URL}/functions/v1/messaging-dispatch`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+      apikey: SUPABASE_SERVICE_ROLE_KEY,
+    },
+    body: JSON.stringify({
+      conversation_id: conversationId,
+      channel: "email",
+      to: compact(queue.recipient_email),
+      subject: compact(queue.subject) || null,
+      body,
+      metadata: {
+        source: "agent_outreach",
+        outreach_queue_id: queue.id,
+        lead_id: queue.lead_id || null,
+        contact_id: contactId,
+        company_id: companyId || null,
+        correlation_id: correlationId || null,
+        recipient_name: compact(queue.recipient_name) || null,
+        html_body: compact(queue.html_body) || null,
+      },
+    }),
+  });
+
+  const dispatchResult = await dispatchResponse.json().catch(() => ({}));
+  if (!dispatchResponse.ok) {
+    const message = compact((dispatchResult as Record<string, unknown>).error) || "Messaging dispatch failed";
+    throw new Error(message);
+  }
+
+  return dispatchResult as Record<string, unknown>;
+}
+
+function resolveQueueId(body: Record<string, unknown>) {
+  return compact(body.id) || compact(body.email_id);
+}
+
+async function loadLatestOutreachApproval(queueId: string) {
+  const { data, error } = await admin
+    .from("approval_requests")
+    .select("*")
+    .eq("agent", AGENT_CODE)
+    .eq("skill", "messaging-dispatch")
+    .contains("payload", { outreach_queue_id: queueId })
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  if (error) throw error;
+  return data?.[0] as Record<string, unknown> | null;
+}
+
+async function createOutreachApprovalRequest({
+  queueRow,
+  lead,
+  reason,
+}: {
+  queueRow: Record<string, unknown>;
+  lead: Record<string, unknown> | null;
+  reason: string;
+}) {
+  const correlationId = crypto.randomUUID();
+  const orgId = compact(queueRow.org_id) || compact(lead?.org_id) || null;
+  const approvalPayload: Record<string, unknown> = {
+    source: "agent_outreach",
+    outreach_queue_id: queueRow.id,
+    lead_id: queueRow.lead_id || null,
+    contact_id: queueRow.contact_id || null,
+    recipient_email: compact(queueRow.recipient_email) || null,
+    recipient_name: compact(queueRow.recipient_name) || null,
+    subject: compact(queueRow.subject) || null,
+    channel: "email",
+    preview: htmlToPlainText(compact(queueRow.html_body)).slice(0, 300),
+    reason,
+    correlation_id: correlationId,
+  };
+
+  const insertPayload: Record<string, unknown> = {
+    agent: AGENT_CODE,
+    skill: "messaging-dispatch",
+    payload: approvalPayload,
+    urgency: "high",
+    status: "pending",
+    expires_at: new Date(Date.now() + 30 * 60 * 1000).toISOString(),
+  };
+  if (orgId) insertPayload.org_id = orgId;
+
+  const { data, error } = await admin
+    .from("approval_requests")
+    .insert(insertPayload)
+    .select()
+    .single();
+
+  if (error) throw error;
+
+  emitSystemEvent({
+    eventType: "outreach.approval_requested",
+    sourceAgent: AGENT_CODE,
+    correlationId,
+    payload: {
+      approval_id: data?.id || null,
+      outreach_queue_id: queueRow.id,
+      recipient_email: compact(queueRow.recipient_email) || null,
+      urgency: "high",
+    },
+    metadata: {
+      pathway: "outreach",
+      stage: "approval_requested",
+    },
+  }).catch(() => {});
+
+  return data as Record<string, unknown>;
+}
+
+async function ensureOutreachApprovalRequest({
+  queueRow,
+  lead,
+  reason,
+}: {
+  queueRow: Record<string, unknown>;
+  lead: Record<string, unknown> | null;
+  reason: string;
+}) {
+  const queueId = compact(queueRow.id);
+  if (!queueId) throw new Error("Queue row id is required");
+
+  const latest = await loadLatestOutreachApproval(queueId);
+  const latestStatus = compact(latest?.status);
+  if (latest && ["pending", "approved"].includes(latestStatus)) return latest;
+
+  return createOutreachApprovalRequest({ queueRow, lead, reason });
+}
+
+async function executeOutreachSend({
+  queueRow,
+  approval,
+}: {
+  queueRow: Record<string, unknown>;
+  approval: Record<string, unknown> | null;
+}) {
+  const recipientEmail = compact(queueRow.recipient_email);
+  if (!recipientEmail) {
+    throw new Error("Approved email has no recipient_email");
+  }
+
+  const joinedLead = queueRow.prospector_leads;
+  const leadFromJoin = Array.isArray(joinedLead) ? joinedLead[0] : joinedLead;
+  const lead = (leadFromJoin as Record<string, unknown> | null) ||
+    await loadLead(compact(queueRow.lead_id) || null);
+  const userId = compact(lead?.user_id) || null;
+
+  const company = await findOrCreateCompany({ userId, lead });
+  const companyId = compact(company?.id) || compact(lead?.company_id) || null;
+
+  const contact = await findOrCreateContact({
+    userId,
+    explicitContactId: compact(queueRow.contact_id) || null,
+    companyId,
+    recipientName: compact(queueRow.recipient_name) || null,
+    recipientEmail,
+    lead,
+  });
+
+  if (!contact?.id) {
+    throw new Error("Contact could not be resolved for outreach");
+  }
+
+  const contactId = compact(contact.id);
+  const conversation = await ensureConversation({
+    userId,
+    contactId,
+    companyId: compact(contact.company_id) || companyId,
+  });
+  const conversationId = compact(conversation.id);
+  const approvalPayload = asRecord(approval?.payload);
+  const correlationId = compact(approvalPayload.correlation_id) || null;
+
+  const dispatch = await dispatchApprovedOutreach({
+    queue: queueRow,
+    conversationId,
+    contactId,
+    companyId: compact(contact.company_id) || companyId,
+    correlationId,
+  });
+
+  const leadPatch: Record<string, unknown> = {};
+  if (lead?.id && !compact(lead.contact_id)) leadPatch.contact_id = contactId;
+  if (lead?.id && !compact(lead.company_id) && (compact(contact.company_id) || companyId)) {
+    leadPatch.company_id = compact(contact.company_id) || companyId;
+  }
+  if (lead?.id && Object.keys(leadPatch).length > 0) {
+    await admin
+      .from("prospector_leads")
+      .update(leadPatch)
+      .eq("id", lead.id);
+  }
+
+  const { data: updatedQueue, error: updateError } = await admin
+    .from("outreach_queue")
+    .update({
+      status: "sent",
+      sent_at: new Date().toISOString(),
+      contact_id: contactId,
+    })
+    .eq("id", queueRow.id)
+    .select("*, prospector_leads(*)")
+    .single();
+
+  if (updateError) throw updateError;
+
+  emitSystemEvent({
+    eventType: "outreach.sent",
+    sourceAgent: AGENT_CODE,
+    correlationId,
+    payload: {
+      outreach_queue_id: updatedQueue?.id || queueRow.id,
+      conversation_id: conversationId,
+      contact_id: contactId,
+      lead_id: queueRow.lead_id || null,
+      approval_id: approval?.id || null,
+    },
+    metadata: {
+      pathway: "outreach",
+      stage: "sent",
+    },
+  }).catch(() => {});
+
+  return {
+    email: updatedQueue,
+    conversation_id: conversationId,
+    dispatch,
+    approval,
+  };
 }
 
 async function existingQueueRow(leadId: string) {
@@ -144,11 +634,16 @@ Deno.serve(async (req: Request) => {
     const body = await readJson<{
       action?: string;
       id?: string;
+      email_id?: string;
       status?: string;
       niche?: string;
       user_id?: string;
       limit?: number;
       task_id?: string;
+      approval_id?: string;
+      decision?: "approved" | "rejected";
+      comment?: string;
+      approved_by?: string;
     }>(req);
 
     const action = body.action || "list";
@@ -164,21 +659,43 @@ Deno.serve(async (req: Request) => {
     }
 
     if (action === "approve") {
+      const queueId = resolveQueueId(body as unknown as Record<string, unknown>);
+      if (!queueId) return errorResponse("id is required");
+
       const { data, error } = await admin
         .from("outreach_queue")
         .update({ status: "approved", approved_at: new Date().toISOString() })
-        .eq("id", body.id)
-        .select()
+        .eq("id", queueId)
+        .select("*, prospector_leads(*)")
         .single();
       if (error) throw error;
-      return jsonResponse({ ok: true, email: data });
+
+      const joinedLead = data?.prospector_leads;
+      const leadFromJoin = Array.isArray(joinedLead) ? joinedLead[0] : joinedLead;
+      const lead = (leadFromJoin as Record<string, unknown> | null) ||
+        await loadLead(compact(data?.lead_id) || null);
+      const approval = await ensureOutreachApprovalRequest({
+        queueRow: data as Record<string, unknown>,
+        lead,
+        reason: "Approved for outbound send from Outreach queue.",
+      });
+
+      return jsonResponse({
+        ok: true,
+        email: data,
+        approval,
+        approval_required: compact(approval?.status) !== "approved",
+      });
     }
 
     if (action === "skip") {
+      const queueId = resolveQueueId(body as unknown as Record<string, unknown>);
+      if (!queueId) return errorResponse("id is required");
+
       const { data, error } = await admin
         .from("outreach_queue")
         .update({ status: "skipped" })
-        .eq("id", body.id)
+        .eq("id", queueId)
         .select()
         .single();
       if (error) throw error;
@@ -186,39 +703,160 @@ Deno.serve(async (req: Request) => {
     }
 
     if (action === "send") {
-      const { data: email, error: fetchError } = await admin
+      const queueId = resolveQueueId(body as unknown as Record<string, unknown>);
+      if (!queueId) return errorResponse("id is required");
+
+      const { data: queueRow, error: fetchError } = await admin
         .from("outreach_queue")
-        .select("*")
-        .eq("id", body.id)
+        .select("*, prospector_leads(*)")
+        .eq("id", queueId)
         .eq("status", "approved")
         .single();
 
-      if (fetchError || !email) {
+      if (fetchError || !queueRow) {
         return errorResponse("Approved email not found", 404);
       }
 
-      const supabaseUrl = Deno.env.get("SUPABASE_URL");
-      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+      const joinedLead = (queueRow as Record<string, unknown>).prospector_leads;
+      const leadFromJoin = Array.isArray(joinedLead) ? joinedLead[0] : joinedLead;
+      const lead = (leadFromJoin as Record<string, unknown> | null) ||
+        await loadLead(compact(queueRow.lead_id) || null);
+      const approval = await ensureOutreachApprovalRequest({
+        queueRow: queueRow as Record<string, unknown>,
+        lead,
+        reason: "Manual send requested from Outreach queue.",
+      });
+      const approvalStatus = compact(approval?.status);
 
-      const sendRes = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${serviceKey}`,
-        },
-        body: JSON.stringify({
-          to: email.recipient_email,
-          subject: email.subject,
-          html: email.html_body,
-          outreach_queue_id: email.id,
-        }),
+      if (approvalStatus !== "approved") {
+        return jsonResponse({
+          ok: true,
+          sent: false,
+          requires_approval: true,
+          approval,
+          reason: approvalStatus === "pending"
+            ? "Pending human approval before external send."
+            : "Approval required before external send.",
+        });
+      }
+
+      const sendResult = await executeOutreachSend({
+        queueRow: queueRow as Record<string, unknown>,
+        approval,
       });
 
-      const sendResult = await sendRes.json();
-      if (!sendRes.ok) {
-        return errorResponse(sendResult.error || "Send failed", 502);
+      return jsonResponse({
+        ok: true,
+        sent: true,
+        ...sendResult,
+      });
+    }
+
+    if (action === "resolve_approval") {
+      const approvalId = compact(body.approval_id);
+      if (!approvalId) return errorResponse("approval_id is required");
+
+      const decision = compact(body.decision).toLowerCase();
+      if (!["approved", "rejected"].includes(decision)) {
+        return errorResponse("decision must be approved or rejected");
       }
-      return jsonResponse({ ok: true, sent: true, result: sendResult });
+
+      const { data: currentApproval, error: loadError } = await admin
+        .from("approval_requests")
+        .select("*")
+        .eq("id", approvalId)
+        .eq("status", "pending")
+        .maybeSingle();
+
+      if (loadError) throw loadError;
+      if (!currentApproval) return errorResponse("Pending approval not found", 404);
+
+      const approvedBy = compact(body.approved_by) || compact(body.user_id) || "operator";
+      const userComment = compact(body.comment) || null;
+      const { data: updatedApproval, error: updateApprovalError } = await admin
+        .from("approval_requests")
+        .update({
+          status: decision,
+          approved_by: approvedBy,
+          user_comment: userComment,
+        })
+        .eq("id", approvalId)
+        .select()
+        .single();
+
+      if (updateApprovalError) throw updateApprovalError;
+
+      const approvalPayload = asRecord(updatedApproval?.payload);
+      const correlationId = compact(approvalPayload.correlation_id) || null;
+      emitSystemEvent({
+        eventType: decision === "approved" ? "outreach.approval_approved" : "outreach.approval_rejected",
+        sourceAgent: AGENT_CODE,
+        correlationId,
+        payload: {
+          approval_id: approvalId,
+          outreach_queue_id: compact(approvalPayload.outreach_queue_id) || null,
+          decision,
+          approved_by: approvedBy,
+        },
+        metadata: {
+          pathway: "outreach",
+          stage: "approval_resolved",
+        },
+      }).catch(() => {});
+
+      const queueId = compact(approvalPayload.outreach_queue_id);
+      if (!queueId) {
+        return jsonResponse({
+          ok: true,
+          approval: updatedApproval,
+          sent: false,
+        });
+      }
+
+      if (decision === "rejected") {
+        await admin
+          .from("outreach_queue")
+          .update({ status: "skipped" })
+          .eq("id", queueId)
+          .in("status", ["staged", "approved"]);
+
+        return jsonResponse({
+          ok: true,
+          approval: updatedApproval,
+          sent: false,
+          queue_id: queueId,
+        });
+      }
+
+      await admin
+        .from("outreach_queue")
+        .update({ status: "approved", approved_at: new Date().toISOString() })
+        .eq("id", queueId)
+        .in("status", ["staged", "approved"]);
+
+      const { data: queueRow, error: queueError } = await admin
+        .from("outreach_queue")
+        .select("*, prospector_leads(*)")
+        .eq("id", queueId)
+        .eq("status", "approved")
+        .maybeSingle();
+
+      if (queueError) throw queueError;
+      if (!queueRow) {
+        return errorResponse("Linked outreach queue item not found", 404);
+      }
+
+      const sendResult = await executeOutreachSend({
+        queueRow: queueRow as Record<string, unknown>,
+        approval: updatedApproval as Record<string, unknown>,
+      });
+
+      return jsonResponse({
+        ok: true,
+        approval: updatedApproval,
+        sent: true,
+        ...sendResult,
+      });
     }
 
     if (action === "batch_approve") {

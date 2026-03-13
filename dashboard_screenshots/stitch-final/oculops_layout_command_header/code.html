@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#EAB308", // Yellow-500 from the UI
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#111827",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1.5rem",
+                    },
+                    boxShadow: {
+                        'neo': '8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff',
+                        'neo-dark': '8px 8px 16px #0b0f1a, -8px -8px 16px #172134',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .neo-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(234, 179, 8, 0.2);
+        }
+        .dark .neo-card {
+            background: rgba(31, 41, 55, 0.7);
+            border: 1px solid rgba(234, 179, 8, 0.1);
+        }
+        .ios-scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
+<header class="sticky top-0 z-50 px-4 py-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+<span class="material-icons-round text-white text-lg">visibility</span>
+</div>
+<h1 class="font-bold text-xl tracking-tight dark:text-white uppercase">Ocul<span class="text-primary">Ops</span></h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-icons-round text-gray-500">search</span>
+</button>
+<img alt="Commander Vance" class="w-8 h-8 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-wB0Vd1zUHsDHzE-1Q7ojE-PMxia96h1pHYd7ryKZOT-Q-GG1IjYAcdSfnHMcZOT2clBZqOtN7BzOd6dLVfJsJMUrkjmFdJBr5bXG7PxwGRsSDHDBgyVY2IqPmEnQJhWaKJjgC2XkrnLMXFjAKL_mtwLpqb4cGOpXqmVhuZmMcPMY9GdshJuotWPgQ0nf4O6-u3CgdSsd7jdVlQj4Xtks790Qi7MJlTrq_LQmtXi1sRfh5wDY1kIlYtKk9cYfzPZqqWkrLtLcTHma"/>
+</div>
+</div>
+<nav class="flex overflow-x-auto gap-6 ios-scroll-hide pb-1">
+<a class="flex-shrink-0 text-primary border-b-2 border-primary pb-1 font-semibold text-sm" href="#">Intelligence</a>
+<a class="flex-shrink-0 text-gray-500 dark:text-gray-400 font-medium text-sm" href="#">Operations</a>
+<a class="flex-shrink-0 text-gray-500 dark:text-gray-400 font-medium text-sm" href="#">Fleet</a>
+<a class="flex-shrink-0 text-gray-500 dark:text-gray-400 font-medium text-sm" href="#">Security</a>
+<a class="flex-shrink-0 text-gray-500 dark:text-gray-400 font-medium text-sm" href="#">Exports</a>
+</nav>
+</header>
+<main class="p-4 space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-2 neo-card rounded-3xl p-5 overflow-hidden">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-bold text-lg">Critical Signals</h2>
+<span class="material-icons-round text-gray-400 text-sm">more_horiz</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-xs text-left">
+<thead class="bg-gray-50 dark:bg-gray-800/50">
+<tr>
+<th class="py-2 px-3 text-gray-500">Date <span class="text-[10px]">↑</span></th>
+<th class="py-2 px-3 text-gray-500">Alerts</th>
+<th class="py-2 px-3 text-primary bg-primary/10">Signal %</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<tr>
+<td class="py-3 px-3">08:17.02.51</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1 text-red-500 font-medium">
+<span class="material-icons-round text-xs">warning</span> Alert
+                                    </div>
+</td>
+<td class="py-3 px-3 font-semibold">23.0%</td>
+</tr>
+<tr>
+<td class="py-3 px-3">08:17.02.51</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1 text-yellow-500 font-medium">
+<span class="material-icons-round text-xs">warning</span> Alert
+                                    </div>
+</td>
+<td class="py-3 px-3 font-semibold">48.4%</td>
+</tr>
+<tr>
+<td class="py-3 px-3">08:17.02.51</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1 text-yellow-500 font-medium">
+<span class="material-icons-round text-xs">warning</span> Alert
+                                    </div>
+</td>
+<td class="py-3 px-3 font-semibold">27.5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="md:col-span-1 neo-card rounded-3xl p-5 flex flex-col items-center justify-center relative overflow-hidden aspect-square">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<h2 class="absolute top-4 left-4 font-bold text-sm text-gray-500 uppercase tracking-widest">Intelligence</h2>
+<div class="relative w-40 h-40">
+<div class="absolute inset-0 bg-primary/20 rounded-full animate-pulse blur-xl"></div>
+<img alt="Master Intelligence AI Sphere" class="w-full h-full object-cover rounded-full mix-blend-screen opacity-90 border-4 border-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0NUv2HVTs0-tsJPGaTgjUTMrfA3Ic6borK3_rPAJ9vdTfJ1wZK1J0tTdFdLczw5r3YGr5Y3nlhHxf5fv7n7JnEP4WkakuruNWggDZcKcyIo6JU2kKjz2iBBcmiTQx3XwQajzEMItnEoNA3fgwjmQyXu9C9pSTz9z8hZ-Gy3X1Cd7ltKTT21-UJxaTBugniq4ER6rGpTnDeKvP_unGpYyg_7eX43fbY5KX8QrKU-HcCG899Hrsic_35Juab91scQnxgyQhQoKpRdkZ"/>
+<div class="absolute inset-0 border-2 border-primary/20 rounded-full scale-110 border-dashed animate-[spin_10s_linear_infinite]"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="neo-card rounded-3xl p-6 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4 shadow-inner">
+<span class="material-icons-round text-primary text-3xl">public</span>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-tighter">Global Threat Level</p>
+<h3 class="text-2xl font-bold dark:text-white mt-1">Low</h3>
+</div>
+<div class="neo-card rounded-3xl p-6">
+<div class="flex justify-between items-start mb-4">
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-tighter">Fleet Health</p>
+<span class="material-icons-round text-green-500 text-lg">north_east</span>
+</div>
+<h3 class="text-3xl font-black dark:text-white mb-3">98.4%</h3>
+<div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 98.4%"></div>
+</div>
+</div>
+</div>
+<div class="neo-card rounded-3xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
+<span class="material-icons-round text-gray-500">contact_support</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold">Need assistance?</h4>
+<p class="text-xs text-gray-500">Contact Command Support</p>
+</div>
+</div>
+<button class="bg-primary text-white text-xs font-bold py-2 px-4 rounded-xl shadow-lg shadow-primary/30">
+                Contact Us
+            </button>
+</div>
+</main>
+<div class="fixed bottom-6 right-6">
+<button class="w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center transform active:scale-95 transition-transform">
+<span class="material-icons-round text-2xl">bolt</span>
+</button>
+</div>
+
+</body></html>

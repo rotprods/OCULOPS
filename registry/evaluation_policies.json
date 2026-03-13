@@ -1,0 +1,78 @@
+{
+  "version": "2026-03-13",
+  "owner": "agent-2-codex",
+  "purpose": "System-wide scoring and critic policy for high-impact outputs.",
+  "critics": [
+    {
+      "critic_id": "quality_critic",
+      "weight": 0.35,
+      "focus": [
+        "goal_alignment",
+        "completeness",
+        "factual_consistency"
+      ]
+    },
+    {
+      "critic_id": "architecture_critic",
+      "weight": 0.25,
+      "focus": [
+        "contract_compliance",
+        "design_coherence",
+        "maintainability"
+      ]
+    },
+    {
+      "critic_id": "risk_critic",
+      "weight": 0.25,
+      "focus": [
+        "security",
+        "operational_risk",
+        "approval_gate_compliance"
+      ]
+    },
+    {
+      "critic_id": "cost_critic",
+      "weight": 0.15,
+      "focus": [
+        "token_efficiency",
+        "tool_call_efficiency",
+        "runtime_cost"
+      ]
+    }
+  ],
+  "scoring": {
+    "scale_min": 0,
+    "scale_max": 100,
+    "overall_formula": "weighted_average",
+    "default_pass_score": 75
+  },
+  "impact_thresholds": {
+    "low": {
+      "min_pass_score": 70,
+      "human_approval_required": false,
+      "simulation_required": false
+    },
+    "medium": {
+      "min_pass_score": 78,
+      "human_approval_required": false,
+      "simulation_required": true
+    },
+    "high": {
+      "min_pass_score": 85,
+      "human_approval_required": true,
+      "simulation_required": true
+    },
+    "critical": {
+      "min_pass_score": 90,
+      "human_approval_required": true,
+      "simulation_required": true
+    }
+  },
+  "decision_policy": {
+    "pass": "overall_score >= threshold",
+    "retry": "overall_score < threshold and retry_recommended = true",
+    "reject": "overall_score << threshold or hard risk violation",
+    "escalate": "critical impact or policy conflict"
+  },
+  "required_output_contract": "contracts/EVAL_CONTRACT.json"
+}

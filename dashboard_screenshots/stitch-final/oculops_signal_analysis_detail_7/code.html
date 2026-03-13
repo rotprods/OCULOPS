@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS World Monitor Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --parchment: #F5F0E8;
+            --ivory: #FAFAF8;
+            --gold: #FFD700;
+            --border: #E5E5E0;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory);
+            color: #1A1A1A;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            background-color: var(--parchment);
+            width: 240px;
+            border-right: 1px solid var(--border);
+        }
+        .card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border-radius: 4px;
+        }
+        .map-container {
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, #fcfcfc 0%, #f5f5f2 100%);
+            overflow: hidden;
+        }
+        .radar-sweep {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: conic-gradient(from 0deg, rgba(255, 215, 0, 0.1) 0deg, transparent 60deg);
+            transform-origin: center;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .sparkline {
+            height: 32px;
+            width: 100%;
+            stroke: #4CAF50;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--gold);
+        }
+        .nav-item-active {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-right: 3px solid var(--gold);
+        }
+    </style>
+</head>
+<body class="flex h-screen w-full antialiased">
+<aside class="sidebar flex flex-col h-full shrink-0">
+<div class="h-14 flex items-center px-6 border-b border-[#E5E5E0]/50">
+<span class="text-xs font-bold tracking-[0.2em] uppercase text-slate-800">OCULOPS <span class="text-slate-400 font-light">OS</span></span>
+</div>
+<nav class="flex-1 py-6 space-y-1">
+<div class="px-6 pb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Intelligence</div>
+<a class="flex items-center gap-3 px-6 py-2.5 text-sm text-slate-600 hover:bg-white/30 transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-6 py-2.5 text-sm text-slate-900 font-medium nav-item-active" href="#">
+<span class="material-symbols-outlined text-[18px]">public</span> World Monitor
+            </a>
+<a class="flex items-center gap-3 px-6 py-2.5 text-sm text-slate-600 hover:bg-white/30 transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span> Signal Stream
+            </a>
+<div class="px-6 pb-2 pt-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Operations</div>
+<a class="flex items-center gap-3 px-6 py-2.5 text-sm text-slate-600 hover:bg-white/30 transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">assignment</span> Missions
+            </a>
+<a class="flex items-center gap-3 px-6 py-2.5 text-sm text-slate-600 hover:bg-white/30 transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">folder_managed</span> Asset Ledger
+            </a>
+</nav>
+<div class="p-6 border-t border-[#E5E5E0]/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-white flex items-center justify-center">
+<span class="text-[10px] font-bold">ADM</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] font-bold uppercase tracking-tight">System Admin</span>
+<span class="text-[10px] text-slate-500">Tier 0 Access</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-14 bg-white border-b border-[#E5E5E0] px-8 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#B5B5B0]">public</span>
+<h1 class="text-sm font-semibold tracking-tight text-slate-800 uppercase">World Monitor</h1>
+<div class="h-4 w-[1px] bg-slate-200 mx-2"></div>
+<span class="text-[11px] font-medium text-slate-400 uppercase tracking-widest">Global Live Feed</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="absolute inline-flex h-full w-full rounded-full bg-[#FFD700] opacity-40"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-[#FFD700]"></span>
+</span>
+<span class="text-[10px] font-bold text-slate-500 tracking-tighter uppercase">Synchronized</span>
+</div>
+<div class="h-8 w-[1px] bg-slate-100"></div>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-600">search</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-600">notifications</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<div class="grid grid-cols-4 gap-6">
+<div class="card p-5 border-l-4 border-l-[#FFD700]">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Coverage</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-light">12</span>
+<span class="text-xs font-semibold text-slate-800">MARKETS TRACKED</span>
+</div>
+</div>
+<div class="card p-5">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Signal Strength</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-light">98.4<span class="text-lg">%</span></span>
+<span class="text-[10px] font-bold text-green-600 uppercase">Optimal</span>
+</div>
+</div>
+<div class="card p-5">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Anomaly Delta</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-light">-0.04</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Neutral</span>
+</div>
+</div>
+<div class="card p-5">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Active Nodes</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-light">1,422</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase">+12h</span>
+</div>
+</div>
+</div>
+<div class="card map-container h-[480px] flex items-center justify-center relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#000 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+<div class="relative w-full h-full flex items-center justify-center">
+<svg class="w-full h-full text-slate-300 opacity-20 px-12" viewBox="0 0 1000 500">
+<path d="M150,150 Q200,100 300,150 T450,200 T600,150 T750,250 T900,200 L950,400 Q800,450 600,400 T300,450 T100,350 Z" fill="currentColor"></path>
+</svg>
+<div class="radar-sweep" style="left: 45%; top: 35%;"></div>
+<div class="absolute top-[32%] left-[48%] w-16 h-12 bg-[#FFD700]/10 border border-[#FFD700]/30 rounded-full blur-[2px]"></div>
+<div class="absolute top-[65%] left-[30%] w-12 h-24 bg-[#FFD700]/5 border border-[#FFD700]/20 rotate-12"></div>
+<div class="absolute top-[35%] left-[49%] status-dot" title="Madrid"></div>
+<div class="absolute top-[32%] left-[51%] status-dot" title="Berlin"></div>
+<div class="absolute top-[38%] left-[75%] status-dot" title="Tokyo"></div>
+<div class="absolute top-[40%] left-[22%] status-dot" title="New York"></div>
+<div class="absolute top-[68%] left-[32%] status-dot" title="Sao Paulo"></div>
+<div class="absolute top-[28%] left-[49%] translate-x-4 -translate-y-12 z-20">
+<div class="bg-white px-4 py-3 rounded shadow-xl border border-slate-100 flex flex-col gap-1 min-w-[140px]">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-800 uppercase">Madrid, ES</span>
+<span class="text-[9px] font-bold text-[#FFD700]">ACTIVE</span>
+</div>
+<div class="h-[1px] w-full bg-slate-100 my-1"></div>
+<div class="flex flex-col">
+<span class="text-[9px] text-slate-400 uppercase tracking-tighter">Signal Integrity</span>
+<span class="text-xs font-semibold">99.82%</span>
+</div>
+</div>
+<div class="w-3 h-3 bg-white border-l border-b border-slate-100 rotate-45 -translate-x-1.5 -mt-1.5 absolute"></div>
+</div>
+</div>
+<div class="absolute bottom-6 left-6 flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white/80 backdrop-blur border border-slate-200 rounded text-[10px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">map</span>
+                        Layer: Geopolitical
+                    </div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white/80 backdrop-blur border border-slate-200 rounded text-[10px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                        T-Minus: 00:00:00
+                    </div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<div class="card p-6">
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Regional Intelligence</h3>
+<span class="material-symbols-outlined text-slate-300 text-[20px]">insights</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-slate-600">Western EU</span>
+<div class="flex gap-0.5 items-end h-3">
+<div class="w-1 bg-[#FFD700] h-full"></div>
+<div class="w-1 bg-[#FFD700] h-[80%]"></div>
+<div class="w-1 bg-[#FFD700] h-[90%]"></div>
+<div class="w-1 bg-[#FFD700] h-full"></div>
+<div class="w-1 bg-slate-100 h-[40%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-slate-600">Pacific Basin</span>
+<div class="flex gap-0.5 items-end h-3">
+<div class="w-1 bg-[#FFD700] h-[60%]"></div>
+<div class="w-1 bg-[#FFD700] h-[70%]"></div>
+<div class="w-1 bg-[#FFD700] h-[65%]"></div>
+<div class="w-1 bg-slate-100 h-[30%]"></div>
+<div class="w-1 bg-slate-100 h-[20%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-slate-600">North America</span>
+<div class="flex gap-0.5 items-end h-3">
+<div class="w-1 bg-[#FFD700] h-full"></div>
+<div class="w-1 bg-[#FFD700] h-full"></div>
+<div class="w-1 bg-[#FFD700] h-full"></div>
+<div class="w-1 bg-[#FFD700] h-[95%]"></div>
+<div class="w-1 bg-[#FFD700] h-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="card p-6">
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Emerging Ops</h3>
+<span class="material-symbols-outlined text-slate-300 text-[20px]">bolt</span>
+</div>
+<div class="space-y-5">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span class="text-slate-500 uppercase">AI Score Alpha</span>
+<span class="text-slate-800">88.2</span>
+</div>
+<div class="h-1.5 w-full bg-slate-50 overflow-hidden rounded-full">
+<div class="h-full bg-[#FFD700] w-[88%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span class="text-slate-500 uppercase">Market Volatility</span>
+<span class="text-slate-800">21.5</span>
+</div>
+<div class="h-1.5 w-full bg-slate-50 overflow-hidden rounded-full">
+<div class="h-full bg-[#FFD700] w-[21.5%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="card p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Risk Index</h3>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-50 text-green-700">
+<span class="text-[9px] font-bold uppercase tracking-tighter">LOW</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-end">
+<div class="mb-4">
+<span class="text-3xl font-light tracking-tight">2.14</span>
+<span class="text-[10px] font-bold text-slate-400 ml-1">Z-SCORE</span>
+</div>
+<svg class="sparkline" viewBox="0 0 200 40">
+<path d="M0,35 Q20,32 40,30 T80,33 T120,20 T160,25 T200,15"></path>
+</svg>
+<div class="flex justify-between mt-2 text-[8px] font-bold text-slate-300 uppercase tracking-widest">
+<span>24H History</span>
+<span>Live</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

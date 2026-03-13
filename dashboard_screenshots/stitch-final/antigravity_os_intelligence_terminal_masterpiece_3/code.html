@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANTIGRAVITY OS Markets Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "page-bg": "#FAFAF8",
+          "sidebar-bg": "#F5F0E8",
+          "card-bg": "#FFFFFF",
+          "border-color": "#E5E5E0",
+          "accent-gold": "#FFD700",
+          "text-primary": "#1A1A1A",
+          "text-secondary": "#6B6B6B",
+          "accent-green": "#10B981",
+          "accent-red": "#EF4444"
+        },
+        fontFamily: {
+          "sans": ['"Inter"', 'sans-serif'],
+          "mono": ['"JetBrains Mono"', 'monospace']
+        },
+        boxShadow: {
+          "soft": "0 4px 20px rgba(0, 0, 0, 0.05)",
+          "inner-top": "inset 0 1px 0 rgba(255, 255, 255, 1)"
+        },
+        borderRadius: {
+          "xl": "12px"
+        }
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: #FAFAF8;
+    color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+  }
+  .card {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(229, 229, 224, 0.5);
+  }
+</style>
+</head>
+<body class="bg-page-bg text-text-primary h-screen w-screen overflow-hidden flex font-sans">
+<aside class="w-[240px] flex-shrink-0 border-r border-border-color bg-sidebar-bg flex flex-col py-6 px-4 gap-8 z-10">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded bg-text-primary flex items-center justify-center text-white font-bold text-lg">
+      A
+    </div>
+<span class="font-bold text-sm tracking-wide">ANTIGRAVITY OS</span>
+</div>
+<nav class="flex flex-col gap-2 w-full">
+<a class="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-white/50 rounded-lg transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+      Overview
+    </a>
+<a class="flex items-center gap-3 px-3 py-2 bg-[rgba(255,215,0,0.1)] border border-accent-gold rounded-lg text-text-primary text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-accent-gold">globe</span>
+      Markets
+    </a>
+<a class="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-white/50 rounded-lg transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+      Intelligence
+    </a>
+<a class="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-white/50 rounded-lg transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+      Competitors
+    </a>
+<a class="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-white/50 rounded-lg transition-colors text-sm font-medium mt-8" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+      Settings
+    </a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden z-10">
+<header class="h-[56px] border-b border-border-color flex items-center justify-between px-6 bg-page-bg flex-shrink-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-primary text-[20px]">globe</span>
+<h1 class="text-[18px] font-semibold text-text-primary">Markets</h1>
+</div>
+<div class="flex-1 flex justify-center">
+<div class="relative w-[320px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-1.5 bg-white border border-border-color rounded-full text-sm focus:outline-none focus:border-accent-gold focus:ring-1 focus:ring-accent-gold transition-all shadow-sm" placeholder="Search markets, assets, intelligence..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-border-color shadow-sm">
+<div class="w-2 h-2 rounded-full bg-accent-green"></div>
+<span class="text-xs font-semibold tracking-wide">LIVE</span>
+</div>
+<button class="w-8 h-8 rounded-full border border-border-color bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-auto p-5 flex flex-col gap-5">
+<div class="flex gap-5 min-h-[320px]">
+<div class="card w-[60%] p-5 relative overflow-hidden flex flex-col">
+<div class="flex justify-between items-center z-10 mb-4">
+<h2 class="text-sm font-semibold text-text-primary">Global Market Sentiment</h2>
+<button class="text-text-secondary hover:text-text-primary"><span class="material-symbols-outlined text-[18px]">more_horiz</span></button>
+</div>
+<div class="flex-1 relative rounded-lg bg-[#FAFAF8] border border-border-color flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(#1A1A1A 1px, transparent 1px), linear-gradient(90deg, #1A1A1A 1px, transparent 1px); background-size: 20px 20px; transform: perspective(500px) rotateX(60deg); transform-origin: bottom;"></div>
+<div class="relative w-48 h-48 rounded-full flex items-center justify-center" style="background: radial-gradient(circle at 30% 30%, #FFFFFF 0%, #FFD700 40%, rgba(255,215,0,0.2) 80%, transparent 100%); box-shadow: 0 0 60px rgba(255,215,0,0.4), inset -10px -10px 30px rgba(0,0,0,0.1);">
+<div class="w-16 h-16 rounded-full bg-white opacity-90 blur-sm"></div>
+<div class="absolute inset-0 border border-accent-gold opacity-30 rounded-full scale-110"></div>
+<div class="absolute inset-0 border border-accent-gold opacity-20 rounded-full scale-125"></div>
+<div class="absolute inset-0 border border-accent-gold opacity-10 rounded-full scale-150"></div>
+</div>
+<div class="absolute top-[20%] left-[15%] glass-pill px-2 py-1 rounded text-[9px] font-mono text-text-primary shadow-sm">VOL: LOW</div>
+<div class="absolute top-[30%] right-[15%] glass-pill px-2 py-1 rounded text-[9px] font-mono text-text-primary shadow-sm">MOMENTUM: +2.4</div>
+<div class="absolute bottom-[25%] left-[25%] glass-pill px-2 py-1 rounded text-[9px] font-mono text-text-primary shadow-sm">FLOW: POSITIVE</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-accent-green"></div>
+<span class="text-sm font-medium text-text-primary">Market Sentiment: <span class="font-semibold">Bullish</span></span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-5">
+<div class="card flex-1 p-5 flex flex-col justify-center relative overflow-hidden group">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-sm font-medium text-text-secondary">Competitive Threats</h3>
+<div class="flex items-center gap-1 bg-red-50 text-accent-red px-2 py-0.5 rounded text-[10px] font-bold border border-red-100">
+<div class="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></div>
+              HIGH ALERT
+            </div>
+</div>
+<div class="text-[32px] font-bold text-text-primary leading-tight">3</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-accent-red opacity-20 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="card flex-1 p-5 flex flex-col justify-center relative group">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-sm font-medium text-text-secondary">Market Signals</h3>
+<span class="material-symbols-outlined text-[16px] text-accent-gold">sensors</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="text-[32px] font-bold text-text-primary leading-tight">12</div>
+<div class="flex items-end gap-1 h-8">
+<div class="w-1.5 bg-accent-gold h-[40%] rounded-t-sm opacity-60"></div>
+<div class="w-1.5 bg-accent-gold h-[60%] rounded-t-sm opacity-80"></div>
+<div class="w-1.5 bg-accent-gold h-[80%] rounded-t-sm opacity-90"></div>
+<div class="w-1.5 bg-accent-gold h-[100%] rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<div class="card flex-1 p-5 flex flex-col justify-center relative group">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-sm font-medium text-text-secondary">Sector Growth</h3>
+<span class="material-symbols-outlined text-[16px] text-accent-green">trending_up</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-[32px] font-bold text-accent-green leading-tight">+4.2%</div>
+<svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+</div>
+</div>
+</div>
+<div class="card w-full flex flex-col overflow-hidden">
+<div class="p-5 border-b border-border-color flex justify-between items-center">
+<h2 class="text-sm font-semibold text-text-primary">Competitive Intelligence</h2>
+<button class="text-xs font-medium text-text-secondary flex items-center gap-1 hover:text-text-primary"><span class="material-symbols-outlined text-[16px]">filter_list</span> Filter</button>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-color text-xs text-text-secondary bg-[#FAFAF8]">
+<th class="py-3 px-5 font-medium w-[20%]">Competitor</th>
+<th class="py-3 px-5 font-medium w-[15%]">Sector</th>
+<th class="py-3 px-5 font-medium w-[15%]">Threat Level</th>
+<th class="py-3 px-5 font-medium w-[20%]">Recent Move</th>
+<th class="py-3 px-5 font-medium w-[15%] bg-[rgba(255,215,0,0.05)] text-text-primary">Signal Strength</th>
+<th class="py-3 px-5 font-medium w-[15%] text-right">Last Detected</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-border-color">
+<tr class="hover:bg-[#FAFAF8]/50 transition-colors">
+<td class="py-3 px-5 font-medium text-text-primary">Nexus AI</td>
+<td class="py-3 px-5 text-text-secondary">Enterprise</td>
+<td class="py-3 px-5"><span class="px-2 py-1 rounded-full text-[10px] font-bold bg-red-50 text-accent-red border border-red-100">CRITICAL</span></td>
+<td class="py-3 px-5 text-text-secondary truncate max-w-[150px]">Acquired DataCorp</td>
+<td class="py-3 px-5 bg-[rgba(255,215,0,0.02)]">
+<div class="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-accent-gold w-[95%]"></div></div>
+</td>
+<td class="py-3 px-5 text-right text-text-secondary font-mono text-xs">2h ago</td>
+</tr>
+<tr class="hover:bg-[#FAFAF8]/50 transition-colors">
+<td class="py-3 px-5 font-medium text-text-primary">Synapse Tech</td>
+<td class="py-3 px-5 text-text-secondary">Consumer AI</td>
+<td class="py-3 px-5"><span class="px-2 py-1 rounded-full text-[10px] font-bold bg-yellow-50 text-yellow-700 border border-yellow-200">ELEVATED</span></td>
+<td class="py-3 px-5 text-text-secondary truncate max-w-[150px]">Launched V3.0 API</td>
+<td class="py-3 px-5 bg-[rgba(255,215,0,0.02)]">
+<div class="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-accent-gold w-[75%]"></div></div>
+</td>
+<td class="py-3 px-5 text-right text-text-secondary font-mono text-xs">5h ago</td>
+</tr>
+<tr class="hover:bg-[#FAFAF8]/50 transition-colors">
+<td class="py-3 px-5 font-medium text-text-primary">OmniCognition</td>
+<td class="py-3 px-5 text-text-secondary">Healthcare</td>
+<td class="py-3 px-5"><span class="px-2 py-1 rounded-full text-[10px] font-bold bg-gray-50 text-gray-600 border border-gray-200">MONITOR</span></td>
+<td class="py-3 px-5 text-text-secondary truncate max-w-[150px]">Patent filing: Neural</td>
+<td class="py-3 px-5 bg-[rgba(255,215,0,0.02)]">
+<div class="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-accent-gold w-[40%]"></div></div>
+</td>
+<td class="py-3 px-5 text-right text-text-secondary font-mono text-xs">1d ago</td>
+</tr>
+<tr class="hover:bg-[#FAFAF8]/50 transition-colors">
+<td class="py-3 px-5 font-medium text-text-primary">Aether Systems</td>
+<td class="py-3 px-5 text-text-secondary">Defense</td>
+<td class="py-3 px-5"><span class="px-2 py-1 rounded-full text-[10px] font-bold bg-red-50 text-accent-red border border-red-100">CRITICAL</span></td>
+<td class="py-3 px-5 text-text-secondary truncate max-w-[150px]">Gov contract bid</td>
+<td class="py-3 px-5 bg-[rgba(255,215,0,0.02)]">
+<div class="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-accent-gold w-[88%]"></div></div>
+</td>
+<td class="py-3 px-5 text-right text-text-secondary font-mono text-xs">1d ago</td>
+</tr>
+<tr class="hover:bg-[#FAFAF8]/50 transition-colors">
+<td class="py-3 px-5 font-medium text-text-primary">Quantum Mind</td>
+<td class="py-3 px-5 text-text-secondary">Finance</td>
+<td class="py-3 px-5"><span class="px-2 py-1 rounded-full text-[10px] font-bold bg-yellow-50 text-yellow-700 border border-yellow-200">ELEVATED</span></td>
+<td class="py-3 px-5 text-text-secondary truncate max-w-[150px]">Executive reshuffle</td>
+<td class="py-3 px-5 bg-[rgba(255,215,0,0.02)]">
+<div class="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-accent-gold w-[60%]"></div></div>
+</td>
+<td class="py-3 px-5 text-right text-text-secondary font-mono text-xs">2d ago</td>
+</tr>
+<tr class="hover:bg-[#FAFAF8]/50 transition-colors">
+<td class="py-3 px-5 font-medium text-text-primary">Cerebral Inc</td>
+<td class="py-3 px-5 text-text-secondary">Logistics</td>
+<td class="py-3 px-5"><span class="px-2 py-1 rounded-full text-[10px] font-bold bg-gray-50 text-gray-600 border border-gray-200">MONITOR</span></td>
+<td class="py-3 px-5 text-text-secondary truncate max-w-[150px]">Minor pricing update</td>
+<td class="py-3 px-5 bg-[rgba(255,215,0,0.02)]">
+<div class="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-accent-gold w-[20%]"></div></div>
+</td>
+<td class="py-3 px-5 text-right text-text-secondary font-mono text-xs">3d ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-5 pb-5">
+<div class="card p-5 flex flex-col justify-between h-[120px]">
+<h3 class="text-sm font-medium text-text-secondary">AI Services Market</h3>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold text-text-primary">$18.4B</span>
+<svg class="w-24 h-8" preserveAspectRatio="none" viewBox="0 0 100 30">
+<polyline fill="none" points="0,25 20,20 40,28 60,15 80,10 100,5" stroke="#FFD700" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline>
+<polygon fill="rgba(255,215,0,0.1)" points="0,30 0,25 20,20 40,28 60,15 80,10 100,5 100,30"></polygon>
+</svg>
+</div>
+</div>
+<div class="card p-5 flex flex-col justify-between h-[120px]">
+<h3 class="text-sm font-medium text-text-secondary">Client Acquisition Cost</h3>
+<div class="flex items-end justify-between">
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-bold text-text-primary">€320</span>
+<span class="text-xs text-text-secondary">avg</span>
+</div>
+<div class="text-xs font-medium text-accent-green bg-green-50 px-2 py-1 rounded border border-green-100">-4.5% v LW</div>
+</div>
+</div>
+<div class="card p-5 flex flex-col justify-between h-[120px]">
+<h3 class="text-sm font-medium text-text-secondary">Market Share</h3>
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-accent-gold" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="35, 100" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-text-primary">35%</div>
+</div>
+<div class="flex flex-col gap-1 text-xs">
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-accent-gold"></div><span class="text-text-secondary">ANTIGRAVITY</span></div>
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-gray-200"></div><span class="text-text-secondary">Others</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

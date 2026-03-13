@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Herald Module - Ivory Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#FFD700",
+          "background": "#FAFAF8",
+          "sidebar": "#F5F0E8",
+          "card": "#FFFFFF",
+          "border-color": "#E5E5E0",
+          "text-main": "#1A1A1A",
+          "text-muted": "#6B7280"
+        },
+        fontFamily: {
+          "sans": ['Inter', 'sans-serif'],
+        },
+        borderRadius: {
+          "DEFAULT": "12px",
+          "lg": "12px",
+          "xl": "12px",
+          "full": "9999px"
+        },
+        boxShadow: {
+          "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+          "DEFAULT": "0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)",
+          "md": "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05)",
+          "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05)"
+        }
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: #FAFAF8;
+    color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+</head>
+<body class="bg-background text-text-main font-sans h-screen w-screen overflow-hidden flex relative">
+<aside class="w-[240px] flex-shrink-0 border-r border-border-color bg-sidebar flex flex-col py-6 relative z-10">
+<div class="px-6 mb-8 flex items-center gap-3 text-text-main">
+<div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
+      O
+    </div>
+<span class="font-bold tracking-wide">OculOps</span>
+</div>
+<div class="flex flex-col gap-6 px-4 w-full">
+<div>
+<h3 class="text-xs font-semibold text-text-muted tracking-wider uppercase mb-2 px-2">Core</h3>
+<nav class="flex flex-col gap-1">
+<a class="text-text-muted hover:bg-black/5 rounded-lg px-3 py-2 transition-colors flex items-center gap-3 w-full" href="#" title="Dashboard">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="text-text-muted hover:bg-black/5 rounded-lg px-3 py-2 transition-colors flex items-center gap-3 w-full" href="#" title="Agents">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+<span class="text-sm font-medium">Agents</span>
+</a>
+</nav>
+</div>
+<div>
+<h3 class="text-xs font-semibold text-text-muted tracking-wider uppercase mb-2 px-2">Automation</h3>
+<nav class="flex flex-col gap-1">
+<a class="text-text-muted hover:bg-black/5 rounded-lg px-3 py-2 transition-colors flex items-center gap-3 w-full" href="#" title="Workflows">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+<span class="text-sm font-medium">Workflows</span>
+</a>
+<a class="bg-[#FFD700]/10 border border-[#FFD700] text-text-main rounded-lg px-3 py-2 transition-colors flex items-center gap-3 w-full" href="#" title="Herald">
+<span class="material-symbols-outlined text-[20px] text-[#FFD700]">podcasts</span>
+<span class="text-sm font-medium">Herald</span>
+</a>
+</nav>
+</div>
+</div>
+<div class="mt-auto px-4">
+<a class="text-text-muted hover:bg-black/5 rounded-lg px-3 py-2 transition-colors flex items-center gap-3 w-full" href="#" title="Settings">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden relative z-10">
+<header class="h-[56px] border-b border-border-color flex items-center justify-between px-6 bg-background">
+<div class="flex items-center gap-3 w-1/3">
+<span class="material-symbols-outlined text-text-main text-[22px]">newspaper</span>
+<h1 class="text-base font-semibold text-text-main">Herald</h1>
+</div>
+<div class="flex-1 flex justify-center w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-[18px]">search</span>
+<input class="w-full bg-[#F0F0EB] border-none rounded-full py-1.5 pl-10 pr-4 text-sm focus:ring-1 focus:ring-border-color outline-none placeholder:text-text-muted text-text-main" placeholder="Search intelligence..." type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-end gap-4 w-1/3">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-xs font-semibold text-text-muted uppercase tracking-wide">Live</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-gray-200 border border-border-color"></div>
+</div>
+</header>
+<div class="flex-1 overflow-auto p-6 flex flex-col gap-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-card border border-border-color rounded-lg p-6 shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="text-sm text-text-muted font-medium mb-1">March 12, 2026</div>
+<h2 class="text-2xl font-bold text-text-main">Daily Intelligence Briefing</h2>
+</div>
+<span class="bg-[#FFD700]/10 text-[#B89B00] border border-[#FFD700]/30 text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#FFD700]"></span>
+              LIVE UPDATE
+            </span>
+</div>
+<div class="text-lg text-text-main leading-relaxed">
+            3 new market signals detected. <span class="font-semibold text-black">Atlas</span> identified 5 qualified leads in Madrid hospitality sector. Pipeline value increased <span class="text-green-600 font-semibold">12%</span> this week.
+          </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-card border border-border-color rounded-lg p-4 shadow-sm flex flex-col justify-between">
+<span class="text-sm text-text-muted font-medium">Signals Today</span>
+<div class="text-3xl font-bold text-text-main mt-2">3</div>
+</div>
+<div class="bg-card border border-border-color rounded-lg p-4 shadow-sm flex flex-col justify-between">
+<span class="text-sm text-text-muted font-medium">New Leads</span>
+<div class="text-3xl font-bold text-text-main mt-2">5</div>
+</div>
+<div class="bg-card border border-border-color rounded-lg p-4 shadow-sm flex flex-col justify-between">
+<span class="text-sm text-text-muted font-medium">Agent Actions</span>
+<div class="text-3xl font-bold text-text-main mt-2">23</div>
+</div>
+<div class="bg-card border border-border-color rounded-lg p-4 shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm text-text-muted font-medium">Briefing Score</span>
+<div class="text-2xl font-bold text-text-main mt-1">87<span class="text-sm text-text-muted font-normal">/100</span></div>
+</div>
+<div class="relative w-12 h-12 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-[#FFD700]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="87, 100" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card border border-border-color rounded-lg p-5 shadow-sm flex flex-col h-full">
+<h3 class="text-sm font-bold text-text-main mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-text-muted">schedule</span>
+          Upcoming Actions
+        </h3>
+<div class="flex flex-col gap-4">
+<div class="flex gap-3">
+<div class="text-xs font-semibold text-text-muted w-12 pt-0.5">14:30</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-text-main">Deploy Outreach Sequence</div>
+<div class="text-xs text-text-muted mt-0.5">Madrid Hospitality Cohort</div>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="text-xs font-semibold text-text-muted w-12 pt-0.5">15:00</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-text-main">Sync CRM Pipeline</div>
+<div class="text-xs text-text-muted mt-0.5">Update lead scores</div>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="text-xs font-semibold text-text-muted w-12 pt-0.5">16:45</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-text-main">Market Scan: EU Region</div>
+<div class="text-xs text-text-muted mt-0.5">Sentinel AI routine</div>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="text-xs font-semibold text-text-muted w-12 pt-0.5">18:00</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-text-main">Generate Evening Report</div>
+<div class="text-xs text-text-muted mt-0.5">Executive Summary</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-card border border-border-color rounded-lg shadow-sm flex flex-col">
+<div class="border-b border-border-color p-4 px-5">
+<h3 class="text-sm font-bold text-text-main">Live Activity Feed</h3>
+</div>
+<div class="p-2 flex-1 overflow-y-auto">
+<table class="w-full text-sm text-left">
+<tbody>
+<tr class="hover:bg-black/[0.02] transition-colors border-b border-border-color/50 last:border-0">
+<td class="py-3 px-3 text-xs text-text-muted whitespace-nowrap w-24">14:02 PM</td>
+<td class="py-3 px-3 w-32">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">A</div>
+<span class="font-medium text-text-main text-xs">ATLAS</span>
+</div>
+</td>
+<td class="py-3 px-3 text-text-main">Qualified 5 leads in hospitality</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-red-100 text-red-800">High Impact</span>
+</td>
+</tr>
+<tr class="hover:bg-black/[0.02] transition-colors border-b border-border-color/50 last:border-0">
+<td class="py-3 px-3 text-xs text-text-muted whitespace-nowrap w-24">13:45 PM</td>
+<td class="py-3 px-3 w-32">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xs font-bold">H</div>
+<span class="font-medium text-text-main text-xs">HUNTER</span>
+</div>
+</td>
+<td class="py-3 px-3 text-text-main">Scraped competitor pricing page</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-yellow-100 text-yellow-800">Medium</span>
+</td>
+</tr>
+<tr class="hover:bg-black/[0.02] transition-colors border-b border-border-color/50 last:border-0">
+<td class="py-3 px-3 text-xs text-text-muted whitespace-nowrap w-24">13:10 PM</td>
+<td class="py-3 px-3 w-32">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">S</div>
+<span class="font-medium text-text-main text-xs">SENTINEL</span>
+</div>
+</td>
+<td class="py-3 px-3 text-text-main">Detected keyword spike 'AI integration'</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-red-100 text-red-800">High Impact</span>
+</td>
+</tr>
+<tr class="hover:bg-black/[0.02] transition-colors border-b border-border-color/50 last:border-0">
+<td class="py-3 px-3 text-xs text-text-muted whitespace-nowrap w-24">12:30 PM</td>
+<td class="py-3 px-3 w-32">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">A</div>
+<span class="font-medium text-text-main text-xs">ATLAS</span>
+</div>
+</td>
+<td class="py-3 px-3 text-text-main">Drafted 12 outreach emails</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-800">Low</span>
+</td>
+</tr>
+<tr class="hover:bg-black/[0.02] transition-colors border-b border-border-color/50 last:border-0">
+<td class="py-3 px-3 text-xs text-text-muted whitespace-nowrap w-24">11:15 AM</td>
+<td class="py-3 px-3 w-32">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xs font-bold">H</div>
+<span class="font-medium text-text-main text-xs">HUNTER</span>
+</div>
+</td>
+<td class="py-3 px-3 text-text-main">Updated CRM records for TechCorp</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-800">Low</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="text-sm font-bold text-text-main">Key Insights</h3>
+<div class="bg-card border border-border-color rounded-lg p-4 shadow-sm flex items-start gap-3">
+<div class="p-2 bg-blue-50 text-blue-600 rounded-lg shrink-0">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-main mb-1">Sector Growth</h4>
+<p class="text-xs text-text-muted leading-relaxed">Hospitality sector showing 14% WoW increase in tech budget allocations.</p>
+</div>
+</div>
+<div class="bg-card border border-border-color rounded-lg p-4 shadow-sm flex items-start gap-3">
+<div class="p-2 bg-amber-50 text-amber-600 rounded-lg shrink-0">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-main mb-1">Competitor Action</h4>
+<p class="text-xs text-text-muted leading-relaxed">Rival 'Omni' launched new pricing tier. Analysis underway by Hunter.</p>
+</div>
+</div>
+<div class="bg-card border border-border-color rounded-lg p-4 shadow-sm flex items-start gap-3">
+<div class="p-2 bg-green-50 text-green-600 rounded-lg shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-text-main mb-1">Campaign Success</h4>
+<p class="text-xs text-text-muted leading-relaxed">Q1 outreach sequence hit 22% reply rate. Optimized templates applied.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

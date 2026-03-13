@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Flight Deck Mission Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --parchment: #F5F0E8;
+            --canvas: #FAFAF8;
+            --border: #E5E5E0;
+            --gold: #C5A059;
+            --gold-light: #F9F3E9;
+            --gold-deep: #9D7A39;
+            --success: #10B981;
+            --danger: #EF4444;
+        }
+        @layer base {
+            body {
+                @apply bg-[var(--canvas)] text-slate-800 font-['Inter'] antialiased;
+            }
+        }
+        .neumorphic-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+        }
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+        }
+        .sidebar-item-active {
+            background: rgba(197, 160, 89, 0.08);
+            border-right: 3px solid var(--gold);
+        }
+        .timeline-connector {
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: -8px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+<aside class="w-[240px] bg-[var(--parchment)] border-r border-[var(--border)] flex flex-col shrink-0">
+<div class="p-8 pb-10">
+<h1 class="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--gold)]">visibility</span>
+                OCULOPS
+            </h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-4 mb-2">Systems</div>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-900 sidebar-item-active" href="#">
+<span class="material-symbols-outlined text-[20px]">flight_takeoff</span> Flight Deck
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span> Cortex OS
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">hub</span> Signal Net
+            </a>
+<div class="pt-8 text-[10px] font-bold text-slate-400 uppercase tracking-widest px-4 mb-2">Intelligence</div>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">database</span> Archive
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span> Vector Analysis
+            </a>
+</nav>
+<div class="p-6 border-t border-[var(--border)] bg-white/30 backdrop-blur-sm">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[var(--gold)] flex items-center justify-center text-white text-xs font-bold">JD</div>
+<div>
+<div class="text-xs font-bold">Director Alpha</div>
+<div class="text-[10px] text-slate-500">Tier 1 Access</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto p-10 space-y-8 max-w-[1200px] mx-auto">
+<section class="neumorphic-card border-[var(--gold)] border-opacity-40 rounded-xl overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-[var(--border)]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[var(--gold-light)] flex items-center justify-center">
+<span class="material-symbols-outlined text-[var(--gold)] text-3xl">psychology</span>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h2 class="text-xl font-bold tracking-tight">CORTEX</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-green-50 text-[var(--success)] border border-[var(--success)]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[var(--success)] mr-1.5 animate-pulse"></span>
+                                LIVE
+                            </span>
+</div>
+<p class="text-xs text-slate-400 font-medium tracking-wide">MASTER NEURAL ARCHITECTURE v4.2</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-center">
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Missions Active</div>
+<div class="text-2xl font-semibold">14</div>
+</div>
+<div class="h-8 w-px bg-[var(--border)]"></div>
+<div class="text-center">
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Success Rate</div>
+<div class="text-2xl font-semibold text-[var(--gold)]">99.4%</div>
+</div>
+<div class="h-8 w-px bg-[var(--border)]"></div>
+<div class="text-center">
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Uptime</div>
+<div class="text-2xl font-semibold tracking-tighter">342d 12h</div>
+</div>
+<div class="flex items-center gap-2 ml-4">
+<button class="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--gold)] hover:bg-[var(--gold-light)] transition-colors">
+<span class="material-symbols-outlined text-xl">tune</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--gold)] hover:bg-[var(--gold-light)] transition-colors">
+<span class="material-symbols-outlined text-xl">refresh</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Tactical Agent Network</div>
+<div class="grid grid-cols-7 gap-3">
+<div class="neumorphic-card p-3 rounded-lg flex flex-col gap-2 hover:border-[var(--gold)]/30 transition-all cursor-default">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[var(--gold)] text-[18px]">security</span>
+<span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+</div>
+<div>
+<div class="text-[11px] font-bold">ATLAS</div>
+<div class="text-[9px] text-slate-400 font-mono truncate">STABLE_0.2ms</div>
+</div>
+</div>
+<div class="neumorphic-card p-3 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[var(--gold)] text-[18px]">radar</span>
+<span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+</div>
+<div>
+<div class="text-[11px] font-bold">HUNTER</div>
+<div class="text-[9px] text-slate-400 font-mono truncate">SCANNING_4.1s</div>
+</div>
+</div>
+<div class="neumorphic-card p-3 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[var(--gold)] text-[18px]">auto_awesome</span>
+<span class="w-2 h-2 rounded-full bg-amber-400"></span>
+</div>
+<div>
+<div class="text-[11px] font-bold">ORACLE</div>
+<div class="text-[9px] text-slate-400 font-mono truncate">CALIBRATING</div>
+</div>
+</div>
+<div class="neumorphic-card p-3 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[var(--gold)] text-[18px]">build</span>
+<span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+</div>
+<div>
+<div class="text-[11px] font-bold">FORGE</div>
+<div class="text-[9px] text-slate-400 font-mono truncate">READY_IDLE</div>
+</div>
+</div>
+<div class="neumorphic-card p-3 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[var(--gold)] text-[18px]">shield</span>
+<span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+</div>
+<div>
+<div class="text-[11px] font-bold">SENTINEL</div>
+<div class="text-[9px] text-slate-400 font-mono truncate">STABLE_0.1ms</div>
+</div>
+</div>
+<div class="neumorphic-card p-3 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[var(--gold)] text-[18px]">history_edu</span>
+<span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+</div>
+<div>
+<div class="text-[11px] font-bold">SCRIBE</div>
+<div class="text-[9px] text-slate-400 font-mono truncate">LOGGING_TX</div>
+</div>
+</div>
+<div class="neumorphic-card p-3 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[var(--gold)] text-[18px]">campaign</span>
+<span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+</div>
+<div>
+<div class="text-[11px] font-bold">HERALD</div>
+<div class="text-[9px] text-slate-400 font-mono truncate">TRANSMITTING</div>
+</div>
+</div>
+</div>
+</section>
+<section class="neumorphic-card rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Live Mission Logs</h3>
+<span class="text-[10px] font-mono text-slate-400">010111_SYNC_COMPLETE</span>
+</div>
+<div class="space-y-6 relative">
+<div class="relative flex gap-6">
+<div class="timeline-connector"></div>
+<div class="z-10 w-6 h-6 rounded-full bg-[var(--gold)] border-4 border-white"></div>
+<div class="flex-1 pb-4">
+<div class="flex items-center gap-4 mb-1">
+<span class="font-['JetBrains_Mono'] text-[11px] text-[var(--gold)] font-medium">14:22:04.11</span>
+<span class="text-xs font-bold uppercase tracking-wide">Operation Golden Siphon</span>
+</div>
+<p class="text-sm text-slate-600">Packet extraction in progress at Vector 72-A. Signal strength nominal.</p>
+</div>
+</div>
+<div class="relative flex gap-6">
+<div class="timeline-connector"></div>
+<div class="z-10 w-6 h-6 rounded-full bg-[var(--gold)] border-4 border-white"></div>
+<div class="flex-1 pb-4">
+<div class="flex items-center gap-4 mb-1">
+<span class="font-['JetBrains_Mono'] text-[11px] text-[var(--gold)] font-medium">14:19:52.88</span>
+<span class="text-xs font-bold uppercase tracking-wide">Signal Intercept: ECHO-4</span>
+</div>
+<p class="text-sm text-slate-600">ORACLE identified primary frequency match. Decryption layer active.</p>
+</div>
+</div>
+<div class="relative flex gap-6">
+<div class="z-10 w-6 h-6 rounded-full bg-[var(--gold)]/30 border-4 border-white"></div>
+<div class="flex-1">
+<div class="flex items-center gap-4 mb-1">
+<span class="font-['JetBrains_Mono'] text-[11px] text-[var(--gold)] font-medium opacity-60">14:15:30.00</span>
+<span class="text-xs font-bold uppercase tracking-wide text-slate-400">Network Handshake Alpha</span>
+</div>
+<p class="text-sm text-slate-400">System initialization confirmed across all 7 tactical agents.</p>
+</div>
+</div>
+</div>
+</section>
+<div class="flex items-center justify-between gap-6 pt-4">
+<div class="flex gap-4">
+<button class="bg-[var(--gold)] hover:bg-[var(--gold-deep)] text-white px-8 py-3 rounded-lg text-xs font-bold uppercase tracking-widest shadow-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+                    Launch Mission
+                </button>
+<button class="border border-[var(--danger)] text-[var(--danger)] hover:bg-[var(--danger)]/5 px-8 py-3 rounded-lg text-xs font-bold uppercase tracking-widest transition-all">
+                    Emergency Stop
+                </button>
+</div>
+<button class="text-slate-400 hover:text-slate-900 text-xs font-bold uppercase tracking-widest px-4 py-2 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">list_alt</span>
+                View Full Logs
+            </button>
+</div>
+</main>
+<aside class="w-[60px] border-l border-[var(--border)] flex flex-col items-center py-8 space-y-8">
+<div class="flex flex-col items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--success)]"></div>
+<span class="[writing-mode:vertical-lr] text-[9px] font-bold text-slate-400 uppercase tracking-widest">System</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)]"></div>
+<span class="[writing-mode:vertical-lr] text-[9px] font-bold text-slate-400 uppercase tracking-widest">Encrypt</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>
+<span class="[writing-mode:vertical-lr] text-[9px] font-bold text-slate-400 uppercase tracking-widest">Remote</span>
+</div>
+<div class="flex-1"></div>
+<button class="text-slate-400 hover:text-[var(--gold)] transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</aside>
+
+</body></html>

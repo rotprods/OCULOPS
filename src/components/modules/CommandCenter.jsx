@@ -4,6 +4,7 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || ''
@@ -31,6 +32,30 @@ async function fetchSystemSnapshot(serviceKey, view = 'system') {
     } catch { return null }
 }
 
+function asRecord(value) {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+    return value
+}
+
+function extractCorrelationId(eventRow) {
+    const payload = asRecord(eventRow?.payload)
+    const metadata = asRecord(eventRow?.metadata)
+    return (
+        eventRow?.correlation_id ||
+        payload.correlation_id ||
+        payload.correlationId ||
+        metadata.correlation_id ||
+        metadata.correlationId ||
+        null
+    )
+}
+
+function shortCorrelation(value) {
+    if (!value) return '—'
+    const normalized = String(value)
+    return normalized.length > 12 ? `${normalized.slice(0, 8)}…${normalized.slice(-4)}` : normalized
+}
+
 // ── Status Dot Component ──
 function StatusDot({ status }) {
     const colors = {
@@ -48,11 +73,13 @@ function StatusDot({ status }) {
 }
 
 export default function CommandCenter() {
+    const navigate = useNavigate()
     const [serviceKey, setServiceKey] = useState('')
     const [bridgeStatus, setBridgeStatus] = useState(null)
     const [systemSnapshot, setSystemSnapshot] = useState(null)
     const [commandLog, setCommandLog] = useState([])
     const [eventStream, setEventStream] = useState([])
+    const [traceEvents, setTraceEvents] = useState([])
     const [_loading, setLoading] = useState(false)
     const [activeTab, setActiveTab] = useState('overview')
     const refreshRef = useRef(null)
@@ -100,6 +127,14 @@ export default function CommandCenter() {
             .order('created_at', { ascending: false })
             .limit(50)
             .then(({ data }) => setEventStream(data || []))
+
+        supabase
+            .from('event_log')
+            .select('*')
+            .not('correlation_id', 'is', null)
+            .order('created_at', { ascending: false })
+            .limit(30)
+            .then(({ data }) => setTraceEvents(data || []))
     }, [bridgeStatus])
 
     const saveKey = () => {
@@ -117,6 +152,11 @@ export default function CommandCenter() {
         { id: 'commands', label: 'COMMAND LOG' },
         { id: 'config', label: 'CONFIGURATION' },
     ]
+
+    const openTrace = (correlationId) => {
+        if (!correlationId) return
+        navigate(`/control-tower?corr=${encodeURIComponent(correlationId)}`)
+    }
 
     return (
         <div className="fade-in" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -222,10 +262,41 @@ export default function CommandCenter() {
                                     <div key={evt.id || i} className="mono" style={{ fontSize: 10, padding: '6px 12px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: 8 }}>
                                         <span style={{ color: 'var(--text-tertiary)', minWidth: 60 }}>{new Date(evt.created_at).toLocaleTimeString()}</span>
                                         <span style={{ color: 'var(--accent-primary)' }}>{evt.event_type}</span>
+                                        {extractCorrelationId(evt) && (
+                                            <button
+                                                className="mono text-xs"
+                                                onClick={() => openTrace(extractCorrelationId(evt))}
+                                                style={{ marginLeft: 'auto', background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)', cursor: 'pointer', padding: '1px 6px' }}
+                                            >
+                                                {shortCorrelation(extractCorrelationId(evt))}
+                                            </button>
+                                        )}
                                     </div>
                                 ))}
                                 {eventStream.length === 0 && (
                                     <div className="mono text-xs text-tertiary" style={{ padding: 32, textAlign: 'center' }}>NO TD EVENTS YET</div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div style={{ border: '1px solid var(--border-default)', background: 'var(--surface-raised)' }}>
+                            <div className="mono text-xs font-bold" style={{ padding: '12px 16px', background: 'var(--border-subtle)', borderBottom: '1px solid var(--border-default)', color: 'var(--accent-primary)' }}>Pipeline traces</div>
+                            <div style={{ padding: 8, maxHeight: 280, overflowY: 'auto' }}>
+                                {traceEvents.slice(0, 10).map((evt, i) => (
+                                    <div key={evt.id || i} className="mono" style={{ fontSize: 10, padding: '6px 12px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: 8, alignItems: 'center' }}>
+                                        <span style={{ color: 'var(--text-tertiary)', minWidth: 60 }}>{new Date(evt.created_at).toLocaleTimeString()}</span>
+                                        <span style={{ color: 'var(--accent-primary)', minWidth: 140 }}>{evt.event_type}</span>
+                                        <button
+                                            className="mono text-xs"
+                                            onClick={() => openTrace(extractCorrelationId(evt))}
+                                            style={{ marginLeft: 'auto', background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)', cursor: 'pointer', padding: '1px 6px' }}
+                                        >
+                                            {shortCorrelation(extractCorrelationId(evt))}
+                                        </button>
+                                    </div>
+                                ))}
+                                {traceEvents.length === 0 && (
+                                    <div className="mono text-xs text-tertiary" style={{ padding: 32, textAlign: 'center' }}>NO CORRELATED EVENTS YET</div>
                                 )}
                             </div>
                         </div>
@@ -274,6 +345,14 @@ export default function CommandCenter() {
                                 <div key={evt.id || i} className="mono" style={{ fontSize: 11, padding: '8px 16px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: 12, background: i % 2 === 0 ? 'transparent' : 'var(--surface-elevated)' }}>
                                     <span style={{ color: 'var(--text-tertiary)', minWidth: 80, flexShrink: 0 }}>{new Date(evt.created_at).toLocaleTimeString()}</span>
                                     <span style={{ color: 'var(--accent-primary)', minWidth: 180, flexShrink: 0 }}>{evt.event_type}</span>
+                                    <button
+                                        className="mono text-xs"
+                                        onClick={() => openTrace(extractCorrelationId(evt))}
+                                        style={{ color: 'var(--text-tertiary)', minWidth: 90, flexShrink: 0, background: 'transparent', border: '1px solid var(--border-subtle)', cursor: extractCorrelationId(evt) ? 'pointer' : 'default', padding: '1px 6px' }}
+                                        disabled={!extractCorrelationId(evt)}
+                                    >
+                                        {shortCorrelation(extractCorrelationId(evt))}
+                                    </button>
                                     <span style={{ color: 'var(--text-tertiary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                         {evt.payload ? JSON.stringify(evt.payload).slice(0, 120) : '—'}
                                     </span>
@@ -308,6 +387,18 @@ export default function CommandCenter() {
                                         {payload.params && (
                                             <div className="mono" style={{ fontSize: 10, color: 'var(--text-tertiary)' }}>
                                                 PARAMS: {JSON.stringify(payload.params).slice(0, 200)}
+                                            </div>
+                                        )}
+                                        {extractCorrelationId(cmd) && (
+                                            <div className="mono" style={{ fontSize: 10, color: 'var(--text-tertiary)', marginTop: 4 }}>
+                                                CORRELATION:
+                                                <button
+                                                    className="mono text-xs"
+                                                    onClick={() => openTrace(extractCorrelationId(cmd))}
+                                                    style={{ marginLeft: 6, background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)', cursor: 'pointer', padding: '1px 6px' }}
+                                                >
+                                                    {extractCorrelationId(cmd)}
+                                                </button>
                                             </div>
                                         )}
                                     </div>

@@ -1,15 +1,19 @@
 // ═══════════════════════════════════════════════════
-// OCULOPS — Messaging v11.0
+// OCULOPS — Messaging v12.0
 // Unified inbox — Gmail, WhatsApp, social drafts
+// AG1-P0.1: Status chips · AG1-P0.2: Blocked indicators
+// AG1-P0.3/P0.4: Run-inspection affordances
 // ═══════════════════════════════════════════════════
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useConversations } from '../../hooks/useConversations'
 import { useMessagingChannels } from '../../hooks/useMessagingChannels'
 import { useCompanies } from '../../hooks/useCompanies'
+import { useApprovals } from '../../hooks/useApprovals'
 import { useAppStore } from '../../stores/useAppStore'
 import { buildLaunchUrl, getChannelLabel } from '../../lib/outreach'
-import { EnvelopeIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
+import { EnvelopeIcon, ChatBubbleLeftRightIcon, ExclamationTriangleIcon, CheckCircleIcon, ClockIcon } from '@heroicons/react/24/outline'
 import ModulePage from '../ui/ModulePage'
 import './Messaging.css'
 
@@ -61,30 +65,94 @@ function inferChannel(conversation, messages = []) {
     return latestWithMeta?.metadata?.channel || 'email'
 }
 
+function extractCorrelationId(source) {
+    const metadata = source?.metadata || {}
+    return metadata.correlation_id || metadata.correlationId || source?.correlation_id || null
+}
+
+function inferConversationCorrelation(conversation, messages = []) {
+    const fromConversation = extractCorrelationId(conversation)
+    if (fromConversation) return fromConversation
+    const latestWithCorrelation = [...messages].reverse().find(msg => extractCorrelationId(msg))
+    return extractCorrelationId(latestWithCorrelation)
+}
+
 function formatTime(value) {
     if (!value) return ''
     return new Date(value).toLocaleString('en-US', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
 }
 
+// AG1-P0.1: Message status chip
+const STATUS_CHIP = {
+    draft:     { label: 'Draft',     cls: 'msg-status-chip--draft' },
+    sent:      { label: 'Sent',      cls: 'msg-status-chip--sent' },
+    delivered: { label: 'Delivered', cls: 'msg-status-chip--delivered' },
+    read:      { label: 'Read',      cls: 'msg-status-chip--read' },
+    failed:    { label: 'Failed',    cls: 'msg-status-chip--failed' },
+}
+
+function StatusChip({ status }) {
+    const chip = STATUS_CHIP[status] || STATUS_CHIP.sent
+    return <span className={`msg-status-chip ${chip.cls}`}>{chip.label}</span>
+}
+
 function Messaging() {
+    const location = useLocation()
+    const navigate = useNavigate()
     const { toast } = useAppStore()
     const { conversations, messages, activeConvo, loading, sendMessage, dispatchMessage, selectConversation, totalUnread } = useConversations()
     const { byType: channelsByType, busy: channelBusy, error: channelsError, connectGmail, connectWhatsApp, disconnectChannel, syncGmail } = useMessagingChannels()
     const { companies } = useCompanies()
+    const { items: pendingApprovals } = useApprovals('pending')
     const [activeChannel, setActiveChannel] = useState('all')
     const [messageInput, setMessageInput] = useState('')
     const [showTemplates, setShowTemplates] = useState(false)
 
     const companyMap = useMemo(() => (companies || []).reduce((acc, c) => ({ ...acc, [c.id]: c }), {}), [companies])
+
+    // AG1-P0.2: Map correlation IDs to pending approvals for blocked indicators
+    const approvalsByCorrelation = useMemo(() => {
+        const map = new Map()
+        ;(pendingApprovals || []).forEach(a => {
+            const corrId = a.payload?.correlation_id || a.payload?.correlationId
+            if (corrId) map.set(corrId, a)
+        })
+        return map
+    }, [pendingApprovals])
     const selectedConversation = useMemo(() => conversations.find(c => c.id === activeConvo) || null, [activeConvo, conversations])
+    const requestedConversationId = useMemo(() => {
+        const params = new URLSearchParams(location.search)
+        const value = (params.get('conversation') || '').trim()
+        return value || null
+    }, [location.search])
     const selectedChannel = useMemo(() => inferChannel(selectedConversation, messages), [messages, selectedConversation])
+    const selectedCorrelationId = useMemo(() => inferConversationCorrelation(selectedConversation, messages), [selectedConversation, messages])
     const selectedCompany = selectedConversation?.contact?.company_id ? companyMap[selectedConversation.contact.company_id] : null
     const filteredConversations = useMemo(() => activeChannel === 'all' ? conversations : conversations.filter(c => inferChannel(c) === activeChannel), [activeChannel, conversations])
     const draftMessage = useMemo(() => [...messages].reverse().find(m => m.metadata?.launch_url), [messages])
     const activeTransport = selectedChannel === 'email' ? channelsByType.email : selectedChannel === 'whatsapp' ? channelsByType.whatsapp : null
     const canSendRealtime = Boolean(activeTransport && activeTransport.status === 'active')
+    const openTrace = (correlationId) => {
+        if (!correlationId) return
+        navigate(`/control-tower?corr=${encodeURIComponent(correlationId)}`)
+    }
 
-    const selectConvo = async (c) => { await selectConversation(c.id); setMessageInput('') }
+    const selectConvo = async (c) => {
+        if (!c?.id) return
+        await selectConversation(c.id)
+        const params = new URLSearchParams(location.search)
+        params.set('conversation', c.id)
+        navigate(`/messaging?${params.toString()}`, { replace: true })
+        setMessageInput('')
+    }
+
+    useEffect(() => {
+        if (!requestedConversationId || !conversations.length) return
+        if (activeConvo === requestedConversationId) return
+        const targetConversation = conversations.find(convo => convo.id === requestedConversationId)
+        if (!targetConversation) return
+        selectConversation(targetConversation.id)
+    }, [requestedConversationId, conversations, activeConvo, selectConversation])
 
     const openDraft = (m = draftMessage) => {
         if (!m?.metadata?.launch_url) return toast('No launch URL detected', 'warning')
@@ -157,6 +225,9 @@ function Messaging() {
                                     const ch = inferChannel(convo)
                                     const chMeta = CHANNELS.find(c => c.key === ch) || CHANNELS[0]
                                     const company = convo.contact?.company_id ? companyMap[convo.contact.company_id] : null
+                                    const correlationId = inferConversationCorrelation(convo)
+                                    const hasPendingApproval = correlationId && approvalsByCorrelation.has(correlationId)
+                                    const pendingApproval = hasPendingApproval ? approvalsByCorrelation.get(correlationId) : null
                                     return (
                                         <div key={convo.id} className={`msg-convo-item ${selectedConversation?.id === convo.id ? 'active' : ''}`} onClick={() => selectConvo(convo)}>
                                             <div className="msg-convo-header">
@@ -172,9 +243,37 @@ function Messaging() {
                                                     {convo.unread_count > 0 && <span className="msg-unread-badge">{convo.unread_count}</span>}
                                                 </div>
                                             </div>
-                                            <div className="mono text-xs text-secondary" style={{ marginTop: 'var(--space-3)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                                {convo.status === 'pending' ? 'Draft saved' : convo.status}
+                                            {/* AG1-P0.1: Status chip + AG1-P0.2: Blocked indicators */}
+                                            <div className="msg-convo-status-row">
+                                                <StatusChip status={convo.status === 'pending' ? 'draft' : (convo.status || 'sent')} />
+                                                {hasPendingApproval && (
+                                                    <button
+                                                        className="msg-blocked-badge msg-blocked-badge--approval"
+                                                        onClick={(e) => { e.stopPropagation(); navigate(`/agents?tab=approvals&approval=${pendingApproval.id}`) }}
+                                                        title="Pending approval — click to review"
+                                                    >
+                                                        <ClockIcon width={10} height={10} /> Pending approval
+                                                    </button>
+                                                )}
                                             </div>
+                                            {correlationId && (
+                                                <div className="msg-convo-actions-row">
+                                                    <button
+                                                        className="msg-correlation-link"
+                                                        onClick={(e) => { e.stopPropagation(); openTrace(correlationId) }}
+                                                    >
+                                                        trace
+                                                    </button>
+                                                    {hasPendingApproval && (
+                                                        <button
+                                                            className="msg-correlation-link"
+                                                            onClick={(e) => { e.stopPropagation(); navigate(`/agents?tab=approvals&approval=${pendingApproval.id}`) }}
+                                                        >
+                                                            open approval
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     )
                                 })}
@@ -195,6 +294,21 @@ function Messaging() {
                                                 {selectedCompany?.name || ''} · {getChannelLabel(selectedChannel)}
                                                 {selectedConversation.contact?.email && ` · ${selectedConversation.contact.email}`}
                                             </div>
+                                            {selectedCorrelationId && (
+                                                <div style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 4, flexWrap: 'wrap' }}>
+                                                    <button className="msg-correlation-link" onClick={() => openTrace(selectedCorrelationId)}>
+                                                        trace
+                                                    </button>
+                                                    {approvalsByCorrelation.has(selectedCorrelationId) && (
+                                                        <button
+                                                            className="msg-blocked-badge msg-blocked-badge--approval"
+                                                            onClick={() => navigate(`/agents?tab=approvals&approval=${approvalsByCorrelation.get(selectedCorrelationId).id}`)}
+                                                        >
+                                                            <ClockIcon width={10} height={10} /> Pending approval
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                     <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -218,11 +332,19 @@ function Messaging() {
                                             <div key={msg.id} style={{ display: 'flex', justifyContent: msg.direction === 'outbound' ? 'flex-end' : 'flex-start' }}>
                                                 <div className={`msg-bubble ${msg.direction === 'outbound' ? 'msg-bubble--outbound' : 'msg-bubble--inbound'}`}>
                                                     {msg.metadata?.subject && <div className="mono text-xs text-tertiary" style={{ marginBottom: 'var(--space-2)' }}>Subject: {msg.metadata.subject}</div>}
+                                                    {extractCorrelationId(msg) && (
+                                                        <button className="msg-correlation-link" style={{ marginBottom: 'var(--space-2)' }} onClick={() => openTrace(extractCorrelationId(msg))}>
+                                                            trace
+                                                        </button>
+                                                    )}
                                                     <div style={{ fontSize: 11, whiteSpace: 'pre-wrap', lineHeight: 1.6 }}>{msg.content}</div>
                                                     <div className="msg-bubble-footer">
                                                         <span>{formatTime(msg.created_at)}</span>
-                                                        <span style={{ color: msg.status === 'draft' ? 'var(--color-warning)' : 'inherit' }}>{msg.status || 'sent'}</span>
+                                                        <StatusChip status={msg.status || 'sent'} />
                                                     </div>
+                                                    {msg.status === 'failed' && msg.error_message && (
+                                                        <div className="msg-error-detail">{msg.error_message}</div>
+                                                    )}
                                                 </div>
                                             </div>
                                         ))}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps - Vertical Triptych</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#EAB308", // Golden yellow from the UI
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#0F172A",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1E293B",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .neomorph-light {
+            box-shadow: 8px 8px 16px #d1d5db, -8px -8px 16px #ffffff;
+        }
+        .dark .neomorph-light {
+            box-shadow: 8px 8px 16px #020617, -4px -4px 12px #1e293b;
+        }
+        .blade-container {
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+        .blade {
+            scroll-snap-align: start;
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 transition-colors duration-300">
+<div class="blade-container no-scrollbar">
+<section class="blade p-6 flex flex-col border-r border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-10">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+<span class="material-icons-round text-white text-lg">visibility</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">OCUL<span class="text-primary">OPS</span></h1>
+</div>
+<nav class="flex-1 space-y-8 overflow-y-auto no-scrollbar">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4 px-2">Intelligence</p>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-card-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-primary font-medium" href="#">
+<span class="material-icons-round text-xl">insights</span>
+                                Intelligence
+                            </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-primary" href="#">
+<span class="material-icons-round text-xl">query_stats</span>
+                                Data Time
+                            </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-primary" href="#">
+<span class="material-icons-round text-xl">ios_share</span>
+                                Exports
+                            </a>
+</li>
+</ul>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4 px-2">Operations</p>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-primary" href="#">
+<span class="material-icons-round text-xl">person_outline</span>
+                                Targets
+                            </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-primary" href="#">
+<span class="material-icons-round text-xl">settings_input_component</span>
+                                Operations
+                            </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-primary" href="#">
+<span class="material-icons-round text-xl">explore</span>
+                                Fleet
+                            </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-primary" href="#">
+<span class="material-icons-round text-xl">security</span>
+                                Security
+                            </a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-3 bg-white/50 dark:bg-white/5 rounded-2xl">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9wRMyvOKrOTbmzH-Q7IoMRqBGNCrXI2Y9dJvWbe-vIl1Oi1bXCtDwdrM3YpxU6GSPouI5-Ik9QdjP6L5TQs8kj_SZKFpmEuX2IyjSWz4dzC6DhoIrETDDIh4WzFB6u-CSwILaoL7MnvvB-nq3JyEzPrWxzH1DU8-sGSsKQa1RST42hhNc9DaqYlQoljXmGNaHJGJP6wo5IfuFzsEI96UmQE-JkUI-PdQ-NkG2oXdHCGNKReIz87i0N0SyZcNC9h_9pYuw39g97KKS"/>
+<div class="flex-1">
+<p class="text-xs font-semibold">Commander Vance</p>
+<p class="text-[10px] text-slate-400 uppercase">Sector 7-G</p>
+</div>
+<span class="material-icons-round text-slate-400 text-lg">settings</span>
+</div>
+</div>
+<div class="flex justify-center gap-1 mt-6">
+<div class="w-4 h-1 rounded-full bg-primary"></div>
+<div class="w-1.5 h-1 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<div class="w-1.5 h-1 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+</div>
+</section>
+<section class="blade overflow-hidden relative bg-black flex items-center justify-center">
+<div class="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none">
+<div class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent"></div>
+</div>
+<div class="relative w-full h-full flex flex-col items-center justify-center p-8">
+<div class="absolute top-10 left-8 z-20">
+<h2 class="text-white text-2xl font-light tracking-tight">Master Intelligence</h2>
+<div class="w-12 h-0.5 bg-primary mt-2"></div>
+</div>
+<div class="relative w-full aspect-square max-w-[500px] flex items-center justify-center">
+<div class="absolute inset-0 border border-white/10 rounded-full scale-125 animate-[pulse_8s_infinite]"></div>
+<div class="absolute inset-0 border border-white/5 rounded-full scale-150"></div>
+<div class="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center">
+<img alt="Abstract energy sphere" class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFacW-9Uusb74PfAFwKpjtWxXII7zOHpGtyOww8xYiM876_WdqycUOife7u09uM32gt_YBvxaaYJO161GAfODtbiSZF_nVoNacRubfX7onC057cqvW9AAcFZKONCR_Z2qYQt_7OPQ3RJntagKw0rZAR-1MmlSXHagxnLm0zkrKLaDSw8PK62XnYgbe01w6vSBcUA66znOWN20VrrSTsu7LZknk2g6A_jspEHsce0HVfNJc6_t3R9KrvtV09fTgboDF5DOB6IM7k3e9"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/60 via-transparent to-primary/40 animate-pulse"></div>
+<div class="z-10 w-32 h-32 bg-white/90 rounded-full blur-3xl opacity-60"></div>
+</div>
+<div class="absolute w-full h-[1px] bg-white/20 rotate-45"></div>
+<div class="absolute w-full h-[1px] bg-white/10 -rotate-12"></div>
+</div>
+<div class="absolute bottom-16 text-center z-20">
+<p class="text-white/40 text-[10px] tracking-[0.2em] uppercase mb-1">Scanning Neural Network</p>
+<p class="text-primary font-mono text-sm">94.21% SYNC</p>
+</div>
+</div>
+<div class="absolute bottom-6 left-0 right-0 flex justify-center gap-1 z-30">
+<div class="w-1.5 h-1 rounded-full bg-white/30"></div>
+<div class="w-4 h-1 rounded-full bg-primary"></div>
+<div class="w-1.5 h-1 rounded-full bg-white/30"></div>
+</div>
+</section>
+<section class="blade flex flex-col p-6 overflow-hidden">
+<h2 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-icons-round text-primary">data_usage</span>
+                System Feed
+            </h2>
+<div class="flex-1 overflow-y-auto no-scrollbar space-y-6 pb-10">
+<div class="p-6 rounded-[2rem] bg-card-light dark:bg-card-dark neomorph-light flex flex-col items-center text-center">
+<div class="w-20 h-20 mb-4 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center shadow-inner">
+<span class="material-icons-round text-primary text-4xl">language</span>
+</div>
+<p class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-1">Global Threat Level</p>
+<p class="text-3xl font-bold tracking-tight">Low</p>
+</div>
+<div class="p-6 rounded-[2rem] bg-card-light dark:bg-card-dark neomorph-light">
+<div class="flex justify-between items-start mb-4">
+<p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Fleet Health</p>
+<span class="material-icons-round text-emerald-500">north_east</span>
+</div>
+<div class="flex items-baseline gap-2 mb-4">
+<p class="text-4xl font-black">98.4<span class="text-2xl">%</span></p>
+</div>
+<div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98.4%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4 px-2">
+<h3 class="font-bold text-sm">Critical Signals</h3>
+<span class="material-icons-round text-slate-400 text-sm">more_horiz</span>
+</div>
+<div class="space-y-3">
+<div class="p-4 bg-white/60 dark:bg-card-dark/60 rounded-2xl border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-mono text-slate-400 uppercase">08:17.02.51:11:00</span>
+<span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-500 text-[10px] font-bold rounded-full flex items-center gap-1">
+<span class="material-icons-round text-[10px]">error_outline</span> ALERT
+                                </span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs font-semibold mb-1">TRXR: 09:12:22.6022:31</p>
+<p class="text-[10px] text-slate-500 font-mono">#FFD400</p>
+</div>
+<div class="text-right">
+<div class="flex gap-0.5 items-end h-4 mb-1 justify-end">
+<div class="w-1 bg-primary h-2"></div>
+<div class="w-1 bg-primary h-3"></div>
+<div class="w-1 bg-primary/30 h-4"></div>
+<div class="w-1 bg-primary/30 h-1"></div>
+</div>
+<p class="text-[10px] font-bold">23.0%</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-primary/10 dark:bg-primary/5 rounded-2xl border border-primary/20">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-mono text-slate-400 uppercase">08:17.02.51:11:00</span>
+<span class="px-2 py-0.5 bg-primary/20 text-primary text-[10px] font-bold rounded-full flex items-center gap-1">
+<span class="material-icons-round text-[10px]">warning_amber</span> ALERT
+                                </span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs font-semibold mb-1 text-primary">TRXR: 09:17:22.6023:01</p>
+<p class="text-[10px] text-slate-500 font-mono">#FFD400</p>
+</div>
+<div class="text-right">
+<div class="flex gap-0.5 items-end h-4 mb-1 justify-end">
+<div class="w-1 bg-primary h-1"></div>
+<div class="w-1 bg-primary h-2"></div>
+<div class="w-1 bg-primary h-4"></div>
+<div class="w-1 bg-primary h-3"></div>
+</div>
+<p class="text-[10px] font-bold text-primary">48.4%</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-white/60 dark:bg-card-dark/60 rounded-2xl border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-mono text-slate-400 uppercase">08:17.02.51:11:00</span>
+<span class="px-2 py-0.5 bg-primary/20 text-primary text-[10px] font-bold rounded-full flex items-center gap-1">
+<span class="material-icons-round text-[10px]">warning_amber</span> ALERT
+                                </span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs font-semibold mb-1">TRXR: 08:17:22.6023:01</p>
+<p class="text-[10px] text-slate-500 font-mono">#FFD400</p>
+</div>
+<div class="text-right">
+<div class="flex gap-0.5 items-end h-4 mb-1 justify-end">
+<div class="w-1 bg-primary h-3"></div>
+<div class="w-1 bg-primary h-1"></div>
+<div class="w-1 bg-primary/30 h-2"></div>
+<div class="w-1 bg-primary/30 h-4"></div>
+</div>
+<p class="text-[10px] font-bold">27.5%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 left-0 right-0 flex justify-center gap-1 z-30">
+<div class="w-1.5 h-1 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<div class="w-1.5 h-1 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<div class="w-4 h-1 rounded-full bg-primary"></div>
+</div>
+</section>
+</div>
+<button class="fixed bottom-20 right-6 w-12 h-12 bg-card-light dark:bg-card-dark rounded-full shadow-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 z-50" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round text-primary">dark_mode</span>
+</button>
+
+</body></html>

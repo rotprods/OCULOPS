@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS System Settings Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --parchment: #F5F0E8;
+            --ivory: #FAFAF8;
+            --gold: #FFD700;
+            --border: #E5E5E0;
+            --text-main: #1A1A1A;
+            --text-muted: #717171;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-main);
+        }
+        .neumorphic-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .gold-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+        }
+    </style>
+</head>
+<body class="h-[900px] w-[1440px] mx-auto overflow-hidden flex">
+<aside class="w-[240px] bg-[var(--parchment)] border-r border-[var(--border)] flex flex-col h-full shrink-0">
+<div class="h-14 flex items-center px-6 border-b border-[var(--border)] mb-4">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 bg-[var(--text-main)] rounded-sm flex items-center justify-center">
+<span class="text-[var(--gold)] text-[10px] font-bold">O</span>
+</span>
+<span class="font-bold tracking-tighter text-sm uppercase">OCULOPS</span>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<div class="px-3 py-2 text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">Main</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="text-sm font-medium">Control Tower</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<span class="text-sm font-medium">Intelligence</span>
+</a>
+<div class="pt-4 px-3 py-2 text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">System</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md bg-white/60 text-[var(--text-main)] border border-[var(--border)] shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg text-[var(--gold)]" style="font-variation-settings: 'FILL' 1">settings</span>
+<span class="text-sm font-semibold">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">security</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+</nav>
+<div class="p-6 border-t border-[var(--border)]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-stone-300"></div>
+<div>
+<div class="text-xs font-bold uppercase">Terminal A1</div>
+<div class="text-[10px] text-[var(--text-muted)]">v10.3.2</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col">
+<header class="h-14 bg-white border-b border-[var(--border)] px-8 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--text-muted)]">settings</span>
+<h1 class="text-[18px] font-semibold tracking-tight">Settings</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-xs font-medium text-[var(--text-muted)]">Status: <span class="text-green-600 font-bold uppercase tracking-wider ml-1">Active</span></div>
+<div class="h-4 w-px bg-[var(--border)]"></div>
+<span class="material-symbols-outlined text-lg text-[var(--text-muted)]">notifications</span>
+</div>
+</header>
+<div class="flex-1 p-8 overflow-hidden flex gap-8">
+<nav class="w-[200px] shrink-0 space-y-1">
+<a class="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white border border-[var(--border)] shadow-sm" href="#">
+<span class="text-sm font-semibold text-[var(--text-main)]">General</span>
+<div class="w-1.5 h-1.5 rounded-full bg-[var(--gold)]"></div>
+</a>
+<a class="flex items-center px-4 py-2.5 rounded-lg text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="text-sm font-medium">Account</span>
+</a>
+<a class="flex items-center px-4 py-2.5 rounded-lg text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="text-sm font-medium">Network</span>
+</a>
+<a class="flex items-center px-4 py-2.5 rounded-lg text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="text-sm font-medium">Nodes</span>
+</a>
+<a class="flex items-center px-4 py-2.5 rounded-lg text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="text-sm font-medium">API Access</span>
+</a>
+<a class="flex items-center px-4 py-2.5 rounded-lg text-[var(--text-muted)] hover:bg-black/5 transition-colors" href="#">
+<span class="text-sm font-medium">Billing</span>
+</a>
+</nav>
+<div class="flex-1 overflow-y-auto pr-4">
+<div class="neumorphic-card rounded-xl p-6 space-y-10">
+<section>
+<h2 class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-6">General Configuration</h2>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)] ml-1">Organization Name</label>
+<input class="w-full bg-[var(--ivory)] border-[var(--border)] rounded-lg px-4 py-2.5 text-sm font-medium focus:ring-0 focus:border-[var(--gold)] transition-colors" type="text" value="OCULOPS"/>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)] ml-1">System Language</label>
+<select class="w-full bg-[var(--ivory)] border-[var(--border)] rounded-lg px-4 py-2.5 text-sm font-medium focus:ring-0 focus:border-[var(--gold)] transition-colors">
+<option>English (International)</option>
+<option>German</option>
+<option>Japanese</option>
+</select>
+</div>
+<div class="space-y-2 col-span-2">
+<label class="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)] ml-1">Timezone</label>
+<select class="w-full bg-[var(--ivory)] border-[var(--border)] rounded-lg px-4 py-2.5 text-sm font-medium focus:ring-0 focus:border-[var(--gold)] transition-colors">
+<option>(UTC+01:00) Central European Time (Berlin)</option>
+<option>(UTC-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(UTC+09:00) Japan Standard Time (Tokyo)</option>
+</select>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-6">Agent Configuration</h2>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)] ml-1">Default AI Model</label>
+<select class="w-full bg-[var(--ivory)] border-[var(--border)] rounded-lg px-4 py-2.5 text-sm font-medium focus:ring-0 focus:border-[var(--gold)] transition-colors">
+<option>OCULOPS Cortex-4 (Omni)</option>
+<option>DeepMind-Alpha-1</option>
+<option>Local Neural Engine</option>
+</select>
+</div>
+<div class="flex items-center justify-between p-4 bg-[var(--ivory)] rounded-lg border border-[var(--border)]">
+<div>
+<div class="text-sm font-semibold">Auto-run agents</div>
+<div class="text-xs text-[var(--text-muted)]">Automatically execute defined strategic directives.</div>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-[var(--gold)]">
+<span class="inline-block h-4 w-4 transform rounded-full bg-white transition translate-x-6"></span>
+</button>
+</div>
+<div class="space-y-4 px-1">
+<div class="flex justify-between items-center">
+<label class="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)]">Execution Interval</label>
+<span class="text-xs font-mono font-bold">15 SECONDS</span>
+</div>
+<input class="w-full h-1 bg-[var(--border)] rounded-lg appearance-none cursor-pointer gold-slider" max="60" min="5" type="range" value="15"/>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-6">Notifications</h2>
+<div class="space-y-px bg-[var(--border)] rounded-lg border border-[var(--border)] overflow-hidden">
+<div class="flex items-center justify-between p-4 bg-white">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--text-muted)]">mail</span>
+<div class="text-sm font-medium">Email Alerts</div>
+</div>
+<button class="relative inline-flex h-5 w-10 items-center rounded-full bg-[var(--gold)]">
+<span class="inline-block h-3 w-3 transform rounded-full bg-white transition translate-x-6"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-white">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--text-muted)]">smart_toy</span>
+<div class="text-sm font-medium">Agent Activity Reports</div>
+</div>
+<button class="relative inline-flex h-5 w-10 items-center rounded-full bg-[var(--gold)]">
+<span class="inline-block h-3 w-3 transform rounded-full bg-white transition translate-x-6"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-white">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--text-muted)]">security_update_warning</span>
+<div class="text-sm font-medium">Critical Security Pings</div>
+</div>
+<button class="relative inline-flex h-5 w-10 items-center rounded-full bg-[var(--border)]">
+<span class="inline-block h-3 w-3 transform rounded-full bg-white transition translate-x-1"></span>
+</button>
+</div>
+</div>
+</section>
+<div class="flex items-center justify-end gap-4 pt-4 border-t border-[var(--border)]">
+<button class="px-6 py-2.5 text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors">Discard</button>
+<button class="px-8 py-2.5 bg-[var(--gold)] text-black text-sm font-bold rounded-lg shadow-md hover:brightness-95 transition-all">Save Changes</button>
+</div>
+</div>
+<div class="mt-8 text-center text-[10px] text-[var(--text-muted)] font-mono uppercase tracking-[0.3em]">
+                    OCULOPS OS // SYSTEM INTEGRITY VERIFIED // ENCRYPTION AES-256
+                </div>
+</div>
+</div>
+</main>
+
+</body></html>

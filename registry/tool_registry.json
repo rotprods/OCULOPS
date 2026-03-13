@@ -1,0 +1,223 @@
+{
+  "version": "2026-03-13",
+  "owner": "agent-2-codex",
+  "purpose": "Unified permissioned tool bus catalog.",
+  "invocation_envelope": {
+    "required_fields": [
+      "task_id",
+      "agent_id",
+      "correlation_id",
+      "pipeline_run_id",
+      "org_id",
+      "user_id",
+      "risk_level",
+      "dry_run",
+      "requested_at"
+    ]
+  },
+  "tools": [
+    {
+      "tool_id": "orchestration-engine",
+      "provider": "supabase_edge_function",
+      "invocation_type": "http_post",
+      "risk_level": "medium",
+      "requires_approval": false,
+      "default_config": {
+        "timeout_ms": 60000
+      },
+      "rate_limit_per_minute": 30
+    },
+    {
+      "tool_id": "messaging-dispatch",
+      "provider": "supabase_edge_function",
+      "invocation_type": "http_post",
+      "risk_level": "high",
+      "requires_approval": true,
+      "default_config": {
+        "channel_defaults": [
+          "email",
+          "whatsapp"
+        ]
+      },
+      "rate_limit_per_minute": 20
+    },
+    {
+      "tool_id": "send-email",
+      "provider": "gmail",
+      "invocation_type": "api",
+      "risk_level": "high",
+      "requires_approval": true,
+      "default_config": {
+        "from": "connected_channel"
+      },
+      "rate_limit_per_minute": 20
+    },
+    {
+      "tool_id": "google-maps-search",
+      "provider": "google_maps",
+      "invocation_type": "api",
+      "risk_level": "medium",
+      "requires_approval": false,
+      "default_config": {
+        "radius_default": 1500
+      },
+      "rate_limit_per_minute": 120
+    },
+    {
+      "tool_id": "ai-qualifier",
+      "provider": "openai",
+      "invocation_type": "llm_call",
+      "risk_level": "medium",
+      "requires_approval": false,
+      "default_config": {
+        "model_tier": "standard_reasoner"
+      },
+      "rate_limit_per_minute": 120
+    },
+    {
+      "tool_id": "automation-runner",
+      "provider": "supabase_edge_function",
+      "invocation_type": "http_post",
+      "risk_level": "medium",
+      "requires_approval": false,
+      "default_config": {
+        "send_live_default": false
+      },
+      "rate_limit_per_minute": 60
+    },
+    {
+      "tool_id": "event-dispatcher",
+      "provider": "supabase_edge_function",
+      "invocation_type": "http_post",
+      "risk_level": "low",
+      "requires_approval": false,
+      "default_config": {},
+      "rate_limit_per_minute": 240
+    },
+    {
+      "tool_id": "market-data",
+      "provider": "supabase_edge_function",
+      "invocation_type": "workflow",
+      "risk_level": "low",
+      "requires_approval": false,
+      "default_config": {},
+      "rate_limit_per_minute": 12
+    },
+    {
+      "tool_id": "social-signals",
+      "provider": "supabase_edge_function",
+      "invocation_type": "workflow",
+      "risk_level": "low",
+      "requires_approval": false,
+      "default_config": {},
+      "rate_limit_per_minute": 12
+    },
+    {
+      "tool_id": "simulation-engine",
+      "provider": "supabase_edge_function",
+      "invocation_type": "http_post",
+      "risk_level": "low",
+      "requires_approval": false,
+      "default_config": {
+        "mode_default": "shadow",
+        "target_environment_default": "staging"
+      },
+      "rate_limit_per_minute": 180
+    },
+    {
+      "tool_id": "evaluation-engine",
+      "provider": "internal_service",
+      "invocation_type": "internal_call",
+      "risk_level": "low",
+      "requires_approval": false,
+      "default_config": {
+        "critics": [
+          "quality",
+          "architecture",
+          "risk",
+          "cost"
+        ]
+      },
+      "rate_limit_per_minute": 180
+    }
+  ],
+  "agent_tool_permissions": [
+    {
+      "agent_id": "agent-atlas",
+      "tool_id": "google-maps-search",
+      "approval_required": false,
+      "max_calls_per_run": 20,
+      "spend_cap_usd": 15
+    },
+    {
+      "agent_id": "agent-hunter",
+      "tool_id": "ai-qualifier",
+      "approval_required": false,
+      "max_calls_per_run": 200,
+      "spend_cap_usd": 25
+    },
+    {
+      "agent_id": "agent-hunter",
+      "tool_id": "google-maps-search",
+      "approval_required": false,
+      "max_calls_per_run": 10,
+      "spend_cap_usd": 5
+    },
+    {
+      "agent_id": "agent-outreach",
+      "tool_id": "messaging-dispatch",
+      "approval_required": true,
+      "max_calls_per_run": 50,
+      "spend_cap_usd": 20
+    },
+    {
+      "agent_id": "agent-outreach",
+      "tool_id": "send-email",
+      "approval_required": true,
+      "max_calls_per_run": 50,
+      "spend_cap_usd": 20
+    },
+    {
+      "agent_id": "agent-cortex",
+      "tool_id": "automation-runner",
+      "approval_required": false,
+      "max_calls_per_run": 30,
+      "spend_cap_usd": 10
+    },
+    {
+      "agent_id": "agent-cortex",
+      "tool_id": "event-dispatcher",
+      "approval_required": false,
+      "max_calls_per_run": 100,
+      "spend_cap_usd": 2
+    },
+    {
+      "agent_id": "agent-cortex",
+      "tool_id": "simulation-engine",
+      "approval_required": false,
+      "max_calls_per_run": 200,
+      "spend_cap_usd": 5
+    },
+    {
+      "agent_id": "agent-copilot",
+      "tool_id": "orchestration-engine",
+      "approval_required": false,
+      "max_calls_per_run": 20,
+      "spend_cap_usd": 10
+    },
+    {
+      "agent_id": "agent-copilot",
+      "tool_id": "simulation-engine",
+      "approval_required": false,
+      "max_calls_per_run": 200,
+      "spend_cap_usd": 5
+    },
+    {
+      "agent_id": "quality-critic",
+      "tool_id": "evaluation-engine",
+      "approval_required": false,
+      "max_calls_per_run": 300,
+      "spend_cap_usd": 10
+    }
+  ]
+}

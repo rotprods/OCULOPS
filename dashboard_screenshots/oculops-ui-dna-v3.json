@@ -1,0 +1,706 @@
+{
+  "version": "3.0",
+  "source": "Stitch premium screens — extracted from 12 production HTML files across Billing, Settings, Studies, Decisions, Experiments, Team, Finance, GTM, Marketplace, Knowledge, Flight Deck, Opportunities screens",
+  "extraction_date": "2026-03-13",
+  "notes": "Values extracted verbatim from CSS variables, inline styles, and Tailwind config. Where screens diverge, the dominant value is listed first and variants noted.",
+
+  "colors": {
+    "background": {
+      "canvas": "#FAFAF8",
+      "sidebar": "#F5F0E8",
+      "card": "#FFFFFF",
+      "input": "#FAFAF8",
+      "hover_row": "#FDFDFD",
+      "hover_nav": "rgba(0,0,0,0.04)",
+      "sidebar_active_hover": "#EBE4D8",
+      "table_header": "#FAFAF8",
+      "table_header_alt": "#FAFAFA",
+      "scatter_grid": "linear-gradient(#E5E5E0 1px, transparent 1px), linear-gradient(90deg, #E5E5E0 1px, transparent 1px)",
+      "knowledge_graph_bg": "#F8F8F8",
+      "flight_deck_gold_light": "#F9F3E9",
+      "security_card_dark": "#000000",
+      "avatar_bg_gold": "rgba(255,215,0,0.20)"
+    },
+    "text": {
+      "primary": "#1A1A1A",
+      "primary_alt": "#1C1C1E",
+      "secondary": "#6B6B6B",
+      "secondary_alt": "#666660",
+      "secondary_alt2": "#717171",
+      "tertiary": "#9CA3AF",
+      "tertiary_alt": "#8E8E93",
+      "muted_label": "#99948D",
+      "inverse": "#FFFFFF",
+      "slate_primary": "#0F172A",
+      "slate_secondary": "#475569",
+      "slate_tertiary": "#94A3B8",
+      "slate_muted": "#64748B"
+    },
+    "accent": {
+      "gold": "#FFD700",
+      "gold_hover": "#F0C800",
+      "gold_active": "#FFC400",
+      "gold_muted_bg": "rgba(255,215,0,0.10)",
+      "gold_border": "rgba(255,215,0,0.30)",
+      "gold_border_solid": "rgba(255,215,0,0.40)",
+      "gold_deep": "#9D7A39",
+      "gold_boutique": "#D4AF37",
+      "gold_flight_deck": "#C5A059",
+      "gold_flight_light": "#F9F3E9",
+      "gold_pill_text": "#B29600",
+      "gold_glow_shadow": "0 0 15px rgba(255,215,0,0.15)",
+      "gold_glow_strong": "0 0 15px rgba(212,175,55,0.30)",
+      "gold_pulse_shadow": "0 0 8px rgba(255,215,0,1.0)"
+    },
+    "semantic": {
+      "success": "#10B981",
+      "success_text": "#008F39",
+      "success_bg": "#E6F5EC",
+      "success_text_alt": "#15803D",
+      "success_dot": "#22C55E",
+      "error": "#EF4444",
+      "error_text": "#B91C1C",
+      "error_bg": "#FEF2F2",
+      "error_border": "#FECACA",
+      "warning_bg": "#FFFCE6",
+      "warning_text": "#A68900",
+      "info": "#3B82F6",
+      "notification_dot": "#EF4444"
+    },
+    "border": {
+      "default": "#E5E5E0",
+      "subtle": "#F0F0EE",
+      "light_alt": "#E5E7EB",
+      "table_divider": "#F0F0EE",
+      "active_gold": "#FFD700",
+      "active_gold_muted": "rgba(255,215,0,0.30)",
+      "input_focus_gold": "#FFD700",
+      "card_hover_gold": "#FFD700",
+      "inner_glow": "rgba(255,255,255,0.80)"
+    }
+  },
+
+  "typography": {
+    "font_family": {
+      "primary": "'Inter', sans-serif",
+      "mono": "'JetBrains Mono', monospace",
+      "editorial": "'Playfair Display', serif",
+      "icons": "'Material Symbols Outlined'"
+    },
+    "weights": {
+      "light": 300,
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "sizes": {
+      "hero": "36px",
+      "hero_rem": "2.25rem",
+      "h1": "24px",
+      "h1_rem": "1.5rem",
+      "h2": "20px",
+      "h2_rem": "1.25rem",
+      "h3": "18px",
+      "h3_rem": "1.125rem",
+      "kpi": "24px",
+      "kpi_large": "28px",
+      "kpi_xl": "36px",
+      "body": "14px",
+      "body_rem": "0.875rem",
+      "body_sm": "13px",
+      "small": "12px",
+      "small_rem": "0.75rem",
+      "tiny": "11px",
+      "label": "10px",
+      "label_rem": "0.625rem",
+      "label_micro": "9px",
+      "search_input": "18px",
+      "agent_mini": "11px",
+      "nav_item": "14px",
+      "table_header": "10px",
+      "section_header": "12px"
+    },
+    "line_heights": {
+      "tight": "1.2",
+      "body": "1.5",
+      "relaxed": "1.625",
+      "none": "1"
+    },
+    "letter_spacing": {
+      "normal": "0em",
+      "wide": "0.05em",
+      "uppercase_labels": "0.08em to 0.15em",
+      "tracking_widest": "0.2em",
+      "tracking_tighter": "-0.02em",
+      "section_headers": "0.2em",
+      "status_labels": "0.1em",
+      "mono_tight": "tracking-tight"
+    },
+    "transforms": {
+      "labels": "uppercase",
+      "section_headers": "uppercase",
+      "nav_section_labels": "uppercase",
+      "table_headers": "uppercase",
+      "kpi_labels": "uppercase"
+    },
+    "antialiasing": "-webkit-font-smoothing: antialiased",
+    "special_patterns": {
+      "label_combo": "text-[10px] font-bold uppercase tracking-widest text-muted — used on ALL KPI labels, table headers, nav section labels",
+      "kpi_value": "text-2xl font-bold tracking-tight — standard KPI number",
+      "kpi_hero": "text-[36px] font-bold — plan price / hero stat",
+      "card_title": "text-lg or text-xl font-bold tracking-tight",
+      "page_title": "text-[18px] font-semibold tracking-tight",
+      "mono_timestamp": "'JetBrains Mono' text-[11px] — agent logs, IDs, latency values",
+      "italic_excerpt": "text-sm italic — study cards, experiment hypotheses"
+    }
+  },
+
+  "spacing": {
+    "sidebar_width": "240px",
+    "sidebar_collapsed_width": "60px",
+    "header_height": "56px",
+    "header_height_alt": "64px (Finance: h-20)",
+    "footer_height": "40px",
+    "card_padding": "24px (p-6)",
+    "card_padding_lg": "32px (p-8)",
+    "card_padding_xl": "40px (p-10)",
+    "card_padding_sm": "20px (p-5)",
+    "section_gap": "32px (space-y-8)",
+    "section_gap_sm": "24px (space-y-6)",
+    "card_gap": "24px (gap-6)",
+    "card_gap_sm": "16px (gap-4)",
+    "table_cell_padding": "px-6 py-4 (24px / 16px)",
+    "table_header_padding": "px-8 py-4 — wider in Billing variant",
+    "table_header_padding_sm": "px-6 py-3",
+    "input_padding": "px-4 py-2.5 (16px / 10px)",
+    "input_padding_sm": "px-3 py-2 (12px / 8px)",
+    "button_padding_primary": "px-5 py-2.5 or px-6 py-2.5",
+    "button_padding_sm": "px-4 py-1.5",
+    "button_padding_xs": "px-3 py-1.5",
+    "nav_item_padding": "px-3 py-2 or px-4 py-2.5",
+    "nav_item_padding_alt": "px-4 py-3 (Flight Deck)",
+    "max_content_width": "1100px to 1440px (varies by module)",
+    "grid_col_gap": "24px (gap-6)",
+    "scrollbar_width": "4px (custom) or 6px (Finance)",
+    "content_area_margin": "mx-auto p-8"
+  },
+
+  "borders": {
+    "radius": {
+      "card": "12px (rounded-xl) — dominant across all screens",
+      "card_lg": "16px (rounded-2xl) — hero banners, modals",
+      "card_sm": "8px (rounded-lg) — small cards, inputs, selects",
+      "card_xs": "6px (rounded-md) — nav items, pills",
+      "button": "8px (rounded-lg) — primary CTA buttons",
+      "button_alt": "4px (rounded) — outline/ghost buttons in Billing",
+      "badge": "4px (rounded)",
+      "capsule": "9999px (rounded-full) — pills, filter buttons, search bar, status badges",
+      "input": "8px (rounded-lg)",
+      "input_alt": "4px (rounded) — Team Settings form inputs",
+      "avatar": "9999px (rounded-full)",
+      "avatar_square": "8px (rounded-lg) — team table avatar variant",
+      "icon_container": "8px (rounded-lg)",
+      "icon_container_sm": "6px (rounded)",
+      "progress_bar": "9999px (rounded-full)",
+      "timeline_node": "9999px (rounded-full)",
+      "logo_mark": "4px (rounded)",
+      "tag_badge": "4px (rounded)"
+    },
+    "width": {
+      "default": "1px",
+      "active_sidebar_right": "2px — Billing/GTM variant (border-right: 2px solid gold)",
+      "active_sidebar_left": "3px — Team Settings / Flight Deck (border-left: 3px solid gold)",
+      "active_card": "2px — border-2 border-gold",
+      "focus": "1px ring (focus:ring-1 focus:ring-gold)",
+      "top_accent": "border-t-2 border-t-gold — Studies stat cards",
+      "left_accent": "border-l-4 border-l-gold — Experiments, GTM, Team KPI cards"
+    }
+  },
+
+  "shadows": {
+    "card": "0 2px 4px rgba(0,0,0,0.02)",
+    "card_alt": "0 1px 3px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.04)",
+    "card_premium": "0 4px 20px -2px rgba(0,0,0,0.03)",
+    "card_flight_deck": "0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01)",
+    "card_hover": "translate-y-[-2px] transition-transform (Marketplace cards)",
+    "neumorphic_full": "4px 4px 10px rgba(0,0,0,0.02), -4px -4px 10px rgba(255,255,255,0.80)",
+    "elevated": "shadow-md (Save button in Settings)",
+    "card_inset_glow": "inset 0 1px 0 rgba(255,255,255,0.80)",
+    "button_primary": "shadow-sm",
+    "button_gold_glow": "shadow-lg shadow-[#FFD700]/20 (Experiments new button)",
+    "gold_glow": "0 0 15px rgba(255,215,0,0.15)",
+    "gold_glow_strong": "0 0 15px rgba(212,175,55,0.30)",
+    "gold_pulse": "0 0 0 6px rgba(255,214,0,0) (keyframe end state)",
+    "gold_bar_glow": "0 0 8px rgba(255,215,0,0.50) (progress bar fill in Knowledge)",
+    "input_focus": "focus:ring-1 focus:ring-gold/30 or focus:ring-[var(--gold)]",
+    "header_backdrop": "bg-white/50 backdrop-blur-sm or backdrop-blur-md",
+    "scrollbar_thumb": "#E5E5E0 border-radius: 10px"
+  },
+
+  "components": {
+    "card": {
+      "background": "#FFFFFF",
+      "border": "1px solid #E5E5E0",
+      "radius": "12px (rounded-xl)",
+      "shadow": "0 2px 4px rgba(0,0,0,0.02)",
+      "padding": "24px (p-6) default, 32px (p-8) for content cards",
+      "hover": {
+        "border": "1px solid #FFD700 (hover:border-[var(--gold)])",
+        "transform": "none — exception: Marketplace cards use translate-y-[-2px]"
+      },
+      "variants": {
+        "hero_banner": "rounded-2xl p-8 with decorative gold bar chart element",
+        "kpi_stat": "p-6 rounded-xl with border-l-4 border-l-gold on first card",
+        "featured": "border-l-4 border-l-gold p-6 rounded-xl",
+        "active_recommended": "ring-1 ring-gold — Decisions Option B card",
+        "dark_security": "bg-black text-white — Team Settings security note"
+      }
+    },
+    "button_primary": {
+      "background": "#FFD700",
+      "color": "#000000",
+      "radius": "8px (rounded-lg)",
+      "padding": "px-5 py-2.5 or px-8 py-2.5",
+      "font_weight": "700 (bold)",
+      "font_size": "14px (text-sm) or 11-12px with uppercase tracking",
+      "text_transform": "uppercase tracking-widest — used in formal/action buttons",
+      "hover": {
+        "filter": "hover:brightness-95",
+        "scale": "active:scale-[0.98] (Team Settings)"
+      },
+      "shadow": "shadow-sm or shadow-md",
+      "variant_black": {
+        "background": "#1A1A1A",
+        "color": "#FFFFFF",
+        "radius": "4px (rounded) — Billing Change Plan button",
+        "hover": "hover:bg-zinc-800"
+      }
+    },
+    "button_outline": {
+      "background": "transparent",
+      "border": "1px solid #E5E5E0",
+      "color": "#1A1A1A",
+      "radius": "8px (rounded-lg) or 4px (rounded)",
+      "padding": "px-5 py-2.5",
+      "font_size": "12px",
+      "font_weight": "600 (semibold)",
+      "text_transform": "uppercase tracking-widest",
+      "hover": {
+        "background": "hover:bg-black/[0.02] or hover:bg-[#FAFAF8]"
+      }
+    },
+    "button_ghost": {
+      "background": "transparent",
+      "color": "#717171",
+      "hover": {
+        "color": "#1A1A1A",
+        "background": "rgba(0,0,0,0.03)",
+        "radius": "4px"
+      },
+      "padding": "px-3 py-1",
+      "font_size": "12px"
+    },
+    "button_capsule": {
+      "radius": "9999px (rounded-full)",
+      "padding": "px-4 py-1.5 or px-4 py-2",
+      "font_size": "12px (text-xs)",
+      "font_weight": "600",
+      "variants": {
+        "active_gold": "bg-gold text-black",
+        "inactive": "border border-[#E5E5E0] text-secondary hover:bg-sidebar"
+      }
+    },
+    "pill_badge": {
+      "padding": "px-2 py-0.5 or px-2 py-1",
+      "radius": "4px (rounded)",
+      "font_size": "10px",
+      "font_weight": "700 (bold)",
+      "text_transform": "uppercase tracking-tight or tracking-wide",
+      "variants": {
+        "paid_success": "bg-green-50 text-green-700 border border-green-200",
+        "failed_error": "bg-red-50 text-red-700 border border-red-200",
+        "in_review": "bg-[#FFFCE6] text-[#A68900]",
+        "executed": "bg-[#E6F5EC] text-[#008F39]",
+        "archived": "bg-[#F0F0EE] text-[#666660]",
+        "live": "bg-green-50 text-green-700 border border-green-100",
+        "running": "bg-[#FFD700]/10 text-black border-none",
+        "completed": "bg-gray-100 text-gray-500",
+        "gold_owner": "bg-rgba(255,215,0,0.10) text-[#B29600] border border-rgba(255,215,0,0.30)",
+        "score_badge": "bg-slate-900 text-white px-2 py-1 rounded",
+        "cortex_live": "bg-green-50 text-[#10B981] border border-[#10B981]/20",
+        "category_ai": "bg-blue-50 text-blue-600 border border-blue-100",
+        "category_workflow": "bg-green-50 text-green-600 border border-green-100",
+        "category_analytics": "bg-orange-50 text-orange-600 border border-orange-100"
+      }
+    },
+    "input": {
+      "background": "#FAFAF8",
+      "border": "1px solid #E5E5E0",
+      "radius": "8px (rounded-lg)",
+      "padding": "px-4 py-2.5",
+      "font_size": "14px (text-sm)",
+      "font_weight": "500 (medium)",
+      "placeholder_color": "#9CA3AF or rgba approximation",
+      "focus": {
+        "border": "focus:border-[var(--gold)] or focus:ring-1 focus:ring-[var(--gold)]",
+        "ring": "focus:ring-0 (no glow ring in most inputs, gold border only)"
+      },
+      "search_bar_special": {
+        "radius": "9999px (rounded-full)",
+        "padding": "py-1.5 pl-9 pr-4",
+        "width": "256px (w-64)",
+        "icon": "Material Symbol 'search' at left-3, text-[18px]"
+      },
+      "knowledge_search": {
+        "radius": "12px (rounded-xl)",
+        "padding": "pl-12 pr-4 py-4",
+        "font_size": "18px (text-lg)",
+        "background": "#F8FAFC (slate-50)"
+      }
+    },
+    "select": {
+      "background": "#FAFAF8",
+      "border": "1px solid #E5E5E0",
+      "radius": "8px (rounded-lg)",
+      "padding": "px-4 py-2.5",
+      "font_size": "14px",
+      "font_weight": "500",
+      "focus": "focus:border-[var(--gold)] focus:ring-0"
+    },
+    "toggle": {
+      "width_large": "44px (w-11)",
+      "height_large": "24px (h-6)",
+      "width_small": "40px (w-10)",
+      "height_small": "20px (h-5)",
+      "thumb_size_large": "16px (w-4 h-4)",
+      "thumb_size_small": "12px (w-3 h-3)",
+      "active_color": "#FFD700",
+      "inactive_color": "#E5E5E0",
+      "thumb_color": "#FFFFFF",
+      "thumb_translate_on": "translate-x-6",
+      "thumb_translate_off": "translate-x-1",
+      "radius": "9999px (rounded-full)"
+    },
+    "slider": {
+      "track_height": "4px (h-1)",
+      "track_bg": "#E5E5E0",
+      "track_radius": "9999px (rounded-lg)",
+      "thumb_size": "16px (w-4 h-4)",
+      "thumb_color": "#FFD700",
+      "thumb_radius": "9999px (rounded-full)",
+      "thumb_border": "2px solid white",
+      "thumb_shadow": "0 1px 3px rgba(0,0,0,0.20)"
+    },
+    "table": {
+      "header_bg": "#FAFAF8",
+      "header_font": "text-[10px] font-bold uppercase tracking-wider text-muted",
+      "header_padding": "px-6 py-3 or px-8 py-4",
+      "row_height": "~56px (py-4 with text-sm)",
+      "row_padding": "px-6 py-4",
+      "border": "divide-y divide-[#E5E5E0] or divide-y divide-[#F0F0EE]",
+      "hover": "hover:bg-[#FAFAF8] or hover:bg-[#FDFDFD] or hover:bg-ivory/50",
+      "wrapper": "overflow-hidden border border-[#E5E5E0] rounded-xl"
+    },
+    "kpi_card": {
+      "label_font": "text-[10px] font-bold uppercase tracking-widest",
+      "label_color": "#8E8E93 or #9CA3AF",
+      "label_margin": "mb-1",
+      "value_font": "text-2xl font-bold tracking-tight",
+      "value_font_light": "text-3xl font-light — Decisions variant",
+      "value_font_hero": "text-[36px] font-bold",
+      "value_color": "#1A1A1A (default) or #FFD700 (gold accent)",
+      "unit_color": "text-[var(--text-muted)]",
+      "gold_variant": {
+        "border": "border-l-4 border-l-gold or border-t-2 border-t-gold or border-2 border-gold",
+        "value_color": "#FFD700 or #D4AF37"
+      }
+    },
+    "sidebar_nav": {
+      "width": "240px",
+      "logo_area_padding": "p-6 or p-8",
+      "logo_mark_size": "32px (w-8 h-8)",
+      "logo_mark_bg": "#000000 or #1A1A1A",
+      "logo_mark_radius": "4px (rounded)",
+      "logo_text": "font-bold tracking-tight or tracking-tighter text-lg",
+      "section_label": "text-[10px] font-bold uppercase tracking-widest text-muted px-3 mb-2",
+      "item_padding": "px-3 py-2 or px-4 py-2.5",
+      "item_radius": "6px (rounded-md) or 8px (rounded-lg) depending on screen",
+      "item_font": "text-sm font-medium",
+      "item_color_inactive": "#717171 or #6B6B6B or text-slate-500",
+      "item_color_hover": "hover:bg-black/5 hover:text-[text-main]",
+      "item_gap": "gap-3",
+      "icon_size": "text-[20px] or text-xl (24px)",
+      "active_bg_variant_a": "rgba(0,0,0,0.04) border-right: 2px solid gold — Billing/GTM",
+      "active_bg_variant_b": "bg-white/60 border border-[#E5E5E0] shadow-sm — Settings",
+      "active_bg_variant_c": "rgba(255,255,255,0.50) border-left: 3px solid gold — Team",
+      "active_bg_variant_d": "rgba(197,160,89,0.08) border-right: 3px solid gold — Flight Deck",
+      "active_bg_variant_e": "#EBE4D8 — Marketplace (sidebar-active)",
+      "active_text": "#1A1A1A font-semibold",
+      "active_icon_color": "#FFD700",
+      "user_area_padding": "p-6 border-t border-[#E5E5E0]",
+      "avatar_size": "32px (w-8 h-8) rounded-full",
+      "user_name_font": "text-xs font-semibold or text-xs font-bold uppercase",
+      "user_role_font": "text-[10px] text-muted uppercase tracking-wider"
+    },
+    "status_dot": {
+      "size": "6px (w-1.5 h-1.5)",
+      "size_agent": "8px (w-2 h-2)",
+      "colors": {
+        "online": "#22C55E",
+        "warning": "#F59E0B (amber-400)",
+        "offline": "#D1D5DB (slate-300)",
+        "gold_encrypt": "#FFD700"
+      },
+      "pulse_animation": "animate-pulse on inline-flex span",
+      "ping_animation": "animate-ping absolute inline-flex — Knowledge LIVE indicator"
+    },
+    "progress_bar": {
+      "height": "6px (h-1.5) — standard bars",
+      "height_thin": "4px (h-1) — confidence bars in Studies, Knowledge",
+      "height_gantt": "24px (h-6) — GTM campaign timeline",
+      "bg": "#E5E5E0 or #F0F0EE or bg-slate-100 or bg-gray-100",
+      "fill": "#FFD700",
+      "fill_muted": "#FFD700/50 (Knowledge lower relevance bars)",
+      "fill_gray": "#D1D5DB (planned/inactive state)",
+      "radius": "9999px (rounded-full)"
+    },
+    "avatar": {
+      "size_sm": "28px (w-7 h-7) — stacked avatars",
+      "size_md": "32px (w-8 h-8) — sidebar user",
+      "size_lg": "36px (w-9 h-9) — table member",
+      "radius": "9999px (rounded-full)",
+      "radius_square": "8px (rounded-lg) — team table variant",
+      "bg_initials": "rgba(255,215,0,0.10) or bg-black/5 or bg-stone-300",
+      "border_initials": "border border-rgba(255,215,0,0.30) or border-black/10",
+      "font_size": "10px",
+      "font_weight": "700 (bold)",
+      "stacked_border": "border-2 border-white"
+    },
+    "header": {
+      "height": "56px (h-[56px]) — standard; 64px (h-16) — Knowledge; 80px (h-20) — Finance",
+      "bg": "#FFFFFF or bg-white/50 backdrop-blur-sm",
+      "border": "border-b border-[#E5E5E0]",
+      "padding": "px-8",
+      "title_size": "text-[18px] font-semibold tracking-tight",
+      "title_icon": "Material Symbol same page icon, text-[20px]",
+      "z_index": "z-10 or sticky top-0 z-20",
+      "search_bar": {
+        "width": "w-64 (256px)",
+        "radius": "rounded-full",
+        "bg": "#FAFAF8",
+        "border": "border-[#E5E5E0]",
+        "focus_ring": "focus:ring-1 focus:ring-[var(--gold)]"
+      }
+    },
+    "dropdown": {
+      "background": "#FFFFFF",
+      "border": "1px solid #E5E5E0",
+      "radius": "8px (rounded-lg)",
+      "shadow": "0 2px 4px rgba(0,0,0,0.02)"
+    },
+    "scrollbar": {
+      "width": "4px",
+      "track": "transparent",
+      "thumb": "#D1D1D6 or #E5E5E0",
+      "thumb_radius": "10px",
+      "thumb_hover": "#D1D5DB"
+    },
+    "timeline": {
+      "node_size": "24px (w-6 h-6)",
+      "node_radius": "9999px",
+      "node_bg": "#FFD700",
+      "node_border": "4px solid white",
+      "connector": "1px linear-gradient(to bottom, gold 0%, transparent 100%) opacity-0.30",
+      "timestamp_font": "JetBrains Mono text-[11px] text-gold font-medium"
+    },
+    "chart_tooltip": {
+      "background": "#0F172A (slate-900)",
+      "color": "#FFFFFF",
+      "font_size": "10px",
+      "padding": "px-2 py-1",
+      "radius": "4px (rounded)"
+    },
+    "scatter_plot_node": {
+      "outer_ring": "bg-gold/40 border border-gold rounded-full",
+      "inner_dot": "bg-gold rounded-full",
+      "shadow": "shadow-[0_0_20px_rgba(255,215,0,0.30)]",
+      "hover": "hover:scale-110 transition-transform"
+    },
+    "step_pipeline": {
+      "completed_node": "w-[30px] h-[30px] rounded-full bg-gold border-4 border-white shadow-sm",
+      "completed_icon": "Material Symbol 'check' text-[14px] text-white",
+      "active_icon": "Material Symbol 'sync' animate-pulse",
+      "pending_node": "w-[30px] h-[30px] rounded-full bg-white border-2 border-[#E5E5E0]",
+      "connector_done": "h-[2px] bg-gold",
+      "connector_pending": "h-[2px] bg-gold/20",
+      "label": "text-[10px] font-bold mt-2 uppercase tracking-tight"
+    },
+    "filter_tabs": {
+      "container": "bg-gray-100/50 p-1 rounded-lg border border-border-light",
+      "active": "bg-white text-[#1A1A1A] shadow-sm border border-border-light/50 rounded-md",
+      "inactive": "text-muted hover:text-main",
+      "padding": "px-3 py-1.5",
+      "font": "text-xs font-semibold"
+    }
+  },
+
+  "animations": {
+    "transitions": {
+      "default": "transition-colors (no duration = 150ms Tailwind default)",
+      "button_hover": "transition-all (150ms)",
+      "card_hover": "transition-all cursor-pointer",
+      "nav_item": "transition-colors",
+      "icon_scale": "hover:scale-110 transition-transform",
+      "card_lift": "hover:translate-y-[-2px] transition-transform",
+      "brightness": "hover:brightness-95 transition-all"
+    },
+    "hover_effects": {
+      "card_gold_border": "hover:border-[var(--gold)] — Studies, GTM, Knowledge cards",
+      "icon_color": "group-hover:text-[var(--gold)] — GTM trending_up icon",
+      "text_gold": "group-hover:text-gold — Knowledge entity titles",
+      "sidebar_item": "hover:bg-black/5 hover:text-black",
+      "button_text_underline": "hover:underline underline-offset-4 — Billing Update Card link",
+      "row_bg": "hover:bg-[#FAFAF8] or hover:bg-[#FDFDFD]"
+    },
+    "pulse_indicators": {
+      "gold_breathing": {
+        "name": "pulse-gold",
+        "keyframes": "0%: transform scale(0.95) box-shadow 0 0 0 0 rgba(255,214,0,0.70); 70%: scale(1) box-shadow 0 0 0 6px rgba(255,214,0,0); 100%: scale(0.95) box-shadow 0 0 0 0 rgba(255,214,0,0)",
+        "duration": "2s infinite",
+        "usage": "Live status dot on plan card in Billing"
+      },
+      "breathe": {
+        "name": "breathe",
+        "keyframes": "0%,100%: transform scale(1) opacity 1; 50%: scale(1.2) opacity 0.7",
+        "duration": "3s ease-in-out infinite",
+        "usage": "Team Management header dot"
+      },
+      "animate_pulse": {
+        "tailwind": "animate-pulse",
+        "usage": "Finance chart live dot, Knowledge LIVE badge inner dot, Cortex LIVE badge"
+      },
+      "animate_ping": {
+        "tailwind": "animate-ping absolute inline-flex h-full w-full rounded-full",
+        "usage": "Opportunity Matrix status indicator, Finance gold dot glow, Knowledge live badge"
+      },
+      "gold_pulse_bar": {
+        "class": "gold-pulse::after",
+        "size": "8px circle bg-gold box-shadow: 0 0 8px gold",
+        "position": "left: -12px top: 50% transform: translateY(-50%)",
+        "usage": "Experiments running status label"
+      },
+      "heartbeat_bar": {
+        "structure": "2px height, 40px width gold bar with 6px gold circle at right end",
+        "usage": "GTM Live Pulse indicator in hero card"
+      }
+    }
+  },
+
+  "icon_system": {
+    "library": "Material Symbols Outlined",
+    "cdn": "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap",
+    "default_variation_settings": "font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20 — Settings/Studies screens",
+    "alt_variation_settings": "font-variation-settings: 'wght' 300, 'FILL' 0, 'grad' 0, 'opsz' 24 — GTM/Marketplace",
+    "fill_1_usage": "font-variation-settings: 'FILL' 1 — active sidebar icon, document/invoice icons, knowledge book icon",
+    "nav_icon_size": "text-[20px] or text-xl (24px)",
+    "content_icon_size": "text-lg (18px) — card actions, inline icons",
+    "hero_icon_size": "text-2xl to text-4xl — agent icons in Marketplace",
+    "label_icon_size": "text-sm (14px) — badge icons, small inline uses",
+    "color_default": "inherits text color (muted)",
+    "color_active": "#FFD700",
+    "color_action": "text-[var(--text-main)] or text-[var(--text-muted)]",
+    "key_icons_by_module": {
+      "billing": "credit_card, payments, description, download, trending_flat, check_circle",
+      "settings": "settings, mail, smart_toy, security_update_warning, tune",
+      "studies": "science, psychology, security, auto_graph, radar, blur_on",
+      "decisions": "balance, grid_view, query_stats",
+      "experiments": "science, visibility, insights, account_tree, emoji_events",
+      "team": "group, group_work, person_add, view_in_ar, database, security",
+      "finance": "stacked_line_chart, download, notifications, receipt_long",
+      "gtm": "rocket_launch, sync_alt, menu_book, ads_click, campaign, hub, sensors",
+      "marketplace": "storefront, store, smart_toy, auto_awesome, workspace_premium, search_check, bolt, shield_with_heart",
+      "knowledge": "psychology_alt, menu_book, search, analytics, radar, shield, fullscreen",
+      "flight_deck": "flight_takeoff, psychology, hub, database, analytics, rocket_launch, security, radar, build, shield, campaign",
+      "opportunities": "target, blur_on, hub, groups, add"
+    }
+  },
+
+  "layout": {
+    "grid_system": "CSS Grid via Tailwind — grid-cols-1 through grid-cols-12",
+    "primary_breakpoints": "responsive: md (768px), lg (1024px) — Finance uses lg:col-span-8/4",
+    "canvas_dimensions": "1440px wide x 900px tall (defined in some screens as explicit dimensions)",
+    "sidebar_layout": "fixed left sidebar 240px, main flex-1, optional right mini-sidebar 60px (Flight Deck)",
+    "header_layout": "sticky top-0 z-10/z-20, full width minus sidebar",
+    "content_wrapper": "flex-1 overflow-y-auto p-8",
+    "max_content_widths": {
+      "billing": "max-w-[1100px] mx-auto",
+      "decisions": "max-w-[1200px] mx-auto",
+      "gtm": "max-w-[1440px] mx-auto",
+      "finance": "max-w-[1400px] mx-auto",
+      "marketplace": "max-w-[1200px] mx-auto",
+      "knowledge": "max-w-[1200px] mx-auto",
+      "flight_deck": "max-w-[1200px] mx-auto",
+      "studies": "max-w-6xl mx-auto"
+    },
+    "common_grid_patterns": {
+      "kpi_row_3col": "grid-cols-3 gap-6 — Billing, Studies, Decisions, Team",
+      "kpi_row_4col": "grid-cols-4 gap-6 — Experiments, GTM, Opportunities",
+      "content_2col": "grid-cols-2 gap-6 — Studies cards, Decisions options",
+      "content_3col": "grid-cols-3 gap-6 — Marketplace product grid",
+      "finance_split": "lg:col-span-8 and lg:col-span-4",
+      "team_split": "col-span-8 and col-span-4 (12-col grid)"
+    }
+  },
+
+  "brand_signature": {
+    "logo_mark_options": {
+      "variant_a": "Black square (w-8 h-8 bg-black rounded) with gold letter O text-[10px] font-bold inside",
+      "variant_b": "Black square with Material Symbol 'view_in_ar' text-gold inside",
+      "variant_c": "Black square with Material Symbol 'visibility' inside",
+      "variant_d": "Material Symbol 'blur_on' text-gold standalone (no box)",
+      "variant_e": "Dark slate rounded-lg with Material Symbol 'blur_on' text-white"
+    },
+    "wordmark": "OCULOPS — font-bold tracking-tight or tracking-tighter, text-lg, uppercase",
+    "wordmark_alt": "OculOps — mixed case in Finance variant",
+    "tagline_area": "text-[10px] uppercase tracking-widest text-muted — 'Control Tower' below wordmark in Finance",
+    "footer_signature": "text-[11px] text-muted text-center font-medium — 'OCULOPS OS v12.4.2 // SECURITY PROTOCOL ACTIVE // ENCRYPTED ENDPOINT'",
+    "footer_mono": "text-[10px] font-mono uppercase tracking-[0.3em] — 'OCULOPS OS // SYSTEM INTEGRITY VERIFIED'",
+    "decorative_gold_bar": "flex items-end gap-0.5 h-8 — stacked w-1 vertical bars at different gold opacity levels (hero cards)",
+    "particle_bg": "radial-gradient(circle, gold 0.5px, transparent 0.5px) background-size: 24px 24px opacity-0.15 — Marketplace hero"
+  },
+
+  "design_principles": {
+    "philosophy": "Premium minimal intelligence dashboard — war room aesthetic with editorial restraint. Not glassmorphism. Bold high-contrast with warm ivory ground.",
+    "surface_hierarchy": [
+      "Canvas #FAFAF8 — page background",
+      "Sidebar #F5F0E8 — navigation surface (warmer/darker than canvas)",
+      "Card #FFFFFF — elevated surface with 1px border + micro shadow",
+      "Header #FFFFFF with 50% opacity backdrop-blur — floating surface"
+    ],
+    "gold_usage_rules": [
+      "Primary CTA buttons — bg-gold text-black",
+      "Active sidebar item border accent — 2-3px solid gold",
+      "KPI card left accent border — border-l-4 border-l-gold",
+      "Progress bar fills — bg-gold",
+      "Active nav icon color — text-gold",
+      "Live status indicators — gold pulse/ping dots",
+      "AI Recommendation callout — ring-1 ring-gold with -top-3 gold pill badge",
+      "Confidence/relevance bars — bg-gold fill",
+      "Timeline nodes (completed) — bg-gold",
+      "Chart line color — stroke: #D4AF37 or #FFD700"
+    ],
+    "text_hierarchy": [
+      "Page title: text-[18px] font-semibold tracking-tight text-primary",
+      "Section title: text-2xl font-bold tracking-tight",
+      "Card heading: text-lg font-bold",
+      "KPI value: text-2xl font-bold tracking-tight",
+      "Body: text-sm font-medium text-primary or text-secondary",
+      "Label: text-[10px] font-bold uppercase tracking-widest text-muted",
+      "Timestamp/code: JetBrains Mono text-[11px]"
+    ],
+    "interactive_pattern": "Cards hover: border turns gold. Sidebar items: bg shifts to near-white with gold border accent. Buttons: brightness-95 on hover, scale-[0.98] on active.",
+    "empty_state": "Centered icon (w-12 h-12 rounded-full bg-gray-50) + medium text + small muted description — Finance transactions",
+    "featured_card_pattern": "ring-1 ring-gold with absolute -top-3 badge 'AI Recommendation' in bg-gold text-black rounded-full — Decisions module"
+  }
+}

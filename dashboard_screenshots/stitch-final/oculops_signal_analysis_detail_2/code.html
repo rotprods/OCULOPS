@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Pixel Office Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --canvas: #FAFAF8;
+            --sidebar: #F5F0E8;
+            --border: #E5E5E0;
+            --gold: #FFD700;
+            --card: #FFFFFF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas);
+            color: #1A1A1A;
+        }
+        .neumorphic-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .sidebar-item-active {
+            background: rgba(255, 255, 255, 0.6);
+            border-right: 3px solid var(--gold);
+        }
+        .gold-glow {
+            box-shadow: 0 0 15px var(--gold);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#FFD700]/30">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-[240px] bg-[#F5F0E8] border-r border-[#E5E5E0] flex flex-col shrink-0">
+<div class="h-14 flex items-center px-6 border-b border-[#E5E5E0]">
+<span class="text-xs font-bold tracking-[0.2em] uppercase text-slate-800">OCULOPS OS</span>
+</div>
+<nav class="flex-1 py-6">
+<div class="px-6 mb-4">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Modules</p>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:text-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Overview</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-800 font-semibold sidebar-item-active" href="#">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<span>Pixel Office</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:text-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">query_stats</span>
+<span>Signal Lab</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:text-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">database</span>
+<span>Archive</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="p-6 border-t border-[#E5E5E0]">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-white border border-[#E5E5E0] flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="flex-1">
+<p class="text-xs font-semibold">Director</p>
+<p class="text-[10px] text-slate-500">Secure Line</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-14 bg-white border-b border-[#E5E5E0] flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">monitor</span>
+<h1 class="text-sm font-semibold tracking-tight">Pixel Office</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-[#FFD700] gold-glow"></span>
+<span class="text-[11px] font-medium text-slate-500 uppercase tracking-widest">Live: Operational</span>
+</div>
+<div class="h-4 w-px bg-[#E5E5E0]"></div>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-800 transition-colors">notifications</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-800 transition-colors">search</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<section class="neumorphic-card rounded-xl overflow-hidden relative">
+<div class="h-[320px] bg-[#FDFCFB] relative overflow-hidden">
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#000 0.5px, transparent 0.5px); background-size: 20px 20px;"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<svg fill="none" height="300" viewBox="0 0 600 300" width="600" xmlns="http://www.w3.org/2000/svg">
+<path d="M300 50L550 150L300 250L50 150L300 50Z" stroke="#E5E5E0" stroke-width="1"></path>
+<path d="M300 100L450 160L300 220L150 160L300 100Z" stroke="#E5E5E0" stroke-dasharray="4 4" stroke-width="1"></path>
+<circle class="gold-glow" cx="200" cy="140" fill="#FFD700" r="3"></circle>
+<circle class="gold-glow" cx="400" cy="170" fill="#FFD700" r="3"></circle>
+<circle class="gold-glow" cx="300" cy="200" fill="#FFD700" r="3"></circle>
+<circle class="gold-glow opacity-80" cx="300" cy="150" fill="url(#goldGradient)" r="12"></circle>
+<defs>
+<radialGradient cx="0" cy="0" gradientTransform="translate(300 150) rotate(90) scale(12)" gradientUnits="userSpaceOnUse" id="goldGradient" r="1">
+<stop stop-color="#FFD700"></stop>
+<stop offset="1" stop-color="#FFD700" stop-opacity="0"></stop>
+</radialGradient>
+</defs>
+</svg>
+</div>
+<div class="absolute top-[120px] left-[180px] group cursor-default">
+<div class="bg-white/90 backdrop-blur-sm border border-[#E5E5E0] px-2 py-1 rounded text-[9px] font-bold tracking-tighter shadow-sm flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                ATLAS
+                            </div>
+</div>
+<div class="absolute top-[180px] left-[380px] group cursor-default">
+<div class="bg-white/90 backdrop-blur-sm border border-[#E5E5E0] px-2 py-1 rounded text-[9px] font-bold tracking-tighter shadow-sm flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                HUNTER
+                            </div>
+</div>
+<div class="absolute top-[165px] left-[285px] text-center">
+<p class="text-[8px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1">Data Wall</p>
+<div class="w-16 h-px bg-gradient-to-r from-transparent via-[#FFD700] to-transparent opacity-40 mx-auto"></div>
+</div>
+</div>
+<div class="px-6 py-4 bg-white border-t border-[#E5E5E0] flex justify-between items-center">
+<div>
+<p class="text-xs font-bold text-slate-800">Operational Floorplan V.2</p>
+<p class="text-[10px] text-slate-400">Rendering 32 active nodes in real-time</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-[#FFD700] hover:bg-[#F2CC00] text-slate-900 text-[11px] font-bold px-5 py-2 rounded transition-all uppercase tracking-wider">Start Focus Session</button>
+<button class="border border-[#E5E5E0] hover:bg-slate-50 text-slate-600 text-[11px] font-bold px-5 py-2 rounded transition-all uppercase tracking-wider">Schedule Meeting</button>
+</div>
+</div>
+</section>
+<div class="flex gap-8 h-[400px]">
+<div class="w-[60%] flex flex-col h-full">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xs font-bold uppercase tracking-widest text-slate-400">Activity Feed</h2>
+<span class="text-[10px] font-medium text-slate-400">Total 48 events today</span>
+</div>
+<div class="neumorphic-card rounded-xl flex-1 overflow-y-auto">
+<div class="divide-y divide-[#E5E5E0]">
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-slate-400">login</span>
+<div>
+<p class="text-xs font-semibold">ATLAS initialized node station</p>
+<p class="text-[10px] text-slate-400">Security Access Level 4</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:42:12</span>
+</div>
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-[#FFD700]">bolt</span>
+<div>
+<p class="text-xs font-semibold">HUNTER deployed Signal.042</p>
+<p class="text-[10px] text-slate-400">Data Wall Uplink Active</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:40:05</span>
+</div>
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-slate-400">meeting_room</span>
+<div>
+<p class="text-xs font-semibold">Main Room status: Available</p>
+<p class="text-[10px] text-slate-400">Cleaning cycle complete</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:35:18</span>
+</div>
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-slate-400">person</span>
+<div>
+<p class="text-xs font-semibold">TITAN joined workspace</p>
+<p class="text-[10px] text-slate-400">Remote VPN / London</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:30:52</span>
+</div>
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-slate-400">sync</span>
+<div>
+<p class="text-xs font-semibold">Routine Database Sync</p>
+<p class="text-[10px] text-slate-400">99.8% Integrity</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:28:11</span>
+</div>
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-slate-400">warning</span>
+<div>
+<p class="text-xs font-semibold">Latency spike detected</p>
+<p class="text-[10px] text-slate-400">Sub-sector 4B / Resolved</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:20:44</span>
+</div>
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-slate-400">lock_open</span>
+<div>
+<p class="text-xs font-semibold">Vault A-12 Unlocked</p>
+<p class="text-[10px] text-slate-400">Authorized: DIRECTOR</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:15:30</span>
+</div>
+<div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg text-slate-400">sensors</span>
+<div>
+<p class="text-xs font-semibold">Sensor Grid Re-calibrated</p>
+<p class="text-[10px] text-slate-400">All modules green</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-slate-400">10:10:00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-[35%] flex flex-col h-full gap-4">
+<div class="mb-0">
+<h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Workspace Status</h2>
+</div>
+<div class="neumorphic-card rounded-xl p-5 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Active Stations</p>
+<span class="material-symbols-outlined text-slate-300">desk</span>
+</div>
+<div class="mt-2">
+<p class="text-3xl font-light">7<span class="text-sm text-slate-300 font-medium ml-1">/ 7</span></p>
+<p class="text-[11px] text-emerald-500 font-semibold uppercase mt-1">Full Occupancy</p>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-5 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Meeting Room</p>
+<span class="material-symbols-outlined text-slate-300">groups</span>
+</div>
+<div class="mt-2">
+<p class="text-xl font-semibold">Available</p>
+<p class="text-[11px] text-slate-400 mt-1">Next booking: 14:00</p>
+</div>
+</div>
+<div class="neumorphic-card rounded-xl p-5 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-[#FFD700] opacity-[0.03] blur-2xl"></div>
+<div class="flex items-center justify-between relative z-10">
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Data Wall</p>
+<div class="size-2 rounded-full bg-[#FFD700] gold-glow animate-pulse"></div>
+</div>
+<div class="mt-2 relative z-10">
+<p class="text-sm font-bold uppercase tracking-tighter">Live Feed</p>
+<div class="mt-3 flex gap-1 items-end h-8">
+<div class="w-1 bg-[#FFD700]/20 h-4 rounded-full"></div>
+<div class="w-1 bg-[#FFD700]/40 h-6 rounded-full"></div>
+<div class="w-1 bg-[#FFD700] h-8 rounded-full"></div>
+<div class="w-1 bg-[#FFD700]/60 h-5 rounded-full"></div>
+<div class="w-1 bg-[#FFD700]/30 h-7 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

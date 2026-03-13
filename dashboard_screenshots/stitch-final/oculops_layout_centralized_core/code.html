@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps - Centralized Core</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFD400",
+                        "background-light": "#F2F4F7",
+                        "background-dark": "#0B0E14",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "16px",
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(255, 212, 0, 0.3)',
+                        'soft': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 212, 0, 0.3);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 212, 0, 0.2);
+        }
+        .orbit-pulse {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200 min-h-screen overflow-hidden">
+<nav class="fixed left-3 top-1/2 -translate-y-1/2 w-14 glass rounded-full py-6 flex flex-col items-center gap-6 z-50 shadow-soft">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<span class="material-icons-round">explore</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-primary text-black rounded-xl">
+<span class="material-icons-round">psychology</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">analytics</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">output</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">group</span>
+</div>
+<div class="mt-auto">
+<img alt="Commander Vance" class="w-8 h-8 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmM6cqg2mRKAcwKIppTaXVUY7i1Z0hIamBtvSBmX_pU8zCBpjGNz2l6fTiYCZ5ImSakMNwuhyZHJp64M8I4dDnVGRtfNXgI8CPABj3xlOelFQeimGAZ0l7NJcVmAAbFmoTQ5m-4qdxrhIohQBb8lquDyURBEBAH1v4owIwvzRGISpwGB-l7pIe7B9kn95zpJcOlaN4_AyJ8jsRvUUI12v1vvG3X_NbiBRDNRb-fX5AhzjXFJVG1rTMmHIPTvPVryTDFn4dqlgRppGu"/>
+</div>
+</nav>
+<nav class="fixed right-3 top-1/2 -translate-y-1/2 w-14 glass rounded-full py-6 flex flex-col items-center gap-6 z-50 shadow-soft">
+<div class="w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">settings_remote</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">rocket_launch</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">shield</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">support_agent</span>
+</div>
+<div class="mt-auto w-8 h-8 flex items-center justify-center opacity-40">
+<span class="material-icons-round">settings</span>
+</div>
+</nav>
+<div class="fixed top-0 left-0 right-0 p-4 flex justify-between items-start z-40 pointer-events-none">
+<div class="glass p-3 rounded-2xl w-40 pointer-events-auto shadow-soft">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-icons-round text-primary text-sm">public</span>
+<span class="text-[10px] font-bold uppercase tracking-wider opacity-60">Threat Level</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xl font-bold">Low</span>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full mt-2 overflow-hidden">
+<div class="w-1/4 h-full bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="glass p-3 rounded-2xl w-40 pointer-events-auto shadow-soft">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-icons-round text-green-500 text-sm">bolt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider opacity-60">Fleet Health</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-xl font-bold">98.4%</span>
+<span class="material-icons-round text-green-500 text-sm">north_east</span>
+</div>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full mt-2 overflow-hidden">
+<div class="w-[98%] h-full bg-primary"></div>
+</div>
+</div>
+</div>
+<main class="h-screen flex flex-col items-center justify-center px-4 pt-20 pb-10 gap-8">
+<div class="relative w-full max-w-sm flex flex-col items-center group">
+<div class="absolute -top-12 text-center">
+<h2 class="text-sm font-semibold uppercase tracking-[0.2em] opacity-80">Master Intelligence</h2>
+</div>
+<div class="relative orbit-pulse">
+<div class="absolute inset-0 bg-primary blur-[80px] opacity-20 rounded-full"></div>
+<div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-primary/30 shadow-glow flex items-center justify-center bg-black/10">
+<img alt="Master Intelligence AI Sphere" class="w-full h-full object-cover mix-blend-screen opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1LYCkrA83nK2S5IpYVioMRb65cKyuK23pt_EFC5ovQW09MiJdmzUomar0thHMU0MVP4SFnsxoQFxSHj_ujgZm8Fr8itCL8H4DYXlDLv_xZtk-qFMOmx4lhEVKktpUO1Vfil5CLm36vMPI7TKpN0l39W99BsNcqLrY4X4Qq2RNpHCudwm3DsSkNc7e8dV8wiJWuZeSa_N3GDem6XqfiXulKWqa0frM4MV-8eh2aMdLnRNGu6zoUrgludi6hKgxr-OJZVeA-duE6M6W"/>
+</div>
+<div class="absolute -inset-4 border border-primary/20 rounded-full rotate-45 pointer-events-none"></div>
+<div class="absolute -inset-8 border border-primary/10 rounded-full -rotate-12 pointer-events-none"></div>
+</div>
+<div class="mt-4 flex flex-col items-center">
+<div class="flex gap-1">
+<span class="w-1 h-1 bg-primary rounded-full animate-ping"></span>
+<span class="text-[10px] font-medium tracking-widest uppercase text-primary">System Online</span>
+</div>
+</div>
+</div>
+<div class="w-full max-w-lg glass rounded-2xl shadow-soft flex flex-col overflow-hidden">
+<div class="p-4 border-b border-primary/10 flex justify-between items-center">
+<h3 class="text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+<span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    Critical Signals
+                </h3>
+<span class="material-icons-round text-lg opacity-40">more_horiz</span>
+</div>
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left text-[11px]">
+<thead class="bg-slate-50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-500 font-bold uppercase tracking-tight">
+<tr>
+<th class="p-3">Date</th>
+<th class="p-3">Alerts</th>
+<th class="p-3">Strength</th>
+<th class="p-3">Level</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-3 font-mono">08:17:02.51</td>
+<td class="p-3">
+<span class="flex items-center gap-1 text-red-500 font-bold">
+<span class="material-icons-round text-sm">warning</span> ALERT
+                                </span>
+</td>
+<td class="p-3">
+<div class="flex items-end gap-0.5 h-3">
+<div class="w-1 h-1/2 bg-primary"></div>
+<div class="w-1 h-2/3 bg-primary"></div>
+<div class="w-1 h-full bg-primary"></div>
+<div class="w-1 h-1/3 bg-slate-300 dark:bg-slate-700"></div>
+</div>
+</td>
+<td class="p-3 text-red-500 font-bold">CRITICAL</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-3 font-mono">09:12:22.60</td>
+<td class="p-3">
+<span class="flex items-center gap-1 text-primary font-bold">
+<span class="material-icons-round text-sm">error_outline</span> ALERT
+                                </span>
+</td>
+<td class="p-3">
+<div class="flex items-end gap-0.5 h-3">
+<div class="w-1 h-1/3 bg-primary"></div>
+<div class="w-1 h-1/2 bg-primary"></div>
+<div class="w-1 h-1/2 bg-slate-300 dark:bg-slate-700"></div>
+<div class="w-1 h-1/4 bg-slate-300 dark:bg-slate-700"></div>
+</div>
+</td>
+<td class="p-3 text-primary font-bold">WARNING</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-3 font-mono">10:05:41.12</td>
+<td class="p-3">
+<span class="flex items-center gap-1 text-primary font-bold">
+<span class="material-icons-round text-sm">error_outline</span> ALERT
+                                </span>
+</td>
+<td class="p-3">
+<div class="flex items-end gap-0.5 h-3">
+<div class="w-1 h-full bg-primary"></div>
+<div class="w-1 h-3/4 bg-primary"></div>
+<div class="w-1 h-2/3 bg-primary"></div>
+<div class="w-1 h-1/2 bg-primary"></div>
+</div>
+</td>
+<td class="p-3 opacity-60">NORMAL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-300 dark:bg-slate-800 rounded-full opacity-50 pointer-events-none"></div>
+
+</body></html>

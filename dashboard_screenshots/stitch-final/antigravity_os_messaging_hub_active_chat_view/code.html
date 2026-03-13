@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANTIGRAVITY OS Messaging Hub - Active Chat View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffd60a",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#0A0A0A",
+                        "panel-dark": "#141414",
+                        "border-dark": "#222222",
+                        "bubble-dark": "#222222"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .material-symbols-outlined.outline {
+             font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-[60px] bg-panel-dark border-r border-border-dark flex flex-col items-center py-6 flex-shrink-0 z-10">
+<!-- Logo -->
+<div class="mb-8 text-primary">
+<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"></path>
+</svg>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-6 flex-1 w-full items-center">
+<a class="text-slate-500 hover:text-slate-300 transition-colors" href="#" title="Dashboard">
+<span class="material-symbols-outlined outline">home</span>
+</a>
+<a class="text-primary relative flex items-center justify-center w-full" href="#" title="Messaging">
+<span class="absolute left-0 w-1 h-8 bg-primary rounded-r-full shadow-[0_0_8px_rgba(255,214,10,0.6)]"></span>
+<span class="material-symbols-outlined drop-shadow-[0_0_4px_rgba(255,214,10,0.4)]">chat</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 transition-colors" href="#" title="Contacts">
+<span class="material-symbols-outlined outline">group</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 transition-colors" href="#" title="Automations">
+<span class="material-symbols-outlined outline">bolt</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 transition-colors" href="#" title="Settings">
+<span class="material-symbols-outlined outline">settings</span>
+</a>
+</nav>
+<!-- User Avatar -->
+<div class="mt-auto pt-6">
+<div class="w-8 h-8 rounded-full bg-cover bg-center border border-border-dark" data-alt="User profile avatar portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCikzzdAzTeWw1xgt-i9TAU8Elxa3wpVAG2mmL3oLUvzrV52m2WCRptuiuzcfC8KTj1HYqfiEZ73ylf7gl5pF5pXGNsKsEILlE8q4XSRGB0UyF7bHwHzFx1TEjasU_BjkeUVnRCj9nTsYnndWGANLwsGT9RB9UkyRfxcTZtWNNPzbENduBFS062ucJSzXTHGVK0dFygCbC7rlfIRHshoNT34A135XTOHG3sC2cJQ7hnRt_d7cskYfoqHn5sH6clM6tmPilftCjktcer");'></div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Conversation List Panel -->
+<section class="w-[340px] bg-panel-dark border-r border-border-dark flex flex-col flex-shrink-0 z-0">
+<!-- Header & Search -->
+<div class="p-5 border-b border-border-dark">
+<div class="flex items-center justify-between mb-4">
+<h1 class="text-xl font-bold tracking-tight">Messages</h1>
+<button class="text-slate-400 hover:text-slate-200">
+<span class="material-symbols-outlined outline text-[20px]">edit_square</span>
+</button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined outline absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-[18px]">search</span>
+<input class="w-full bg-background-dark border border-border-dark rounded-lg py-2 pl-9 pr-4 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-slate-200 placeholder-slate-500 transition-all" placeholder="Search messages..." type="text"/>
+</div>
+</div>
+<!-- Filters -->
+<div class="px-5 py-3 border-b border-border-dark flex gap-2 overflow-x-auto no-scrollbar">
+<button class="px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-medium whitespace-nowrap shadow-[0_0_10px_rgba(255,214,10,0.1)]">All</button>
+<button class="px-3 py-1.5 rounded-full bg-background-dark border border-border-dark text-slate-400 hover:text-slate-200 text-xs font-medium whitespace-nowrap transition-colors">WhatsApp</button>
+<button class="px-3 py-1.5 rounded-full bg-background-dark border border-border-dark text-slate-400 hover:text-slate-200 text-xs font-medium whitespace-nowrap transition-colors">Instagram</button>
+<button class="px-3 py-1.5 rounded-full bg-background-dark border border-border-dark text-slate-400 hover:text-slate-200 text-xs font-medium whitespace-nowrap transition-colors">Email</button>
+</div>
+<!-- List -->
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Active Item -->
+<div class="flex items-center gap-3 p-4 bg-background-dark/50 border-l-2 border-primary cursor-pointer hover:bg-background-dark transition-colors relative">
+<div class="relative flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border border-border-dark" data-alt="Alice Smith portrait avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3b_-u_O6Jx_NVu2hme8Ns54xMJnNZjysHDTJ5Pr4yLOhFv7Pwu45cT7phI7LPTz-GBvMe-bt5qAM6CSDOyMLkZ5QPuWIyAXXB6sCXOjmpCZ3VXHLQyPcQ2DOqjLMkyfXdd8jNNB9XBFxcpEyhJ-RFTyxc8vAyr8UW5r1D8ctZZt4YCtIDx75V5S7YjGpJJxr7Q9Lp8baNpzEAQxTa8GIImsp7aMlv3KAJXnYoRtwNscSPmK3GYPE-5CyZZwJY2sfZ7ynp5b84LQlI");'></div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-background-dark rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-semibold text-sm truncate pr-2">Alice Smith</h3>
+<span class="text-xs text-primary font-medium">10:30 AM</span>
+</div>
+<p class="text-xs text-slate-400 truncate">I'll review the proposal and get back to you by EOD.</p>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-primary rounded-full shadow-[0_0_5px_rgba(255,214,10,0.5)]"></div>
+</div>
+<!-- Inactive Item 1 -->
+<div class="flex items-center gap-3 p-4 border-l-2 border-transparent border-b border-border-dark/50 cursor-pointer hover:bg-background-dark/30 transition-colors">
+<div class="relative flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border border-border-dark grayscale-[30%]" data-alt="Bob Johnson portrait avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvGKcOWSmyGgElueoOlhGJDlgmAAO9VtCZzCdyJ6CZeqhtoJxx87ZjmUZhBL7nmHNOUZuNguvnBSKicxzZmgOhx4GdQxgWSaPMXka2xF3CDa7BDR57lX8l59pRitCEd_83bxprIfKtSKIDCTDhU-SCno62vvUoYYvghOm_M2tbBhQl-IowVkaFgwhkn7ps83VN4XVWYmPPv4vRWk5-aapSGK98PdDMMa77BdEirmzIa5Cv7fCCBQHhotFyIh_eLi48tN0utsMYvmjr");'></div>
+<div class="absolute -bottom-1 -right-1 bg-panel-dark rounded-full p-0.5">
+<img alt="WhatsApp" class="w-3.5 h-3.5" data-alt="WhatsApp logo icon small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCod2CDXl-OuyYTdg8vNoy-B8QYGqA5Sf02QI72l31F9A0nt9fvyb9b1a4W0M0u4PKmXqSyy__ku-JHJeeUVNlswcx5x_qugCelU-ThYHvEut1SS8q0zP_HPRUyTVdE4D4ZqH2m0z15hp9zlPTfLDeKVYLBqpGs8mzUFeTCUWakH8pZgxeA5Q3VSU8uEbLcsaidl648g__PTWT2zao2rIeRRVaO-gGAGYchc9RDDKPVCyL9cAciqz-b9Y5xoTVIS1bUGoZ4ynOZ4Q2C"/>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-medium text-sm text-slate-300 truncate pr-2">Bob Johnson</h3>
+<span class="text-xs text-slate-500">Yesterday</span>
+</div>
+<p class="text-xs text-slate-500 truncate">Thanks for the update. Let's schedule a call for next week.</p>
+</div>
+</div>
+<!-- Inactive Item 2 -->
+<div class="flex items-center gap-3 p-4 border-l-2 border-transparent border-b border-border-dark/50 cursor-pointer hover:bg-background-dark/30 transition-colors">
+<div class="relative flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border border-border-dark grayscale-[30%]" data-alt="Sarah Connor portrait avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAO892bK7rw_HE_E4B5EZUsQmzUesyof0qn5n-gjV3e1SjsSO8gZqI4PovfLZtQcwdp0EYSFfBFr613-o2H8NHGRrnITIUWyjmm4fak7XPGI9q0nJAVoKdg51Y8fGV_0rRB0-nGMMUJ29m6K0AlRxekNJGp8MwyQJYheCN5rak_M1hxKXJ7qXAKkNo9QJUgcmz8gmx34QI2XcTjKajOsQghFjqLb5fqpygf97HbvCiiEMesorR3TZjGd1udlftv6smpYFDPMhcq5PSX");'></div>
+<div class="absolute -bottom-1 -right-1 bg-panel-dark rounded-full p-0.5 text-pink-500">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-medium text-sm text-slate-300 truncate pr-2">Sarah Connor</h3>
+<span class="text-xs text-slate-500">Tue</span>
+</div>
+<p class="text-xs text-slate-500 truncate">Reacted ❤️ to "Your campaign is live!"</p>
+</div>
+</div>
+<!-- Inactive Item 3 -->
+<div class="flex items-center gap-3 p-4 border-l-2 border-transparent border-b border-border-dark/50 cursor-pointer hover:bg-background-dark/30 transition-colors">
+<div class="relative flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-border-dark text-slate-400 text-lg font-semibold">
+                        DW
+                        <div class="absolute -bottom-1 -right-1 bg-panel-dark rounded-full p-0.5 text-blue-400">
+<span class="material-symbols-outlined outline text-[14px]">mail</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-medium text-sm text-slate-300 truncate pr-2">David Wong</h3>
+<span class="text-xs text-slate-500">Mon</span>
+</div>
+<p class="text-xs text-slate-500 truncate">Invoice #4029 - Q3 Retainer</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Chat Area -->
+<section class="flex-1 flex flex-col bg-background-dark relative">
+<!-- Chat Header -->
+<header class="h-[76px] px-6 border-b border-border-dark flex items-center justify-between bg-background-dark/80 backdrop-blur-md sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-border-dark" data-alt="Alice Smith avatar active chat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBN_nvDgd7lJX5sc964tNeFkCqkJvNyBAai4ZW4yjHCqc38fTuRhrrkmt-mno5NT-FYkBHqH4hTCvcedAcH4Rgw5Bwg5uUedYkaAGwJWrABFJiFsnzvqbzYByDVYJYH6VyrckuSxXSVTJYicog_MRFmWcUi69ip3W_EYLYjkN-lKEizrjWhsqOKtCOSa6ibIf7JJdXoji7Ex4aTXPRxCFZnrCToia8AyeBrHDIMDu81SNWsyBH4isysxzNo33LRIw66PJt6EQBSuuPP");'></div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-background-dark rounded-full"></div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-base font-semibold">Alice Smith</h2>
+<img alt="WhatsApp" class="w-4 h-4 opacity-80" data-alt="WhatsApp channel icon small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTe3q1Fr2ulBvPgT5AkVlh08VXOUywKX5-crzw41ekX8oGu2Kff_tr7TcmOprpzpcVE87ZfCPcUxVO4yw_-ismnZPiurXPSrqtZ9zHBG5OG1sbQJLoL-9oVUxHOTJsqXvdQfNPdQGDcqXtT0WfHJWTh405YYZUlKCAQbsXMZEoGK_hlCSV7qcqlkxcZ6ogDit4awxu5XMKE1bitZ027pzKPbgLxJYDmbgfEcXUuhJHIlNewkopLkGhZim1Ebuntn31qXIcCOTzdgK6"/>
+</div>
+<p class="text-xs text-slate-400 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Online
+                        </p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-400">
+<button class="hover:text-slate-200 transition-colors p-2 rounded-lg hover:bg-border-dark">
+<span class="material-symbols-outlined outline">call</span>
+</button>
+<button class="hover:text-slate-200 transition-colors p-2 rounded-lg hover:bg-border-dark">
+<span class="material-symbols-outlined outline">videocam</span>
+</button>
+<div class="w-px h-6 bg-border-dark mx-1"></div>
+<button class="hover:text-slate-200 transition-colors p-2 rounded-lg hover:bg-border-dark">
+<span class="material-symbols-outlined outline">info</span>
+</button>
+</div>
+</header>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6 custom-scrollbar">
+<!-- Date Divider -->
+<div class="flex items-center justify-center my-2">
+<span class="text-[11px] font-medium text-slate-500 bg-panel-dark px-3 py-1 rounded-full border border-border-dark">Today</span>
+</div>
+<!-- Outbound Message -->
+<div class="flex flex-col items-end gap-1 group">
+<div class="max-w-[70%] bg-primary text-slate-900 rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm shadow-sm relative">
+<p>Hi Alice! Just following up on the Q4 marketing proposal we discussed yesterday. Did you have a chance to look it over?</p>
+</div>
+<span class="text-[10px] text-slate-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        09:15 AM <span class="material-symbols-outlined text-[14px] text-primary">done_all</span>
+</span>
+</div>
+<!-- Inbound Message -->
+<div class="flex items-end gap-2 group">
+<div class="w-8 h-8 rounded-full bg-cover bg-center border border-border-dark flex-shrink-0" data-alt="Alice Smith small avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrDseYd0CFOsR1-7mjOCBGn2U3VG0Pu0K_1huwT6hZGLFrKF34LrJPsQPki32QLeNGKdrxmdwdIj9IjDUqF04kbtk1HnfEu9ZFwdE5Aq2i94uiBxvLO-AFlg7DR5mcm4UMJa6vZ-JbskuJDLgRkNCs4HF3qBDhMmMWhiKFu3XZuPsdrakaLZ1cXbaOOZ4drycix4G4HY-hM4XoQsgqkWHgxdedcno7YWAabRYCLsvPJEC3U2Ewq3KudUmvlNZxdhnq5GyD_UfPO_yu");'></div>
+<div class="flex flex-col items-start gap-1">
+<div class="max-w-[70%] bg-bubble-dark text-slate-100 rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm border border-border-dark/50">
+<p>Morning! Yes, I was just looking at it.</p>
+</div>
+</div>
+</div>
+<!-- Inbound Message (Continued) -->
+<div class="flex items-end gap-2 group ml-10">
+<div class="flex flex-col items-start gap-1">
+<div class="max-w-[70%] bg-bubble-dark text-slate-100 rounded-2xl px-4 py-2.5 text-sm border border-border-dark/50">
+<p>The overall strategy looks solid, but I have a few questions about the budget allocation for the paid social campaigns.</p>
+</div>
+<span class="text-[10px] text-slate-500 ml-1 opacity-0 group-hover:opacity-100 transition-opacity">09:42 AM</span>
+</div>
+</div>
+<!-- Outbound Message -->
+<div class="flex flex-col items-end gap-1 group">
+<div class="max-w-[70%] bg-primary text-slate-900 rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm shadow-sm">
+<p>Absolutely, I can clarify that. We shifted more budget toward TikTok based on last quarter's CPA data. I can send over a detailed breakdown if that helps?</p>
+</div>
+<span class="text-[10px] text-slate-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        09:45 AM <span class="material-symbols-outlined text-[14px] text-primary">done_all</span>
+</span>
+</div>
+<!-- Inbound Message -->
+<div class="flex items-end gap-2 group">
+<div class="w-8 h-8 rounded-full bg-cover bg-center border border-border-dark flex-shrink-0" data-alt="Alice Smith small avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbEYn-cF8D89bWsagIxnZ2waaqQI93XG_m4QM4RFSqS2N2x-Jgr3tf_R_rXZKwryOwaXci-bU0fIHJiPX3zGhcF7WmZdZ3F8ovu9Vl4j8izC61K66TfrOeIgx4F0-UOWGcU-DLubN1inkbcRt9YmeJTXiLfEkZmLTIQZE0qzsckam1uBMi79I26Yu-PhfG7KXlmd4Bo2GyftHwnwSaD6D5mwF5B1fek3tFlvnCbPGDKBjzWde4RvBCH8qhD52EA50X65_OQLgRyzWg");'></div>
+<div class="flex flex-col items-start gap-1">
+<div class="max-w-[70%] bg-bubble-dark text-slate-100 rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm border border-border-dark/50">
+<p>That makes sense. Yes, please send the breakdown.</p>
+</div>
+</div>
+</div>
+<!-- Inbound Message (Continued) -->
+<div class="flex items-end gap-2 group ml-10">
+<div class="flex flex-col items-start gap-1">
+<div class="max-w-[70%] bg-bubble-dark text-slate-100 rounded-2xl px-4 py-2.5 text-sm border border-border-dark/50">
+<p>I'll review the proposal and get back to you by EOD.</p>
+</div>
+<span class="text-[10px] text-slate-500 ml-1 opacity-0 group-hover:opacity-100 transition-opacity">10:30 AM</span>
+</div>
+</div>
+<!-- Typing Indicator (Optional detail for realism) -->
+<!-- <div class="flex items-center gap-2 ml-10 text-slate-500 text-xs italic">
+                    Alice is typing...
+                </div> -->
+<div class="h-4"></div> <!-- Spacer -->
+</div>
+<!-- Input Area -->
+<footer class="p-4 bg-background-dark border-t border-border-dark">
+<div class="bg-panel-dark border border-border-dark rounded-xl flex flex-col shadow-sm focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+<!-- Format tools (Top inner) -->
+<!-- <div class="flex items-center gap-2 px-3 py-2 border-b border-border-dark/50">
+                        <button class="text-slate-500 hover:text-slate-300"><span class="material-symbols-outlined outline text-[18px]">format_bold</span></button>
+                        <button class="text-slate-500 hover:text-slate-300"><span class="material-symbols-outlined outline text-[18px]">format_italic</span></button>
+                    </div> -->
+<textarea class="w-full bg-transparent border-none resize-none px-4 py-3 text-sm text-slate-200 focus:ring-0 placeholder-slate-500 min-h-[50px] max-h-[120px]" placeholder="Type a message..." rows="1"></textarea>
+<div class="flex items-center justify-between px-3 pb-3 pt-1">
+<div class="flex items-center gap-1">
+<button class="p-2 text-slate-400 hover:text-slate-200 hover:bg-border-dark rounded-lg transition-colors" title="Attach file">
+<span class="material-symbols-outlined outline text-[20px]">attach_file</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-slate-200 hover:bg-border-dark rounded-lg transition-colors" title="Insert template">
+<span class="material-symbols-outlined outline text-[20px]">text_snippet</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-slate-200 hover:bg-border-dark rounded-lg transition-colors" title="Emoji">
+<span class="material-symbols-outlined outline text-[20px]">mood</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs text-slate-500 hidden sm:inline-block">Press Enter to send</span>
+<button class="bg-primary hover:bg-[#e6c109] text-slate-900 px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors shadow-sm">
+<span>Send</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</section>
+</main>
+<style>
+        /* Custom Scrollbar for modern look */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #333;
+            border-radius: 20px;
+        }
+        .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+            background-color: #444;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

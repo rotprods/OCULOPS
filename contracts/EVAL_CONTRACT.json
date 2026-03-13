@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oculops.local/contracts/eval-contract.json",
+  "title": "OCULOPS Evaluation Contract",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "artifact",
+    "impact_level",
+    "scores",
+    "overall_score",
+    "threshold",
+    "decision",
+    "retry_recommended",
+    "escalation_required",
+    "explanation",
+    "evaluated_at"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string"
+    },
+    "artifact": {
+      "type": "object",
+      "required": [
+        "artifact_type"
+      ],
+      "properties": {
+        "artifact_type": {
+          "type": "string"
+        },
+        "artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "correlation_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "impact_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "quality",
+        "architecture",
+        "risk",
+        "cost"
+      ],
+      "properties": {
+        "quality": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "architecture": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "risk": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "cost": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "additionalProperties": false
+    },
+    "overall_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "retry",
+        "reject",
+        "escalate"
+      ]
+    },
+    "retry_recommended": {
+      "type": "boolean"
+    },
+    "escalation_required": {
+      "type": "boolean"
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 8
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evaluated_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OculOps Pipeline - Ivory Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FFD700",
+                        "primary-dark": "#b39700",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#1a1a1a",
+                        "sidebar-light": "#F5F0E8",
+                        "card-light": "#FFFFFF",
+                        "border-light": "#E5E5E0",
+                        "text-primary": "#1A1A1A",
+                        "text-secondary": "#666666",
+                        "accent-blue": "#4A90E2",
+                        "accent-green": "#50E3C2",
+                        "accent-purple": "#9013FE",
+                        "danger": "#D0021B"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px rgba(0, 0, 0, 0.04)',
+                        'card': '0 4px 12px rgba(0, 0, 0, 0.05)'
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-primary dark:text-slate-100 font-display min-h-screen antialiased selection:bg-primary/30">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-[240px] flex-shrink-0 bg-sidebar-light dark:bg-[#23200f] border-r border-border-light dark:border-primary/20 flex flex-col justify-between p-4 h-full z-10">
+<div class="flex flex-col gap-6">
+<!-- Logo -->
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-text-primary font-bold shadow-sm">
+                    O
+                </div>
+<div class="flex flex-col">
+<h1 class="text-text-primary dark:text-slate-100 text-lg font-semibold leading-tight tracking-tight">OculOps</h1>
+<p class="text-text-secondary dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Premium AI OS</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-primary dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-text-primary dark:text-slate-400 dark:group-hover:text-slate-200">grid_view</span>
+<span class="text-sm font-medium">CORE</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-text-primary font-semibold shadow-sm shadow-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px]">view_kanban</span>
+<span class="text-sm">Pipeline</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-primary dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group mt-2" href="#">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-text-primary dark:text-slate-400 dark:group-hover:text-slate-200">psychology</span>
+<span class="text-sm font-medium">INTELLIGENCE</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-primary dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-text-primary dark:text-slate-400 dark:group-hover:text-slate-200">smart_toy</span>
+<span class="text-sm font-medium">AGENTS</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-primary dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-text-primary dark:text-slate-400 dark:group-hover:text-slate-200">trending_up</span>
+<span class="text-sm font-medium">GROWTH</span>
+</a>
+</nav>
+</div>
+<!-- User Profile (Optional placeholder for bottom of sidebar) -->
+<div class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer transition-colors mt-auto">
+<div class="w-8 h-8 rounded-full bg-border-light dark:bg-primary/20 bg-cover bg-center" data-alt="User avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCYEFUtVBUY2q3V1HvSH976ibp-h0AmrJ-zSnnkhosqSD8iBp-MTBuvAzoeer8Sve7wNGob60haqMKNn56R1l4ps6n2rG6eVjBA50G8gZRT2-0OUR48CvTJzxt78dFHuhr0hm6Xg4o6FpRhzIo5i6PsIslbtrtjHh0HbICkdurzgVK1scr4ceZiqJe7NOXwWl0Qer2KZ1fatf9ZzOPDQAPsDfZaxJSUDBlVWglX8fKzII27JKbYdJoAaAVM7BV4hmRrWmcTcr0XZEAY')"></div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-sm font-medium text-text-primary dark:text-slate-200 truncate">Admin User</span>
+<span class="text-xs text-text-secondary dark:text-slate-400 truncate">Settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="flex-shrink-0 border-b border-border-light dark:border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-6 z-10 sticky top-0">
+<div class="flex items-end justify-between max-w-7xl mx-auto">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-bold text-text-primary dark:text-slate-100 tracking-tight">Pipeline</h2>
+<p class="text-sm text-text-secondary dark:text-slate-400 font-medium">
+                        146 deals · 0 won · <span class="text-text-primary dark:text-slate-300">€400,800 total</span>
+</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-text-secondary dark:text-slate-300 hover:text-text-primary dark:hover:text-slate-100 hover:bg-black/5 dark:hover:bg-white/5 transition-colors border border-transparent">
+                        Show lost
+                    </button>
+<button class="px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-dark text-text-primary text-sm font-semibold shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New deal
+                    </button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-auto p-8 custom-scrollbar">
+<div class="max-w-7xl mx-auto space-y-8 h-full flex flex-col">
+<!-- KPI Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-shrink-0">
+<div class="bg-card-light dark:bg-[#2a2615] rounded-xl p-6 shadow-soft border border-border-light/50 dark:border-primary/10 flex items-start gap-4 transition-transform hover:-translate-y-0.5">
+<div class="p-3 rounded-lg bg-sidebar-light dark:bg-primary/20 text-text-primary dark:text-primary">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-medium text-text-secondary dark:text-slate-400">Total deals</p>
+<p class="text-2xl font-bold text-text-primary dark:text-slate-100">146</p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-[#2a2615] rounded-xl p-6 shadow-soft border border-border-light/50 dark:border-primary/10 flex items-start gap-4 transition-transform hover:-translate-y-0.5">
+<div class="p-3 rounded-lg bg-sidebar-light dark:bg-primary/20 text-text-primary dark:text-primary">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-medium text-text-secondary dark:text-slate-400">Pipeline value</p>
+<p class="text-2xl font-bold text-text-primary dark:text-slate-100">€400,800</p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-[#2a2615] rounded-xl p-6 shadow-soft border border-border-light/50 dark:border-primary/10 flex items-start gap-4 transition-transform hover:-translate-y-0.5">
+<div class="p-3 rounded-lg bg-sidebar-light dark:bg-primary/20 text-text-primary dark:text-primary">
+<span class="material-symbols-outlined">bar_chart</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-medium text-text-secondary dark:text-slate-400">Weighted value</p>
+<p class="text-2xl font-bold text-text-primary dark:text-slate-100">€223,637</p>
+</div>
+</div>
+</div>
+<!-- Kanban Board -->
+<div class="flex-1 flex gap-6 overflow-x-auto pb-4 min-h-[500px]">
+<!-- Column 1: Lead -->
+<div class="flex-shrink-0 w-80 flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-t-4 border-primary pt-2 px-1">
+<h3 class="text-sm font-bold text-text-primary dark:text-slate-200 uppercase tracking-wider">Lead <span class="text-text-secondary font-medium ml-1 bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-full text-xs">3</span></h3>
+<span class="text-sm font-medium text-text-secondary">€125K</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Card 1 -->
+<div class="bg-card-light dark:bg-[#2a2615] rounded-lg p-4 shadow-card border border-border-light/60 dark:border-primary/10 hover:shadow-md transition-shadow cursor-grab group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-text-primary dark:text-slate-100">Acme Corp</h4>
+<button class="text-xs text-danger opacity-0 group-hover:opacity-100 transition-opacity font-medium hover:underline">Delete</button>
+</div>
+<p class="text-sm text-text-secondary dark:text-slate-400 mb-3">John Doe</p>
+<div class="flex items-center justify-between mt-auto pt-3 border-t border-border-light/50 dark:border-primary/5">
+<span class="text-sm font-bold text-[#D4AF37] dark:text-primary">€50,000</span>
+<span class="text-xs font-medium bg-sidebar-light dark:bg-primary/10 text-text-secondary dark:text-slate-300 px-2 py-1 rounded">10%</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-card-light dark:bg-[#2a2615] rounded-lg p-4 shadow-card border border-border-light/60 dark:border-primary/10 hover:shadow-md transition-shadow cursor-grab group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-text-primary dark:text-slate-100">Globex Inc</h4>
+<button class="text-xs text-danger opacity-0 group-hover:opacity-100 transition-opacity font-medium hover:underline">Delete</button>
+</div>
+<p class="text-sm text-text-secondary dark:text-slate-400 mb-3">Sarah Connor</p>
+<div class="flex items-center justify-between mt-auto pt-3 border-t border-border-light/50 dark:border-primary/5">
+<span class="text-sm font-bold text-[#D4AF37] dark:text-primary">€75,000</span>
+<span class="text-xs font-medium bg-sidebar-light dark:bg-primary/10 text-text-secondary dark:text-slate-300 px-2 py-1 rounded">20%</span>
+</div>
+</div>
+</div>
+<button class="mt-2 text-sm text-text-secondary dark:text-slate-400 hover:text-text-primary dark:hover:text-slate-200 flex items-center gap-1 font-medium transition-colors w-full p-2 rounded hover:bg-black/5 dark:hover:bg-white/5 justify-center">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Deal
+                        </button>
+</div>
+<!-- Column 2: Contacted -->
+<div class="flex-shrink-0 w-80 flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-t-4 border-accent-blue pt-2 px-1">
+<h3 class="text-sm font-bold text-text-primary dark:text-slate-200 uppercase tracking-wider">Contacted <span class="text-text-secondary font-medium ml-1 bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-full text-xs">2</span></h3>
+<span class="text-sm font-medium text-text-secondary">€80K</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Card 3 -->
+<div class="bg-card-light dark:bg-[#2a2615] rounded-lg p-4 shadow-card border border-border-light/60 dark:border-primary/10 hover:shadow-md transition-shadow cursor-grab group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-text-primary dark:text-slate-100">Stark Industries</h4>
+<button class="text-xs text-danger opacity-0 group-hover:opacity-100 transition-opacity font-medium hover:underline">Delete</button>
+</div>
+<p class="text-sm text-text-secondary dark:text-slate-400 mb-3">Tony Stark</p>
+<div class="flex items-center justify-between mt-auto pt-3 border-t border-border-light/50 dark:border-primary/5">
+<span class="text-sm font-bold text-[#D4AF37] dark:text-primary">€80,000</span>
+<span class="text-xs font-medium bg-sidebar-light dark:bg-primary/10 text-text-secondary dark:text-slate-300 px-2 py-1 rounded">40%</span>
+</div>
+</div>
+</div>
+<button class="mt-2 text-sm text-text-secondary dark:text-slate-400 hover:text-text-primary dark:hover:text-slate-200 flex items-center gap-1 font-medium transition-colors w-full p-2 rounded hover:bg-black/5 dark:hover:bg-white/5 justify-center">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Deal
+                        </button>
+</div>
+<!-- Column 3: Meeting -->
+<div class="flex-shrink-0 w-80 flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-t-4 border-accent-green pt-2 px-1">
+<h3 class="text-sm font-bold text-text-primary dark:text-slate-200 uppercase tracking-wider">Meeting <span class="text-text-secondary font-medium ml-1 bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-full text-xs">1</span></h3>
+<span class="text-sm font-medium text-text-secondary">€120K</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Card 4 -->
+<div class="bg-card-light dark:bg-[#2a2615] rounded-lg p-4 shadow-card border border-border-light/60 dark:border-primary/10 hover:shadow-md transition-shadow cursor-grab group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-text-primary dark:text-slate-100">Wayne Ent.</h4>
+<button class="text-xs text-danger opacity-0 group-hover:opacity-100 transition-opacity font-medium hover:underline">Delete</button>
+</div>
+<p class="text-sm text-text-secondary dark:text-slate-400 mb-3">Bruce Wayne</p>
+<div class="flex items-center justify-between mt-auto pt-3 border-t border-border-light/50 dark:border-primary/5">
+<span class="text-sm font-bold text-[#D4AF37] dark:text-primary">€120,000</span>
+<span class="text-xs font-medium bg-sidebar-light dark:bg-primary/10 text-text-secondary dark:text-slate-300 px-2 py-1 rounded">60%</span>
+</div>
+</div>
+</div>
+<button class="mt-2 text-sm text-text-secondary dark:text-slate-400 hover:text-text-primary dark:hover:text-slate-200 flex items-center gap-1 font-medium transition-colors w-full p-2 rounded hover:bg-black/5 dark:hover:bg-white/5 justify-center">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Deal
+                        </button>
+</div>
+<!-- Column 4: Proposal -->
+<div class="flex-shrink-0 w-80 flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-t-4 border-accent-purple pt-2 px-1">
+<h3 class="text-sm font-bold text-text-primary dark:text-slate-200 uppercase tracking-wider">Proposal <span class="text-text-secondary font-medium ml-1 bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-full text-xs">1</span></h3>
+<span class="text-sm font-medium text-text-secondary">€75.8K</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Card 5 -->
+<div class="bg-card-light dark:bg-[#2a2615] rounded-lg p-4 shadow-card border border-border-light/60 dark:border-primary/10 hover:shadow-md transition-shadow cursor-grab group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-text-primary dark:text-slate-100">Cyberdyne</h4>
+<button class="text-xs text-danger opacity-0 group-hover:opacity-100 transition-opacity font-medium hover:underline">Delete</button>
+</div>
+<p class="text-sm text-text-secondary dark:text-slate-400 mb-3">Miles Dyson</p>
+<div class="flex items-center justify-between mt-auto pt-3 border-t border-border-light/50 dark:border-primary/5">
+<span class="text-sm font-bold text-[#D4AF37] dark:text-primary">€75,800</span>
+<span class="text-xs font-medium bg-sidebar-light dark:bg-primary/10 text-text-secondary dark:text-slate-300 px-2 py-1 rounded">80%</span>
+</div>
+</div>
+</div>
+<button class="mt-2 text-sm text-text-secondary dark:text-slate-400 hover:text-text-primary dark:hover:text-slate-200 flex items-center gap-1 font-medium transition-colors w-full p-2 rounded hover:bg-black/5 dark:hover:bg-white/5 justify-center">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Deal
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<style>
+    /* Custom scrollbar for webkit */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 20px;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(255,255,255,0.1);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0,0,0,0.2);
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+</style>
+</body></html>

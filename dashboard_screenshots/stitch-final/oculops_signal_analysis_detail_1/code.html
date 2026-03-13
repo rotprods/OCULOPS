@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OCULOPS Knowledge Intelligence Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "parchment": "#F5F0E8",
+                        "ivory": "#FAFAF8",
+                        "gold": "#FFD700",
+                        "border-muted": "#E5E5E0",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    boxShadow: {
+                        'premium': '0 4px 20px -2px rgba(0, 0, 0, 0.03)',
+                        'neumorphic': '4px 4px 10px rgba(0,0,0,0.02), -4px -4px 10px rgba(255,255,255,0.8)',
+                        'gold-glow': '0 0 15px rgba(255, 215, 0, 0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-ivory text-slate-900 overflow-hidden;
+            }
+        }
+        .sidebar-item-active {
+            @apply bg-white/60 shadow-sm border-r-2 border-gold;
+        }
+        .glass-card {
+            @apply bg-white border border-border-muted shadow-premium rounded-xl;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="w-[240px] bg-parchment border-r border-border-muted flex flex-col shrink-0">
+<div class="p-6">
+<div class="flex items-center gap-2 mb-10">
+<div class="size-8 bg-slate-900 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-gold text-xl">blur_on</span>
+</div>
+<span class="font-bold tracking-tighter text-lg uppercase">Oculops</span>
+</div>
+<nav class="space-y-8">
+<div>
+<h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4 px-2">Intelligence</h3>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+                                Signals
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-900 font-semibold sidebar-item-active" href="#">
+<span class="material-symbols-outlined text-[20px] text-gold" style="font-variation-settings: 'FILL' 1">menu_book</span>
+                                Knowledge
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+                                Cognitive
+                            </a>
+</div>
+</div>
+<div>
+<h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4 px-2">Operations</h3>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">radar</span>
+                                Surveillance
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+                                Assets
+                            </a>
+</div>
+</div>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-border-muted/50">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 border border-white"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-tight">Operator 01</span>
+<span class="text-[10px] text-slate-500">Level 4 Clearance</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto">
+<header class="h-16 border-b border-border-muted px-8 flex items-center justify-between bg-white/50 backdrop-blur-md sticky top-0 z-20">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-900">psychology_alt</span>
+<h1 class="text-lg font-semibold tracking-tight text-slate-900">Knowledge</h1>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-50 border border-slate-100">
+<span class="relative flex h-1.5 w-1.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+<span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-gold"></span>
+</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">Live</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[8px] font-bold">SC</div>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[8px] font-bold">AX</div>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-900 transition-colors">notifications</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-900 transition-colors">settings</button>
+</div>
+</header>
+<div class="p-8 space-y-8 max-w-[1200px] mx-auto w-full">
+<section class="glass-card p-8 border-gold/20 shadow-gold-glow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-gold/5 blur-[100px] rounded-full -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4 block">Semantic Intelligence Search</label>
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-xl focus:ring-1 focus:ring-gold/30 text-lg placeholder:text-slate-300 transition-all shadow-inner" placeholder="Search knowledge graph, entities, or indexed metadata..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs text-slate-400 font-medium mr-2">Filters:</span>
+<button class="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-gold text-slate-900 border border-gold">All Nodes</button>
+<button class="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white text-slate-500 border border-border-muted hover:border-gold/30 hover:text-slate-900 transition-all">Entities</button>
+<button class="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white text-slate-500 border border-border-muted hover:border-gold/30 hover:text-slate-900 transition-all">Classified</button>
+<button class="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white text-slate-500 border border-border-muted hover:border-gold/30 hover:text-slate-900 transition-all">Geospatial</button>
+<button class="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white text-slate-500 border border-border-muted hover:border-gold/30 hover:text-slate-900 transition-all">Agents</button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-2 gap-8">
+<section class="glass-card overflow-hidden flex flex-col h-[500px]">
+<div class="p-5 border-b border-border-muted flex items-center justify-between">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Relational Network Graph</h3>
+<button class="material-symbols-outlined text-slate-400 text-sm">fullscreen</button>
+</div>
+<div class="flex-1 bg-slate-50 relative flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#E5E5E0 1px, transparent 1px); background-size: 20px 20px;"></div>
+<svg class="w-full h-full relative z-10" viewBox="0 0 400 400">
+<circle class="shadow-gold-glow" cx="200" cy="200" fill="#FFD700" r="8"></circle>
+<line stroke="#E5E5E0" stroke-width="1" x1="200" x2="150" y1="200" y2="120"></line>
+<line stroke="#E5E5E0" stroke-width="1" x1="200" x2="280" y1="200" y2="180"></line>
+<line stroke="#E5E5E0" stroke-width="1" x1="200" x2="180" y1="200" y2="280"></line>
+<circle cx="150" cy="120" fill="#E5E5E0" r="5"></circle>
+<circle cx="280" cy="180" fill="#E5E5E0" r="5"></circle>
+<circle cx="180" cy="280" fill="#E5E5E0" r="5"></circle>
+<circle cx="120" cy="180" fill="#E5E5E0" r="4"></circle>
+<line stroke="#E5E5E0" stroke-width="0.5" x1="150" x2="120" y1="120" y2="180"></line>
+<circle cx="320" cy="250" fill="#E5E5E0" r="4"></circle>
+<line stroke="#E5E5E0" stroke-width="0.5" x1="280" x2="320" y1="180" y2="250"></line>
+</svg>
+<div class="absolute bottom-4 left-4 flex flex-col gap-1">
+<span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Global Density</span>
+<div class="w-32 h-1 bg-slate-200 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-gold"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-4 h-[500px]">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Top Entities</h3>
+<button class="text-[10px] font-bold text-gold uppercase tracking-widest hover:underline">View All</button>
+</div>
+<div class="space-y-3 overflow-y-auto pr-1">
+<div class="glass-card p-4 hover:border-gold/40 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-slate-900 group-hover:text-gold transition-colors">Vortex Alpha-9</h4>
+<span class="text-[10px] font-mono text-slate-400">#E-9921</span>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-[9px] text-slate-400 uppercase">Relevance</span>
+<span class="text-[9px] font-bold">98.2%</span>
+</div>
+<div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-[98%] h-full bg-gold shadow-[0_0_8px_rgba(255,215,0,0.5)]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="size-4 rounded-full bg-slate-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-gold">history_edu</span>
+</span>
+<span class="text-[10px] font-semibold text-slate-500 uppercase tracking-tighter">Agent SCRIBE</span>
+</div>
+<span class="text-[10px] text-slate-400">2m ago</span>
+</div>
+</div>
+<div class="glass-card p-4 hover:border-gold/40 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-slate-900">Project Helios</h4>
+<span class="text-[10px] font-mono text-slate-400">#E-4482</span>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-[9px] text-slate-400 uppercase">Relevance</span>
+<span class="text-[9px] font-bold">84.5%</span>
+</div>
+<div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-[84%] h-full bg-gold"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="size-4 rounded-full bg-slate-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-gold">history_edu</span>
+</span>
+<span class="text-[10px] font-semibold text-slate-500 uppercase tracking-tighter">Agent SCRIBE</span>
+</div>
+<span class="text-[10px] text-slate-400">14m ago</span>
+</div>
+</div>
+<div class="glass-card p-4 hover:border-gold/40 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-slate-900">Sector G Intercepts</h4>
+<span class="text-[10px] font-mono text-slate-400">#E-1102</span>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-[9px] text-slate-400 uppercase">Relevance</span>
+<span class="text-[9px] font-bold">72.1%</span>
+</div>
+<div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-[72%] h-full bg-gold"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="size-4 rounded-full bg-slate-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-gold">history_edu</span>
+</span>
+<span class="text-[10px] font-semibold text-slate-500 uppercase tracking-tighter">Agent SCRIBE</span>
+</div>
+<span class="text-[10px] text-slate-400">1h ago</span>
+</div>
+</div>
+<div class="glass-card p-4 hover:border-gold/40 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-slate-900">Neural Lattice Redux</h4>
+<span class="text-[10px] font-mono text-slate-400">#E-0083</span>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-[9px] text-slate-400 uppercase">Relevance</span>
+<span class="text-[9px] font-bold">66.8%</span>
+</div>
+<div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-[66%] h-full bg-gold/50"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="size-4 rounded-full bg-slate-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-gold">history_edu</span>
+</span>
+<span class="text-[10px] font-semibold text-slate-500 uppercase tracking-tighter">Agent SCRIBE</span>
+</div>
+<span class="text-[10px] text-slate-400">3h ago</span>
+</div>
+</div>
+<div class="glass-card p-4 hover:border-gold/40 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-slate-900">Cipher Key 0xAF</h4>
+<span class="text-[10px] font-mono text-slate-400">#E-2294</span>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-[9px] text-slate-400 uppercase">Relevance</span>
+<span class="text-[9px] font-bold">59.3%</span>
+</div>
+<div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="w-[59%] h-full bg-gold/50"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="size-4 rounded-full bg-slate-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-gold">history_edu</span>
+</span>
+<span class="text-[10px] font-semibold text-slate-500 uppercase tracking-tighter">Agent SCRIBE</span>
+</div>
+<span class="text-[10px] text-slate-400">5h ago</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

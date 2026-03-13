@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANTIGRAVITY OS Execution Module - Ivory Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#FFD700",
+          "background": "#FAFAF8",
+          "surface": "#FFFFFF",
+          "border-color": "#E5E5E0",
+          "text-main": "#1A1A1A",
+          "text-muted": "#666666"
+        },
+        fontFamily: {
+          "sans": ['"Inter"', 'sans-serif'],
+        },
+        borderRadius: {"DEFAULT": "12px", "lg": "12px", "xl": "12px", "full": "9999px"},
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: #FAFAF8;
+    color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+</head>
+<body class="bg-background text-text-main font-sans h-screen w-screen overflow-hidden flex relative">
+<aside class="w-[72px] flex-shrink-0 border-r border-border-color bg-surface flex flex-col items-center py-6 gap-8 relative z-10 shadow-sm">
+<div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center text-white font-bold text-xl mb-4 shadow-md">
+      A
+    </div>
+<nav class="flex flex-col gap-6 w-full items-center">
+<a class="relative text-text-muted hover:text-text-main transition-colors flex justify-center w-full group p-2 rounded-lg hover:bg-gray-50 mx-2" href="#" title="Dashboard">
+<span class="material-symbols-outlined text-[24px]">space_dashboard</span>
+</a>
+<a class="relative text-text-muted hover:text-text-main transition-colors flex justify-center w-full group p-2 rounded-lg hover:bg-gray-50 mx-2" href="#" title="Intelligence">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+</a>
+<a class="relative text-primary bg-yellow-50 flex justify-center w-12 h-12 items-center rounded-xl border border-yellow-200" href="#" title="Execution">
+<span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+</a>
+<a class="relative text-text-muted hover:text-text-main transition-colors flex justify-center w-full p-2 rounded-lg hover:bg-gray-50 mx-2 mt-auto" href="#" title="Settings">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden relative z-10">
+<header class="h-16 border-b border-border-color flex items-center justify-between px-8 bg-surface shadow-sm z-20">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-yellow-50 flex items-center justify-center border border-yellow-100">
+<span class="material-symbols-outlined text-primary text-sm">rocket_launch</span>
+</div>
+<h1 class="text-lg font-semibold text-text-main">Execution</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-1.5 border border-border-color">
+<span class="material-symbols-outlined text-text-muted text-sm">search</span>
+<input class="bg-transparent border-none text-sm focus:outline-none focus:ring-0 w-48 text-text-main placeholder-text-muted p-0" placeholder="Search tasks..." type="text"/>
+</div>
+<button class="w-8 h-8 rounded-full bg-gray-100 border border-border-color flex items-center justify-center text-text-main hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-sm">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-black border border-border-color overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover opacity-90 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEFDfQ_9LG1I-2A6DswOJtWWML5F9X0L4K8wvLKXDmJQZCtwD9b00CjreLD5FRhDgjuaE-TidRX98gdTlXJ2_oANKlatj0Lv7y4eDoAI1JqEaL9U83jthcki1SaQ4kwGEgUABmT06ymLW5cXqw5UnmzEDanmGKkVLMfCNrHNn4UJIaJH_ZlPPcX36vrECSrRzYHlj6F8ydScL2GQlM02U7PUpyUNJeC_NRanoWTh9A1aiJAAtV2hAdQ0A-5qlxCCOCjvqCiLBnZJrV"/>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-auto p-8 flex flex-col gap-6">
+<div class="bg-surface border border-border-color rounded-xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="text-2xl font-bold text-text-main tracking-tight mb-1">Task Execution Hub</h2>
+<p class="text-sm text-text-muted">Manage active deployments and monitor sprint velocity.</p>
+</div>
+<div class="flex gap-6">
+<div class="flex flex-col items-end">
+<span class="text-xs text-text-muted font-medium uppercase tracking-wider">Active Tasks</span>
+<span class="text-xl font-bold text-text-main">23</span>
+</div>
+<div class="w-px h-10 bg-border-color"></div>
+<div class="flex flex-col items-end">
+<span class="text-xs text-text-muted font-medium uppercase tracking-wider">Completion Rate</span>
+<span class="text-xl font-bold text-text-main">89%</span>
+</div>
+<div class="w-px h-10 bg-border-color"></div>
+<div class="flex flex-col items-end">
+<span class="text-xs text-text-muted font-medium uppercase tracking-wider">Overdue</span>
+<span class="text-xl font-bold text-red-500">4</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface border border-border-color rounded-xl p-5 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-text-muted">Tasks Completed</span>
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+</div>
+<div class="text-3xl font-bold text-text-main">147</div>
+</div>
+<div class="bg-surface border border-border-color rounded-xl p-5 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-text-muted">In Progress</span>
+<span class="material-symbols-outlined text-primary text-sm">hourglass_top</span>
+</div>
+<div class="text-3xl font-bold text-text-main">23</div>
+</div>
+<div class="bg-surface border border-border-color rounded-xl p-5 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-text-muted">Overdue</span>
+<span class="material-symbols-outlined text-red-500 text-sm">warning</span>
+</div>
+<div class="text-3xl font-bold text-red-500">4</div>
+</div>
+<div class="bg-surface border border-border-color rounded-xl p-5 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-text-muted">Avg Completion Time</span>
+<span class="material-symbols-outlined text-blue-500 text-sm">schedule</span>
+</div>
+<div class="flex items-baseline gap-1">
+<div class="text-3xl font-bold text-text-main">2.3</div>
+<span class="text-sm text-text-muted font-medium">days</span>
+</div>
+</div>
+</div>
+<div class="bg-surface border border-border-color rounded-xl shadow-sm flex-1 flex flex-col overflow-hidden min-h-[400px]">
+<div class="px-6 py-4 border-b border-border-color flex justify-between items-center bg-gray-50/50">
+<h3 class="text-sm font-semibold text-text-main">Active Deployment Queue</h3>
+<button class="text-sm text-text-muted hover:text-text-main flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-color text-xs text-text-muted uppercase tracking-wider">
+<th class="px-6 py-3 font-medium">Task Name</th>
+<th class="px-6 py-3 font-medium">Assignee</th>
+<th class="px-6 py-3 font-medium">Priority</th>
+<th class="px-6 py-3 font-medium">Status</th>
+<th class="px-6 py-3 font-medium">Due Date</th>
+<th class="px-6 py-3 font-medium">Progress</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-border-color hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">Implement Neural Network v2.4</td>
+<td class="px-6 py-4">
+<div class="flex -space-x-2">
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-white grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF-E6V-twBaQxI6JSNfOegLNYFRL_VBrKw9MxMpTed0e1BPklRgFwYjRA_Ksfcv1Ip9Pi04jKoJyZoU_4G9u8Hm6674tBXPOzuOS7tTt6Vhk4ivkePngLsnALeDL4SuJnjMHwHUFDlcVbwDthx_rCLC0TnpFYL8HIM7SuQTizRS5TiQuUCyQf6tkraGUUe8SUGdkGMQv-0T4X8XzvjefgjdsnhZmG4IDCcnTga2ifp0VVItlAMQGn_NdijmlkfmVVA7VAhhvEChvpZ"/>
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-white grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzkxMOcrYpzLEZCqWdfS524dHpxmn30p7quVcQKJEWgAImGcU7nh1RvziwbjnDY0cfu3j7i28S6lAAi-quOT1U8LUM7Mx3kVmckyRoa39nefCVlGwRUZaV_RSqLEHICI82hA1NpJL05P_LdQpHBs0u24yMMkflwtghfY8NFqraUXJArZNTmu1IJqzvzr2oYO_DqHndf2k25gdXnIazLkYBIQiI1L3i5pC-DBoEOCfiG3R7Fr_4mn7KYZpvQNuhg0VJADo1BehsOQZN"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-text-main">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<span>High</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-50 text-yellow-700 border border-yellow-200">In Progress</span>
+</td>
+<td class="px-6 py-4 text-text-muted">Oct 24, 2023</td>
+<td class="px-6 py-4 w-48">
+<div class="flex items-center gap-2">
+<div class="h-1.5 flex-1 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 65%"></div>
+</div>
+<span class="text-xs text-text-muted w-8 text-right">65%</span>
+</div>
+</td>
+</tr>
+<tr class="border-b border-border-color hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">Database Migration Alpha</td>
+<td class="px-6 py-4">
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-white grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmrmru4NDLvdVEFfUy0p7G1DQGVRd11-O07YRAN_HgsvK_HTehMeUXd1v7Z9Z7Ry6UVE4epv_NshHmRpiMZZHbnhuU2tczQBdPDJ3NCcx4ouzXP4i8NnszgEGAAK4CDF4r2qJa-PUiAoVplTJyLyjnl-u4nmtJhYi4wIsmPYiscyqv_SDvxVZP9LKrp7FxFyBOs8ESxPY-cbG_8IjfcF5S3gBDx-dCi90JUcKHaomSpYnXp_Bxi2fKNHd6q88_GgTdttKUdc1tY6pi"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-text-main">
+<div class="w-2 h-2 rounded-full bg-orange-400"></div>
+<span>Medium</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-200">Completed</span>
+</td>
+<td class="px-6 py-4 text-text-muted">Oct 22, 2023</td>
+<td class="px-6 py-4 w-48">
+<div class="flex items-center gap-2">
+<div class="h-1.5 flex-1 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 100%"></div>
+</div>
+<span class="text-xs text-text-muted w-8 text-right">100%</span>
+</div>
+</td>
+</tr>
+<tr class="border-b border-border-color hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">Security Audit Phase 1</td>
+<td class="px-6 py-4">
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-white grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwAshvExO2XIec798YGdMUbLyrvzeH5PaZaVOdWURMvHm8AOQqBVrHBmid7Y3Y4snjvA1D1KAtMZVZV0fkQzZww3tIyObOebciq09Pj2d45mYW93XR5ZTiznoaH7JAY4Hu2O1ZeLmEN6MnPyQkKGYWScE1L0oxLA0KUgC9tdh7k7aBA2DxxaztKMTY_p_4PVvP7PHvhX_aNQGsIqVo2ri_DHwI3GubEZVU-Ak6-rS-yBah4bCJYAxHnhpv327Qq2UcU9Xoo1PAD63z"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-text-main">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<span>High</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">Blocked</span>
+</td>
+<td class="px-6 py-4 text-red-500 font-medium">Oct 20, 2023</td>
+<td class="px-6 py-4 w-48">
+<div class="flex items-center gap-2">
+<div class="h-1.5 flex-1 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 30%"></div>
+</div>
+<span class="text-xs text-text-muted w-8 text-right">30%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-text-main">UI Components Update</td>
+<td class="px-6 py-4">
+<div class="flex -space-x-2">
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-white grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAQKYQyBB3Z_1FbNrQhgTm-PU4a_46mGLqU4ZJnJfPEDEYmLbHKYLKX4nYbK1hJsSUzVVlkIxQa4jGgYwoTD29faBOtFZ61rBh0zs0uxqcDWM7ZuHZRsxCHGw9JZlAoDxueYx98QaBqJrT7OyBSrI8hvQssu9YC4P9yKO0nllDq6aR0-2u-0NrmBIrISCcy9fLJSfD4VyYDYPWZ6CH1b8HHray1gZEshofltorvg9zFCweVOTZ2nZyncS9pV__K_-rbKwYpm5pP8WL"/>
+<div class="w-6 h-6 rounded-full border border-white bg-gray-100 flex items-center justify-center text-[10px] text-text-muted font-medium">+2</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-text-main">
+<div class="w-2 h-2 rounded-full bg-gray-400"></div>
+<span>Low</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-50 text-yellow-700 border border-yellow-200">In Progress</span>
+</td>
+<td class="px-6 py-4 text-text-muted">Oct 28, 2023</td>
+<td class="px-6 py-4 w-48">
+<div class="flex items-center gap-2">
+<div class="h-1.5 flex-1 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 15%"></div>
+</div>
+<span class="text-xs text-text-muted w-8 text-right">15%</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-auto pt-2">
+<button class="px-5 py-2 rounded-full border border-border-color bg-surface text-sm font-medium text-text-main hover:bg-gray-50 transition-colors">
+          Export Report
+        </button>
+<button class="px-5 py-2 rounded-full border border-border-color bg-surface text-sm font-medium text-text-main hover:bg-gray-50 transition-colors">
+          Assign Team
+        </button>
+<button class="px-5 py-2 rounded-full border border-border-color bg-surface text-sm font-medium text-text-main hover:bg-gray-50 transition-colors">
+          Run Sprint
+        </button>
+<button class="px-5 py-2 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span> New Task
+        </button>
+</div>
+</div>
+</main>
+
+</body></html>
