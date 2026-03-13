@@ -3,6 +3,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { bootstrapWhatsAppChannel } from "../_shared/channels.ts";
 import { buildGmailOAuthUrl, exchangeGoogleCode, fetchGmailProfileFromAccessToken, activateGmailWatch } from "../_shared/gmail.ts";
 import { errorResponse, handleCors, htmlResponse, jsonResponse, readJson } from "../_shared/http.ts";
+import { collectMessagingRuntimeStatus } from "../_shared/provider-runtime.ts";
 import { admin, getAuthUser } from "../_shared/supabase.ts";
 
 const appUrl = Deno.env.get("APP_URL") || Deno.env.get("PUBLIC_APP_URL") || "http://127.0.0.1:4173/messaging";
@@ -21,6 +22,20 @@ async function listChannels(userId: string | null) {
   const { data, error } = await query;
   if (error) throw error;
   return data || [];
+}
+
+function summarizeChannels(channels: Array<Record<string, unknown>>) {
+  return {
+    total: channels.length,
+    active: channels.filter((channel) => channel.status === "active").length,
+    connecting: channels.filter((channel) => channel.status === "connecting").length,
+    disconnected: channels.filter((channel) => channel.status === "disconnected").length,
+    by_type: channels.reduce<Record<string, number>>((acc, channel) => {
+      const type = String(channel.type || "unknown");
+      acc[type] = (acc[type] || 0) + 1;
+      return acc;
+    }, {}),
+  };
 }
 
 function callbackHtml(ok: boolean, message: string) {
@@ -149,17 +164,35 @@ Deno.serve(async (req: Request) => {
     }>(req);
 
     const action = body.action || "list";
+    const runtime = collectMessagingRuntimeStatus();
 
     if (action === "list") {
+      const channels = await listChannels(userId);
       return jsonResponse({
         ok: true,
-        channels: await listChannels(userId),
+        channels,
+      });
+    }
+
+    if (action === "runtime_status") {
+      const channels = await listChannels(userId);
+      return jsonResponse({
+        ok: true,
+        runtime,
+        channels,
+        channels_summary: summarizeChannels(channels as Array<Record<string, unknown>>),
       });
     }
 
     if (action === "begin") {
       if ((body.channel || "email") !== "email") {
         return errorResponse("Only Gmail OAuth is supported by this endpoint");
+      }
+      if (!runtime.providers.gmail.capabilities.oauth_begin) {
+        return errorResponse("Gmail OAuth runtime is not configured", 400, {
+          code: "gmail_runtime_not_ready",
+          runtime: runtime.providers.gmail,
+        });
       }
 
       const state = crypto.randomUUID();
@@ -217,6 +250,12 @@ Deno.serve(async (req: Request) => {
     }
 
     if (action === "bootstrap_whatsapp") {
+      if (!runtime.providers.whatsapp.capabilities.outbound_dispatch) {
+        return errorResponse("WhatsApp runtime is not configured", 400, {
+          code: "whatsapp_runtime_not_ready",
+          runtime: runtime.providers.whatsapp,
+        });
+      }
       const channel = await bootstrapWhatsAppChannel(userId);
       return jsonResponse({ ok: true, channel });
     }

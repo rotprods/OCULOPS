@@ -177,7 +177,7 @@ into one execution matrix with strict ownership:
 
 ## AG2-C2 — Tool Bus / MCP Access Layer (48h Block 4)
 - Variables: `V2.4`, `V4.2`
-- Status: ✅ Completed backend pathing (runtime auth/channel provisioning still pending for full provider E2E)
+- Status: ✅ Hardened backend pathing + runtime readiness diagnostics (live provider credentials still required for final round-trip)
 - Subvariables:
   - `AG2-C2.1` Standardize tool invocation envelope (auth, policy, trace metadata).
   - `AG2-C2.2` Enforce permissioned access per agent role.
@@ -275,7 +275,7 @@ into one execution matrix with strict ownership:
 ---
 
 ## 6) Execution Order (Next)
-1. `AG2-C2` provider auth/channel provisioning for full runtime path
+1. AG2-C2 runtime readiness smoke (`node scripts/smoke-provider-runtime.mjs --bootstrap-whatsapp --sync-gmail`)
 2. `AG2-C6` live outbound -> inbound reconciliation verification (real provider round-trip)
 3. Provider-backed operator smoke (`docs/smoke-operator-loop.md` section 5 + 6)
 4. Integration deploy gate (Supabase functions + app deploy + post-deploy smoke)

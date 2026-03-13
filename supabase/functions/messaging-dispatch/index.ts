@@ -3,6 +3,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { resolveMessagingChannel } from "../_shared/channels.ts";
 import { sendGmailMessage } from "../_shared/gmail.ts";
 import { compact, errorResponse, handleCors, jsonResponse, readJson } from "../_shared/http.ts";
+import { collectMessagingRuntimeStatus } from "../_shared/provider-runtime.ts";
 import { admin, getAuthUser } from "../_shared/supabase.ts";
 import { normalizePhone, sendWhatsAppText } from "../_shared/whatsapp.ts";
 
@@ -221,14 +222,31 @@ Deno.serve(async (req: Request) => {
       message: existingMessage,
       conversation,
     });
+    const runtime = collectMessagingRuntimeStatus();
 
     if (!["email", "whatsapp"].includes(channelType)) {
       return errorResponse(`${channelType} is not provider-backed yet. Use Gmail or WhatsApp.`, 400);
     }
 
+    if (channelType === "email" && !runtime.providers.gmail.capabilities.outbound_dispatch) {
+      return errorResponse("Gmail runtime is not configured for outbound dispatch", 400, {
+        code: "gmail_runtime_not_ready",
+        runtime: runtime.providers.gmail,
+      });
+    }
+    if (channelType === "whatsapp" && !runtime.providers.whatsapp.capabilities.outbound_dispatch) {
+      return errorResponse("WhatsApp runtime is not configured for outbound dispatch", 400, {
+        code: "whatsapp_runtime_not_ready",
+        runtime: runtime.providers.whatsapp,
+      });
+    }
+
     const channel = await resolveMessagingChannel(channelType, userId || compact(conversation.user_id) || null, body.channel_id || compact(conversation.channel_id) || null, ["active"]);
     if (!channel) {
-      return errorResponse(`No active ${channelType} channel is connected`, 400);
+      return errorResponse(`No active ${channelType} channel is connected`, 400, {
+        code: "channel_not_connected",
+        runtime: channelType === "email" ? runtime.providers.gmail : runtime.providers.whatsapp,
+      });
     }
 
     const existingMetadata = (existingMessage?.metadata as Record<string, unknown>) || {};

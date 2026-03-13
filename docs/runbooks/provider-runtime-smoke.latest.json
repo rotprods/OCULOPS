@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-03-13T06:48:31.900Z",
+  "flags": {
+    "strict": false,
+    "bootstrapWhatsApp": true,
+    "syncGmail": true
+  },
+  "runtime": {
+    "generated_at": "2026-03-13T06:48:31.902Z",
+    "providers": {
+      "gmail": {
+        "provider": "gmail",
+        "ready": true,
+        "checks": {
+          "GOOGLE_OAUTH_CLIENT_ID": true,
+          "GOOGLE_OAUTH_CLIENT_SECRET": true,
+          "GMAIL_OAUTH_REDIRECT_URL": true,
+          "GMAIL_PUBSUB_TOPIC_NAME": true
+        },
+        "required_missing": [],
+        "optional_missing": [],
+        "capabilities": {
+          "oauth_begin": true,
+          "oauth_callback": true,
+          "outbound_dispatch": true,
+          "inbound_manual_sync": true,
+          "inbound_push_watch": true
+        },
+        "notes": []
+      },
+      "whatsapp": {
+        "provider": "whatsapp",
+        "ready": false,
+        "checks": {
+          "WHATSAPP_TOKEN": false,
+          "WHATSAPP_PHONE_NUMBER_ID": false,
+          "WHATSAPP_BUSINESS_ACCOUNT_ID": false,
+          "WHATSAPP_BUSINESS_PHONE_NUMBER": false,
+          "WHATSAPP_VERIFY_TOKEN": false,
+          "META_APP_SECRET": false
+        },
+        "required_missing": [
+          "WHATSAPP_TOKEN",
+          "WHATSAPP_PHONE_NUMBER_ID"
+        ],
+        "optional_missing": [
+          "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "WHATSAPP_BUSINESS_PHONE_NUMBER"
+        ],
+        "capabilities": {
+          "outbound_dispatch": false,
+          "inbound_verify_handshake": false,
+          "inbound_signature_validation": false,
+          "inbound_webhook": false
+        },
+        "notes": [
+          "Inbound webhook verification needs WHATSAPP_VERIFY_TOKEN and META_APP_SECRET."
+        ]
+      }
+    },
+    "summary": {
+      "ready_all_required": false,
+      "outbound_ready": {
+        "gmail": true,
+        "whatsapp": false
+      },
+      "inbound_ready": {
+        "gmail": true,
+        "whatsapp": false
+      }
+    }
+  },
+  "channels_summary": {
+    "total": 0,
+    "active": 0,
+    "connecting": 0,
+    "disconnected": 0,
+    "by_type": {}
+  },
+  "channels": [],
+  "actions": {
+    "whatsapp_bootstrap": {
+      "attempted": true,
+      "created_or_updated": false,
+      "channel_id": null,
+      "error": "whatsapp runtime is not outbound-ready"
+    },
+    "gmail_sync": {
+      "attempted": true,
+      "ok": false,
+      "synced": null,
+      "history_id": null,
+      "error": "no active gmail channel or runtime not ready for sync"
+    }
+  },
+  "artifacts": {
+    "json_path": "docs/runbooks/provider-runtime-smoke.latest.json",
+    "markdown_path": "docs/runbooks/provider-runtime-smoke.md"
+  }
+}
