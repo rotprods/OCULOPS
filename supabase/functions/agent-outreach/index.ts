@@ -4,10 +4,9 @@ import { runBrain } from "../_shared/agent-brain-v2.ts";
 import { errorResponse, handleCors, jsonResponse, readJson, compact } from "../_shared/http.ts";
 import { emitSystemEvent } from "../_shared/orchestration.ts";
 import { admin } from "../_shared/supabase.ts";
+import { invokeToolThroughBus } from "../_shared/tool-bus.ts";
 
 const AGENT_CODE = "outreach";
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // OUTREACH — Email Staging & Delivery Agent
@@ -285,53 +284,78 @@ async function dispatchApprovedOutreach({
   contactId,
   companyId,
   correlationId,
+  approval,
+  userId,
+  orgId,
+  authHeader,
 }: {
   queue: Record<string, unknown>;
   conversationId: string;
   contactId: string;
   companyId: string | null;
   correlationId: string | null;
+  approval: Record<string, unknown> | null;
+  userId: string | null;
+  orgId: string | null;
+  authHeader?: string | null;
 }) {
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    throw new Error("Supabase runtime env is not configured");
-  }
-
   const body = htmlToPlainText(compact(queue.html_body));
   if (!body) throw new Error("Outreach body is empty");
 
-  const dispatchResponse = await fetch(`${SUPABASE_URL}/functions/v1/messaging-dispatch`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-      apikey: SUPABASE_SERVICE_ROLE_KEY,
+  const approvalId = compact(approval?.id) || null;
+  const approvalGranted = compact(approval?.status).toLowerCase() === "approved";
+
+  const dispatchPayload = {
+    conversation_id: conversationId,
+    channel: "email",
+    to: compact(queue.recipient_email),
+    subject: compact(queue.subject) || null,
+    body,
+    approval_id: approvalId,
+    approval_granted: approvalGranted,
+    approval_status: compact(approval?.status) || null,
+    metadata: {
+      source: "agent_outreach",
+      outreach_queue_id: queue.id,
+      lead_id: queue.lead_id || null,
+      contact_id: contactId,
+      company_id: companyId || null,
+      correlation_id: correlationId || null,
+      recipient_name: compact(queue.recipient_name) || null,
+      html_body: compact(queue.html_body) || null,
+      approval_id: approvalId,
+      approval_status: compact(approval?.status) || null,
     },
-    body: JSON.stringify({
-      conversation_id: conversationId,
-      channel: "email",
-      to: compact(queue.recipient_email),
-      subject: compact(queue.subject) || null,
-      body,
-      metadata: {
-        source: "agent_outreach",
-        outreach_queue_id: queue.id,
-        lead_id: queue.lead_id || null,
-        contact_id: contactId,
-        company_id: companyId || null,
-        correlation_id: correlationId || null,
-        recipient_name: compact(queue.recipient_name) || null,
-        html_body: compact(queue.html_body) || null,
-      },
-    }),
+    policy: {
+      approval_required: true,
+      approval_granted: approvalGranted,
+      approval_id: approvalId,
+      approval_status: compact(approval?.status) || null,
+    },
+  };
+
+  const dispatchResult = await invokeToolThroughBus({
+    toolCodeName: "messaging-dispatch",
+    payload: dispatchPayload,
+    authHeader: authHeader || null,
+    invokerAgentCodeName: AGENT_CODE,
+    orgId,
+    userId,
+    correlationId,
+    source: "outreach_send",
   });
 
-  const dispatchResult = await dispatchResponse.json().catch(() => ({}));
-  if (!dispatchResponse.ok) {
-    const message = compact((dispatchResult as Record<string, unknown>).error) || "Messaging dispatch failed";
+  if (compact(dispatchResult.status) === "waiting_approval" || dispatchResult.approval_required === true) {
+    const message = compact(dispatchResult.summary) || "Approval required before messaging dispatch.";
     throw new Error(message);
   }
 
-  return dispatchResult as Record<string, unknown>;
+  if (dispatchResult.ok === false) {
+    const message = compact(dispatchResult.error) || "Messaging dispatch failed";
+    throw new Error(message);
+  }
+
+  return dispatchResult;
 }
 
 function resolveQueueId(body: Record<string, unknown>) {
@@ -436,9 +460,11 @@ async function ensureOutreachApprovalRequest({
 async function executeOutreachSend({
   queueRow,
   approval,
+  authHeader,
 }: {
   queueRow: Record<string, unknown>;
   approval: Record<string, unknown> | null;
+  authHeader?: string | null;
 }) {
   const recipientEmail = compact(queueRow.recipient_email);
   if (!recipientEmail) {
@@ -483,6 +509,10 @@ async function executeOutreachSend({
     contactId,
     companyId: compact(contact.company_id) || companyId,
     correlationId,
+    approval,
+    userId,
+    orgId: compact(queueRow.org_id) || compact(lead?.org_id) || null,
+    authHeader: authHeader || null,
   });
   const dispatchMessage = asRecord(dispatch.message);
   const dispatchedMessageId = compact(dispatchMessage.id) || null;
@@ -762,6 +792,7 @@ Deno.serve(async (req: Request) => {
       const sendResult = await executeOutreachSend({
         queueRow: queueRow as Record<string, unknown>,
         approval,
+        authHeader: req.headers.get("Authorization"),
       });
 
       return jsonResponse({
@@ -868,6 +899,7 @@ Deno.serve(async (req: Request) => {
       const sendResult = await executeOutreachSend({
         queueRow: queueRow as Record<string, unknown>,
         approval: updatedApproval as Record<string, unknown>,
+        authHeader: req.headers.get("Authorization"),
       });
 
       return jsonResponse({

@@ -4,6 +4,7 @@ import { admin } from "./supabase.ts";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY");
 
 export interface JsonRecord {
   [key: string]: unknown;
@@ -314,16 +315,24 @@ async function writeToolBusEvent(input: {
 }
 
 async function invokeEdgeFunction(functionName: string, payload: JsonRecord, authHeader?: string | null) {
-  if (!SUPABASE_URL || !SERVICE_KEY) {
+  if (!SUPABASE_URL) {
     throw new Error("Supabase runtime env is not configured");
+  }
+
+  const authValue = compact(authHeader).startsWith("Bearer ")
+    ? compact(authHeader)
+    : (ANON_KEY ? `Bearer ${ANON_KEY}` : (SERVICE_KEY ? `Bearer ${SERVICE_KEY}` : ""));
+  const apiKey = ANON_KEY || SERVICE_KEY || "";
+  if (!authValue || !apiKey) {
+    throw new Error("Supabase auth keys are not configured for tool bus invocation");
   }
 
   const response = await fetch(`${SUPABASE_URL}/functions/v1/${functionName}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: authHeader || `Bearer ${SERVICE_KEY}`,
-      apikey: SERVICE_KEY,
+      Authorization: authValue,
+      apikey: apiKey,
     },
     body: JSON.stringify(payload),
   });
