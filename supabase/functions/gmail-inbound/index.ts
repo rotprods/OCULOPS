@@ -13,6 +13,27 @@ function asRecord(value: unknown) {
     : {};
 }
 
+function isServiceRoleRequest(req: Request) {
+  const serviceRole = compact(Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"));
+  const apiKey = compact(req.headers.get("apikey") || req.headers.get("x-api-key"));
+  const authHeader = compact(req.headers.get("authorization") || req.headers.get("Authorization"));
+  const bearer = authHeader.toLowerCase().startsWith("bearer ") ? compact(authHeader.slice(7)) : "";
+  const bearerClaimsServiceRole = (() => {
+    if (!bearer) return false;
+    const parts = bearer.split(".");
+    if (parts.length !== 3) return false;
+    try {
+      const payload = JSON.parse(base64UrlDecode(parts[1]));
+      return compact(payload?.role) === "service_role";
+    } catch {
+      return false;
+    }
+  })();
+
+  if (!serviceRole) return false;
+  return apiKey === serviceRole || bearer === serviceRole || bearerClaimsServiceRole;
+}
+
 async function classifyMessage(content: string, subject: string | null): Promise<Record<string, unknown> | null> {
   if (!OPENAI_API_KEY || !content || content.length < 10) return null;
 
@@ -83,6 +104,26 @@ async function resolveChannel({
   const { data, error } = await query.limit(1);
   if (error) throw error;
   return data?.[0] || null;
+}
+
+async function loadConversationById(conversationId: string) {
+  const { data, error } = await admin
+    .from("conversations")
+    .select("*")
+    .eq("id", conversationId)
+    .maybeSingle();
+  if (error) throw error;
+  return data || null;
+}
+
+async function loadContactById(contactId: string) {
+  const { data, error } = await admin
+    .from("contacts")
+    .select("*")
+    .eq("id", contactId)
+    .maybeSingle();
+  if (error) throw error;
+  return data || null;
 }
 
 async function findOrCreateContact(userId: string | null, inboxMessage: {
@@ -483,6 +524,164 @@ async function syncChannel(channel: Record<string, unknown>, currentHistoryId?: 
   };
 }
 
+async function processSyntheticInbound(body: {
+  channel_id?: string;
+  conversation_id?: string;
+  contact_id?: string;
+  from_email?: string;
+  from_name?: string;
+  subject?: string;
+  body?: string;
+  message_at?: string;
+  provider_message_id?: string;
+  correlation_id?: string;
+  trigger_workflows?: boolean;
+}) {
+  const channelId = compact(body.channel_id);
+  const conversationId = compact(body.conversation_id);
+  const contactId = compact(body.contact_id);
+  const content = compact(body.body);
+
+  if (!channelId) return errorResponse("channel_id is required", 400);
+  if (!conversationId) return errorResponse("conversation_id is required", 400);
+  if (!contactId) return errorResponse("contact_id is required", 400);
+  if (!content) return errorResponse("body is required", 400);
+
+  const channel = await resolveChannel({ channelId, emailAddress: null });
+  if (!channel) return errorResponse("Gmail channel not found", 404);
+
+  const conversation = await loadConversationById(conversationId);
+  if (!conversation) return errorResponse("Conversation not found", 404);
+
+  const contact = await loadContactById(contactId);
+  if (!contact) return errorResponse("Contact not found", 404);
+
+  const messageAt = compact(body.message_at) || new Date().toISOString();
+  const providerMessageId = compact(body.provider_message_id) || `synthetic-gmail-${crypto.randomUUID()}`;
+  const subject = compact(body.subject) || "Synthetic inbound reply";
+  const correlationId = compact(body.correlation_id) || null;
+
+  const syntheticPayload = {
+    id: providerMessageId,
+    threadId: compact(conversation.provider_thread_id) || `synthetic-thread-${crypto.randomUUID()}`,
+    internalDate: String(Date.parse(messageAt) || Date.now()),
+    payload: {
+      headers: [
+        { name: "From", value: compact(body.from_email) || compact(contact.email) || "synthetic@oculops.local" },
+        { name: "Subject", value: subject },
+      ],
+      body: {
+        data: "",
+      },
+    },
+    synthetic: true,
+  };
+
+  const { data: insertedMessage, error: insertError } = await admin
+    .from("messages")
+    .insert({
+      org_id: conversation.org_id || contact.org_id || null,
+      user_id: conversation.user_id || contact.user_id || null,
+      conversation_id: conversation.id,
+      channel_id: channel.id,
+      direction: "inbound",
+      subject,
+      content,
+      content_type: "text",
+      status: "received",
+      provider_message_id: providerMessageId,
+      external_id: providerMessageId,
+      metadata: {
+        channel: "email",
+        from: compact(body.from_email) || compact(contact.email) || null,
+        from_name: compact(body.from_name) || compact(contact.name) || null,
+        subject,
+        correlation_id: correlationId,
+        synthetic: true,
+      },
+      raw_payload: syntheticPayload,
+      created_at: messageAt,
+      updated_at: messageAt,
+    })
+    .select()
+    .single();
+  if (insertError || !insertedMessage) {
+    throw insertError || new Error("Unable to insert synthetic inbound message");
+  }
+
+  await admin
+    .from("conversations")
+    .update({
+      status: "open",
+      unread_count: Number(conversation.unread_count || 0) + 1,
+      last_message_at: messageAt,
+      last_inbound_at: messageAt,
+      channel_id: channel.id,
+      channel: "email",
+      metadata: {
+        ...(asRecord(conversation.metadata)),
+        last_channel_type: "email",
+        synthetic_last_inbound: {
+          at: messageAt,
+          provider_message_id: providerMessageId,
+        },
+      },
+    })
+    .eq("id", conversation.id);
+
+  const reconciledQueueId = await reconcileOutreachReply({
+    conversation,
+    contact,
+    inboundMessageId: String(insertedMessage.id),
+    messageAt,
+  }).catch((reconcileError) => {
+    console.error("[gmail-inbound synthetic] outreach reply reconcile failed:", reconcileError);
+    return null;
+  });
+
+  if (body.trigger_workflows !== false) {
+    try {
+      await executeTriggeredWorkflows({
+        triggerKey: "message_in",
+        userId: compact(conversation.user_id) || null,
+        context: {
+          user_id: compact(conversation.user_id) || null,
+          channel: "email",
+          contact_id: conversation.contact_id || contact.id,
+          company_id: conversation.company_id || contact.company_id || null,
+          conversation_id: conversation.id,
+          message_id: insertedMessage.id,
+          subject,
+          body: content,
+          synthetic: true,
+        },
+        sendLive: false,
+        source: "gmail_inbound_synthetic",
+      });
+    } catch (automationError) {
+      console.error("[gmail-inbound synthetic] automation trigger failed:", automationError);
+    }
+  }
+
+  let queueRow = null;
+  if (reconciledQueueId) {
+    const { data, error } = await admin
+      .from("outreach_queue")
+      .select("id,status,provider_status,replied_at,message_id,metadata")
+      .eq("id", reconciledQueueId)
+      .maybeSingle();
+    if (!error) queueRow = data || null;
+  }
+
+  return jsonResponse({
+    ok: true,
+    synthetic: true,
+    inbound_message: insertedMessage,
+    reconciled_queue_id: reconciledQueueId,
+    queue: queueRow,
+  });
+}
+
 Deno.serve(async (req: Request) => {
   const cors = handleCors(req);
   if (cors) return cors;
@@ -497,10 +696,27 @@ Deno.serve(async (req: Request) => {
       channel_id?: string;
       email_address?: string;
       history_id?: string;
+      conversation_id?: string;
+      contact_id?: string;
+      from_email?: string;
+      from_name?: string;
+      subject?: string;
+      body?: string;
+      message_at?: string;
+      provider_message_id?: string;
+      correlation_id?: string;
+      trigger_workflows?: boolean;
       message?: {
         data?: string;
       };
     }>(req);
+
+    if (body.action === "synthetic_inbound") {
+      if (!isServiceRoleRequest(req)) {
+        return errorResponse("Forbidden", 403);
+      }
+      return processSyntheticInbound(body);
+    }
 
     if (body.action === "sync") {
       const channel = await resolveChannel({

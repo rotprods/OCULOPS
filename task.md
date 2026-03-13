@@ -222,7 +222,7 @@ into one execution matrix with strict ownership:
 
 ## AG2-C6 — Closed-Loop Runtime Completion (remaining Sprint backend)
 - Variables: `V1.1`, `V1.2`
-- Status: ✅ Completed baseline
+- Status: ✅ Hardened (includes synthetic smoke harness proving outbound -> inbound reconciliation -> `outreach_queue.status=replied` without provider creds)
 - Subvariables:
   - `AG2-C6.1` Ensure provider IDs/statuses persist consistently.
   - `AG2-C6.2` Ensure inbound/status updates map to existing conversations.
@@ -275,10 +275,9 @@ into one execution matrix with strict ownership:
 ---
 
 ## 6) Execution Order (Next)
-1. AG2-C2 runtime readiness smoke (`node scripts/smoke-provider-runtime.mjs --bootstrap-whatsapp --sync-gmail`)
-2. `AG2-C6` live outbound -> inbound reconciliation verification (real provider round-trip)
-3. Provider-backed operator smoke (`docs/smoke-operator-loop.md` section 5 + 6)
-4. Integration deploy gate (Supabase functions + app deploy + post-deploy smoke)
+1. AG2-C6 provider-backed live round-trip (`outbound -> inbound`) once channel creds are available
+2. Provider-backed operator smoke (`docs/smoke-operator-loop.md` section 5 + 6)
+3. Integration deploy gate (Supabase functions + app deploy + post-deploy smoke)
 
 ---
 
