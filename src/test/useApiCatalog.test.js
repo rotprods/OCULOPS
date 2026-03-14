@@ -9,6 +9,7 @@ function createThenableResult(result) {
     eq: () => builder,
     order: () => builder,
     not: () => builder,
+    range: () => builder,
     limit: () => builder,
     maybeSingle: () => Promise.resolve(result),
     then: (resolve, reject) => Promise.resolve(result).then(resolve, reject),

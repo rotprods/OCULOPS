@@ -13,6 +13,7 @@ import {
   getTemplateByCatalogSlug,
 } from '../lib/publicApiConnectorTemplates.js'
 import { buildApiBridgeProfile } from '../lib/publicApiInfrastructure.js'
+import { buildApiEcosystemProfile } from '../lib/publicApiEcosystem.js'
 
 let seedCatalogPromise = null
 const shardedSeedIndexUrl = `${import.meta.env.BASE_URL}public-api-catalog/index.json`
@@ -27,9 +28,14 @@ function decorateEntry(entry) {
     tags: [...new Set([...(entry.tags || []), ...agentTargets])],
   }
 
+  const bridgeProfile = buildApiBridgeProfile(baseEntry)
+
   return {
     ...baseEntry,
-    bridge_profile: buildApiBridgeProfile(baseEntry),
+    bridge_profile: bridgeProfile,
+    ecosystem_profile: buildApiEcosystemProfile(baseEntry, {
+      bridgeProfile,
+    }),
   }
 }
 
@@ -96,11 +102,17 @@ function applyConnectorState(entries, connectors) {
           ),
         }),
       }
+      const bridgeProfile = buildApiBridgeProfile(nextEntry, {
+        template: getTemplateByCatalogSlug(nextEntry.slug),
+        connector,
+      })
       return {
         ...nextEntry,
-        bridge_profile: buildApiBridgeProfile(nextEntry, {
+        bridge_profile: bridgeProfile,
+        ecosystem_profile: buildApiEcosystemProfile(nextEntry, {
           template: getTemplateByCatalogSlug(nextEntry.slug),
           connector,
+          bridgeProfile,
         }),
       }
     }
@@ -109,14 +121,39 @@ function applyConnectorState(entries, connectors) {
       ...entry,
       activation_tier: entry.health_status === 'live' ? 'live' : entry.activation_tier,
     }
+    const bridgeProfile = buildApiBridgeProfile(nextEntry, {
+      template: getTemplateByCatalogSlug(nextEntry.slug),
+      connector,
+    })
     return {
       ...nextEntry,
-      bridge_profile: buildApiBridgeProfile(nextEntry, {
+      bridge_profile: bridgeProfile,
+      ecosystem_profile: buildApiEcosystemProfile(nextEntry, {
         template: getTemplateByCatalogSlug(nextEntry.slug),
         connector,
+        bridgeProfile,
       }),
     }
   })
+}
+
+async function fetchAllRows(queryFactory, pageSize = 1000) {
+  const rows = []
+  let from = 0
+
+  while (true) {
+    const to = from + pageSize - 1
+    const result = await queryFactory(from, to)
+    if (result.error) throw result.error
+
+    const batch = result.data || []
+    rows.push(...batch)
+
+    if (batch.length < pageSize) break
+    from += pageSize
+  }
+
+  return rows
 }
 
 export function useApiCatalog(filters = {}) {
@@ -151,18 +188,20 @@ export function useApiCatalog(filters = {}) {
     }
 
     try {
-      const [entriesResult, connectorsResult, syncResult] = await Promise.all([
-        supabase
+      const [fetchedEntries, fetchedConnectors, syncResult] = await Promise.all([
+        fetchAllRows((from, to) => supabase
           .from('api_catalog_entries')
           .select('*')
           .eq('is_listed', true)
           .order('business_fit_score', { ascending: false })
-          .order('name', { ascending: true }),
-        supabase
+          .order('name', { ascending: true })
+          .range(from, to)),
+        fetchAllRows((from, to) => supabase
           .from('api_connectors')
           .select('id,catalog_slug,template_key,normalizer_key,capabilities,health_status,last_healthcheck_at,last_synced_at,metadata,created_at,is_active')
           .not('catalog_slug', 'is', null)
-          .order('created_at', { ascending: false }),
+          .order('created_at', { ascending: false })
+          .range(from, to)),
         supabase
           .from('api_catalog_sync_runs')
           .select('*')
@@ -171,12 +210,7 @@ export function useApiCatalog(filters = {}) {
           .maybeSingle(),
       ])
 
-      if (entriesResult.error) throw entriesResult.error
-      if (connectorsResult.error) throw connectorsResult.error
       if (syncResult.error) throw syncResult.error
-
-      const fetchedEntries = entriesResult.data || []
-      const fetchedConnectors = connectorsResult.data || []
 
       if (fetchedEntries.length === 0) {
         await applySeedFallback(fetchedConnectors, syncResult.data || null)

@@ -41,22 +41,27 @@ function getGitHubHeaders() {
   };
 }
 
-async function loadEnvFile() {
-  const envPath = path.join(ROOT_DIR, '.env');
+async function loadEnvFileAt(filePath, { override = false } = {}) {
   try {
-    const content = await fs.readFile(envPath, 'utf8');
+    const content = await fs.readFile(filePath, 'utf8');
     for (const rawLine of content.split('\n')) {
       const line = rawLine.trim();
       if (!line || line.startsWith('#') || !line.includes('=')) continue;
       const [key, ...rest] = line.split('=');
       const value = rest.join('=').trim().replace(/^['"]|['"]$/g, '');
-      if (!process.env[key.trim()]) {
-        process.env[key.trim()] = value;
+      const envKey = key.trim();
+      if (override || !process.env[envKey]) {
+        process.env[envKey] = value;
       }
     }
   } catch {
-    // .env is optional
+    // optional file
   }
+}
+
+async function loadEnvFile() {
+  await loadEnvFileAt(path.join(ROOT_DIR, '.env'));
+  await loadEnvFileAt(path.join(ROOT_DIR, 'supabase/.env.deploy'), { override: true });
 }
 
 async function fetchJson(url, headers = {}) {

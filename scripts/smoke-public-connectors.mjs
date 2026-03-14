@@ -21,25 +21,39 @@ const BASE_HEADERS = {
 function normalizeError(error) {
   if (!error) return 'Unknown error';
   if (error instanceof Error) return error.message;
+  if (typeof error === 'object') {
+    const message = error.message || error.details || error.hint || error.code;
+    if (message) return String(message);
+    try {
+      return JSON.stringify(error);
+    } catch {
+      return String(error);
+    }
+  }
   return String(error);
 }
 
-async function loadEnvFile() {
-  const envPath = path.join(ROOT_DIR, '.env');
+async function loadEnvFileAt(filePath, { override = false } = {}) {
   try {
-    const content = await fs.readFile(envPath, 'utf8');
+    const content = await fs.readFile(filePath, 'utf8');
     for (const rawLine of content.split('\n')) {
       const line = rawLine.trim();
       if (!line || line.startsWith('#') || !line.includes('=')) continue;
       const [key, ...rest] = line.split('=');
       const value = rest.join('=').trim().replace(/^['"]|['"]$/g, '');
-      if (!process.env[key.trim()]) {
-        process.env[key.trim()] = value;
+      const envKey = key.trim();
+      if (override || !process.env[envKey]) {
+        process.env[envKey] = value;
       }
     }
   } catch {
-    // optional
+    // optional file
   }
+}
+
+async function loadEnvFile() {
+  await loadEnvFileAt(path.join(ROOT_DIR, '.env'));
+  await loadEnvFileAt(path.join(ROOT_DIR, 'supabase/.env.deploy'), { override: true });
 }
 
 function formatTemplateEnvPrefix(templateKey = '') {

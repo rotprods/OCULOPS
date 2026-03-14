@@ -64,6 +64,7 @@
     "public-apis:bootstrap": "node scripts/bootstrap-public-api-connectors.mjs",
     "public-apis:finalize": "node scripts/finalize-public-api-infra.mjs",
     "build:public-api-infra-layer": "node scripts/build-public-api-infra-layer.mjs",
+    "build:public-api-ecosystem-layer": "node scripts/build-public-api-ecosystem-layer.mjs",
     "smoke:public-connectors": "node scripts/smoke-public-connectors.mjs"
   },
   "dependencies": {

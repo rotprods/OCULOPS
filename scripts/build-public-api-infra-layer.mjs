@@ -27,22 +27,27 @@ async function ensureDir(filePath) {
   await fs.mkdir(path.dirname(filePath), { recursive: true })
 }
 
-async function loadEnvFile() {
-  const envPath = path.join(ROOT_DIR, '.env')
+async function loadEnvFileAt(filePath, { override = false } = {}) {
   try {
-    const content = await fs.readFile(envPath, 'utf8')
+    const content = await fs.readFile(filePath, 'utf8')
     for (const rawLine of content.split('\n')) {
       const line = rawLine.trim()
       if (!line || line.startsWith('#') || !line.includes('=')) continue
       const [key, ...rest] = line.split('=')
       const value = rest.join('=').trim().replace(/^['"]|['"]$/g, '')
-      if (!process.env[key.trim()]) {
-        process.env[key.trim()] = value
+      const envKey = key.trim()
+      if (override || !process.env[envKey]) {
+        process.env[envKey] = value
       }
     }
   } catch {
-    // optional
+    // optional file
   }
+}
+
+async function loadEnvFile() {
+  await loadEnvFileAt(path.join(ROOT_DIR, '.env'))
+  await loadEnvFileAt(path.join(ROOT_DIR, 'supabase/.env.deploy'), { override: true })
 }
 
 function normalizeError(error) {
@@ -66,6 +71,24 @@ async function loadSeedEntries() {
   return Array.isArray(parsed.entries) ? parsed.entries : []
 }
 
+async function fetchAllRows(queryFactory, pageSize = 1000) {
+  const rows = []
+  let from = 0
+
+  while (true) {
+    const to = from + pageSize - 1
+    const result = await queryFactory(from, to)
+    if (result.error) throw result.error
+
+    const batch = result.data || []
+    rows.push(...batch)
+    if (batch.length < pageSize) break
+    from += pageSize
+  }
+
+  return rows
+}
+
 async function loadSupabaseEntriesAndConnectors() {
   const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || null
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || null
@@ -83,30 +106,33 @@ async function loadSupabaseEntriesAndConnectors() {
     auth: { persistSession: false, autoRefreshToken: false },
   })
 
-  const [entriesResult, connectorsResult] = await Promise.all([
-    supabase
-      .from('api_catalog_entries')
-      .select('*')
-      .eq('is_listed', true)
-      .order('business_fit_score', { ascending: false })
-      .order('name', { ascending: true }),
-    supabase
-      .from('api_connectors')
-      .select('id,catalog_slug,health_status,is_active,capabilities,endpoints,template_key,normalizer_key,metadata,created_at,last_healthcheck_at')
-      .not('catalog_slug', 'is', null),
-  ])
+  let entries = []
+  let connectors = []
 
-  if (entriesResult.error || connectorsResult.error) {
+  try {
+    [entries, connectors] = await Promise.all([
+      fetchAllRows((from, to) => supabase
+        .from('api_catalog_entries')
+        .select('*')
+        .order('business_fit_score', { ascending: false })
+        .order('name', { ascending: true })
+        .range(from, to)),
+      fetchAllRows((from, to) => supabase
+        .from('api_connectors')
+        .select('id,catalog_slug,health_status,is_active,capabilities,endpoints,template_key,normalizer_key,metadata,created_at,last_healthcheck_at')
+        .not('catalog_slug', 'is', null)
+        .order('created_at', { ascending: false })
+        .range(from, to)),
+    ])
+  } catch (error) {
     return {
       source: 'seed',
       entries: await loadSeedEntries(),
       connectors: [],
-      warning: `Supabase query failed (${normalizeError(entriesResult.error || connectorsResult.error)}), using seed catalog`,
+      warning: `Supabase query failed (${normalizeError(error)}), using seed catalog`,
     }
   }
 
-  const entries = entriesResult.data || []
-  const connectors = connectorsResult.data || []
   if (entries.length === 0) {
     return {
       source: 'seed',

@@ -1,52 +1,60 @@
 {
-  "generated_at": "2026-03-14T00:16:34.343Z",
-  "mode": "dry_run",
-  "supabase_available": false,
-  "supabase_warning": "Invalid API key",
+  "generated_at": "2026-03-14T00:28:25.037Z",
+  "mode": "apply",
+  "supabase_available": true,
+  "supabase_warning": null,
   "options": {
-    "healthcheck": false,
+    "healthcheck": true,
     "include_internal": false,
-    "strict": false
+    "strict": true
   },
   "summary": {
     "total_templates": 11,
     "installed_connectors": 0,
-    "existing_connectors": 0,
+    "existing_connectors": 11,
     "updated_credentials": 0,
-    "healthcheck_ok": 0,
-    "healthcheck_failed": 0,
+    "healthcheck_ok": 6,
+    "healthcheck_failed": 1,
     "missing_required_keys": 4
   },
   "rows": [
     {
       "template_key": "administrative-divisions-db",
       "catalog_slug": "geocoding-administrative-divisons-db-github-com",
-      "connector_id": null,
-      "status": "would_install",
+      "connector_id": "d4a159e5-ea6b-4c1a-8f5a-db607cce01f5",
+      "status": "configured_existing",
       "activation_tier": "adapter_ready",
       "required_fields": [],
       "missing_fields": [],
       "env_sources": {},
-      "healthcheck": null,
+      "healthcheck": {
+        "http_status": 200,
+        "ok": true,
+        "error": null
+      },
       "errors": []
     },
     {
       "template_key": "adresse-data-gouv",
       "catalog_slug": "geocoding-adresse-data-gouv-fr-adresse-data-gouv-fr",
-      "connector_id": null,
-      "status": "would_install",
+      "connector_id": "1517bc55-9186-4c88-b9c2-0d85447ff1a0",
+      "status": "configured_existing",
       "activation_tier": "adapter_ready",
       "required_fields": [],
       "missing_fields": [],
       "env_sources": {},
-      "healthcheck": null,
+      "healthcheck": {
+        "http_status": 200,
+        "ok": true,
+        "error": null
+      },
       "errors": []
     },
     {
       "template_key": "graphhopper",
       "catalog_slug": "transportation-graphhopper-docs-graphhopper-com",
-      "connector_id": null,
-      "status": "would_require_keys",
+      "connector_id": "dc54ecad-9f14-4297-9c6b-5ecdfff51c58",
+      "status": "missing_keys",
       "activation_tier": "adapter_ready",
       "required_fields": [
         "api_key"
@@ -61,44 +69,58 @@
     {
       "template_key": "disify",
       "catalog_slug": "email-disify-disify-com",
-      "connector_id": null,
-      "status": "would_install",
+      "connector_id": "9e9237b2-aa75-4990-a6cb-4be3e2d85353",
+      "status": "configured_existing",
       "activation_tier": "adapter_ready",
       "required_fields": [],
       "missing_fields": [],
       "env_sources": {},
-      "healthcheck": null,
+      "healthcheck": {
+        "http_status": 200,
+        "ok": true,
+        "error": null
+      },
       "errors": []
     },
     {
       "template_key": "microlink",
       "catalog_slug": "open-data-microlink-io-microlink-io",
-      "connector_id": null,
-      "status": "would_install",
+      "connector_id": "2476832f-1c68-41c4-9b7f-3c5ad064544c",
+      "status": "healthcheck_failed",
       "activation_tier": "adapter_ready",
       "required_fields": [],
       "missing_fields": [],
       "env_sources": {},
-      "healthcheck": null,
-      "errors": []
+      "healthcheck": {
+        "http_status": 502,
+        "ok": false,
+        "error": null
+      },
+      "errors": [
+        "Healthcheck failed (502): unknown error"
+      ]
     },
     {
       "template_key": "open-meteo",
       "catalog_slug": "weather-open-meteo-open-meteo-com",
-      "connector_id": null,
-      "status": "would_install",
+      "connector_id": "c16aaddc-71a0-45e4-bb15-29f416e1ed1b",
+      "status": "configured_existing",
       "activation_tier": "adapter_ready",
       "required_fields": [],
       "missing_fields": [],
       "env_sources": {},
-      "healthcheck": null,
+      "healthcheck": {
+        "http_status": 200,
+        "ok": true,
+        "error": null
+      },
       "errors": []
     },
     {
       "template_key": "aemet",
       "catalog_slug": "weather-aemet-opendata-aemet-es",
-      "connector_id": null,
-      "status": "would_require_keys",
+      "connector_id": "4b727022-9222-4687-a28b-8f72be15c5f6",
+      "status": "missing_keys",
       "activation_tier": "adapter_ready",
       "required_fields": [
         "api_key"
@@ -113,8 +135,8 @@
     {
       "template_key": "the-guardian",
       "catalog_slug": "news-the-guardian-open-platform-theguardian-com",
-      "connector_id": null,
-      "status": "would_require_keys",
+      "connector_id": "ad93924a-4a02-44f1-8b57-4d0895307427",
+      "status": "missing_keys",
       "activation_tier": "adapter_ready",
       "required_fields": [
         "api_key"
@@ -129,8 +151,8 @@
     {
       "template_key": "fred",
       "catalog_slug": "finance-fred-fred-stlouisfed-org",
-      "connector_id": null,
-      "status": "would_require_keys",
+      "connector_id": "66ab0579-af4a-4a56-97ef-951dfc117b3b",
+      "status": "missing_keys",
       "activation_tier": "adapter_ready",
       "required_fields": [
         "api_key"
@@ -145,25 +167,33 @@
     {
       "template_key": "fed-treasury",
       "catalog_slug": "finance-fed-treasury-fiscaldata-treasury-gov",
-      "connector_id": null,
-      "status": "would_install",
+      "connector_id": "d416a9c5-cf60-4e59-acd9-e5284303fb70",
+      "status": "configured_existing",
       "activation_tier": "adapter_ready",
       "required_fields": [],
       "missing_fields": [],
       "env_sources": {},
-      "healthcheck": null,
+      "healthcheck": {
+        "http_status": 200,
+        "ok": true,
+        "error": null
+      },
       "errors": []
     },
     {
       "template_key": "arbeitnow",
       "catalog_slug": "jobs-arbeitnow-documenter-getpostman-com",
-      "connector_id": null,
-      "status": "would_install",
+      "connector_id": "aa482d7d-bc0a-4cfb-8bc3-0223f88d1fe8",
+      "status": "configured_existing",
       "activation_tier": "adapter_ready",
       "required_fields": [],
       "missing_fields": [],
       "env_sources": {},
-      "healthcheck": null,
+      "healthcheck": {
+        "http_status": 200,
+        "ok": true,
+        "error": null
+      },
       "errors": []
     }
   ]

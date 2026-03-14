@@ -14,6 +14,7 @@ function parseArgs(argv = []) {
     strict: argv.includes('--strict'),
     skipSync: argv.includes('--skip-sync'),
     skipBuildLayer: argv.includes('--skip-build-layer'),
+    skipEcosystemLayer: argv.includes('--skip-ecosystem-layer'),
     skipN8n: argv.includes('--skip-n8n'),
     skipAudit: argv.includes('--skip-audit'),
   }
@@ -53,6 +54,15 @@ async function main() {
       name: 'Build Public API Infra Layer',
       command: 'npm',
       args: ['run', 'build:public-api-infra-layer'],
+      required: true,
+    })
+  }
+
+  if (!options.skipEcosystemLayer) {
+    steps.push({
+      name: 'Build Public API Ecosystem Layer',
+      command: 'npm',
+      args: ['run', 'build:public-api-ecosystem-layer'],
       required: true,
     })
   }

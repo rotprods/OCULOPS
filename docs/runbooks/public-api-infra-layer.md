@@ -1,14 +1,14 @@
 # Public API Infrastructure Layer
 
-Generated: 2026-03-14T00:15:49.250Z
-Source: seed
+Generated: 2026-03-14T00:43:32.586Z
+Source: supabase
 
 ## Summary
 - Total APIs: 1426
-- Executable now (live connectors): 0
-- Installable (adapter templates): 12
+- Executable now (live connectors): 6
+- Installable (adapter templates): 6
 - Docs only: 1414
-- Adapter-ready: 12
+- Adapter-ready: 6
 - Candidate: 417
 
 ## Bridge Modes

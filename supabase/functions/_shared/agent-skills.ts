@@ -100,6 +100,7 @@ async function lookupCatalogApis(args: Record<string, unknown>) {
 
   const slugs = filtered.map((row) => asText(row.slug)).filter(Boolean);
   let connectorsBySlug = new Map<string, Record<string, unknown>>();
+  let integrationsBySlug = new Map<string, Record<string, unknown>>();
 
   if (slugs.length > 0) {
     const { data: connectorRows } = await admin
@@ -112,14 +113,51 @@ async function lookupCatalogApis(args: Record<string, unknown>) {
         .filter((row) => asText(row.catalog_slug))
         .map((row) => [asText(row.catalog_slug), row as Record<string, unknown>]),
     );
+
+    const { data: integrationRows, error: integrationError } = await admin
+      .from("api_catalog_integration_map")
+      .select("catalog_slug,access_class,requires_registration,payment_status,free_tier_confidence,is_free_public_candidate,is_interesting,integration_priority,registration_url,command_actions,automation_actions,n8n_patterns")
+      .in("catalog_slug", slugs);
+
+    if (!integrationError) {
+      integrationsBySlug = new Map(
+        (integrationRows || [])
+          .filter((row) => asText(row.catalog_slug))
+          .map((row) => [asText(row.catalog_slug), row as Record<string, unknown>]),
+      );
+    }
   }
 
   const items = filtered.map((row) => {
     const slug = asText(row.slug);
     const connector = connectorsBySlug.get(slug) || null;
+    const integration = integrationsBySlug.get(slug) || null;
     const isLive = connector?.health_status === "live" && connector?.is_active === true;
     const hasTemplatePath = asText(row.activation_tier) === "adapter_ready" || asText(row.activation_tier) === "live";
     const bridgeMode = isLive ? "connector_proxy" : (hasTemplatePath ? "install_then_connector_proxy" : "docs_only");
+    const fallbackCommandActions = uniqueStrings([
+      "catalog_api_lookup",
+      "launch_n8n",
+      isLive ? "run_connector" : "",
+      !isLive && asText(row.auth_type) === "none" ? "run_api" : "",
+      hasTemplatePath && !isLive ? "install_connector" : "",
+    ]);
+    const fallbackAutomationActions = uniqueStrings([
+      "launch_n8n",
+      isLive ? "run_connector" : "",
+      !isLive && asText(row.auth_type) === "none" ? "run_api" : "",
+      "run_agent",
+    ]);
+    const integrationPriority = Number(
+      integration?.integration_priority ?? row.business_fit_score ?? 0,
+    );
+    const accessClass = asText(integration?.access_class) || (asText(row.auth_type) === "none" ? "open_no_auth" : "unknown_access");
+    const requiresRegistration = typeof integration?.requires_registration === "boolean"
+      ? Boolean(integration.requires_registration)
+      : asText(row.auth_type) !== "none";
+    const freePublicCandidate = typeof integration?.is_free_public_candidate === "boolean"
+      ? Boolean(integration.is_free_public_candidate)
+      : asText(row.auth_type) === "none";
 
     return {
       slug,
@@ -136,6 +174,22 @@ async function lookupCatalogApis(args: Record<string, unknown>) {
       activation_tier: asText(row.activation_tier),
       bridge_mode: bridgeMode,
       can_execute_now: isLive,
+      access_class: accessClass,
+      requires_registration: requiresRegistration,
+      payment_status: asText(integration?.payment_status) || "unknown",
+      free_tier_confidence: asText(integration?.free_tier_confidence) || "unknown",
+      is_free_public_candidate: freePublicCandidate,
+      auto_import_eligible: freePublicCandidate && Boolean(row.https_only),
+      is_interesting: typeof integration?.is_interesting === "boolean" ? Boolean(integration.is_interesting) : integrationPriority >= 60,
+      integration_priority: integrationPriority,
+      registration_url: asText(integration?.registration_url) || asText(row.docs_url),
+      command_bindings: asStringArray(integration?.command_actions).length > 0
+        ? asStringArray(integration?.command_actions)
+        : fallbackCommandActions,
+      automation_actions: asStringArray(integration?.automation_actions).length > 0
+        ? asStringArray(integration?.automation_actions)
+        : fallbackAutomationActions,
+      n8n_patterns: asStringArray(integration?.n8n_patterns),
       connector: connector ? {
         id: asText(connector.id),
         health_status: asText(connector.health_status),

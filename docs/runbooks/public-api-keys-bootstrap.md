@@ -41,6 +41,20 @@ npm run public-apis:bootstrap -- --apply --healthcheck --strict
 npm run public-apis:finalize -- --apply --strict
 ```
 
+## 5) Arquitectura completa del ecosistema (1.426 APIs)
+
+```bash
+npm run build:public-api-ecosystem-layer
+```
+
+Genera:
+- `public/public-api-catalog/ecosystem-layer.json`
+- `docs/runbooks/public-api-ecosystem-architecture.md`
+- `docs/runbooks/public-api-registration-backlog.md`
+- `reports/public-api-registration-backlog.json`
+- `reports/public-api-open-free-candidates.json`
+- `reports/public-api-agent-automation-matrix.csv`
+
 ## Resultado esperado
 
 - Conectores `adapter_ready` instalados en `api_connectors`.
@@ -48,6 +62,10 @@ npm run public-apis:finalize -- --apply --strict
 - `health_status=live` para conectores con key válida.
 - Reportes actualizados:
   - `public/public-api-catalog/infrastructure-layer.json`
+  - `public/public-api-catalog/ecosystem-layer.json`
   - `reports/public-api-bootstrap.json`
+  - `reports/public-api-registration-backlog.json`
+  - `reports/public-api-open-free-candidates.json`
+  - `reports/public-api-agent-automation-matrix.csv`
   - `reports/n8n-workflow-audit.json`
   - `reports/n8n-oculops-reconcile.json`
