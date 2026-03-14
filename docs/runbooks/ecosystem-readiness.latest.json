@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-14T01:50:27.673Z",
+  "generated_at": "2026-03-14T01:50:34.259Z",
   "version": "1.0.0",
   "overall_state": "yellow",
   "records": [
@@ -10,8 +10,8 @@
       "state": "degraded",
       "state_reason_code": "governance_advisory_mode",
       "state_reason_text": "No org scope provided; governor_metrics returned advisory defaults.",
-      "last_success_at": "2026-03-14T01:50:27.673Z",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_success_at": "2026-03-14T01:50:34.259Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/control-tower?tab=readiness"
@@ -23,8 +23,8 @@
       "state": "degraded",
       "state_reason_code": "governance_metrics_warning",
       "state_reason_text": "No org scope provided; governor_metrics returned advisory defaults.",
-      "last_success_at": "2026-03-14T01:50:27.673Z",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_success_at": "2026-03-14T01:50:34.259Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "governor_runtime",
       "remediation_action": "/control-tower?tab=governance"
@@ -37,7 +37,7 @@
       "state_reason_code": "pipeline_activity_ok",
       "state_reason_text": "Runs=4, completed=4, failed=0.",
       "last_success_at": "2026-03-13T06:25:47.317568+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "fd06b0e3-311e-4d5c-a2b7-31f366bc526e",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/automation"
@@ -50,7 +50,7 @@
       "state_reason_code": "messaging_synthetic_only",
       "state_reason_text": "Synthetic messaging evidence is active; provider credentials are intentionally excluded in code-first scope.",
       "last_success_at": "2026-03-13T07:02:29.97687+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "c6-4ce63aea-4e0f-4c07-ae8f-cf6360b89522",
       "smoke_case_id": "ag2_c6_synthetic",
       "remediation_action": "/messaging"
@@ -63,7 +63,7 @@
       "state_reason_code": "connectors_live",
       "state_reason_text": "7 live connector(s) available.",
       "last_success_at": "2026-03-14T01:48:45.875+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/automation"
@@ -76,7 +76,7 @@
       "state_reason_code": "automation_workflows_available",
       "state_reason_text": "Workflows=20, active=17, dispatch_total=12, blocked_total=0.",
       "last_success_at": "2026-03-14T01:49:43.760804+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/automation"
@@ -89,7 +89,7 @@
       "state_reason_code": "api_catalog_live_connectors",
       "state_reason_text": "Catalog entries=1000; live connectors=7.",
       "last_success_at": "2026-03-14T01:49:21.167+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/intelligence"
@@ -102,7 +102,7 @@
       "state_reason_code": "n8n_catalog_synced",
       "state_reason_text": "Template entries=1000; latest sync status=completed.",
       "last_success_at": "2026-03-14T01:50:18.613+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "npm run sync:n8n-templates"
@@ -115,7 +115,7 @@
       "state_reason_code": "marketplace_agents_active",
       "state_reason_text": "Active agents=7 of total=11.",
       "last_success_at": "2026-03-11T16:24:17.968918+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/marketplace"
@@ -128,7 +128,7 @@
       "state_reason_code": "simulation_runs_available",
       "state_reason_text": "Simulation runs=22, passed=15, failed=7.",
       "last_success_at": "2026-03-14T00:35:55.856138+00:00",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "ag2_c6_synthetic",
       "remediation_action": "/simulation"
@@ -140,8 +140,8 @@
       "state": "degraded",
       "state_reason_code": "readiness_partial_warnings",
       "state_reason_text": "No org scope provided; governor_metrics returned advisory defaults.",
-      "last_success_at": "2026-03-14T01:50:27.673Z",
-      "last_checked_at": "2026-03-14T01:50:28.385Z",
+      "last_success_at": "2026-03-14T01:50:34.259Z",
+      "last_checked_at": "2026-03-14T01:50:34.540Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": null,
       "remediation_action": "/control-tower?tab=readiness"
@@ -151,19 +151,19 @@
     {
       "smoke_case_id": "hard_block_routing",
       "status": "pass",
-      "checked_at": "2026-03-14T01:50:27.673Z",
+      "checked_at": "2026-03-14T01:50:34.259Z",
       "evidence_count": 34
     },
     {
       "smoke_case_id": "ag2_c6_synthetic",
       "status": "pass",
-      "checked_at": "2026-03-14T01:50:27.673Z",
+      "checked_at": "2026-03-14T01:50:34.259Z",
       "evidence_count": 2
     },
     {
       "smoke_case_id": "governor_runtime",
       "status": "pass",
-      "checked_at": "2026-03-14T01:50:27.673Z",
+      "checked_at": "2026-03-14T01:50:34.259Z",
       "evidence_count": 2
     }
   ],
