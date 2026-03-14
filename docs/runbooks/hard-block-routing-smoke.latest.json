@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T09:16:33.925Z",
+  "generated_at": "2026-03-14T02:16:20.433Z",
   "ok": true,
   "setup": {
     "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
@@ -13,18 +13,18 @@
     "connector": {
       "id": "9e9237b2-aa75-4990-a6cb-4be3e2d85353",
       "name": "Disify",
-      "health_status": "pending"
+      "health_status": "live"
     },
     "synthetic_email_channel": {
       "id": "1003d3c7-12e0-4b3f-a53e-833d454a02d9",
       "created": false
     },
     "synthetic_contact": {
-      "id": "e0f2d6d5-e7ff-4c2b-b8d9-9badc5b291ad",
-      "email": "smoke-route-1773393395339@example.com"
+      "id": "dc6ee6dc-d162-4aea-8755-7c779c0db583",
+      "email": "smoke-route-1773454582559@example.com"
     },
     "synthetic_conversation": {
-      "id": "729333d1-c6c1-4ae1-b2af-3d627f74d454"
+      "id": "66960ebb-3e6d-4ae2-8ef8-d38b5d8486a3"
     }
   },
   "cases": {
@@ -44,7 +44,7 @@
       "pass": true
     },
     "allowed_run_connector_high_via_control_plane": {
-      "workflow_id": "6883c3e4-9429-4011-8c11-5851e0efd00c",
+      "workflow_id": "152825b0-ae9c-40bb-b808-48a7d1cba1cc",
       "run_status": "completed",
       "step_status": "200",
       "step_error": null,
@@ -54,7 +54,7 @@
       "routed_not_legacy_blocked": true
     },
     "allowed_run_api_high_via_control_plane": {
-      "workflow_id": "e8d00f92-c231-4108-9935-89198c8b654a",
+      "workflow_id": "0742e124-2c12-4335-85cb-0ef811aab205",
       "run_status": "completed",
       "step_status": "completed",
       "step_error": null,

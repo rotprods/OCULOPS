@@ -1,6 +1,6 @@
 # AG2-C6 Synthetic Smoke
 
-Generated at: 2026-03-13T07:02:31.219Z
+Generated at: 2026-03-14T02:16:25.682Z
 Result: PASS
 
 ## Flow
@@ -19,12 +19,12 @@ Result: PASS
 ## IDs
 
 - org_id: `a11b1e98-7fd9-4789-aab9-ab5a77494627`
-- channel_id: `21688633-284c-4bc9-8020-b434ebabc97e`
-- contact_id: `30bfef73-0c09-460f-9056-33ba3f5e1ecc`
-- conversation_id: `8cf261db-08c8-4edb-8fcc-52ff64173f3f`
-- queue_id: `62a4fe8a-5548-4858-af52-8151fdcd7bef`
-- outbound_message_id: `6a898cb2-a133-42e8-b0c5-acdef3ad0962`
-- inbound_message_id: `ff4ee06c-b837-46e2-b9df-5beffdde5e16`
+- channel_id: `1003d3c7-12e0-4b3f-a53e-833d454a02d9`
+- contact_id: `69dd5207-cfa6-4d36-8c6d-b208001c3c30`
+- conversation_id: `da2fb285-3439-41d9-b2ff-eab373759443`
+- queue_id: `5e6d637e-c667-4f67-8372-4f116d1555d2`
+- outbound_message_id: `703d90be-617c-4c7a-8d7f-ba3a9677a9ac`
+- inbound_message_id: `68a759b5-d69e-4c7d-8e1c-8322ed7e9a81`
 
 ## Artifacts
 
