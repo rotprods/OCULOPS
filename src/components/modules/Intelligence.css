@@ -5,8 +5,8 @@
 
 /* ── Radar (Stitch V2 — clean card) ── */
 .intel-radar-wrap {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border-default);
+    background: var(--table-header);
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
@@ -29,8 +29,8 @@
 }
 
 .intel-cat-cell {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border-default);
+    background: var(--table-header);
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: var(--space-5);
     display: flex;
@@ -45,7 +45,7 @@
 }
 
 .intel-cat-cell:hover {
-    border-color: var(--accent-primary);
+    border-color: var(--gold);
     transform: translateY(-1px);
 }
 
@@ -85,16 +85,16 @@
 
 /* ── Social Signal Card (Stitch V2 — clean card) ── */
 .intel-social-card {
-    border: 1px solid var(--border-default);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: var(--space-4);
-    background: var(--surface-elevated);
+    background: var(--table-header);
     box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.05);
     transition: border-color var(--transition-fast);
 }
 
 .intel-social-card:hover {
-    border-color: var(--accent-primary);
+    border-color: var(--gold);
 }
 
 .intel-social-header {
@@ -123,13 +123,13 @@
     color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border);
     background: rgba(0, 0, 0, 0.01);
 }
 
 .intel-signal-table td {
     padding: var(--space-3) var(--space-6);
-    border-bottom: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border);
     color: var(--text-primary);
 }
 
@@ -164,7 +164,7 @@
 .intel-section-pill {
     font-size: 11px;
     font-weight: var(--weight-medium);
-    border: 1px solid var(--border-default);
+    border: 1px solid var(--border);
     background: transparent;
     color: var(--text-tertiary);
     padding: 4px 12px;
@@ -174,14 +174,14 @@
 }
 
 .intel-section-pill:hover {
-    border-color: var(--accent-primary);
+    border-color: var(--gold);
     color: var(--text-primary);
 }
 
 .intel-section-pill.active {
-    background: var(--accent-primary);
-    color: var(--surface-base);
-    border-color: var(--accent-primary);
+    background: var(--gold);
+    color: var(--canvas);
+    border-color: var(--gold);
     font-weight: var(--weight-semibold);
 }
 

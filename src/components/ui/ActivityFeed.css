@@ -4,14 +4,14 @@
    ═══════════════════════════════════════════════════ */
 
 .activity-feed {
-  background: var(--surface-base);
+  background: var(--canvas);
   border: 1px solid var(--border-subtle);
   overflow: hidden;
   transition: border-color 0.3s ease;
 }
 
 .activity-feed--flash {
-  border-color: var(--accent-primary);
+  border-color: var(--gold);
 }
 
 .activity-feed__header {
@@ -32,24 +32,24 @@
   gap: 8px;
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--accent-primary);
+  color: var(--gold);
 }
 
 .activity-feed__pulse {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-success);
+  background: var(--success);
   animation: pulse-glow 2s infinite;
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--color-success); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--success); }
   50% { opacity: 0.4; box-shadow: none; }
 }
 
 .activity-feed__badge {
-  background: var(--accent-primary);
+  background: var(--gold);
   color: var(--text-primary);
   font-size: 9px;
   font-weight: 700;
@@ -102,7 +102,7 @@
 
 .activity-feed__event--new {
   animation: event-slide-in 0.4s ease;
-  background: var(--accent-primary-muted);
+  background: var(--gold-muted-bg);
 }
 
 @keyframes event-slide-in {
@@ -123,7 +123,7 @@
 }
 
 .activity-feed__label {
-  font-family: var(--font-mono);
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -147,7 +147,7 @@
 .activity-feed__agent {
   display: inline-block;
   margin-top: 3px;
-  font-family: var(--font-mono);
+  font-family: 'Inter', sans-serif;
   font-size: 9px;
   color: var(--text-tertiary);
   padding: 1px 5px;

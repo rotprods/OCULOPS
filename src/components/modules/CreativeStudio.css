@@ -25,7 +25,7 @@
 
 .cs-header-title {
     font-family: var(--font-editorial);
-    color: var(--color-primary);
+    color: var(--gold);
     margin: 0;
     font-size: 28px;
 }
@@ -77,9 +77,9 @@
 
 .cs-view-btn--active {
     color: var(--color-bg);
-    background: var(--color-primary);
+    background: var(--gold);
     font-weight: 700;
-    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 15%, transparent);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--gold) 15%, transparent);
 }
 
 /* ── Alerts ── */
@@ -203,10 +203,10 @@
 }
 
 .cs-model-btn--active {
-    border-color: var(--color-primary);
+    border-color: var(--gold);
     color: var(--color-text);
-    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
-    box-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 10%, transparent);
+    background: color-mix(in srgb, var(--gold) 8%, transparent);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 10%, transparent);
 }
 
 .cs-model-icon {
@@ -219,7 +219,7 @@
     border: 1px solid var(--border-subtle);
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--color-primary);
+    color: var(--gold);
     padding: var(--space-4);
     resize: none;
     flex: 1;
@@ -228,7 +228,7 @@
 }
 
 .cs-prompt-input:focus {
-    border-color: var(--color-primary);
+    border-color: var(--gold);
     outline: none;
 }
 
@@ -238,7 +238,7 @@
     font-weight: 700;
     font-size: var(--text-xs);
     margin-top: auto;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--gold);
     transition: all var(--transition-base);
 }
 
@@ -373,9 +373,9 @@
     left: 0;
     height: 100%;
     width: 30%;
-    background: var(--color-primary);
+    background: var(--gold);
     animation: loadingBar 1.5s infinite linear;
-    box-shadow: 0 0 10px var(--color-primary);
+    box-shadow: 0 0 10px var(--gold);
 }
 
 @keyframes loadingBar {
@@ -422,9 +422,9 @@
 }
 
 .cs-filter-btn--active {
-    background: var(--color-primary);
+    background: var(--gold);
     color: var(--color-bg);
-    border-color: var(--color-primary);
+    border-color: var(--gold);
 }
 
 .cs-briefs-grid {
@@ -462,7 +462,7 @@
 }
 
 .cs-brief-card:hover::before {
-    background: var(--color-primary);
+    background: var(--gold);
 }
 
 .cs-brief-card-header {
@@ -511,9 +511,9 @@
     overflow: auto;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--gold);
     border-radius: 0;
-    box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 15%, transparent);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--gold) 15%, transparent);
 }
 
 .cs-modal-header {
@@ -531,7 +531,7 @@
 .cs-modal-title {
     font-family: var(--font-editorial);
     font-size: 20px;
-    color: var(--color-primary);
+    color: var(--gold);
     margin-bottom: 6px;
 }
 
@@ -562,5 +562,5 @@
 
 .cs-modal-textarea:focus {
     outline: none;
-    border-color: var(--color-primary);
+    border-color: var(--gold);
 }

@@ -15,7 +15,7 @@
 }
 
 .copilot-avatar-column {
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   background: radial-gradient(circle at top, rgba(var(--accent-primary-rgb), 0.08), transparent 65%);
   padding: 20px;
   display: flex;
@@ -25,8 +25,8 @@
 }
 
 .copilot-chat-column {
-  border: 1px solid var(--border-default);
-  background: var(--surface-base);
+  border: 1px solid var(--border);
+  background: var(--canvas);
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -37,7 +37,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border);
 }
 
 .copilot-quick-actions {
@@ -46,7 +46,7 @@
   gap: 8px;
   padding: 12px 20px;
   border-bottom: 1px solid var(--border-subtle);
-  background: var(--surface-elevated);
+  background: var(--table-header);
 }
 
 .copilot-nav-actions {
@@ -55,14 +55,14 @@
   gap: 12px;
   padding: 12px 20px;
   border-bottom: 1px solid var(--border-subtle);
-  background: var(--surface-raised);
+  background: var(--card-bg);
 }
 
 .copilot-nav-btn {
   border: 1px solid var(--border-subtle);
   padding: 10px 14px;
   border-radius: 12px;
-  background: var(--surface-elevated);
+  background: var(--table-header);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -86,12 +86,12 @@
   justify-content: space-between;
   align-items: center;
   font-size: 10px;
-  background: var(--surface-elevated);
+  background: var(--table-header);
   color: var(--text-secondary);
 }
 
 .copilot-nav-intent strong {
-  color: var(--accent-primary);
+  color: var(--gold);
   font-size: 11px;
 }
 
@@ -107,7 +107,7 @@
 .copilot-message {
   max-width: 85%;
   padding: 12px 16px;
-  font-family: var(--font-mono);
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   line-height: 1.5;
   white-space: pre-wrap;
@@ -116,16 +116,16 @@
 
 .copilot-message--user {
   align-self: flex-end;
-  background: var(--accent-primary);
-  color: var(--surface-base);
-  border: 1px solid var(--accent-primary);
+  background: var(--gold);
+  color: var(--canvas);
+  border: 1px solid var(--gold);
 }
 
 .copilot-message--ai {
   align-self: flex-start;
-  background: var(--surface-raised);
+  background: var(--card-bg);
   color: var(--text-primary);
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
 }
 
 .copilot-message--system {
@@ -145,34 +145,34 @@
 
 .copilot-action-btn {
   background: transparent;
-  border: 1px solid var(--accent-primary);
-  color: var(--accent-primary);
-  font-family: var(--font-mono);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Inter', sans-serif;
   font-size: 9px;
   padding: 4px 10px;
   cursor: pointer;
 }
 
 .copilot-action-btn:hover {
-  background: var(--accent-primary);
-  color: var(--surface-base);
+  background: var(--gold);
+  color: var(--canvas);
 }
 
 .copilot-input-bar {
   display: flex;
   gap: 0;
   padding: 12px 16px;
-  border-top: 1px solid var(--border-default);
-  background: var(--surface-base);
+  border-top: 1px solid var(--border);
+  background: var(--canvas);
 }
 
 .copilot-input {
   flex: 1;
-  background: var(--surface-base);
+  background: var(--canvas);
   border: 1px solid var(--border-subtle);
   border-right: none;
   color: var(--text-primary);
-  font-family: var(--font-mono);
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   padding: 12px 16px;
   outline: none;
@@ -183,14 +183,14 @@
 }
 
 .copilot-input:focus {
-  border-color: var(--accent-primary);
+  border-color: var(--gold);
 }
 
 .copilot-send {
-  background: var(--accent-primary);
-  color: var(--surface-base);
-  border: 1px solid var(--accent-primary);
-  font-family: var(--font-mono);
+  background: var(--gold);
+  color: var(--canvas);
+  border: 1px solid var(--gold);
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: bold;
   padding: 12px 20px;
@@ -368,7 +368,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  font-family: var(--font-mono);
+  font-family: 'Inter', sans-serif;
   font-size: 9px;
   color: var(--text-tertiary);
   z-index: 1;
@@ -393,8 +393,8 @@
   border: 1px solid var(--border-subtle);
   padding: 10px;
   border-radius: 10px;
-  background: var(--surface-elevated);
-  font-family: var(--font-mono);
+  background: var(--table-header);
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   line-height: 1.2;
   color: var(--text-primary);
@@ -407,7 +407,7 @@
   font-weight: bold;
   font-size: 11px;
   text-transform: none;
-  color: var(--accent-primary);
+  color: var(--gold);
 }
 
 .copilot-skill-card .mode {
@@ -421,7 +421,7 @@
   padding: 8px 12px;
   font-size: 9px;
   color: var(--text-primary);
-  background: var(--surface-elevated);
+  background: var(--table-header);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -446,7 +446,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--surface-elevated);
+  background: var(--table-header);
 }
 
 /* Tool execution badges */
@@ -462,7 +462,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-family: var(--font-mono);
+  font-family: 'Inter', sans-serif;
   font-size: 9px;
   padding: 3px 8px;
   border: 1px solid var(--border-subtle);

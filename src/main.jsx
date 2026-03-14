@@ -8,6 +8,7 @@ import { initSentry } from './lib/sentry'
 import { initPostHog } from './lib/posthog'
 import App from './App.jsx'
 import './styles/tokens.css'
+import './styles/design-system-v3.css'
 import './styles/global.css'
 import './styles/animations.css'
 

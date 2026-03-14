@@ -12,15 +12,15 @@
     padding: var(--space-2) var(--space-3);
     font-size: var(--text-xs);
     font-weight: bold;
-    font-family: var(--font-mono);
-    color: var(--surface-base);
+    font-family: 'Inter', sans-serif;
+    color: var(--canvas);
 }
 
-.herald-result--success { border: 1px solid var(--color-success); }
-.herald-result--success .herald-result-header { background: var(--color-success); }
+.herald-result--success { border: 1px solid var(--success); }
+.herald-result--success .herald-result-header { background: var(--success); }
 
-.herald-result--error { border: 1px solid var(--color-danger); }
-.herald-result--error .herald-result-header { background: var(--color-danger); }
+.herald-result--error { border: 1px solid var(--error); }
+.herald-result--error .herald-result-header { background: var(--error); }
 
 .herald-data-grid {
     display: grid;
@@ -29,7 +29,7 @@
 }
 
 .herald-data-cell {
-    background: var(--surface-raised);
+    background: var(--card-bg);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     padding: var(--space-4);
@@ -53,7 +53,7 @@
     padding: var(--space-3);
     border-bottom: 1px solid var(--border-subtle);
     font-size: var(--text-xs);
-    font-family: var(--font-mono);
+    font-family: 'Inter', sans-serif;
 }
 
 .herald-config-grid > div:nth-child(odd) {
@@ -62,19 +62,19 @@
 }
 
 .herald-payload {
-    background: var(--surface-base);
-    border: 1px solid var(--border-default);
+    background: var(--canvas);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: var(--space-5);
 }
 
 .herald-payload pre {
-    color: var(--color-success);
+    color: var(--success);
     white-space: pre-wrap;
     line-height: 1.6;
     margin: 0;
     font-size: var(--text-xs);
-    font-family: var(--font-mono);
+    font-family: 'Inter', sans-serif;
 }
 
 @media (max-width: 1024px) {

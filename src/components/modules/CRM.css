@@ -1,222 +1,333 @@
 /* ═══════════════════════════════════════════════════
-   OCULOPS — CRM v11.0
+   OCULOPS V3 — CRM Module
+   Design: Stitch Final / Ivory OS DNA V3
    ═══════════════════════════════════════════════════ */
 
-/* ── Status Pill ── */
+/* ─── Header ─── */
+.crm .module-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.crm .module-page-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+.crm .module-page-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ─── Status Indicator ─── */
 .crm-status {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-xs);
-    font-weight: var(--weight-medium);
-    color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--table-header);
+  border: 1px solid var(--border-subtle);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
-
 .crm-status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: var(--radius-full);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
 }
-
 .crm-status-dot.online {
-    background: var(--color-success);
-    box-shadow: 0 0 6px var(--color-success);
+  background: var(--success);
+  box-shadow: 0 0 6px rgba(16,185,129,0.4);
 }
-
 .crm-status-dot.error {
-    background: var(--color-danger);
-    box-shadow: 0 0 6px var(--color-danger);
+  background: var(--error);
+  box-shadow: 0 0 6px rgba(239,68,68,0.4);
 }
 
-/* ── Tabs ── */
+/* ─── Tab Navigation ─── */
 .crm-tabs {
-    display: flex;
-    gap: var(--space-1);
-    margin-bottom: var(--space-4);
-    border-bottom: 1px solid var(--border-default);
-    padding-bottom: var(--space-1);
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--table-header);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
 }
-
 .crm-tab {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    color: var(--text-tertiary);
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    cursor: pointer;
-    transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
-
 .crm-tab:hover {
-    color: var(--text-primary);
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.5);
 }
-
 .crm-tab-active {
-    color: var(--accent-primary);
-    border-bottom-color: var(--accent-primary);
+  color: var(--text-primary);
+  background: var(--card-bg);
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
 }
-
 .crm-tab-count {
-    font-size: 10px;
-    background: var(--surface-elevated);
-    padding: 2px 6px;
-    border-radius: var(--radius-full);
-    color: var(--text-quaternary);
-    line-height: 1;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--gold-muted-bg);
+  color: var(--gold-deep);
 }
-
 .crm-tab-active .crm-tab-count {
-    background: var(--accent-primary-muted);
-    color: var(--accent-primary);
+  background: var(--gold);
+  color: var(--text-primary);
 }
 
-/* ── Search ── */
+/* ─── Search Bar ─── */
 .crm-search {
-    display: flex;
-    gap: var(--space-2);
-    margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
 }
-
 .crm-search-field {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: 0 var(--space-3);
-    background: var(--surface-inset);
-    border: 1px solid var(--border-default);
-    border-radius: var(--radius-sm);
-    color: var(--text-tertiary);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
 .crm-search-field:focus-within {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 3px var(--accent-primary-muted);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-muted-bg);
 }
-
 .crm-search-input {
-    flex: 1;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: var(--text-sm);
-    padding: var(--space-2) 0;
-    outline: none;
-    box-shadow: none;
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.crm-search-input::placeholder {
+  color: var(--text-tertiary);
+  font-weight: 400;
 }
 
-.crm-search-input:focus {
-    box-shadow: none;
-}
-
-/* ── Loading ── */
-.crm-loading {
-    padding: var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--text-tertiary);
-}
-
-/* ── Table ── */
+/* ─── Data Table (V3 premium) ─── */
 .crm-table-wrap {
-    flex: 1;
-    overflow: auto;
-    border: 1px solid var(--border-default);
-    border-radius: var(--radius-md);
-    background: var(--surface-raised);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-premium);
+  overflow: hidden;
+  min-height: 300px;
 }
-
 .crm-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: var(--text-sm);
+  width: 100%;
+  border-collapse: collapse;
 }
-
-.crm-table thead {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+.crm-table thead th {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--table-header);
+  text-align: left;
+  white-space: nowrap;
 }
-
-.crm-table th {
-    padding: var(--space-3) var(--space-4);
-    text-align: left;
-    font-size: var(--text-xs);
-    font-weight: var(--weight-semibold);
-    color: var(--text-tertiary);
-    background: var(--surface-elevated);
-    border-bottom: 1px solid var(--border-default);
-    white-space: nowrap;
+.crm-table tbody td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-primary);
 }
-
-.crm-table td {
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
-    vertical-align: middle;
-}
-
 .crm-table tbody tr {
-    cursor: pointer;
-    transition: background var(--transition-fast);
+  cursor: pointer;
+  transition: background 0.15s ease;
 }
-
 .crm-table tbody tr:hover {
-    background: var(--accent-primary-muted);
+  background: var(--hover-row);
 }
-
 .crm-table tbody tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
-
 .crm-cell-name {
-    font-weight: var(--weight-semibold);
-    color: var(--text-primary);
+  font-weight: 600;
+  color: var(--text-primary);
 }
-
 .crm-cell-email {
-    color: var(--accent-primary);
+  color: var(--text-secondary);
+  font-size: 12px;
 }
-
 .crm-cell-value {
-    font-family: var(--font-mono);
-    font-weight: var(--weight-semibold);
-    color: var(--color-success);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
 }
-
 .crm-cell-date {
-    font-size: var(--text-xs);
-    color: var(--text-tertiary);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-secondary);
 }
-
 .crm-col-action {
-    width: 48px;
-    text-align: right;
+  width: 48px;
+  text-align: center;
 }
-
 .crm-table-empty {
-    text-align: center;
-    padding: var(--space-8) var(--space-4);
-    color: var(--text-tertiary);
+  text-align: center;
+  padding: 48px 20px !important;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  font-style: italic;
 }
 
-/* ── Modal Actions ── */
+/* ─── Badges (V3 pills) ─── */
+.crm .badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.crm .badge-default {
+  background: var(--table-header);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.crm .badge-success {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+.crm .badge-danger {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+.crm .badge-primary {
+  background: var(--gold-muted-bg);
+  color: var(--gold-deep);
+}
+
+/* ─── Loading State ─── */
+.crm-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+/* ─── Buttons (V3 Style) ─── */
+.crm .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+.crm .btn-primary {
+  background: var(--gold);
+  color: var(--text-primary);
+  padding: 8px 18px;
+}
+.crm .btn-primary:hover { filter: brightness(0.95); }
+.crm .btn-primary:active { transform: scale(0.98); }
+
+.crm .btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+}
+.crm .btn-ghost:hover {
+  border-color: var(--gold-border);
+  color: var(--text-primary);
+  background: var(--hover-row);
+}
+.crm .btn-sm { font-size: 12px; padding: 6px 12px; }
+.crm .btn-xs { font-size: 11px; padding: 4px 8px; border: none; }
+
+/* ─── Form Grid (Modals) ─── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+.form-input {
+  padding: 10px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-muted-bg);
+}
+.form-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ─── Modal Actions ─── */
 .modal-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-/* ── Spin for sync icon ── */
-.spin {
-    animation: spin 1s linear infinite;
-}
-
+/* ─── Spin animation ─── */
 @keyframes spin {
-    to { transform: rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
+.crm .spin { animation: spin 1s linear infinite; }

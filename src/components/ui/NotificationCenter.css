@@ -20,7 +20,7 @@
     align-items: center;
     gap: var(--space-3);
     padding: 14px var(--space-4);
-    background: var(--surface-elevated);
+    background: var(--table-header);
     background-image: var(--gradient-surface);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
@@ -47,7 +47,7 @@
 }
 
 .toast-success {
-    border-left: 2px solid var(--color-success);
+    border-left: 2px solid var(--success);
     box-shadow: var(--shadow-xl), var(--glass-inner-glow), var(--shadow-glow-success);
 }
 
@@ -56,11 +56,11 @@
 }
 
 .toast-info {
-    border-left: 2px solid var(--color-info);
+    border-left: 2px solid var(--info);
 }
 
 .toast-danger {
-    border-left: 2px solid var(--color-danger);
+    border-left: 2px solid var(--error);
 }
 
 .toast-icon {

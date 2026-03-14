@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--surface-base);
+  background: var(--canvas);
   overflow: hidden;
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   position: relative;
@@ -21,7 +21,7 @@
   align-items: center;
   gap: 24px;
   padding: 10px 20px;
-  background: var(--surface-elevated);
+  background: var(--table-header);
   border-bottom: 1px solid rgba(var(--accent-primary-rgb), 0.15);
   flex-shrink: 0;
   z-index: 10;
@@ -41,15 +41,15 @@
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: var(--accent-primary);
+  color: var(--gold);
 }
 
 .ocul-hud-pulse {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-primary);
-  box-shadow: 0 0 8px var(--accent-primary);
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
   animation: ocul-pulse-ring 2s ease-in-out infinite;
   flex-shrink: 0;
 }
@@ -141,8 +141,8 @@
 .ocul-agent-panel {
   width: 280px;
   flex-shrink: 0;
-  background: var(--surface-elevated);
-  border-left: 1px solid var(--agent-color, var(--border-default));
+  background: var(--table-header);
+  border-left: 1px solid var(--agent-color, var(--border));
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -252,7 +252,7 @@
   gap: 12px;
   padding: 0 16px;
   height: 40px;
-  background: var(--surface-elevated);
+  background: var(--table-header);
   border-top: 1px solid var(--border-subtle);
   flex-shrink: 0;
   overflow: hidden;
@@ -274,7 +274,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--accent-primary);
+  background: var(--gold);
   animation: ocul-pulse-ring 1.5s ease-in-out infinite;
 }
 
@@ -349,15 +349,15 @@
 
 .ocul-demo-toggle:hover {
   color: var(--text-secondary);
-  border-color: var(--border-default);
+  border-color: var(--border);
 }
 
 .ocul-demo-panel {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  background: var(--surface-elevated);
-  border: 1px solid var(--border-default);
+  background: var(--table-header);
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 14px;
   min-width: 280px;
@@ -411,19 +411,19 @@
   border-radius: 3px;
   transition: all 0.15s;
   color: var(--text-secondary);
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
 }
 
 .ocul-demo-action:hover { background: var(--surface-inset); }
 
 .ocul-demo-action.danger {
-  color: var(--color-danger);
+  color: var(--error);
   border-color: var(--color-danger-muted);
 }
 .ocul-demo-action.danger:hover { background: var(--color-danger-muted); }
 
 .ocul-demo-action.success {
-  color: var(--color-success);
+  color: var(--success);
   border-color: var(--color-success-muted);
 }
 .ocul-demo-action.success:hover { background: var(--color-success-muted); }
