@@ -30,8 +30,9 @@ test.describe('Navigation — unauthenticated', () => {
 
     // The sidebar should NOT be visible when no session exists
     const sidebar = page.locator('nav, [class*="sidebar"], [class*="layout"]')
-    // Either sidebar is absent or hidden — we just confirm the auth card is there
-    await expect(page.locator('.auth-card, .auth-page')).toBeVisible()
+    // Either sidebar is absent or hidden — confirm the auth card container is present.
+    // Use a single locator target to avoid Playwright strict-mode violations.
+    await expect(page.locator('.auth-card').first()).toBeVisible()
   })
 
   test('loads without console errors from missing assets', async ({ page }) => {
@@ -39,7 +40,12 @@ test.describe('Navigation — unauthenticated', () => {
     page.on('requestfailed', (req) => {
       // Ignore expected network failures for Supabase in CI (placeholder URL)
       const url = req.url()
-      if (!url.includes('supabase') && !url.includes('placeholder')) {
+      if (
+        !url.includes('supabase') &&
+        !url.includes('placeholder') &&
+        !url.includes('posthog.com') &&
+        !url.includes('i.posthog.com')
+      ) {
         failedRequests.push(url)
       }
     })
