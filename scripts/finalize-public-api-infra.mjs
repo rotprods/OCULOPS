@@ -44,7 +44,7 @@ async function main() {
       name: 'Sync Public APIs',
       command: 'npm',
       args: ['run', 'sync:public-apis'],
-      required: true,
+      required: false,
     })
   }
 

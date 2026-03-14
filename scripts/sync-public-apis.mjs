@@ -161,6 +161,15 @@ async function writeCatalogArtifacts(snapshot) {
 function normalizeError(error) {
   if (!error) return 'Unknown error';
   if (error instanceof Error) return error.message;
+  if (typeof error === 'object') {
+    const message = error.message || error.details || error.hint || error.code;
+    if (message) return String(message);
+    try {
+      return JSON.stringify(error);
+    } catch {
+      return String(error);
+    }
+  }
   return String(error);
 }
 

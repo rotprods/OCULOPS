@@ -1,0 +1,170 @@
+{
+  "generated_at": "2026-03-14T00:16:34.343Z",
+  "mode": "dry_run",
+  "supabase_available": false,
+  "supabase_warning": "Invalid API key",
+  "options": {
+    "healthcheck": false,
+    "include_internal": false,
+    "strict": false
+  },
+  "summary": {
+    "total_templates": 11,
+    "installed_connectors": 0,
+    "existing_connectors": 0,
+    "updated_credentials": 0,
+    "healthcheck_ok": 0,
+    "healthcheck_failed": 0,
+    "missing_required_keys": 4
+  },
+  "rows": [
+    {
+      "template_key": "administrative-divisions-db",
+      "catalog_slug": "geocoding-administrative-divisons-db-github-com",
+      "connector_id": null,
+      "status": "would_install",
+      "activation_tier": "adapter_ready",
+      "required_fields": [],
+      "missing_fields": [],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "adresse-data-gouv",
+      "catalog_slug": "geocoding-adresse-data-gouv-fr-adresse-data-gouv-fr",
+      "connector_id": null,
+      "status": "would_install",
+      "activation_tier": "adapter_ready",
+      "required_fields": [],
+      "missing_fields": [],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "graphhopper",
+      "catalog_slug": "transportation-graphhopper-docs-graphhopper-com",
+      "connector_id": null,
+      "status": "would_require_keys",
+      "activation_tier": "adapter_ready",
+      "required_fields": [
+        "api_key"
+      ],
+      "missing_fields": [
+        "api_key"
+      ],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "disify",
+      "catalog_slug": "email-disify-disify-com",
+      "connector_id": null,
+      "status": "would_install",
+      "activation_tier": "adapter_ready",
+      "required_fields": [],
+      "missing_fields": [],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "microlink",
+      "catalog_slug": "open-data-microlink-io-microlink-io",
+      "connector_id": null,
+      "status": "would_install",
+      "activation_tier": "adapter_ready",
+      "required_fields": [],
+      "missing_fields": [],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "open-meteo",
+      "catalog_slug": "weather-open-meteo-open-meteo-com",
+      "connector_id": null,
+      "status": "would_install",
+      "activation_tier": "adapter_ready",
+      "required_fields": [],
+      "missing_fields": [],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "aemet",
+      "catalog_slug": "weather-aemet-opendata-aemet-es",
+      "connector_id": null,
+      "status": "would_require_keys",
+      "activation_tier": "adapter_ready",
+      "required_fields": [
+        "api_key"
+      ],
+      "missing_fields": [
+        "api_key"
+      ],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "the-guardian",
+      "catalog_slug": "news-the-guardian-open-platform-theguardian-com",
+      "connector_id": null,
+      "status": "would_require_keys",
+      "activation_tier": "adapter_ready",
+      "required_fields": [
+        "api_key"
+      ],
+      "missing_fields": [
+        "api_key"
+      ],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "fred",
+      "catalog_slug": "finance-fred-fred-stlouisfed-org",
+      "connector_id": null,
+      "status": "would_require_keys",
+      "activation_tier": "adapter_ready",
+      "required_fields": [
+        "api_key"
+      ],
+      "missing_fields": [
+        "api_key"
+      ],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "fed-treasury",
+      "catalog_slug": "finance-fed-treasury-fiscaldata-treasury-gov",
+      "connector_id": null,
+      "status": "would_install",
+      "activation_tier": "adapter_ready",
+      "required_fields": [],
+      "missing_fields": [],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    },
+    {
+      "template_key": "arbeitnow",
+      "catalog_slug": "jobs-arbeitnow-documenter-getpostman-com",
+      "connector_id": null,
+      "status": "would_install",
+      "activation_tier": "adapter_ready",
+      "required_fields": [],
+      "missing_fields": [],
+      "env_sources": {},
+      "healthcheck": null,
+      "errors": []
+    }
+  ]
+}

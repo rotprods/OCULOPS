@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generatedAt": "2026-03-13T09:32:55.885Z",
-    "totalWorkflowsInN8n": 26,
-    "auditedWorkflows": 26,
+    "generatedAt": "2026-03-14T00:15:52.773Z",
+    "totalWorkflowsInN8n": 27,
+    "auditedWorkflows": 27,
     "recentHours": 48,
-    "runnableNow": 18,
+    "runnableNow": 19,
     "activatableNow": 16,
     "activeNow": 14,
     "blockedByCredentials": 7,
@@ -21,6 +21,25 @@
     ]
   },
   "details": [
+    {
+      "id": "4AUtQfEwx9VuH6uW",
+      "name": "My workflow",
+      "active": false,
+      "updatedAt": "2026-03-13T23:21:33.708Z",
+      "triggers": [
+        "manual"
+      ],
+      "nodeCount": 2,
+      "requiredCredentialTypes": [
+        "openAiApi"
+      ],
+      "missingCredentialTypes": [],
+      "customNodePackages": [],
+      "customNodeTypes": [],
+      "requiresCommunityNodes": false,
+      "runnableNow": true,
+      "activatableNow": false
+    },
     {
       "id": "uPSDrhgXNz4UtYNL",
       "name": "Automate video creation with Veo3 and auto-post to Instagram, TikTok via Blotato - vide",

@@ -158,33 +158,47 @@ async function main() {
 
   const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || null
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || null
-  if (!supabaseUrl || !serviceRoleKey) {
-    throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required')
-  }
-
-  const admin = createClient(supabaseUrl, serviceRoleKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  })
 
   const templates = PUBLIC_API_ADAPTER_TEMPLATES.filter(template => args.includeInternal || !template.internalOnly)
   const catalogSlugs = templates.map(template => template.catalogSlug)
+  const canUseSupabase = Boolean(supabaseUrl && serviceRoleKey)
 
-  const [catalogRowsResult, connectorsResult] = await Promise.all([
-    admin
-      .from('api_catalog_entries')
-      .select('*')
-      .in('slug', catalogSlugs),
-    admin
-      .from('api_connectors')
-      .select('*')
-      .in('catalog_slug', catalogSlugs),
-  ])
+  let admin = null
+  let catalogBySlug = new Map()
+  let connectorBySlug = new Map()
+  let supabaseBlockedReason = null
 
-  if (catalogRowsResult.error) throw catalogRowsResult.error
-  if (connectorsResult.error) throw connectorsResult.error
+  if (canUseSupabase) {
+    admin = createClient(supabaseUrl, serviceRoleKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    })
 
-  const catalogBySlug = new Map((catalogRowsResult.data || []).map(entry => [entry.slug, entry]))
-  const connectorBySlug = new Map((connectorsResult.data || []).map(connector => [connector.catalog_slug, connector]))
+    const [catalogRowsResult, connectorsResult] = await Promise.all([
+      admin
+        .from('api_catalog_entries')
+        .select('*')
+        .in('slug', catalogSlugs),
+      admin
+        .from('api_connectors')
+        .select('*')
+        .in('catalog_slug', catalogSlugs),
+    ])
+
+    if (catalogRowsResult.error || connectorsResult.error) {
+      supabaseBlockedReason = normalizeError(catalogRowsResult.error || connectorsResult.error)
+      if (args.apply) {
+        throw new Error(`Supabase is required in apply mode (${supabaseBlockedReason})`)
+      }
+      admin = null
+    } else {
+      catalogBySlug = new Map((catalogRowsResult.data || []).map(entry => [entry.slug, entry]))
+      connectorBySlug = new Map((connectorsResult.data || []).map(connector => [connector.catalog_slug, connector]))
+    }
+  } else if (args.apply) {
+    throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required in apply mode')
+  } else {
+    supabaseBlockedReason = 'SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing'
+  }
 
   const rows = []
   const summary = {
@@ -212,18 +226,21 @@ async function main() {
       errors: [],
     }
 
-    if (!catalogEntry) {
+    if (!catalogEntry && admin) {
       row.status = 'error'
       row.errors.push('Catalog entry not found')
       rows.push(row)
       continue
+    } else if (!catalogEntry && !admin) {
+      row.status = 'offline_dry_run'
+      row.activation_tier = template.internalOnly ? 'internal_only' : 'adapter_ready'
     }
 
     let connector = connectorBySlug.get(template.catalogSlug) || null
     row.connector_id = connector?.id || null
 
     if (!connector) {
-      if (!args.apply) {
+      if (!args.apply || !admin) {
         row.status = 'would_install'
       } else {
         const payload = buildConnectorInstallPayload(catalogEntry, template)
@@ -271,7 +288,7 @@ async function main() {
 
     summary.missing_required_keys += row.missing_fields.length
 
-    if (args.apply && connector && row.missing_fields.length === 0) {
+    if (args.apply && admin && connector && row.missing_fields.length === 0) {
       const authConfigChanged = JSON.stringify(nextAuthConfig) !== JSON.stringify(connector.auth_config || {})
       if (authConfigChanged) {
         const updateResult = await admin
@@ -298,7 +315,7 @@ async function main() {
       }
     }
 
-    if (args.apply && args.healthcheck && connector && row.missing_fields.length === 0) {
+    if (args.apply && admin && args.healthcheck && connector && row.missing_fields.length === 0) {
       const health = await invokeHealthcheck({ supabaseUrl, serviceRoleKey, connector, template })
       row.healthcheck = {
         http_status: health.response.status,
@@ -325,6 +342,8 @@ async function main() {
   const report = {
     generated_at: new Date().toISOString(),
     mode: args.apply ? 'apply' : 'dry_run',
+    supabase_available: Boolean(admin),
+    supabase_warning: supabaseBlockedReason,
     options: {
       healthcheck: args.healthcheck,
       include_internal: args.includeInternal,
