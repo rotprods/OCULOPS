@@ -34,6 +34,7 @@
     "gws": "node scripts/gws.mjs",
     "gws:auth:setup": "node scripts/gws.mjs auth setup",
     "gws:auth:login": "node scripts/gws.mjs auth login",
+    "gws:bootstrap:gmail": "node scripts/bootstrap-gmail-from-gws.mjs",
     "gws:drive:recent": "node scripts/gws.mjs drive files list --params {\"pageSize\":10}",
     "gitnexus:build": "npm --prefix ../github-repos/GitNexus/gitnexus run build",
     "gitnexus:index": "node scripts/gitnexus.mjs analyze .",
