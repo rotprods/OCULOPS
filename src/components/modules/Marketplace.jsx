@@ -5,6 +5,7 @@
 
 import { useState, useMemo } from 'react'
 import { useAgentVault } from '../../hooks/useAgentVault'
+import { useEcosystemReadiness } from '../../hooks/useEcosystemReadiness'
 import {
   N8N_AIRDROP_INTEL,
   N8N_EXPERT_PACKS,
@@ -13,6 +14,13 @@ import {
 } from '../../data/n8nAirdropIntel'
 
 const SEVERITY_COLOR = { critical: 'var(--color-danger)', warning: 'var(--color-warning)', info: 'var(--color-info)' }
+const READINESS_TONE = {
+  connected: { badge: 'badge-success', color: 'var(--color-success)' },
+  simulated: { badge: 'badge-primary', color: 'var(--accent-primary)' },
+  degraded: { badge: 'badge-warning', color: 'var(--color-warning)' },
+  offline: { badge: 'badge-danger', color: 'var(--color-danger)' },
+  planned: { badge: 'badge-default', color: 'var(--text-tertiary)' },
+}
 
 function AgentCard({ agent, onToggle, onRun, running }) {
   const isRunning = running === agent.code_name
@@ -232,12 +240,17 @@ export default function Marketplace() {
   const [runResult, setRunResult] = useState(null)
   const [running, setRunning] = useState(false)
   const [copiedSkill, setCopiedSkill] = useState('')
+  const { readiness } = useEcosystemReadiness({ windowHours: 24 })
 
   const namespaceCounts = useMemo(() => {
     const counts = {}
     allAgents.forEach(a => { counts[a.namespace] = (counts[a.namespace] || 0) + 1 })
     return counts
   }, [allAgents])
+  const marketplaceReadiness = useMemo(
+    () => (readiness?.records || []).find(record => record.module_key === 'marketplace') || null,
+    [readiness],
+  )
 
   const handleRun = (agent) => {
     setSelectedAgent(agent)
@@ -319,6 +332,32 @@ export default function Marketplace() {
           width: '100%', boxSizing: 'border-box',
         }}
       />
+
+      {marketplaceReadiness && (
+        <div style={{
+          background: 'var(--surface-elevated)',
+          border: `1px solid ${READINESS_TONE[marketplaceReadiness.state]?.color || 'var(--border-default)'}`,
+          borderRadius: 'var(--radius-sm)',
+          padding: 'var(--space-3) var(--space-4)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 'var(--space-3)',
+          flexWrap: 'wrap',
+        }}>
+          <div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', fontWeight: 'var(--weight-semibold)', color: 'var(--text-primary)' }}>
+              Marketplace route status
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-2xs)', color: 'var(--text-tertiary)', marginTop: 4 }}>
+              {marketplaceReadiness.state_reason_text}
+            </div>
+          </div>
+          <span className={`badge ${READINESS_TONE[marketplaceReadiness.state]?.badge || 'badge-default'}`}>
+            {marketplaceReadiness.state}
+          </span>
+        </div>
+      )}
 
       {/* n8n Airdrop Intel */}
       <div style={{

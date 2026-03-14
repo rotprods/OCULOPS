@@ -12,6 +12,7 @@ import {
   buildConnectorInstallPayload,
   getTemplateByCatalogSlug,
 } from '../lib/publicApiConnectorTemplates.js'
+import { buildApiBridgeProfile } from '../lib/publicApiInfrastructure.js'
 
 let seedCatalogPromise = null
 const shardedSeedIndexUrl = `${import.meta.env.BASE_URL}public-api-catalog/index.json`
@@ -19,12 +20,16 @@ const shardedSeedFallbackUrl = `${import.meta.env.BASE_URL}public-api-catalog/fu
 
 function decorateEntry(entry) {
   const agentTargets = getAgentTargetsForEntry(entry)
-
-  return {
+  const baseEntry = {
     ...entry,
     module_targets: entry.module_targets || [],
     agent_targets: entry.agent_targets?.length ? entry.agent_targets : agentTargets,
     tags: [...new Set([...(entry.tags || []), ...agentTargets])],
+  }
+
+  return {
+    ...baseEntry,
+    bridge_profile: buildApiBridgeProfile(baseEntry),
   }
 }
 
@@ -71,11 +76,17 @@ async function getSeedCatalog() {
 }
 
 function applyConnectorState(entries, connectors) {
+  const connectorsBySlug = new Map(
+    connectors
+      .filter(connector => connector?.catalog_slug)
+      .map(connector => [connector.catalog_slug, connector])
+  )
   const merged = mergeCatalogEntriesWithConnectors(entries.map(decorateEntry), connectors)
 
   return merged.map(entry => {
+    const connector = connectorsBySlug.get(entry.slug) || null
     if (!entry.is_installed) {
-      return {
+      const nextEntry = {
         ...entry,
         activation_tier: computeActivationTier(entry, {
           adapterReadySlugs: new Set(
@@ -85,11 +96,25 @@ function applyConnectorState(entries, connectors) {
           ),
         }),
       }
+      return {
+        ...nextEntry,
+        bridge_profile: buildApiBridgeProfile(nextEntry, {
+          template: getTemplateByCatalogSlug(nextEntry.slug),
+          connector,
+        }),
+      }
     }
 
-    return {
+    const nextEntry = {
       ...entry,
       activation_tier: entry.health_status === 'live' ? 'live' : entry.activation_tier,
+    }
+    return {
+      ...nextEntry,
+      bridge_profile: buildApiBridgeProfile(nextEntry, {
+        template: getTemplateByCatalogSlug(nextEntry.slug),
+        connector,
+      }),
     }
   })
 }

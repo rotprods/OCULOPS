@@ -9,6 +9,7 @@ import { useApiCatalog } from '../../hooks/useApiCatalog'
 import { useN8nTemplateCatalog } from '../../hooks/useN8nTemplateCatalog'
 import { useAutomation } from '../../hooks/useAutomation'
 import { useAgentVault } from '../../hooks/useAgentVault'
+import { useEcosystemReadiness } from '../../hooks/useEcosystemReadiness'
 import { AGENT_AUTOMATION_PACKS } from '../../data/agentAutomationPacks'
 import { toN8nTemplateOption } from '../../lib/n8nTemplateCatalog'
 import { CORE_MINI_APPS } from '../miniapps/MiniAppRegistry'
@@ -45,6 +46,14 @@ const TEMPLATES = [
     { name: 'Lead to deal conversion', trigger: 'atlas_import', actions: ['create_deal', 'update_contact', 'crm_activity'], desc: 'Converts imported Atlas lead into active deal.' },
 ]
 
+const READINESS_TONE = {
+    connected: 'badge-success',
+    simulated: 'badge-primary',
+    degraded: 'badge-warning',
+    offline: 'badge-danger',
+    planned: 'badge-default',
+}
+
 function getTriggerMeta(key) { return TRIGGERS.find(t => t.key === key) || TRIGGERS[0] }
 function getActionMeta(key) { return ACTIONS.find(a => a.key === key) || ACTIONS[0] }
 
@@ -68,6 +77,7 @@ function Automation() {
     const { toast } = useAppStore()
     const { installedApps } = useApiCatalog()
     const { workflows, runs, loading, runningWorkflowId, addWorkflow, toggleWorkflow, removeWorkflow, runWorkflow, loadRuns, activeCount, totalRuns } = useAutomation()
+    const { readiness } = useEcosystemReadiness({ windowHours: 24 })
     const { agents: vaultAgents, loading: vaultLoading } = useAgentVault()
     const [templateSearch, setTemplateSearch] = useState('')
     const liveConnectorApps = installedApps.filter(app => app.runMode === 'connector_proxy' && app.connectorStatus === 'live')
@@ -177,6 +187,13 @@ function Automation() {
 
     const statusColor = (status) => status === 'completed' ? 'var(--color-success)' : status === 'failed' ? 'var(--color-danger)' : 'var(--color-warning)'
     const selectedTemplateMeta = form.workflowTemplate ? templateLookup[form.workflowTemplate] || null : null
+    const readinessMap = useMemo(
+        () => new Map((readiness?.records || []).map(record => [record.module_key, record])),
+        [readiness],
+    )
+    const automationReadiness = readinessMap.get('automation') || null
+    const connectorReadiness = readinessMap.get('connector_proxy') || null
+    const n8nReadiness = readinessMap.get('n8n_catalog') || null
 
     return (
         <ModulePage
@@ -196,6 +213,22 @@ function Automation() {
                     <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Total runs</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-info)' }}>{totalRuns}</span></div>
                     <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Total stored</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{workflows.length}</span></div>
                 </div>
+
+                {(automationReadiness || connectorReadiness || n8nReadiness) && (
+                    <div className="lab-panel" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                        <div className="lab-panel-header">Route readiness</div>
+                        <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
+                            {[automationReadiness, connectorReadiness, n8nReadiness].filter(Boolean).map((record) => (
+                                <span key={record.module_key} className={`badge ${READINESS_TONE[record.state] || 'badge-default'}`}>
+                                    {record.module_key}: {record.state}
+                                </span>
+                            ))}
+                        </div>
+                        <div className="mono text-xs text-tertiary">
+                            {(automationReadiness || connectorReadiness || n8nReadiness)?.state_reason_text || 'Readiness snapshot loaded from control-plane.'}
+                        </div>
+                    </div>
+                )}
 
                 {/* Builder */}
                 {showForm && (

@@ -11,6 +11,7 @@ import { evaluateGovernanceGate, getGovernanceMetrics } from "./governance.ts";
 import { compact, safeNumber } from "./http.ts";
 import { runImprovementCycle } from "./improvement-engine.ts";
 import { recallMemoryRecords } from "./memory-system.ts";
+import { buildEcosystemReadiness, buildRunTraceView } from "./ecosystem-readiness.ts";
 import {
   executeGoal,
   executePipelineRun,
@@ -610,6 +611,47 @@ export async function handleControlPlaneAction(
         metrics,
         recent_improvements: memory,
       };
+      await emit("success", data, "low");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "governor_metrics") {
+      const governance = await getGovernanceMetrics({
+        orgId: input.org_id || null,
+        userId: input.user_id || null,
+        windowHours: input.window_hours || safeNumber(input.context?.window_hours, 24),
+      });
+      const data = { governance };
+      await emit("success", data, "low");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "ecosystem_readiness") {
+      const readiness = await buildEcosystemReadiness({
+        orgId: input.org_id || null,
+        userId: input.user_id || null,
+        windowHours: input.window_hours || safeNumber(input.context?.window_hours, 24),
+      });
+      const data = { readiness };
+      await emit("success", data, "low");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "run_trace") {
+      const traceCorrelationId = compact(
+        input.context?.correlation_id ||
+          input.context?.correlationId ||
+          input.correlation_id,
+      );
+      if (!traceCorrelationId) {
+        throw new Error("correlation_id is required for run_trace.");
+      }
+      const runTrace = await buildRunTraceView({
+        correlationId: traceCorrelationId,
+        orgId: input.org_id || null,
+        userId: input.user_id || null,
+      });
+      const data = { run_trace: runTrace };
       await emit("success", data, "low");
       return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
     }

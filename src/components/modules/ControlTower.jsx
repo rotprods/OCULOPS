@@ -15,6 +15,7 @@ import useAgents from '../../hooks/useAgents'
 import { usePipelineRuns } from '../../hooks/usePipelineRuns'
 import { useGoals } from '../../hooks/useGoals'
 import { useAlerts } from '../../hooks/useAlerts'
+import { useEcosystemReadiness } from '../../hooks/useEcosystemReadiness'
 import { supabase } from '../../lib/supabase'
 import {
     UserGroupIcon,
@@ -42,6 +43,20 @@ const STEP_STATUS_CONFIG = {
     completed:        { label: 'Completed',          color: 'var(--color-success)',   bg: 'var(--color-success-muted)' },
     failed:           { label: 'Failed',             color: 'var(--color-danger)',    bg: 'var(--color-danger-muted)' },
     skipped:          { label: 'Skipped',            color: 'var(--text-quaternary)', bg: 'var(--surface-elevated)' },
+}
+
+const READINESS_STATE_STYLE = {
+    connected: { badge: 'badge-success', color: 'var(--color-success)', label: 'connected' },
+    simulated: { badge: 'badge-primary', color: 'var(--accent-primary)', label: 'simulated' },
+    degraded: { badge: 'badge-warning', color: 'var(--color-warning)', label: 'degraded' },
+    offline: { badge: 'badge-danger', color: 'var(--color-danger)', label: 'offline' },
+    planned: { badge: 'badge-default', color: 'var(--text-tertiary)', label: 'planned' },
+}
+
+const OVERALL_STATE_STYLE = {
+    green: { badge: 'badge-success', label: 'Green' },
+    yellow: { badge: 'badge-warning', label: 'Yellow' },
+    red: { badge: 'badge-danger', label: 'Red' },
 }
 
 // ── Sparkline ──
@@ -103,6 +118,13 @@ function sortByDateFieldDesc(rows = [], fieldName) {
         const bValue = b?.[fieldName] ? new Date(b[fieldName]).getTime() : 0
         return bValue - aValue
     })
+}
+
+function formatDateTime(value) {
+    if (!value) return '—'
+    const date = new Date(value)
+    if (Number.isNaN(date.getTime())) return '—'
+    return date.toLocaleString()
 }
 
 function AlertsSection({ alerts, resolveAlert }) {
@@ -167,6 +189,17 @@ function ControlTower() {
     const { runs: pipelineRuns, stats: pipelineStats } = usePipelineRuns()
     const { goals } = useGoals()
     const { active: activeAlerts, resolveAlert } = useAlerts()
+    const {
+        readiness,
+        loading: readinessLoading,
+        error: readinessError,
+        refresh: refreshReadiness,
+        runTrace,
+        runTraceLoading,
+        runTraceError,
+        getRunTrace,
+        clearRunTrace,
+    } = useEcosystemReadiness({ windowHours: 24 })
     const [traceEvents, setTraceEvents] = useState([])
     const [traceLoading, setTraceLoading] = useState(false)
     const [traceError, setTraceError] = useState(null)
@@ -400,6 +433,11 @@ function ControlTower() {
         () => new Map(traceConversations.map(conversation => [conversation.id, conversation])),
         [traceConversations],
     )
+    const readinessRecords = readiness?.records || []
+    const readinessSmokes = readiness?.smokes || []
+    const readinessFailures = readiness?.failures || []
+    const readinessOverview = OVERALL_STATE_STYLE[readiness?.overall_state] || OVERALL_STATE_STYLE.green
+    const governanceSnapshot = readiness?.governance_metrics || null
     const latestTraceMessage = traceMessages[0] || null
     const latestTraceConversation = latestTraceMessage?.conversation_id
         ? traceConversationById.get(latestTraceMessage.conversation_id) || null
@@ -408,6 +446,14 @@ function ControlTower() {
         || latestTraceConversation?.contact?.email
         || latestTraceConversation?.id
         || 'No conversation linked'
+
+    useEffect(() => {
+        if (!correlationFilter) {
+            clearRunTrace()
+            return
+        }
+        getRunTrace(correlationFilter)
+    }, [correlationFilter, clearRunTrace, getRunTrace])
 
     const agentStatusColor = (status) => {
         if (status === 'online') return 'var(--color-success)'
@@ -479,6 +525,108 @@ function ControlTower() {
 
             {/* ── Main Grid ── */}
             <div className="ct-main-grid">
+                <div className="ct-section" style={{ gridColumn: '1 / -1' }}>
+                    <div className="ct-section-header">
+                        <span className="ct-section-title">System readiness</span>
+                        <div className="ct-section-meta">
+                            <span className={`badge ${readinessOverview.badge}`}>
+                                {readinessOverview.label}
+                            </span>
+                            <button className="btn btn-ghost btn-xs" onClick={() => refreshReadiness()}>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                    <div className="ct-section-body">
+                        {readinessError && (
+                            <div style={{ color: 'var(--color-danger)', fontSize: 'var(--text-xs)' }}>
+                                Failed loading readiness: {readinessError}
+                            </div>
+                        )}
+                        {!readinessError && readinessLoading && (
+                            <div style={{ color: 'var(--text-tertiary)', fontSize: 'var(--text-xs)' }}>
+                                Loading readiness snapshot...
+                            </div>
+                        )}
+                        {!readinessError && !readinessLoading && readinessRecords.length === 0 && (
+                            <div style={{ color: 'var(--text-tertiary)', fontSize: 'var(--text-xs)' }}>
+                                No readiness records available.
+                            </div>
+                        )}
+                        {!readinessError && !readinessLoading && readinessRecords.length > 0 && (
+                            <>
+                                <div className="ct-agent-row" style={{ marginBottom: 'var(--space-3)' }}>
+                                    <div className="ct-agent-status-icon" style={{ background: 'color-mix(in srgb, var(--accent-primary) 12%, transparent)' }}>
+                                        <EyeIcon width={16} height={16} style={{ color: 'var(--accent-primary)' }} />
+                                    </div>
+                                    <div className="ct-agent-info">
+                                        <div className="ct-agent-name">
+                                            {readinessRecords.length} module{readinessRecords.length !== 1 ? 's' : ''} tracked
+                                        </div>
+                                        <div className="ct-agent-desc">
+                                            {readinessFailures.length} degraded/offline · {readinessSmokes.filter(s => s?.status === 'pass').length}/{readinessSmokes.length} smokes pass
+                                        </div>
+                                    </div>
+                                    <div className="ct-agent-badges">
+                                        <span className="badge badge-default">
+                                            Updated {formatDateTime(readiness?.generated_at)}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {governanceSnapshot && (
+                                    <div className="ct-agent-row" style={{ marginBottom: 'var(--space-3)' }}>
+                                        <div className="ct-agent-status-icon" style={{ background: 'color-mix(in srgb, var(--color-warning) 12%, transparent)' }}>
+                                            <ShieldExclamationIcon width={16} height={16} style={{ color: 'var(--color-warning)' }} />
+                                        </div>
+                                        <div className="ct-agent-info">
+                                            <div className="ct-agent-name">Governance metrics</div>
+                                            <div className="ct-agent-desc">
+                                                dispatch {governanceSnapshot.dispatch_total} · blocked {governanceSnapshot.blocked_total} · approvals {governanceSnapshot.approval_pending_total}
+                                            </div>
+                                        </div>
+                                        <div className="ct-agent-badges">
+                                            <span className="badge badge-default">
+                                                trace {(Number(governanceSnapshot.tool_bus_trace_coverage || 0) * 100).toFixed(1)}%
+                                            </span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="stagger-children">
+                                    {readinessRecords.slice(0, 12).map((record) => {
+                                        const style = READINESS_STATE_STYLE[record.state] || READINESS_STATE_STYLE.offline
+                                        return (
+                                            <div key={`${record.module_key}-${record.backend_surface}`} className="ct-agent-row" style={{ borderLeft: `2px solid ${style.color}` }}>
+                                                <div className="ct-agent-status-icon" style={{ background: `color-mix(in srgb, ${style.color} 12%, transparent)` }}>
+                                                    <CpuChipIcon width={16} height={16} style={{ color: style.color }} />
+                                                </div>
+                                                <div className="ct-agent-info">
+                                                    <div className="ct-agent-name">{record.module_key}</div>
+                                                    <div className="ct-agent-desc">
+                                                        {record.state_reason_text}
+                                                    </div>
+                                                    <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>
+                                                        last success {formatDateTime(record.last_success_at)}
+                                                    </div>
+                                                </div>
+                                                <div className="ct-agent-badges">
+                                                    <span className={`badge ${style.badge}`}>{style.label}</span>
+                                                    {record.route && (
+                                                        <button className="btn btn-ghost btn-xs" onClick={() => navigate(record.route)}>
+                                                            Open
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+
                 {correlationFilter && (
                     <div className="ct-section" style={{ gridColumn: '1 / -1' }}>
                         <div className="ct-section-header">
@@ -494,7 +642,19 @@ function ControlTower() {
                                     <div className="ct-agent-name">{correlationFilter}</div>
                                     <div className="ct-agent-desc">
                                         {visiblePipelineRuns.length} pipeline run(s) · {traceEvents.length} event(s)
+                                        {runTrace?.final_status && ` · final ${runTrace.final_status}`}
+                                        {runTrace?.steps && ` · ${runTrace.steps.length} step(s)`}
                                     </div>
+                                    {runTraceLoading && (
+                                        <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>
+                                            Loading control-plane run trace...
+                                        </div>
+                                    )}
+                                    {runTraceError && (
+                                        <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-danger)' }}>
+                                            control-plane run trace failed: {runTraceError}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>

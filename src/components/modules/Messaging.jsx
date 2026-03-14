@@ -11,6 +11,7 @@ import { useConversations } from '../../hooks/useConversations'
 import { useMessagingChannels } from '../../hooks/useMessagingChannels'
 import { useCompanies } from '../../hooks/useCompanies'
 import { useApprovals } from '../../hooks/useApprovals'
+import { useEcosystemReadiness } from '../../hooks/useEcosystemReadiness'
 import { useAppStore } from '../../stores/useAppStore'
 import { buildLaunchUrl, getChannelLabel } from '../../lib/outreach'
 import { EnvelopeIcon, ChatBubbleLeftRightIcon, ExclamationTriangleIcon, CheckCircleIcon, ClockIcon } from '@heroicons/react/24/outline'
@@ -91,6 +92,14 @@ const STATUS_CHIP = {
     failed:    { label: 'Failed',    cls: 'msg-status-chip--failed' },
 }
 
+const READINESS_TONE = {
+    connected: { badge: 'badge-success', color: 'var(--color-success)' },
+    simulated: { badge: 'badge-primary', color: 'var(--accent-primary)' },
+    degraded: { badge: 'badge-warning', color: 'var(--color-warning)' },
+    offline: { badge: 'badge-danger', color: 'var(--color-danger)' },
+    planned: { badge: 'badge-default', color: 'var(--text-tertiary)' },
+}
+
 function StatusChip({ status }) {
     const chip = STATUS_CHIP[status] || STATUS_CHIP.sent
     return <span className={`msg-status-chip ${chip.cls}`}>{chip.label}</span>
@@ -104,6 +113,7 @@ function Messaging() {
     const { byType: channelsByType, busy: channelBusy, error: channelsError, connectGmail, connectWhatsApp, disconnectChannel, syncGmail } = useMessagingChannels()
     const { companies } = useCompanies()
     const { items: pendingApprovals } = useApprovals('pending')
+    const { readiness } = useEcosystemReadiness({ windowHours: 24 })
     const [activeChannel, setActiveChannel] = useState('all')
     const [messageInput, setMessageInput] = useState('')
     const [showTemplates, setShowTemplates] = useState(false)
@@ -120,6 +130,10 @@ function Messaging() {
         return map
     }, [pendingApprovals])
     const selectedConversation = useMemo(() => conversations.find(c => c.id === activeConvo) || null, [activeConvo, conversations])
+    const messagingReadiness = useMemo(
+        () => (readiness?.records || []).find(record => record.module_key === 'messaging') || null,
+        [readiness],
+    )
     const requestedConversationId = useMemo(() => {
         const params = new URLSearchParams(location.search)
         const value = (params.get('conversation') || '').trim()
@@ -202,6 +216,36 @@ function Messaging() {
                 </div>
 
                 {channelsError && <div className="mono text-xs" style={{ padding: 'var(--space-4)', border: '1px solid var(--color-danger)', borderRadius: 'var(--radius-sm)', color: 'var(--color-danger)', marginBottom: 'var(--space-4)' }}>Connection error: {channelsError}</div>}
+
+                {messagingReadiness && (
+                    <div style={{
+                        border: `1px solid ${READINESS_TONE[messagingReadiness.state]?.color || 'var(--border-default)'}`,
+                        borderRadius: 'var(--radius-sm)',
+                        padding: 'var(--space-3) var(--space-4)',
+                        marginBottom: 'var(--space-4)',
+                        background: 'var(--surface-elevated)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: 'var(--space-3)',
+                        flexWrap: 'wrap',
+                    }}>
+                        <div>
+                            <div className="mono text-xs font-bold" style={{ marginBottom: 4 }}>Messaging route status</div>
+                            <div className="mono text-xs text-tertiary">{messagingReadiness.state_reason_text}</div>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                            <span className={`badge ${READINESS_TONE[messagingReadiness.state]?.badge || 'badge-default'}`}>
+                                {messagingReadiness.state}
+                            </span>
+                            {messagingReadiness?.correlation_id && (
+                                <button className="btn btn-ghost btn-xs" onClick={() => openTrace(messagingReadiness.correlation_id)}>
+                                    trace
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                )}
 
                 {/* Channel filter */}
                 <div className="msg-filter-tabs">

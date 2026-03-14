@@ -822,7 +822,7 @@ export async function buildRunTraceView(input: BuildRunTraceInput): Promise<RunT
 
   let eventQuery = admin
     .from("event_log")
-    .select("id, event_type, status, source_agent, created_at, payload, metadata, correlation_id, pipeline_run_id, step_run_id, result")
+    .select("id, event_type, status, source_agent, created_at, payload, metadata, correlation_id, pipeline_run_id, step_run_id")
     .eq("correlation_id", correlationId)
     .order("created_at", { ascending: true })
     .limit(1000);
@@ -832,7 +832,7 @@ export async function buildRunTraceView(input: BuildRunTraceInput): Promise<RunT
 
   let runQuery = admin
     .from("pipeline_runs")
-    .select("id, status, correlation_id, pipeline_template_id, created_at, updated_at, pipeline_templates(name, code_name)")
+    .select("id, status, correlation_id, template_id, created_at, updated_at, pipeline_templates(name, code_name)")
     .eq("correlation_id", correlationId)
     .order("created_at", { ascending: false })
     .limit(10);
@@ -847,7 +847,7 @@ export async function buildRunTraceView(input: BuildRunTraceInput): Promise<RunT
   if (runIds.length > 0) {
     let stepQuery = admin
       .from("pipeline_step_runs")
-      .select("id, pipeline_run_id, step_key, status, error, started_at, finished_at, updated_at, input, output")
+      .select("id, pipeline_run_id, step_key, status, error, started_at, completed_at, updated_at, input, output")
       .in("pipeline_run_id", runIds)
       .order("started_at", { ascending: true })
       .limit(1200);
@@ -869,7 +869,7 @@ export async function buildRunTraceView(input: BuildRunTraceInput): Promise<RunT
     return {
       id: compact(event.id),
       event_type: compact(event.event_type),
-      status: compact(event.status || event.result) || "unknown",
+      status: compact(event.status) || "unknown",
       created_at: compact(event.created_at),
       source_agent: compact(event.source_agent) || null,
       reason: compact(payload.error || payload.reason || metadata.reason) || null,
@@ -883,7 +883,7 @@ export async function buildRunTraceView(input: BuildRunTraceInput): Promise<RunT
     return {
       id: compact(event.id),
       event_type: compact(event.event_type),
-      status: compact(event.status || event.result) || "unknown",
+      status: compact(event.status) || "unknown",
       created_at: compact(event.created_at),
       source_agent: compact(event.source_agent) || null,
       tool_code_name: compact(metadata.tool_code_name),
@@ -894,7 +894,7 @@ export async function buildRunTraceView(input: BuildRunTraceInput): Promise<RunT
 
   const primaryRun = runs[0] || null;
   const template = asRecord(primaryRun?.pipeline_templates);
-  const workflowId = compact(template.code_name || template.name || primaryRun?.pipeline_template_id) || null;
+  const workflowId = compact(template.code_name || template.name || primaryRun?.template_id) || null;
   const finalStatus = compact(primaryRun?.status)
     || compact(toolBusEvents[toolBusEvents.length - 1]?.status)
     || "unknown";
@@ -910,7 +910,7 @@ export async function buildRunTraceView(input: BuildRunTraceInput): Promise<RunT
       status: compact(row.status) || "unknown",
       error: compact(row.error) || null,
       started_at: compact(row.started_at) || null,
-      finished_at: compact(row.finished_at) || null,
+      finished_at: compact(row.completed_at) || null,
       updated_at: compact(row.updated_at) || null,
       input: asRecord(row.input),
       output: asRecord(row.output),

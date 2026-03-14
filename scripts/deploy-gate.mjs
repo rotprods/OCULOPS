@@ -64,6 +64,8 @@ if (meta.lastCommit !== head) {
 run("npm", ["run", "build"], "build");
 run("npm", ["run", "lint"], "lint");
 run("npm", ["test"], "test");
+const readinessMode = String(process.env.READINESS_GATE_MODE || "synthetic").toLowerCase();
+run("npm", ["run", "readiness:gate"], `readiness gate (${readinessMode})`);
 run("git", ["status", "--short"], "git status");
 
 console.log("\n[gate] all checks passed");

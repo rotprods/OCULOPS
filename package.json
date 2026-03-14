@@ -46,6 +46,13 @@
     "test:e2e": "playwright test",
     "smoke:agentic-core": "node scripts/smoke-agentic-core.mjs",
     "smoke:control-plane": "node scripts/smoke-control-plane.mjs",
+    "readiness:generate": "node scripts/generate-ecosystem-readiness.mjs",
+    "readiness:check": "node scripts/check-ecosystem-readiness-gate.mjs",
+    "readiness:check:production": "node scripts/check-ecosystem-readiness-gate.mjs --mode production",
+    "readiness:check:production:strict": "node scripts/check-ecosystem-readiness-gate.mjs --mode production --production-strict-all-connected true",
+    "readiness:gate": "npm run readiness:generate && npm run readiness:check",
+    "readiness:gate:production": "npm run readiness:generate && npm run readiness:check:production",
+    "readiness:gate:production:strict": "npm run readiness:generate && npm run readiness:check:production:strict",
     "design:factory": "node scripts/design-factory.mjs",
     "design:factory:images": "node scripts/design-factory.mjs --only images",
     "design:factory:code": "node scripts/design-factory.mjs --only code",
@@ -54,6 +61,9 @@
     "design:factory:py": "python3 scripts/design-factory.py",
     "design:factory:py:screen": "python3 scripts/design-factory.py --screen",
     "sync:public-apis": "node scripts/sync-public-apis.mjs",
+    "public-apis:bootstrap": "node scripts/bootstrap-public-api-connectors.mjs",
+    "public-apis:finalize": "node scripts/finalize-public-api-infra.mjs",
+    "build:public-api-infra-layer": "node scripts/build-public-api-infra-layer.mjs",
     "smoke:public-connectors": "node scripts/smoke-public-connectors.mjs"
   },
   "dependencies": {

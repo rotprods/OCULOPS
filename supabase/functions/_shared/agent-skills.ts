@@ -12,6 +12,154 @@ const OPENAI_KEY = () => Deno.env.get("OPENAI_API_KEY") || "";
 const SUPABASE_URL = () => Deno.env.get("SUPABASE_URL") || "";
 const SERVICE_KEY = () => Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 
+function asText(value: unknown) {
+  return typeof value === "string" ? value.trim() : String(value || "").trim();
+}
+
+function asStringArray(value: unknown) {
+  return Array.isArray(value) ? value.map((item) => asText(item)).filter(Boolean) : [];
+}
+
+function uniqueStrings(values: string[] = []) {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function tokenize(value: string) {
+  return asText(value)
+    .toLowerCase()
+    .split(/[^a-z0-9]+/g)
+    .filter((token) => token.length >= 3);
+}
+
+function scoreCatalogEntry(
+  row: Record<string, unknown>,
+  queryTokens: string[],
+  moduleTarget: string,
+  activationTier: string,
+) {
+  const haystack = [
+    asText(row.name),
+    asText(row.description),
+    asText(row.category),
+    ...asStringArray(row.module_targets),
+    ...asStringArray(row.agent_targets),
+  ].join(" ").toLowerCase();
+
+  let score = Number(row.business_fit_score || 0);
+  for (const token of queryTokens) {
+    if (haystack.includes(token)) score += 20;
+  }
+
+  if (moduleTarget !== "all" && asStringArray(row.module_targets).includes(moduleTarget)) score += 18;
+  if (activationTier !== "all" && asText(row.activation_tier) === activationTier) score += 12;
+  if (asText(row.auth_type) === "none") score += 6;
+  if (asText(row.activation_tier) === "adapter_ready") score += 10;
+
+  return score;
+}
+
+async function lookupCatalogApis(args: Record<string, unknown>) {
+  const query = asText(args.query);
+  const moduleTarget = asText(args.moduleTarget || args.module_target || "all") || "all";
+  const activationTier = asText(args.activationTier || args.activation_tier || "all") || "all";
+  const limit = Math.min(50, Math.max(1, Number(args.limit || 12)));
+  const queryTokens = tokenize(query);
+
+  const { data: catalogRows, error: catalogError } = await admin
+    .from("api_catalog_entries")
+    .select("slug,name,category,description,docs_url,auth_type,https_only,cors_policy,module_targets,agent_targets,business_fit_score,activation_tier,is_listed")
+    .eq("is_listed", true)
+    .order("business_fit_score", { ascending: false })
+    .limit(2000);
+
+  if (catalogError) return { error: catalogError.message };
+
+  const filtered = (catalogRows || [])
+    .filter((row) => {
+      const modules = asStringArray(row.module_targets);
+      if (moduleTarget !== "all" && !modules.includes(moduleTarget)) return false;
+      if (activationTier !== "all" && asText(row.activation_tier) !== activationTier) return false;
+
+      if (queryTokens.length === 0) return true;
+      const haystack = [
+        asText(row.name),
+        asText(row.description),
+        asText(row.category),
+        ...modules,
+        ...asStringArray(row.agent_targets),
+      ].join(" ").toLowerCase();
+
+      return queryTokens.some((token) => haystack.includes(token));
+    })
+    .map((row) => ({
+      ...row,
+      _score: scoreCatalogEntry(row as Record<string, unknown>, queryTokens, moduleTarget, activationTier),
+    }))
+    .sort((a, b) => Number(b._score || 0) - Number(a._score || 0))
+    .slice(0, limit);
+
+  const slugs = filtered.map((row) => asText(row.slug)).filter(Boolean);
+  let connectorsBySlug = new Map<string, Record<string, unknown>>();
+
+  if (slugs.length > 0) {
+    const { data: connectorRows } = await admin
+      .from("api_connectors")
+      .select("id,catalog_slug,health_status,is_active,template_key,normalizer_key,capabilities")
+      .in("catalog_slug", slugs);
+
+    connectorsBySlug = new Map(
+      (connectorRows || [])
+        .filter((row) => asText(row.catalog_slug))
+        .map((row) => [asText(row.catalog_slug), row as Record<string, unknown>]),
+    );
+  }
+
+  const items = filtered.map((row) => {
+    const slug = asText(row.slug);
+    const connector = connectorsBySlug.get(slug) || null;
+    const isLive = connector?.health_status === "live" && connector?.is_active === true;
+    const hasTemplatePath = asText(row.activation_tier) === "adapter_ready" || asText(row.activation_tier) === "live";
+    const bridgeMode = isLive ? "connector_proxy" : (hasTemplatePath ? "install_then_connector_proxy" : "docs_only");
+
+    return {
+      slug,
+      name: asText(row.name),
+      category: asText(row.category),
+      description: asText(row.description),
+      docs_url: asText(row.docs_url),
+      auth_type: asText(row.auth_type),
+      https_only: Boolean(row.https_only),
+      cors_policy: asText(row.cors_policy),
+      module_targets: asStringArray(row.module_targets),
+      agent_targets: asStringArray(row.agent_targets),
+      business_fit_score: Number(row.business_fit_score || 0),
+      activation_tier: asText(row.activation_tier),
+      bridge_mode: bridgeMode,
+      can_execute_now: isLive,
+      connector: connector ? {
+        id: asText(connector.id),
+        health_status: asText(connector.health_status),
+        capabilities: asStringArray(connector.capabilities),
+        template_key: asText(connector.template_key) || null,
+        normalizer_key: asText(connector.normalizer_key) || null,
+      } : null,
+      automation_action: isLive ? "run_connector" : null,
+      n8n_action: "launch_n8n",
+      skills: isLive ? ["fetch_external_data", "catalog_api_lookup"] : ["catalog_api_lookup"],
+    };
+  });
+
+  return {
+    query,
+    module_target: moduleTarget,
+    activation_tier: activationTier,
+    total_matches: items.length,
+    executable_now: items.filter((item) => item.can_execute_now).length,
+    categories: uniqueStrings(items.map((item) => item.category)),
+    items,
+  };
+}
+
 // ─── Skill definitions (OpenAI function format) ───────────────────────────────
 
 export const SKILLS = [
@@ -26,6 +174,22 @@ export const SKILLS = [
           intent: { type: "string", description: "What data you need, e.g. 'current EUR/USD exchange rate'" },
         },
         required: ["intent"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "catalog_api_lookup",
+      description: "Lookup the complete public API catalog with bridge modes (docs_only, install_then_connector_proxy, connector_proxy), auth burden, and agent/automation integration paths.",
+      parameters: {
+        type: "object",
+        properties: {
+          query: { type: "string", description: "Intent or keyword, e.g. 'weather Spain alerts'" },
+          module_target: { type: "string", description: "Optional module filter: prospector/watchtower/finance/automation/knowledge/world_monitor/all" },
+          activation_tier: { type: "string", description: "Optional activation tier filter: adapter_ready/candidate/catalog_only/live/all" },
+          limit: { type: "number", description: "Max rows (1-50, default 12)" },
+        },
       },
     },
   },
@@ -364,7 +528,17 @@ async function _exec(
 
     case "fetch_external_data": {
       const result = await autoConnectApi(args.intent as string, { agentName: agentCode });
-      return result.ok ? result.data : { error: result.error, api_tried: result.api_used };
+      return result.ok
+        ? result.data
+        : {
+          error: result.error,
+          api_tried: result.api_used,
+          suggestions: (result as Record<string, unknown>).suggestions || [],
+        };
+    }
+
+    case "catalog_api_lookup": {
+      return await lookupCatalogApis(args);
     }
 
     case "web_search": {

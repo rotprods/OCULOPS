@@ -137,3 +137,77 @@ URL directa: https://console.cloud.google.com/apis/credentials?project=hale-carp
 - [x] Secrets locales para smoke de control-plane presentes (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`) y validados en ejecución remota.
 - [ ] CLI actual de Supabase no incluye `functions invoke`; el smoke remoto debe hacerse con cliente HTTP (curl/Postman) o desde la app.
 - [ ] `deno` no está instalado localmente, por lo que no se puede ejecutar `deno check` local de edge functions (deploy remoto sí funciona).
+
+---
+
+## Ecosystem convergence (code-first) — estado actualizado
+
+### Cerrado en este bloque
+- [x] `control-plane` expone acciones nuevas:
+  - `ecosystem_readiness`
+  - `run_trace`
+  - `governor_metrics` (alias de snapshot de gobernanza)
+- [x] Control Tower consume readiness canónico y muestra estado por módulo (`connected|simulated|degraded|offline|planned`).
+- [x] Convergencia visual baseline fuera de Control Tower:
+  - Messaging muestra `messaging` route status + reason + trace shortcut
+  - Automation muestra badges readiness (`automation`, `connector_proxy`, `n8n_catalog`)
+  - Marketplace muestra `marketplace` route status + reason
+- [x] Control Tower consume `run_trace` por `correlation_id` para resumen de estado final/pasos.
+- [x] Script de artifact operativo:
+  - `npm run readiness:generate`
+  - genera `docs/runbooks/ecosystem-readiness.latest.json`
+  - genera `docs/runbooks/ecosystem-readiness.md`
+- [x] Gate automático de readiness (sintético) implementado:
+  - `npm run readiness:check` (valida artifact contra policy sintética)
+  - `npm run readiness:gate` (genera artifact + valida gate)
+  - script: `scripts/check-ecosystem-readiness-gate.mjs`
+- [x] Integración de gate en pipeline:
+  - `scripts/deploy-gate.mjs` ahora ejecuta `npm run readiness:gate`
+  - CI GitHub (`.github/workflows/ci.yml`) ejecuta readiness gate cuando existen secretos
+  - Deploy Supabase (`.github/workflows/supabase-deploy.yml`) ejecuta readiness gate post-deploy cuando existen secretos
+- [x] Smoke control-plane extendido y validado:
+  - `goal_parse` + `metrics` + `ecosystem_readiness` + `run_trace`
+  - `npm run smoke:control-plane` devuelve `ok: true`
+- [x] Deploy remoto de `control-plane` con estas rutas realizado.
+
+### Incidente resuelto en convergencia (2026-03-14)
+- [x] `run_trace` fallaba con `500` en remoto.
+  - causa raíz: desalineación de columnas con schema real (`pipeline_runs.pipeline_template_id` y `pipeline_step_runs.finished_at` no existen).
+  - fix aplicado: uso de `pipeline_runs.template_id` y `pipeline_step_runs.completed_at` en `buildRunTraceView`.
+  - validación: `npm run smoke:control-plane` con `run_trace.status = 200`.
+
+### Pendiente inmediato para cerrar el gap completo
+- [x] Integrar `readiness:generate` al gate de release/CI como criterio objetivo.
+- [ ] Completar configuración de secretos en GitHub para que el gate corra en todos los entornos:
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+- [x] Gate `production` endurecido:
+  - módulos críticos obligatorios en `connected` (configurable por `READINESS_PRODUCTION_CRITICAL_MODULES`)
+  - estados permitidos de módulos no críticos configurables por `READINESS_PRODUCTION_NON_CRITICAL_STATES`
+  - modo ultra estricto disponible (`READINESS_PRODUCTION_STRICT_ALL_CONNECTED=true` o `npm run readiness:gate:production:strict`)
+  - `READINESS_ORG_ID` obligatorio en `production` y validado contra `governance_metrics.org_id` del artifact
+- [x] CI/deploy ya parametrizados para switch sin código:
+  - `READINESS_GATE_MODE` (default `synthetic`)
+  - `READINESS_PRODUCTION_CRITICAL_MODULES`
+  - `READINESS_PRODUCTION_NON_CRITICAL_STATES`
+  - `READINESS_PRODUCTION_STRICT_ALL_CONNECTED`
+  - `READINESS_ORG_ID`
+- [x] Runbook de cutover a producción documentado:
+  - `docs/runbooks/readiness-production-cutover.md`
+- [ ] Definir fecha de corte y setear `READINESS_GATE_MODE=production` en GitHub Variables.
+- [ ] Endurecer convergencia visual ya añadida:
+  - estandarizar `state_reason_code` visible por módulo (no solo texto)
+  - enlazar `remediation_action` desde cada módulo a ruta concreta
+  - añadir cobertura E2E de estas superficies de readiness
+- [ ] Ejecutar generación de artifact con `READINESS_ORG_ID` fijo en pipeline para evitar modo advisory (`org_id=null`).
+- [ ] Cerrar loop provider-backed real (Gmail/WhatsApp) para pasar de `simulated/offline` a `connected` en módulos de mensajería/conectores.
+
+### Estado actual del artifact (última ejecución)
+- [x] Artifact generado correctamente:
+  - `overall_state = red`
+  - `smokes = pass (hard_block_routing, ag2_c6_synthetic, governor_runtime)`
+- [ ] Módulos aún en rojo/amarillo:
+  - `messaging` (`messaging_no_active_channels`)
+  - `connector_proxy` (`connectors_missing`)
+  - `marketplace` (`marketplace_agents_missing`)
+  - `governance/control_tower` en advisory por `org_id` no resuelto en ejecución manual del artifact

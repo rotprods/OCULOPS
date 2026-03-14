@@ -40,6 +40,15 @@ export interface AutoApiResult {
   meta?: Record<string, unknown> | null;
   error?: string;
   candidates_found: number;
+  suggestions?: Array<{
+    slug: string;
+    name: string;
+    category: string;
+    docs_url: string;
+    auth_type: string;
+    activation_tier: string;
+    bridge_mode: "docs_only" | "install_then_connector_proxy" | "connector_proxy";
+  }>;
 }
 
 const INTENT_HINTS: Array<{ match: RegExp; capabilities: string[] }> = [
@@ -54,6 +63,25 @@ const INTENT_HINTS: Array<{ match: RegExp; capabilities: string[] }> = [
   { match: /\b(website|preview|metadata|og:image|link card)\b/i, capabilities: ["website_preview"] },
   { match: /\b(openapi|swagger|spec)\b/i, capabilities: ["openapi_discovery"] },
 ];
+
+const CAPABILITY_CATEGORY_MAP: Record<string, string[]> = {
+  weather: ["Weather"],
+  forecast: ["Weather"],
+  spain_weather: ["Weather"],
+  news: ["News"],
+  macro_data: ["Finance", "Government", "Open Data"],
+  treasury_data: ["Finance", "Government"],
+  jobs: ["Jobs"],
+  hiring_signals: ["Jobs", "Open Data"],
+  geocoding: ["Geocoding"],
+  address_lookup: ["Geocoding", "Open Data"],
+  territory_lookup: ["Geocoding", "Government"],
+  routing: ["Transportation", "Geocoding"],
+  travel_time: ["Transportation"],
+  email_validation: ["Email"],
+  website_preview: ["Open Data", "Development"],
+  openapi_discovery: ["Development"],
+};
 
 function unique(values: string[] = []) {
   return [...new Set(values.filter(Boolean))];
@@ -78,6 +106,62 @@ function extractCoordinates(text: string): [string, string] | null {
 function inferCapabilities(intent: string) {
   const hits = INTENT_HINTS.flatMap(hint => (hint.match.test(intent) ? hint.capabilities : []));
   return unique(hits);
+}
+
+function tokenizeIntent(intent: string) {
+  return intent
+    .toLowerCase()
+    .split(/[^a-z0-9]+/g)
+    .filter(token => token.length >= 3);
+}
+
+function bridgeModeForActivationTier(activationTier: string): "docs_only" | "install_then_connector_proxy" | "connector_proxy" {
+  if (activationTier === "live") return "connector_proxy";
+  if (activationTier === "adapter_ready") return "install_then_connector_proxy";
+  return "docs_only";
+}
+
+async function suggestCatalogMatches(intent: string, inferredCapabilities: string[], limit = 6) {
+  const { data: rows, error } = await admin
+    .from("api_catalog_entries")
+    .select("slug,name,category,docs_url,auth_type,activation_tier,description,business_fit_score,is_listed")
+    .eq("is_listed", true)
+    .order("business_fit_score", { ascending: false })
+    .limit(1500);
+
+  if (error || !rows) return [];
+
+  const tokens = tokenizeIntent(intent);
+  const inferredCategories = unique(
+    inferredCapabilities.flatMap(capability => CAPABILITY_CATEGORY_MAP[capability] || []),
+  );
+
+  return rows
+    .map(row => {
+      const haystack = `${row.name || ""} ${row.description || ""} ${row.category || ""}`.toLowerCase();
+      let score = Number(row.business_fit_score || 0);
+
+      for (const token of tokens) {
+        if (haystack.includes(token)) score += 18;
+      }
+
+      if (inferredCategories.includes(String(row.category || ""))) score += 22;
+      if (row.activation_tier === "adapter_ready") score += 10;
+      if (row.auth_type === "none") score += 5;
+
+      return { row, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ row }) => ({
+      slug: String(row.slug || ""),
+      name: String(row.name || ""),
+      category: String(row.category || ""),
+      docs_url: String(row.docs_url || ""),
+      auth_type: String(row.auth_type || "unknown"),
+      activation_tier: String(row.activation_tier || "catalog_only"),
+      bridge_mode: bridgeModeForActivationTier(String(row.activation_tier || "catalog_only")),
+    }));
 }
 
 function scoreConnector(connector: LiveConnector, intent: string, capabilities: string[], preferFree: boolean) {
@@ -241,8 +325,10 @@ export async function autoConnectApi(
 ): Promise<AutoApiResult> {
   const { preferFree = true, agentName } = opts;
   const connectors = await loadLiveConnectors(preferFree);
+  const inferredCapabilities = inferCapabilities(intent);
 
   if (connectors.length === 0) {
+    const suggestions = await suggestCatalogMatches(intent, inferredCapabilities, 8);
     return {
       ok: false,
       intent,
@@ -255,10 +341,9 @@ export async function autoConnectApi(
       error: "No live connectors are available",
       candidates_found: 0,
       meta: null,
+      suggestions,
     };
   }
-
-  const inferredCapabilities = inferCapabilities(intent);
   const ranked = connectors
     .map(connector => ({
       connector,
@@ -271,6 +356,7 @@ export async function autoConnectApi(
   const endpointName = endpoint?.name || null;
 
   if (!endpointName) {
+    const suggestions = await suggestCatalogMatches(intent, inferredCapabilities, 6);
     return {
       ok: false,
       intent,
@@ -283,6 +369,7 @@ export async function autoConnectApi(
       error: "Selected connector has no endpoint configuration",
       candidates_found: connectors.length,
       meta: null,
+      suggestions,
     };
   }
 

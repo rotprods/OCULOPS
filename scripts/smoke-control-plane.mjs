@@ -1,7 +1,54 @@
 #!/usr/bin/env node
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SERVICE_ROLE_KEY;
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const projectRoot = path.resolve(__dirname, "..");
+
+function parseEnvContent(content) {
+  const parsed = {};
+  for (const rawLine of content.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const match = line.match(/^([A-Z0-9_]+)=(.*)$/);
+    if (!match) continue;
+    const key = match[1];
+    let value = match[2] ?? "";
+    if (
+      (value.startsWith("\"") && value.endsWith("\"")) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+    parsed[key] = value;
+  }
+  return parsed;
+}
+
+function loadEnvFile(relativePath) {
+  const filePath = path.resolve(projectRoot, relativePath);
+  if (!existsSync(filePath)) return {};
+  return parseEnvContent(readFileSync(filePath, "utf8"));
+}
+
+function resolveEnv(keys) {
+  const fromDotEnv = loadEnvFile(".env");
+  const fromDeployEnv = loadEnvFile("supabase/.env.deploy");
+  const merged = {
+    ...fromDotEnv,
+    ...fromDeployEnv,
+    ...process.env,
+  };
+  const out = {};
+  for (const key of keys) out[key] = merged[key] || "";
+  return out;
+}
+
+const env = resolveEnv(["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "SERVICE_ROLE_KEY"]);
+const SUPABASE_URL = env.SUPABASE_URL;
+const SERVICE_ROLE = env.SUPABASE_SERVICE_ROLE_KEY || env.SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL || !SERVICE_ROLE) {
   console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY.");
@@ -37,12 +84,27 @@ async function main() {
     window_hours: 24,
   });
 
+  const readiness = await call("ecosystem_readiness", {
+    window_hours: 24,
+  });
+
+  const readinessPayload = readiness.body?.data?.readiness || readiness.body?.readiness || null;
+  const traceCorrelationId = readinessPayload?.records?.[0]?.correlation_id || null;
+  const runTrace = traceCorrelationId
+    ? await call("run_trace", {
+      correlation_id: traceCorrelationId,
+      context: { correlation_id: traceCorrelationId },
+    })
+    : { status: 200, body: { skipped: true, reason: "no correlation_id from readiness snapshot" } };
+
   console.log(JSON.stringify({
-    ok: parse.status < 300 && metrics.status < 300,
+    ok: parse.status < 300 && metrics.status < 300 && readiness.status < 300 && runTrace.status < 300,
     endpoint,
     actions: {
       goal_parse: parse,
       metrics,
+      ecosystem_readiness: readiness,
+      run_trace: runTrace,
     },
   }, null, 2));
 }
