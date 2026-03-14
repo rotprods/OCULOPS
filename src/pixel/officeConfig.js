@@ -18,6 +18,7 @@ export const ROOMS = [
   {
     id: 'command', label: 'COMMAND CTR', agent: 'cortex',
     color: '#6366f1', rgb: [99, 102, 241], floorColor: '#08080F',
+    pet: 'porygon',
     x: 0, y: 0, w: 10, h: 12,
     workstation: { lx: 4, ly: 8 },
     entrance:    { lx: 5, ly: 11 },
@@ -31,6 +32,7 @@ export const ROOMS = [
   {
     id: 'intel', label: 'INTEL OPS', agent: 'oracle',
     color: '#8b5cf6', rgb: [139, 92, 246], floorColor: '#0A090F',
+    pet: 'alakazam',
     x: 10, y: 0, w: 10, h: 12,
     workstation: { lx: 4, ly: 8 },
     entrance:    { lx: 5, ly: 11 },
@@ -44,6 +46,7 @@ export const ROOMS = [
   {
     id: 'forge', label: 'FORGE STD', agent: 'forge',
     color: '#10b981', rgb: [16, 185, 129], floorColor: '#080F0B',
+    pet: 'ditto',
     x: 20, y: 0, w: 10, h: 12,
     workstation: { lx: 4, ly: 8 },
     entrance:    { lx: 5, ly: 11 },
@@ -57,6 +60,7 @@ export const ROOMS = [
   {
     id: 'broadcast', label: 'BROADCAST', agent: 'herald',
     color: '#facc15', rgb: [250, 204, 21], floorColor: '#0F0F08',
+    pet: 'jigglypuff',
     x: 30, y: 0, w: 10, h: 12,
     workstation: { lx: 5, ly: 8 },
     entrance:    { lx: 5, ly: 11 },
@@ -71,6 +75,7 @@ export const ROOMS = [
   {
     id: 'field', label: 'FIELD OPS', agent: 'atlas',
     color: '#3b82f6', rgb: [59, 130, 246], floorColor: '#08090F',
+    pet: 'onix',
     x: 0, y: 14, w: 8, h: 10,
     workstation: { lx: 3, ly: 6 },
     entrance:    { lx: 4, ly: 0 },
@@ -83,6 +88,7 @@ export const ROOMS = [
   {
     id: 'hunt', label: 'HUNT ROOM', agent: 'hunter',
     color: '#f59e0b', rgb: [245, 158, 11], floorColor: '#0F0C08',
+    pet: 'arcanine',
     x: 8, y: 14, w: 8, h: 10,
     workstation: { lx: 3, ly: 6 },
     entrance:    { lx: 4, ly: 0 },
@@ -95,6 +101,7 @@ export const ROOMS = [
   {
     id: 'security', label: 'SECURITY', agent: 'sentinel',
     color: '#ef4444', rgb: [239, 68, 68], floorColor: '#0F0808',
+    pet: 'magnemite',
     x: 16, y: 14, w: 8, h: 10,
     workstation: { lx: 3, ly: 6 },
     entrance:    { lx: 4, ly: 0 },
@@ -108,6 +115,7 @@ export const ROOMS = [
   {
     id: 'outreach', label: 'OUTREACH', agent: 'outreach',
     color: '#ec4899', rgb: [236, 72, 153], floorColor: '#0F080B',
+    pet: 'meowth',
     x: 24, y: 14, w: 8, h: 10,
     workstation: { lx: 3, ly: 6 },
     entrance:    { lx: 4, ly: 0 },
@@ -120,6 +128,7 @@ export const ROOMS = [
   {
     id: 'nexus', label: 'NEXUS', agent: 'nexus',
     color: '#06b6d4', rgb: [6, 182, 212], floorColor: '#080C0F',
+    pet: 'electrode',
     x: 32, y: 14, w: 8, h: 10,
     workstation: { lx: 3, ly: 6 },
     entrance:    { lx: 4, ly: 0 },

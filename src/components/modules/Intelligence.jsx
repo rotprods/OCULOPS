@@ -177,6 +177,8 @@ function Intelligence() {
   const [activeView, setActiveView] = useState('signals')
   const signalFilter = useSignalStore(s => s.filter)
   const setSignalFilter = useSignalStore(s => s.setFilter)
+  const [signalSearch, setSignalSearch] = useState('')
+  const [showLogModal, setShowLogModal] = useState(false)
   const [form, setForm] = useState(emptyForm)
   const [saving, setSaving] = useState(false)
   const [promotingId, setPromotingId] = useState(null)
@@ -218,7 +220,11 @@ function Intelligence() {
   }
 
   const signalsByCategory = useMemo(() => signals.reduce((acc, s) => { acc[s.category] = (acc[s.category] || 0) + 1; return acc }, {}), [signals])
-  const filteredSignals = useMemo(() => signals.filter(s => signalFilter === 'all' || s.indicator === signalFilter).sort((l, r) => (r.impact || 0) - (l.impact || 0)), [signalFilter, signals])
+  const filteredSignals = useMemo(() => signals.filter(s => {
+    if (signalFilter !== 'all' && s.indicator !== signalFilter) return false
+    if (signalSearch.trim() && !s.title.toLowerCase().includes(signalSearch.toLowerCase())) return false
+    return true
+  }).sort((l, r) => (r.impact || 0) - (l.impact || 0)), [signalFilter, signalSearch, signals])
 
   // ── API datasource logic ──
   const preparedApiEntries = useMemo(() => catalogEntries.map(entry => {
@@ -271,199 +277,300 @@ function Intelligence() {
     >
       <div className="lab-content">
         {activeView === 'signals' && (
-          <div className="lab-col-layout">
-            {/* Radar + Category grid */}
-            <div className="intel-top-grid">
-              <div className="intel-radar-wrap">
-                <SignalRadar signals={signals} agents={agents} />
-              </div>
-              <div className="intel-cat-grid">
-                {CATEGORIES.map(cat => (
-                  <div key={cat.value} className="intel-cat-cell">
-                    <div className="intel-cat-cell-header">
-                      <span className="mono text-xs text-tertiary font-bold">{cat.label}</span>
-                    </div>
-                    <span className="intel-cat-value" style={{ color: cat.color }}>{signalsByCategory[cat.value] || 0}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Social signals + Register form */}
-            <div className="intel-split">
-              <div className="lab-panel">
-                <div className="lab-panel-header">
-                  <span>Social signals</span>
-                  <button className="btn btn-sm btn-ghost" onClick={refreshSocialSignals} disabled={socialRefreshing}>
-                    <ArrowPathIcon style={{ width: 14, height: 14 }} className={socialRefreshing ? 'spin' : ''} />
-                    {socialRefreshing ? 'Syncing...' : 'Sync'}
-                  </button>
+          <div className="v3-intel-layout">
+            
+            {/* Semantic Search */}
+            <section className="v3-glass-card v3-intel-search-section">
+              <div className="v3-hero-glow"></div>
+              <div className="v3-intel-search-content">
+                <label className="v3-intel-label">Semantic Intelligence Search</label>
+                <div className="v3-intel-input-wrapper">
+                  <SignalIcon className="v3-intel-input-icon" />
+                  <input className="v3-input v3-intel-search-input" placeholder="Search knowledge graph, entities, or indexed metadata..." type="text" value={signalSearch} onChange={e => setSignalSearch(e.target.value)} />
                 </div>
-                <div className="ct-section-body lab-col-layout">
-                  {socialSignals.slice(0, 5).map(signal => (
-                    <div key={signal.id} className="intel-social-card">
-                      <div className="intel-social-header">
-                        <div className="intel-social-tags">
-                          <span className="badge">{signal.platform}</span>
-                          <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>{signal.topic}</span>
-                        </div>
-                        <button className="btn btn-sm btn-primary" onClick={() => handlePromoteSocialSignal(signal)} disabled={promotingId === signal.id}>
-                          {promotingId === signal.id ? 'Adding...' : 'Promote'}
-                        </button>
-                      </div>
-                      <div className="mono text-sm font-bold" style={{ marginBottom: 'var(--space-2)' }}>{signal.title}</div>
-                      {signal.bodyExcerpt && <div className="mono text-xs text-secondary" style={{ marginBottom: 'var(--space-2)', opacity: 0.8 }}>{signal.bodyExcerpt.slice(0, 150)}...</div>}
-                      <div className="mono text-xs text-tertiary">Engagement: {compactNumber(signal.engagement)} · Sentiment: {signal.sentimentScore} · Opp: {signal.opportunityScore}</div>
-                    </div>
-                  ))}
-                  {socialSignals.length === 0 && <div className="table-empty">No social signals</div>}
-                </div>
-              </div>
-
-              <div className="lab-panel">
-                <div className="lab-panel-header">Log new signal</div>
-                <div className="ct-section-body">
-                  <div className="form-grid">
-                    <div className="form-field" style={{ gridColumn: '1 / -1' }}>
-                      <label className="form-label">Signal title</label>
-                      <input className="form-input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
-                    </div>
-                    <div className="form-field">
-                      <label className="form-label">Category</label>
-                      <select className="form-input" value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))}>
-                        {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
-                      </select>
-                    </div>
-                    <div className="form-field">
-                      <label className="form-label">Impact</label>
-                      <input className="form-input" type="number" value={form.impact} onChange={e => setForm(f => ({ ...f, impact: e.target.value }))} />
-                    </div>
-                    <div className="form-field">
-                      <label className="form-label">Confidence</label>
-                      <input className="form-input" type="number" value={form.confidence} onChange={e => setForm(f => ({ ...f, confidence: e.target.value }))} />
-                    </div>
-                  </div>
-                  <button className="btn btn-primary" style={{ marginTop: 'var(--space-4)', width: '100%' }} onClick={handleAdd} disabled={saving}>
-                    {saving ? 'Adding...' : 'Register signal'}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Signal table */}
-            <div className="lab-panel">
-              <div className="lab-panel-header">
-                <span>Signal database</span>
-                <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+                <div className="v3-intel-filter-row">
+                  <span className="v3-intel-filter-label">Filters:</span>
                   {['all', 'leading', 'lagging'].map(value => (
-                    <button key={value} className={`intel-section-pill ${signalFilter === value ? 'active' : ''}`} onClick={() => setSignalFilter(value)}>
-                      {value}
+                    <button key={value} className={`v3-pill-filter ${signalFilter === value ? 'active' : ''}`} onClick={() => setSignalFilter(value)}>
+                      {value === 'all' ? 'All Nodes' : value}
                     </button>
                   ))}
+                  <button className="v3-pill-filter" onClick={() => setShowLogModal(true)}>+ Log Signal</button>
+                  <button className="v3-pill-filter v3-intel-sync-btn" onClick={refreshSocialSignals} disabled={socialRefreshing}>
+                    <ArrowPathIcon className={socialRefreshing ? 'spin' : ''} />
+                    {socialRefreshing ? 'Syncing...' : 'Sync Social'}
+                  </button>
                 </div>
               </div>
-              <table className="intel-signal-table">
-                <thead><tr>
-                  <th>Signal</th><th>Category</th><th>Impact</th><th>Confidence</th><th>Date</th><th style={{ textAlign: 'right' }}>Action</th>
-                </tr></thead>
-                <tbody>
+            </section>
+
+            <div className="v3-intel-grid-2">
+              {/* Relational Network Graph */}
+              <section className="v3-glass-card v3-intel-widget">
+                <div className="v3-intel-widget-header">
+                  <h3 className="v3-intel-widget-title">Relational Network Graph</h3>
+                  <div className="v3-intel-cat-summary">
+                    {CATEGORIES.map(cat => (
+                      <div key={cat.value} title={`${cat.label} (${signalsByCategory[cat.value] || 0})`} className="v3-intel-cat-dot" style={{ backgroundColor: cat.color }}>
+                        {(signalsByCategory[cat.value] || 0)}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="v3-intel-widget-body v3-intel-radar-container">
+                  <div className="v3-intel-radar-bg"></div>
+                  <div className="v3-intel-radar-content">
+                     <SignalRadar signals={filteredSignals} agents={agents} />
+                  </div>
+                </div>
+              </section>
+
+              {/* Top Entities */}
+              <section className="v3-intel-widget-col">
+                <div className="v3-intel-widget-header-row">
+                  <h3 className="v3-intel-widget-title">Top Entities</h3>
+                  <span className="v3-intel-widget-count">{filteredSignals.length} Active</span>
+                </div>
+                <div className="v3-intel-entity-list custom-scrollbar">
                   {filteredSignals.map(signal => (
-                    <tr key={signal.id} style={{ cursor: 'pointer' }} onClick={() => setSelectedSignal(signal)}>
-                      <td style={{ fontWeight: 'bold' }}>{signal.title}</td>
-                      <td><span className="badge">{signal.category}</span></td>
-                      <td style={{ color: signal.impact >= 70 ? 'var(--color-danger)' : 'var(--color-warning)' }}>{signal.impact}</td>
-                      <td style={{ color: signal.confidence >= 70 ? 'var(--color-success)' : 'var(--color-warning)' }}>{signal.confidence}</td>
-                      <td className="text-tertiary">{signal.created_at?.split('T')[0]}</td>
-                      <td style={{ textAlign: 'right' }}>
-                        <button className="btn btn-sm btn-ghost" style={{ color: 'var(--color-danger)' }} onClick={e => { e.stopPropagation(); removeSignal(signal.id) }}>Del</button>
-                      </td>
-                    </tr>
+                    <div key={signal.id} className="v3-glass-card v3-intel-entity-card" onClick={() => setSelectedSignal(signal)}>
+                      <div className="v3-intel-entity-top">
+                        <h4 className="v3-intel-entity-name">{signal.title}</h4>
+                        <span className="v3-intel-entity-id">#{signal.id.substring(0,6).toUpperCase()}</span>
+                      </div>
+                      <div className="v3-intel-entity-bar-row">
+                        <div className="v3-intel-entity-bar-wrap">
+                          <div className="v3-intel-entity-bar-header">
+                            <span className="v3-intel-entity-bar-label">Impact Relevance</span>
+                            <span className="v3-intel-entity-bar-value">{signal.impact}%</span>
+                          </div>
+                          <div className="v3-intel-entity-bar-track">
+                            <div className="v3-intel-entity-bar-fill" style={{ width: `${signal.impact}%`, boxShadow: signal.impact > 70 ? 'var(--shadow-glow)' : 'none' }}></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="v3-intel-entity-bottom">
+                        <div className="v3-intel-entity-meta">
+                          <span className="v3-intel-entity-icon">
+                             <span className="material-symbols-outlined">history_edu</span>
+                          </span>
+                          <span className="v3-intel-entity-category">{signal.category}</span>
+                        </div>
+                        <span className="v3-intel-entity-date">{signal.created_at?.split('T')[0]}</span>
+                      </div>
+                    </div>
                   ))}
-                  {filteredSignals.length === 0 && <tr><td colSpan={6} className="table-empty">No signals recorded</td></tr>}
-                </tbody>
-              </table>
+                  {filteredSignals.length === 0 && <div className="v3-glass-card v3-intel-entity-card text-center text-tertiary mono">No signals match filter criteria.</div>}
+                </div>
+              </section>
             </div>
+            
+            {/* Social Signal Intercepts Grid */}
+            <div className="v3-intel-social-section">
+              <div className="v3-intel-widget-header-row" style={{ marginTop: 'var(--space-6)' }}>
+                <h3 className="v3-intel-widget-title" style={{ fontSize: '14px' }}>Social Intercepts</h3>
+              </div>
+              <div className="v3-intel-social-grid">
+                {socialSignals.slice(0, 6).map(signal => (
+                  <div key={signal.id} className="v3-glass-card v3-intel-social-card">
+                    <div className="v3-intel-social-header">
+                      <div className="v3-intel-social-tags">
+                        <span className="badge">{signal.platform}</span>
+                        <span className="badge v3-gold-badge">{signal.topic}</span>
+                      </div>
+                      <button className="v3-pill-filter v3-intel-social-promote" onClick={() => handlePromoteSocialSignal(signal)} disabled={promotingId === signal.id}>
+                        {promotingId === signal.id ? '...' : 'Promote'}
+                      </button>
+                    </div>
+                    <div className="v3-intel-social-title">{signal.title}</div>
+                    {signal.bodyExcerpt && <div className="v3-intel-social-excerpt">{signal.bodyExcerpt.slice(0, 100)}...</div>}
+                    <div className="v3-intel-social-footer">
+                      <span>Opp: {signal.opportunityScore}</span>
+                      <span>Eng: {compactNumber(signal.engagement)}</span>
+                    </div>
+                  </div>
+                ))}
+                {socialSignals.length === 0 && <div className="v3-glass-card p-4 text-center text-tertiary mono" style={{ gridColumn: '1 / -1' }}>No social intercepts active.</div>}
+              </div>
+            </div>
+
+            {/* Master Signal Intelligence Database (Restored) */}
+            <div className="v3-signal-master-db mt-8 mb-12">
+              <div className="v3-intel-widget-header-row mb-4">
+                <h3 className="v3-intel-widget-title text-lg flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[var(--gold)]">database</span> Signal Raw Database
+                </h3>
+              </div>
+              <div className="v3-glass-card overflow-x-auto">
+                <table className="v3-table w-full text-left">
+                  <thead><tr>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">Signal Signature</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">Category</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">Impact</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">Confidence</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">Discovery Date</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary text-right text-[var(--error)]">Action</th>
+                  </tr></thead>
+                  <tbody>
+                    {filteredSignals.map(signal => (
+                      <tr key={signal.id} className="cursor-pointer hover:bg-[var(--gold-muted-bg)] transition-colors border-b border-[var(--border-subtle)] hover:border-[var(--gold-border)]" onClick={() => setSelectedSignal(signal)}>
+                        <td className="p-4">
+                          <div className="font-bold text-white text-sm">{signal.title}</div>
+                          <div className="text-xs text-tertiary mt-1">UUID: {signal.id.substring(0,8)}</div>
+                        </td>
+                        <td className="p-4"><span className="badge" style={{ backgroundColor: 'transparent', border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>{signal.category}</span></td>
+                        <td className="p-4 font-mono font-bold text-sm" style={{ color: signal.impact >= 70 ? 'var(--error)' : 'var(--gold)' }}>{signal.impact}%</td>
+                        <td className="p-4 font-mono font-bold text-sm" style={{ color: signal.confidence >= 70 ? 'var(--success)' : 'var(--warning)' }}>{signal.confidence}%</td>
+                        <td className="p-4 text-tertiary text-sm">{signal.created_at?.split('T')[0]}</td>
+                        <td className="p-4 text-right">
+                          <button className="v3-btn-subtle text-[var(--error)] text-xs py-1 px-3 border border-[var(--error)] hover:bg-[var(--error)] hover:text-white" onClick={e => { e.stopPropagation(); removeSignal(signal.id) }}>PURGE</button>
+                        </td>
+                      </tr>
+                    ))}
+                    {filteredSignals.length === 0 && <tr><td colSpan={6} className="p-8 text-center text-tertiary mono italic border-b border-[var(--border)]">No signals recorded in master database</td></tr>}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
           </div>
         )}
 
         {activeView === 'apis' && (
-          <div className="lab-col-layout">
-            <div className="kpi-strip kpi-strip-4">
-              <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Catalog APIs</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-info)' }}>{apiStatsSummary.total}</span></div>
-              <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Live connectors</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-success)' }}>{apiStatsSummary.live}</span></div>
-              <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Installable</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{apiStatsSummary.installable}</span></div>
-              <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Active sections</span><span className="mono text-lg font-bold" style={{ color: 'var(--accent-primary)' }}>{apiStatsSummary.sections}</span></div>
+          <div className="v3-intel-layout mb-12 animate-in fade-in slide-in-from-bottom-2">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="v3-glass-card p-4">
+                <span className="mono text-xs text-secondary tracking-widest uppercase">Catalog APIs</span>
+                <div className="mono text-2xl font-bold mt-2" style={{ color: 'var(--info)' }}>{apiStatsSummary.total}</div>
+              </div>
+              <div className="v3-glass-card p-4">
+                <span className="mono text-xs text-secondary tracking-widest uppercase">Live Connectors</span>
+                <div className="mono text-2xl font-bold mt-2" style={{ color: 'var(--success)' }}>{apiStatsSummary.live}</div>
+              </div>
+              <div className="v3-glass-card p-4">
+                <span className="mono text-xs text-secondary tracking-widest uppercase">Installable</span>
+                <div className="mono text-2xl font-bold mt-2" style={{ color: 'var(--warning)' }}>{apiStatsSummary.installable}</div>
+              </div>
+              <div className="v3-glass-card p-4">
+                <span className="mono text-xs text-secondary tracking-widest uppercase">Active Sections</span>
+                <div className="mono text-2xl font-bold mt-2" style={{ color: 'var(--gold)' }}>{apiStatsSummary.sections}</div>
+              </div>
             </div>
 
-            <div className="intel-api-filters">
-              <div className="form-field"><label className="form-label">Search</label><input className="form-input" value={apiSearch} onChange={e => setApiSearch(e.target.value)} /></div>
-              <div className="form-field"><label className="form-label">Target</label>
-                <select className="form-input" value={apiModuleTarget} onChange={e => setApiModuleTarget(e.target.value)}>
+            <div className="v3-glass-card p-4 mb-6 flex flex-wrap gap-4 items-end" style={{ border: '1px solid var(--gold-border)' }}>
+              <div className="form-field flex-1 min-w-[200px]">
+                <label className="v3-form-label text-xs">Search Integrations</label>
+                <input className="v3-input" value={apiSearch} onChange={e => setApiSearch(e.target.value)} placeholder="Type OS API Name..." />
+              </div>
+              <div className="form-field min-w-[150px]">
+                <label className="v3-form-label text-xs">Target Module</label>
+                <select className="v3-input" value={apiModuleTarget} onChange={e => setApiModuleTarget(e.target.value)}>
                   {moduleTargetOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
               </div>
-              <div className="form-field"><label className="form-label">Sort</label>
-                <select className="form-input" value={apiSort} onChange={e => setApiSort(e.target.value)}>
-                  <option value="featured">Score</option><option value="connectivity">Connection</option><option value="section">Section</option><option value="name">Name</option>
+              <div className="form-field min-w-[150px]">
+                <label className="v3-form-label text-xs">Sort Backbone By</label>
+                <select className="v3-input" value={apiSort} onChange={e => setApiSort(e.target.value)}>
+                  <option value="featured">Intel Score</option><option value="connectivity">Connection Tier</option><option value="section">OS Section</option><option value="name">Alphabetical</option>
                 </select>
               </div>
-              <button className="btn btn-primary" onClick={() => navigate('/api-network')}>View network</button>
+              <button className="v3-btn-outline h-[38px] px-6" onClick={() => navigate('/api-network')}>View OS Hub</button>
             </div>
 
-            <div className="intel-section-pills">
-              <button className={`intel-section-pill ${apiSection === 'all' ? 'active' : ''}`} onClick={() => setApiSection('all')}>All [{searchScopedApiEntries.length}]</button>
+            <div className="flex gap-2 mb-6 flex-wrap">
+              <button className={`v3-pill-filter ${apiSection === 'all' ? 'active' : ''}`} onClick={() => setApiSection('all')}>All Routes [{searchScopedApiEntries.length}]</button>
               {sectionSummary.filter(s => s.count > 0).map(s => (
-                <button key={s.key} className={`intel-section-pill ${apiSection === s.key ? 'active' : ''}`} onClick={() => setApiSection(s.key)}>
+                <button key={s.key} className={`v3-pill-filter ${apiSection === s.key ? 'active' : ''}`} onClick={() => setApiSection(s.key)}>
                   {s.shortLabel} [{s.count}]
                 </button>
               ))}
             </div>
 
             {apiLoading ? (
-              <div className="table-empty">Loading API catalog...</div>
+              <div className="v3-glass-card p-8 text-center text-secondary mono" style={{ opacity: 0.6 }}>Synchronizing OS API Backbone...</div>
             ) : (
-              <div className="lab-panel">
-                <div className="lab-panel-header">API catalog</div>
-                <table className="intel-signal-table">
+              <div className="v3-glass-card overflow-x-auto">
+                <table className="v3-table w-full text-left">
                   <thead><tr>
-                    <th>API</th><th>Section</th><th>Status</th><th>Score</th><th style={{ textAlign: 'right' }}>Action</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">API Integrations</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">OS Section</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">Health Status</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary">Priority Score</th>
+                    <th className="p-4 border-b border-[var(--border)] text-xs text-tertiary text-right">Deployment</th>
                   </tr></thead>
                   <tbody>
                     {pagedApiEntries.map(entry => (
-                      <tr key={entry.slug}>
-                        <td>
-                          <div style={{ fontWeight: 'bold', marginBottom: 4 }}>{entry.name}</div>
-                          <div className="text-tertiary" style={{ fontSize: 10 }}>{entry.description?.slice(0, 60)}...</div>
+                      <tr key={entry.slug} className="hover:bg-[var(--gold-muted-bg)] transition-colors border-b border-[var(--border-subtle)] hover:border-[var(--gold-border)]">
+                        <td className="p-4 border-b border-[var(--border-subtle)]">
+                          <div className="font-bold text-white mb-1 tracking-wide">{entry.name}</div>
+                          <div className="text-tertiary text-xs max-w-sm leading-tight">{entry.description?.slice(0, 100)}{entry.description?.length > 100 ? '...' : ''}</div>
                         </td>
-                        <td style={{ color: 'var(--accent-primary)' }}>{entry.section_label}</td>
-                        <td>{entry.health_status === 'live' ? <span className="text-success">Live</span> : <span className="text-warning">{entry.activation_tier}</span>}</td>
-                        <td style={{ color: 'var(--color-info)' }}>{entry.featured_score || 0}</td>
-                        <td style={{ textAlign: 'right' }}>
+                        <td className="p-4 border-b border-[var(--border-subtle)] text-[var(--gold)] text-sm uppercase mono">{entry.section_label}</td>
+                        <td className="p-4 border-b border-[var(--border-subtle)] text-sm">
+                          {entry.health_status === 'live' ? <span className="text-[var(--success)] border border-[var(--success)] bg-[#10b9811a] px-3 py-1 rounded-full text-xs box-border">LIVE CONNECTION</span> : <span className="text-[var(--warning)] px-3 py-1 text-xs border border-[var(--warning)] rounded-full">{entry.activation_tier.toUpperCase()}</span>}
+                        </td>
+                        <td className="p-4 border-b border-[var(--border-subtle)] font-mono text-[var(--info)] text-sm">{entry.featured_score || 0}</td>
+                        <td className="p-4 border-b border-[var(--border-subtle)] text-right">
                           {entry.installable ? (
-                            <button className="btn btn-sm btn-ghost" onClick={() => handleInstallApi(entry)} disabled={installingSlug === entry.slug}>
-                              {installingSlug === entry.slug ? 'Installing...' : 'Install'}
+                            <button className="v3-btn-subtle text-xs py-1 px-4 hover:bg-[var(--gold)] hover:text-[#111]" onClick={() => handleInstallApi(entry)} disabled={installingSlug === entry.slug}>
+                              {installingSlug === entry.slug ? 'Installing...' : 'Link API'}
                             </button>
                           ) : entry.is_installed ? (
-                            <span className="text-success font-bold text-xs">Installed</span>
-                          ) : <span className="text-tertiary text-xs">N/A</span>}
+                            <span className="text-[var(--success)] font-bold text-xs uppercase tracking-widest inline-flex items-center gap-1">
+                              • ACTIVE
+                            </span>
+                          ) : <span className="text-tertiary text-xs italic">N/A</span>}
                         </td>
                       </tr>
                     ))}
+                    {pagedApiEntries.length === 0 && <tr><td colSpan={5} className="p-8 text-center text-tertiary mono italic border-b border-[var(--border)]">No API integrations found</td></tr>}
                   </tbody>
                 </table>
               </div>
             )}
 
             {pageCount > 1 && (
-              <div className="intel-pagination">
-                <button className="btn btn-sm btn-ghost" onClick={() => setApiPage(p => Math.max(1, p - 1))} disabled={apiPage === 1}>Prev</button>
-                <span className="mono text-xs text-tertiary">Page {apiPage} / {pageCount}</span>
-                <button className="btn btn-sm btn-ghost" onClick={() => setApiPage(p => Math.min(pageCount, p + 1))} disabled={apiPage === pageCount}>Next</button>
+              <div className="flex justify-between items-center mt-6 v3-glass-card px-4 py-2 border border-[var(--gold-border)] bg-[var(--gold-muted-bg)]">
+                <button className="v3-btn-outline text-xs px-4 py-1.5" onClick={() => setApiPage(p => Math.max(1, p - 1))} disabled={apiPage === 1}>PREV</button>
+                <span className="mono text-xs text-white tracking-widest">PAGE {apiPage} / {pageCount}</span>
+                <button className="v3-btn-outline text-xs px-4 py-1.5" onClick={() => setApiPage(p => Math.min(pageCount, p + 1))} disabled={apiPage === pageCount}>NEXT</button>
               </div>
             )}
           </div>
         )}
       </div>
+
+      {showLogModal && (
+        <Modal title="Log new signal" onClose={() => setShowLogModal(false)} footer={
+           <div className="modal-actions" style={{ justifyContent: 'flex-end', display: 'flex' }}>
+             <button className="v3-btn-outline" onClick={() => setShowLogModal(false)}>Cancel</button>
+             <button className="v3-btn-primary" onClick={() => { handleAdd(); setShowLogModal(false); }} disabled={saving}>
+                 {saving ? 'Adding...' : 'Register signal'}
+             </button>
+           </div>
+        }>
+          <div className="form-grid">
+             <div className="form-field" style={{ gridColumn: '1 / -1' }}>
+               <label className="form-label">Signal title</label>
+               <input className="v3-input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
+             </div>
+             <div className="form-field">
+               <label className="form-label">Category</label>
+                 <select className="v3-input" value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))}>
+                     {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
+                 </select>
+             </div>
+             <div className="form-field">
+                 <label className="form-label">Impact</label>
+                 <input className="v3-input" type="number" value={form.impact} onChange={e => setForm(f => ({ ...f, impact: e.target.value }))} />
+             </div>
+             <div className="form-field">
+                 <label className="form-label">Confidence</label>
+                 <input className="v3-input" type="number" value={form.confidence} onChange={e => setForm(f => ({ ...f, confidence: e.target.value }))} />
+             </div>
+          </div>
+        </Modal>
+      )}
 
       {selectedSignal && <SignalEditModal signal={selectedSignal} onSave={handleSignalSave} onDelete={handleSignalDelete} onClose={() => setSelectedSignal(null)} />}
     </ModulePage>

@@ -1,206 +1,563 @@
 /* ═══════════════════════════════════════════════════
-   OCULOPS — Intelligence v12.0 (STITCH V2 IVORY)
-   Signal Radar & API Atlas — Aligned w/ Stitch Final
+   OCULOPS — Intelligence v12.0 (STITCH V3 PREMIUM)
+   Signal Radar & API Atlas
    ═══════════════════════════════════════════════════ */
 
-/* ── Radar (Stitch V2 — clean card) ── */
-.intel-radar-wrap {
-    background: var(--table-header);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-4);
-    box-shadow:
-        0 2px 5px -1px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+/* ── V3 Signal Intelligence Layout ── */
+.v3-intel-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
 }
 
-.intel-radar-wrap svg {
-    border-radius: var(--radius-md);
+/* 1. Semantic Search Section */
+.v3-intel-search-section {
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+  border-color: var(--gold-border);
+  box-shadow: var(--shadow-glow);
 }
 
-/* ── Category Grid (Stitch V2 — KPI-style cells) ── */
-.intel-cat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-4);
+.v3-hero-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 256px;
+  height: 256px;
+  background: rgba(255, 215, 0, 0.05);
+  filter: blur(100px);
+  border-radius: 50%;
+  margin-right: -128px;
+  margin-top: -128px;
+  pointer-events: none;
 }
 
-.intel-cat-cell {
-    background: var(--table-header);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    box-shadow:
-        0 2px 5px -1px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    transition:
-        border-color var(--duration-fast) var(--ease-default),
-        transform var(--duration-base) var(--ease-default);
+.v3-intel-search-content {
+  position: relative;
+  z-index: 10;
 }
 
-.intel-cat-cell:hover {
-    border-color: var(--gold);
-    transform: translateY(-1px);
+.v3-intel-label {
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: var(--space-4);
+  display: block;
 }
 
-.intel-cat-cell-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.v3-intel-input-wrapper {
+  position: relative;
+  margin-bottom: var(--space-6);
 }
 
-.intel-cat-cell-header span {
-    font-size: 11px !important;
-    font-weight: var(--weight-bold) !important;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.v3-intel-input-icon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--text-tertiary);
 }
 
-.intel-cat-value {
-    font-size: 32px;
-    font-weight: var(--weight-bold);
-    line-height: 1;
-    font-family: var(--font-sans);
+.v3-intel-search-input {
+  width: 100%;
+  padding: var(--space-4) var(--space-4) var(--space-4) 48px;
+  background-color: var(--canvas) !important;
+  border: none !important;
+  border-radius: var(--radius-xl) !important;
+  font-size: 18px !important;
+  color: var(--text-primary);
+}
+.v3-intel-search-input:focus {
+  box-shadow: 0 0 0 1px var(--gold-border) !important;
 }
 
-/* ── Top Layout ── */
-.intel-top-grid {
-    display: grid;
-    grid-template-columns: minmax(300px, 1fr) 2fr;
-    gap: var(--space-6);
+.v3-intel-filter-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
-/* ── Two-col layout ── */
-.intel-split {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--space-6);
+.v3-intel-filter-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: var(--weight-semibold);
+  margin-right: var(--space-2);
 }
 
-/* ── Social Signal Card (Stitch V2 — clean card) ── */
-.intel-social-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--space-4);
-    background: var(--table-header);
-    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.05);
-    transition: border-color var(--transition-fast);
+.v3-pill-filter {
+  appearance: none;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-default) var(--ease-default);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.intel-social-card:hover {
-    border-color: var(--gold);
+.v3-pill-filter:hover {
+  border-color: var(--gold-border);
+  color: var(--text-primary);
+  background: var(--canvas);
 }
 
-.intel-social-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--space-2);
+.v3-pill-filter.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--canvas);
+  box-shadow: var(--shadow-glow);
 }
 
-.intel-social-tags {
-    display: flex;
-    gap: var(--space-2);
+.v3-intel-sync-btn {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.v3-intel-sync-btn svg {
+  width: 14px;
+  height: 14px;
+}
+.v3-intel-sync-btn svg.spin {
+  animation: spin 1s linear infinite;
 }
 
-/* ── Signal Table (Stitch V2 — clean data table) ── */
-.intel-signal-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: var(--text-sm);
+/* 2. Grid Layout */
+.v3-intel-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
 }
 
-.intel-signal-table th {
-    padding: var(--space-3) var(--space-6);
-    text-align: left;
-    font-size: 11px;
-    font-weight: var(--weight-semibold);
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--border);
-    background: rgba(0, 0, 0, 0.01);
+.v3-intel-widget {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  overflow: hidden;
 }
 
-.intel-signal-table td {
-    padding: var(--space-3) var(--space-6);
-    border-bottom: 1px solid var(--border);
-    color: var(--text-primary);
+.v3-intel-widget-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 500px;
 }
 
-.intel-signal-table tr {
-    transition: background var(--transition-fast);
+.v3-intel-widget-header {
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.intel-signal-table tbody tr:hover {
-    background: rgba(0, 0, 0, 0.01);
+.v3-intel-widget-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-2);
 }
 
-.intel-signal-table tbody tr:last-child td {
-    border-bottom: none;
+.v3-intel-widget-title {
+  font-size: 12px;
+  font-weight: var(--weight-bold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 
-/* ── API Filters (Stitch V2 — clean form layout) ── */
+.v3-intel-widget-count {
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.v3-intel-cat-summary {
+  display: flex;
+  margin-left: -8px; /* space-x-reverse effect */
+}
+
+.v3-intel-cat-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: var(--weight-bold);
+  color: #fff;
+  margin-left: -8px;
+}
+
+
+/* Relational Network Graph wrapper */
+.v3-intel-widget-body {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--canvas);
+}
+
+.v3-intel-radar-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.v3-intel-radar-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* 3. Top Entities List */
+.v3-intel-entity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+/* Custom minimal scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-border);
+}
+
+
+.v3-intel-entity-card {
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.v3-intel-entity-card:hover {
+  border-color: var(--gold);
+}
+
+.v3-intel-entity-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2);
+}
+
+.v3-intel-entity-name {
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+  transition: color 0.2s;
+}
+
+.v3-intel-entity-card:hover .v3-intel-entity-name {
+  color: var(--gold);
+}
+
+.v3-intel-entity-id {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+}
+
+.v3-intel-entity-bar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.v3-intel-entity-bar-wrap {
+  flex: 1;
+}
+
+.v3-intel-entity-bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-1);
+}
+
+.v3-intel-entity-bar-label {
+  font-size: 9px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.v3-intel-entity-bar-value {
+  font-size: 9px;
+  font-weight: var(--weight-bold);
+}
+
+.v3-intel-entity-bar-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--border-subtle);
+  overflow: hidden;
+}
+
+.v3-intel-entity-bar-fill {
+  height: 100%;
+  background: var(--gold);
+}
+
+.v3-intel-entity-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.v3-intel-entity-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.v3-intel-entity-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--table-header);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v3-intel-entity-icon .material-symbols-outlined {
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.v3-intel-entity-category {
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.v3-intel-entity-date {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+
+/* 4. Social Signal Intercepts */
+.v3-intel-social-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.v3-intel-social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.v3-intel-social-card {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.v3-intel-social-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.v3-intel-social-tags {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.v3-intel-social-tags .badge {
+  font-size: 9px;
+  padding: 2px 6px;
+}
+
+.v3-gold-badge {
+  color: var(--gold-deep) !important;
+  border-color: var(--gold-deep) !important;
+  background-color: var(--gold-muted-bg) !important;
+}
+
+.v3-intel-social-promote {
+  font-size: 10px;
+  padding: 2px 8px;
+}
+
+.v3-intel-social-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  line-height: 1.3;
+}
+
+.v3-intel-social-excerpt {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-3);
+  flex: 1;
+}
+
+.v3-intel-social-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.v3-intel-social-footer span {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+/* API Atlas overrides */
 .intel-api-filters {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr auto;
-    gap: var(--space-4);
-    align-items: end;
-    margin-bottom: var(--space-4);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: var(--space-4);
+  align-items: end;
+  margin-bottom: var(--space-4);
 }
 
 .intel-section-pills {
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
 }
 
 .intel-section-pill {
-    font-size: 11px;
-    font-weight: var(--weight-medium);
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-tertiary);
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
-    cursor: pointer;
-    transition: all var(--transition-fast);
+  padding: var(--space-2) var(--space-4);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--table-header);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
 }
-
-.intel-section-pill:hover {
-    border-color: var(--gold);
-    color: var(--text-primary);
-}
-
+.intel-section-pill:hover,
 .intel-section-pill.active {
-    background: var(--gold);
-    color: var(--canvas);
-    border-color: var(--gold);
-    font-weight: var(--weight-semibold);
+  border-color: var(--gold);
+  color: var(--text-primary);
+  background: var(--canvas);
 }
 
-/* ── Pagination ── */
 .intel-pagination {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-4);
-    align-items: center;
-    margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-    .intel-top-grid, .intel-split { grid-template-columns: 1fr; }
-    .intel-api-filters { grid-template-columns: 1fr; }
-    .intel-cat-grid { grid-template-columns: repeat(2, 1fr); }
+/* Layout additions */
+.lab-tabs {
+  display: flex;
+  gap: var(--space-1);
 }
 
-@media (max-width: 640px) {
-    .intel-cat-grid { grid-template-columns: 1fr; }
+.lab-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all 0.2s;
+}
+
+.lab-tab-btn:hover {
+  background: var(--table-header);
+  color: var(--text-primary);
+}
+
+.lab-tab-btn.active {
+  background: var(--table-header);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.kpi-strip {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.kpi-strip-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.kpi-strip-cell {
+  background: var(--table-header);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.intel-signal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.intel-signal-table th {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+
+.intel-signal-table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--text-sm);
+}
+
+.intel-signal-table tbody tr:hover td {
+  background: rgba(0,0,0,0.01);
 }

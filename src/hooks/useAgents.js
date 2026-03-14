@@ -5,6 +5,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { callSupabaseFunction, supabase, fetchAll, subscribeDebouncedToTable } from '../lib/supabase'
+import { memoryLayer } from '../services/memoryLayer'
 
 export function useAgents() {
     const [agents, setAgents] = useState([])
@@ -73,9 +74,35 @@ export function useAgents() {
     // ── Trigger an agent ──
     const triggerAgent = useCallback(async (codeName, action = 'cycle', payload = {}) => {
         try {
+            // -- BEGIN MEMORY LAYER INTEGRATION --
+            let augmentedPayload = { ...payload };
+            try {
+                const querySrc = payload.prompt || payload.message || payload.task || action;
+                if (querySrc && typeof querySrc === 'string') {
+                    const pastContext = await memoryLayer.query(`What do we know that is relevant to: ${querySrc}?`);
+                    if (pastContext && pastContext.answer) {
+                        augmentedPayload._memoryContext = pastContext.answer;
+                    }
+                }
+            } catch (e) {
+                console.error("Memory Layer failed to query", e);
+            }
+            // -- END MEMORY LAYER INTEGRATION --
+
             const data = await callSupabaseFunction(`agent-${codeName}`, {
-                body: { action, ...payload }
+                body: { action, ...augmentedPayload }
             })
+
+            // -- BEGIN MEMORY LAYER INGESTION --
+            try {
+                if (data && (data.summary || data.result)) {
+                    await memoryLayer.ingest(data.summary || JSON.stringify(data.result), `Agent Execution: ${codeName}`);
+                }
+            } catch (e) {
+                console.error("Memory Layer failed to ingest", e);
+            }
+            // -- END MEMORY LAYER INGESTION --
+
             await refresh()
             return data
         } catch (err) {

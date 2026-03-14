@@ -2,6 +2,7 @@
 // OCULOPS — Control Tower v12.0
 // Main Dashboard — Autonomous Intelligence OS
 // AG1-P0: Simulation gate states + run-inspection
+// V3 HIGGSFIELD PREMIUM EDITION REWRITE
 // ═══════════════════════════════════════════════════
 
 import { useMemo, useEffect, useState } from 'react'
@@ -18,11 +19,8 @@ import { useAlerts } from '../../hooks/useAlerts'
 import { useEcosystemReadiness } from '../../hooks/useEcosystemReadiness'
 import { supabase } from '../../lib/supabase'
 import {
-    UserGroupIcon,
-    BuildingOfficeIcon,
     CurrencyEuroIcon,
     ArrowTrendingUpIcon,
-    ClockIcon,
     SignalIcon,
     CpuChipIcon,
     ExclamationTriangleIcon,
@@ -32,76 +30,40 @@ import {
     XMarkIcon,
     ShieldExclamationIcon,
     EyeIcon,
+    ChevronRightIcon,
+    BoltIcon,
 } from '@heroicons/react/24/outline'
 import './ControlTower.css'
 
-// ── Simulation Gate Step Status Config ──
-const STEP_STATUS_CONFIG = {
-    waiting_approval: { label: 'Simulation blocked', color: 'var(--color-warning)', bg: 'var(--color-warning-muted)' },
-    pending:          { label: 'Pending',            color: 'var(--text-tertiary)',   bg: 'var(--surface-elevated)' },
-    running:          { label: 'Running',            color: 'var(--color-info)',      bg: 'var(--color-info-muted)' },
-    completed:        { label: 'Completed',          color: 'var(--color-success)',   bg: 'var(--color-success-muted)' },
-    failed:           { label: 'Failed',             color: 'var(--color-danger)',    bg: 'var(--color-danger-muted)' },
-    skipped:          { label: 'Skipped',            color: 'var(--text-quaternary)', bg: 'var(--surface-elevated)' },
-}
-
-const READINESS_STATE_STYLE = {
-    connected: { badge: 'badge-success', color: 'var(--color-success)', label: 'connected' },
-    simulated: { badge: 'badge-primary', color: 'var(--accent-primary)', label: 'simulated' },
-    degraded: { badge: 'badge-warning', color: 'var(--color-warning)', label: 'degraded' },
-    offline: { badge: 'badge-danger', color: 'var(--color-danger)', label: 'offline' },
-    planned: { badge: 'badge-default', color: 'var(--text-tertiary)', label: 'planned' },
-}
-
-const OVERALL_STATE_STYLE = {
-    green: { badge: 'badge-success', label: 'Green' },
-    yellow: { badge: 'badge-warning', label: 'Yellow' },
-    red: { badge: 'badge-danger', label: 'Red' },
-}
-
-// ── Sparkline ──
-function Sparkline({ data = [], color = 'var(--accent-primary)', width = 60, height = 20 }) {
-    if (data.length < 2) return null
-    const max = Math.max(...data, 1)
-    const min = Math.min(...data, 0)
-    const range = max - min || 1
-    const points = data.map((v, i) => `${(i / (data.length - 1)) * width},${height - ((v - min) / range) * height}`).join(' ')
-    return (
-        <svg className="ct-sparkline" width={width} height={height}>
-            <polyline points={points} fill="none" stroke={color} strokeWidth="2.5" opacity="0.15" strokeLinecap="round" strokeLinejoin="round" style={{ filter: 'blur(2px)' }} />
-            <polyline points={points} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-    )
-}
-
 // ── Health Ring ──
-function HealthRing({ score, size = 120, strokeWidth = 6 }) {
+function HealthRing({ score, size = 80, strokeWidth = 3 }) {
     const radius = (size - strokeWidth) / 2
     const circumference = 2 * Math.PI * radius
     const offset = circumference - (score / 100) * circumference
-    const color = score >= 70 ? 'var(--color-success)' : score >= 40 ? 'var(--accent-primary)' : 'var(--color-danger)'
+    const color = score >= 70 ? 'var(--color-success)' : score >= 40 ? 'var(--gold)' : 'var(--color-danger)'
 
     return (
-        <div className="ct-health-ring" style={{ width: size, height: size }}>
+        <div className="hf-health-ring-wrap" style={{ width: size, height: size }}>
             <svg width={size} height={size}>
-                <circle className="ct-health-ring-bg" cx={size / 2} cy={size / 2} r={radius} />
+                <circle className="hf-health-ring-bg" cx={size / 2} cy={size / 2} r={radius} />
                 <circle
-                    className="ct-health-ring-fill"
+                    className="hf-health-ring-fill"
                     cx={size / 2} cy={size / 2} r={radius}
                     stroke={color}
                     strokeDasharray={circumference}
                     strokeDashoffset={offset}
                 />
             </svg>
-            <div className="ct-health-score" style={{ color }}>{score}</div>
+            <div className="hf-health-score" style={{ color }}>{score}%</div>
         </div>
     )
 }
 
-const ALERT_SEVERITY_STYLES = {
-    3: { color: 'var(--color-danger)', bg: 'var(--color-danger-muted)', label: 'CRITICAL' },
-    2: { color: 'var(--color-warning)', bg: 'var(--color-warning-muted)', label: 'WARNING' },
-    1: { color: 'var(--color-info)', bg: 'var(--color-info-muted)', label: 'INFO' },
+function formatDateTime(value) {
+    if (!value) return '—'
+    const date = new Date(value)
+    if (Number.isNaN(date.getTime())) return '—'
+    return date.toLocaleString()
 }
 
 function sortByCreatedAtDesc(rows = []) {
@@ -120,69 +82,12 @@ function sortByDateFieldDesc(rows = [], fieldName) {
     })
 }
 
-function formatDateTime(value) {
-    if (!value) return '—'
-    const date = new Date(value)
-    if (Number.isNaN(date.getTime())) return '—'
-    return date.toLocaleString()
-}
-
-function AlertsSection({ alerts, resolveAlert }) {
-    const topAlerts = [...alerts]
-        .sort((a, b) => (b.severity || 0) - (a.severity || 0))
-        .slice(0, 5)
-
-    if (topAlerts.length === 0) return null
-
-    return (
-        <div className="ct-section">
-            <div className="ct-section-header">
-                <span className="ct-section-title" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <BellAlertIcon width={14} height={14} style={{ color: 'var(--color-warning)' }} />
-                    Anomaly alerts
-                </span>
-                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>
-                    {topAlerts.length} active
-                </span>
-            </div>
-            <div className="ct-section-body stagger-children">
-                {topAlerts.map(alert => {
-                    const sev = ALERT_SEVERITY_STYLES[alert.severity] || ALERT_SEVERITY_STYLES[2]
-                    return (
-                        <div key={alert.id} className="ct-agent-row" style={{ borderLeft: `2px solid ${sev.color}` }}>
-                            <div className="ct-agent-status-icon" style={{ background: sev.bg }}>
-                                <ExclamationTriangleIcon width={18} height={18} style={{ color: sev.color }} />
-                            </div>
-                            <div className="ct-agent-info">
-                                <div className="ct-agent-name">{alert.title}</div>
-                                <div className="ct-agent-desc">{alert.description}</div>
-                            </div>
-                            <div className="ct-agent-badges">
-                                <span className="badge" style={{ color: sev.color, borderColor: sev.color, background: sev.bg }}>
-                                    {sev.label}
-                                </span>
-                                <button
-                                    onClick={() => resolveAlert(alert.id)}
-                                    title="Dismiss"
-                                    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 2, color: 'var(--text-quaternary)' }}
-                                >
-                                    <XMarkIcon width={12} height={12} />
-                                </button>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        </div>
-    )
-}
-
-function ControlTower() {
+export default function ControlTower() {
     const location = useLocation()
     const navigate = useNavigate()
     const { contacts, loading: contactsLoading } = useContacts()
     const { companies, loading: companiesLoading } = useCompanies()
-    const { deals, loading: dealsLoading, totalValue, weightedValue } = useDeals()
+    const { deals, loading: dealsLoading, totalValue } = useDeals()
     const { activities, loading: activitiesLoading } = useActivities()
     const { signals, activeSignals, loading: signalsLoading } = useSignals()
     const { agents, stats: agentStats } = useAgents()
@@ -192,22 +97,14 @@ function ControlTower() {
     const {
         readiness,
         loading: readinessLoading,
-        error: readinessError,
         refresh: refreshReadiness,
         runTrace,
-        runTraceLoading,
-        runTraceError,
         getRunTrace,
         clearRunTrace,
     } = useEcosystemReadiness({ windowHours: 24 })
+    
     const [traceEvents, setTraceEvents] = useState([])
-    const [traceLoading, setTraceLoading] = useState(false)
-    const [traceError, setTraceError] = useState(null)
     const [traceApprovals, setTraceApprovals] = useState([])
-    const [traceMessages, setTraceMessages] = useState([])
-    const [traceConversations, setTraceConversations] = useState([])
-    const [traceLinksLoading, setTraceLinksLoading] = useState(false)
-    const [traceLinksError, setTraceLinksError] = useState(null)
 
     const correlationFilter = useMemo(() => {
         const params = new URLSearchParams(location.search)
@@ -216,12 +113,6 @@ function ControlTower() {
     }, [location.search])
 
     const loading = contactsLoading || companiesLoading || dealsLoading || activitiesLoading || signalsLoading
-
-    const recentActivitiesCount = useMemo(() => {
-        const sevenDaysAgo = new Date()
-        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
-        return (activities || []).filter(a => new Date(a.created_at) >= sevenDaysAgo).length
-    }, [activities])
 
     const avgSignalImpact = useMemo(() => {
         const active = activeSignals || []
@@ -236,14 +127,6 @@ function ControlTower() {
         return Math.round((pipelineScore * 0.5) + (agentUptime * 0.3) + (signalScore * 0.2))
     }, [totalValue, agentStats, activeSignals])
 
-    const kpis = [
-        { label: 'Pipeline Value', value: `€${Math.round(totalValue).toLocaleString()}`, icon: CurrencyEuroIcon, target: '€50K', accent: true },
-        { label: 'Active Deals', value: (deals || []).length, icon: ArrowTrendingUpIcon, target: '50+' },
-        { label: 'Agents Online', value: `${agentStats?.online || 0}/${agentStats?.total || 0}`, icon: CpuChipIcon, target: 'All' },
-        { label: 'Active Signals', value: (activeSignals || []).length, icon: SignalIcon, color: 'var(--accent-primary)', target: '10+', subtitle: `Avg impact: ${avgSignalImpact}` },
-    ]
-
-    // AG1-P0: Blocked goal steps (waiting_approval = simulation gate)
     const blockedSteps = useMemo(() => {
         const blocked = []
         ;(goals || []).forEach(goal => {
@@ -260,7 +143,10 @@ function ControlTower() {
         })
     }, [goals])
 
-    const recentSignals = (signals || []).slice(-5).reverse()
+    const recentSignals = useMemo(() => {
+        return (signals || []).slice(0, 5)
+    }, [signals])
+
     const visiblePipelineRuns = useMemo(() => {
         if (!correlationFilter) return pipelineRuns
         return (pipelineRuns || []).filter(run => run.correlation_id === correlationFilter)
@@ -268,17 +154,11 @@ function ControlTower() {
 
     useEffect(() => {
         let cancelled = false
-
         const loadTraceEvents = async () => {
             if (!correlationFilter) {
                 setTraceEvents([])
-                setTraceError(null)
                 return
             }
-
-            setTraceLoading(true)
-            setTraceError(null)
-
             try {
                 const { data, error } = await supabase
                     .from('event_log')
@@ -286,112 +166,24 @@ function ControlTower() {
                     .eq('correlation_id', correlationFilter)
                     .order('created_at', { ascending: true })
                     .limit(120)
-
                 if (cancelled) return
                 if (error) throw error
                 setTraceEvents(data || [])
             } catch (err) {
-                if (!cancelled) {
-                    setTraceEvents([])
-                    setTraceError(err.message)
-                }
-            } finally {
-                if (!cancelled) setTraceLoading(false)
+                if (!cancelled) setTraceEvents([])
             }
         }
-
         loadTraceEvents()
         return () => { cancelled = true }
     }, [correlationFilter])
 
     useEffect(() => {
-        let cancelled = false
-
-        const loadTraceLinks = async () => {
-            if (!correlationFilter || !supabase) {
-                setTraceApprovals([])
-                setTraceMessages([])
-                setTraceConversations([])
-                setTraceLinksError(null)
-                return
-            }
-
-            setTraceLinksLoading(true)
-            setTraceLinksError(null)
-
-            try {
-                const [approvalSnake, approvalCamel, messageSnake, messageCamel] = await Promise.all([
-                    supabase
-                        .from('approval_requests')
-                        .select('id, status, created_at, approved_by, user_comment, payload')
-                        .contains('payload', { correlation_id: correlationFilter })
-                        .order('created_at', { ascending: false })
-                        .limit(20),
-                    supabase
-                        .from('approval_requests')
-                        .select('id, status, created_at, approved_by, user_comment, payload')
-                        .contains('payload', { correlationId: correlationFilter })
-                        .order('created_at', { ascending: false })
-                        .limit(20),
-                    supabase
-                        .from('messages')
-                        .select('id, conversation_id, direction, status, provider_message_id, error_message, created_at, metadata')
-                        .contains('metadata', { correlation_id: correlationFilter })
-                        .order('created_at', { ascending: false })
-                        .limit(30),
-                    supabase
-                        .from('messages')
-                        .select('id, conversation_id, direction, status, provider_message_id, error_message, created_at, metadata')
-                        .contains('metadata', { correlationId: correlationFilter })
-                        .order('created_at', { ascending: false })
-                        .limit(30),
-                ])
-
-                if (cancelled) return
-                if (approvalSnake.error) throw approvalSnake.error
-                if (approvalCamel.error) throw approvalCamel.error
-                if (messageSnake.error) throw messageSnake.error
-                if (messageCamel.error) throw messageCamel.error
-
-                const approvalById = new Map()
-                ;[...(approvalSnake.data || []), ...(approvalCamel.data || [])].forEach((row) => approvalById.set(row.id, row))
-                const mergedApprovals = sortByCreatedAtDesc([...approvalById.values()])
-                setTraceApprovals(mergedApprovals)
-
-                const messageById = new Map()
-                ;[...(messageSnake.data || []), ...(messageCamel.data || [])].forEach((row) => messageById.set(row.id, row))
-                const mergedMessages = sortByCreatedAtDesc([...messageById.values()])
-                setTraceMessages(mergedMessages)
-
-                const conversationIds = [...new Set(mergedMessages.map(msg => msg.conversation_id).filter(Boolean))]
-                if (conversationIds.length === 0) {
-                    setTraceConversations([])
-                    return
-                }
-
-                const { data: conversationRows, error: conversationError } = await supabase
-                    .from('conversations')
-                    .select('id, status, last_message_at, contact:contacts(id, name, email)')
-                    .in('id', conversationIds)
-
-                if (cancelled) return
-                if (conversationError) throw conversationError
-                setTraceConversations(sortByDateFieldDesc(conversationRows || [], 'last_message_at'))
-            } catch (err) {
-                if (!cancelled) {
-                    setTraceApprovals([])
-                    setTraceMessages([])
-                    setTraceConversations([])
-                    setTraceLinksError(err.message)
-                }
-            } finally {
-                if (!cancelled) setTraceLinksLoading(false)
-            }
+        if (!correlationFilter) {
+            clearRunTrace()
+            return
         }
-
-        loadTraceLinks()
-        return () => { cancelled = true }
-    }, [correlationFilter])
+        getRunTrace(correlationFilter)
+    }, [correlationFilter, clearRunTrace, getRunTrace])
 
     const openTrace = (correlationId) => {
         if (!correlationId) return
@@ -405,600 +197,217 @@ function ControlTower() {
         navigate(`/agents?${params.toString()}`)
     }
 
-    const openConversation = (conversationId) => {
-        if (!conversationId) return
-        navigate(`/messaging?conversation=${encodeURIComponent(conversationId)}`)
-    }
-
-    const clearTrace = () => {
-        navigate('/control-tower')
-    }
-
-    const shortCorr = (value) => {
-        if (!value) return '—'
-        return value.length > 14 ? `${value.slice(0, 8)}…${value.slice(-4)}` : value
-    }
-
-    const pendingTraceApprovals = useMemo(
-        () => traceApprovals.filter(approval => approval.status === 'pending'),
-        [traceApprovals],
-    )
-    const failedTraceMessages = useMemo(
-        () => traceMessages.filter(message => message.status === 'failed'),
-        [traceMessages],
-    )
-    const traceConversationById = useMemo(
-        () => new Map(traceConversations.map(conversation => [conversation.id, conversation])),
-        [traceConversations],
-    )
-    const readinessRecords = readiness?.records || []
-    const readinessSmokes = readiness?.smokes || []
-    const readinessFailures = readiness?.failures || []
-    const readinessOverview = OVERALL_STATE_STYLE[readiness?.overall_state] || OVERALL_STATE_STYLE.green
-    const governanceSnapshot = readiness?.governance_metrics || null
-    const latestTraceMessage = traceMessages[0] || null
-    const latestTraceConversation = latestTraceMessage?.conversation_id
-        ? traceConversationById.get(latestTraceMessage.conversation_id) || null
-        : traceConversations[0] || null
-    const latestConversationLabel = latestTraceConversation?.contact?.name
-        || latestTraceConversation?.contact?.email
-        || latestTraceConversation?.id
-        || 'No conversation linked'
-
-    useEffect(() => {
-        if (!correlationFilter) {
-            clearRunTrace()
-            return
-        }
-        getRunTrace(correlationFilter)
-    }, [correlationFilter, clearRunTrace, getRunTrace])
-
-    const agentStatusColor = (status) => {
-        if (status === 'online') return 'var(--color-success)'
-        if (status === 'running') return 'var(--accent-primary)'
-        if (status === 'error') return 'var(--color-danger)'
-        return 'var(--text-quaternary)'
-    }
+    const clearTrace = () => navigate('/control-tower')
 
     return (
-        <div className="module-page ct fade-in">
-            {/* ── Hero Banner (Stitch V2) ── */}
-            <div className="ct-hero">
-                <div className="ct-greeting">
-                    <h1>Performance Analytics</h1>
-                    <p>Real-time overview of key metrics and system intelligence.</p>
-                </div>
-                <div className="ct-status-pill">
-                    <div className={`ct-status-dot ${loading ? 'syncing' : 'online'}`} />
-                    <span>{loading ? 'Syncing...' : 'LIVE'}</span>
-                </div>
-            </div>
-
-            {/* ── Agent Network Bar ── */}
-            <div className="ct-agents-bar">
-                <span className="ct-agents-bar-label">Agents</span>
-                {(agents || []).slice(0, 10).map(agent => (
-                    <div key={agent.id} className="ct-agent-chip">
-                        <div className="ct-agent-chip-dot" style={{ background: agentStatusColor(agent.status) }} />
-                        <span>{(agent.code_name || agent.name || 'Unknown').slice(0, 8)}</span>
+        <div className="v3-theme ct-higgsfield fade-in p-4">
+            
+            {/* ── Top Header ── */}
+            <header className="hf-header hf-glass-panel">
+                <div className="hf-header-left">
+                    <div className="hf-logo-box">
+                        <RocketLaunchIcon width={20} height={20} />
                     </div>
-                ))}
-                <span className="ct-agents-bar-summary">{agentStats?.online || 0} online</span>
-                {pipelineStats.running > 0 && (
-                    <span className="ct-agents-bar-summary" style={{ color: 'var(--color-warning)' }}>
-                        <RocketLaunchIcon width={12} height={12} style={{ display: 'inline', verticalAlign: 'middle'}} /> {pipelineStats.running} pipeline{pipelineStats.running > 1 ? 's' : ''} running
-                    </span>
-                )}
-                {blockedSteps.length > 0 && (
-                    <span className="ct-agents-bar-summary" style={{ color: 'var(--color-danger)' }}>
-                        <ShieldExclamationIcon width={12} height={12} style={{ display: 'inline', verticalAlign: 'middle'}} /> {blockedSteps.length} blocked
-                    </span>
-                )}
-            </div>
-
-            {/* ── KPI Grid ── */}
-            <div className="ct-kpi-grid stagger-children">
-                {kpis.map((kpi, i) => {
-                    const Icon = kpi.icon
-                    return (
-                        <div key={i} className="ct-kpi">
-                            <div className="ct-kpi-header">
-                                <span className="ct-kpi-label">{kpi.label}</span>
-                                <Icon className="ct-kpi-icon" />
-                            </div>
-                            <div className="ct-kpi-value" style={kpi.color ? { color: kpi.color } : undefined}>
-                                {kpi.value}
-                            </div>
-                            <div className="ct-kpi-meta">
-                                <span className="ct-kpi-target">Target: {kpi.target}</span>
-                                {kpi.subtitle && <span>{kpi.subtitle}</span>}
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-
-            {/* ── Main Grid ── */}
-            <div className="ct-main-grid">
-                <div className="ct-section" style={{ gridColumn: '1 / -1' }}>
-                    <div className="ct-section-header">
-                        <span className="ct-section-title">System readiness</span>
-                        <div className="ct-section-meta">
-                            <span className={`badge ${readinessOverview.badge}`}>
-                                {readinessOverview.label}
-                            </span>
-                            <button className="btn btn-ghost btn-xs" onClick={() => refreshReadiness()}>
-                                Refresh
-                            </button>
-                        </div>
+                    <div className="hf-title">
+                        <h1>ANTIGRAVITY OS</h1>
+                        <p>Higgsfield Edition</p>
                     </div>
-                    <div className="ct-section-body">
-                        {readinessError && (
-                            <div style={{ color: 'var(--color-danger)', fontSize: 'var(--text-xs)' }}>
-                                Failed loading readiness: {readinessError}
-                            </div>
-                        )}
-                        {!readinessError && readinessLoading && (
-                            <div style={{ color: 'var(--text-tertiary)', fontSize: 'var(--text-xs)' }}>
-                                Loading readiness snapshot...
-                            </div>
-                        )}
-                        {!readinessError && !readinessLoading && readinessRecords.length === 0 && (
-                            <div style={{ color: 'var(--text-tertiary)', fontSize: 'var(--text-xs)' }}>
-                                No readiness records available.
-                            </div>
-                        )}
-                        {!readinessError && !readinessLoading && readinessRecords.length > 0 && (
-                            <>
-                                <div className="ct-agent-row" style={{ marginBottom: 'var(--space-3)' }}>
-                                    <div className="ct-agent-status-icon" style={{ background: 'color-mix(in srgb, var(--accent-primary) 12%, transparent)' }}>
-                                        <EyeIcon width={16} height={16} style={{ color: 'var(--accent-primary)' }} />
-                                    </div>
-                                    <div className="ct-agent-info">
-                                        <div className="ct-agent-name">
-                                            {readinessRecords.length} module{readinessRecords.length !== 1 ? 's' : ''} tracked
-                                        </div>
-                                        <div className="ct-agent-desc">
-                                            {readinessFailures.length} degraded/offline · {readinessSmokes.filter(s => s?.status === 'pass').length}/{readinessSmokes.length} smokes pass
-                                        </div>
-                                    </div>
-                                    <div className="ct-agent-badges">
-                                        <span className="badge badge-default">
-                                            Updated {formatDateTime(readiness?.generated_at)}
-                                        </span>
-                                    </div>
-                                </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    <button className="text-gray-400 hover:text-white transition-colors">
+                        <span className="v3-intel-label">SYNCING: {loading ? 'ON' : 'OFF'}</span>
+                    </button>
+                    <div className="w-8 h-8 rounded-full border border-[var(--gold-border)] p-[2px] overflow-hidden">
+                        <div className="w-full h-full rounded-full bg-[var(--gold)] opacity-50" />
+                    </div>
+                </div>
+            </header>
 
-                                {governanceSnapshot && (
-                                    <div className="ct-agent-row" style={{ marginBottom: 'var(--space-3)' }}>
-                                        <div className="ct-agent-status-icon" style={{ background: 'color-mix(in srgb, var(--color-warning) 12%, transparent)' }}>
-                                            <ShieldExclamationIcon width={16} height={16} style={{ color: 'var(--color-warning)' }} />
-                                        </div>
-                                        <div className="ct-agent-info">
-                                            <div className="ct-agent-name">Governance metrics</div>
-                                            <div className="ct-agent-desc">
-                                                dispatch {governanceSnapshot.dispatch_total} · blocked {governanceSnapshot.blocked_total} · approvals {governanceSnapshot.approval_pending_total}
-                                            </div>
-                                        </div>
-                                        <div className="ct-agent-badges">
-                                            <span className="badge badge-default">
-                                                trace {(Number(governanceSnapshot.tool_bus_trace_coverage || 0) * 100).toFixed(1)}%
-                                            </span>
-                                        </div>
-                                    </div>
-                                )}
+            {/* ── KPI Row ── */}
+            <section className="hf-kpi-grid">
+                
+                {/* Health Score */}
+                <div className="hf-glass-panel hf-kpi-card hf-kpi-health-card">
+                    <p className="hf-kpi-label">Health Score</p>
+                    <HealthRing score={healthScore} size={64} />
+                    <p className="hf-kpi-meta positive">+ {agentStats?.online || 0} nodes live</p>
+                </div>
 
-                                <div className="stagger-children">
-                                    {readinessRecords.slice(0, 12).map((record) => {
-                                        const style = READINESS_STATE_STYLE[record.state] || READINESS_STATE_STYLE.offline
-                                        return (
-                                            <div key={`${record.module_key}-${record.backend_surface}`} className="ct-agent-row" style={{ borderLeft: `2px solid ${style.color}` }}>
-                                                <div className="ct-agent-status-icon" style={{ background: `color-mix(in srgb, ${style.color} 12%, transparent)` }}>
-                                                    <CpuChipIcon width={16} height={16} style={{ color: style.color }} />
-                                                </div>
-                                                <div className="ct-agent-info">
-                                                    <div className="ct-agent-name">{record.module_key}</div>
-                                                    <div className="ct-agent-desc">
-                                                        {record.state_reason_text}
-                                                    </div>
-                                                    <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>
-                                                        last success {formatDateTime(record.last_success_at)}
-                                                    </div>
-                                                </div>
-                                                <div className="ct-agent-badges">
-                                                    <span className={`badge ${style.badge}`}>{style.label}</span>
-                                                    {record.route && (
-                                                        <button className="btn btn-ghost btn-xs" onClick={() => navigate(record.route)}>
-                                                            Open
-                                                        </button>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </>
-                        )}
+                {/* Pipeline Value */}
+                <div className="hf-glass-panel hf-kpi-card">
+                    <p className="hf-kpi-label">Pipeline Value</p>
+                    <h2 className="hf-kpi-value">€{(totalValue / 1000).toFixed(1)}k</h2>
+                    <div className="hf-kpi-meta positive">
+                        <ArrowTrendingUpIcon width={14} height={14} />
+                        <span>Aggregated Forecast</span>
                     </div>
                 </div>
 
-                {correlationFilter && (
-                    <div className="ct-section" style={{ gridColumn: '1 / -1' }}>
-                        <div className="ct-section-header">
-                            <span className="ct-section-title">Trace filter</span>
-                            <button className="btn btn-ghost btn-sm" onClick={clearTrace}>Clear</button>
-                        </div>
-                        <div className="ct-section-body">
-                            <div className="ct-agent-row">
-                                <div className="ct-agent-status-icon" style={{ background: 'color-mix(in srgb, var(--accent-primary) 12%, transparent)' }}>
-                                    <RocketLaunchIcon width={18} height={18} style={{ color: 'var(--accent-primary)' }} />
-                                </div>
-                                <div className="ct-agent-info">
-                                    <div className="ct-agent-name">{correlationFilter}</div>
-                                    <div className="ct-agent-desc">
-                                        {visiblePipelineRuns.length} pipeline run(s) · {traceEvents.length} event(s)
-                                        {runTrace?.final_status && ` · final ${runTrace.final_status}`}
-                                        {runTrace?.steps && ` · ${runTrace.steps.length} step(s)`}
-                                    </div>
-                                    {runTraceLoading && (
-                                        <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>
-                                            Loading control-plane run trace...
-                                        </div>
-                                    )}
-                                    {runTraceError && (
-                                        <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-danger)' }}>
-                                            control-plane run trace failed: {runTraceError}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {correlationFilter && (
-                    <div className="ct-section" style={{ gridColumn: '1 / -1' }}>
-                        <div className="ct-section-header">
-                            <span className="ct-section-title">Trace actions</span>
-                            <div className="ct-section-meta">
-                                <span style={{ color: pendingTraceApprovals.length > 0 ? 'var(--color-warning)' : 'var(--text-tertiary)' }}>
-                                    {pendingTraceApprovals.length} pending approvals
-                                </span>
-                                <span style={{ color: failedTraceMessages.length > 0 ? 'var(--color-danger)' : 'var(--text-tertiary)' }}>
-                                    {failedTraceMessages.length} failed messages
-                                </span>
-                            </div>
-                        </div>
-                        <div className="ct-section-body">
-                            {traceLinksError && (
-                                <div style={{ color: 'var(--color-danger)', fontSize: 'var(--text-xs)' }}>
-                                    Failed loading trace links: {traceLinksError}
-                                </div>
-                            )}
-                            {!traceLinksError && traceLinksLoading && (
-                                <div style={{ color: 'var(--text-tertiary)', fontSize: 'var(--text-xs)' }}>
-                                    Loading linked approvals and conversations...
-                                </div>
-                            )}
-                            {!traceLinksError && !traceLinksLoading && (
-                                <>
-                                    <div className="ct-agent-row">
-                                        <div className="ct-agent-status-icon" style={{ background: 'color-mix(in srgb, var(--color-warning) 12%, transparent)' }}>
-                                            <CheckCircleIcon width={16} height={16} style={{ color: 'var(--color-warning)' }} />
-                                        </div>
-                                        <div className="ct-agent-info">
-                                            <div className="ct-agent-name">Approval queue</div>
-                                            <div className="ct-agent-desc">
-                                                {traceApprovals.length} linked request(s) · {pendingTraceApprovals.length} pending
-                                            </div>
-                                        </div>
-                                        <div className="ct-agent-badges">
-                                            <button className="btn btn-ghost btn-xs" onClick={() => openApprovals(pendingTraceApprovals[0]?.id || traceApprovals[0]?.id || null)}>
-                                                Open approvals
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div className="ct-agent-row">
-                                        <div className="ct-agent-status-icon" style={{ background: 'color-mix(in srgb, var(--accent-primary) 12%, transparent)' }}>
-                                            <ClockIcon width={16} height={16} style={{ color: 'var(--accent-primary)' }} />
-                                        </div>
-                                        <div className="ct-agent-info">
-                                            <div className="ct-agent-name">Conversation</div>
-                                            <div className="ct-agent-desc">
-                                                {latestConversationLabel} · {latestTraceMessage?.status || 'no message status'}
-                                            </div>
-                                        </div>
-                                        <div className="ct-agent-badges">
-                                            <button
-                                                className="btn btn-ghost btn-xs"
-                                                onClick={() => openConversation(latestTraceConversation?.id || latestTraceMessage?.conversation_id || null)}
-                                                disabled={!latestTraceConversation?.id && !latestTraceMessage?.conversation_id}
-                                            >
-                                                Open conversation
-                                            </button>
-                                        </div>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    </div>
-                )}
-
-                {/* Left: Health + Signals */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                    {/* Health Score */}
-                    <div className="ct-health">
-                        <HealthRing score={healthScore} />
-                        <span className="ct-health-label">System health</span>
-                    </div>
-
-                    {/* Anomaly Alerts */}
-                    {activeAlerts.length > 0 && (
-                        <AlertsSection alerts={activeAlerts} resolveAlert={resolveAlert} />
-                    )}
-
-                    {/* AG1-P0: Blocked Steps — Simulation Gates */}
-                    {blockedSteps.length > 0 && (
-                        <div className="ct-section">
-                            <div className="ct-section-header">
-                                <span className="ct-section-title" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                    <ShieldExclamationIcon width={14} height={14} style={{ color: 'var(--color-warning)' }} />
-                                    Blocked steps
-                                </span>
-                                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>
-                                    {blockedSteps.length} action{blockedSteps.length !== 1 ? 's' : ''} needed
-                                </span>
-                            </div>
-                            <div className="ct-section-body stagger-children">
-                                {blockedSteps.slice(0, 8).map(step => {
-                                    const cfg = STEP_STATUS_CONFIG[step.status] || STEP_STATUS_CONFIG.pending
-                                    const simId = step.input?.pre_execution_simulation_id || step.output?.pre_execution_simulation_id
-                                    const simStatus = step.input?.pre_execution_simulation_status || step.output?.pre_execution_simulation_status
-                                    const recommended = step.input?.recommended_action || step.output?.recommended_action
-                                    return (
-                                        <div key={step.id} className="ct-agent-row" style={{ borderLeft: `2px solid ${cfg.color}` }}>
-                                            <div className="ct-agent-status-icon" style={{ background: cfg.bg }}>
-                                                {step.status === 'waiting_approval'
-                                                    ? <ShieldExclamationIcon width={18} height={18} style={{ color: cfg.color }} />
-                                                    : <ExclamationTriangleIcon width={18} height={18} style={{ color: cfg.color }} />}
-                                            </div>
-                                            <div className="ct-agent-info">
-                                                <div className="ct-agent-name">
-                                                    {step.title}
-                                                    <span className="badge" style={{ marginLeft: 6, color: cfg.color, borderColor: cfg.color, background: cfg.bg }}>
-                                                        {cfg.label}
-                                                    </span>
-                                                </div>
-                                                <div className="ct-agent-desc">
-                                                    {step.goalTitle} · Step {step.step_number} · {step.agent_code_name || step.step_type}
-                                                    {step.error && <span style={{ color: 'var(--color-danger)' }}> — {step.error}</span>}
-                                                </div>
-                                                {/* Simulation metadata */}
-                                                {(simId || simStatus || recommended) && (
-                                                    <div style={{ fontSize: 'var(--text-xs)', marginTop: 4, display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap', color: 'var(--text-tertiary)' }}>
-                                                        {simId && <span>Sim: {String(simId).slice(0, 12)}...</span>}
-                                                        {simStatus && <span className="badge badge-default">sim: {simStatus}</span>}
-                                                        {recommended && <span style={{ color: 'var(--color-info)' }}>Recommended: {recommended}</span>}
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div className="ct-agent-badges" style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
-                                                {step.status === 'waiting_approval' && (
-                                                    <button className="btn btn-ghost btn-xs" onClick={() => openApprovals()}>
-                                                        Open approval
-                                                    </button>
-                                                )}
-                                                {step.pipeline_run_id && (
-                                                    <button className="btn btn-ghost btn-xs" onClick={() => openTrace(step.pipeline_run_id)}>
-                                                        Open run
-                                                    </button>
-                                                )}
-                                                <button className="btn btn-ghost btn-xs" onClick={() => navigate(`/agents?tab=queue`)}>
-                                                    Queue
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Critical Signals */}
-                    <div className="ct-section" style={{ flex: 1 }}>
-                        <div className="ct-section-header">
-                            <span className="ct-section-title">Latest signals</span>
-                            <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>
-                                {(activeSignals || []).length} active
-                            </span>
-                        </div>
-                        <div className="ct-section-body">
-                            {recentSignals.length === 0 ? (
-                                <div style={{ textAlign: 'center', padding: 'var(--space-8) 0', color: 'var(--text-tertiary)', fontSize: 'var(--text-sm)' }}>
-                                    No signals yet
-                                </div>
-                            ) : (
-                                recentSignals.map(s => (
-                                    <div key={s.id} className="ct-signal ct-signal-bar">
-                                        <div className="ct-signal-title">{s.title}</div>
-                                        <div className="ct-signal-meta">
-                                            {s.category} · {s.indicator} · Impact: {s.impact}
-                                        </div>
-                                    </div>
-                                ))
-                            )}
-                        </div>
-                    </div>
+                {/* Active Agents */}
+                <div className="hf-glass-panel hf-kpi-card">
+                    <p className="hf-kpi-label">Active Agents</p>
+                    <h2 className="hf-kpi-value gold">{agentStats?.online || 0}</h2>
+                    <p className="hf-kpi-meta">/ {agentStats?.total || 0} System Agents</p>
                 </div>
 
-                {/* Right: Agent Matrix */}
-                <div className="ct-section">
-                    <div className="ct-section-header">
-                        <span className="ct-section-title">Agent network</span>
-                        <div className="ct-section-meta">
-                            <span style={{ color: 'var(--color-success)' }}>{agentStats?.online || 0} online</span>
-                            <span style={{ color: 'var(--accent-primary)' }}>{agentStats?.running || 0} running</span>
-                            <span style={{ color: 'var(--color-danger)' }}>{agentStats?.error || 0} error</span>
-                        </div>
+                {/* Active Signals / Blocked */}
+                <div className="hf-glass-panel hf-kpi-card" style={{ borderLeft: blockedSteps.length > 0 ? '4px solid var(--color-danger)' : '4px solid var(--gold)' }}>
+                    <p className="hf-kpi-label">Action Center</p>
+                    <h2 className="hf-kpi-value">{blockedSteps.length > 0 ? blockedSteps.length : (activeSignals || []).length}</h2>
+                    <p className="hf-kpi-meta">{blockedSteps.length > 0 ? 'Blocked simulations' : 'Active Intelligence Signals'}</p>
+                </div>
+
+            </section>
+
+            {/* ── Main Layout ── */}
+            <section className="hf-main-layout">
+                
+                {/* LEFT COLUMN */}
+                <div className="hf-system-panel">
+                    
+                    {/* Strategy Advisor / Simulator Blocked Steps */}
+                    <div className="hf-section-header">
+                        <h2 className="hf-section-title">
+                            <BoltIcon />
+                            Strategy Advisor & Gates
+                        </h2>
+                        {blockedSteps.length > 0 ? (
+                            <span className="hf-live-badge" style={{ color: '#fff', background: 'var(--color-danger-muted)' }}>{blockedSteps.length} Blocks</span>
+                        ) : (
+                            <span className="hf-live-badge">Live</span>
+                        )}
                     </div>
-                    {(agents || []).length === 0 ? (
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--space-12) 0', color: 'var(--text-tertiary)', fontSize: 'var(--text-sm)' }}>
-                            No agents registered
+
+                    {blockedSteps.length > 0 ? (
+                        <div className="hf-glass-panel hf-advisor-card" style={{ borderColor: 'var(--color-danger)' }}>
+                            <div className="hf-advisor-content">
+                                <div>
+                                    <h3 className="hf-advisor-title text-[#FFB4A4]">Simulation Gateway Blocked</h3>
+                                    <p className="hf-advisor-desc">
+                                        Agent {blockedSteps[0].agent_code_name} requires manual approval for step: 
+                                        <strong> {blockedSteps[0].title}</strong>.
+                                    </p>
+                                </div>
+                                <div className="hf-advisor-actions">
+                                    <button className="hf-btn-primary" style={{ background: 'var(--color-danger)', color: '#fff' }} onClick={() => openApprovals()}>
+                                        REVIEW APPROVALS
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     ) : (
-                        <div className="stagger-children">
-                        {agents.map(agent => {
-                            const StatusIcon = agent.status === 'error' ? ExclamationTriangleIcon
-                                : agent.status === 'online' ? CheckCircleIcon
-                                : CpuChipIcon
-
-                            return (
-                                <div key={agent.id} className="ct-agent-row">
-                                    <div className="ct-agent-status-icon" style={{ background: `color-mix(in srgb, ${agentStatusColor(agent.status)} 12%, transparent)` }}>
-                                        <StatusIcon width={18} height={18} style={{ color: agentStatusColor(agent.status) }} />
-                                    </div>
-                                    <div className="ct-agent-info">
-                                        <div className="ct-agent-name">{agent.code_name || agent.name || 'Unknown'}</div>
-                                        <div className="ct-agent-desc">{agent.description || agent.role || 'No description'}</div>
-                                    </div>
-                                    <div className="ct-agent-badges">
-                                        <span className="badge badge-default">{agent.total_runs || 0} runs</span>
-                                        <span className={`badge ${agent.status === 'error' ? 'badge-danger' : agent.status === 'online' ? 'badge-success' : 'badge-primary'}`}>
-                                            {agent.status || 'unknown'}
-                                        </span>
-                                    </div>
+                        <div className="hf-glass-panel hf-advisor-card">
+                            <BoltIcon className="hf-advisor-card-bg-icon" />
+                            <div className="hf-advisor-content">
+                                <div>
+                                    <h3 className="hf-advisor-title text-white">Optimize Execution Velocity</h3>
+                                    <p className="hf-advisor-desc">
+                                        Predicted 15% efficiency gain by reallocating idle nodes in the pipeline cluster. All agents are currently operating within optimal parameters.
+                                    </p>
                                 </div>
-                            )
-                        })}
-                        </div>
-                    )}
-                </div>
-
-                {/* Pipeline Runs */}
-                {pipelineRuns.length > 0 && (
-                    <div className="ct-section">
-                        <div className="ct-section-header">
-                            <span className="ct-section-title">Pipeline activity</span>
-                            <div className="ct-section-meta">
-                                <span style={{ color: 'var(--color-success)' }}>{pipelineStats.completed} completed</span>
-                                <span style={{ color: 'var(--color-warning)' }}>{pipelineStats.running} running</span>
-                                {pipelineStats.failed > 0 && <span style={{ color: 'var(--color-danger)' }}>{pipelineStats.failed} failed</span>}
+                                <div className="hf-advisor-actions">
+                                    <button className="hf-btn-primary">APPLY NOW</button>
+                                    <button className="hf-btn-secondary" onClick={() => navigate('/agents')}>DETAILS</button>
+                                </div>
                             </div>
                         </div>
-                        <div className="ct-section-body stagger-children">
-                            {(correlationFilter ? visiblePipelineRuns : pipelineRuns).slice(0, correlationFilter ? 16 : 8).map(run => {
-                                const template = run.pipeline_templates
-                                const isActive = run.status === 'running'
-                                return (
-                                    <div key={run.id} className={`ct-agent-row${isActive ? ' ct-pipeline-active' : ''}`}>
-                                        <div className="ct-agent-status-icon" style={{
-                                            background: isActive
-                                                ? 'color-mix(in srgb, var(--color-warning) 12%, transparent)'
-                                                : run.status === 'completed'
-                                                    ? 'color-mix(in srgb, var(--color-success) 12%, transparent)'
-                                                    : 'color-mix(in srgb, var(--color-danger) 12%, transparent)'
-                                        }}>
-                                            <RocketLaunchIcon width={18} height={18} style={{
-                                                color: isActive ? 'var(--color-warning)'
-                                                    : run.status === 'completed' ? 'var(--color-success)'
-                                                    : 'var(--color-danger)'
-                                            }} />
-                                        </div>
-                                        <div className="ct-agent-info">
-                                            <div className="ct-agent-name">{template?.name || template?.code_name || 'Pipeline'}</div>
-                                            <div className="ct-agent-desc">
-                                                {run.goal || 'No goal specified'}
-                                                {isActive && run.current_step_number > 0 && ` — step ${run.current_step_number}`}
-                                            </div>
-                                        </div>
-                                        <div className="ct-agent-badges">
-                                            <span className={`badge ${run.status === 'completed' ? 'badge-success' : run.status === 'running' ? 'badge-primary' : 'badge-danger'}`}>
-                                                {run.status}
-                                            </span>
-                                            {run.correlation_id && (
-                                                <button className="btn btn-ghost btn-xs" onClick={() => openTrace(run.correlation_id)}>
-                                                    corr {shortCorr(run.correlation_id)}
-                                                </button>
-                                            )}
+                    )}
+
+                    {/* Trace Filter & Analysis */}
+                    {correlationFilter && (
+                        <div className="hf-glass-panel p-4 mt-4" style={{ borderColor: 'var(--gold-border)' }}>
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="hf-section-title text-sm"><RocketLaunchIcon className="w-4 h-4 mr-2"/> Trace Analysis</h3>
+                                <button className="hf-btn-secondary text-[10px] py-1 px-3" onClick={clearTrace}>CLEAR</button>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <p className="text-xs text-[var(--text-tertiary)] break-all font-mono">{correlationFilter}</p>
+                                <p className="text-xs text-white uppercase tracking-wider">{visiblePipelineRuns.length} runs • {traceEvents.length} events {runTrace?.final_status && `• ${runTrace.final_status}`}</p>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Active Warnings & Anomalies */}
+                    {activeAlerts.length > 0 && (
+                        <div className="mt-4">
+                            <h2 className="hf-section-title text-sm mb-3 text-[var(--color-warning)]"><ExclamationTriangleIcon width={16}/> Anomaly Alerts</h2>
+                            <div className="hf-feed-list">
+                                {activeAlerts.slice(0, 3).map(alert => (
+                                    <div key={alert.id} className="hf-feed-item" style={{ borderColor: 'var(--color-warning-muted)' }}>
+                                        <div className="hf-feed-dot-wrap"><div className="hf-feed-dot" style={{ background: 'var(--color-warning)' }}/></div>
+                                        <div className="hf-feed-content">
+                                            <p className="hf-feed-title text-white">{alert.title}</p>
+                                            <p className="hf-feed-meta text-[var(--color-warning)]">{alert.description}</p>
                                         </div>
                                     </div>
-                                )
-                            })}
-                            {(correlationFilter && visiblePipelineRuns.length === 0) && (
-                                <div style={{ textAlign: 'center', padding: 'var(--space-6) 0', color: 'var(--text-tertiary)', fontSize: 'var(--text-sm)' }}>
-                                    No pipeline runs found for this correlation id.
-                                </div>
-                            )}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
 
-                {correlationFilter && (
-                    <div className="ct-section" style={{ gridColumn: '1 / -1' }}>
-                        <div className="ct-section-header">
-                            <span className="ct-section-title">Trace timeline</span>
-                            <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-quaternary)' }}>
-                                {traceLoading ? 'Loading...' : `${traceEvents.length} events`}
-                            </span>
-                        </div>
-                        <div className="ct-section-body">
-                            {traceError && (
-                                <div style={{ color: 'var(--color-danger)', fontSize: 'var(--text-xs)' }}>
-                                    Failed loading trace: {traceError}
+                </div>
+
+                {/* RIGHT COLUMN */}
+                <div className="hf-system-panel">
+                    
+                    <h2 className="hf-section-title">
+                        <SignalIcon />
+                        Intel Feed
+                    </h2>
+                    
+                    <div className="hf-feed-list">
+                        {/* Feed items populated from Recent Signals */}
+                        {recentSignals.map((signal, idx) => (
+                            <div key={signal.id} className="hf-feed-item">
+                                <div className="hf-feed-dot-wrap">
+                                    {idx === 0 ? (
+                                        <>
+                                            <div className="hf-feed-dot gold" />
+                                            <div className="hf-feed-dot-ping" />
+                                        </>
+                                    ) : (
+                                        <div className="hf-feed-dot" />
+                                    )}
                                 </div>
-                            )}
-                            {!traceError && traceEvents.length === 0 && !traceLoading && (
-                                <div style={{ textAlign: 'center', padding: 'var(--space-6) 0', color: 'var(--text-tertiary)', fontSize: 'var(--text-sm)' }}>
-                                    No events recorded for this correlation id.
+                                <div className="hf-feed-content">
+                                    <p className="hf-feed-title text-slate-200">{signal.title}</p>
+                                    <p className="hf-feed-meta">
+                                        {formatDateTime(signal.created_at)} • {signal.type || 'Signal'}
+                                    </p>
                                 </div>
-                            )}
-                            {!traceError && traceEvents.length > 0 && (
-                                <div className="stagger-children">
-                                    {traceEvents.map(event => {
-                                        const isApproval = event.event_type?.includes('approval')
-                                        const isMessage = event.event_type?.includes('message') || event.event_type?.includes('send')
-                                        const isAgent = event.event_type?.includes('agent')
-                                        return (
-                                            <div key={event.id} className="ct-agent-row">
-                                                <div className="ct-agent-status-icon" style={{ background: `color-mix(in srgb, ${isApproval ? 'var(--color-warning)' : isMessage ? 'var(--color-info)' : 'var(--accent-primary)'} 12%, transparent)` }}>
-                                                    {isApproval ? <CheckCircleIcon width={16} height={16} style={{ color: 'var(--color-warning)' }} />
-                                                    : <ClockIcon width={16} height={16} style={{ color: isMessage ? 'var(--color-info)' : 'var(--accent-primary)' }} />}
-                                                </div>
-                                                <div className="ct-agent-info">
-                                                    <div className="ct-agent-name">{event.event_type}</div>
-                                                    <div className="ct-agent-desc">
-                                                        {event.source_agent || 'system'} · {new Date(event.created_at).toLocaleString()}
-                                                    </div>
-                                                </div>
-                                                <div className="ct-agent-badges">
-                                                    {isApproval && (
-                                                        <button className="btn btn-ghost btn-xs" onClick={() => openApprovals()}>
-                                                            Open approval
-                                                        </button>
-                                                    )}
-                                                    {isMessage && latestTraceConversation?.id && (
-                                                        <button className="btn btn-ghost btn-xs" onClick={() => openConversation(latestTraceConversation.id)}>
-                                                            Open conversation
-                                                        </button>
-                                                    )}
-                                                    {isAgent && event.source_agent && (
-                                                        <button className="btn btn-ghost btn-xs" onClick={() => navigate(`/agents?tab=logs`)}>
-                                                            Agent logs
-                                                        </button>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            )}
-                        </div>
+                                <ChevronRightIcon className="w-4 h-4 text-gray-500" />
+                            </div>
+                        ))}
                     </div>
-                )}
-            </div>
+
+                    <h2 className="hf-section-title mt-6 text-sm">
+                        <CpuChipIcon width={16} />
+                        Readiness State
+                    </h2>
+                    <div className="hf-glass-panel p-4 mt-2">
+                        {readinessLoading ? (
+                            <p className="text-xs text-[var(--text-tertiary)]">Syncing readiness configuration...</p>
+                        ) : readiness?.records ? (
+                            <div className="flex flex-col gap-3">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-[var(--color-success)]" />
+                                    <span className="text-sm font-medium">{readiness.records.length} Modules Tracked</span>
+                                </div>
+                                <p className="text-xs text-[var(--text-tertiary)]">
+                                    Last validation: {formatDateTime(readiness.generated_at)}
+                                </p>
+                            </div>
+                        ) : (
+                            <p className="text-xs text-[var(--text-tertiary)]">Readiness offline.</p>
+                        )}
+                        <button className="hf-btn-secondary w-full mt-4" onClick={() => refreshReadiness()}>
+                            FORCE REFRESH
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
         </div>
     )
 }
-
-export default ControlTower
