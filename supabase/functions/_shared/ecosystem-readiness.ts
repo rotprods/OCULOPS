@@ -32,6 +32,17 @@ function asArray(value: unknown): unknown[] {
   return Array.isArray(value) ? value : [];
 }
 
+function normalizeErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "object" && error !== null) {
+    const candidate = error as Record<string, unknown>;
+    const message = compact(candidate.message || candidate.details || candidate.hint || candidate.code);
+    if (message) return message;
+  }
+  const text = compact(error);
+  return text || fallback;
+}
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -321,25 +332,22 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
       };
     }),
     (async () => {
-      const scoped = withOrgScope(
-        admin
-          .from("api_connectors")
-          .select("id, health_status, is_active, updated_at, last_healthcheck_at, last_synced_at")
-          .eq("is_active", true),
-        orgId,
-      );
-      const { data, error } = await scoped;
+      // api_connectors is global in current schema (no org_id column).
+      const { data, error } = await admin
+        .from("api_connectors")
+        .select("id, health_status, is_active, created_at, last_healthcheck_at, last_synced_at")
+        .eq("is_active", true);
       if (error) throw error;
       const rows = (data || []) as Array<Record<string, unknown>>;
       const live = rows.filter((row) => compact(row.health_status) === "live");
-      const latest = pickLatestIso(rows.map((row) => compact(row.last_healthcheck_at || row.last_synced_at || row.updated_at)));
+      const latest = pickLatestIso(rows.map((row) => compact(row.last_healthcheck_at || row.last_synced_at || row.created_at)));
       return {
         activeCount: rows.length,
         liveCount: live.length,
         lastSuccessAt: latest,
       };
     })().catch((error) => {
-      warnings.push(error instanceof Error ? `connector readiness failed: ${error.message}` : "connector readiness failed");
+      warnings.push(`connector readiness failed: ${normalizeErrorMessage(error, "unknown error")}`);
       return { activeCount: 0, liveCount: 0, lastSuccessAt: null };
     }),
     (async () => {
@@ -442,15 +450,12 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
       return { entryCount: 0, latestStatus: "", latestSync: null, lastSuccessAt: null };
     }),
     (async () => {
-      const scoped = withOrgScope(
-        admin
-          .from("agent_registry")
-          .select("id, status, updated_at, total_runs")
-          .order("updated_at", { ascending: false })
-          .limit(400),
-        orgId,
-      );
-      const { data, error } = await scoped;
+      // agent_registry is global in current schema (no org_id column).
+      const { data, error } = await admin
+        .from("agent_registry")
+        .select("id, status, updated_at, total_runs")
+        .order("updated_at", { ascending: false })
+        .limit(400);
       if (error) throw error;
 
       const rows = (data || []) as Array<Record<string, unknown>>;
@@ -464,13 +469,13 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
         lastSuccessAt: pickLatestIso(rows.map((row) => compact(row.updated_at))),
       };
     })().catch((error) => {
-      warnings.push(error instanceof Error ? `marketplace readiness failed: ${error.message}` : "marketplace readiness failed");
+      warnings.push(`marketplace readiness failed: ${normalizeErrorMessage(error, "unknown error")}`);
       return { total: 0, active: 0, lastSuccessAt: null };
     }),
     (async () => {
       let query = admin
         .from("simulation_runs")
-        .select("id, status, created_at, updated_at")
+        .select("id, status, created_at")
         .gte("created_at", sinceIso)
         .order("created_at", { ascending: false })
         .limit(300);
@@ -491,7 +496,7 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
         total: rows.length,
         passed: passed.length,
         failed: failed.length,
-        lastSuccessAt: compact(passed[0]?.updated_at || passed[0]?.created_at) || null,
+        lastSuccessAt: compact(passed[0]?.created_at) || null,
       };
     })().catch((error) => {
       warnings.push(error instanceof Error ? `simulation readiness failed: ${error.message}` : "simulation readiness failed");
@@ -588,6 +593,9 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
   ]);
 
   const records: EcosystemReadinessRecord[] = [];
+  const syntheticMessagingSmokePass = smokeBundle.smokes.some((smoke) =>
+    compact(smoke.smoke_case_id) === "ag2_c6_synthetic" && compact(smoke.status).toLowerCase() === "pass"
+  );
 
   const governanceWarnings = asArray(asRecord(governanceBundle.governance).warnings)
     .map((entry) => compact(entry))
@@ -649,14 +657,16 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     backendSurface: "messaging-dispatch|gmail-inbound|messaging-channel-oauth",
     state: channelsBundle.activeRealCount > 0
       ? (channelsBundle.failedCount > 0 ? "degraded" : "connected")
-      : (channelsBundle.activeSyntheticCount > 0 ? "simulated" : "offline"),
+      : ((channelsBundle.activeSyntheticCount > 0 || syntheticMessagingSmokePass) ? "simulated" : "offline"),
     reasonCode: channelsBundle.activeRealCount > 0
       ? (channelsBundle.failedCount > 0 ? "messaging_recent_failures" : "messaging_real_channels_active")
-      : (channelsBundle.activeSyntheticCount > 0 ? "messaging_synthetic_only" : "messaging_no_active_channels"),
+      : ((channelsBundle.activeSyntheticCount > 0 || syntheticMessagingSmokePass)
+        ? "messaging_synthetic_only"
+        : "messaging_no_active_channels"),
     reasonText: channelsBundle.activeRealCount > 0
       ? `Active real channels=${channelsBundle.activeRealCount}; recent failed messages=${channelsBundle.failedCount}.`
-      : (channelsBundle.activeSyntheticCount > 0
-        ? "Synthetic messaging harness is active; provider credentials are intentionally excluded in code-first scope."
+      : ((channelsBundle.activeSyntheticCount > 0 || syntheticMessagingSmokePass)
+        ? "Synthetic messaging evidence is active; provider credentials are intentionally excluded in code-first scope."
         : "No active messaging channels detected."),
     lastSuccessAt: channelsBundle.lastSuccessAt,
     correlationId: channelsBundle.lastCorrelationId,

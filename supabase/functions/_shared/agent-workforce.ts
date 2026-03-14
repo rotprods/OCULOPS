@@ -80,23 +80,37 @@ function staticRegistryAgents(): AgentWorkforceNode[] {
   });
 }
 
+async function queryAgentRegistryRowsWithOptionalOrgScope(orgId: string | null) {
+  let scopedQuery = admin
+    .from("agent_registry")
+    .select("*")
+    .order("updated_at", { ascending: false });
+
+  if (orgId) {
+    scopedQuery = scopedQuery.or(`org_id.eq.${orgId},org_id.is.null`);
+  } else {
+    scopedQuery = scopedQuery.is("org_id", null);
+  }
+
+  const scopedResult = await scopedQuery;
+  if (!scopedResult.error) return scopedResult;
+
+  const errorCode = compact((scopedResult.error as Record<string, unknown>)?.code);
+  if (errorCode !== "42703") return scopedResult;
+
+  // Current production schema has no org_id on agent_registry; retry unscoped.
+  return await admin
+    .from("agent_registry")
+    .select("*")
+    .order("updated_at", { ascending: false });
+}
+
 export async function getAgentWorkforceSnapshot(orgId?: string | null): Promise<AgentWorkforceSnapshot> {
   const warnings: string[] = [];
   const normalizedOrgId = compact(orgId) || null;
 
   try {
-    let query = admin
-      .from("agent_registry")
-      .select("*")
-      .order("updated_at", { ascending: false });
-
-    if (normalizedOrgId) {
-      query = query.or(`org_id.eq.${normalizedOrgId},org_id.is.null`);
-    } else {
-      query = query.is("org_id", null);
-    }
-
-    const { data, error } = await query;
+    const { data, error } = await queryAgentRegistryRowsWithOptionalOrgScope(normalizedOrgId);
     if (error) throw error;
 
     const mapped = (data || []).map((row) => mapDbAgent(row as Record<string, unknown>));

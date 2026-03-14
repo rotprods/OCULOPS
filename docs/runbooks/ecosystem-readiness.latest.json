@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-14T00:14:12.837Z",
+  "generated_at": "2026-03-14T00:43:50.019Z",
   "version": "1.0.0",
-  "overall_state": "red",
+  "overall_state": "green",
   "records": [
     {
       "module_key": "control_tower",
@@ -10,8 +10,8 @@
       "state": "connected",
       "state_reason_code": "control_plane_snapshot_ok",
       "state_reason_text": "Control-plane readiness snapshot is available.",
-      "last_success_at": "2026-03-14T00:14:12.837Z",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "last_success_at": "2026-03-14T00:43:50.019Z",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/control-tower?tab=readiness"
@@ -23,8 +23,8 @@
       "state": "connected",
       "state_reason_code": "governance_metrics_ok",
       "state_reason_text": "Dispatch=12, blocked=0.",
-      "last_success_at": "2026-03-14T00:14:12.837Z",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "last_success_at": "2026-03-14T00:43:50.019Z",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "governor_runtime",
       "remediation_action": "/control-tower?tab=governance"
@@ -37,7 +37,7 @@
       "state_reason_code": "pipeline_activity_ok",
       "state_reason_text": "Runs=4, completed=4, failed=0.",
       "last_success_at": "2026-03-13T06:25:47.317568+00:00",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "fd06b0e3-311e-4d5c-a2b7-31f366bc526e",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/automation"
@@ -48,9 +48,9 @@
       "backend_surface": "messaging-dispatch|gmail-inbound|messaging-channel-oauth",
       "state": "simulated",
       "state_reason_code": "messaging_synthetic_only",
-      "state_reason_text": "Synthetic messaging harness is active; provider credentials are intentionally excluded in code-first scope.",
+      "state_reason_text": "Synthetic messaging evidence is active; provider credentials are intentionally excluded in code-first scope.",
       "last_success_at": "2026-03-13T07:02:29.97687+00:00",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "c6-4ce63aea-4e0f-4c07-ae8f-cf6360b89522",
       "smoke_case_id": "ag2_c6_synthetic",
       "remediation_action": "/messaging"
@@ -59,11 +59,11 @@
       "module_key": "connector_proxy",
       "route": "/automation",
       "backend_surface": "api-proxy|tool-bus",
-      "state": "offline",
-      "state_reason_code": "connectors_missing",
-      "state_reason_text": "No active connectors available.",
-      "last_success_at": null,
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "state": "connected",
+      "state_reason_code": "connectors_live",
+      "state_reason_text": "6 live connector(s) available.",
+      "last_success_at": "2026-03-14T00:28:24.923+00:00",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/automation"
@@ -76,7 +76,7 @@
       "state_reason_code": "automation_workflows_available",
       "state_reason_text": "Workflows=32, active=29, dispatch_total=12, blocked_total=0.",
       "last_success_at": "2026-03-13T09:16:43.313+00:00",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/automation"
@@ -85,11 +85,11 @@
       "module_key": "api_catalog",
       "route": "/intelligence",
       "backend_surface": "api_catalog_entries|api_connectors",
-      "state": "simulated",
-      "state_reason_code": "api_catalog_seed_or_uninstalled",
-      "state_reason_text": "Catalog entries=1000; live connectors=0.",
-      "last_success_at": "2026-03-13T06:24:30.159+00:00",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "state": "connected",
+      "state_reason_code": "api_catalog_live_connectors",
+      "state_reason_text": "Catalog entries=1000; live connectors=6.",
+      "last_success_at": "2026-03-14T00:28:18.236+00:00",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/intelligence"
@@ -102,7 +102,7 @@
       "state_reason_code": "n8n_catalog_synced",
       "state_reason_text": "Template entries=1000; latest sync status=completed.",
       "last_success_at": "2026-03-13T07:52:09.127+00:00",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "npm run sync:n8n-templates"
@@ -111,11 +111,11 @@
       "module_key": "marketplace",
       "route": "/marketplace",
       "backend_surface": "agent_registry|api_catalog_entries|n8n_template_entries",
-      "state": "offline",
-      "state_reason_code": "marketplace_agents_missing",
-      "state_reason_text": "No marketplace agents found.",
-      "last_success_at": null,
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "state": "connected",
+      "state_reason_code": "marketplace_agents_active",
+      "state_reason_text": "Active agents=7 of total=11.",
+      "last_success_at": "2026-03-11T16:24:17.968918+00:00",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "hard_block_routing",
       "remediation_action": "/marketplace"
@@ -124,75 +124,37 @@
       "module_key": "simulation",
       "route": "/simulation",
       "backend_surface": "simulation-engine|simulation_runs",
-      "state": "simulated",
-      "state_reason_code": "simulation_no_recent_runs",
-      "state_reason_text": "No recent simulation runs; simulation layer ready but idle.",
-      "last_success_at": null,
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
+      "state": "connected",
+      "state_reason_code": "simulation_runs_available",
+      "state_reason_text": "Simulation runs=2, passed=1, failed=1.",
+      "last_success_at": "2026-03-14T00:35:55.856138+00:00",
+      "last_checked_at": "2026-03-14T00:43:51.066Z",
       "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
       "smoke_case_id": "ag2_c6_synthetic",
       "remediation_action": "/simulation"
-    },
-    {
-      "module_key": "readiness_observability",
-      "route": "/control-tower",
-      "backend_surface": "control-plane:ecosystem_readiness",
-      "state": "degraded",
-      "state_reason_code": "readiness_partial_warnings",
-      "state_reason_text": "connector readiness failed",
-      "last_success_at": "2026-03-14T00:14:12.837Z",
-      "last_checked_at": "2026-03-14T00:14:14.410Z",
-      "correlation_id": "2a860007-e743-4e28-8b82-04d6a670e5ce",
-      "smoke_case_id": null,
-      "remediation_action": "/control-tower?tab=readiness"
     }
   ],
   "smokes": [
     {
       "smoke_case_id": "hard_block_routing",
       "status": "pass",
-      "checked_at": "2026-03-14T00:14:12.837Z",
+      "checked_at": "2026-03-14T00:43:50.019Z",
       "evidence_count": 34
     },
     {
       "smoke_case_id": "ag2_c6_synthetic",
       "status": "pass",
-      "checked_at": "2026-03-14T00:14:12.837Z",
+      "checked_at": "2026-03-14T00:43:50.019Z",
       "evidence_count": 2
     },
     {
       "smoke_case_id": "governor_runtime",
       "status": "pass",
-      "checked_at": "2026-03-14T00:14:12.837Z",
+      "checked_at": "2026-03-14T00:43:50.019Z",
       "evidence_count": 2
     }
   ],
-  "failures": [
-    {
-      "module_key": "connector_proxy",
-      "state": "offline",
-      "reason_code": "connectors_missing",
-      "reason": "No active connectors available.",
-      "remediation_action": "/automation",
-      "smoke_case_id": "hard_block_routing"
-    },
-    {
-      "module_key": "marketplace",
-      "state": "offline",
-      "reason_code": "marketplace_agents_missing",
-      "reason": "No marketplace agents found.",
-      "remediation_action": "/marketplace",
-      "smoke_case_id": "hard_block_routing"
-    },
-    {
-      "module_key": "readiness_observability",
-      "state": "degraded",
-      "reason_code": "readiness_partial_warnings",
-      "reason": "connector readiness failed",
-      "remediation_action": "/control-tower?tab=readiness",
-      "smoke_case_id": null
-    }
-  ],
+  "failures": [],
   "governance_metrics": {
     "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
     "window": "last_24h",

@@ -1221,7 +1221,7 @@
     "is_listed": true,
     "docs_url": "https://microlink.io",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "prospector",
@@ -1238,12 +1238,11 @@
     "command_bindings": [
       "catalog_api_lookup",
       "launch_n8n",
-      "run_api",
-      "install_connector"
+      "run_connector"
     ],
     "automation_actions": [
       "launch_n8n",
-      "run_api",
+      "run_connector",
       "run_agent",
       "create_deal",
       "compose_message",
@@ -1252,7 +1251,7 @@
     "n8n_patterns": [
       "n8n_dataset_ingestion",
       "n8n_reference_data_refresh",
-      "n8n_install_connector_then_run",
+      "n8n_webhook_to_automation_runner_run_connector",
       "n8n_http_request_direct_public_api"
     ]
   },

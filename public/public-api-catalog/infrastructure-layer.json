@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-14T00:43:32.586Z",
+  "generated_at": "2026-03-14T00:44:46.001Z",
   "source": "supabase",
   "stats": {
     "entry_count": 1426,
     "category_count": 51,
-    "executable_now_count": 6,
-    "installable_count": 6,
+    "executable_now_count": 7,
+    "installable_count": 5,
     "docs_only_count": 1414,
-    "live_connector_count": 6,
-    "adapter_ready_count": 6,
+    "live_connector_count": 7,
+    "adapter_ready_count": 5,
     "candidate_count": 417,
     "auth_mix": {
       "none": 668,
@@ -148,7 +148,7 @@
       "is_listed": true,
       "sync_run_id": "247c89b0-79cb-4c56-a99a-c29dd5443e88",
       "created_at": "2026-03-10T03:37:01.757764+00:00",
-      "updated_at": "2026-03-14T00:28:20.260937+00:00",
+      "updated_at": "2026-03-14T00:44:33.832509+00:00",
       "connector_id": "d4a159e5-ea6b-4c1a-8f5a-db607cce01f5",
       "connector_health_status": "live",
       "template_key": "administrative-divisions-db",
@@ -239,7 +239,7 @@
       "is_listed": true,
       "sync_run_id": "247c89b0-79cb-4c56-a99a-c29dd5443e88",
       "created_at": "2026-03-10T03:37:01.757764+00:00",
-      "updated_at": "2026-03-14T00:28:20.955026+00:00",
+      "updated_at": "2026-03-14T00:44:34.55369+00:00",
       "connector_id": "1517bc55-9186-4c88-b9c2-0d85447ff1a0",
       "connector_health_status": "live",
       "template_key": "adresse-data-gouv",
@@ -767,7 +767,7 @@
       "is_listed": true,
       "sync_run_id": "247c89b0-79cb-4c56-a99a-c29dd5443e88",
       "created_at": "2026-03-10T03:37:01.757764+00:00",
-      "updated_at": "2026-03-14T00:28:25.003677+00:00",
+      "updated_at": "2026-03-14T00:44:38.50754+00:00",
       "connector_id": "aa482d7d-bc0a-4cfb-8bc3-0223f88d1fe8",
       "connector_health_status": "live",
       "template_key": "arbeitnow",
@@ -3648,7 +3648,7 @@
       "is_listed": true,
       "sync_run_id": "247c89b0-79cb-4c56-a99a-c29dd5443e88",
       "created_at": "2026-03-10T03:37:01.757764+00:00",
-      "updated_at": "2026-03-14T00:28:21.613303+00:00",
+      "updated_at": "2026-03-14T00:44:35.17548+00:00",
       "connector_id": "9e9237b2-aa75-4990-a6cb-4be3e2d85353",
       "connector_health_status": "live",
       "template_key": "disify",
@@ -4610,7 +4610,7 @@
       "is_listed": true,
       "sync_run_id": "247c89b0-79cb-4c56-a99a-c29dd5443e88",
       "created_at": "2026-03-10T03:37:01.757764+00:00",
-      "updated_at": "2026-03-14T00:28:24.333822+00:00",
+      "updated_at": "2026-03-14T00:44:38.068353+00:00",
       "connector_id": "d416a9c5-cf60-4e59-acd9-e5284303fb70",
       "connector_health_status": "live",
       "template_key": "fed-treasury",
@@ -8507,7 +8507,7 @@
         "cortex"
       ],
       "business_fit_score": 65,
-      "activation_tier": "adapter_ready",
+      "activation_tier": "live",
       "tags": [
         "open-data",
         "none",
@@ -8535,14 +8535,14 @@
       "is_listed": true,
       "sync_run_id": "247c89b0-79cb-4c56-a99a-c29dd5443e88",
       "created_at": "2026-03-10T03:37:01.757764+00:00",
-      "updated_at": "2026-03-14T00:28:22.498039+00:00",
+      "updated_at": "2026-03-14T00:44:36.24739+00:00",
       "connector_id": "2476832f-1c68-41c4-9b7f-3c5ad064544c",
-      "connector_health_status": "error",
+      "connector_health_status": "live",
       "template_key": "microlink",
       "bridge_profile": {
-        "bridge_mode": "install_then_connector_proxy",
+        "bridge_mode": "connector_proxy",
         "auth_burden": "open",
-        "executable_now": false,
+        "executable_now": true,
         "endpoint_name": "preview_url",
         "endpoint": {
           "method": "GET",
@@ -8571,16 +8571,18 @@
           "cortex"
         ],
         "automation": {
-          "action": null,
-          "can_run_now": false,
-          "requires_install": true
+          "action": "run_connector",
+          "can_run_now": true,
+          "requires_install": false
         },
         "n8n": {
           "action": "launch_n8n",
-          "bridge": "n8n_http_request_or_install_connector_first"
+          "bridge": "n8n_webhook -> automation-runner -> run_connector"
         },
         "skills": {
-          "live_access": [],
+          "live_access": [
+            "fetch_external_data"
+          ],
           "catalog_access": [
             "catalog_api_lookup"
           ]
@@ -12316,7 +12318,7 @@
       "is_listed": true,
       "sync_run_id": "247c89b0-79cb-4c56-a99a-c29dd5443e88",
       "created_at": "2026-03-10T03:37:02.031012+00:00",
-      "updated_at": "2026-03-14T00:28:23.023717+00:00",
+      "updated_at": "2026-03-14T00:44:36.775566+00:00",
       "connector_id": "c16aaddc-71a0-45e4-bb15-29f416e1ed1b",
       "connector_health_status": "live",
       "template_key": "open-meteo",

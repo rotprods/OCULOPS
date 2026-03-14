@@ -1,6 +1,6 @@
 # Public API Ecosystem Architecture
 
-Generated: 2026-03-14T00:43:41.427Z
+Generated: 2026-03-14T00:44:46.779Z
 Source: supabase
 
 ## Coverage
@@ -11,28 +11,28 @@ Source: supabase
 - Requires registration: 758
 - Free-public auto-import candidates: 603
 - Interesting for OCULOPS: 630
-- Executable now (live connectors): 6
+- Executable now (live connectors): 7
 - Registration backlog: 370
 
 ## Integration Modes
-- connector_proxy: 6
-- install_then_connector_proxy: 6
+- connector_proxy: 7
+- install_then_connector_proxy: 5
 - docs_only: 1414
 
 ## Command Bindings
 - catalog_api_lookup: 1426
 - launch_n8n: 1426
-- run_connector: 6
-- run_api: 662
-- install_connector: 6
+- run_connector: 7
+- run_api: 661
+- install_connector: 5
 
 ## Automation Actions
 - launch_n8n: 1426
-- run_connector: 6
+- run_connector: 7
 - run_agent: 630
 - create_deal: 178
 - compose_message: 178
-- run_api: 662
+- run_api: 661
 - notify: 472
 
 ## Delivery Notes
