@@ -2,6 +2,42 @@
 
 ---
 
+## Pendientes reales de esta sesión (2026-03-14)
+
+### n8n / MCP / Mac Mini
+- [ ] Reiniciar la sesión MCP/Codex para que `n8n-mcp` deje de usar el host viejo en runtime y tome el host actual:
+  - `https://ended-frontpage-frequencies-rolls.trycloudflare.com`
+- [ ] Re-ejecutar por MCP (no por curl) tras reinicio:
+  - `n8n_health_check` (status/diagnostic)
+  - `n8n_list_workflows`
+- [ ] Mantener túnel Cloudflare estable (si cambia URL, actualizar `.mcp.json` y `~/.codex/config.toml`).
+
+### Google Workspace / Gmail (bloqueo actual)
+- [ ] Completar OAuth de Google por CLI:
+  - `npm run gws -- auth login -s gmail`
+  - Nota: ahora bloquea por app OAuth no verificada / usuario de test no autorizado.
+- [ ] Alta de canal Gmail real por CLI (ya implementado):
+  - `npm run gws:bootstrap:gmail -- --org-id a11b1e98-7fd9-4789-aab9-ab5a77494627`
+- [ ] Validar runtime real de Gmail:
+  - `node scripts/smoke-provider-runtime.mjs --sync-gmail`
+- [ ] Regenerar readiness tras alta real:
+  - `npm run readiness:gate`
+
+### Readiness producción
+- [ ] Para pasar a `production` gate:
+  - definir `READINESS_ORG_ID`
+  - mover `messaging` de `simulated` a `connected` (Gmail real activo)
+  - cerrar warnings de `governance/control_tower` en modo advisory
+- [ ] Ejecutar:
+  - `npm run readiness:gate:production`
+  - opcional estricto: `npm run readiness:gate:production:strict`
+
+### Provider-backed pendiente (si se quiere full connected)
+- [ ] WhatsApp runtime: faltan secrets mínimos
+  - `WHATSAPP_TOKEN`
+  - `WHATSAPP_PHONE_NUMBER_ID`
+- [ ] (Inbound verificación avanzada): `WHATSAPP_VERIFY_TOKEN`, `META_APP_SECRET`
+
 ## Google Workspace — Sheets + Calendar + Drive
 > Backend 100% deployado. Solo pasos manuales en el navegador.
 > NO necesitas gcloud CLI ni ninguna herramienta — solo el navegador.
@@ -204,10 +240,10 @@ URL directa: https://console.cloud.google.com/apis/credentials?project=hale-carp
 
 ### Estado actual del artifact (última ejecución)
 - [x] Artifact generado correctamente:
-  - `overall_state = red`
+  - `overall_state = yellow`
   - `smokes = pass (hard_block_routing, ag2_c6_synthetic, governor_runtime)`
 - [ ] Módulos aún en rojo/amarillo:
-  - `messaging` (`messaging_no_active_channels`)
-  - `connector_proxy` (`connectors_missing`)
-  - `marketplace` (`marketplace_agents_missing`)
-  - `governance/control_tower` en advisory por `org_id` no resuelto en ejecución manual del artifact
+  - `control_tower` (`governance_advisory_mode`)
+  - `governance` (`governance_metrics_warning`)
+  - `messaging` (`messaging_synthetic_only`)
+  - `readiness_observability` (`readiness_partial_warnings`)
