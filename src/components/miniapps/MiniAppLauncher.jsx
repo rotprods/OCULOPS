@@ -7,7 +7,7 @@ import { useState, useMemo, useEffect, startTransition } from 'react'
 import { filterCoreApps } from './MiniAppRegistry'
 import MiniApp from './MiniApp'
 import ApiIntelligenceCard from './ApiIntelligenceCard'
-import { useApiCatalog } from '../../hooks/useApiCatalog'
+import { useApiActivationQueue } from '../../hooks/useApiActivationQueue'
 import { useApiNetwork } from '../../hooks/useApiNetwork'
 import { buildCatalogMiniApp, getTemplateByCatalogSlug } from '../../lib/publicApiConnectorTemplates'
 import { groupApiIntelligenceEntries, groupCatalogEntriesByAccessBurden } from '../../lib/publicApiCatalog'
@@ -23,6 +23,7 @@ const SECTIONS = [
   { id: 'core', label: 'Core', description: 'First-party live APIs, edge functions, and workflow bridges' },
   { id: 'installed', label: 'Installed', description: 'Connector proxies installed in Supabase' },
   { id: 'adapter_ready', label: 'Adapter Ready', description: 'Curated public APIs with install templates' },
+  { id: 'activation_queue', label: 'Activation Queue', description: 'Bulk install + healthcheck pipeline to move APIs live faster' },
   { id: 'catalog', label: 'Catalog', description: 'Full imported public API directory' },
 ]
 
@@ -40,6 +41,25 @@ function getStatusMeta(status, app) {
   }
 
   return { color: 'var(--text-tertiary)', dot: 'var(--text-tertiary)', label: app.source === 'public_catalog' ? 'CATALOG' : 'PLANNED' }
+}
+
+function getQueueStatusMeta(status) {
+  switch (status) {
+    case 'live':
+      return { label: 'LIVE', color: 'var(--color-success)', badge: 'badge-success' }
+    case 'installing':
+      return { label: 'INSTALLING', color: 'var(--warning)', badge: 'badge-warning' }
+    case 'healthchecking':
+      return { label: 'HEALTHCHECK', color: 'var(--accent-primary)', badge: 'badge-info' }
+    case 'credentials_missing':
+      return { label: 'CREDENTIALS MISSING', color: 'var(--warning)', badge: 'badge-warning' }
+    case 'healthcheck_failed':
+      return { label: 'HEALTHCHECK FAILED', color: 'var(--color-danger)', badge: 'badge-danger' }
+    case 'needs_template':
+      return { label: 'NEEDS TEMPLATE', color: 'var(--text-tertiary)', badge: 'badge-neutral' }
+    default:
+      return { label: 'READY', color: 'var(--text-secondary)', badge: 'badge-neutral' }
+  }
 }
 
 function StatCard({ label, value, color }) {
@@ -90,11 +110,20 @@ export default function MiniAppLauncher() {
     error,
     stats,
     syncRun,
+    source,
     installedApps,
     adapterReadyEntries,
     installConnector,
     reload,
-  } = useApiCatalog({ search, moduleTarget: moduleFilter, agentTarget: agentFilter, isListed: true })
+    items: activationQueueItems,
+    queueStats,
+    running: queueRunning,
+    lastRun,
+    activateBatch,
+    activateOne,
+    retryFailed,
+    refresh,
+  } = useApiActivationQueue({ search, moduleTarget: moduleFilter, agentTarget: agentFilter })
   const catalogEntries = entries
 
   const coreApps = useMemo(
@@ -145,6 +174,7 @@ export default function MiniAppLauncher() {
     core: coreApps,
     installed: installedCatalogEntries,
     adapter_ready: adapterReadyCatalogEntries,
+    activation_queue: activationQueueItems,
     catalog: pagedCatalogEntries,
   }
 
@@ -152,6 +182,7 @@ export default function MiniAppLauncher() {
     core: coreApps.length,
     installed: installedCatalogEntries.length,
     adapter_ready: adapterReadyCatalogEntries.length,
+    activation_queue: activationQueueItems.length,
     catalog: filteredCatalogEntries.length,
   }
 
@@ -188,12 +219,12 @@ export default function MiniAppLauncher() {
   }
 
   const handleRefresh = () => {
-    reload()
+    refresh()
     refreshCore()
   }
 
   const groupedSectionEntries = useMemo(() => {
-    if (section === 'core') return []
+    if (section === 'core' || section === 'activation_queue') return []
 
     const entriesForSection = section === 'installed'
       ? installedCatalogEntries
@@ -217,6 +248,7 @@ export default function MiniAppLauncher() {
 
     return groupApiIntelligenceEntries(filteredCatalogEntries).filter(group => group.entries.length > 0)
   }, [catalogView, filteredCatalogEntries, section])
+  const queueFailedCount = (queueStats.credentials_missing || 0) + (queueStats.healthcheck_failed || 0)
 
   if (selectedApp) {
     return (
@@ -244,7 +276,9 @@ export default function MiniAppLauncher() {
             {coreStats.liveCount || 0} core live · {coreStats.degradedCount || 0} limited · {stats.installedCount || 0} installed · {stats.entryCount || 0} catalog APIs
           </p>
           <p style={{ fontSize: '11px', color: 'var(--text-tertiary)', margin: '8px 0 0' }}>
-            {syncRun?.repo_pushed_at ? `Source pushed: ${new Date(syncRun.repo_pushed_at).toLocaleDateString()}` : 'Offline seed loaded'}
+            {syncRun?.repo_pushed_at
+              ? `Source pushed: ${new Date(syncRun.repo_pushed_at).toLocaleDateString()}`
+              : `Source: ${source === 'supabase' ? 'live catalog' : source === 'seed' ? 'offline seed' : 'unavailable'}`}
           </p>
         </div>
         <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
@@ -252,6 +286,7 @@ export default function MiniAppLauncher() {
           <StatCard label="Core Live" value={coreStats.liveCount || 0} color="var(--color-success)" />
           <StatCard label="Limited" value={coreStats.degradedCount || 0} color="var(--warning)" />
           <StatCard label="Installed" value={stats.installedCount || 0} color="var(--color-success)" />
+          <StatCard label="Queue Ready" value={queueStats.ready || 0} color="var(--accent-primary)" />
           <StatCard label="Catalog" value={stats.entryCount || 0} />
         </div>
       </div>
@@ -329,6 +364,11 @@ export default function MiniAppLauncher() {
         <div>
           <div style={{ fontSize: '13px', fontWeight: 700 }}>{SECTIONS.find(item => item.id === section)?.label}</div>
           <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>{SECTIONS.find(item => item.id === section)?.description}</div>
+          {section === 'activation_queue' && lastRun && (
+            <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--text-tertiary)' }}>
+              Last run · processed {lastRun.processed} · live {lastRun.live} · credentials {lastRun.credentialsMissing} · failed {lastRun.failed}
+            </div>
+          )}
           {section === 'catalog' && (
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '8px' }}>
               {catalogSummaryGroups.map(group => (
@@ -366,6 +406,35 @@ export default function MiniAppLauncher() {
             <button className="btn btn-sm btn-ghost" disabled={page === pageCount} onClick={() => setPage(current => Math.min(pageCount, current + 1))}>Next →</button>
           </div>
         )}
+        {section === 'activation_queue' && (
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            <span className="badge badge-neutral">Ready: {queueStats.ready || 0}</span>
+            <span className="badge badge-success">Live: {queueStats.live || 0}</span>
+            <span className="badge badge-warning">Credentials: {queueStats.credentials_missing || 0}</span>
+            <span className="badge badge-danger">Failed: {queueStats.healthcheck_failed || 0}</span>
+            <button
+              className="btn btn-sm btn-primary"
+              disabled={queueRunning || queueStats.actionable === 0}
+              onClick={() => activateBatch({ scope: 'top', limit: 10 })}
+            >
+              Activate top 10
+            </button>
+            <button
+              className="btn btn-sm btn-ghost"
+              disabled={queueRunning || queueStats.actionable === 0}
+              onClick={() => activateBatch({ scope: 'visible' })}
+            >
+              Activate visible
+            </button>
+            <button
+              className="btn btn-sm btn-ghost"
+              disabled={queueRunning || queueFailedCount === 0}
+              onClick={() => retryFailed()}
+            >
+              Retry failed
+            </button>
+          </div>
+        )}
       </div>
 
       <div style={{
@@ -377,13 +446,22 @@ export default function MiniAppLauncher() {
         paddingBottom: '16px',
       }}>
         {((section === 'core' && coreLoading && coreApps.length === 0) || (section !== 'core' && loading)) ? (
-          <EmptyPanel title={section === 'core' ? 'Checking live APIs...' : 'Loading catalog...'} description={section === 'core' ? 'Probing first-party functions and provider-backed services.' : 'Fetching installed connectors and public API metadata.'} />
+          <EmptyPanel
+            title={section === 'core' ? 'Checking live APIs...' : section === 'activation_queue' ? 'Preparing activation queue...' : 'Loading catalog...'}
+            description={section === 'core'
+              ? 'Probing first-party functions and provider-backed services.'
+              : section === 'activation_queue'
+                ? 'Ranking APIs by activation priority and connector readiness.'
+                : 'Fetching installed connectors and public API metadata.'}
+          />
         ) : sectionApps[section].length === 0 ? (
           <EmptyPanel
-            title={section === 'installed' ? 'No installed connectors' : 'No results'}
+            title={section === 'installed' ? 'No installed connectors' : section === 'activation_queue' ? 'No activation candidates' : 'No results'}
             description={section === 'installed'
               ? 'Install an adapter-ready connector to execute public APIs through the proxy.'
-              : 'Adjust the filters or sync the public API catalog.'}
+              : section === 'activation_queue'
+                ? 'Try broadening your filters or syncing the catalog to queue activation candidates.'
+                : 'Adjust the filters or sync the public API catalog.'}
           />
         ) : section === 'core' ? (
           <div style={{
@@ -475,6 +553,99 @@ export default function MiniAppLauncher() {
                     <span className="badge badge-neutral" style={{ fontSize: '9px', padding: '1px 6px' }}>
                       {app.source === 'core' ? 'edge' : app.runMode === 'connector_proxy' ? 'proxy' : 'docs'}
                     </span>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        ) : section === 'activation_queue' ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {queueRunning && (
+              <div style={{
+                padding: '10px 12px',
+                borderRadius: 'var(--radius-lg)',
+                border: '1px solid var(--border-default)',
+                background: 'var(--surface-base)',
+                fontSize: '12px',
+                color: 'var(--text-secondary)',
+              }}>
+                Activation queue is running. Progress updates appear in row statuses.
+              </div>
+            )}
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
+              gap: '8px',
+            }}>
+              <StatCard label="Total" value={queueStats.total || 0} />
+              <StatCard label="Actionable" value={queueStats.actionable || 0} color="var(--accent-primary)" />
+              <StatCard label="Live" value={queueStats.live || 0} color="var(--color-success)" />
+              <StatCard label="Creds" value={queueStats.credentials_missing || 0} color="var(--warning)" />
+              <StatCard label="Failed" value={queueStats.healthcheck_failed || 0} color="var(--color-danger)" />
+              <StatCard label="No Template" value={queueStats.needs_template || 0} />
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(240px, 2fr) repeat(4, minmax(80px, 0.8fr)) minmax(180px, 1fr)',
+              gap: '8px',
+              padding: '8px 10px',
+              border: '1px solid var(--border-subtle)',
+              borderRadius: 'var(--radius-lg)',
+              fontSize: '10px',
+              color: 'var(--text-tertiary)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.06em',
+              fontWeight: 700,
+            }}>
+              <div>API</div>
+              <div>State</div>
+              <div>Priority</div>
+              <div>Fit</div>
+              <div>Auth</div>
+              <div style={{ textAlign: 'right' }}>Actions</div>
+            </div>
+
+            {activationQueueItems.map(item => {
+              const stateMeta = getQueueStatusMeta(item.status)
+              return (
+                <div
+                  key={item.slug}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'minmax(240px, 2fr) repeat(4, minmax(80px, 0.8fr)) minmax(180px, 1fr)',
+                    gap: '8px',
+                    alignItems: 'center',
+                    padding: '10px',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: 'var(--radius-lg)',
+                    background: 'var(--surface-elevated)',
+                  }}
+                >
+                  <div>
+                    <div style={{ fontSize: '13px', fontWeight: 700 }}>{item.name}</div>
+                    <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>
+                      {item.statusDetail || item.description}
+                    </div>
+                  </div>
+                  <div>
+                    <span className={`badge ${stateMeta.badge}`} style={{ fontSize: '10px', color: stateMeta.color }}>
+                      {stateMeta.label}
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '12px', fontWeight: 700 }}>{item.integrationPriority}</div>
+                  <div style={{ fontSize: '12px', fontWeight: 700 }}>{item.businessFitScore}</div>
+                  <div style={{ fontSize: '11px', textTransform: 'uppercase' }}>{item.authType}</div>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
+                    <button className="btn btn-ghost btn-sm" onClick={() => handleOpenCatalogEntry(item.entry)}>Open details</button>
+                    <button
+                      className="btn btn-primary btn-sm"
+                      disabled={queueRunning || !item.isActionable}
+                      onClick={() => activateOne(item.slug)}
+                    >
+                      {item.status === 'installing' || item.status === 'healthchecking' ? 'Running...' : 'Activate now'}
+                    </button>
                   </div>
                 </div>
               )

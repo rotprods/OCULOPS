@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 
-const mockUseApiCatalog = vi.fn()
+const mockUseApiActivationQueue = vi.fn()
 const mockUseApiNetwork = vi.fn()
 
-vi.mock('../hooks/useApiCatalog', () => ({
-  useApiCatalog: (...args) => mockUseApiCatalog(...args),
+vi.mock('../hooks/useApiActivationQueue', () => ({
+  useApiActivationQueue: (...args) => mockUseApiActivationQueue(...args),
 }))
 
 vi.mock('../hooks/useApiNetwork', () => ({
@@ -38,7 +38,7 @@ describe('MiniAppLauncher catalog integration', () => {
       refresh: vi.fn(),
     })
 
-    mockUseApiCatalog.mockReturnValue({
+    mockUseApiActivationQueue.mockReturnValue({
       entries: [{
         slug: 'finance-fred-fred-stlouisfed-org',
         name: 'FRED',
@@ -64,10 +64,29 @@ describe('MiniAppLauncher catalog integration', () => {
         countsByAgentTarget: { strategist: 1 },
       },
       syncRun: null,
+      source: 'seed',
       installedApps: [],
       adapterReadyEntries: [],
       installConnector: vi.fn(),
       reload: vi.fn(),
+      refresh: vi.fn(),
+      items: [],
+      queueStats: {
+        total: 0,
+        actionable: 0,
+        ready: 0,
+        installing: 0,
+        healthchecking: 0,
+        live: 0,
+        credentials_missing: 0,
+        healthcheck_failed: 0,
+        needs_template: 0,
+      },
+      running: false,
+      lastRun: null,
+      activateBatch: vi.fn(),
+      activateOne: vi.fn(),
+      retryFailed: vi.fn(),
     })
   })
 
