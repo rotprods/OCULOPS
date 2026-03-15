@@ -1,6 +1,6 @@
 # Ecosystem Readiness
 
-Generated: 2026-03-15T16:04:25.913Z
+Generated: 2026-03-15T16:10:45.921Z
 Version: 2.0.0
 Overall state: GREEN
 Window: 24h
@@ -17,8 +17,8 @@ Window: 24h
 
 | module | state | reason_code | last_success_at | route | smoke_case |
 |---|---|---|---|---|---|
-| control_tower | connected | governance_no_org_scope | 2026-03-15T16:04:25.913Z | /control-tower | hard_block_routing |
-| governance | connected | governance_metrics_no_org_scope | 2026-03-15T16:04:25.913Z | /control-tower | governor_runtime |
+| control_tower | connected | governance_no_org_scope | 2026-03-15T16:10:45.921Z | /control-tower | hard_block_routing |
+| governance | connected | governance_metrics_no_org_scope | 2026-03-15T16:10:45.921Z | /control-tower | governor_runtime |
 | orchestration | connected | pipeline_activity_ok | 2026-03-15T15:33:07.144Z | /automation | hard_block_routing |
 | messaging | simulated | messaging_synthetic_only | 2026-03-14T05:09:52.291Z | /messaging | ag2_c6_synthetic |
 | connector_proxy | connected | connectors_live | 2026-03-15T15:31:05.548Z | /automation | hard_block_routing |
@@ -33,9 +33,9 @@ Window: 24h
 
 | smoke_case_id | status | checked_at | evidence_count |
 |---|---|---|---|
-| hard_block_routing | pass | 2026-03-15T16:04:25.913Z | 12 |
-| ag2_c6_synthetic | pass | 2026-03-15T16:04:25.913Z | 4 |
-| governor_runtime | pass | 2026-03-15T16:04:25.913Z | 2 |
+| hard_block_routing | pass | 2026-03-15T16:10:45.921Z | 12 |
+| ag2_c6_synthetic | pass | 2026-03-15T16:10:45.921Z | 4 |
+| governor_runtime | pass | 2026-03-15T16:10:45.921Z | 2 |
 
 ## Failures
 
