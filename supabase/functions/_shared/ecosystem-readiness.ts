@@ -718,7 +718,7 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     moduleKey: "control_tower",
     route: "/control-tower",
     backendSurface: "control-plane:ecosystem_readiness",
-    state: governanceActionableWarnings.length > 0 ? "degraded" : (governanceNoOrgAdvisoryOnly ? "simulated" : "connected"),
+    state: governanceActionableWarnings.length > 0 ? "degraded" : "connected",
     reasonCode: governanceActionableWarnings.length > 0
       ? "governance_advisory_mode"
       : (governanceNoOrgAdvisoryOnly ? "governance_no_org_scope" : "control_plane_snapshot_ok"),
@@ -737,7 +737,7 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     moduleKey: "governance",
     route: "/control-tower",
     backendSurface: "orchestration-engine:governor_metrics",
-    state: governanceActionableWarnings.length > 0 ? "degraded" : (governanceNoOrgAdvisoryOnly ? "simulated" : "connected"),
+    state: governanceActionableWarnings.length > 0 ? "degraded" : "connected",
     reasonCode: governanceActionableWarnings.length > 0
       ? "governance_metrics_warning"
       : (governanceNoOrgAdvisoryOnly ? "governance_metrics_no_org_scope" : "governance_metrics_ok"),
