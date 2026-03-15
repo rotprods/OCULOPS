@@ -39,5 +39,6 @@
 
 ## Release
 - [x] Commit includes V2 runtime + tests + migrations + runbook artifacts
-- [ ] Post-cutover monitor window started (15-30m)
+- [x] Post-cutover monitor window started (15-30m)
+- Evidence: `docs/runbooks/control-plane-v2-monitor-window.latest.json`
 - [x] Rollback instructions ready (disable V2 flags if needed)

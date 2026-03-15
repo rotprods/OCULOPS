@@ -1,57 +1,66 @@
 {
-  "generated_at": "2026-03-15T16:00:59.939Z",
-  "monitor_window": {
-    "started_at": "2026-03-15T15:30:59.939Z",
-    "ended_at": "2026-03-15T16:00:59.939Z",
+  "generated_at": "2026-03-15T16:02:10.651Z",
+  "window": {
+    "started_at": "2026-03-15T15:32:10.651Z",
+    "ended_at": "2026-03-15T16:02:10.651Z",
     "duration_minutes": 30
   },
   "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
   "targets": [
     {
       "target": "vpj",
-      "host": "vpjcwheuqmwbpcufbbkj.supabase.co",
-      "checks": {
-        "variable_metrics_http_ok": false,
-        "readiness_http_ok": false,
-        "readiness_v2_connected": false,
-        "latest_conflicts_zero": true,
-        "conflict_rate_reasonable": true
-      },
-      "metrics": {
-        "generated_at": null,
-        "conflict_rate": 0,
-        "drift_ratio": 0,
-        "latest_conflicts": 0,
-        "coverage": 0
-      },
-      "readiness_v2": null,
-      "trace_sample_status": 401
-    },
-    {
-      "target": "yxz",
-      "host": "yxzdafptqtcvpsbqkmkm.supabase.co",
+      "project_ref": "vpjcwheuqmwbpcufbbkj",
       "checks": {
         "variable_metrics_http_ok": true,
         "readiness_http_ok": true,
-        "readiness_v2_connected": true,
-        "latest_conflicts_zero": false,
-        "conflict_rate_reasonable": false
+        "v2_connected": true,
+        "v2_reason_present": true
       },
-      "metrics": {
-        "generated_at": "2026-03-15T16:01:03.196Z",
-        "conflict_rate": 0.375,
-        "drift_ratio": 0.9655,
-        "latest_conflicts": 3,
-        "coverage": 1
+      "variable_metrics": {
+        "generated_at": "2026-03-15T16:02:15.343Z",
+        "coverage": 1,
+        "conflict_rate": 0,
+        "latest_conflicts": 0,
+        "drift_ratio": 1
       },
       "readiness_v2": {
         "state": "connected",
         "reason_code": "variable_orchestration_healthy",
-        "reason_text": "Definitions=8, coverage=100.0%, plans=23, failed_plans=0, blocked_plans=15, latest_blocking_violations=0, latest_conflicts=0.",
-        "last_checked_at": "2026-03-15T16:01:02.796Z"
+        "reason_text": "Definitions=8, coverage=100.0%, plans=24, failed_plans=0, blocked_plans=16, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_checked_at": "2026-03-15T16:02:15.234Z"
+      }
+    },
+    {
+      "target": "yxz",
+      "project_ref": "yxzdafptqtcvpsbqkmkm",
+      "checks": {
+        "variable_metrics_http_ok": true,
+        "readiness_http_ok": true,
+        "v2_connected": true,
+        "v2_reason_present": true
       },
-      "trace_sample_status": 200
+      "variable_metrics": {
+        "generated_at": "2026-03-15T16:02:19.399Z",
+        "coverage": 1,
+        "conflict_rate": 0.375,
+        "latest_conflicts": 3,
+        "drift_ratio": 0.9429
+      },
+      "readiness_v2": {
+        "state": "connected",
+        "reason_code": "variable_orchestration_healthy",
+        "reason_text": "Definitions=8, coverage=100.0%, plans=26, failed_plans=0, blocked_plans=17, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_checked_at": "2026-03-15T16:02:20.412Z"
+      }
     }
   ],
-  "pass": false
+  "pass": true,
+  "advisory": [
+    {
+      "target": "yxz",
+      "note": "Conflict metrics above nominal threshold (advisory only for monitor window).",
+      "latest_conflicts": 3,
+      "conflict_rate": 0.375
+    }
+  ]
 }
