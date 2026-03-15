@@ -1,7 +1,7 @@
 # Control Tower
 
-Last updated: 2026-03-15T15:57:34.569Z
-Branch: `main` · SHA: `b118660`
+Last updated: 2026-03-15T15:58:18.371Z
+Branch: `main` · SHA: `2938573`
 
 ## System Pulse
 
@@ -11,7 +11,7 @@ Branch: `main` · SHA: `b118660`
 | Public API connectors live | 7/11 | missing keys: 4 |
 | n8n runnable workflows | 39/200 | blocked credentials: 161 |
 | n8n reconcile runnable | 166/198 | blocked: 29 |
-| Git sync | ahead 0 / behind 0 | dirty files: 7 |
+| Git sync | ahead 0 / behind 0 | dirty files: 0 |
 
 ## Workstreams
 
@@ -40,21 +40,15 @@ Branch: `main` · SHA: `b118660`
 
 - n8n workflows bloqueados por credenciales: 161
 - n8n reconcile con workflows bloqueados: 29
-- Working tree con cambios locales: 7 archivo(s)
 
 ## Pending Local Changes
 
-- `M claude.md`
-- ` M codex.md`
-- ` M package.json`
-- `?? .github/workflows/control-tower-sync.yml`
-- `?? AGENTS.md`
-- `?? ops/`
-- `?? scripts/update-control-tower.mjs`
+- Working tree clean
 
 ## GitHub Signals
 
-- Not available in current context (GITHUB_TOKEN or GITHUB_REPOSITORY missing)
+- Open pull requests: 0
+- Open issues: 0
 
 ## Usage Rules
 

@@ -1,21 +1,13 @@
 {
-  "generatedAt": "2026-03-15T15:57:34.569Z",
+  "generatedAt": "2026-03-15T15:58:18.371Z",
   "project": "OCULOPS",
   "git": {
     "branch": "main",
-    "sha": "b118660",
+    "sha": "2938573",
     "ahead": 0,
     "behind": 0,
-    "dirty": true,
-    "changedFiles": [
-      "M claude.md",
-      " M codex.md",
-      " M package.json",
-      "?? .github/workflows/control-tower-sync.yml",
-      "?? AGENTS.md",
-      "?? ops/",
-      "?? scripts/update-control-tower.mjs"
-    ]
+    "dirty": false,
+    "changedFiles": []
   },
   "readiness": {
     "overallState": "yellow",
@@ -288,13 +280,12 @@
   ],
   "warnings": [
     "n8n workflows bloqueados por credenciales: 161",
-    "n8n reconcile con workflows bloqueados: 29",
-    "Working tree con cambios locales: 7 archivo(s)"
+    "n8n reconcile con workflows bloqueados: 29"
   ],
   "github": {
-    "enabled": false,
-    "reason": "GITHUB_TOKEN or GITHUB_REPOSITORY missing",
-    "openPullRequests": null,
-    "openIssues": null
+    "enabled": true,
+    "reason": null,
+    "openPullRequests": 0,
+    "openIssues": 0
   }
 }
