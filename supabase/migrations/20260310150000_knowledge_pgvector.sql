@@ -4,7 +4,7 @@
 -- ═══════════════════════════════════════════════════
 
 -- Enable pgvector extension
-CREATE EXTENSION IF NOT EXISTS vector WITH SCHEMA extensions;
+-- CREATE EXTENSION IF NOT EXISTS vector WITH SCHEMA extensions;
 
 -- Add embedding column (1536 dimensions = OpenAI text-embedding-3-small)
 ALTER TABLE knowledge_entries

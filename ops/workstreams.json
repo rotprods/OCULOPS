@@ -3,7 +3,7 @@
     "project": "OCULOPS",
     "default_branch": "main",
     "owner": "Roberto Ortega",
-    "updated_by": "control-tower"
+    "updated_by": "antigravity"
   },
   "agents": [
     {
@@ -47,13 +47,13 @@
       "title": "n8n bridge + reconcile con OCULOPS",
       "status": "blocked",
       "priority": "P0",
-      "owner": "n8n-runtime",
+      "owner": "antigravity",
       "area": "automation",
       "branch": "main",
       "blocking": true,
-      "next_action": "Regenerar tunel Cloudflare y rerun audit/reconcile",
-      "notes": "N8N_API_URL con tunnel caido en esta sesion",
-      "updated_at": "2026-03-15T00:00:00Z"
+      "next_action": "Esperando N8N_API_KEY y variables de Supabase para poder correr el audit/reconcile",
+      "notes": "Tunnel regenerado ok, scripts fallaron por falta de credenciales",
+      "updated_at": "2026-03-16T00:23:00+01:00"
     },
     {
       "id": "WS-003",

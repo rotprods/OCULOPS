@@ -1,13 +1,24 @@
 {
-  "generatedAt": "2026-03-15T23:00:00.693Z",
+  "generatedAt": "2026-03-15T23:23:37.319Z",
   "project": "OCULOPS",
   "git": {
-    "branch": "main",
-    "sha": "3d53426",
+    "branch": "HEAD",
+    "sha": "6222374",
     "ahead": 0,
     "behind": 0,
-    "dirty": false,
-    "changedFiles": []
+    "dirty": true,
+    "changedFiles": [
+      "M  docs/OCULOPS_CONVERGENCE_MASTER.md",
+      "UU ops/control-tower.md",
+      "UU ops/control-tower.snapshot.json",
+      "M  ops/workstreams.json",
+      "A  reports/n8n-cloudflare-bridge.json",
+      "M  supabase/functions/_shared/whatsapp.ts",
+      "R  supabase/migrations/20260308102000_public_api_catalog_activation.sql -> supabase/migrations/20260310110500_public_api_catalog_activation.sql",
+      "M  supabase/migrations/20260310140000_event_dispatcher_webhook.sql",
+      "M  supabase/migrations/20260310150000_knowledge_pgvector.sql",
+      "M  supabase/migrations/20260316160000_welcome_email_webhook.sql"
+    ]
   },
   "readiness": {
     "overallState": "green",
@@ -172,8 +183,8 @@
     "reconcileTargetCount": 198,
     "reconcileRunnableNow": 166,
     "reconcileBlocked": 29,
-    "bridgeUrl": "",
-    "bridgeApiUrl": ""
+    "bridgeUrl": "https://rendered-sellers-astronomy-halifax.trycloudflare.com",
+    "bridgeApiUrl": "https://rendered-sellers-astronomy-halifax.trycloudflare.com/api/v1"
   },
   "workstreams": {
     "items": [
@@ -195,13 +206,13 @@
         "title": "n8n bridge + reconcile con OCULOPS",
         "status": "blocked",
         "priority": "P0",
-        "owner": "n8n-runtime",
+        "owner": "antigravity",
         "area": "automation",
         "branch": "main",
         "blocking": true,
-        "next_action": "Regenerar tunel Cloudflare y rerun audit/reconcile",
-        "notes": "N8N_API_URL con tunnel caido en esta sesion",
-        "updated_at": "2026-03-15T00:00:00Z"
+        "next_action": "Esperando N8N_API_KEY y variables de Supabase para poder correr el audit/reconcile",
+        "notes": "Tunnel regenerado ok, scripts fallaron por falta de credenciales",
+        "updated_at": "2026-03-16T00:23:00+01:00"
       },
       {
         "id": "WS-003",
@@ -257,7 +268,7 @@
       "project": "OCULOPS",
       "default_branch": "main",
       "owner": "Roberto Ortega",
-      "updated_by": "control-tower"
+      "updated_by": "antigravity"
     }
   },
   "blockers": [
@@ -265,12 +276,13 @@
   ],
   "warnings": [
     "n8n workflows bloqueados por credenciales: 161",
-    "n8n reconcile con workflows bloqueados: 29"
+    "n8n reconcile con workflows bloqueados: 29",
+    "Working tree con cambios locales: 10 archivo(s)"
   ],
   "github": {
-    "enabled": true,
-    "reason": null,
-    "openPullRequests": 0,
-    "openIssues": 0
+    "enabled": false,
+    "reason": "GITHUB_TOKEN or GITHUB_REPOSITORY missing",
+    "openPullRequests": null,
+    "openIssues": null
   }
 }

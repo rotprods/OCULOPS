@@ -5,7 +5,7 @@
 -- ═══════════════════════════════════════════════════
 
 -- Enable pg_net extension (async HTTP from Postgres)
-CREATE EXTENSION IF NOT EXISTS pg_net WITH SCHEMA extensions;
+-- CREATE EXTENSION IF NOT EXISTS pg_net WITH SCHEMA extensions;
 
 -- Trigger function: POST to event-dispatcher edge function on event_log INSERT
 CREATE OR REPLACE FUNCTION public.dispatch_event_to_n8n()

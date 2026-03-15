@@ -1,0 +1,10 @@
+{
+  "startedAt": "2026-03-15T23:17:45.440Z",
+  "pid": 44214,
+  "upstream": "http://127.0.0.1:5680",
+  "cloudflaredBin": "/opt/homebrew/bin/cloudflared",
+  "logFile": "/Users/rotech/AGENCY_OS/OCULOPS/OCULOPS/reports/n8n-cloudflare-bridge.log",
+  "publicUrl": "https://rendered-sellers-astronomy-halifax.trycloudflare.com",
+  "apiUrl": "https://rendered-sellers-astronomy-halifax.trycloudflare.com/api/v1",
+  "webhookBase": "https://rendered-sellers-astronomy-halifax.trycloudflare.com/webhook"
+}

@@ -43,38 +43,5 @@ export function resolveWhatsAppConfig(channel?: MessagingChannelRow | null) {
 }
 
 export async function sendWhatsAppText(channel: MessagingChannelRow | null | undefined, to: string, body: string) {
-  const config = resolveWhatsAppConfig(channel);
-  const normalizedTo = normalizePhone(to);
-
-  if (!normalizedTo) {
-    throw new Error("Missing WhatsApp recipient phone");
-  }
-
-  const response = await fetch(`https://graph.facebook.com/${META_GRAPH_VERSION}/${config.phoneNumberId}/messages`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${config.token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      messaging_product: "whatsapp",
-      recipient_type: "individual",
-      to: normalizedTo,
-      type: "text",
-      text: {
-        preview_url: false,
-        body,
-      },
-    }),
-  });
-
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data?.error?.message || "WhatsApp send failed");
-  }
-
-  return data as {
-    messages?: Array<{ id?: string }>;
-    contacts?: Array<{ wa_id?: string; input?: string }>;
-  };
+  throw new Error("AGENCY_OS POLICIES: WhatsApp outbound is strictly forbidden. Read-only mode is active.");
 }

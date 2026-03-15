@@ -4,7 +4,7 @@
 -- ═══════════════════════════════════════════════════
 
 -- ── 1. HTTP extension (needed for pg_net) ──
-CREATE EXTENSION IF NOT EXISTS pg_net WITH SCHEMA extensions;
+-- CREATE EXTENSION IF NOT EXISTS pg_net WITH SCHEMA extensions;
 
 -- ── 2. Trigger function: fires welcome-email edge function on new user ──
 CREATE OR REPLACE FUNCTION public.trigger_welcome_email()
