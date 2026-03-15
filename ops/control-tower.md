@@ -1,13 +1,13 @@
 # Control Tower
 
-Last updated: 2026-03-15T15:58:18.371Z
-Branch: `main` · SHA: `2938573`
+Last updated: 2026-03-15T16:00:53.702Z
+Branch: `main` · SHA: `6d9f343`
 
 ## System Pulse
 
 | Signal | Status | Evidence |
 |---|---|---|
-| Readiness overall | yellow | generated: 2026-03-15T15:49:22.888Z |
+| Readiness overall | yellow | generated: 2026-03-15T15:59:10.255Z |
 | Public API connectors live | 7/11 | missing keys: 4 |
 | n8n runnable workflows | 39/200 | blocked credentials: 161 |
 | n8n reconcile runnable | 166/198 | blocked: 29 |
@@ -32,8 +32,6 @@ Branch: `main` · SHA: `2938573`
 
 ## Blockers
 
-- control_tower: No org scope provided; governor_metrics returned advisory defaults.
-- governance: No org scope provided; governor_metrics returned advisory defaults.
 - Public API connectors con credenciales pendientes: 4
 
 ## Warnings
