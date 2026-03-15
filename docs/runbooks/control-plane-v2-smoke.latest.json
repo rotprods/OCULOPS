@@ -1,0 +1,142 @@
+{
+  "ok": true,
+  "generated_at": "2026-03-14T19:57:57.550Z",
+  "runs": [
+    {
+      "target": "vpj",
+      "host": "vpjcwheuqmwbpcufbbkj.supabase.co",
+      "cases": {
+        "missing_required_blocked": {
+          "expected": "blocked_missing_required",
+          "plan_constraint_status": "failed_blocking",
+          "execute_status": "blocked",
+          "execute_reason": "blocking_violations",
+          "pass": true
+        },
+        "mandatory_simulation_blocked": {
+          "expected": "blocked_failed_mandatory_simulation",
+          "preflight_status": "failed",
+          "execute_status": "blocked",
+          "execute_reason": "simulation_blocked",
+          "pass": true
+        },
+        "synthetic_advisory_allowed": {
+          "expected": "synthetic_advisory_allowed",
+          "plan_constraint_status": "failed_advisory",
+          "execute_status": "completed",
+          "execute_constraint_status": "failed_advisory",
+          "pass": true
+        }
+      },
+      "metrics": {
+        "org_id": null,
+        "window_hours": 24,
+        "generated_at": "2026-03-14T19:57:48.466Z",
+        "coverage": 1,
+        "conflict_rate": 0,
+        "drift_ratio": 0.9565,
+        "execution_impact": {
+          "total_runs": 18,
+          "success_rate": 0,
+          "blocking_violations": 17
+        },
+        "counts": {
+          "definitions": 8,
+          "latest_snapshot_bindings": 8,
+          "snapshots_in_window": 23,
+          "unique_checksums_in_window": 22,
+          "violations_in_window": 87,
+          "conflicts_in_window": 65,
+          "latest_conflicts": 0
+        },
+        "latest_snapshot": {
+          "snapshot_id": "979c738e-2a1c-444c-aeaf-da209f398b5c",
+          "checksum": "597cc6c63c46bd8c2eb78ffe46044f7c36c485fc60064b68d47c4c3c4bfb1516",
+          "created_at": "2026-03-14T19:57:46.849777+00:00",
+          "conflict_count": 0
+        }
+      },
+      "readiness": {
+        "module_key": "variable_control_plane_v2",
+        "route": "/control-tower",
+        "backend_surface": "variable_registry|variable_resolver_v2|constraint_engine_v2|orchestration_v2",
+        "state": "connected",
+        "state_reason_code": "variable_orchestration_healthy",
+        "state_reason_text": "Definitions=8, coverage=100.0%, plans=19, failed_plans=0, blocked_plans=11, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_success_at": "2026-03-14T19:57:48.385955+00:00",
+        "last_checked_at": "2026-03-14T19:57:48.858Z",
+        "correlation_id": "6c854913-2243-454e-8b16-9e6876c509c3",
+        "smoke_case_id": "governor_runtime",
+        "remediation_action": "/control-tower?tab=readiness"
+      }
+    },
+    {
+      "target": "yxz",
+      "host": "yxzdafptqtcvpsbqkmkm.supabase.co",
+      "cases": {
+        "missing_required_blocked": {
+          "expected": "blocked_missing_required",
+          "plan_constraint_status": "failed_blocking",
+          "execute_status": "blocked",
+          "execute_reason": "blocking_violations",
+          "pass": true
+        },
+        "mandatory_simulation_blocked": {
+          "expected": "blocked_failed_mandatory_simulation",
+          "preflight_status": "failed",
+          "execute_status": "blocked",
+          "execute_reason": "simulation_blocked",
+          "pass": true
+        },
+        "synthetic_advisory_allowed": {
+          "expected": "synthetic_advisory_allowed",
+          "plan_constraint_status": "failed_advisory",
+          "execute_status": "completed",
+          "execute_constraint_status": "failed_advisory",
+          "pass": true
+        }
+      },
+      "metrics": {
+        "org_id": null,
+        "window_hours": 24,
+        "generated_at": "2026-03-14T19:57:56.607Z",
+        "coverage": 1,
+        "conflict_rate": 0,
+        "drift_ratio": 0.8519,
+        "execution_impact": {
+          "total_runs": 18,
+          "success_rate": 0,
+          "blocking_violations": 10
+        },
+        "counts": {
+          "definitions": 8,
+          "latest_snapshot_bindings": 8,
+          "snapshots_in_window": 27,
+          "unique_checksums_in_window": 23,
+          "violations_in_window": 76,
+          "conflicts_in_window": 60,
+          "latest_conflicts": 0
+        },
+        "latest_snapshot": {
+          "snapshot_id": "8666f111-d770-4e6a-8420-01d2abd8ade0",
+          "checksum": "4cf3a4228bbf3f83ed74babcdec3662869a18a7a64f297c544e10b10f24baea7",
+          "created_at": "2026-03-14T19:57:56.121387+00:00",
+          "conflict_count": 0
+        }
+      },
+      "readiness": {
+        "module_key": "variable_control_plane_v2",
+        "route": "/control-tower",
+        "backend_surface": "variable_registry|variable_resolver_v2|constraint_engine_v2|orchestration_v2",
+        "state": "connected",
+        "state_reason_code": "variable_orchestration_healthy",
+        "state_reason_text": "Definitions=8, coverage=100.0%, plans=19, failed_plans=0, blocked_plans=11, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_success_at": "2026-03-14T19:57:56.121387+00:00",
+        "last_checked_at": "2026-03-14T19:57:57.471Z",
+        "correlation_id": "bf24803a-da8e-43bc-9433-8c413366fb84",
+        "smoke_case_id": "governor_runtime",
+        "remediation_action": "/control-tower?tab=readiness"
+      }
+    }
+  ]
+}

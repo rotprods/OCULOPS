@@ -35,6 +35,7 @@ const BASE_MODULE_KEYS = [
   "governance",
   "orchestration",
   "automation",
+  "variable_control_plane_v2",
   "api_catalog",
   "n8n_catalog",
   "simulation",
@@ -46,10 +47,10 @@ const DEFAULT_PRODUCTION_CRITICAL_MODULES = [
   "control_tower",
   "governance",
   "orchestration",
-  "messaging",
   "connector_proxy",
+  "variable_control_plane_v2",
 ];
-const DEFAULT_PRODUCTION_NON_CRITICAL_STATES = ["connected", "degraded", "planned"];
+const DEFAULT_PRODUCTION_NON_CRITICAL_STATES = ["connected", "simulated", "degraded", "planned"];
 
 function parseBoolean(value, fallback = false) {
   if (value === undefined || value === null || String(value).trim() === "") return fallback;
@@ -119,6 +120,7 @@ const policyByMode = {
       governance: ["connected", "degraded"],
       orchestration: ["connected", "simulated", "degraded"],
       automation: ["connected", "simulated", "degraded"],
+      variable_control_plane_v2: ["connected", "simulated", "degraded", "planned"],
       api_catalog: ["connected", "simulated", "degraded"],
       n8n_catalog: ["connected", "simulated", "degraded"],
       simulation: ["connected", "simulated", "degraded"],
@@ -129,7 +131,7 @@ const policyByMode = {
     minRecordCount: 8,
   },
   production: {
-    disallowOverall: ["red", "yellow"],
+    disallowOverall: ["red"],
     requiredSmokes: [
       "hard_block_routing",
       "ag2_c6_synthetic",

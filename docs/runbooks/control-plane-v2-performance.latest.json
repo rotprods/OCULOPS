@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-03-15T15:33:42.950Z",
+  "gates": {
+    "snapshot_build_p95_target_ms": 120,
+    "plan_build_p95_target_ms": 220
+  },
+  "snapshot_build": {
+    "variables": 1000,
+    "iterations": 40,
+    "p95_ms": 12.98,
+    "avg_ms": 7.968
+  },
+  "plan_build": {
+    "dag_nodes": 150,
+    "iterations": 80,
+    "p95_ms": 0.118,
+    "avg_ms": 0.057
+  },
+  "pass": {
+    "snapshot_build": true,
+    "plan_build": true
+  }
+}

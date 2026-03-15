@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T06:25:49.175Z",
+  "generated_at": "2026-03-15T15:33:08.856Z",
   "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
   "window_hours": 24,
   "summary": {
@@ -15,18 +15,18 @@
       "workflow_id": "INT-2.1",
       "label": "bug -> patch -> test -> review",
       "template_code_name": "self_improvement_patch_cycle",
-      "pipeline_run_id": "d461d175-562d-4611-acbb-3141d9c7eb6b",
-      "correlation_id": "2363e222-e6c9-480e-983c-c1b8f3151edb",
+      "pipeline_run_id": "4df9f184-a3ef-4958-ad91-fc5d53780725",
+      "correlation_id": "4e814274-1bc0-4a87-822b-d8cfafcdfae7",
       "run_status": "completed",
       "taxonomy_class": "healthy",
       "taxonomy_reason": "Run completed successfully.",
-      "duration_ms": 2623,
+      "duration_ms": 3228,
       "evaluation_metrics": {
         "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
-        "generated_at": "2026-03-13T06:25:37.738Z",
+        "generated_at": "2026-03-15T15:32:54.634Z",
         "window_hours": 24,
         "filters": {
-          "correlation_id": "2363e222-e6c9-480e-983c-c1b8f3151edb",
+          "correlation_id": "4e814274-1bc0-4a87-822b-d8cfafcdfae7",
           "artifact_type": null
         },
         "totals": {
@@ -55,10 +55,10 @@
       },
       "simulation_taxonomy": {
         "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
-        "generated_at": "2026-03-13T06:25:38.201Z",
+        "generated_at": "2026-03-15T15:32:56.705Z",
         "window_hours": 24,
         "filters": {
-          "correlation_id": "2363e222-e6c9-480e-983c-c1b8f3151edb",
+          "correlation_id": "4e814274-1bc0-4a87-822b-d8cfafcdfae7",
           "target_type": null
         },
         "totals": {
@@ -87,18 +87,18 @@
       "workflow_id": "INT-2.2",
       "label": "feature -> implement -> evaluate",
       "template_code_name": "feature_delivery_eval_cycle",
-      "pipeline_run_id": "aba73691-0bf9-4148-ab01-b74504e7fe26",
-      "correlation_id": "d69fcd49-1fc6-48bd-b06e-a91c52b158cd",
+      "pipeline_run_id": "5a677126-627d-4b94-9b5a-d3ff3c9beb7c",
+      "correlation_id": "8ffd0f17-c92d-4a99-ba30-ce7e7facd061",
       "run_status": "completed",
       "taxonomy_class": "healthy",
       "taxonomy_reason": "Run completed successfully.",
-      "duration_ms": 2138,
+      "duration_ms": 2289,
       "evaluation_metrics": {
         "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
-        "generated_at": "2026-03-13T06:25:42.720Z",
+        "generated_at": "2026-03-15T15:33:02.795Z",
         "window_hours": 24,
         "filters": {
-          "correlation_id": "d69fcd49-1fc6-48bd-b06e-a91c52b158cd",
+          "correlation_id": "8ffd0f17-c92d-4a99-ba30-ce7e7facd061",
           "artifact_type": null
         },
         "totals": {
@@ -127,10 +127,10 @@
       },
       "simulation_taxonomy": {
         "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
-        "generated_at": "2026-03-13T06:25:43.089Z",
+        "generated_at": "2026-03-15T15:33:03.188Z",
         "window_hours": 24,
         "filters": {
-          "correlation_id": "d69fcd49-1fc6-48bd-b06e-a91c52b158cd",
+          "correlation_id": "8ffd0f17-c92d-4a99-ba30-ce7e7facd061",
           "target_type": null
         },
         "totals": {
@@ -159,18 +159,18 @@
       "workflow_id": "INT-2.3",
       "label": "campaign -> execute -> score -> improve",
       "template_code_name": "campaign_execution_improvement_cycle",
-      "pipeline_run_id": "2f490e25-3f5e-4919-9960-6fd913966124",
-      "correlation_id": "fd06b0e3-311e-4d5c-a2b7-31f366bc526e",
+      "pipeline_run_id": "ab3a2181-5732-4de4-b134-07eea37104c4",
+      "correlation_id": "7aa80aa1-6be1-46ef-91bb-26c184fe5266",
       "run_status": "completed",
       "taxonomy_class": "healthy",
       "taxonomy_reason": "Run completed successfully.",
-      "duration_ms": 2880,
+      "duration_ms": 2813,
       "evaluation_metrics": {
         "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
-        "generated_at": "2026-03-13T06:25:48.520Z",
+        "generated_at": "2026-03-15T15:33:08.295Z",
         "window_hours": 24,
         "filters": {
-          "correlation_id": "fd06b0e3-311e-4d5c-a2b7-31f366bc526e",
+          "correlation_id": "7aa80aa1-6be1-46ef-91bb-26c184fe5266",
           "artifact_type": null
         },
         "totals": {
@@ -199,10 +199,10 @@
       },
       "simulation_taxonomy": {
         "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
-        "generated_at": "2026-03-13T06:25:48.859Z",
+        "generated_at": "2026-03-15T15:33:08.638Z",
         "window_hours": 24,
         "filters": {
-          "correlation_id": "fd06b0e3-311e-4d5c-a2b7-31f366bc526e",
+          "correlation_id": "7aa80aa1-6be1-46ef-91bb-26c184fe5266",
           "target_type": null
         },
         "totals": {

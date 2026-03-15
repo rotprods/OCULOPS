@@ -6,7 +6,7 @@
     "is_listed": true,
     "docs_url": "https://github.com/kamikazechaser/administrative-divisions-db",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "prospector"
@@ -41,7 +41,7 @@
     "is_listed": true,
     "docs_url": "https://adresse.data.gouv.fr",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "prospector"
@@ -153,7 +153,7 @@
     "is_listed": true,
     "docs_url": "https://documenter.getpostman.com/view/18545278/UVJbJdKh",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "watchtower"
@@ -851,7 +851,7 @@
     "is_listed": true,
     "docs_url": "https://www.disify.com/",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "prospector",
@@ -997,7 +997,7 @@
     "is_listed": true,
     "docs_url": "https://fiscaldata.treasury.gov/api-documentation/",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "finance",
@@ -1221,7 +1221,7 @@
     "is_listed": true,
     "docs_url": "https://microlink.io",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "prospector",
@@ -2602,7 +2602,7 @@
     "is_listed": true,
     "docs_url": "https://open-meteo.com/",
     "auth_type": "none",
-    "activation_tier": "adapter_ready",
+    "activation_tier": "live",
     "integration_priority": 100,
     "module_targets": [
       "watchtower",
@@ -12515,11 +12515,11 @@
     ]
   },
   {
-    "slug": "health-covid-19-covid19api-com",
+    "slug": "health-covid-19-github-com",
     "name": "Covid-19",
     "category": "Health",
     "is_listed": true,
-    "docs_url": "https://covid19api.com/",
+    "docs_url": "https://github.com/M-Media-Group/Covid-19-API",
     "auth_type": "none",
     "activation_tier": "catalog_only",
     "integration_priority": 27,
@@ -12540,11 +12540,11 @@
     ]
   },
   {
-    "slug": "health-covid-19-github-com",
+    "slug": "health-covid-19-covid19api-com",
     "name": "Covid-19",
     "category": "Health",
     "is_listed": true,
-    "docs_url": "https://github.com/M-Media-Group/Covid-19-API",
+    "docs_url": "https://covid19api.com/",
     "auth_type": "none",
     "activation_tier": "catalog_only",
     "integration_priority": 27,

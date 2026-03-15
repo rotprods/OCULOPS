@@ -251,7 +251,7 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     return null;
   });
 
-  const [governanceBundle, channelsBundle, connectorBundle, automationBundle, pipelineBundle, catalogBundle, n8nBundle, agentBundle, simulationBundle, smokeBundle] = await Promise.all([
+  const [governanceBundle, channelsBundle, connectorBundle, automationBundle, pipelineBundle, catalogBundle, n8nBundle, agentBundle, simulationBundle, variableBundle, smokeBundle] = await Promise.all([
     buildGovernanceMetricSnapshot({
       orgId,
       userId: input.userId || null,
@@ -503,6 +503,108 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
       return { total: 0, passed: 0, failed: 0, lastSuccessAt: null };
     }),
     (async () => {
+      const [definitionsRes, latestSnapshotRes, violationsRes, plansRes] = await Promise.all([
+        withOrgScope(
+          admin
+            .from("control_plane_variables")
+            .select("id, variable_key, lifecycle_state, updated_at")
+            .eq("lifecycle_state", "active")
+            .order("updated_at", { ascending: false })
+            .limit(2000),
+          orgId,
+        ),
+        withOrgScope(
+          admin
+            .from("control_plane_variable_snapshots")
+            .select("snapshot_id, checksum, bindings, created_at")
+            .order("created_at", { ascending: false })
+            .limit(1),
+          orgId,
+        ),
+        withOrgScope(
+          admin
+            .from("control_plane_variable_violations")
+            .select("id, constraint_id, blocking, created_at")
+            .gte("created_at", sinceIso)
+            .order("created_at", { ascending: false })
+            .limit(3000),
+          orgId,
+        ),
+        withOrgScope(
+          admin
+            .from("control_plane_orchestration_plans_v2")
+            .select("plan_id, plan_status, simulation_status, created_at, correlation_id")
+            .gte("created_at", sinceIso)
+            .order("created_at", { ascending: false })
+            .limit(1500),
+          orgId,
+        ),
+      ]);
+
+      const { data: definitions, error: definitionsError } = await definitionsRes;
+      if (definitionsError) throw definitionsError;
+      const { data: latestSnapshotRows, error: latestSnapshotError } = await latestSnapshotRes;
+      if (latestSnapshotError) throw latestSnapshotError;
+      const { data: violationRows, error: violationsError } = await violationsRes;
+      if (violationsError) throw violationsError;
+      const { data: planRows, error: plansError } = await plansRes;
+      if (plansError) throw plansError;
+
+      const definitionCount = (definitions || []).length;
+      const latestSnapshot = ((latestSnapshotRows || [])[0] || null) as Record<string, unknown> | null;
+      const violations = (violationRows || []) as Array<Record<string, unknown>>;
+      const plans = (planRows || []) as Array<Record<string, unknown>>;
+      const executedPlans = plans.filter((row) => compact(row.plan_status) === "completed").length;
+      const failedPlans = plans.filter((row) => compact(row.plan_status) === "failed").length;
+      const blockedPlans = plans.filter((row) => compact(row.plan_status) === "blocked").length;
+      const bindings = latestSnapshot?.bindings;
+      const bindingCount = Array.isArray(bindings) ? bindings.length : 0;
+      const coverage = definitionCount > 0 ? Number((bindingCount / definitionCount).toFixed(4)) : 0;
+      const latestSnapshotId = compact(latestSnapshot?.snapshot_id);
+      const latestSnapshotViolations = latestSnapshotId
+        ? violations.filter((row) => compact(row.snapshot_id) === latestSnapshotId)
+        : [];
+      const blockingViolations = latestSnapshotViolations.filter((row) => row.blocking === true).length;
+      const latestDiagnostics = asRecord(asRecord(latestSnapshot?.metadata).diagnostics);
+      const conflicts = asArray(latestDiagnostics.conflict_keys)
+        .map((entry) => compact(entry))
+        .filter(Boolean)
+        .length;
+      const conflictsInWindow = violations.filter((row) => compact(row.constraint_id) === "variable_conflict_resolution").length;
+
+      return {
+        definitionCount,
+        latestSnapshot,
+        violationCount: violations.length,
+        blockingViolations,
+        conflictCount: conflicts,
+        conflictCountWindow: conflictsInWindow,
+        planCount: plans.length,
+        executedPlans,
+        failedPlans,
+        blockedPlans,
+        coverage,
+        lastSuccessAt: compact(latestSnapshot?.created_at) || null,
+        lastCorrelationId: compact(plans[0]?.correlation_id) || null,
+      };
+    })().catch((error) => {
+      warnings.push(error instanceof Error ? `variable readiness failed: ${error.message}` : "variable readiness failed");
+      return {
+        definitionCount: 0,
+        latestSnapshot: null,
+        violationCount: 0,
+        blockingViolations: 0,
+        conflictCount: 0,
+        planCount: 0,
+        executedPlans: 0,
+        failedPlans: 0,
+        blockedPlans: 0,
+        coverage: 0,
+        lastSuccessAt: null,
+        lastCorrelationId: null,
+      };
+    }),
+    (async () => {
       const [hardBlockEvents, syntheticReplies, governorEscalations] = await Promise.all([
         (async () => {
           let query = admin
@@ -632,21 +734,34 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     remediationAction: "/control-tower?tab=governance",
   }));
 
+  const orchestrationUsesLegacyRuns = pipelineBundle.total > 0;
+  const orchestrationUsesV2Plans = variableBundle.planCount > 0;
+  const orchestrationV2FailuresHigh = variableBundle.failedPlans > variableBundle.executedPlans;
+  const orchestrationState: ReadinessState = orchestrationUsesLegacyRuns
+    ? (pipelineBundle.failed > pipelineBundle.completed ? "degraded" : "connected")
+    : orchestrationUsesV2Plans
+      ? (orchestrationV2FailuresHigh ? "degraded" : "connected")
+      : "simulated";
+  const orchestrationReasonCode = orchestrationUsesLegacyRuns
+    ? (pipelineBundle.failed > pipelineBundle.completed ? "pipeline_failure_rate_high" : "pipeline_activity_ok")
+    : orchestrationUsesV2Plans
+      ? (orchestrationV2FailuresHigh ? "orchestration_v2_failure_rate_high" : "orchestration_v2_activity_ok")
+      : "pipeline_activity_missing";
+  const orchestrationReasonText = orchestrationUsesLegacyRuns
+    ? `Runs=${pipelineBundle.total}, completed=${pipelineBundle.completed}, failed=${pipelineBundle.failed}.`
+    : orchestrationUsesV2Plans
+      ? `V2 plans=${variableBundle.planCount}, completed=${variableBundle.executedPlans}, failed=${variableBundle.failedPlans}, blocked=${variableBundle.blockedPlans}.`
+      : "No recent pipeline runs in scope; orchestration is running in simulation/advisory mode.";
+
   records.push(buildRecord({
     moduleKey: "orchestration",
     route: "/automation",
     backendSurface: "orchestration-engine:create_run|execute_run|get_run",
-    state: pipelineBundle.total > 0
-      ? (pipelineBundle.failed > pipelineBundle.completed ? "degraded" : "connected")
-      : "simulated",
-    reasonCode: pipelineBundle.total > 0
-      ? (pipelineBundle.failed > pipelineBundle.completed ? "pipeline_failure_rate_high" : "pipeline_activity_ok")
-      : "pipeline_activity_missing",
-    reasonText: pipelineBundle.total > 0
-      ? `Runs=${pipelineBundle.total}, completed=${pipelineBundle.completed}, failed=${pipelineBundle.failed}.`
-      : "No recent pipeline runs in scope; orchestration is running in simulation/advisory mode.",
-    lastSuccessAt: pipelineBundle.lastSuccessAt || generatedAt,
-    correlationId: pipelineBundle.correlationId || governanceBundle.latestCorrelationId,
+    state: orchestrationState,
+    reasonCode: orchestrationReasonCode,
+    reasonText: orchestrationReasonText,
+    lastSuccessAt: pipelineBundle.lastSuccessAt || variableBundle.lastSuccessAt || generatedAt,
+    correlationId: pipelineBundle.correlationId || variableBundle.lastCorrelationId || governanceBundle.latestCorrelationId,
     smokeCaseId: "hard_block_routing",
     remediationAction: "/automation",
   }));
@@ -796,6 +911,38 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     remediationAction: "/simulation",
   }));
 
+  const variableState: ReadinessState = variableBundle.definitionCount === 0
+    ? "planned"
+    : !variableBundle.latestSnapshot
+      ? "degraded"
+      : (variableBundle.blockingViolations > 0 || variableBundle.failedPlans > variableBundle.executedPlans)
+        ? "degraded"
+        : (variableBundle.planCount > 0 ? "connected" : "simulated");
+  const variableReasonCode = variableBundle.definitionCount === 0
+    ? "variable_registry_empty"
+    : !variableBundle.latestSnapshot
+      ? "variable_snapshot_missing"
+      : variableBundle.blockingViolations > 0
+        ? "variable_blocking_violations"
+        : variableBundle.failedPlans > variableBundle.executedPlans
+          ? "variable_execution_regression"
+          : (variableBundle.planCount > 0 ? "variable_orchestration_healthy" : "variable_orchestration_idle");
+
+  records.push(buildRecord({
+    moduleKey: "variable_control_plane_v2",
+    route: "/control-tower",
+    backendSurface: "variable_registry|variable_resolver_v2|constraint_engine_v2|orchestration_v2",
+    state: variableState,
+    reasonCode: variableReasonCode,
+    reasonText: variableBundle.definitionCount === 0
+      ? "Variable registry has no active definitions. Configure canonical variables to enable V2 orchestration."
+      : `Definitions=${variableBundle.definitionCount}, coverage=${(variableBundle.coverage * 100).toFixed(1)}%, plans=${variableBundle.planCount}, failed_plans=${variableBundle.failedPlans}, blocked_plans=${variableBundle.blockedPlans}, latest_blocking_violations=${variableBundle.blockingViolations}, latest_conflicts=${variableBundle.conflictCount}.`,
+    lastSuccessAt: variableBundle.lastSuccessAt,
+    correlationId: variableBundle.lastCorrelationId || governanceBundle.latestCorrelationId,
+    smokeCaseId: "governor_runtime",
+    remediationAction: "/control-tower?tab=readiness",
+  }));
+
   if (warnings.length > 0) {
     records.push(buildRecord({
       moduleKey: "readiness_observability",
@@ -813,7 +960,7 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
 
   return {
     generated_at: generatedAt,
-    version: "1.0.0",
+    version: "2.0.0",
     overall_state: deriveOverallState(records),
     records,
     smokes: smokeBundle.smokes,

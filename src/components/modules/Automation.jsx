@@ -194,6 +194,7 @@ function Automation() {
     const automationReadiness = readinessMap.get('automation') || null
     const connectorReadiness = readinessMap.get('connector_proxy') || null
     const n8nReadiness = readinessMap.get('n8n_catalog') || null
+    const variableReadiness = readinessMap.get('variable_control_plane_v2') || null
 
     return (
         <ModulePage
@@ -214,18 +215,18 @@ function Automation() {
                     <div className="kpi-strip-cell"><span className="mono text-xs text-tertiary">Total stored</span><span className="mono text-lg font-bold" style={{ color: 'var(--color-warning)' }}>{workflows.length}</span></div>
                 </div>
 
-                {(automationReadiness || connectorReadiness || n8nReadiness) && (
+                {(automationReadiness || connectorReadiness || n8nReadiness || variableReadiness) && (
                     <div className="lab-panel" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
                         <div className="lab-panel-header">Route readiness</div>
                         <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
-                            {[automationReadiness, connectorReadiness, n8nReadiness].filter(Boolean).map((record) => (
+                            {[automationReadiness, connectorReadiness, n8nReadiness, variableReadiness].filter(Boolean).map((record) => (
                                 <span key={record.module_key} className={`badge ${READINESS_TONE[record.state] || 'badge-default'}`}>
                                     {record.module_key}: {record.state}
                                 </span>
                             ))}
                         </div>
                         <div className="mono text-xs text-tertiary">
-                            {(automationReadiness || connectorReadiness || n8nReadiness)?.state_reason_text || 'Readiness snapshot loaded from control-plane.'}
+                            {(variableReadiness || automationReadiness || connectorReadiness || n8nReadiness)?.state_reason_text || 'Readiness snapshot loaded from control-plane.'}
                         </div>
                     </div>
                 )}

@@ -1,6 +1,6 @@
 # INT-2 Demo Workflow Pack
 
-Generated at: 2026-03-13T06:25:49.175Z
+Generated at: 2026-03-15T15:33:08.856Z
 Org: `a11b1e98-7fd9-4789-aab9-ab5a77494627`
 Window: 24h
 
@@ -17,9 +17,9 @@ Window: 24h
 
 | Workflow | Template | Run ID | Status | Taxonomy | Evaluations | Escalations | Simulations |
 |---|---|---|---|---|---:|---:|---:|
-| INT-2.1 | `self_improvement_patch_cycle` | `d461d175-562d-4611-acbb-3141d9c7eb6b` | completed | healthy | 4 | 0 | 0 |
-| INT-2.2 | `feature_delivery_eval_cycle` | `aba73691-0bf9-4148-ab01-b74504e7fe26` | completed | healthy | 3 | 0 | 0 |
-| INT-2.3 | `campaign_execution_improvement_cycle` | `2f490e25-3f5e-4919-9960-6fd913966124` | completed | healthy | 4 | 0 | 0 |
+| INT-2.1 | `self_improvement_patch_cycle` | `4df9f184-a3ef-4958-ad91-fc5d53780725` | completed | healthy | 4 | 0 | 0 |
+| INT-2.2 | `feature_delivery_eval_cycle` | `5a677126-627d-4b94-9b5a-d3ff3c9beb7c` | completed | healthy | 3 | 0 | 0 |
+| INT-2.3 | `campaign_execution_improvement_cycle` | `ab3a2181-5732-4de4-b134-07eea37104c4` | completed | healthy | 4 | 0 | 0 |
 
 ## Artifacts
 

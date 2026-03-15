@@ -130,6 +130,69 @@ export interface GovernanceMetricSnapshot {
   tool_bus_trace_coverage: number;
 }
 
+export type VariableScope = "global" | "org" | "agent" | "workflow" | "run_override";
+export type VariableSensitivity = "public" | "internal" | "confidential" | "restricted";
+export type VariableLifecycleState = "draft" | "active" | "deprecated" | "retired";
+export type VariablePrecedenceLevel = "run_override" | "workflow" | "agent" | "org" | "global";
+export type ConstraintSeverity = "low" | "medium" | "high" | "critical";
+export type ConstraintFailMode = "hard_block" | "soft_block" | "advisory";
+
+export interface VariableDefinition {
+  variable_key: string;
+  variable_family: string;
+  value_type: string;
+  scope: VariableScope;
+  owner_ref: string;
+  lifecycle_state: VariableLifecycleState;
+  default_value: unknown;
+  validation_rules: JsonRecord;
+  sensitivity: VariableSensitivity;
+  updated_at: string;
+}
+
+export interface VariableBinding {
+  variable_key: string;
+  precedence_level: VariablePrecedenceLevel;
+  source_ref: string;
+  value: unknown;
+  effective_from: string | null;
+  effective_to: string | null;
+  updated_at?: string;
+}
+
+export interface VariableSnapshot {
+  snapshot_id: string;
+  org_id: string | null;
+  workflow_id: string | null;
+  agent_id: string | null;
+  bindings: VariableBinding[];
+  checksum: string;
+  created_at: string;
+}
+
+export interface VariableConstraint {
+  constraint_id: string;
+  expression: unknown;
+  severity: ConstraintSeverity;
+  fail_mode: ConstraintFailMode;
+}
+
+export interface VariableViolation {
+  constraint_id: string;
+  variable_keys: string[];
+  severity: ConstraintSeverity;
+  message: string;
+  blocking: boolean;
+}
+
+export interface OrchestrationPlanV2 {
+  plan_id: string;
+  task_graph: JsonRecord;
+  snapshot_id: string;
+  governance_decision: JsonRecord;
+  simulation_required: boolean;
+}
+
 export interface RunTraceView {
   correlation_id: string;
   run_id: string | null;
@@ -197,6 +260,13 @@ export interface ControlPlaneActionRequest {
   workflow_query?: string;
   limit?: number;
   window_hours?: number;
+  snapshot_id?: string | null;
+  plan_id?: string | null;
+  target_environment?: "staging" | "production" | "synthetic";
+  run_override?: JsonRecord;
+  variable_definition?: Partial<VariableDefinition>;
+  variable_binding?: Partial<VariableBinding>;
+  variable_constraint?: Partial<VariableConstraint>;
 }
 
 function asRecord(value: unknown): JsonRecord {

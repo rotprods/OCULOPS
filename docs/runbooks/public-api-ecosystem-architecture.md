@@ -1,6 +1,6 @@
 # Public API Ecosystem Architecture
 
-Generated: 2026-03-14T01:44:33.107Z
+Generated: 2026-03-15T15:28:51.360Z
 Source: supabase
 
 ## Coverage

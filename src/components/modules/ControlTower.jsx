@@ -66,34 +66,18 @@ function formatDateTime(value) {
     return date.toLocaleString()
 }
 
-function sortByCreatedAtDesc(rows = []) {
-    return [...rows].sort((a, b) => {
-        const aTime = a?.created_at ? new Date(a.created_at).getTime() : 0
-        const bTime = b?.created_at ? new Date(b.created_at).getTime() : 0
-        return bTime - aTime
-    })
-}
-
-function sortByDateFieldDesc(rows = [], fieldName) {
-    return [...rows].sort((a, b) => {
-        const aValue = a?.[fieldName] ? new Date(a[fieldName]).getTime() : 0
-        const bValue = b?.[fieldName] ? new Date(b[fieldName]).getTime() : 0
-        return bValue - aValue
-    })
-}
-
 export default function ControlTower() {
     const location = useLocation()
     const navigate = useNavigate()
-    const { contacts, loading: contactsLoading } = useContacts()
-    const { companies, loading: companiesLoading } = useCompanies()
-    const { deals, loading: dealsLoading, totalValue } = useDeals()
-    const { activities, loading: activitiesLoading } = useActivities()
+    const { loading: contactsLoading } = useContacts()
+    const { loading: companiesLoading } = useCompanies()
+    const { loading: dealsLoading, totalValue } = useDeals()
+    const { loading: activitiesLoading } = useActivities()
     const { signals, activeSignals, loading: signalsLoading } = useSignals()
-    const { agents, stats: agentStats } = useAgents()
-    const { runs: pipelineRuns, stats: pipelineStats } = usePipelineRuns()
+    const { stats: agentStats } = useAgents()
+    const { runs: pipelineRuns } = usePipelineRuns()
     const { goals } = useGoals()
-    const { active: activeAlerts, resolveAlert } = useAlerts()
+    const { active: activeAlerts } = useAlerts()
     const {
         readiness,
         loading: readinessLoading,
@@ -104,8 +88,6 @@ export default function ControlTower() {
     } = useEcosystemReadiness({ windowHours: 24 })
     
     const [traceEvents, setTraceEvents] = useState([])
-    const [traceApprovals, setTraceApprovals] = useState([])
-
     const correlationFilter = useMemo(() => {
         const params = new URLSearchParams(location.search)
         const value = (params.get('corr') || '').trim()
@@ -113,12 +95,6 @@ export default function ControlTower() {
     }, [location.search])
 
     const loading = contactsLoading || companiesLoading || dealsLoading || activitiesLoading || signalsLoading
-
-    const avgSignalImpact = useMemo(() => {
-        const active = activeSignals || []
-        if (active.length === 0) return 0
-        return Math.round(active.reduce((sum, s) => sum + (s.impact || 0), 0) / active.length)
-    }, [activeSignals])
 
     const healthScore = useMemo(() => {
         const pipelineScore = Math.min(totalValue / 500, 100)
@@ -151,6 +127,10 @@ export default function ControlTower() {
         if (!correlationFilter) return pipelineRuns
         return (pipelineRuns || []).filter(run => run.correlation_id === correlationFilter)
     }, [pipelineRuns, correlationFilter])
+    const variableReadiness = useMemo(
+        () => (readiness?.records || []).find(record => record.module_key === 'variable_control_plane_v2') || null,
+        [readiness],
+    )
 
     useEffect(() => {
         let cancelled = false
@@ -169,7 +149,7 @@ export default function ControlTower() {
                 if (cancelled) return
                 if (error) throw error
                 setTraceEvents(data || [])
-            } catch (err) {
+            } catch {
                 if (!cancelled) setTraceEvents([])
             }
         }
@@ -184,11 +164,6 @@ export default function ControlTower() {
         }
         getRunTrace(correlationFilter)
     }, [correlationFilter, clearRunTrace, getRunTrace])
-
-    const openTrace = (correlationId) => {
-        if (!correlationId) return
-        navigate(`/control-tower?corr=${encodeURIComponent(correlationId)}`)
-    }
 
     const openApprovals = (approvalId = null) => {
         const params = new URLSearchParams()
@@ -396,6 +371,29 @@ export default function ControlTower() {
                                 <p className="text-xs text-[var(--text-tertiary)]">
                                     Last validation: {formatDateTime(readiness.generated_at)}
                                 </p>
+                                {variableReadiness && (
+                                    <div className="flex flex-col gap-1">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-xs text-[var(--text-tertiary)]">V2 Variables:</span>
+                                            <span className={`badge ${
+                                                variableReadiness.state === 'connected'
+                                                    ? 'badge-success'
+                                                    : variableReadiness.state === 'simulated'
+                                                        ? 'badge-primary'
+                                                        : variableReadiness.state === 'planned'
+                                                            ? 'badge-default'
+                                                            : variableReadiness.state === 'degraded'
+                                                                ? 'badge-warning'
+                                                                : 'badge-danger'
+                                            }`}>
+                                                {variableReadiness.state}
+                                            </span>
+                                        </div>
+                                        <p className="text-xs text-[var(--text-tertiary)]">
+                                            {variableReadiness.state_reason_text}
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         ) : (
                             <p className="text-xs text-[var(--text-tertiary)]">Readiness offline.</p>

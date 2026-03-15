@@ -1,0 +1,3 @@
+-- Remote-only migration reconciliation placeholder.
+-- Purpose: keep local and remote migration history aligned for project vpjcwheuqmwbpcufbbkj.
+-- Intentionally no-op.

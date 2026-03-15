@@ -31,6 +31,17 @@ import {
   summarizeGraphExecution,
   type TaskStatusIndex,
 } from "./workflow-graph-engine.ts";
+import {
+  getControlPlaneV2Flags,
+  orchestrationV2Execute,
+  orchestrationV2Plan,
+  simulationPreflight,
+  variableMetrics,
+  variableRegistryList,
+  variableRegistryUpsert,
+  variableSnapshotBuild,
+  variableValidate,
+} from "./variable-orchestration-v2.ts";
 
 interface ControlPlaneActionResult {
   ok: boolean;
@@ -281,6 +292,55 @@ async function metricsSnapshot(input: {
   };
 }
 
+function extractV2EventFields(payload: JsonRecord) {
+  const eventFields = asRecord(payload.event_fields);
+  const snapshot = asRecord(payload.snapshot);
+  const plan = asRecord(payload.plan);
+  const execution = asRecord(payload.execution);
+  const simulation = asRecord(payload.simulation);
+
+  const snapshotId = compact(
+    payload.snapshot_id ||
+      eventFields.snapshot_id ||
+      snapshot.snapshot_id ||
+      execution.snapshot_id ||
+      plan.snapshot_id,
+  ) || null;
+  const planId = compact(
+    payload.plan_id ||
+      eventFields.plan_id ||
+      plan.plan_id ||
+      execution.plan_id,
+  ) || null;
+  const violationCount = Number(
+    payload.violation_count ??
+      eventFields.violation_count ??
+      execution.violation_count ??
+      0,
+  ) || 0;
+  const constraintStatus = compact(
+    payload.constraint_status ||
+      eventFields.constraint_status ||
+      execution.constraint_status ||
+      "unknown",
+  );
+  const simulationStatus = compact(
+    payload.simulation_status ||
+      eventFields.simulation_status ||
+      simulation.simulation_status ||
+      execution.simulation_status ||
+      "not_run",
+  );
+
+  return {
+    snapshot_id: snapshotId,
+    plan_id: planId,
+    violation_count: violationCount,
+    constraint_status: constraintStatus || "unknown",
+    simulation_status: simulationStatus || "not_run",
+  };
+}
+
 export async function handleControlPlaneAction(
   input: ControlPlaneActionRequest,
   authHeader?: string | null,
@@ -290,9 +350,11 @@ export async function handleControlPlaneAction(
   const correlationId = compact(input.correlation_id) || crypto.randomUUID();
   const startedAt = Date.now();
   const warnings: string[] = [];
+  const flags = getControlPlaneV2Flags();
 
   const emit = async (result: string, payload: JsonRecord, riskLevel: "low" | "medium" | "high" | "critical" = "low") => {
     const latency = Date.now() - startedAt;
+    const v2Fields = extractV2EventFields(payload);
     const event = toEventEnvelopeV2({
       event_type: `control_plane.${action}`,
       agent_id: compact(input.source_agent) || "control-plane",
@@ -305,11 +367,19 @@ export async function handleControlPlaneAction(
       cost_usd: 0,
       risk_level: riskLevel,
       result,
-      payload,
+      payload: {
+        ...payload,
+        ...v2Fields,
+      },
       metadata: {
         action,
         org_id: compact(input.org_id) || null,
         user_id: compact(input.user_id) || null,
+        ...v2Fields,
+        feature_flags: {
+          control_plane_v2_enabled: flags.control_plane_v2_enabled,
+          variable_simulation_required_in_prod: flags.variable_simulation_required_in_prod,
+        },
       },
     });
 
@@ -325,7 +395,34 @@ export async function handleControlPlaneAction(
   try {
     if (action === "goal_parse") {
       const goalSpec = parseGoalSpec(input.goal_spec || input.context || {});
-      const data = { goal_spec: goalSpec };
+      let variableSnapshot: JsonRecord | null = null;
+      if (flags.control_plane_v2_enabled) {
+        try {
+          const snapshotResult = await variableSnapshotBuild({
+            request: {
+              ...input,
+              action: "variable_snapshot_build",
+            },
+          });
+          variableSnapshot = {
+            snapshot_id: snapshotResult.snapshot.snapshot_id,
+            checksum: snapshotResult.snapshot.checksum,
+            violation_count: snapshotResult.violation_count,
+            constraint_status: snapshotResult.constraint_status,
+            simulation_status: "pending",
+          };
+        } catch (error) {
+          warnings.push(
+            `Variable snapshot build skipped during goal_parse: ${
+              error instanceof Error ? error.message : "unknown error"
+            }`,
+          );
+        }
+      }
+      const data = {
+        goal_spec: goalSpec,
+        variable_snapshot: variableSnapshot,
+      };
       await emit("success", data, goalSpec.goal_risk_level);
       return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
     }
@@ -573,6 +670,95 @@ export async function handleControlPlaneAction(
       });
       const data = { simulation };
       await emit("success", data, input.risk_class || "medium");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "variable_registry_upsert") {
+      const registry = await variableRegistryUpsert({ request: input });
+      const data = {
+        registry,
+      };
+      await emit("success", data, input.risk_class || "medium");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "variable_registry_list") {
+      const registry = await variableRegistryList({ request: input });
+      const data = {
+        registry,
+      };
+      await emit("success", data, "low");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "variable_snapshot_build") {
+      const snapshot = await variableSnapshotBuild({ request: input });
+      const data = {
+        snapshot,
+        snapshot_id: snapshot.snapshot.snapshot_id,
+        violation_count: snapshot.violation_count,
+        constraint_status: snapshot.constraint_status,
+        simulation_status: "pending",
+      };
+      await emit("success", data, input.risk_class || "medium");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "variable_validate") {
+      const validation = await variableValidate({ request: input });
+      const data = {
+        validation,
+        snapshot_id: compact(asRecord(validation).snapshot_id) || null,
+        violation_count: Number(asRecord(validation).violation_count || 0),
+        constraint_status: compact(asRecord(validation).constraint_status) || "unknown",
+        simulation_status: "not_run",
+      };
+      await emit("success", data, input.risk_class || "medium");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "orchestration_v2_plan") {
+      const planning = await orchestrationV2Plan({ request: input });
+      const data = {
+        planning,
+        ...asRecord(planning.event_fields),
+      };
+      await emit("success", data, input.risk_class || "high");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "simulation_preflight") {
+      const preflight = await simulationPreflight({ request: input });
+      const data = {
+        preflight,
+        ...asRecord(preflight.event_fields),
+      };
+      await emit("success", data, input.risk_class || "high");
+      return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "orchestration_v2_execute") {
+      const execution = await orchestrationV2Execute({
+        request: {
+          ...input,
+          correlation_id: input.correlation_id || correlationId,
+        },
+        authHeader,
+      });
+      const data = {
+        execution,
+        ...asRecord(execution.event_fields),
+      };
+      await emit(execution.ok ? "success" : "failed", data, input.risk_class || "high");
+      return { ok: execution.ok, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
+    }
+
+    if (action === "variable_metrics") {
+      const metrics = await variableMetrics({ request: input });
+      const data = {
+        metrics,
+      };
+      await emit("success", data, "low");
       return { ok: true, action, trace_id: traceId, correlation_id: correlationId, data, warnings };
     }
 
