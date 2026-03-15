@@ -72,8 +72,13 @@ const NAV_GROUPS = [
       { path: '/prospector',    label: 'Prospector',    icon: MagnifyingGlassIcon },
       { path: '/automation',    label: 'Automation',    icon: CogIcon },
       { path: '/flight-deck',   label: 'Flight Deck',   icon: PaperAirplaneIcon },
-      { path: '/pixel-office',  label: 'Pixel Office',  icon: BuildingOffice2Icon },
       { path: '/marketplace',   label: 'Marketplace',   icon: BuildingStorefrontIcon },
+    ],
+  },
+  {
+    label: 'Office',
+    items: [
+      { path: '/pixel-office',  label: 'Pixel Office',  icon: BuildingOffice2Icon },
     ],
   },
   {

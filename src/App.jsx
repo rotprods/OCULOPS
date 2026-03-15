@@ -229,6 +229,7 @@ function AppContent() {
               <Route path="/automation"     element={guard(Automation)} />
               <Route path="/flight-deck"    element={guard(FlightDeck)} />
               <Route path="/marketplace"    element={guard(Marketplace)} />
+              <Route path="/pixel-office"   element={guard(PixelOffice)} />
 
               {/* Growth */}
               <Route path="/gtm"            element={guard(GTM)} />
@@ -266,24 +267,6 @@ function AppContent() {
         </div>
       </main>
       </AgentVaultProvider>
-
-      {/* ─── Pixel Office War Room ────────────────────────────────────────── */}
-      <div style={{
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        width: '800px', // Adjust as needed
-        height: '480px', // Adjust as needed
-        zIndex: 1000,
-        overflow: 'hidden',
-        borderRadius: '8px',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-        border: '1px solid var(--border-default)',
-      }}>
-        <Suspense fallback={<div>Loading Agents...</div>}>
-          <PixelOffice />
-        </Suspense>
-      </div>
     </div>
   )
 }
