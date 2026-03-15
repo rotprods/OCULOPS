@@ -118,7 +118,8 @@ describe('useLeads', () => {
     })
 
     it('subscribes to realtime changes', async () => {
-        renderHook(() => useLeads())
+        const { result } = renderHook(() => useLeads())
+        await waitFor(() => expect(result.current.loading).toBe(false))
         expect(mockSubscribeToTable).toHaveBeenCalledWith('prospector_leads', expect.any(Function))
     })
 

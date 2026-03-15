@@ -15,6 +15,7 @@ import {
 } from './flightDeckUtils'
 import './FlightDeck.css'
 
+const EMPTY_SCAN_RESULTS = []
 
 export default function FlightDeck({
     form: formProp,
@@ -32,7 +33,7 @@ export default function FlightDeck({
     const [internalForm, internalSetForm] = useState({ query: '', radius: 5000, type: 'restaurant' })
     const form = formProp || internalForm
     const setForm = setFormProp || internalSetForm
-    const scanResults = scanResultsProp || []
+    const scanResults = scanResultsProp ?? EMPTY_SCAN_RESULTS
     const { triggerAgent, stats } = useAgents()
     const [plane, setPlane] = useState(getInitialPlane)
     const mapNodeRef = useRef(null)

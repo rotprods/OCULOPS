@@ -102,7 +102,8 @@ describe('useTasks', () => {
     })
 
     it('subscribes to realtime changes', async () => {
-        renderHook(() => useTasks())
+        const { result } = renderHook(() => useTasks())
+        await waitFor(() => expect(result.current.loading).toBe(false))
         expect(mockSubscribeToTable).toHaveBeenCalledWith('tasks', expect.any(Function))
     })
 

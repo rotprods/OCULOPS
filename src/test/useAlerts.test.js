@@ -89,7 +89,8 @@ describe('useAlerts', () => {
     })
 
     it('subscribes to realtime changes', async () => {
-        renderHook(() => useAlerts())
+        const { result } = renderHook(() => useAlerts())
+        await waitFor(() => expect(result.current.loading).toBe(false))
         expect(mockSubscribeToTable).toHaveBeenCalledWith('alerts', expect.any(Function))
     })
 
