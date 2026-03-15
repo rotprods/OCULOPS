@@ -99,7 +99,8 @@ describe('useCompanies', () => {
     })
 
     it('subscribes to realtime changes', async () => {
-        renderHook(() => useCompanies())
+        const { result } = renderHook(() => useCompanies())
+        await waitFor(() => expect(result.current.loading).toBe(false))
         expect(mockSubscribeToTable).toHaveBeenCalledWith('companies', expect.any(Function))
     })
 
