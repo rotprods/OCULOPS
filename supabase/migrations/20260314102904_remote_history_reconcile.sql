@@ -1,4 +1,0 @@
--- Reconciliation migration.
--- This file intentionally contains no DDL changes.
--- It exists to align local migration history with the linked remote database
--- where version 20260314102904 is already recorded.
