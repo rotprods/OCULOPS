@@ -1,0 +1,300 @@
+{
+  "generatedAt": "2026-03-15T15:57:34.569Z",
+  "project": "OCULOPS",
+  "git": {
+    "branch": "main",
+    "sha": "b118660",
+    "ahead": 0,
+    "behind": 0,
+    "dirty": true,
+    "changedFiles": [
+      "M claude.md",
+      " M codex.md",
+      " M package.json",
+      "?? .github/workflows/control-tower-sync.yml",
+      "?? AGENTS.md",
+      "?? ops/",
+      "?? scripts/update-control-tower.mjs"
+    ]
+  },
+  "readiness": {
+    "overallState": "yellow",
+    "generatedAt": "2026-03-15T15:49:22.888Z",
+    "records": [
+      {
+        "module_key": "control_tower",
+        "route": "/control-tower",
+        "backend_surface": "control-plane:ecosystem_readiness",
+        "state": "degraded",
+        "state_reason_code": "governance_advisory_mode",
+        "state_reason_text": "No org scope provided; governor_metrics returned advisory defaults.",
+        "last_success_at": "2026-03-15T15:49:22.888Z",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "hard_block_routing",
+        "remediation_action": "/control-tower?tab=readiness"
+      },
+      {
+        "module_key": "governance",
+        "route": "/control-tower",
+        "backend_surface": "orchestration-engine:governor_metrics",
+        "state": "degraded",
+        "state_reason_code": "governance_metrics_warning",
+        "state_reason_text": "No org scope provided; governor_metrics returned advisory defaults.",
+        "last_success_at": "2026-03-15T15:49:22.888Z",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "governor_runtime",
+        "remediation_action": "/control-tower?tab=governance"
+      },
+      {
+        "module_key": "orchestration",
+        "route": "/automation",
+        "backend_surface": "orchestration-engine:create_run|execute_run|get_run",
+        "state": "connected",
+        "state_reason_code": "pipeline_activity_ok",
+        "state_reason_text": "Runs=3, completed=3, failed=0.",
+        "last_success_at": "2026-03-15T15:33:07.14464+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "7aa80aa1-6be1-46ef-91bb-26c184fe5266",
+        "smoke_case_id": "hard_block_routing",
+        "remediation_action": "/automation"
+      },
+      {
+        "module_key": "messaging",
+        "route": "/messaging",
+        "backend_surface": "messaging-dispatch|gmail-inbound|messaging-channel-oauth",
+        "state": "simulated",
+        "state_reason_code": "messaging_synthetic_only",
+        "state_reason_text": "Synthetic messaging evidence is active; provider credentials are intentionally excluded in code-first scope.",
+        "last_success_at": "2026-03-14T05:09:52.291312+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "c6-6bab9275-88f2-4214-843a-b7406877e76c",
+        "smoke_case_id": "ag2_c6_synthetic",
+        "remediation_action": "/messaging"
+      },
+      {
+        "module_key": "connector_proxy",
+        "route": "/automation",
+        "backend_surface": "api-proxy|tool-bus",
+        "state": "connected",
+        "state_reason_code": "connectors_live",
+        "state_reason_text": "7 live connector(s) available.",
+        "last_success_at": "2026-03-15T15:31:05.548+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "hard_block_routing",
+        "remediation_action": "/automation"
+      },
+      {
+        "module_key": "automation",
+        "route": "/automation",
+        "backend_surface": "automation-runner|control-plane:tool_dispatch",
+        "state": "connected",
+        "state_reason_code": "automation_workflows_available",
+        "state_reason_text": "Workflows=20, active=17, dispatch_total=4, blocked_total=0.",
+        "last_success_at": "2026-03-14T01:49:43.760804+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "hard_block_routing",
+        "remediation_action": "/automation"
+      },
+      {
+        "module_key": "api_catalog",
+        "route": "/intelligence",
+        "backend_surface": "api_catalog_entries|api_connectors",
+        "state": "connected",
+        "state_reason_code": "api_catalog_live_connectors",
+        "state_reason_text": "Catalog entries=1000; live connectors=7.",
+        "last_success_at": "2026-03-14T01:49:21.167+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "hard_block_routing",
+        "remediation_action": "/intelligence"
+      },
+      {
+        "module_key": "n8n_catalog",
+        "route": "/automation",
+        "backend_surface": "n8n_template_entries|n8n_template_sync_runs",
+        "state": "connected",
+        "state_reason_code": "n8n_catalog_synced",
+        "state_reason_text": "Template entries=1000; latest sync status=completed.",
+        "last_success_at": "2026-03-14T01:50:18.613+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "hard_block_routing",
+        "remediation_action": "npm run sync:n8n-templates"
+      },
+      {
+        "module_key": "marketplace",
+        "route": "/marketplace",
+        "backend_surface": "agent_registry|api_catalog_entries|n8n_template_entries",
+        "state": "connected",
+        "state_reason_code": "marketplace_agents_active",
+        "state_reason_text": "Active agents=7 of total=11.",
+        "last_success_at": "2026-03-11T16:24:17.968918+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.577Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "hard_block_routing",
+        "remediation_action": "/marketplace"
+      },
+      {
+        "module_key": "simulation",
+        "route": "/simulation",
+        "backend_surface": "simulation-engine|simulation_runs",
+        "state": "degraded",
+        "state_reason_code": "simulation_failures_high",
+        "state_reason_text": "Simulation runs=17, passed=3, failed=14.",
+        "last_success_at": "2026-03-15T15:33:14.617023+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.578Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": "ag2_c6_synthetic",
+        "remediation_action": "/simulation"
+      },
+      {
+        "module_key": "variable_control_plane_v2",
+        "route": "/control-tower",
+        "backend_surface": "variable_registry|variable_resolver_v2|constraint_engine_v2|orchestration_v2",
+        "state": "connected",
+        "state_reason_code": "variable_orchestration_healthy",
+        "state_reason_text": "Definitions=8, coverage=100.0%, plans=37, failed_plans=0, blocked_plans=23, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_success_at": "2026-03-15T15:38:36.307045+00:00",
+        "last_checked_at": "2026-03-15T15:49:23.578Z",
+        "correlation_id": "e1a00548-76ae-48b0-ada0-d27d4543c772",
+        "smoke_case_id": "governor_runtime",
+        "remediation_action": "/control-tower?tab=readiness"
+      },
+      {
+        "module_key": "readiness_observability",
+        "route": "/control-tower",
+        "backend_surface": "control-plane:ecosystem_readiness",
+        "state": "degraded",
+        "state_reason_code": "readiness_partial_warnings",
+        "state_reason_text": "No org scope provided; governor_metrics returned advisory defaults.",
+        "last_success_at": "2026-03-15T15:49:22.888Z",
+        "last_checked_at": "2026-03-15T15:49:23.578Z",
+        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
+        "smoke_case_id": null,
+        "remediation_action": "/control-tower?tab=readiness"
+      }
+    ]
+  },
+  "publicApis": {
+    "totalTemplates": 11,
+    "healthcheckOk": 7,
+    "healthcheckFailed": 0,
+    "missingRequiredKeys": 4
+  },
+  "n8n": {
+    "totalWorkflows": 200,
+    "runnableNow": 39,
+    "blockedByCredentials": 161,
+    "blockedByCommunityNodes": 3,
+    "reconcileTargetCount": 198,
+    "reconcileRunnableNow": 166,
+    "reconcileBlocked": 29,
+    "bridgeUrl": "",
+    "bridgeApiUrl": ""
+  },
+  "workstreams": {
+    "items": [
+      {
+        "id": "WS-001",
+        "title": "Public API infra layer (1426 catalog entries)",
+        "status": "active",
+        "priority": "P0",
+        "owner": "codex-main",
+        "area": "api-catalog",
+        "branch": "main",
+        "blocking": false,
+        "next_action": "Activar los 4 conectores pendientes con credenciales reales",
+        "notes": "7 conectores live, 4 pendientes por api_key",
+        "updated_at": "2026-03-15T00:00:00Z"
+      },
+      {
+        "id": "WS-002",
+        "title": "n8n bridge + reconcile con OCULOPS",
+        "status": "blocked",
+        "priority": "P0",
+        "owner": "n8n-runtime",
+        "area": "automation",
+        "branch": "main",
+        "blocking": true,
+        "next_action": "Regenerar tunel Cloudflare y rerun audit/reconcile",
+        "notes": "N8N_API_URL con tunnel caido en esta sesion",
+        "updated_at": "2026-03-15T00:00:00Z"
+      },
+      {
+        "id": "WS-003",
+        "title": "Production readiness + governance gates",
+        "status": "active",
+        "priority": "P0",
+        "owner": "release-control",
+        "area": "control-plane",
+        "branch": "main",
+        "blocking": false,
+        "next_action": "Mantener smoke checks y readiness artifacts actualizados",
+        "notes": "Gate production OK con org scope correcto",
+        "updated_at": "2026-03-15T00:00:00Z"
+      },
+      {
+        "id": "WS-004",
+        "title": "Marketplace/API visibility for agents and UI",
+        "status": "active",
+        "priority": "P1",
+        "owner": "codex-main",
+        "area": "frontend",
+        "branch": "main",
+        "blocking": false,
+        "next_action": "Cerrar backlog de adapters registration-required por olas",
+        "notes": "Catalog, Adapter Ready, Installed y Core ya visibles",
+        "updated_at": "2026-03-15T00:00:00Z"
+      }
+    ],
+    "agents": [
+      {
+        "id": "codex-main",
+        "name": "Codex Main",
+        "terminal": "codex-desktop",
+        "scope": "Integracion full-stack, Supabase, deploy",
+        "status": "active"
+      },
+      {
+        "id": "n8n-runtime",
+        "name": "n8n Runtime",
+        "terminal": "mac-mini",
+        "scope": "Workflows, credenciales, reconciliacion live",
+        "status": "blocked"
+      },
+      {
+        "id": "release-control",
+        "name": "Release Control",
+        "terminal": "github-actions",
+        "scope": "CI/CD, snapshots de estado, guardrails",
+        "status": "active"
+      }
+    ],
+    "meta": {
+      "project": "OCULOPS",
+      "default_branch": "main",
+      "owner": "Roberto Ortega",
+      "updated_by": "control-tower"
+    }
+  },
+  "blockers": [
+    "control_tower: No org scope provided; governor_metrics returned advisory defaults.",
+    "governance: No org scope provided; governor_metrics returned advisory defaults.",
+    "Public API connectors con credenciales pendientes: 4"
+  ],
+  "warnings": [
+    "n8n workflows bloqueados por credenciales: 161",
+    "n8n reconcile con workflows bloqueados: 29",
+    "Working tree con cambios locales: 7 archivo(s)"
+  ],
+  "github": {
+    "enabled": false,
+    "reason": "GITHUB_TOKEN or GITHUB_REPOSITORY missing",
+    "openPullRequests": null,
+    "openIssues": null
+  }
+}

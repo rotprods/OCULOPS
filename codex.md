@@ -2,6 +2,10 @@
 
 Updated: 2026-03-12
 
+## First Read (Mandatory)
+
+Before starting any task, read `ops/control-tower.md` and `ops/workstreams.json`.
+
 ## Role
 
 - Codex is the execution and stabilization agent for OCULOPS OS.

@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "project": "OCULOPS",
+    "default_branch": "main",
+    "owner": "Roberto Ortega",
+    "updated_by": "control-tower"
+  },
+  "agents": [
+    {
+      "id": "codex-main",
+      "name": "Codex Main",
+      "terminal": "codex-desktop",
+      "scope": "Integracion full-stack, Supabase, deploy",
+      "status": "active"
+    },
+    {
+      "id": "n8n-runtime",
+      "name": "n8n Runtime",
+      "terminal": "mac-mini",
+      "scope": "Workflows, credenciales, reconciliacion live",
+      "status": "blocked"
+    },
+    {
+      "id": "release-control",
+      "name": "Release Control",
+      "terminal": "github-actions",
+      "scope": "CI/CD, snapshots de estado, guardrails",
+      "status": "active"
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "WS-001",
+      "title": "Public API infra layer (1426 catalog entries)",
+      "status": "active",
+      "priority": "P0",
+      "owner": "codex-main",
+      "area": "api-catalog",
+      "branch": "main",
+      "blocking": false,
+      "next_action": "Activar los 4 conectores pendientes con credenciales reales",
+      "notes": "7 conectores live, 4 pendientes por api_key",
+      "updated_at": "2026-03-15T00:00:00Z"
+    },
+    {
+      "id": "WS-002",
+      "title": "n8n bridge + reconcile con OCULOPS",
+      "status": "blocked",
+      "priority": "P0",
+      "owner": "n8n-runtime",
+      "area": "automation",
+      "branch": "main",
+      "blocking": true,
+      "next_action": "Regenerar tunel Cloudflare y rerun audit/reconcile",
+      "notes": "N8N_API_URL con tunnel caido en esta sesion",
+      "updated_at": "2026-03-15T00:00:00Z"
+    },
+    {
+      "id": "WS-003",
+      "title": "Production readiness + governance gates",
+      "status": "active",
+      "priority": "P0",
+      "owner": "release-control",
+      "area": "control-plane",
+      "branch": "main",
+      "blocking": false,
+      "next_action": "Mantener smoke checks y readiness artifacts actualizados",
+      "notes": "Gate production OK con org scope correcto",
+      "updated_at": "2026-03-15T00:00:00Z"
+    },
+    {
+      "id": "WS-004",
+      "title": "Marketplace/API visibility for agents and UI",
+      "status": "active",
+      "priority": "P1",
+      "owner": "codex-main",
+      "area": "frontend",
+      "branch": "main",
+      "blocking": false,
+      "next_action": "Cerrar backlog de adapters registration-required por olas",
+      "notes": "Catalog, Adapter Ready, Installed y Core ya visibles",
+      "updated_at": "2026-03-15T00:00:00Z"
+    }
+  ]
+}

@@ -4,6 +4,12 @@
 
 ---
 
+## First Read (Mandatory)
+
+Antes de ejecutar cualquier tarea, leer `ops/control-tower.md` y `ops/workstreams.json`.
+
+---
+
 ## Vision y Mision
 
 **OCULOPS** es el Autonomous Growth Operating System mas avanzado del mercado:

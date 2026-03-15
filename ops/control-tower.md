@@ -1,0 +1,64 @@
+# Control Tower
+
+Last updated: 2026-03-15T15:57:34.569Z
+Branch: `main` · SHA: `b118660`
+
+## System Pulse
+
+| Signal | Status | Evidence |
+|---|---|---|
+| Readiness overall | yellow | generated: 2026-03-15T15:49:22.888Z |
+| Public API connectors live | 7/11 | missing keys: 4 |
+| n8n runnable workflows | 39/200 | blocked credentials: 161 |
+| n8n reconcile runnable | 166/198 | blocked: 29 |
+| Git sync | ahead 0 / behind 0 | dirty files: 7 |
+
+## Workstreams
+
+| ID | Priority | Status | Owner | Area | Next action |
+|---|---|---|---|---|---|
+| WS-001 | P0 | active | codex-main | api-catalog | Activar los 4 conectores pendientes con credenciales reales |
+| WS-002 | P0 | blocked | n8n-runtime | automation | Regenerar tunel Cloudflare y rerun audit/reconcile |
+| WS-003 | P0 | active | release-control | control-plane | Mantener smoke checks y readiness artifacts actualizados |
+| WS-004 | P1 | active | codex-main | frontend | Cerrar backlog de adapters registration-required por olas |
+
+## Agents And Terminals
+
+| Agent | Terminal | Scope | Status |
+|---|---|---|---|
+| Codex Main | codex-desktop | Integracion full-stack, Supabase, deploy | active |
+| n8n Runtime | mac-mini | Workflows, credenciales, reconciliacion live | blocked |
+| Release Control | github-actions | CI/CD, snapshots de estado, guardrails | active |
+
+## Blockers
+
+- control_tower: No org scope provided; governor_metrics returned advisory defaults.
+- governance: No org scope provided; governor_metrics returned advisory defaults.
+- Public API connectors con credenciales pendientes: 4
+
+## Warnings
+
+- n8n workflows bloqueados por credenciales: 161
+- n8n reconcile con workflows bloqueados: 29
+- Working tree con cambios locales: 7 archivo(s)
+
+## Pending Local Changes
+
+- `M claude.md`
+- ` M codex.md`
+- ` M package.json`
+- `?? .github/workflows/control-tower-sync.yml`
+- `?? AGENTS.md`
+- `?? ops/`
+- `?? scripts/update-control-tower.mjs`
+
+## GitHub Signals
+
+- Not available in current context (GITHUB_TOKEN or GITHUB_REPOSITORY missing)
+
+## Usage Rules
+
+- Any coding agent must read this file before editing code.
+- Update `ops/workstreams.json` when claiming or finishing a stream.
+- Regenerate this dashboard with `npm run control-tower:update`.
+
