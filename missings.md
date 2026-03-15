@@ -214,6 +214,10 @@ URL directa: https://console.cloud.google.com/apis/credentials?project=hale-carp
 
 ### Pendiente inmediato para cerrar el gap completo
 - [x] Integrar `readiness:generate` al gate de release/CI como criterio objetivo.
+- [x] Añadir smoke/CI explícito para `build:project-apis` + `inject:n8n-api-context` (dry-run/apply por entorno):
+  - script: `scripts/smoke-project-apis-n8n-bridge.mjs`
+  - npm: `npm run smoke:project-apis-bridge`
+  - integrado en `.github/workflows/ci.yml`, `.github/workflows/supabase-deploy.yml` y `scripts/deploy-gate.mjs`
 - [ ] Completar configuración de secretos en GitHub para que el gate corra en todos los entornos:
   - `SUPABASE_URL`
   - `SUPABASE_SERVICE_ROLE_KEY`
@@ -240,10 +244,8 @@ URL directa: https://console.cloud.google.com/apis/credentials?project=hale-carp
 
 ### Estado actual del artifact (última ejecución)
 - [x] Artifact generado correctamente:
-  - `overall_state = yellow`
+  - `overall_state = green`
   - `smokes = pass (hard_block_routing, ag2_c6_synthetic, governor_runtime)`
-- [ ] Módulos aún en rojo/amarillo:
-  - `control_tower` (`governance_advisory_mode`)
-  - `governance` (`governance_metrics_warning`)
-  - `messaging` (`messaging_synthetic_only`)
-  - `readiness_observability` (`readiness_partial_warnings`)
+- [x] Módulos cerrados en este bloque:
+  - `control_tower` y `governance` ya no degradan por warning advisory `no_org_scope`.
+  - `simulation` pasa a `simulated` cuando hay guardrails activos pero smoke sintético en verde.

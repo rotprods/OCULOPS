@@ -1,6 +1,6 @@
 # APIs de Proyecto — OCULOPS
 
-Generado: 2026-03-14T01:49:24.469Z
+Generado: 2026-03-15T16:08:17.355Z
 
 ## Resumen
 - Catálogo total analizado: 1426
@@ -413,8 +413,8 @@ Generado: 2026-03-14T01:49:24.469Z
 | CleanURI | URL Shorteners | none | docs_only | 27 | https://cleanuri.com/docs |  |  |
 | CO2 Offset | Environment | none | docs_only | 27 | https://co2offset.io/api.html |  |  |
 | Coffee | Food & Drink | none | docs_only | 27 | https://coffee.alexflipnote.dev/ |  |  |
-| Covid-19 | Health | none | docs_only | 27 | https://covid19api.com/ |  |  |
 | Covid-19 | Health | none | docs_only | 27 | https://github.com/M-Media-Group/Covid-19-API |  |  |
+| Covid-19 | Health | none | docs_only | 27 | https://covid19api.com/ |  |  |
 | Covid-19 India | Health | none | docs_only | 27 | https://data.covid19india.org/ |  |  |
 | Covid-19 JHU CSSE | Health | none | docs_only | 27 | https://nuttaphat.com/covid19-api/ |  |  |
 | COVID-19 Tracker Canada | Health | none | docs_only | 27 | https://api.covid19tracker.ca/docs/1.0/overview |  |  |

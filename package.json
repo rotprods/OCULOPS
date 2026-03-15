@@ -75,7 +75,8 @@
     "build:public-api-infra-layer": "node scripts/build-public-api-infra-layer.mjs",
     "build:public-api-ecosystem-layer": "node scripts/build-public-api-ecosystem-layer.mjs",
     "build:project-apis": "node scripts/build-project-apis.mjs",
-    "smoke:public-connectors": "node scripts/smoke-public-connectors.mjs"
+    "smoke:public-connectors": "node scripts/smoke-public-connectors.mjs",
+    "smoke:project-apis-bridge": "node scripts/smoke-project-apis-n8n-bridge.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-03-15T16:10:14.465Z",
+  "started_at": "2026-03-15T16:10:14.285Z",
+  "mode": "dry_run",
+  "checks": {
+    "trigger_pack": {
+      "ok": true,
+      "file": "reports/n8n-api-trigger-pack.json",
+      "event_keys": 6,
+      "matching_entries_total": 1847
+    },
+    "injection": {
+      "ok": true,
+      "status": "skipped",
+      "reason": "missing_supabase_credentials",
+      "file": "reports/n8n-api-context-injection.smoke.json"
+    }
+  }
+}

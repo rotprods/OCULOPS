@@ -1,5 +1,15 @@
 # OCULOPS — Missings (pendientes no bloqueantes)
 
+## Backend convergence (estado actual)
+- [x] Readiness artifact/gate en verde (`overall_state=green`) con generación automática.
+- [x] Smoke del bloque `Project APIs -> n8n bridge` ya automatizado:
+  - `npm run smoke:project-apis-bridge`
+  - ejecuta `build:project-apis` y `inject:n8n-api-context` en `dry-run` por defecto
+  - soporta `apply` con `PROJECT_APIS_BRIDGE_SMOKE_APPLY=true`
+- [ ] Para ejecución completa en CI/CD falta setear secretos:
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+
 ## Sentry — Error Tracking
 - [ ] Crear proyecto en [sentry.io](https://sentry.io) → obtener DSN
 - [ ] `VITE_SENTRY_DSN=https://...@sentry.io/...` en `.env` y Vercel env vars

@@ -73,6 +73,14 @@ jobs:
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
+      - name: Project APIs -> n8n bridge smoke
+        run: npm run smoke:project-apis-bridge
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          PROJECT_APIS_BRIDGE_SMOKE_APPLY: ${{ vars.PROJECT_APIS_BRIDGE_SMOKE_APPLY }}
+          PROJECT_APIS_BRIDGE_SMOKE_LIMIT: ${{ vars.PROJECT_APIS_BRIDGE_SMOKE_LIMIT }}
+
       - name: Readiness gate (post-deploy)
         run: |
           if [ -z "${SUPABASE_URL}" ] || [ -z "${SUPABASE_SERVICE_ROLE_KEY}" ]; then
