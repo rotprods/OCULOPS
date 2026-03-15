@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generated_at": "2026-03-14T19:57:57.550Z",
+  "generated_at": "2026-03-15T15:34:04.431Z",
   "runs": [
     {
       "target": "vpj",
@@ -31,28 +31,28 @@
       "metrics": {
         "org_id": null,
         "window_hours": 24,
-        "generated_at": "2026-03-14T19:57:48.466Z",
+        "generated_at": "2026-03-15T15:33:52.962Z",
         "coverage": 1,
         "conflict_rate": 0,
-        "drift_ratio": 0.9565,
+        "drift_ratio": 0.9773,
         "execution_impact": {
-          "total_runs": 18,
+          "total_runs": 35,
           "success_rate": 0,
-          "blocking_violations": 17
+          "blocking_violations": 26
         },
         "counts": {
           "definitions": 8,
           "latest_snapshot_bindings": 8,
-          "snapshots_in_window": 23,
-          "unique_checksums_in_window": 22,
-          "violations_in_window": 87,
+          "snapshots_in_window": 44,
+          "unique_checksums_in_window": 43,
+          "violations_in_window": 102,
           "conflicts_in_window": 65,
           "latest_conflicts": 0
         },
         "latest_snapshot": {
-          "snapshot_id": "979c738e-2a1c-444c-aeaf-da209f398b5c",
-          "checksum": "597cc6c63c46bd8c2eb78ffe46044f7c36c485fc60064b68d47c4c3c4bfb1516",
-          "created_at": "2026-03-14T19:57:46.849777+00:00",
+          "snapshot_id": "fb7273e3-aabb-40fc-9ef3-990d7068b73b",
+          "checksum": "95eda404f121f5cab4b50d53a800b7fae2d32c4890fc0dce11eef8e3ab4f0c29",
+          "created_at": "2026-03-15T15:33:51.331723+00:00",
           "conflict_count": 0
         }
       },
@@ -62,10 +62,10 @@
         "backend_surface": "variable_registry|variable_resolver_v2|constraint_engine_v2|orchestration_v2",
         "state": "connected",
         "state_reason_code": "variable_orchestration_healthy",
-        "state_reason_text": "Definitions=8, coverage=100.0%, plans=19, failed_plans=0, blocked_plans=11, latest_blocking_violations=0, latest_conflicts=0.",
-        "last_success_at": "2026-03-14T19:57:48.385955+00:00",
-        "last_checked_at": "2026-03-14T19:57:48.858Z",
-        "correlation_id": "6c854913-2243-454e-8b16-9e6876c509c3",
+        "state_reason_text": "Definitions=8, coverage=100.0%, plans=35, failed_plans=0, blocked_plans=22, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_success_at": "2026-03-15T15:33:51.331723+00:00",
+        "last_checked_at": "2026-03-15T15:33:53.579Z",
+        "correlation_id": "e8cdb72d-88b8-426d-ac21-c8aa391ebdb3",
         "smoke_case_id": "governor_runtime",
         "remediation_action": "/control-tower?tab=readiness"
       }
@@ -99,28 +99,28 @@
       "metrics": {
         "org_id": null,
         "window_hours": 24,
-        "generated_at": "2026-03-14T19:57:56.607Z",
+        "generated_at": "2026-03-15T15:34:02.962Z",
         "coverage": 1,
         "conflict_rate": 0,
-        "drift_ratio": 0.8519,
+        "drift_ratio": 0.8958,
         "execution_impact": {
-          "total_runs": 18,
+          "total_runs": 34,
           "success_rate": 0,
-          "blocking_violations": 10
+          "blocking_violations": 19
         },
         "counts": {
           "definitions": 8,
           "latest_snapshot_bindings": 8,
-          "snapshots_in_window": 27,
-          "unique_checksums_in_window": 23,
-          "violations_in_window": 76,
+          "snapshots_in_window": 48,
+          "unique_checksums_in_window": 43,
+          "violations_in_window": 90,
           "conflicts_in_window": 60,
           "latest_conflicts": 0
         },
         "latest_snapshot": {
-          "snapshot_id": "8666f111-d770-4e6a-8420-01d2abd8ade0",
-          "checksum": "4cf3a4228bbf3f83ed74babcdec3662869a18a7a64f297c544e10b10f24baea7",
-          "created_at": "2026-03-14T19:57:56.121387+00:00",
+          "snapshot_id": "cc46b834-c6cb-49fe-a838-471d3b45efab",
+          "checksum": "990c4868b376786819bd4c1e5ff06b49d306c71b1981fb7ed8063dba5958ccbf",
+          "created_at": "2026-03-15T15:33:59.297681+00:00",
           "conflict_count": 0
         }
       },
@@ -130,10 +130,10 @@
         "backend_surface": "variable_registry|variable_resolver_v2|constraint_engine_v2|orchestration_v2",
         "state": "connected",
         "state_reason_code": "variable_orchestration_healthy",
-        "state_reason_text": "Definitions=8, coverage=100.0%, plans=19, failed_plans=0, blocked_plans=11, latest_blocking_violations=0, latest_conflicts=0.",
-        "last_success_at": "2026-03-14T19:57:56.121387+00:00",
-        "last_checked_at": "2026-03-14T19:57:57.471Z",
-        "correlation_id": "bf24803a-da8e-43bc-9433-8c413366fb84",
+        "state_reason_text": "Definitions=8, coverage=100.0%, plans=34, failed_plans=0, blocked_plans=21, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_success_at": "2026-03-15T15:33:59.297681+00:00",
+        "last_checked_at": "2026-03-15T15:34:04.512Z",
+        "correlation_id": "b1cce3f0-62a7-4ffe-92af-19b972f1ccc0",
         "smoke_case_id": "governor_runtime",
         "remediation_action": "/control-tower?tab=readiness"
       }
