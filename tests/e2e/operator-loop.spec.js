@@ -56,6 +56,53 @@ test.describe('Operator closed-loop flow (authenticated)', () => {
     }
   })
 
+  // ── AG1-P2: Readiness reason/remediation visibility outside Control Tower ──
+
+  test('Messaging readiness panel exposes reason code and remediation action', async ({ page }) => {
+    await page.goto('/messaging')
+    await page.waitForLoadState('networkidle')
+
+    const readinessPanel = page.locator('div').filter({ hasText: 'Messaging route status' }).first()
+    await expect(readinessPanel).toBeVisible({ timeout: 10000 })
+
+    await expect(readinessPanel.getByText(/code:\s+/i)).toBeVisible()
+    await expect(readinessPanel.getByText(/next:\s+/i)).toBeVisible()
+
+    const traceButton = readinessPanel.getByRole('button', { name: /trace/i })
+    if (await traceButton.count()) {
+      await expect(traceButton).toBeVisible()
+    }
+  })
+
+  test('Automation readiness section shows reason codes and remediation links', async ({ page }) => {
+    await page.goto('/automation')
+    await page.waitForLoadState('networkidle')
+
+    const readinessPanel = page.locator('.lab-panel').filter({ hasText: 'Route readiness' }).first()
+    await expect(readinessPanel).toBeVisible({ timeout: 10000 })
+
+    await expect(readinessPanel.getByText(/code:\s+/i).first()).toBeVisible()
+
+    const fixButtons = readinessPanel.getByRole('button', { name: /^fix$/i })
+    const hasFixButtons = (await fixButtons.count()) > 0
+    if (hasFixButtons) {
+      await expect(fixButtons.first()).toBeVisible()
+    } else {
+      await expect(readinessPanel.getByText(/next:\s+/i).first()).toBeVisible()
+    }
+  })
+
+  test('Marketplace readiness panel exposes reason code and remediation action', async ({ page }) => {
+    await page.goto('/marketplace')
+    await page.waitForLoadState('networkidle')
+
+    const readinessPanel = page.locator('div').filter({ hasText: 'Marketplace route status' }).first()
+    await expect(readinessPanel).toBeVisible({ timeout: 10000 })
+
+    await expect(readinessPanel.getByText(/code:\s+/i)).toBeVisible()
+    await expect(readinessPanel.getByText(/next:\s+/i)).toBeVisible()
+  })
+
   // ── AG1-P0.2: Blocked indicators ──
 
   test('Agents approvals tab loads and shows pending approvals KPI', async ({ page }) => {

@@ -238,7 +238,7 @@ URL directa: https://console.cloud.google.com/apis/credentials?project=hale-carp
 - [ ] Endurecer convergencia visual ya añadida:
   - [x] estandarizar `state_reason_code` visible por módulo (Control Tower, Messaging, Automation, Marketplace)
   - [x] enlazar `remediation_action` desde cada módulo a ruta concreta cuando aplica (`/route`)
-  - [ ] añadir cobertura E2E de estas superficies de readiness
+  - [x] añadir cobertura E2E autenticada de estas superficies de readiness (`tests/e2e/operator-loop.spec.js`)
 - [ ] Ejecutar generación de artifact con `READINESS_ORG_ID` fijo en pipeline para evitar modo advisory (`org_id=null`).
 - [ ] Cerrar loop provider-backed real (Gmail/WhatsApp) para pasar de `simulated/offline` a `connected` en módulos de mensajería/conectores.
 
