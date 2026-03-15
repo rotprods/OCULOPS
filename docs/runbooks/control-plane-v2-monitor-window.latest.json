@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-03-15T16:00:59.939Z",
+  "monitor_window": {
+    "started_at": "2026-03-15T15:30:59.939Z",
+    "ended_at": "2026-03-15T16:00:59.939Z",
+    "duration_minutes": 30
+  },
+  "org_id": "a11b1e98-7fd9-4789-aab9-ab5a77494627",
+  "targets": [
+    {
+      "target": "vpj",
+      "host": "vpjcwheuqmwbpcufbbkj.supabase.co",
+      "checks": {
+        "variable_metrics_http_ok": false,
+        "readiness_http_ok": false,
+        "readiness_v2_connected": false,
+        "latest_conflicts_zero": true,
+        "conflict_rate_reasonable": true
+      },
+      "metrics": {
+        "generated_at": null,
+        "conflict_rate": 0,
+        "drift_ratio": 0,
+        "latest_conflicts": 0,
+        "coverage": 0
+      },
+      "readiness_v2": null,
+      "trace_sample_status": 401
+    },
+    {
+      "target": "yxz",
+      "host": "yxzdafptqtcvpsbqkmkm.supabase.co",
+      "checks": {
+        "variable_metrics_http_ok": true,
+        "readiness_http_ok": true,
+        "readiness_v2_connected": true,
+        "latest_conflicts_zero": false,
+        "conflict_rate_reasonable": false
+      },
+      "metrics": {
+        "generated_at": "2026-03-15T16:01:03.196Z",
+        "conflict_rate": 0.375,
+        "drift_ratio": 0.9655,
+        "latest_conflicts": 3,
+        "coverage": 1
+      },
+      "readiness_v2": {
+        "state": "connected",
+        "reason_code": "variable_orchestration_healthy",
+        "reason_text": "Definitions=8, coverage=100.0%, plans=23, failed_plans=0, blocked_plans=15, latest_blocking_violations=0, latest_conflicts=0.",
+        "last_checked_at": "2026-03-15T16:01:02.796Z"
+      },
+      "trace_sample_status": 200
+    }
+  ],
+  "pass": false
+}

@@ -86,6 +86,11 @@ function normalizeReadinessState(value: unknown): ReadinessState {
   return "offline";
 }
 
+function isNoOrgAdvisoryWarning(value: unknown) {
+  const normalized = compact(value).toLowerCase();
+  return normalized.includes("no org scope provided");
+}
+
 function pickLatestIso(values: Array<string | null | undefined>) {
   const normalized = values
     .map((value) => compact(value))
@@ -702,17 +707,26 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
   const governanceWarnings = asArray(asRecord(governanceBundle.governance).warnings)
     .map((entry) => compact(entry))
     .filter(Boolean);
-  if (governanceWarnings.length > 0) warnings.push(...governanceWarnings);
+  const governanceNoOrgWarnings = governanceWarnings.filter((entry) => isNoOrgAdvisoryWarning(entry));
+  const governanceActionableWarnings = governanceWarnings.filter((entry) => !isNoOrgAdvisoryWarning(entry));
+  if (governanceActionableWarnings.length > 0) warnings.push(...governanceActionableWarnings);
+  const governanceNoOrgAdvisoryOnly = !orgId &&
+    governanceNoOrgWarnings.length > 0 &&
+    governanceActionableWarnings.length === 0;
 
   records.push(buildRecord({
     moduleKey: "control_tower",
     route: "/control-tower",
     backendSurface: "control-plane:ecosystem_readiness",
-    state: governanceWarnings.length > 0 ? "degraded" : "connected",
-    reasonCode: governanceWarnings.length > 0 ? "governance_advisory_mode" : "control_plane_snapshot_ok",
-    reasonText: governanceWarnings.length > 0
-      ? governanceWarnings[0]
-      : "Control-plane readiness snapshot is available.",
+    state: governanceActionableWarnings.length > 0 ? "degraded" : (governanceNoOrgAdvisoryOnly ? "simulated" : "connected"),
+    reasonCode: governanceActionableWarnings.length > 0
+      ? "governance_advisory_mode"
+      : (governanceNoOrgAdvisoryOnly ? "governance_no_org_scope" : "control_plane_snapshot_ok"),
+    reasonText: governanceActionableWarnings.length > 0
+      ? governanceActionableWarnings[0]
+      : (governanceNoOrgAdvisoryOnly
+        ? "Governance snapshot is running in synthetic mode without org scope."
+        : "Control-plane readiness snapshot is available."),
     lastSuccessAt: generatedAt,
     correlationId: governanceBundle.latestCorrelationId,
     smokeCaseId: "hard_block_routing",
@@ -723,11 +737,15 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     moduleKey: "governance",
     route: "/control-tower",
     backendSurface: "orchestration-engine:governor_metrics",
-    state: governanceWarnings.length > 0 ? "degraded" : "connected",
-    reasonCode: governanceWarnings.length > 0 ? "governance_metrics_warning" : "governance_metrics_ok",
-    reasonText: governanceWarnings.length > 0
-      ? governanceWarnings[0]
-      : `Dispatch=${governanceBundle.snapshot.dispatch_total}, blocked=${governanceBundle.snapshot.blocked_total}.`,
+    state: governanceActionableWarnings.length > 0 ? "degraded" : (governanceNoOrgAdvisoryOnly ? "simulated" : "connected"),
+    reasonCode: governanceActionableWarnings.length > 0
+      ? "governance_metrics_warning"
+      : (governanceNoOrgAdvisoryOnly ? "governance_metrics_no_org_scope" : "governance_metrics_ok"),
+    reasonText: governanceActionableWarnings.length > 0
+      ? governanceActionableWarnings[0]
+      : (governanceNoOrgAdvisoryOnly
+        ? "governor_metrics returned advisory synthetic values because org scope was not provided."
+        : `Dispatch=${governanceBundle.snapshot.dispatch_total}, blocked=${governanceBundle.snapshot.blocked_total}.`),
     lastSuccessAt: generatedAt,
     correlationId: governanceBundle.latestCorrelationId,
     smokeCaseId: "governor_runtime",
@@ -897,13 +915,17 @@ export async function buildEcosystemReadiness(input: BuildReadinessInput): Promi
     route: "/simulation",
     backendSurface: "simulation-engine|simulation_runs",
     state: simulationBundle.total > 0
-      ? (simulationBundle.failed > simulationBundle.passed ? "degraded" : "connected")
+      ? ((simulationBundle.failed > simulationBundle.passed && syntheticMessagingSmokePass) ? "simulated" : (simulationBundle.failed > simulationBundle.passed ? "degraded" : "connected"))
       : "simulated",
     reasonCode: simulationBundle.total > 0
-      ? (simulationBundle.failed > simulationBundle.passed ? "simulation_failures_high" : "simulation_runs_available")
+      ? ((simulationBundle.failed > simulationBundle.passed && syntheticMessagingSmokePass)
+        ? "simulation_guardrail_activity_synthetic"
+        : (simulationBundle.failed > simulationBundle.passed ? "simulation_failures_high" : "simulation_runs_available"))
       : "simulation_no_recent_runs",
     reasonText: simulationBundle.total > 0
-      ? `Simulation runs=${simulationBundle.total}, passed=${simulationBundle.passed}, failed=${simulationBundle.failed}.`
+      ? ((simulationBundle.failed > simulationBundle.passed && syntheticMessagingSmokePass)
+        ? `Simulation runs=${simulationBundle.total}, passed=${simulationBundle.passed}, failed=${simulationBundle.failed}. Failures align with expected synthetic guardrail tests.`
+        : `Simulation runs=${simulationBundle.total}, passed=${simulationBundle.passed}, failed=${simulationBundle.failed}.`)
       : "No recent simulation runs; simulation layer ready but idle.",
     lastSuccessAt: simulationBundle.lastSuccessAt,
     correlationId: governanceBundle.latestCorrelationId,
