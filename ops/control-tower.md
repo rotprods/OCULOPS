@@ -1,13 +1,13 @@
 # Control Tower
 
-Last updated: 2026-03-15T16:01:59.332Z
-Branch: `main` · SHA: `64794a2`
+Last updated: 2026-03-15T16:03:27.434Z
+Branch: `main` · SHA: `df9a991`
 
 ## System Pulse
 
 | Signal | Status | Evidence |
 |---|---|---|
-| Readiness overall | yellow | generated: 2026-03-15T15:59:10.255Z |
+| Readiness overall | green | generated: 2026-03-15T16:02:55.444Z |
 | Public API connectors live | 7/11 | missing keys: 4 |
 | n8n runnable workflows | 39/200 | blocked credentials: 161 |
 | n8n reconcile runnable | 166/198 | blocked: 29 |
