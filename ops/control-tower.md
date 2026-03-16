@@ -1,7 +1,7 @@
 # Control Tower
 
-Last updated: 2026-03-16T01:18:06.977Z
-Branch: `main` · SHA: `9887f1a`
+Last updated: 2026-03-16T01:18:19.291Z
+Branch: `main` · SHA: `dc427d0`
 
 ## System Pulse
 
@@ -11,7 +11,7 @@ Branch: `main` · SHA: `9887f1a`
 | Public API connectors live | 7/11 | missing keys: 4 |
 | n8n runnable workflows | 1/27 | blocked credentials: 0 |
 | n8n reconcile runnable | 166/198 | blocked: 29 |
-| Git sync | ahead 0 / behind 0 | dirty files: 17 |
+| Git sync | ahead 1 / behind 1 | dirty files: 2 |
 
 ## Workstreams
 
@@ -33,31 +33,17 @@ Branch: `main` · SHA: `9887f1a`
 ## Blockers
 
 - Public API connectors con credenciales pendientes: 4
+- Repo behind origin/main por 1 commit(s)
 
 ## Warnings
 
 - n8n reconcile con workflows bloqueados: 29
-- Working tree con cambios locales: 17 archivo(s)
+- Working tree con cambios locales: 2 archivo(s)
 
 ## Pending Local Changes
 
-- `M docs/runbooks/control-plane-v2-performance.latest.json`
-- ` D docs/runbooks/ecosystem-readiness.latest.json`
-- ` M docs/runbooks/ecosystem-readiness.md`
-- ` M ops/control-tower.md`
-- ` M ops/control-tower.snapshot.json`
-- ` M reports/n8n-workflow-audit.json`
-- ` M reports/project-apis-n8n-bridge-smoke.latest.json`
-- ` M scripts/check-ecosystem-readiness-gate.mjs`
-- ` M scripts/generate-ecosystem-readiness.mjs`
-- ` M scripts/update-control-tower.mjs`
-- ` M src/components/modules/CommandCenter.jsx`
-- ` M src/hooks/useConnectorProxy.js`
-- ` M src/hooks/useConversations.js`
-- ` M src/lib/controlPlane.js`
-- ` M src/lib/runtimeClient.js`
-- ` M supabase/functions/_shared/agent-brain-v2.ts`
-- `?? supabase/functions/_shared/model-router.ts`
+- `UU ops/control-tower.md`
+- `UU ops/control-tower.snapshot.json`
 
 ## GitHub Signals
 
