@@ -1,0 +1,1 @@
+/Users/rotech/AGENCY_OS/agent_factory_v2/06_docs/MASTER_GUIDE.md

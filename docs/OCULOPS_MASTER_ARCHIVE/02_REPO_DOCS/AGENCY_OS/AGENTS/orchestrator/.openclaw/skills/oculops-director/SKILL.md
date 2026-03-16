@@ -1,0 +1,1 @@
+/Users/rotech/AGENCY_OS/AGENTS/orchestrator/.openclaw/skills/oculops-director/SKILL.md

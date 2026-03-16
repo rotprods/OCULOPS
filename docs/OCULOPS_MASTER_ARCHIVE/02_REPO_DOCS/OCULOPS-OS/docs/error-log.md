@@ -1,0 +1,1 @@
+/Users/rotech/OCULOPS-OS/docs/error-log.md

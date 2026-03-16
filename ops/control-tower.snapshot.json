@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-03-16T00:08:35.678Z",
+  "generatedAt": "2026-03-16T00:54:15.905Z",
   "project": "OCULOPS",
   "git": {
     "branch": "main",
-    "sha": "b3e649d",
-    "ahead": 0,
+    "sha": "89f9ae6",
+    "ahead": 2,
     "behind": 0,
     "dirty": false,
     "changedFiles": []
@@ -199,9 +199,9 @@
         "area": "automation",
         "branch": "main",
         "blocking": true,
-        "next_action": "Mocked local readiness variables, atlasm router errors fixed, system fully active locally. Awaiting real keys for production.",
+        "next_action": "Execute Phase 1: DB Migrations and Edge Functions deployment",
         "notes": "Tunnel regenerado ok, scripts fallaron por falta de credenciales. Local readiness bypassed with mock data to allow UI boot. Lint/tests passing.",
-        "updated_at": "2026-03-16T01:05:00Z"
+        "updated_at": "2026-03-16T01:21:00Z"
       },
       {
         "id": "WS-003",
@@ -268,9 +268,9 @@
     "n8n reconcile con workflows bloqueados: 29"
   ],
   "github": {
-    "enabled": true,
-    "reason": null,
-    "openPullRequests": 0,
-    "openIssues": 0
+    "enabled": false,
+    "reason": "GITHUB_TOKEN or GITHUB_REPOSITORY missing",
+    "openPullRequests": null,
+    "openIssues": null
   }
 }

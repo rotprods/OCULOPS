@@ -1,0 +1,1 @@
+/Users/rotech/OCULOPS-OS/dashboard_screenshots/oculops-stitch-prompts-v2.md

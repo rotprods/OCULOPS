@@ -1,0 +1,1 @@
+/Users/rotech/OCULOPS-OS/docs/creative-factory/asset_library_spec.md

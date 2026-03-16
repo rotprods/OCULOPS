@@ -1,0 +1,1 @@
+/Users/rotech/AGENCY_OS/EXTENSIONS/MCPs/antigravity-docs/knowledge_base/38_Allowlist___Denylist.md

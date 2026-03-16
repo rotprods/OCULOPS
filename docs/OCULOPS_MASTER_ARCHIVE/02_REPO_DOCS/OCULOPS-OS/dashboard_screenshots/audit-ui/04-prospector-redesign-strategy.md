@@ -1,0 +1,1 @@
+/Users/rotech/OCULOPS-OS/dashboard_screenshots/audit-ui/04-prospector-redesign-strategy.md

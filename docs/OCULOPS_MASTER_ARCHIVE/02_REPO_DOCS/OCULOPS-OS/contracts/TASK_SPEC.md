@@ -1,0 +1,1 @@
+/Users/rotech/OCULOPS-OS/contracts/TASK_SPEC.md

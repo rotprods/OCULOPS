@@ -1,0 +1,1 @@
+/Users/rotech/OCULOPS-OS/docs/runbooks/CLAUDE_CODE_N8N_MCP_INJECTION.md

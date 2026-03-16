@@ -1,7 +1,7 @@
 # Control Tower
 
-Last updated: 2026-03-16T00:08:35.678Z
-Branch: `main` · SHA: `b3e649d`
+Last updated: 2026-03-16T00:54:15.905Z
+Branch: `main` · SHA: `89f9ae6`
 
 ## System Pulse
 
@@ -11,14 +11,14 @@ Branch: `main` · SHA: `b3e649d`
 | Public API connectors live | 7/11 | missing keys: 4 |
 | n8n runnable workflows | 39/200 | blocked credentials: 161 |
 | n8n reconcile runnable | 166/198 | blocked: 29 |
-| Git sync | ahead 0 / behind 0 | dirty files: 0 |
+| Git sync | ahead 2 / behind 0 | dirty files: 0 |
 
 ## Workstreams
 
 | ID | Priority | Status | Owner | Area | Next action |
 |---|---|---|---|---|---|
 | WS-001 | P0 | active | codex-main | api-catalog | Activar los 4 conectores pendientes con credenciales reales |
-| WS-002 | P0 | active | antigravity | automation | Mocked local readiness variables, atlasm router errors fixed, system fully active locally. Awaiting real keys for production. |
+| WS-002 | P0 | active | antigravity | automation | Execute Phase 1: DB Migrations and Edge Functions deployment |
 | WS-003 | P0 | active | release-control | control-plane | Mantener smoke checks y readiness artifacts actualizados |
 | WS-004 | P1 | active | codex-main | frontend | Cerrar backlog de adapters registration-required por olas |
 
@@ -45,8 +45,7 @@ Branch: `main` · SHA: `b3e649d`
 
 ## GitHub Signals
 
-- Open pull requests: 0
-- Open issues: 0
+- Not available in current context (GITHUB_TOKEN or GITHUB_REPOSITORY missing)
 
 ## Usage Rules
 

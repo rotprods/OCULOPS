@@ -1,0 +1,1 @@
+/Users/rotech/OCULOPS-OS/docs/creative-factory/creative_jobs_schema.md
