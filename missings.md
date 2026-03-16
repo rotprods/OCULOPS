@@ -249,3 +249,83 @@ URL directa: https://console.cloud.google.com/apis/credentials?project=hale-carp
 - [x] Módulos cerrados en este bloque:
   - `control_tower` y `governance` ya no degradan por warning advisory `no_org_scope`.
   - `simulation` pasa a `simulated` cuando hay guardrails activos pero smoke sintético en verde.
+
+---
+
+## Pendientes Consolidados (from docs/missings.md & docs/missing.md)
+
+### Sentry — Error Tracking
+- [ ] Crear proyecto en [sentry.io](https://sentry.io) → obtener DSN
+- [ ] `VITE_SENTRY_DSN=https://...@sentry.io/...` en `.env` y Vercel env vars
+- [ ] `VITE_APP_VERSION=10.0.0` en `.env` y Vercel env vars
+- [ ] Verificar en prod: provocar error JS → confirmar que aparece en Sentry dashboard
+- El código ya está listo: `src/lib/sentry.js` + `SentryErrorBoundary` en `App.jsx`
+
+### Stripe — Billing
+- [ ] Crear productos y precios en Stripe Dashboard
+- [ ] `STRIPE_SECRET_KEY=sk_live_...` en Supabase secrets + Vercel
+- [ ] `STRIPE_WEBHOOK_SECRET=whsec_...` en Supabase secrets + Vercel
+- [ ] `STRIPE_PRICE_STARTER=price_...` en Supabase secrets
+- [ ] `STRIPE_PRICE_PRO=price_...` en Supabase secrets
+- [ ] `STRIPE_PRICE_ENTERPRISE=price_...` en Supabase secrets
+- [ ] Registrar webhook en Stripe Dashboard → endpoint: `https://yxzdafptqtcvpsbqkmkm.supabase.co/functions/v1/stripe-webhook`
+- [ ] Redeploy `stripe-webhook` + `stripe-checkout` edge functions con los secrets nuevos
+- El código ya está listo: firma HMAC verificada, `onboarding` tiene plan CTAs, `Billing.jsx` lee `currentOrg.plan`
+
+### Playwright E2E — Auth real
+- [ ] Crear usuario de test en Supabase Dashboard (email/password, org ya creada)
+- [ ] Añadir `PLAYWRIGHT_TEST_EMAIL` como GitHub secret
+- [ ] Añadir `PLAYWRIGHT_TEST_PASSWORD` como GitHub secret
+- [ ] Verificar que `npm run test:e2e` pasa los nuevos tests autenticados (`dashboard.spec.js`)
+- El código ya está listo: `auth.setup.js`, `dashboard.spec.js`, `playwright.config.js` con proyecto `authenticated`
+
+### Email
+- [ ] `RESEND_API_KEY` — configurar en Supabase secrets (`npx supabase secrets set RESEND_API_KEY=re_xxx --linked`)
+- [ ] Verificar dominio `oculops.com` en Resend (o usar sandbox para testing)
+- [ ] Welcome email trigger (`trigger_welcome_email`) ya está en DB, solo falta la API key para que funcione
+- [ ] `FROM_EMAIL` env opcional — default: `OCULOPS <noreply@oculops.com>`
+
+### MIGRATIONS TO PUSH
+```bash
+npx supabase db push --linked
+```
+Pending migrations:
+- `20260310150000_knowledge_pgvector.sql` — pgvector + embeddings
+- `20260310160000_multi_tenancy.sql` — org_id on 28 tables + RLS
+
+### EDGE FUNCTIONS TO DEPLOY
+```bash
+supabase functions deploy knowledge-embed
+supabase functions deploy stripe-webhook
+supabase functions deploy stripe-checkout
+```
+
+### n8n webhooks (Phase 3.2)
+- [ ] Create/activate webhook endpoints in n8n instance for EVENT_ROUTES paths:
+  - `/agent-completed`, `/agent-error`, `/speed-to-lead`
+  - `/deal-stage-changed`, `/deal-closed-won`
+  - `/forge-content-webhook`, `/strategist-webhook`, `/signal-detected`
+
+### Security sweep (LAST before public)
+- [ ] Set `VITE_DEV_MODE=false` in production
+- [ ] Verify RLS policies after multi-tenancy migration
+- [ ] Rate limiting on public endpoints
+- [ ] Input validation audit
+- [ ] Remove console.logs from production build
+
+### MASTERINTELLIGENCE — Vision Feature (Phase 6+)
+**This changes the entire product.** Not a CSS task — a full product feature.
+- **Energy Ball**: Autonomous AI entity visualized as a golden energy sphere (see `oculops_sidebar_navigation.png` mockup). Present in EVERY app section, floating freely with personality and movement
+- **Voice Commands**: MasterIntelligence has its own voice, can run all app operations via voice commands
+- **Self-Improvement**: Uses autoresearch loop (Karpathy path at `~/Documents/AI OPS/github-repos/autoresearch/`) to autonomously improve itself — modifies own train.py, trains, keep/revert by val_bpb
+- **Presence**: Not a static widget — a living entity that moves between sections, reacts to data, pulses with activity, has personality and freedom
+- **Implementation**: Canvas/WebGL energy ball component, Web Speech API for voice, integration with agent-brain-v2 for intelligence, autoresearch integration for self-improvement loop
+- **Depends on**: Visual rebrand complete (Phase 0-5), agent-runner system, brain-v2
+
+### NICE TO HAVE (not blocking)
+- [ ] @tanstack/virtual for list virtualization (large contact/agent lists)
+- [ ] pgvector IVFFlat → HNSW index upgrade when > 10k knowledge entries
+- [ ] Workflow builder UI in Automation module
+- [ ] PDF invoice generation in Billing
+- [ ] Email templates for onboarding flow
+- [ ] Dark/light theme toggle (currently OLED-only)

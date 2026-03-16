@@ -1,4 +1,9 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+
+vi.mock('zustand/middleware', () => ({
+  persist: (config) => config
+}))
+
 import { useAppStore, uid, ceoScore } from '../stores/useAppStore'
 
 describe('uid()', () => {

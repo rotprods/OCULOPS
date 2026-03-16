@@ -1,4 +1,12 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+/**
+ * @vitest-environment jsdom
+ */
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+
+vi.mock('zustand/middleware', () => ({
+  persist: (config) => config
+}))
+
 import { usePipelineStore } from '../stores/usePipelineStore'
 
 describe('usePipelineStore', () => {

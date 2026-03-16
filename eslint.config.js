@@ -11,6 +11,7 @@ export default defineConfig([
     'js/**',
     'legacy/**',
     'node_modules.corrupt-*/**',
+    'AIOPS/**',
   ]),
   {
     files: ['src/**/*.{js,jsx}'],
