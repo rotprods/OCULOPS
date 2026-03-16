@@ -14,7 +14,7 @@ const WORKSTREAMS_PATH = path.join(OPS_DIR, 'workstreams.json')
 const OUTPUT_MD_PATH = path.join(OPS_DIR, 'control-tower.md')
 const OUTPUT_JSON_PATH = path.join(OPS_DIR, 'control-tower.snapshot.json')
 
-const READINESS_PATH = path.join(ROOT_DIR, 'docs/runbooks/ecosystem-readiness.latest.json')
+const READINESS_PATH = path.resolve(process.env.HOME || '/Users/rotech', 'AGENCY_OS/CONTEXT/ecosystem-readiness.latest.json')
 const BOOTSTRAP_PATH = path.join(ROOT_DIR, 'reports/public-api-bootstrap.json')
 const N8N_AUDIT_PATH = path.join(ROOT_DIR, 'reports/n8n-workflow-audit.json')
 const N8N_RECONCILE_PATH = path.join(ROOT_DIR, 'reports/n8n-oculops-reconcile.json')

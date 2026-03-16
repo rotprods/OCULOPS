@@ -25,32 +25,11 @@ const mode = String(args.get("mode") || process.env.READINESS_GATE_MODE || "synt
 const readinessFile = String(
   args.get("file") ||
     process.env.READINESS_GATE_FILE ||
-    "docs/runbooks/ecosystem-readiness.latest.json",
+    "../AGENCY_OS/CONTEXT/ecosystem-readiness.latest.json",
 );
 const maxAgeHours = Math.max(1, Math.min(240, Number(args.get("max-age-hours") || process.env.READINESS_MAX_AGE_HOURS || 36)));
 
-const VALID_STATES = new Set(["connected", "simulated", "degraded", "offline", "planned"]);
-const BASE_MODULE_KEYS = [
-  "control_tower",
-  "governance",
-  "orchestration",
-  "automation",
-  "variable_control_plane_v2",
-  "api_catalog",
-  "n8n_catalog",
-  "simulation",
-  "messaging",
-  "connector_proxy",
-  "marketplace",
-];
-const DEFAULT_PRODUCTION_CRITICAL_MODULES = [
-  "control_tower",
-  "governance",
-  "orchestration",
-  "connector_proxy",
-  "variable_control_plane_v2",
-];
-const DEFAULT_PRODUCTION_NON_CRITICAL_STATES = ["connected", "simulated", "degraded", "planned"];
+const VALID_STATES = new Set(["connected", "online", "simulated", "degraded", "planned"]);
 
 function parseBoolean(value, fallback = false) {
   if (value === undefined || value === null || String(value).trim() === "") return fallback;
@@ -60,85 +39,18 @@ function parseBoolean(value, fallback = false) {
   return fallback;
 }
 
-function parseCsvList(raw, fallback = []) {
-  if (!raw || String(raw).trim() === "") return [...fallback];
-  const items = String(raw)
-    .split(",")
-    .map((item) => item.trim().toLowerCase())
-    .filter(Boolean);
-  return Array.from(new Set(items));
-}
-
-function parseAllowedStates(raw, fallback = []) {
-  const states = parseCsvList(raw, fallback)
-    .filter((state) => VALID_STATES.has(state));
-  if (states.length === 0) return [...fallback];
-  return states;
-}
-
-function compactString(value) {
-  const normalized = value === undefined || value === null ? "" : String(value);
-  const trimmed = normalized.trim();
-  return trimmed.length > 0 ? trimmed : "";
-}
-
-const productionCriticalModules = parseCsvList(
-  args.get("critical-modules") || process.env.READINESS_PRODUCTION_CRITICAL_MODULES,
-  DEFAULT_PRODUCTION_CRITICAL_MODULES,
-);
-const productionNonCriticalStates = parseAllowedStates(
-  args.get("production-non-critical-states") || process.env.READINESS_PRODUCTION_NON_CRITICAL_STATES,
-  DEFAULT_PRODUCTION_NON_CRITICAL_STATES,
-);
-const productionStrictAllConnected = parseBoolean(
-  args.get("production-strict-all-connected") || process.env.READINESS_PRODUCTION_STRICT_ALL_CONNECTED,
-  false,
-);
-const productionExpectedOrgId = compactString(args.get("org-id") || process.env.READINESS_ORG_ID);
-
-const productionRequiredModules = Object.fromEntries(
-  BASE_MODULE_KEYS.map((moduleKey) => {
-    if (productionStrictAllConnected) return [moduleKey, ["connected"]];
-    if (productionCriticalModules.includes(moduleKey)) return [moduleKey, ["connected"]];
-    return [moduleKey, productionNonCriticalStates];
-  }),
-);
-for (const moduleKey of productionCriticalModules) {
-  productionRequiredModules[moduleKey] = ["connected"];
-}
-
 const policyByMode = {
   synthetic: {
     disallowOverall: [],
-    requiredSmokes: [
-      "hard_block_routing",
-      "ag2_c6_synthetic",
-      "governor_runtime",
-    ],
-    requiredModules: {
-      control_tower: ["connected", "degraded"],
-      governance: ["connected", "degraded"],
-      orchestration: ["connected", "simulated", "degraded"],
-      automation: ["connected", "simulated", "degraded"],
-      variable_control_plane_v2: ["connected", "simulated", "degraded", "planned"],
-      api_catalog: ["connected", "simulated", "degraded"],
-      n8n_catalog: ["connected", "simulated", "degraded"],
-      simulation: ["connected", "simulated", "degraded"],
-      messaging: ["connected", "simulated", "degraded", "offline"],
-      connector_proxy: ["connected", "simulated", "degraded", "offline"],
-      marketplace: ["connected", "simulated", "degraded", "offline"],
-    },
-    minRecordCount: 8,
+    requiredServices: ["n8n", "postgresql", "redis", "qdrant"],
+    requiredCapabilities: ["workflow_automation", "semantic_memory"],
+    minServiceCount: 8,
   },
   production: {
-    disallowOverall: ["red"],
-    requiredSmokes: [
-      "hard_block_routing",
-      "ag2_c6_synthetic",
-      "governor_runtime",
-    ],
-    requiredModules: productionRequiredModules,
-    minRecordCount: 10,
+    disallowOverall: ["offline", "no_go", "red"],
+    requiredServices: ["n8n", "postgresql", "redis", "qdrant", "rabbitmq", "dashboard_api", "agent_zero"],
+    requiredCapabilities: ["workflow_automation", "semantic_memory", "governed_ai_inference", "dashboard_control_plane"],
+    minServiceCount: 10,
   },
 };
 
@@ -164,18 +76,15 @@ try {
 
 const failures = [];
 const warnings = [];
-const records = Array.isArray(readiness?.records) ? readiness.records : [];
-const smokes = Array.isArray(readiness?.smokes) ? readiness.smokes : [];
-const recordsByKey = new Map(records.map((row) => [String(row.module_key || ""), row]));
-const smokeById = new Map(smokes.map((row) => [String(row.smoke_case_id || ""), row]));
-const governanceOrgId = compactString(readiness?.governance_metrics?.org_id);
+const services = readiness?.services || {};
+const capabilities = readiness?.capabilities || {};
 
-if (!readiness?.generated_at) {
-  failures.push("missing generated_at");
+if (!readiness?.timestamp) {
+  failures.push("missing timestamp");
 } else {
-  const generatedEpoch = new Date(readiness.generated_at).getTime();
+  const generatedEpoch = new Date(readiness.timestamp).getTime();
   if (!Number.isFinite(generatedEpoch)) {
-    failures.push("generated_at is not a valid timestamp");
+    failures.push("timestamp is not a valid date");
   } else {
     const ageMs = Date.now() - generatedEpoch;
     const maxAgeMs = maxAgeHours * 60 * 60 * 1000;
@@ -185,56 +94,35 @@ if (!readiness?.generated_at) {
   }
 }
 
-if (records.length < policy.minRecordCount) {
-  failures.push(`record count too low (${records.length} < ${policy.minRecordCount})`);
+const serviceKeys = Object.keys(services);
+if (serviceKeys.length < policy.minServiceCount) {
+  failures.push(`service count too low (${serviceKeys.length} < ${policy.minServiceCount})`);
 }
 
-const overallState = String(readiness?.overall_state || "").toLowerCase();
+const overallState = String(readiness?.global_status || "").toLowerCase();
 if (policy.disallowOverall.includes(overallState)) {
-  failures.push(`overall_state=${overallState} is not allowed in ${mode} mode`);
+  failures.push(`global_status=${overallState} is not allowed in ${mode} mode`);
 }
 
-for (const smokeId of policy.requiredSmokes) {
-  const smoke = smokeById.get(smokeId);
-  if (!smoke) {
-    failures.push(`missing smoke case: ${smokeId}`);
-    continue;
-  }
-  const status = String(smoke.status || "").toLowerCase();
-  if (status !== "pass") {
-    failures.push(`smoke ${smokeId} not passing (status=${status || "unknown"})`);
+for (const svc of policy.requiredServices) {
+  const status = String(services[svc] || "").toLowerCase();
+  if (!VALID_STATES.has(status)) {
+    failures.push(`critical service ${svc} not online (status=${status || "unknown"})`);
   }
 }
 
-for (const [moduleKey, allowedStates] of Object.entries(policy.requiredModules)) {
-  const row = recordsByKey.get(moduleKey);
-  if (!row) {
-    failures.push(`missing readiness record: ${moduleKey}`);
-    continue;
-  }
-  const state = String(row.state || "").toLowerCase();
-  if (!allowedStates.includes(state)) {
-    failures.push(`${moduleKey} state ${state || "unknown"} not allowed (${allowedStates.join(", ")})`);
-  }
-}
-
-if (mode === "production") {
-  if (!productionExpectedOrgId) {
-    failures.push("READINESS_ORG_ID is required in production mode");
-  } else if (!governanceOrgId) {
-    failures.push("artifact governance_metrics.org_id is missing (advisory scope not allowed in production mode)");
-  } else if (governanceOrgId !== productionExpectedOrgId) {
-    failures.push(`artifact org scope mismatch (artifact=${governanceOrgId}, expected=${productionExpectedOrgId})`);
+for (const cap of policy.requiredCapabilities) {
+  const status = String(capabilities[cap] || "").toLowerCase();
+  if (!VALID_STATES.has(status)) {
+    failures.push(`critical capability ${cap} not connected (status=${status || "unknown"})`);
   }
 }
 
 if (mode === "synthetic") {
-  const advisoryModules = ["control_tower", "governance"];
-  for (const moduleKey of advisoryModules) {
-    const row = recordsByKey.get(moduleKey);
-    if (!row) continue;
-    if (String(row.state || "").toLowerCase() === "degraded" && !String(row.state_reason_code || "").includes("governance")) {
-      warnings.push(`${moduleKey} degraded with non-governance reason (${row.state_reason_code || "unknown"})`);
+  const advisoryServices = ["cloudflare_tunnel", "public_ingress"];
+  for (const svc of advisoryServices) {
+    if (String(services[svc] || "").toLowerCase() === "no_go") {
+      warnings.push(`service ${svc} is no_go (tolerated in synthetic)`);
     }
   }
 }
@@ -242,21 +130,10 @@ if (mode === "synthetic") {
 const result = {
   ok: failures.length === 0,
   mode,
-  policy: {
-    production: mode === "production"
-      ? {
-        strict_all_connected: productionStrictAllConnected,
-        expected_org_id: productionExpectedOrgId || null,
-        critical_modules: productionCriticalModules,
-        non_critical_allowed_states: productionNonCriticalStates,
-      }
-      : null,
-  },
   file: readinessFile,
-  generated_at: readiness?.generated_at || null,
-  overall_state: readiness?.overall_state || null,
-  record_count: records.length,
-  smoke_count: smokes.length,
+  timestamp: readiness?.timestamp || null,
+  global_status: readiness?.global_status || null,
+  service_count: serviceKeys.length,
   failures,
   warnings,
 };

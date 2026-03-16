@@ -1,162 +1,36 @@
 {
-  "generatedAt": "2026-03-16T00:56:13.461Z",
+  "generatedAt": "2026-03-16T01:18:06.977Z",
   "project": "OCULOPS",
   "git": {
     "branch": "main",
-    "sha": "bf33df8",
+    "sha": "9887f1a",
     "ahead": 0,
     "behind": 0,
-    "dirty": false,
-    "changedFiles": []
+    "dirty": true,
+    "changedFiles": [
+      "M docs/runbooks/control-plane-v2-performance.latest.json",
+      " D docs/runbooks/ecosystem-readiness.latest.json",
+      " M docs/runbooks/ecosystem-readiness.md",
+      " M ops/control-tower.md",
+      " M ops/control-tower.snapshot.json",
+      " M reports/n8n-workflow-audit.json",
+      " M reports/project-apis-n8n-bridge-smoke.latest.json",
+      " M scripts/check-ecosystem-readiness-gate.mjs",
+      " M scripts/generate-ecosystem-readiness.mjs",
+      " M scripts/update-control-tower.mjs",
+      " M src/components/modules/CommandCenter.jsx",
+      " M src/hooks/useConnectorProxy.js",
+      " M src/hooks/useConversations.js",
+      " M src/lib/controlPlane.js",
+      " M src/lib/runtimeClient.js",
+      " M supabase/functions/_shared/agent-brain-v2.ts",
+      "?? supabase/functions/_shared/model-router.ts"
+    ]
   },
   "readiness": {
-    "overallState": "green",
-    "generatedAt": "2026-03-15T16:10:45.921Z",
-    "records": [
-      {
-        "module_key": "control_tower",
-        "route": "/control-tower",
-        "backend_surface": "control-plane:ecosystem_readiness",
-        "state": "connected",
-        "state_reason_code": "governance_no_org_scope",
-        "state_reason_text": "Governance snapshot is running in synthetic mode without org scope.",
-        "last_success_at": "2026-03-15T16:10:45.921Z",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "hard_block_routing",
-        "remediation_action": "/control-tower?tab=readiness"
-      },
-      {
-        "module_key": "governance",
-        "route": "/control-tower",
-        "backend_surface": "orchestration-engine:governor_metrics",
-        "state": "connected",
-        "state_reason_code": "governance_metrics_no_org_scope",
-        "state_reason_text": "governor_metrics returned advisory synthetic values because org scope was not provided.",
-        "last_success_at": "2026-03-15T16:10:45.921Z",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "governor_runtime",
-        "remediation_action": "/control-tower?tab=governance"
-      },
-      {
-        "module_key": "orchestration",
-        "route": "/automation",
-        "backend_surface": "orchestration-engine:create_run|execute_run|get_run",
-        "state": "connected",
-        "state_reason_code": "pipeline_activity_ok",
-        "state_reason_text": "Runs=3, completed=3, failed=0.",
-        "last_success_at": "2026-03-15T15:33:07.14464+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "7aa80aa1-6be1-46ef-91bb-26c184fe5266",
-        "smoke_case_id": "hard_block_routing",
-        "remediation_action": "/automation"
-      },
-      {
-        "module_key": "messaging",
-        "route": "/messaging",
-        "backend_surface": "messaging-dispatch|gmail-inbound|messaging-channel-oauth",
-        "state": "simulated",
-        "state_reason_code": "messaging_synthetic_only",
-        "state_reason_text": "Synthetic messaging evidence is active; provider credentials are intentionally excluded in code-first scope.",
-        "last_success_at": "2026-03-14T05:09:52.291312+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "c6-6bab9275-88f2-4214-843a-b7406877e76c",
-        "smoke_case_id": "ag2_c6_synthetic",
-        "remediation_action": "/messaging"
-      },
-      {
-        "module_key": "connector_proxy",
-        "route": "/automation",
-        "backend_surface": "api-proxy|tool-bus",
-        "state": "connected",
-        "state_reason_code": "connectors_live",
-        "state_reason_text": "7 live connector(s) available.",
-        "last_success_at": "2026-03-15T15:31:05.548+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "hard_block_routing",
-        "remediation_action": "/automation"
-      },
-      {
-        "module_key": "automation",
-        "route": "/automation",
-        "backend_surface": "automation-runner|control-plane:tool_dispatch",
-        "state": "connected",
-        "state_reason_code": "automation_workflows_available",
-        "state_reason_text": "Workflows=20, active=17, dispatch_total=4, blocked_total=0.",
-        "last_success_at": "2026-03-14T01:49:43.760804+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "hard_block_routing",
-        "remediation_action": "/automation"
-      },
-      {
-        "module_key": "api_catalog",
-        "route": "/intelligence",
-        "backend_surface": "api_catalog_entries|api_connectors",
-        "state": "connected",
-        "state_reason_code": "api_catalog_live_connectors",
-        "state_reason_text": "Catalog entries=1000; live connectors=7.",
-        "last_success_at": "2026-03-14T01:49:21.167+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "hard_block_routing",
-        "remediation_action": "/intelligence"
-      },
-      {
-        "module_key": "n8n_catalog",
-        "route": "/automation",
-        "backend_surface": "n8n_template_entries|n8n_template_sync_runs",
-        "state": "connected",
-        "state_reason_code": "n8n_catalog_synced",
-        "state_reason_text": "Template entries=1000; latest sync status=completed.",
-        "last_success_at": "2026-03-14T01:50:18.613+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "hard_block_routing",
-        "remediation_action": "npm run sync:n8n-templates"
-      },
-      {
-        "module_key": "marketplace",
-        "route": "/marketplace",
-        "backend_surface": "agent_registry|api_catalog_entries|n8n_template_entries",
-        "state": "connected",
-        "state_reason_code": "marketplace_agents_active",
-        "state_reason_text": "Active agents=7 of total=11.",
-        "last_success_at": "2026-03-11T16:24:17.968918+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "hard_block_routing",
-        "remediation_action": "/marketplace"
-      },
-      {
-        "module_key": "simulation",
-        "route": "/simulation",
-        "backend_surface": "simulation-engine|simulation_runs",
-        "state": "simulated",
-        "state_reason_code": "simulation_guardrail_activity_synthetic",
-        "state_reason_text": "Simulation runs=20, passed=3, failed=17. Failures align with expected synthetic guardrail tests.",
-        "last_success_at": "2026-03-15T15:33:14.617023+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "6318eb5d-812e-4c28-a57a-33f5a31ef97f",
-        "smoke_case_id": "ag2_c6_synthetic",
-        "remediation_action": "/simulation"
-      },
-      {
-        "module_key": "variable_control_plane_v2",
-        "route": "/control-tower",
-        "backend_surface": "variable_registry|variable_resolver_v2|constraint_engine_v2|orchestration_v2",
-        "state": "connected",
-        "state_reason_code": "variable_orchestration_healthy",
-        "state_reason_text": "Definitions=8, coverage=100.0%, plans=46, failed_plans=0, blocked_plans=29, latest_blocking_violations=0, latest_conflicts=0.",
-        "last_success_at": "2026-03-15T16:01:27.771741+00:00",
-        "last_checked_at": "2026-03-15T16:10:47.940Z",
-        "correlation_id": "06a0207b-9ec5-498c-ab06-15c895585dfa",
-        "smoke_case_id": "governor_runtime",
-        "remediation_action": "/control-tower?tab=readiness"
-      }
-    ]
+    "overallState": "unknown",
+    "generatedAt": "",
+    "records": []
   },
   "publicApis": {
     "totalTemplates": 11,
@@ -165,10 +39,10 @@
     "missingRequiredKeys": 4
   },
   "n8n": {
-    "totalWorkflows": 200,
-    "runnableNow": 39,
-    "blockedByCredentials": 161,
-    "blockedByCommunityNodes": 3,
+    "totalWorkflows": 27,
+    "runnableNow": 1,
+    "blockedByCredentials": 0,
+    "blockedByCommunityNodes": 0,
     "reconcileTargetCount": 198,
     "reconcileRunnableNow": 166,
     "reconcileBlocked": 29,
@@ -264,13 +138,13 @@
     "Public API connectors con credenciales pendientes: 4"
   ],
   "warnings": [
-    "n8n workflows bloqueados por credenciales: 161",
-    "n8n reconcile con workflows bloqueados: 29"
+    "n8n reconcile con workflows bloqueados: 29",
+    "Working tree con cambios locales: 17 archivo(s)"
   ],
   "github": {
-    "enabled": true,
-    "reason": null,
-    "openPullRequests": 0,
-    "openIssues": 0
+    "enabled": false,
+    "reason": "GITHUB_TOKEN or GITHUB_REPOSITORY missing",
+    "openPullRequests": null,
+    "openIssues": null
   }
 }

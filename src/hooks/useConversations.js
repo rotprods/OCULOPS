@@ -4,7 +4,9 @@
 // ═══════════════════════════════════════════════════
 
 import { useState, useEffect, useCallback } from 'react'
-import { callSupabaseFunction, supabase, insertRow, updateRow, subscribeDebouncedToTable } from '../lib/supabase'
+import { supabase, insertRow, updateRow, subscribeDebouncedToTable } from '../lib/supabase'
+import { dispatchGovernedTool } from '../lib/controlPlane'
+import { loadRuntimeConfig, postJson } from '../lib/runtimeClient'
 
 const GOVERNED_MESSAGING_CHANNELS = new Set(['email', 'whatsapp'])
 
@@ -12,22 +14,7 @@ function asRecord(value) {
     return value && typeof value === 'object' && !Array.isArray(value) ? value : {}
 }
 
-function extractControlPlaneDispatchResult(controlPlaneDispatch) {
-    const controlPlaneData = asRecord(controlPlaneDispatch?.data)
-    const dispatchResult = asRecord(controlPlaneData.dispatch_result)
-    if (Object.keys(dispatchResult).length === 0) {
-        return controlPlaneDispatch
-    }
 
-    return {
-        ...dispatchResult,
-        control_plane: {
-            action: controlPlaneDispatch?.action || 'tool_dispatch',
-            trace_id: controlPlaneDispatch?.trace_id || null,
-            correlation_id: controlPlaneDispatch?.correlation_id || null,
-        },
-    }
-}
 
 export function useConversations() {
     const [conversations, setConversations] = useState([])
@@ -155,26 +142,27 @@ export function useConversations() {
                 metadata: requestMetadata,
             }
 
+            const config = loadRuntimeConfig()
             const data = GOVERNED_MESSAGING_CHANNELS.has(channel)
-                ? extractControlPlaneDispatchResult(await callSupabaseFunction('control-plane', {
-                    body: {
-                        action: 'tool_dispatch',
-                        user_id: session?.user?.id || null,
-                        source_agent: 'outreach',
-                        source: 'messaging_ui',
-                        target_type: 'agent_action',
-                        target_ref: 'messaging-dispatch',
-                        risk_class: 'high',
-                        tool_code_name: 'messaging-dispatch',
-                        context: {
-                            conversation_id: conversationId,
-                            channel,
-                            send_live: true,
-                        },
-                        payload,
+                ? await dispatchGovernedTool({
+                    action: 'tool_dispatch',
+                    userId: session?.user?.id || null,
+                    sourceAgent: 'outreach',
+                    source: 'messaging_ui',
+                    targetType: 'agent_action',
+                    targetRef: 'messaging-dispatch',
+                    riskClass: 'high',
+                    toolCodeName: 'messaging-dispatch',
+                    context: {
+                        conversation_id: conversationId,
+                        channel,
+                        send_live: true,
                     },
-                }))
-                : await callSupabaseFunction('messaging-dispatch', { body: payload })
+                    payload,
+                })
+                : await postJson(`${config.gatewayBase.replace(/\/$/, '')}/api/v1/messaging/dispatch`, payload, {
+                    headers: { 'X-OCULOPS-TOKEN': config.gatewayToken }
+                })
 
             await loadConversations()
             const dispatchMessageRecord = asRecord(data?.message)

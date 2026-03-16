@@ -27,22 +27,28 @@ import {
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || ''
 
 // ── Fetch bridge status via td-api ──
-async function fetchBridgeStatus(serviceKey) {
-    if (!SUPABASE_URL || !serviceKey) return null
+async function fetchBridgeStatus(serviceKey, config) {
+    if (!config?.gatewayBase || !serviceKey) return null
     try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/td-bridge`, {
-            headers: { 'X-TD-Service-Key': serviceKey }
+        const res = await fetch(`${config.gatewayBase.replace(/\/$/, '')}/api/v1/td-bridge`, {
+            headers: { 
+                'X-TD-Service-Key': serviceKey,
+                'X-OCULOPS-TOKEN': config.gatewayToken || ''
+            }
         })
         if (!res.ok) return null
         return await res.json()
     } catch { return null }
 }
 
-async function fetchSystemSnapshot(serviceKey, view = 'system') {
-    if (!SUPABASE_URL || !serviceKey) return null
+async function fetchSystemSnapshot(serviceKey, config, view = 'system') {
+    if (!config?.gatewayBase || !serviceKey) return null
     try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/td-api?view=${view}`, {
-            headers: { 'X-TD-Service-Key': serviceKey }
+        const res = await fetch(`${config.gatewayBase.replace(/\/$/, '')}/api/v1/td-api?view=${view}`, {
+            headers: { 
+                'X-TD-Service-Key': serviceKey,
+                'X-OCULOPS-TOKEN': config.gatewayToken || ''
+            }
         })
         if (!res.ok) return null
         return await res.json()
@@ -127,8 +133,8 @@ export default function CommandCenter() {
         setLoading(true)
 
         const [bridge, snapshot, health, runtimeSnap, openClaw, logTail] = await Promise.allSettled([
-            serviceKey ? fetchBridgeStatus(serviceKey) : Promise.resolve(null),
-            serviceKey ? fetchSystemSnapshot(serviceKey, 'system') : Promise.resolve(null),
+            serviceKey ? fetchBridgeStatus(serviceKey, runtimeConfig) : Promise.resolve(null),
+            serviceKey ? fetchSystemSnapshot(serviceKey, runtimeConfig, 'system') : Promise.resolve(null),
             getRuntimeHealth(runtimeConfig),
             getRuntimeSnapshot(runtimeConfig),
             getRuntimeOpenClaw(runtimeConfig),

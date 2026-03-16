@@ -19,8 +19,7 @@
 import { admin } from "./supabase.ts";
 import { checkPolicy, detectLoop } from "./policy-engine.ts";
 import { SKILLS, executeSkill, getRiskLevel } from "./agent-skills.ts";
-
-const OPENAI_KEY = () => Deno.env.get("OPENAI_API_KEY") || "";
+import { chatCompletion, MODEL_POLICY, type ChatMessage } from "./model-router.ts";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -58,32 +57,23 @@ async function generatePlan(
   context: Record<string, unknown>,
   model: string,
 ): Promise<string> {
-  const key = OPENAI_KEY();
-  if (!key) return "";
-
   try {
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model,
-        messages: [
-          {
-            role: "system",
-            content: `You are ${agent.toUpperCase()}, an autonomous AI agent in OCULOPS. Before executing, produce a brief execution plan.`,
-          },
-          {
-            role: "user",
-            content: `Goal: ${goal}\nContext summary: ${JSON.stringify(context).slice(0, 500)}\n\nRespond with a concise numbered plan (max 5 steps). Each step: what skill to use and why. Be specific.`,
-          },
-        ],
-        max_tokens: 400,
-        temperature: 0.3,
-      }),
+    const result = await chatCompletion({
+      messages: [
+        {
+          role: "system",
+          content: `You are ${agent.toUpperCase()}, an autonomous AI agent in OCULOPS. Before executing, produce a brief execution plan.`,
+        },
+        {
+          role: "user",
+          content: `Goal: ${goal}\nContext summary: ${JSON.stringify(context).slice(0, 500)}\n\nRespond with a concise numbered plan (max 5 steps). Each step: what skill to use and why. Be specific.`,
+        },
+      ],
+      model,
+      max_tokens: 400,
+      temperature: 0.3,
     });
-    if (!res.ok) return "";
-    const data = await res.json();
-    return data.choices?.[0]?.message?.content || "";
+    return result.ok ? (result.message?.content || "") : "";
   } catch {
     return "";
   }
@@ -104,8 +94,6 @@ export async function runBrain(input: BrainInput): Promise<BrainOutput> {
     org_id: inputOrgId,
   } = input;
 
-  const key = OPENAI_KEY();
-  if (!key) throw new Error("OPENAI_API_KEY not set");
 
   // Resolve org_id: use provided value, or fall back to first org (cron/background runs)
   let org_id: string | null = inputOrgId || null;
@@ -177,40 +165,32 @@ Rules:
 - When done, provide a clear summary of what changed.
 ${systemPromptExtra}`;
 
-  const messages: Array<{
-    role: string;
-    content: string | null;
-    tool_calls?: unknown[];
-    tool_call_id?: string;
-  }> = [
+  const messages: ChatMessage[] = [
     { role: "system", content: systemPrompt },
     { role: "user", content: `Context:\n${JSON.stringify(context, null, 2)}\n\nExecute your goal now.` },
   ];
 
-  // ── 4. Execution loop ─────────────────────────────────────────────────────
+  // ── 4. Execution loop (routed via model-router, policy: hybrid local-first) ─
   while (rounds < maxRounds) {
     rounds++;
 
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model,
-        messages,
-        tools: SKILLS,
-        tool_choice: "auto",
-        max_tokens: 2000,
-      }),
+    const completion = await chatCompletion({
+      messages,
+      model,
+      tools: SKILLS,
+      tool_choice: "auto",
+      max_tokens: 2000,
     });
 
-    if (!res.ok) {
+    if (!completion.ok) {
       outputStatus = "failed";
       break;
     }
 
-    const data = await res.json();
-    const msg = data.choices?.[0]?.message;
+    const msg = completion.message;
     if (!msg) break;
+    // Log routing lane for observability
+    console.log(`[brain-v2] round=${rounds} lane=${completion.meta.lane} provider=${completion.meta.provider} model=${completion.meta.model}`);
 
     messages.push({ role: "assistant", content: msg.content || null, tool_calls: msg.tool_calls });
 

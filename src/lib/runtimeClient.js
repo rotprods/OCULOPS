@@ -70,7 +70,7 @@ async function fetchJson(url, options = {}) {
   }
 }
 
-async function postJson(url, body, options = {}) {
+export async function postJson(url, body, options = {}) {
   return await fetchJson(url, {
     method: 'POST',
     timeoutMs: options.timeoutMs || 15000,

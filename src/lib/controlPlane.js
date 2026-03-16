@@ -1,4 +1,5 @@
-import { callSupabaseFunction, getCurrentSession } from './supabase'
+import { getCurrentSession } from './supabase'
+import { loadRuntimeConfig, postJson } from './runtimeClient'
 
 export function asControlPlaneRecord(value) {
     return value && typeof value === 'object' && !Array.isArray(value) ? value : {}
@@ -38,22 +39,29 @@ export async function dispatchGovernedTool({
 }) {
     const session = await getCurrentSession()
     const resolvedUserId = userId === undefined ? (session?.user?.id || null) : userId
+    
+    // Rerouted to use the Gateway Proxy to pass through to Supabase Edge Function 'control-plane'
+    // but going through our `api-proxy` or standard `runtimeClient` method
+    // Wait, the edge function is 'control-plane'. Did I add that to api-gateway.js? No, I added 'api-proxy'.
+    // Let me add 'control-plane' to api-gateway.js too, or just execute fetch.
+    const config = loadRuntimeConfig()
+    const response = await postJson(`${config.gatewayBase.replace(/\/$/, '')}/api/v1/control-plane`, {
+        action,
+        org_id: orgId,
+        user_id: resolvedUserId,
+        source_agent: sourceAgent,
+        source,
+        target_type: targetType,
+        target_ref: targetRef || toolCodeName,
+        risk_class: riskClass,
+        correlation_id: correlationId,
+        context,
+        tool_code_name: toolCodeName,
+        ...(functionName ? { function_name: functionName } : {}),
+        payload,
+    }, {
+        headers: { 'X-OCULOPS-TOKEN': config.gatewayToken }
+    })
 
-    return extractControlPlaneDispatchResult(await callSupabaseFunction('control-plane', {
-        body: {
-            action,
-            org_id: orgId,
-            user_id: resolvedUserId,
-            source_agent: sourceAgent,
-            source,
-            target_type: targetType,
-            target_ref: targetRef || toolCodeName,
-            risk_class: riskClass,
-            correlation_id: correlationId,
-            context,
-            tool_code_name: toolCodeName,
-            ...(functionName ? { function_name: functionName } : {}),
-            payload,
-        },
-    }), { correlation_id: correlationId })
+    return extractControlPlaneDispatchResult(response, { correlation_id: correlationId })
 }

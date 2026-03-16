@@ -1,8 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
 import { supabase } from '../lib/supabase'
 import { dispatchGovernedTool } from '../lib/controlPlane'
-
-const BASE = import.meta.env.VITE_SUPABASE_URL
+import { loadRuntimeConfig, postJson } from '../lib/runtimeClient'
 
 async function getToken() {
   if (!supabase) return null
@@ -63,7 +62,8 @@ export function useConnectorProxy(defaults = {}, options = {}) {
 
     try {
       const token = await getToken()
-      if (!BASE) throw new Error('Supabase URL not configured')
+      const config = loadRuntimeConfig()
+      if (!config.gatewayBase) throw new Error('Gateway not configured')
 
       const result = shouldGovern
         ? await dispatchGovernedTool({
@@ -84,19 +84,10 @@ export function useConnectorProxy(defaults = {}, options = {}) {
           },
           userId: token ? undefined : null,
         })
-        : await fetch(`${BASE}/functions/v1/api-proxy`, {
-          method: 'POST',
+        : await postJson(`${config.gatewayBase.replace(/\/$/, '')}/api/v1/proxy`, requestPayload, {
           headers: {
-            'Content-Type': 'application/json',
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
-          body: JSON.stringify(requestPayload),
-        }).then(async (response) => {
-          const responseResult = await response.json().catch(() => ({ error: `HTTP ${response.status}` }))
-          if (!response.ok || responseResult?.ok === false) {
-            throw new Error(responseResult?.error || `HTTP ${response.status}`)
+            'X-OCULOPS-TOKEN': config.gatewayToken || ''
           }
-          return responseResult
         })
 
       setData(result)
